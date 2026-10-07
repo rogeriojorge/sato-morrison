@@ -1,0 +1,590 @@
+{
+  "metadata": {
+    "model": "stationary-family quadrature and full-marginal maximum entropy",
+    "boundary": "velocity truncation only; sampled positions do not assert a closed spatial relaxation experiment",
+    "units": "normalized",
+    "inputs": {
+      "fields": [
+        {
+          "kind": "uniform",
+          "strength": 1.0,
+          "amplitude": 0.0,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        },
+        {
+          "kind": "mirror",
+          "strength": 1.0,
+          "amplitude": 0.15,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        },
+        {
+          "kind": "toroidal",
+          "strength": 1.0,
+          "amplitude": 0.0,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        },
+        {
+          "kind": "dipole",
+          "strength": 1.0,
+          "amplitude": 0.0,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        },
+        {
+          "kind": "nonaxisymmetric",
+          "strength": 1.0,
+          "amplitude": 0.03,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        }
+      ],
+      "beta": 1.2,
+      "gamma": 0.3,
+      "orders": [
+        16,
+        32,
+        64
+      ],
+      "extents": [
+        [
+          5.0,
+          12.0
+        ],
+        [
+          7.0,
+          20.0
+        ]
+      ],
+      "positions": [
+        [
+          0.8,
+          0.2,
+          0.3
+        ],
+        [
+          0.86,
+          0.2,
+          0.3
+        ],
+        [
+          0.92,
+          0.2,
+          0.3
+        ],
+        [
+          0.98,
+          0.2,
+          0.3
+        ],
+        [
+          1.04,
+          0.2,
+          0.3
+        ],
+        [
+          1.1,
+          0.2,
+          0.3
+        ],
+        [
+          1.16,
+          0.2,
+          0.3
+        ],
+        [
+          1.22,
+          0.2,
+          0.3
+        ],
+        [
+          1.2799999999999998,
+          0.2,
+          0.3
+        ],
+        [
+          1.3399999999999999,
+          0.2,
+          0.3
+        ],
+        [
+          1.4,
+          0.2,
+          0.3
+        ]
+      ],
+      "mass": 1.0,
+      "charge": 1.0,
+      "candidate_energy": [
+        0.2,
+        0.5,
+        0.7999999999999999,
+        1.1,
+        0.6142857142857142,
+        0.9142857142857143,
+        1.2142857142857142,
+        1.5142857142857142,
+        1.0285714285714285,
+        1.3285714285714285,
+        1.6285714285714286,
+        1.9285714285714284,
+        1.442857142857143,
+        1.7428571428571429,
+        2.0428571428571427,
+        2.342857142857143,
+        1.8571428571428572,
+        2.157142857142857,
+        2.4571428571428573,
+        2.757142857142857,
+        2.2714285714285714,
+        2.571428571428571,
+        2.871428571428571,
+        3.1714285714285713,
+        2.685714285714286,
+        2.9857142857142858,
+        3.2857142857142856,
+        3.585714285714286,
+        3.1,
+        3.4,
+        3.7,
+        4.0
+      ],
+      "candidate_weights": [
+        0.5,
+        0.5225806451612903,
+        0.5451612903225806,
+        0.567741935483871,
+        0.5903225806451613,
+        0.6129032258064516,
+        0.635483870967742,
+        0.6580645161290323,
+        0.6806451612903226,
+        0.7032258064516129,
+        0.7258064516129032,
+        0.7483870967741936,
+        0.7709677419354839,
+        0.7935483870967741,
+        0.8161290322580645,
+        0.8387096774193548,
+        0.8612903225806452,
+        0.8838709677419354,
+        0.9064516129032258,
+        0.9290322580645161,
+        0.9516129032258065,
+        0.9741935483870967,
+        0.9967741935483871,
+        1.0193548387096774,
+        1.0419354838709678,
+        1.064516129032258,
+        1.0870967741935482,
+        1.1096774193548387,
+        1.132258064516129,
+        1.1548387096774193,
+        1.1774193548387095,
+        1.2
+      ],
+      "candidate_labels": [
+        0,
+        1,
+        2,
+        3,
+        0,
+        1,
+        2,
+        3,
+        0,
+        1,
+        2,
+        3,
+        0,
+        1,
+        2,
+        3,
+        0,
+        1,
+        2,
+        3,
+        0,
+        1,
+        2,
+        3,
+        0,
+        1,
+        2,
+        3,
+        0,
+        1,
+        2,
+        3
+      ],
+      "candidate_initial": [
+        0.7117703227626097,
+        0.5922778859567381,
+        0.6546821777104247,
+        0.9523411107175882,
+        0.3141746967895477,
+        0.22354906574558414,
+        0.2708478542976051,
+        0.5087809419699092,
+        0.20186266448752943,
+        0.13577534205513836,
+        0.12871242905297312,
+        0.1962099617775292,
+        0.07939315841041752,
+        0.06721679834409261,
+        0.08011709399467304,
+        0.12426809797902678,
+        0.040748821716630745,
+        0.027015284490014942,
+        0.030507249223269174,
+        0.05700243597293868,
+        0.024125478836248,
+        0.01749342425282988,
+        0.01686092831332053,
+        0.024273704544571624,
+        0.009081180897675248,
+        0.007479666689402084,
+        0.009359807844451175,
+        0.015728862218810626,
+        0.005356930521925659,
+        0.0034151116836894104,
+        0.0035592524446947994,
+        0.006341717508671906
+      ]
+    },
+    "commit": "25a7668afcbfb60c80054b5ef249d6163a5e16b3",
+    "working_tree": "M README.md\n M notes/implementation.pdf\n M notes/implementation.tex\n M notes/references.bib\n M results/uniform_reference/summary.json\n?? results/benchmarks/\n?? results/controls/\n?? results/encounters/\n?? results/equilibria/\n?? results/fields/\n?? results/figures/\n?? results/finite_range/\n?? results/geometry.json\n?? results/relaxation.json\n?? results/uniform_reference/time_convergence.png\n?? results/validation.csv",
+    "source_sha256": "4cd3918510e4d84b37de07f7b2ece6552f022a79e254ce868789de019eff03ff",
+    "versions": {
+      "sato-morrison": "0.1.0",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2"
+    },
+    "source_changes": "",
+    "logical_cpus": 10,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "unset",
+      "OPENBLAS_NUM_THREADS": "unset",
+      "MKL_NUM_THREADS": "unset",
+      "XLA_FLAGS": "unset"
+    },
+    "python": "3.12.13",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "Apple M4",
+    "devices": [
+      "cpu:0"
+    ],
+    "x64": true
+  },
+  "rows": [
+    {
+      "field": "uniform",
+      "order": 16,
+      "u_extent": 5.0,
+      "mu_extent": 12.0,
+      "density_error": 7.982497221004081e-07,
+      "min_sampled_B": 1.0,
+      "status": "passed"
+    },
+    {
+      "field": "uniform",
+      "order": 16,
+      "u_extent": 7.0,
+      "mu_extent": 20.0,
+      "density_error": 0.0003573136683259204,
+      "min_sampled_B": 1.0,
+      "status": "passed"
+    },
+    {
+      "field": "uniform",
+      "order": 32,
+      "u_extent": 5.0,
+      "mu_extent": 12.0,
+      "density_error": 5.061784691395843e-08,
+      "min_sampled_B": 1.0,
+      "status": "passed"
+    },
+    {
+      "field": "uniform",
+      "order": 32,
+      "u_extent": 7.0,
+      "mu_extent": 20.0,
+      "density_error": 5.025979632478084e-13,
+      "min_sampled_B": 1.0,
+      "status": "passed"
+    },
+    {
+      "field": "uniform",
+      "order": 64,
+      "u_extent": 5.0,
+      "mu_extent": 12.0,
+      "density_error": 5.061786167992466e-08,
+      "min_sampled_B": 1.0,
+      "status": "passed"
+    },
+    {
+      "field": "uniform",
+      "order": 64,
+      "u_extent": 7.0,
+      "mu_extent": 20.0,
+      "density_error": 5.3290705182007514e-14,
+      "min_sampled_B": 1.0,
+      "status": "passed"
+    },
+    {
+      "field": "mirror",
+      "order": 16,
+      "u_extent": 5.0,
+      "mu_extent": 12.0,
+      "density_error": 8.420058769109673e-07,
+      "min_sampled_B": 0.8658419313015512,
+      "status": "passed"
+    },
+    {
+      "field": "mirror",
+      "order": 16,
+      "u_extent": 7.0,
+      "mu_extent": 20.0,
+      "density_error": 0.00035731366555957766,
+      "min_sampled_B": 0.8658419313015512,
+      "status": "passed"
+    },
+    {
+      "field": "mirror",
+      "order": 32,
+      "u_extent": 5.0,
+      "mu_extent": 12.0,
+      "density_error": 9.437403603040906e-08,
+      "min_sampled_B": 0.8658419313015512,
+      "status": "passed"
+    },
+    {
+      "field": "mirror",
+      "order": 32,
+      "u_extent": 7.0,
+      "mu_extent": 20.0,
+      "density_error": 1.1808332089913165e-12,
+      "min_sampled_B": 0.8658419313015512,
+      "status": "passed"
+    },
+    {
+      "field": "mirror",
+      "order": 64,
+      "u_extent": 5.0,
+      "mu_extent": 12.0,
+      "density_error": 9.437404635548319e-08,
+      "min_sampled_B": 0.8658419313015512,
+      "status": "passed"
+    },
+    {
+      "field": "mirror",
+      "order": 64,
+      "u_extent": 7.0,
+      "mu_extent": 20.0,
+      "density_error": 7.2730710343194e-13,
+      "min_sampled_B": 0.8658419313015512,
+      "status": "passed"
+    },
+    {
+      "field": "toroidal",
+      "order": 16,
+      "u_extent": 5.0,
+      "mu_extent": 12.0,
+      "density_error": 1.2940061537847214e-06,
+      "min_sampled_B": 0.7071067811865476,
+      "status": "passed"
+    },
+    {
+      "field": "toroidal",
+      "order": 16,
+      "u_extent": 7.0,
+      "mu_extent": 20.0,
+      "density_error": 0.000357313792799574,
+      "min_sampled_B": 0.7071067811865476,
+      "status": "passed"
+    },
+    {
+      "field": "toroidal",
+      "order": 32,
+      "u_extent": 5.0,
+      "mu_extent": 12.0,
+      "density_error": 5.463746520772972e-07,
+      "min_sampled_B": 0.7071067811865476,
+      "status": "passed"
+    },
+    {
+      "field": "toroidal",
+      "order": 32,
+      "u_extent": 7.0,
+      "mu_extent": 20.0,
+      "density_error": 3.230737899428959e-11,
+      "min_sampled_B": 0.7071067811865476,
+      "status": "passed"
+    },
+    {
+      "field": "toroidal",
+      "order": 64,
+      "u_extent": 5.0,
+      "mu_extent": 12.0,
+      "density_error": 5.463746617362375e-07,
+      "min_sampled_B": 0.7071067811865476,
+      "status": "passed"
+    },
+    {
+      "field": "toroidal",
+      "order": 64,
+      "u_extent": 7.0,
+      "mu_extent": 20.0,
+      "density_error": 3.1855962312477004e-11,
+      "min_sampled_B": 0.7071067811865476,
+      "status": "passed"
+    },
+    {
+      "field": "dipole",
+      "order": 16,
+      "u_extent": 5.0,
+      "mu_extent": 12.0,
+      "density_error": 8.481748628730301e-05,
+      "min_sampled_B": 0.35169276105714653,
+      "status": "passed"
+    },
+    {
+      "field": "dipole",
+      "order": 16,
+      "u_extent": 7.0,
+      "mu_extent": 20.0,
+      "density_error": 0.00035747480347858573,
+      "min_sampled_B": 0.35169276105714653,
+      "status": "passed"
+    },
+    {
+      "field": "dipole",
+      "order": 32,
+      "u_extent": 5.0,
+      "mu_extent": 12.0,
+      "density_error": 8.406991723397539e-05,
+      "min_sampled_B": 0.35169276105714653,
+      "status": "passed"
+    },
+    {
+      "field": "dipole",
+      "order": 32,
+      "u_extent": 7.0,
+      "mu_extent": 20.0,
+      "density_error": 1.6119947410242474e-07,
+      "min_sampled_B": 0.35169276105714653,
+      "status": "passed"
+    },
+    {
+      "field": "dipole",
+      "order": 64,
+      "u_extent": 5.0,
+      "mu_extent": 12.0,
+      "density_error": 8.406991724341228e-05,
+      "min_sampled_B": 0.35169276105714653,
+      "status": "passed"
+    },
+    {
+      "field": "dipole",
+      "order": 64,
+      "u_extent": 7.0,
+      "mu_extent": 20.0,
+      "density_error": 1.6119901047328966e-07,
+      "min_sampled_B": 0.35169276105714653,
+      "status": "passed"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "order": 16,
+      "u_extent": 5.0,
+      "mu_extent": 12.0,
+      "density_error": 7.434321291477364e-05,
+      "min_sampled_B": 0.36093833405601594,
+      "status": "passed"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "order": 16,
+      "u_extent": 7.0,
+      "mu_extent": 20.0,
+      "density_error": 0.00035744273641535873,
+      "min_sampled_B": 0.36093833405601594,
+      "status": "passed"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "order": 32,
+      "u_extent": 5.0,
+      "mu_extent": 12.0,
+      "density_error": 7.359563602782337e-05,
+      "min_sampled_B": 0.36093833405601594,
+      "status": "passed"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "order": 32,
+      "u_extent": 7.0,
+      "mu_extent": 20.0,
+      "density_error": 1.2912095215256159e-07,
+      "min_sampled_B": 0.36093833405601594,
+      "status": "passed"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "order": 64,
+      "u_extent": 5.0,
+      "mu_extent": 12.0,
+      "density_error": 7.359563603481778e-05,
+      "min_sampled_B": 0.36093833405601594,
+      "status": "passed"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "order": 64,
+      "u_extent": 7.0,
+      "mu_extent": 20.0,
+      "density_error": 1.2912048730218117e-07,
+      "min_sampled_B": 0.36093833405601594,
+      "status": "passed"
+    }
+  ],
+  "candidate": {
+    "beta": 1.7310695111168348,
+    "energy_error": 0.0,
+    "marginal_error": 2.220446049250313e-16,
+    "entropy_increase": 0.01442272610095463,
+    "status": "passed",
+    "scope": "finite quadrature candidate; additional kernel invariants can prevent approach"
+  }
+}

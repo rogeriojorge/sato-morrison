@@ -1,0 +1,152 @@
+{
+  "model": "sm_local_nonlinear",
+  "boundary": "periodic x; natural zero collision flux u",
+  "units": "normalized",
+  "inputs": {
+    "nx": 7,
+    "nu": 5,
+    "nmu": 3,
+    "u_domain": [
+      -3.0,
+      3.0
+    ],
+    "mu_domain": [
+      0.1,
+      2.5
+    ],
+    "dt": 0.08,
+    "steps": 10,
+    "D": 0.3,
+    "B": 1.0,
+    "q": 1.0,
+    "m": 1.0,
+    "amplitude": 0.2,
+    "initial": "normalized exp(-E-.3mu+.2cos(x)(u\u00b2/4-.5))",
+    "seed": null,
+    "quadrature": "periodic x trapezoid; u and mu trapezoid"
+  },
+  "commit": "25a7668afcbfb60c80054b5ef249d6163a5e16b3",
+  "working_tree": "M README.md\n M notes/implementation.pdf\n M notes/implementation.tex\n M notes/references.bib\n M results/uniform_reference/summary.json\n?? results/benchmarks/\n?? results/controls/\n?? results/encounters/\n?? results/equilibria/\n?? results/fields/\n?? results/figures/\n?? results/finite_range/\n?? results/geometry.json\n?? results/relaxation.json\n?? results/uniform_reference/time_convergence.png",
+  "source_sha256": "4cd3918510e4d84b37de07f7b2ece6552f022a79e254ce868789de019eff03ff",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "unset",
+    "OPENBLAS_NUM_THREADS": "unset",
+    "MKL_NUM_THREADS": "unset",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": true,
+  "status": "passed",
+  "equation": "fixed-field nonlinear weak SM local surrogate, P Ix P",
+  "normalization": "dimensionless constant D; no physical rate calibration",
+  "invariants": {
+    "number_error": 1.5094860719151174e-17,
+    "energy_error": 7.00233150527539e-17,
+    "marginal_error": 5.441243814854047e-17,
+    "min_f": 0.00036570762973845924
+  },
+  "candidate_beta": 0.9996735742613597,
+  "newton_max_residual": 1.1456271689590137e-16,
+  "entropy_identity_max_error": 6.075110033088027e-15,
+  "entropy_min_step": 0.0004747525725683488,
+  "reconstruction_min": 0.00035795969405319814,
+  "continuous_spatial_positivity_bound": 0.00035246554833896646,
+  "state_reconstruction": "Fourier in x; positive piecewise-linear interpolation in u,mu",
+  "times": [
+    0.0,
+    0.08,
+    0.16,
+    0.24,
+    0.32,
+    0.4,
+    0.48,
+    0.56,
+    0.64,
+    0.72,
+    0.8
+  ],
+  "entropy": [
+    13.766953980907191,
+    13.768042976841036,
+    13.769035701956625,
+    13.769940800810218,
+    13.770766092466996,
+    13.771518666807525,
+    13.7722049639531,
+    13.7728308412043,
+    13.773401630515401,
+    13.773922188604422,
+    13.77439694117699
+  ],
+  "candidate_distance": [
+    0.04192044931551703,
+    0.03972289446500442,
+    0.03772137395720426,
+    0.03589776084291848,
+    0.034235801391487825,
+    0.032720862937487355,
+    0.03133973128451908,
+    0.030080444714924093,
+    0.02893215549535346,
+    0.02788501242188164,
+    0.026930059784532865
+  ],
+  "timestep_refinements": [
+    {
+      "dt": 0.08,
+      "invariants": {
+        "number_error": 1.5094860719151174e-17,
+        "energy_error": 7.00233150527539e-17,
+        "marginal_error": 5.441243814854047e-17,
+        "min_f": 0.00036570762973845924
+      },
+      "entropy": 13.77439694117699,
+      "warm_s": 0.3366291660058778
+    },
+    {
+      "dt": 0.04,
+      "invariants": {
+        "number_error": 1.0495827815597556e-11,
+        "energy_error": 5.135051469786509e-11,
+        "marginal_error": 7.1672674687032966e-12,
+        "min_f": 0.0003657056448875777
+      },
+      "entropy": 13.77439634409876,
+      "warm_s": 0.5048287090030499
+    },
+    {
+      "dt": 0.02,
+      "invariants": {
+        "number_error": 3.0092988973212187e-12,
+        "energy_error": 1.471612798815995e-11,
+        "marginal_error": 2.0548298281026074e-12,
+        "min_f": 0.0003657051452581791
+      },
+      "entropy": 13.774396194366775,
+      "warm_s": 0.9530504579888657
+    }
+  ],
+  "consecutive_timestep_errors": [
+    7.097987869501063e-06,
+    1.7730170293307471e-06
+  ],
+  "observed_timestep_order": 2.001203715843542,
+  "compile_s": 0.4160578339942731,
+  "warm_s": 1.706716666027205
+}

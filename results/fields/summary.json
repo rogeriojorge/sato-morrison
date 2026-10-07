@@ -1,0 +1,267 @@
+{
+  "metadata": {
+    "model": "sm_local_nonlinear discrete-energy projector",
+    "boundary": "natural no-flux collision-only Cartesian box",
+    "units": "normalized",
+    "inputs": {
+      "fields": [
+        {
+          "kind": "mirror",
+          "strength": 1.0,
+          "amplitude": 0.15,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        },
+        {
+          "kind": "dipole",
+          "strength": 1.0,
+          "amplitude": 0.0,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        },
+        {
+          "kind": "nonaxisymmetric",
+          "strength": 1.0,
+          "amplitude": 0.03,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        }
+      ],
+      "spatial_orders": [
+        3,
+        5,
+        7
+      ],
+      "bounds": [
+        [
+          0.8,
+          1.2
+        ],
+        [
+          -0.2,
+          0.2
+        ],
+        [
+          0.1,
+          0.5
+        ]
+      ],
+      "u": [
+        -0.7,
+        0.1,
+        0.9
+      ],
+      "mu": [
+        0.15,
+        0.45,
+        0.9
+      ],
+      "collision_strength": 0.1,
+      "dt": 0.002,
+      "steps": 3,
+      "initial": "exp(-E-0.2mu+0.1 sin(x)u+0.04 y mu)",
+      "pair_chunk": 128
+    },
+    "commit": "25a7668afcbfb60c80054b5ef249d6163a5e16b3",
+    "working_tree": "M README.md\n M notes/implementation.pdf\n M notes/implementation.tex\n M notes/references.bib\n M results/uniform_reference/summary.json\n?? results/benchmarks/\n?? results/controls/\n?? results/encounters/\n?? results/equilibria/\n?? results/fields/\n?? results/figures/\n?? results/finite_range/\n?? results/geometry.json\n?? results/relaxation.json\n?? results/uniform_reference/time_convergence.png\n?? results/validation.csv",
+    "source_sha256": "4cd3918510e4d84b37de07f7b2ece6552f022a79e254ce868789de019eff03ff",
+    "versions": {
+      "sato-morrison": "0.1.0",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2"
+    },
+    "source_changes": "",
+    "logical_cpus": 10,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "unset",
+      "OPENBLAS_NUM_THREADS": "unset",
+      "MKL_NUM_THREADS": "unset",
+      "XLA_FLAGS": "unset"
+    },
+    "python": "3.12.13",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "Apple M4",
+    "devices": [
+      "cpu:0"
+    ],
+    "x64": true,
+    "limitations": "Only spatial entropy-production refinement and coarse nonlinear steps here. Velocity/tail convergence for these boxes unresolved; no combined mirror/dipole/nonaxisymmetric confinement claim. Minimum B is sampled, not a proof over the full domain."
+  },
+  "rows": [
+    {
+      "field": "mirror",
+      "spatial_order": 3,
+      "nu": 3,
+      "nmu": 3,
+      "min_sampled_B": 0.8906869539855178,
+      "equilibrium_residual": 9.697597836586247e-16,
+      "initial_entropy_production": 1.3753264594446099e-06,
+      "compile_and_first_s": 0.5110971249814611,
+      "state_bytes": 1944,
+      "pair_count": 972,
+      "pair_chunk": 128,
+      "status": "passed",
+      "number_error": 8.675771801260971e-18,
+      "energy_error": 1.9610401813617126e-17,
+      "marginal_error": 1.2544998860858407e-17,
+      "min_f": 0.24244151846112436,
+      "entropy_min_step": 2.644314676947257e-09,
+      "entropy_identity_error": 5.910737353825254e-18,
+      "dt": 0.002,
+      "steps": 3
+    },
+    {
+      "field": "mirror",
+      "spatial_order": 5,
+      "nu": 3,
+      "nmu": 3,
+      "min_sampled_B": 0.8906869539855178,
+      "equilibrium_residual": 4.928496953523969e-15,
+      "initial_entropy_production": 1.3404851948886799e-06,
+      "compile_and_first_s": 0.48459570898558013,
+      "state_bytes": 9000,
+      "pair_count": 4500,
+      "pair_chunk": 128,
+      "status": "passed"
+    },
+    {
+      "field": "mirror",
+      "spatial_order": 7,
+      "nu": 3,
+      "nmu": 3,
+      "min_sampled_B": 0.8906869539855178,
+      "equilibrium_residual": 9.997350720767914e-15,
+      "initial_entropy_production": 1.335987695609416e-06,
+      "compile_and_first_s": 0.26482358400244266,
+      "state_bytes": 24696,
+      "pair_count": 12348,
+      "pair_chunk": 128,
+      "status": "passed",
+      "last_spatial_refinement_relative_change": 0.0033551279017575153,
+      "spatial_convergence_status": "passed"
+    },
+    {
+      "field": "dipole",
+      "spatial_order": 3,
+      "nu": 3,
+      "nmu": 3,
+      "min_sampled_B": 0.5261791489198978,
+      "equilibrium_residual": 1.2819068540533818e-15,
+      "initial_entropy_production": 6.645774739414888e-06,
+      "compile_and_first_s": 0.20875937497476116,
+      "state_bytes": 1944,
+      "pair_count": 972,
+      "pair_chunk": 128,
+      "status": "passed",
+      "number_error": 7.180699589936366e-18,
+      "energy_error": 8.10265222041927e-18,
+      "marginal_error": 1.290803398989891e-17,
+      "min_f": 0.10257268066141159,
+      "entropy_min_step": 1.294460503023509e-08,
+      "entropy_identity_error": 2.9434527265984945e-18,
+      "dt": 0.002,
+      "steps": 3
+    },
+    {
+      "field": "dipole",
+      "spatial_order": 5,
+      "nu": 3,
+      "nmu": 3,
+      "min_sampled_B": 0.5261791489198978,
+      "equilibrium_residual": 8.002044593776344e-15,
+      "initial_entropy_production": 6.753068123793686e-06,
+      "compile_and_first_s": 0.288651957991533,
+      "state_bytes": 9000,
+      "pair_count": 4500,
+      "pair_chunk": 128,
+      "status": "passed"
+    },
+    {
+      "field": "dipole",
+      "spatial_order": 7,
+      "nu": 3,
+      "nmu": 3,
+      "min_sampled_B": 0.5261791489198978,
+      "equilibrium_residual": 2.766291262279931e-14,
+      "initial_entropy_production": 6.770296546103635e-06,
+      "compile_and_first_s": 0.2485024999768939,
+      "state_bytes": 24696,
+      "pair_count": 12348,
+      "pair_chunk": 128,
+      "status": "passed",
+      "last_spatial_refinement_relative_change": 0.002551199246642488,
+      "spatial_convergence_status": "passed"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "spatial_order": 3,
+      "nu": 3,
+      "nmu": 3,
+      "min_sampled_B": 0.5169355931646552,
+      "equilibrium_residual": 1.6676110470655026e-15,
+      "initial_entropy_production": 6.6337143639003175e-06,
+      "compile_and_first_s": 0.25280874999589287,
+      "state_bytes": 1944,
+      "pair_count": 972,
+      "pair_chunk": 128,
+      "status": "passed",
+      "number_error": 1.7505738381051332e-17,
+      "energy_error": 1.9125654808959655e-17,
+      "marginal_error": 9.499093432259246e-18,
+      "min_f": 0.10255862676646724,
+      "entropy_min_step": 1.2922252049657468e-08,
+      "entropy_identity_error": 7.164576899152521e-18,
+      "dt": 0.002,
+      "steps": 3
+    },
+    {
+      "field": "nonaxisymmetric",
+      "spatial_order": 5,
+      "nu": 3,
+      "nmu": 3,
+      "min_sampled_B": 0.5169355931646552,
+      "equilibrium_residual": 5.311969381229196e-15,
+      "initial_entropy_production": 6.742970255876924e-06,
+      "compile_and_first_s": 0.1761799170053564,
+      "state_bytes": 9000,
+      "pair_count": 4500,
+      "pair_chunk": 128,
+      "status": "passed"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "spatial_order": 7,
+      "nu": 3,
+      "nmu": 3,
+      "min_sampled_B": 0.5169355931646552,
+      "equilibrium_residual": 1.390231767740936e-14,
+      "initial_entropy_production": 6.760312326016547e-06,
+      "compile_and_first_s": 0.15254308300791308,
+      "state_bytes": 24696,
+      "pair_count": 12348,
+      "pair_chunk": 128,
+      "status": "passed",
+      "last_spatial_refinement_relative_change": 0.002571874037929911,
+      "spatial_convergence_status": "passed"
+    }
+  ]
+}

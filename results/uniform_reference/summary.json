@@ -1,5 +1,5 @@
 {
-  "scope": "Eq. 181 uniform-field algebra only; no general PDE evolution",
+  "scope": "Eq.181 uniform pair algebra, entropy spectrum and backward-Euler time convergence",
   "velocity_points": 216,
   "analytic_decay_rate": 0.11742603550295856,
   "pair_relative_error": 2.3579067116465694e-16,
@@ -39,5 +39,98 @@
   "python_version": "3.12.13",
   "platform": "macOS-26.6.2-arm64-arm-64bit",
   "numpy_version": "2.5.3",
-  "elapsed_seconds": 0.0668352080101613
+  "elapsed_seconds": 0.08712366700638086,
+  "metadata": {
+    "model": "sm181_local",
+    "boundary": "periodic Fourier mode; finite velocity quadrature",
+    "units": "normalized",
+    "inputs": {
+      "u_nodes": 18,
+      "eta_nodes": 12,
+      "u_interval": [
+        -5.0,
+        5.0
+      ],
+      "eta_interval": [
+        0.0,
+        10.0
+      ],
+      "charge": 1.3,
+      "mass": 0.8,
+      "diffusion": 0.7,
+      "density": 1.4,
+      "field": [
+        0.0,
+        0.0,
+        2.0
+      ],
+      "wave_vector": [
+        0.9,
+        0.0,
+        0.0
+      ],
+      "units": "normalized"
+    },
+    "commit": "25a7668afcbfb60c80054b5ef249d6163a5e16b3",
+    "working_tree": "M README.md\n M notes/implementation.pdf\n M notes/implementation.tex\n M notes/references.bib\n M results/uniform_reference/summary.json\n?? results/benchmarks/\n?? results/controls/\n?? results/encounters/\n?? results/equilibria/\n?? results/fields/\n?? results/figures/\n?? results/finite_range/\n?? results/geometry.json\n?? results/relaxation.json\n?? results/uniform_reference/time_convergence.png",
+    "source_sha256": "4cd3918510e4d84b37de07f7b2ece6552f022a79e254ce868789de019eff03ff",
+    "versions": {
+      "sato-morrison": "0.1.0",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2"
+    },
+    "source_changes": "",
+    "logical_cpus": 10,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "unset",
+      "OPENBLAS_NUM_THREADS": "unset",
+      "MKL_NUM_THREADS": "unset",
+      "XLA_FLAGS": "unset"
+    },
+    "python": "3.12.13",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "Apple M4",
+    "devices": [
+      "cpu:0"
+    ],
+    "x64": true
+  },
+  "time_evolution": [
+    {
+      "dt": 0.05,
+      "steps": 20,
+      "fitted_rate": 0.11708265705437983,
+      "relative_rate_error": 0.0029242105220360637,
+      "density_error": 3.3306690738754696e-16,
+      "linear_residual": 1.1324483405661888e-16
+    },
+    {
+      "dt": 0.025,
+      "steps": 40,
+      "fitted_rate": 0.1172540111669809,
+      "relative_rate_error": 0.0014649590718177619,
+      "density_error": 4.440892098500626e-16,
+      "linear_residual": 1.1515519393883314e-16
+    },
+    {
+      "dt": 0.0125,
+      "steps": 80,
+      "fitted_rate": 0.1173399392808076,
+      "relative_rate_error": 0.0007331953410688596,
+      "density_error": 1.6653345369377348e-16,
+      "linear_residual": 1.1955952198987481e-16
+    },
+    {
+      "dt": 0.00625,
+      "steps": 160,
+      "fitted_rate": 0.11738296634367056,
+      "relative_rate_error": 0.00036677691709108284,
+      "density_error": 1.6653345369377348e-16,
+      "linear_residual": 1.2942268999046262e-16
+    }
+  ]
 }

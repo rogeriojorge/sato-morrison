@@ -1,0 +1,214 @@
+{
+  "model": "lorentz+dougherty+landau",
+  "boundary": "infinite velocity domains analytically; finite quadrature with tail checks",
+  "units": "normalized",
+  "inputs": {
+    "nu": 0.7,
+    "times": [
+      0.0,
+      0.16666666666666666,
+      0.3333333333333333,
+      0.5,
+      0.6666666666666666,
+      0.8333333333333333,
+      1.0,
+      1.1666666666666665,
+      1.3333333333333333,
+      1.5,
+      1.6666666666666665,
+      1.8333333333333333,
+      2.0,
+      2.1666666666666665,
+      2.333333333333333,
+      2.5,
+      2.6666666666666665,
+      2.833333333333333,
+      3.0
+    ],
+    "pitch_order": 24,
+    "mixture_weights": [
+      0.4,
+      0.6
+    ],
+    "mixture_means": [
+      [
+        -1.2,
+        0.4,
+        0.2
+      ],
+      [
+        1.1,
+        -0.1,
+        0.2
+      ]
+    ],
+    "mixture_covariances": [
+      [
+        [
+          0.65,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.8
+        ]
+      ],
+      [
+        [
+          0.9,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.7,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.2
+        ]
+      ]
+    ],
+    "density_order": 40,
+    "density_extent": 9.0,
+    "landau_covariance": [
+      [
+        1.15,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        1.15,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.7
+      ]
+    ],
+    "gamma": 1.0,
+    "radial_orders": [
+      8,
+      12,
+      20,
+      28
+    ],
+    "cartesian_orders": [
+      8,
+      16,
+      32,
+      48
+    ],
+    "polar_order": 32,
+    "phase_orders": [
+      8,
+      16,
+      32
+    ],
+    "tail_radii": [
+      5.0,
+      8.0,
+      12.0
+    ],
+    "softenings": [
+      0.2,
+      0.1,
+      0.05,
+      0.025,
+      0.0
+    ],
+    "small_anisotropies": [
+      0.03,
+      0.01,
+      0.003
+    ],
+    "seed": 301,
+    "density_normalization": 1.0,
+    "landau_scope": "instantaneous Gaussian weak moments and entropy production; no kinetic time evolution",
+    "dougherty_scope": "exact positive Gaussian-mixture evolution with self-consistent conserved moments"
+  },
+  "commit": "25a7668afcbfb60c80054b5ef249d6163a5e16b3",
+  "working_tree": "M README.md\n M notes/implementation.pdf\n M notes/implementation.tex\n M notes/references.bib\n M results/uniform_reference/summary.json\n?? results/benchmarks/\n?? results/controls/\n?? results/encounters/\n?? results/equilibria/\n?? results/fields/\n?? results/figures/\n?? results/finite_range/\n?? results/geometry.json\n?? results/relaxation.json\n?? results/uniform_reference/time_convergence.png\n?? results/validation.csv",
+  "source_sha256": "4cd3918510e4d84b37de07f7b2ece6552f022a79e254ce868789de019eff03ff",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "unset",
+    "OPENBLAS_NUM_THREADS": "unset",
+    "MKL_NUM_THREADS": "unset",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": true,
+  "results": {
+    "dougherty_number_error": 1.997313425761149e-11,
+    "dougherty_covariance_error": 7.822292134566384e-10,
+    "dougherty_centered_energy_error": 4.757629845641986e-10,
+    "dougherty_min_f": 1.95887800811325e-64,
+    "dougherty_entropy_min_step": 1.8599301908395205e-05,
+    "dougherty_strong_relative_error": 2.2066585601656872e-10,
+    "landau_covariance_rate": [
+      [
+        -0.07403925375622226,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        -0.07403925375622226,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.14807850751244445
+      ]
+    ],
+    "landau_entropy_production": 0.04138840272086775,
+    "landau_energy_rate": 2.065012114098309e-18,
+    "landau_small_anisotropies": [
+      {
+        "epsilon": 0.03,
+        "relative_reference_error": 3.393583148141363e-14,
+        "instantaneous_anisotropy_rate": 0.4576046371733846
+      },
+      {
+        "epsilon": 0.01,
+        "relative_reference_error": 7.107733826406482e-14,
+        "instantaneous_anisotropy_rate": 0.45333491268028153
+      },
+      {
+        "epsilon": 0.003,
+        "relative_reference_error": 7.112399151631996e-14,
+        "instantaneous_anisotropy_rate": 0.45193634236861163
+      }
+    ],
+    "landau_linear_anisotropy_rate": 0.4513516668382051,
+    "wall_s": 1.0019981669902336
+  }
+}

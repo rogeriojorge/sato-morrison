@@ -1,0 +1,19 @@
+case,model,field,error,error_meaning,status,evidence
+uniform_pair,sm181_local,uniform,2.3579067116465694e-16,relative pair/oracle norm,passed,uniform_reference/summary.json
+uniform_timestep,sm181_local,uniform,0.00036677691709108284,relative fitted-rate error,passed,uniform_reference/summary.json
+nonlinear_number_error,sm_local_nonlinear,uniform,1.5094860719151174e-17,normalized invariant drift,passed,relaxation.json
+nonlinear_energy_error,sm_local_nonlinear,uniform,7.00233150527539e-17,normalized invariant drift,passed,relaxation.json
+nonlinear_marginal_error,sm_local_nonlinear,uniform,5.441243814854047e-17,normalized invariant drift,passed,relaxation.json
+toroidal_nr,sm181_local+Hamiltonian,toroidal,0.003322069254809173,relative dissipated-fraction last refinement,passed,geometry.json
+toroidal_ntheta,sm181_local+Hamiltonian,toroidal,3.524150502398978e-15,relative dissipated-fraction last refinement,passed,geometry.json
+toroidal_nz,sm181_local+Hamiltonian,toroidal,3.524150502398976e-15,relative dissipated-fraction last refinement,passed,geometry.json
+toroidal_nu,sm181_local+Hamiltonian,toroidal,0.0070900656162862265,relative dissipated-fraction last refinement,passed,geometry.json
+toroidal_nmu,sm181_local+Hamiltonian,toroidal,0.0063808882507638415,relative dissipated-fraction last refinement,passed,geometry.json
+toroidal_dt,sm181_local+Hamiltonian,toroidal,0.004947288932558184,relative dissipated-fraction last refinement,passed,geometry.json
+toroidal_umax,sm181_local+Hamiltonian,toroidal,0.0005778140951182852,relative dissipated-fraction last refinement,passed,geometry.json
+toroidal_mumax,sm181_local+Hamiltonian,toroidal,0.005190363796849473,relative dissipated-fraction last refinement,passed,geometry.json
+finite_range,sm_finite_range,uniform,3.028260340656521e-13,finest density-rate relative error,passed,finite_range/summary.json
+toroidal_nullspace,sm181_local,toroidal,1.644178255866263e-17,39-dimensional invariant action residual; raw nullity39,passed,geometry.json
+field_box_spatial,sm_local_nonlinear,mirror,0.0033551279017575153,initial entropy-production last spatial change,passed,fields/summary.json
+field_box_spatial,sm_local_nonlinear,dipole,0.002551199246642488,initial entropy-production last spatial change,passed,fields/summary.json
+field_box_spatial,sm_local_nonlinear,nonaxisymmetric,0.002571874037929911,initial entropy-production last spatial change,passed,fields/summary.json

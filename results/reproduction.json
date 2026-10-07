@@ -1,0 +1,112 @@
+{
+  "source_commit": "25a7668afcbfb60c80054b5ef249d6163a5e16b3",
+  "tests_passed": 58,
+  "installation": "Fresh Python3.12 virtual environment; pip-compatible editable installation with dev dependencies",
+  "commands_are": "Executable and repository paths normalized; arguments and working directories preserve the executed commands",
+  "source_changes": "",
+  "runs": [
+    {
+      "name": "tests",
+      "command": [
+        "python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "cwd": "${REPOSITORY}",
+      "exit_code": 0,
+      "elapsed_s": 61.82655466601136
+    },
+    {
+      "name": "00_uniform_reference",
+      "command": [
+        "python",
+        "${REPOSITORY}/examples/00_uniform_reference.py"
+      ],
+      "cwd": "/tmp",
+      "exit_code": 0,
+      "elapsed_s": 5.145736708014738
+    },
+    {
+      "name": "01_relaxation",
+      "command": [
+        "python",
+        "${REPOSITORY}/examples/01_relaxation.py"
+      ],
+      "cwd": "/tmp",
+      "exit_code": 0,
+      "elapsed_s": 7.043825875007315
+    },
+    {
+      "name": "02_geometry",
+      "command": [
+        "python",
+        "${REPOSITORY}/examples/02_geometry.py"
+      ],
+      "cwd": "/tmp",
+      "exit_code": 0,
+      "elapsed_s": 159.49189183401177
+    },
+    {
+      "name": "03_controls",
+      "command": [
+        "python",
+        "${REPOSITORY}/examples/03_controls.py"
+      ],
+      "cwd": "/tmp",
+      "exit_code": 0,
+      "elapsed_s": 2.3494562919950113
+    },
+    {
+      "name": "04_encounters",
+      "command": [
+        "python",
+        "${REPOSITORY}/examples/04_encounters.py"
+      ],
+      "cwd": "/tmp",
+      "exit_code": 0,
+      "elapsed_s": 29.794042541994713
+    },
+    {
+      "name": "05_benchmarks",
+      "command": [
+        "python",
+        "${REPOSITORY}/examples/05_benchmarks.py"
+      ],
+      "cwd": "/tmp",
+      "exit_code": 0,
+      "elapsed_s": 14.710990124993259
+    },
+    {
+      "name": "06_range",
+      "command": [
+        "python",
+        "${REPOSITORY}/examples/06_range.py"
+      ],
+      "cwd": "/tmp",
+      "exit_code": 0,
+      "elapsed_s": 3.2280574579781387
+    },
+    {
+      "name": "07_equilibria",
+      "command": [
+        "python",
+        "${REPOSITORY}/examples/07_equilibria.py"
+      ],
+      "cwd": "/tmp",
+      "exit_code": 0,
+      "elapsed_s": 3.4991660420200787
+    },
+    {
+      "name": "08_fields",
+      "command": [
+        "python",
+        "${REPOSITORY}/examples/08_fields.py"
+      ],
+      "cwd": "/tmp",
+      "exit_code": 0,
+      "elapsed_s": 22.423840375005966
+    }
+  ],
+  "source_sha256": "4cd3918510e4d84b37de07f7b2ece6552f022a79e254ce868789de019eff03ff"
+}

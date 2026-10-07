@@ -1,0 +1,63 @@
+test,status,evidence,scope
+G1,passed,tests/test_geometry.py; tests/test_reference.py; tests/test_controls.py,Specified vacuum fields; normalized chart/measure/rotation/charge identities
+G2,passed,tests/test_geometry.py; tests/test_reference.py; tests/test_controls.py,Specified vacuum fields; normalized chart/measure/rotation/charge identities
+G3,passed,tests/test_geometry.py; tests/test_reference.py; tests/test_controls.py,Specified vacuum fields; normalized chart/measure/rotation/charge identities
+G4,passed,tests/test_geometry.py; tests/test_reference.py; tests/test_controls.py,Specified vacuum fields; normalized chart/measure/rotation/charge identities
+G5,passed,tests/test_geometry.py; tests/test_reference.py; tests/test_controls.py,Specified vacuum fields; normalized chart/measure/rotation/charge identities
+G6,passed,tests/test_geometry.py; tests/test_reference.py; tests/test_controls.py,Specified vacuum fields; normalized chart/measure/rotation/charge identities
+G7,passed,tests/test_geometry.py; tests/test_reference.py; tests/test_controls.py,Specified vacuum fields; normalized chart/measure/rotation/charge identities
+G8,passed,tests/test_orbits.py; tests/test_geometry.py; tests/test_solver.py,Harmonic mirror orbit; uniform electric drift; exact toroidal Fourier transport; encounter free helix
+G9,passed,results/geometry.json; results/fields/summary.json,Closed toroidal ideal boundaries; natural collision-only box flux; no confined dipole Hamiltonian boundary claim
+K1,passed,tests/test_collisions.py; results/benchmarks/summary.json,Unmodified Gram; all invariants; independent pair count/dense action; chunk scans and D scaling
+K2,passed,tests/test_collisions.py; results/benchmarks/summary.json,Unmodified Gram; all invariants; independent pair count/dense action; chunk scans and D scaling
+K3,passed,tests/test_collisions.py; results/benchmarks/summary.json,Unmodified Gram; all invariants; independent pair count/dense action; chunk scans and D scaling
+K5,passed,tests/test_collisions.py; results/benchmarks/summary.json,Unmodified Gram; all invariants; independent pair count/dense action; chunk scans and D scaling
+K6,passed,tests/test_collisions.py; results/benchmarks/summary.json,Unmodified Gram; all invariants; independent pair count/dense action; chunk scans and D scaling
+K7,passed,tests/test_collisions.py; results/benchmarks/summary.json,Unmodified Gram; all invariants; independent pair count/dense action; chunk scans and D scaling
+K8,passed,tests/test_collisions.py; results/benchmarks/summary.json,Unmodified Gram; all invariants; independent pair count/dense action; chunk scans and D scaling
+K9,passed,tests/test_collisions.py; results/benchmarks/summary.json,Unmodified Gram; all invariants; independent pair count/dense action; chunk scans and D scaling
+K10,passed,tests/test_collisions.py; results/benchmarks/summary.json,Unmodified Gram; all invariants; independent pair count/dense action; chunk scans and D scaling
+K11,passed,tests/test_collisions.py; results/benchmarks/summary.json,Unmodified Gram; all invariants; independent pair count/dense action; chunk scans and D scaling
+K4,unresolved,tests/test_orbits.py; tests/test_collisions.py,Uniform limit and coincident weak contribution verified; no general distinct-state nonuniform zero-direction prescription
+U1,passed,tests/test_reference.py; tests/test_collisions.py; tests/test_orbits.py; results/uniform_reference/summary.json,Uniform collision limits and temporal convergence; U5 checks parallel collision null action; streaming has separate geometry controls
+U2,passed,tests/test_reference.py; tests/test_collisions.py; tests/test_orbits.py; results/uniform_reference/summary.json,Uniform collision limits and temporal convergence; U5 checks parallel collision null action; streaming has separate geometry controls
+U3,passed,tests/test_reference.py; tests/test_collisions.py; tests/test_orbits.py; results/uniform_reference/summary.json,Uniform collision limits and temporal convergence; U5 checks parallel collision null action; streaming has separate geometry controls
+U4,passed,tests/test_reference.py; tests/test_collisions.py; tests/test_orbits.py; results/uniform_reference/summary.json,Uniform collision limits and temporal convergence; U5 checks parallel collision null action; streaming has separate geometry controls
+U5,passed,tests/test_reference.py; tests/test_collisions.py; tests/test_orbits.py; results/uniform_reference/summary.json,Uniform collision limits and temporal convergence; U5 checks parallel collision null action; streaming has separate geometry controls
+U6,passed,tests/test_reference.py; tests/test_collisions.py; tests/test_orbits.py; results/uniform_reference/summary.json,Uniform collision limits and temporal convergence; U5 checks parallel collision null action; streaming has separate geometry controls
+U7,passed,tests/test_reference.py; tests/test_collisions.py; tests/test_orbits.py; results/uniform_reference/summary.json,Uniform collision limits and temporal convergence; U5 checks parallel collision null action; streaming has separate geometry controls
+U8,passed,tests/test_reference.py; tests/test_collisions.py; tests/test_orbits.py; results/uniform_reference/summary.json,Uniform collision limits and temporal convergence; U5 checks parallel collision null action; streaming has separate geometry controls
+U9,passed,tests/test_reference.py; tests/test_collisions.py; tests/test_orbits.py; results/uniform_reference/summary.json,Uniform collision limits and temporal convergence; U5 checks parallel collision null action; streaming has separate geometry controls
+U10,passed,tests/test_reference.py; tests/test_collisions.py; tests/test_orbits.py; results/uniform_reference/summary.json,Uniform collision limits and temporal convergence; U5 checks parallel collision null action; streaming has separate geometry controls
+N1,passed,tests/test_solver.py; tests/test_collisions.py; tests/test_orbits.py; results/relaxation.json; results/geometry.json; results/fields/summary.json,Finite-grid fixed-field claims only; reconstruction positivity and step residual checks; no self-field energy claim
+N2,passed,tests/test_solver.py; tests/test_collisions.py; tests/test_orbits.py; results/relaxation.json; results/geometry.json; results/fields/summary.json,Finite-grid fixed-field claims only; reconstruction positivity and step residual checks; no self-field energy claim
+N3,passed,tests/test_solver.py; tests/test_collisions.py; tests/test_orbits.py; results/relaxation.json; results/geometry.json; results/fields/summary.json,Finite-grid fixed-field claims only; reconstruction positivity and step residual checks; no self-field energy claim
+N4,passed,tests/test_solver.py; tests/test_collisions.py; tests/test_orbits.py; results/relaxation.json; results/geometry.json; results/fields/summary.json,Finite-grid fixed-field claims only; reconstruction positivity and step residual checks; no self-field energy claim
+N5,passed,tests/test_solver.py; tests/test_collisions.py; tests/test_orbits.py; results/relaxation.json; results/geometry.json; results/fields/summary.json,Finite-grid fixed-field claims only; reconstruction positivity and step residual checks; no self-field energy claim
+N6,passed,tests/test_solver.py; tests/test_collisions.py; tests/test_orbits.py; results/relaxation.json; results/geometry.json; results/fields/summary.json,Finite-grid fixed-field claims only; reconstruction positivity and step residual checks; no self-field energy claim
+N7,passed,tests/test_solver.py; tests/test_collisions.py; tests/test_orbits.py; results/relaxation.json; results/geometry.json; results/fields/summary.json,Finite-grid fixed-field claims only; reconstruction positivity and step residual checks; no self-field energy claim
+N8,passed,tests/test_solver.py; tests/test_collisions.py; tests/test_orbits.py; results/relaxation.json; results/geometry.json; results/fields/summary.json,Finite-grid fixed-field claims only; reconstruction positivity and step residual checks; no self-field energy claim
+N9,passed,tests/test_solver.py; tests/test_collisions.py; tests/test_orbits.py; results/relaxation.json; results/geometry.json; results/fields/summary.json,Finite-grid fixed-field claims only; reconstruction positivity and step residual checks; no self-field energy claim
+N10,passed,tests/test_solver.py; tests/test_collisions.py; tests/test_orbits.py; results/relaxation.json; results/geometry.json; results/fields/summary.json,Finite-grid fixed-field claims only; reconstruction positivity and step residual checks; no self-field energy claim
+Lorentz,passed,tests/test_controls.py; results/controls/metadata.json,Legendre rates; count/energy; momentum exchange; shell coordinate Jacobian
+Dougherty,passed,tests/test_controls.py; results/controls/metadata.json,NonGaussian conserving mixture; strong PDE; drift/covariance/entropy quadrature
+Landau3V,passed,tests/test_controls.py; results/controls/metadata.json,"Instantaneous Coulomb weak moments; independent Laplace/spherical/Cartesian references and convergence, not a kinetic time integrator"
+GeometryConvergence,passed,results/geometry.json,Selected combined toroidal Q and dissipated fraction: all independent final changes below1%
+OtherBoxVelocityTails,unresolved,results/fields/summary.json,Mirror/dipole/nonaxisymmetric spatial refinement and coarse nonlinear steps only; full velocity/tail campaigns not claimed
+StationaryFamily,passed,results/equilibria/summary.json,Five-field integration of known density family and energy/full-marginal candidate solve; not proof of attraction
+FiniteRange,passed,results/finite_range/summary.json; tests/test_range.py,Exact uniform surrogate Fourier spectrum; spatial/range resolution tested; coarse underresolved rows retained
+ToroidalNullspace,passed,results/geometry.json; tests/test_orbits.py,All39 tiny-grid null modes accounted for by independent invariant basis; no spectrum edits or continuum exhaustion claim
+E1,passed,tests/test_controls.py; results/encounters/metadata.json,Specified repulsive trajectories; finite-endpoint Rutherford error reported; gyrophase moments and covariance converge
+E2,passed,tests/test_controls.py; results/encounters/metadata.json,Specified repulsive trajectories; finite-endpoint Rutherford error reported; gyrophase moments and covariance converge
+E3,passed,tests/test_controls.py; results/encounters/metadata.json,Specified repulsive trajectories; finite-endpoint Rutherford error reported; gyrophase moments and covariance converge
+E4,passed,tests/test_controls.py; results/encounters/metadata.json,Specified repulsive trajectories; finite-endpoint Rutherford error reported; gyrophase moments and covariance converge
+E6,passed,tests/test_controls.py; results/encounters/metadata.json,Specified repulsive trajectories; finite-endpoint Rutherford error reported; gyrophase moments and covariance converge
+E7,passed,tests/test_controls.py; results/encounters/metadata.json,Specified repulsive trajectories; finite-endpoint Rutherford error reported; gyrophase moments and covariance converge
+E5,not_run,results/encounters/metadata.json,"No incident-flux/impact-parameter ensemble, encounter-rate normalization or held-out kinetic closure calibration"
+E8,not_run,results/encounters/metadata.json,"No incident-flux/impact-parameter ensemble, encounter-rate normalization or held-out kinetic closure calibration"
+E9,not_run,results/encounters/metadata.json,"No incident-flux/impact-parameter ensemble, encounter-rate normalization or held-out kinetic closure calibration"
+E10,unresolved,results/encounters/metadata.json,Reported gyroradius/screening/encounter ordering; nu/Omega unassigned without rate
+MatchedErrorPerformance,passed,results/benchmarks/summary.json,Five synchronized warm repetitions; compile/setup separate; equal residual/time error; XLA buffers and cumulative RSS
+ImplicitDerivative,passed,tests/test_solver.py,Specified D derivative versus dense solve and centered finite-difference plateau
+GeneralGeometryDerivative,not_run,README.md,No general geometry or steady-state gradient capability advertised
+PhysicalDipoleMetastability,not_run,README.md; notes/implementation.pdf,"No calibrated D, plasma moment-diffusion time or independently measured mixing-time separation"

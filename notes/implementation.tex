@@ -18,15 +18,24 @@
 \newcommand{\norm}[1]{\left\lVert #1\right\rVert}
 \title{Magnetic-moment-constrained collisions\\\large Equations, numerical design and verification notes}
 \author{Project: \texttt{sato-morrison}}
-\date{6 October 2026}
+\date{7 October 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
-These notes specify a prototype based on Sato and Morrison's reduced collision
-formalism. They distinguish the published equations, derived test cases, proposed
-numerical methods and unresolved physical assumptions. The supplied executable
-code verifies a uniform-field linear limit only. Nonlinear evolution, nonuniform
-geometry and dimensional collision-rate validation remain implementation work.
+These notes derive and audit a small fixed-field JAX prototype of
+magnetic-moment-constrained collisions. Implemented paths include the local
+linear weak operator, a positive nodal nonlinear entropy step, five analytic
+vacuum fields, tangent toroidal Hamiltonian transport, and an explicit
+finite-range surrogate. Independent homogeneous controls include Lorentz and
+Dougherty evolution, physical three-velocity Landau weak moments, and direct
+screened binary encounters. A checked finite-range Fourier calculation shows
+how spatial localization creates a density nullspace and how Gaussian range
+lifts it with quartic long-wave decay. Geometric identities, finite-grid
+conservation and the selected toroidal observable refinements are verified;
+other velocity-tail convergence and physical collision-rate calibration remain
+separate requirements. No calibrated dipole confinement,
+universal zero-set prescription, full Landau kinetic evolution, or publication
+priority is claimed.
 \end{abstract}
 
 \section{Scope and equation map}
@@ -40,10 +49,10 @@ scalar collision coefficient. This prototype must identify which of these models
 it implements.
 
 The starting model has a prescribed, nonzero vacuum magnetic field, no magnetic
-perturbation, a fixed electrostatic reference potential, and one species. A
-nonlinear local-kernel extension will be named separately from literal Eq.~(181).
-No absolute collision rate or laboratory confinement result is established by the
-starter calculation.
+perturbation, a fixed electrostatic reference potential, and one species. The
+nonlinear local-kernel extension is named separately from literal Eq.~(181).
+No absolute collision rate or laboratory confinement result is established by
+these calculations.
 
 \begin{center}
 \begin{tabular}{p{0.22\linewidth}p{0.67\linewidth}}
@@ -128,6 +137,26 @@ With general coordinates and measure $\rho(z)\dd z$, conservative divergence
 means $\rho^{-1}\partial_a(\rho F^a)$, not $\partial_aF^a$. Verify the Liouville
 identity $\partial_a(\rho\J^{ab})=0$. The prototype uses $\rho=B$ in the $\mu$
 chart and $\rho=1$ in the article's $\eta$ chart.
+
+\subsection*{Continuous geometric audit}
+
+The implemented analytic fields pass automatic-differentiation checks of
+$\nabla\cdot\bm B=0$, $\nabla\times\bm B=0$, antisymmetry, the magnetic-moment
+Casimir, the Liouville density, and the Jacobi identity in both charts, at
+independent off-axis points and for both charge signs. Centered differences of
+$\bm B$ show second-order convergence to the automatic derivatives for the
+rational fields. These sampled identities audit the continuous formulas; they
+do not prove a discrete Jacobi identity for the collision mesh or positivity
+of $B$ throughout an unsampled domain. Host validation rejects unsupported
+fields, nonfinite inputs, zero field, excluded dipole/toroidal sources,
+nonpositive mass, zero charge and negative moment.
+
+For the vacuum toroidal field $B=C/R$, the characteristic equations give
+$\dot R=\dot u=\dot\mu=0$, $\dot\theta=u/R$ and
+$\dot z=(m u^2+\mu B)/(qC)$. Thus annular radial boundaries are tangent to
+Hamiltonian flow; a periodic $z$ and toroidal angle are compatible with this
+geometry. The library checks this identity and the uniform electrostatic drift
+independently of collision evolution.
 
 \subsection*{Normalization is part of the closure}
 
@@ -272,8 +301,9 @@ energy-degeneracy condition gives
  \label{eq:deltapi}
 \end{equation}
 The approximations in SM25 (164)--(170) must be carried explicitly into any
-extension. Compare the proposed linear operator with a directional derivative of
-the nonlinear residual at fixed physical normalization.
+extension. The fixed-field implementation checks its linear operator against
+a directional derivative of the nonlinear residual; this does not validate
+omitted self-consistent-field terms.
 
 \section{Uniform-field reduction and exact null modes}
 
@@ -346,6 +376,101 @@ generator. With $\bm k_\perp=0$ and frozen fields the exact streaming solution i
 $h(t,u,\eta)=h(0,u,\eta)e^{-ik_\parallel ut}$; this is not self-consistent Landau
 damping.
 
+\section{A finite-range surrogate and its exact density branch}
+
+This section specifies a new calculation for an explicit surrogate, not a
+Coulomb scattering tensor or a claim of publication priority. Retain the uniform
+field and constant-potential assumptions of \eqref{eq:uniformj}, and replace the
+spatial delta function in \eqref{eq:local} by a nonnegative, even, translation
+invariant kernel $W(\X-\X')$ with $\int W\dd^3X=1$. Use the same uniform
+$P I_xP=I_\perp$ prescription, including its continuous equal-$u$ limit.
+The weak form then gives
+\begin{equation}
+ C_W[\delta f]=\frac{D}{(qB)^2}\nabla_\perp^2
+ \left[n_0\delta f-f_0(W*\delta n)\right].
+ \label{eq:rangereduction}
+\end{equation}
+To check the sign and convolution placement, the projected pair difference for
+$h$ is $(\bm b\times)/(qB)$ applied to
+$\nabla_\perp h(\X,v)-\nabla'_{\perp}h(\X',v')$. The first self term integrates
+to $n_0\nabla_\perp h$; the cross term is $\nabla_\perp W*\delta n$.
+The second cross-product operation contributes $-I_\perp$, giving
+\eqref{eq:rangereduction} with the displayed diffusion sign.
+
+\textbf{Finite-quadrature proposition.} Let $m_i=w_i f_{0i}>0$, $n_0=\sum_i m_i$,
+$s_i=\sqrt{m_i}$, $r(\bm k)=\widehat W(\bm k)$, and
+$\lambda=Dn_0|\bm k_\perp|^2/(qB)^2$. In the entropy coordinates,
+\begin{equation}
+ -M_v^{1/2}L_{W,\bm k}M_v^{-1/2}
+ =\lambda\left[I-r(\bm k)\frac{\bm s\bm s^T}{n_0}\right].
+ \label{eq:rangespectrum}
+\end{equation}
+Its exact decay rates are $\lambda$ on the $N_v-1$ dimensional velocity-neutral
+subspace and $\lambda[1-r(\bm k)]$ on the density direction $\bm s$.
+Indeed, $\bm s^T\bm s=n_0$, so the normalized outer product is an orthogonal
+rank-one projector. An even nonnegative kernel has real $r\le1$; thus all
+rates are nonnegative. This proof does not require $r\ge0$.
+For a discrete periodic spatial quadrature the identical statement holds with
+$r$ equal to the Fourier multiplier of the sampled, symmetrically normalized
+kernel, rather than the continuum multiplier.
+
+For a normalized periodized isotropic Gaussian of covariance $\ell^2 I$,
+$r=e^{-\ell^2|\bm k|^2/2}$ and hence
+\begin{equation}
+ \lambda_{\rm density}
+ =\frac{Dn_0|\bm k_\perp|^2}{(qB)^2}
+   \left(1-e^{-\ell^2|\bm k|^2/2}\right)
+ =\frac{Dn_0\ell^2}{2(qB)^2}|\bm k_\perp|^2|\bm k|^2
+  +O(|\bm k_\perp|^2\ell^4|\bm k|^4).
+ \label{eq:quartic}
+\end{equation}
+A transverse long wave therefore has quartic rather than quadratic density
+decay. Every finite nonzero Gaussian range lifts the nonzero-transverse-wave
+local density null mode, but the lifted rate vanishes as $\ell^2$ in the local
+limit. Homogeneous and purely parallel modes remain fully collisionally null.
+Consequently this calculation does not establish a whole-space spectral gap,
+or a gap for all modes on a periodic domain containing parallel-only modes.
+On a fixed finite set of transverse Fourier modes, it establishes the stated
+positive density rates. The limits $t\to\infty$ and $\ell\to0$ need not commute
+for the density branch.
+
+The independent NumPy check in \texttt{examples/06\_range.py} assembles the
+ordered spatial/velocity pair weak sum, including the factor $1/2$. The
+Fourier basis is differentiated exactly; the Gaussian is evaluated by positive
+periodic image sums and normalized with one scalar to retain pair symmetry.
+Three spatial resolutions, three velocity node counts and three kernel ranges
+are compared with \eqref{eq:rangespectrum}. The velocity weights are normalized
+once at setup to fixed $n_0$; this verifies the finite-quadrature theorem rather
+than physical velocity-tail convergence. The result is independent of the
+production JAX pair implementation.
+
+\subsection*{Literature comparison and novelty limits}
+
+SM25 supplies the noncanonical weak structure and its local scalar approximation.
+SM24 supplies the earlier noncanonical construction~\cite{SM24}. BS25, Eqs.~(99)--(103),
+retains magnetic-moment friction and diffusion through its gyrophase-dependent
+projection $\Delta^\mu_{\rm gc}$, and explains the structural reduction obtained
+by removing that component and replacing the relative velocity by the reduced
+Hamiltonian pair velocity. That passage does not identify every scalar/local
+SM25 approximation with the complete conventional Landau tensor. Our uniform
+surrogate remains unable to isotropize a homogeneous distribution.
+
+KH17 supplies the discrete-gradient conservation and entropy method; those
+properties do not supply a coercivity constant. Bressan, Kraus, Maj and Morrison
+\cite{BKMM25} analyze sufficient relaxation conditions, including additional
+finite-dimensional inequalities and tentative infinite-dimensional extensions.
+Their framework motivates testing the actual nullspace before assigning
+asymptotic decay to a constrained maximum-entropy state.
+
+On 7 October 2026, primary-source searches of the SM25 title combined with
+finite range, nullspace and Gaussian terms, and searches for noncanonical
+finite-range collisions and magnetic-moment quartic relaxation, found no
+matching statement of \eqref{eq:rangespectrum}--\eqref{eq:quartic}. Local full-text
+checks covered SM25, SM24, BS25, KH17 and BBQ15. This is a scoped independently
+checked derivation for the specified surrogate; absence from these searches is
+not proof of publication priority. No general nonuniform finite-range theorem,
+Coulomb rate, or physical metastability is inferred.
+
 \section{Stationary states and initial constraints}
 
 The source stationary family \eqref{eq:fzero} follows from energy degeneracy and
@@ -385,6 +510,23 @@ Solve for $\beta$ from total energy. Add other invariant multipliers if they
 actually survive the chosen dynamics. The same initial inverse-temperature
 parameter need not equal the final multiplier. Extra kernel invariants can make
 \eqref{eq:generalsteady} inaccessible.
+
+At fixed $G_0$, differentiation of the mean energy of
+\eqref{eq:generalsteady} gives
+\begin{equation}
+ \frac{\dd E_*}{\dd\beta}
+ =-\int G_0(\mu)\operatorname{Var}_{\beta,\mu}(E)\dd\mu\le0.
+ \label{eq:betamonotone}
+\end{equation}
+It is strictly negative if at least one populated moment bin has nonconstant
+energy. Thus an energy target within the attainable bracket selects a unique
+$\beta$ in that bracket. Positive-temperature existence is not automatic for
+an arbitrary truncated initial distribution; the implementation rejects an
+unbracketed target. The same calculation holds for positive finite quadrature.
+With matching energy and full moment marginal, relative entropy gives
+$S[f_*]-S[f]=\int f\ln(f/f_*)\dd\Gamma\ge0$. This identifies a constrained
+maximum-entropy candidate; it does not establish dynamic accessibility under
+an operator possessing additional invariants.
 
 For self-consistent electrostatics,
 \begin{equation}
@@ -508,6 +650,61 @@ system with measured flux budgets. Arbitrary specular reflection need not
 preserve $\mu$. A density-profile test without these choices is not a closed
 relaxation experiment.
 
+\subsection*{Exact extra population invariants in the vacuum toroidal field}
+
+For every smooth $\phi(R,\theta)$ independent of $z,u,\mu$,
+\begin{equation}
+ \J_\mu\nabla\phi=
+ \left(-\frac{\partial_R\phi}{qB}\bm e_z,
+       -\frac{\partial_\theta\phi}{mR},0\right),\qquad
+ (T\J_\mu\nabla\phi)_\eta=0.
+ \label{eq:toroidalpopulation}
+\end{equation}
+Here $\nabla B$ is radial, so its contraction with the vertical spatial action
+vanishes. At a fixed spatial point the entire common-chart action is independent
+of both particle velocities. Thus $\Delta\phi=0$ for every local pair, regardless
+of the energy projector. The weak collision form proves exact conservation of
+\begin{equation}
+ \int \phi(R,\theta)f\,C\dd R\dd\theta\dd z\dd u\dd\mu
+\end{equation}
+for this particular vacuum toroidal geometry with local collisions.
+Equivalently the collision-only $(R,\theta)$ population marginal is frozen.
+Since $\dot R=0$, every $\phi(R)$ is preserved by the Hamiltonian part as well,
+and the full radial population remains invariant under combined evolution.
+Angle-dependent marginals can change through $\dot\theta=u/R$.
+A general joint $(R,\mu)$ marginal does not follow from this argument because
+$\partial_R\phi(R,\mu)$ would vary across local pair velocities.
+
+Consequently the combined toroidal model cannot relax arbitrary radial
+populations to a unique state determined only by energy and the global moment
+marginal. This is a proved negative mixing result for this specified local,
+vacuum geometry and its stated boundaries. A spatially nonlocal kernel,
+additional fields or a different scattering closure may change the conclusion.
+It does not prove the same invariants in a dipole.
+The nodal derivative implementation verifies all represented
+$\phi(R,\theta)$ pair differences vanish within rounding and verifies the radial
+population under ideal translation. On the $3^5$ tiny grid, the independent
+collision-null span has at least $N_RN_\theta+N_\mu+1-1=12$ dimensions:
+$N_RN_\theta$ spatial populations, $N_\mu$ moment bins and energy, minus the
+constant counted twice. The larger observed nullity 39 is accounted for by the additional families
+derived in the stronger local-density result at the end of these notes.
+That finite-grid count does not establish continuum exhaustiveness.
+
+\subsection*{Nonzero-field bounds for the executed domains}
+
+For the collision-only Cartesian box
+$0.8\le x\le1.2$, $|y|\le0.2$, $0.1\le z\le0.5$, the mirror with $B_c=1$,
+$a=0.15$ has
+$B\ge B_z\ge1+0.15[0.1^2-(1.2^2+0.2^2)/2]=0.8905$.
+For the unit dipole,
+$B=r^{-3}\sqrt{1+3z^2/r^2}\ge(1.2^2+0.2^2+0.5^2)^{-3/2}>0.439$.
+The symmetry-breaking addition with $\varepsilon=0.03$, $B_c=L=1$ has norm
+at most $0.03\sqrt{1.2^2+0.2^2}<0.037$, so the perturbed dipole remains
+nonzero throughout that box, with $B>0.402$. These conservative analytic bounds
+certify the geometry over the domain, beyond sampled minima. They do not
+certify a guiding-center ordering or a confined Hamiltonian boundary.
+For the toroidal annulus $1\le R\le1.5$, $C=1$, $B\ge2/3$ exactly.
+
 \section{Linear weak discretization and SOLVAX}
 
 Represent $h=\sum_i a_i\chi_i$. Define the mass and collision matrices by
@@ -520,6 +717,37 @@ Represent $h=\sum_i a_i\chi_i$. Define the mass and collision matrices by
 Positive quadrature gives a Gram form $K=B_p^TW_pB_p\succeq0$. Implement its
 action without assembling the full pair tensor. A dense assembly on a tiny grid
 must remain an independent reference.
+
+The executable nodal construction uses tensor differentiation followed by
+$A_i\phi=T_i\J_{\mu,i}(\nabla_h\phi)_i$ in a common Cartesian $\eta$ chart.
+For every unordered pair $(i,j)$, set $B_{ij}\phi=A_i\phi-A_j\phi$ and construct
+$\xi_{ij}=B_{ij}e$ from the same discrete energy vector $e$ and derivative.
+The nonuniform projector uses this discrete $\xi$, rather than inserting an
+incompatible continuum energy gradient. This is an explicitly stated discrete
+energy projector; its consistency must be checked under refinement.
+The scalar pair weight is $w_X(Bw_v)_i(Bw_v)_j$ locally and
+$w_iw_jW_{ij}$ for a spatially nonlocal model. In a toroidal chart the spatial
+weight contains $R\dd R\dd\theta\dd z$ while each local velocity factor contains
+$B\dd u\dd\mu$, even though the one-particle product $BR=C$ simplifies.
+
+The ordered weak form in \eqref{eq:gram} counts $(i,j)$ and $(j,i)$ equally:
+exchange reverses both pair differences, leaving their quadratic product
+unchanged. Therefore its $1/2$ exactly cancels the two ordered contributions,
+and each unordered pair is inserted once with no $1/2$. Self-node pair
+differences are identically zero and need no stored contribution. Distinct
+nodes with equal energy-flow vectors are a separate issue: the uniform field
+uses its derived continuous limit, while an exactly zero nonuniform pair vector
+is rejected. No $|\xi|^2+\epsilon$ is used. Directional limits may depend on the
+approach, so successful finite-grid examples do not resolve the general
+nonuniform zero set.
+
+Periodic derivatives are Fourier derivatives; the real even-grid Nyquist
+component is unresolved and given zero derivative. Nonperiodic derivatives
+use local three-point quadratic interpolation, with their transposes in the
+weak collision assembly. This imposes the natural collision flux rather than
+wrapping nonperiodic field values. Pair chunks bound transient action workspace;
+the pair indices and energy directions still require quadratic storage in the
+resolved velocity count (and spatial count for nonlocal pairs).
 
 If $c$ represents a collision invariant and the derivative/kernel construction
 respects it, then $Kc=0$. Include the discrete energy and all resolved
@@ -541,6 +769,15 @@ With a compatible stationary Hamiltonian discretization,
 \end{equation}
 Also test $Ac=0$ for the required linear invariants; skew symmetry alone does not
 imply those individual identities.
+
+In the nonuniform combined example, exact Fourier half-translations in the
+periodic toroidal angle and $z$ surround one backward-Euler collision step.
+The translation uses $\dot\theta=u/R$ and
+$\dot z=(m u^2+\mu C/R)/(qC)$ at each fixed $(R,u,\mu)$.
+The measure $BR=C$, energy and moment marginal are invariant under this ideal
+flow, and radial walls are tangent. This symmetric composition remains first
+order because the collision substep is backward Euler. It is a linear,
+fixed-equilibrium combined evolution; the nonlinear examples are collision only.
 
 A backward-Euler collision step solves
 \begin{equation}
@@ -571,8 +808,9 @@ generally tridiagonal.
 
 \section{A nonlinear discrete entropy construction}
 
-This is a proposed finite-dimensional construction, not an implemented guarantee
-for a general spatial mesh. It follows the weak-structure approach developed for
+This finite-dimensional fixed-field construction is implemented. It is not a
+guarantee for arbitrary interpolation, self-consistent fields, or nonlinear
+Hamiltonian transport. It follows the weak-structure approach developed for
 Landau discretizations \cite{KH17,HBK18,H21,ZPH}.
 
 Let $f_i>0$, $w_i>0$, and $n_i=w_if_i$. Construct a symmetric positive mobility
@@ -623,6 +861,23 @@ solve. Parameterizing $n_i^+=w_i e^{g_i^+}$ enforces positive nodal populations,
 but does not prove existence of the solve or positivity between interpolation
 nodes. Check all required quadrature/reconstruction locations.
 
+For the executed nonlinear uniform and linear toroidal examples, continuous
+spatial Fourier positivity is checked with a sufficient certificate. If
+$f(x)=\sum_k\widehat f_k e^{ikx}$, then
+\begin{equation}
+ f(x)\ge\widehat f_0-\sum_{k\ne0}|\widehat f_k|.
+\end{equation}
+The same triangle bound holds for a double Fourier sum in $(\theta,z)$.
+The example rejects a nonpositive bound, and additionally oversamples the
+reconstruction. Positive piecewise-linear interpolation in the remaining
+coordinates then preserves positivity throughout that declared reconstruction.
+This certificate is conditional on the computed coefficients and is not a
+positivity theorem for arbitrary Fourier states or higher-order velocity
+interpolation. The collision derivative still uses its explicitly stated local
+quadratic differentiation, independently of the positivity-preserving display
+reconstruction. The Cartesian collision-only boxes use positive nodal values
+with piecewise-linear reconstruction.
+
 For self-consistent fields the energy is nonlinear in $n$. Its discrete gradient
 must enter the collision degeneracy consistently; the fixed vector $e$ above is
 not enough. Likewise, nonlinear Hamiltonian transport requires its own
@@ -638,14 +893,28 @@ gyrofrequency. At constant $B$, an energy change satisfies
  \Delta E=\frac{m}{2}\Delta(u^2)+B\Delta\mu+q\Delta\Phi.
  \label{eq:energychange}
 \end{equation}
-Small $\Delta E$ does not separately bound $\Delta\mu$. For independent unbiased
+Small $\Delta E$ does not separately bound $\Delta\mu$.
+In particular, the approximate identification in SM25 (85), printed p.~10,
+requires an extra bound on parallel-energy exchange: at constant $B$,
+\begin{equation}
+ B|\Delta\mu|\le |\Delta E|+
+ \tfrac12m|\Delta(u^2)|+|q\Delta\Phi|.
+\end{equation}
+Spatial locality and nearly constant $B$ alone supply no bound on the second
+term. This audit concerns the inference from small energy change; it does not
+rule out a stronger regime in which every relevant exchange is ordered small. For independent unbiased
 increments, zero mean accumulation can coexist with
 \begin{equation}
  \operatorname{Var}\left(\sum_{j=1}^N\delta\mu_j\right)
  =N\operatorname{Var}(\delta\mu).
 \end{equation}
-These are audit points for the physical ordering around SM25 (85)--(86), not
-replacements for that paper's stated assumptions.
+For independent increments, both
+$N|\langle\delta\mu\rangle|/\mu_{\rm ref}\ll1$ and
+$N\operatorname{Var}(\delta\mu)/\mu_{\rm ref}^2\ll1$ are needed for small accumulated
+change on a chosen nonzero scale. Compensating mean changes can still alter the
+full moment marginal through diffusion. These are audit points for SM25
+(85)--(86), which the source itself calls working assumptions, rather than
+replacements for its ordering.
 
 A controlled microscopic reference can integrate
 \begin{equation}
@@ -696,6 +965,171 @@ Choosing a small input pitch-angle rate establishes a synthetic asymptotic test,
 not this physical inequality. Adding two collision terms also requires a
 nonoverlapping process decomposition; it can otherwise double count encounters.
 
+\section{Independent homogeneous controls and encounters}
+
+\subsection*{Lorentz pitch-angle evolution}
+
+For a fixed physical speed shell, the implemented operator is
+$C_{\rm Lz}=\nu\partial_\xi[(1-\xi^2)\partial_\xi]/2$, with natural endpoint
+flux at $\xi=\pm1$. The Legendre equation gives eigenrates
+$\nu\ell(\ell+1)/2$. Gauss--Legendre projection and exact modal exponentials
+provide an independent solution; the tests additionally apply the differential
+operator to Legendre polynomials. Thus the $\ell=0,1,2,3$ rates are
+$0,\nu,3\nu,6\nu$. Shell population and energy are preserved, while the
+$\ell=1$ momentum is transferred to the fixed reservoir.
+The coordinate map and full Jacobian are
+\begin{equation}
+ u=v\xi,\quad \mu=\frac{m v^2(1-\xi^2)}{2B},\quad
+ \left|\frac{\partial(u,\mu)}{\partial(v,\xi)}\right|=\frac{m v^2}{B},\quad
+ \dd^3v=\frac{2\pi B}{m}\dd u\dd\mu.
+\end{equation}
+The shell comparison changes $\mu$ while preserving speed, as ordinary pitch
+scattering must; it is not an unbalanced bare moment diffusion term.
+
+\subsection*{Nonlinear conserving Dougherty evolution}
+
+The physical three-velocity operator is
+\begin{equation}
+ C_D[F]=\nu\nabla_v\cdot[(\bm v-\bm U)F+\theta\nabla_vF],\quad
+ \bm U=\langle\bm v\rangle,\quad
+ \theta=\tfrac13\langle|\bm v-\bm U|^2\rangle.
+\end{equation}
+Integration against $1$, $\bm v$ and $|\bm v-\bm U|^2$ proves that $\bm U$ and
+$\theta$ are constant for closed homogeneous evolution. For a positive
+normalized Gaussian mixture with weights $p_a$, component means $\bm U_a$ and
+covariances $A_a$, the exact solution remains a positive mixture with
+\begin{equation}
+ \bm U_a(t)=\bm U+e^{-\nu t}(\bm U_a(0)-\bm U),\quad
+ A_a(t)=e^{-2\nu t}A_a(0)+\theta(1-e^{-2\nu t})I.
+\end{equation}
+Substituting each Gaussian into the now constant-moment Fokker--Planck equation
+verifies this solution; conservation makes it a solution of the original
+nonlinear model. It includes a non-Gaussian control, without substituting
+prescribed reservoir moments. Exact Gaussian gradients and Laplacians evaluate
+the strong operator independently of a centered temporal difference.
+
+In \texttt{03\_controls.py}, Lorentz modal errors are below $6.5\times10^{-15}$.
+The two-component Dougherty mixture has nonzero drift and anisotropic
+covariance. A $40^3$ physical Cartesian velocity quadrature on extent 9 gives
+particle error $2.0\times10^{-11}$, covariance error $7.82\times10^{-10}$ and
+centered-energy error $4.76\times10^{-10}$. The strong equation versus centered
+time derivative error is $2.21\times10^{-10}$. The sampled entropy increases;
+positive mixture reconstruction is analytic, and the smallest sampled density
+is $1.96\times10^{-64}$.
+
+\subsection*{Physical three-velocity Landau weak reference}
+
+The conventional one-species normalization used here is
+\begin{equation}
+ C[F]=\Gamma\nabla_v\cdot\int FF' U(\bm w)
+       [\nabla_v\ln F-\nabla_{v'}\ln F']\dd^3v',\quad
+ U(\bm w)=\frac{I-\hat{\bm w}\hat{\bm w}^{T}}{|\bm w|},\quad
+ \bm w=\bm v-\bm v'.
+ \label{eq:landaucontrol}
+\end{equation}
+With $\int F\dd^3v=n$, the SI coefficient is
+$\Gamma=q^4\ln\Lambda/(8\pi\epsilon_0^2m^2)$, matching the mass convention of
+Fitzpatrick's Eqs.~(3.93)--(3.94) \cite{FitzpatrickLandau}.
+Writing $F=(n/v_*^3)\widehat F$ gives the frequency scale
+$\Gamma n/v_*^3$. The Coulomb logarithm and its cutoffs are supplied parameters;
+this conversion does not calibrate the constrained scalar $D$.
+
+For a normalized Gaussian of covariance $A$, $\bm w$ has covariance $2A$ and
+the pair score is $\bm g=-A^{-1}\bm w$. The exact weak covariance and entropy
+rates are
+\begin{align}
+ \dot A&=-\frac\Gamma2\mathbb E[
+   \bm w\otimes U\bm g+U\bm g\otimes\bm w],\\
+ \dot S&=\frac\Gamma2\mathbb E[\bm g\cdot U\bm g]\ge0.
+\end{align}
+Trace conservation follows pointwise from $U\bm w=0$.
+The center velocity integrates analytically; radial/polar/gyrophase quadrature
+retains the full physical $\dd^3w$ geometry. A separate Cartesian Gauss--Hermite
+expectation avoids $\bm w=0$ by even quadrature order.
+A third independent check diagonalizes $A$ and uses the Laplace integrals for
+$1/r$ and $1/r^3$. Define
+$Z(t)=\prod_j(1+4A_jt)^{-1/2}$ and $V_j(t)=2A_j/(1+4A_jt)$; then
+\begin{equation}
+ \dot A_i=\frac\Gamma{\sqrt\pi}\int_0^\infty Z(t)
+ \left[t^{-1/2}\frac{V_i}{A_i}
+ -2t^{1/2}V_i\sum_j\frac{(1+2\delta_{ij})V_j}{A_j}\right]\dd t.
+ \label{eq:landaulaplace}
+\end{equation}
+Gaussian second and fourth moments after multiplication by $e^{-tr^2}$ give
+$V_i$ and $(1+2\delta_{ij})V_iV_j$, proving the integrand.
+The substitution $t=s^2$ removes its endpoint singularity before adaptive
+one-dimensional integration.
+
+For $A=\diag(1.15,1.15,0.7)$ and $\Gamma=1$, the covariance derivatives are
+\[(-0.0740393,-0.0740393,0.148079),\qquad \dot S=0.0413884.\]
+The reported energy
+rate residual is $2.1\times10^{-18}$. Radial quadrature refinement reaches a
+$4.14\times10^{-14}$ discrepancy from \eqref{eq:landaulaplace} at order 28,
+while the independent Cartesian Hermite route converges more slowly from
+$8.83\%$ at order 8 to $0.316\%$ at order 48. Tail and denominator-softening
+scans are saved separately. Softening changes only $1/r$ and retains $U\bm w=0$;
+it is a convergence diagnostic, not an unmodified Coulomb tensor.
+A small-anisotropy check takes $A=I+\epsilon\diag(1,1,-2)$.
+At first order, $\mathbb E|\bm w|=4/\sqrt\pi$ for covariance $2I$ and the
+angular moments are
+$\mathbb E[n_i^2]=1/3$ and
+$\mathbb E[n_i^2n_j^2]=(1+2\delta_{ij})/15$.
+Substitution in the weak covariance rate gives
+$\dot A_i=-4\Gamma\epsilon D_i/(5\sqrt\pi)+O(\epsilon^2)$,
+where $D=(1,1,-2)$. The instantaneous normalized stress rate approaches
+$4\Gamma/(5\sqrt\pi)=0.451351667$; for $\epsilon=0.03,0.01,0.003$ the two
+independent references agree and give $0.457605,0.453335,0.451936$ respectively.
+This is a limiting conventional control, without a discovery claim.
+
+Maxwellian score differences are parallel to $\bm w$ and annihilate the kernel
+for multiple drifts and temperatures. A separate positive non-Gaussian nodal
+pair calculation checks weak number/momentum/energy conservation and positive
+entropy production. Its omitted coincident-node contribution is a stated
+quadrature prescription, not a general directional limit. These controls
+verify instantaneous weak moments; no full nonlinear Landau kinetic time
+integration or Gaussian closure trajectory is claimed.
+
+\subsection*{Direct screened encounter audit}
+
+\texttt{04\_encounters.py} directly integrates equal-mass, equal-charge repulsive
+pairs in a uniform field with $V(r)=\kappa e^{-r/\lambda}/r$. It measures changes
+relative to the free helix at identical incoming conditions. Endpoint refinement
+holds fixed the incoming guiding center and phase at the $z=0$ crossing;
+changing the initial plane at fixed raw position and phase would instead
+change the orbit and is not a valid endpoint convergence test.
+For relative guiding-center offset $b$, $v_\parallel$ and gyrophase $\varphi$
+at that crossing, the incoming plane $z=-L$ has phase
+$\varphi+\Omega L/v_\parallel$ and transverse position
+$(b-v_y/\Omega,v_x/\Omega)$. This follows directly from the invariant free
+$\bm R=\bm r+\bm v\times\bm b/\Omega$.
+
+A documented case uses $b=1.2$, $v_\parallel=1$, $v_\perp=0.35$,
+$\Omega=2$, $\kappa=0.05$, $\lambda=4$ and 32 phases.
+Increasing $L$ from 12 to 32 changes the mean moment increment from
+$5.0126\times10^{-5}$ to $5.0074\times10^{-5}$ and its second moment from
+$9.4135\times10^{-7}$ to $9.4059\times10^{-7}$.
+The individual incoming $\mu$ is $0.00765625$, so the rms increment is
+approximately $12.7\%$ of that scale while the ensemble pair-energy error is below $3.4\times10^{-11}$.
+This is a controlled counterexample to inferring moment preservation
+solely from energy conservation; it does not characterize every weak encounter
+regime. For the same $B=2$ case, the maximum relative velocity change from the free
+helix is $0.0340$, the minimum sampled separation is $1.045$, and
+$\rho/\lambda=0.0219$, $\rho/b_{90}\simeq0.982$,
+$\Omega\lambda/v_{\rm rel}\simeq7.55$. Uniform $B$ gives $\rho/L_B=0$;
+$\nu/\Omega$ is unassigned because no encounter rate is measured.
+The free-orbit control has moment drift below $1.2\times10^{-14}$ and guiding
+center drift below $6\times10^{-16}$. In a weak-field unscreened Rutherford
+control, increasing endpoint distance from 12 to 96 reduces the angular error,
+but the final relative discrepancy remains $1.11\times10^{-3}$ and is recorded
+as finite-endpoint error. A separate close-encounter timestep scan decreases
+pair-energy error from $5.40\times10^{-4}$ to $3.57\times10^{-9}$.
+The two individual moment increments are correlated by the imposed symmetric
+center-of-mass initialization; saved joint covariances must not be interpreted
+as independent species statistics.
+
+No incident-flux/impact-parameter ensemble, plasma encounter frequency,
+or independently measured lifetime is assigned to these phase statistics.
+
 \section{Research questions and evidence}
 
 \textbf{Geometry and nullspace.} Begin with the proven finite-quadrature spectrum
@@ -719,26 +1153,170 @@ degeneracies before using regular perturbation theory. For steady-state paramete
 derivatives specify which particle, energy and marginal constraints are held
 fixed; otherwise a nullspace can make the derivative underdetermined.
 
-\subsection*{Executed starter evidence}
+\subsection*{Executed prototype evidence and remaining limits}
 
-The supplied NumPy example uses 216 velocity nodes. Its normalized exact decay
-rate is $0.11742603550295856$. During package preparation, the direct pair
-contraction agreed with \eqref{eq:uniformreduction} to $3.63\times10^{-16}$ in
-relative norm. Homogeneous and density-like collision actions were zero in that
-run. The entropy-weighted nonzero spectrum agreed with $-\lambda$ to
-$3.20\times10^{-16}$ in absolute error. These are algebra checks, not time-series
-PDE benchmarks. The independent test file passed five tests, including tilted
-fields, both charge signs and parallel wave vectors.
+The public library has five substantive modules: \texttt{geometry},
+\texttt{collisions}, \texttt{solver}, \texttt{controls} and the independent
+\texttt{reference}. Examples save inputs, boundary/model descriptions, package
+versions, source checksums and commit context with their results. All quoted
+values below are normalized, finite-grid evidence from the saved runs; rates
+are not dimensionally calibrated to a plasma.
 
-The script, inputs and JSON are in the starter repository. Roundoff and elapsed
-time vary by machine. The earlier supplied script and its output are preserved
-outside the public starter for provenance. No nonuniform nonlinear simulation,
-physical coefficient calibration or new dipole result is claimed here.
+The earlier 216-node NumPy oracle verifies the local uniform rate
+$0.11742603550295856$ and its exact velocity-nullspace structure. The JAX
+implementation is compared with that independent pair calculation, a dense
+weak assembly, analytic Fourier decay, nonlinear directional linearization,
+conservation and discrete entropy identities. Geometry tests additionally cover
+both charges, both coordinate charts, sampled Jacobi and Liouville identities,
+independent finite-difference convergence, measure transformation, electric
+cross-field drift and mirror orbit timestep convergence.
 
-The implementation handoff and validation matrix prescribe the remaining tests:
-conservation, positive entropy production, positivity, limiting cases,
-independent comparisons, numerical convergence and matched-error performance.
-Update this section with measured results as those stages are completed.
+\texttt{01\_relaxation.py} evolves a positive 105-node uniform nonlinear state for
+ten steps of $\Delta t=0.08$. Its saved particle, energy and maximum moment-bin
+errors are below $7.1\times10^{-17}$; the minimum step entropy increase is
+$4.75\times10^{-4}$ and the maximum discrete entropy identity error is
+$6.08\times10^{-15}$. Nodal values remain positive, and the continuous spatial Fourier certificate
+and positive piecewise-linear velocity reconstruction are checked by the example.
+This is the specified nonlinear local surrogate, without self-consistent fields
+or a claim that its additional null directions disappear.
+
+\texttt{02\_geometry.py} evolves collision-only, ideal-only and combined linear
+states on the nonuniform vacuum toroidal annulus. On the base
+$5\times3\times3\times11\times13$ grid at $t=0.24$, the respective $Q/Q(0)$ values
+are $0.820926$, $1.000000$ and $0.810980$. Number, energy and moment-bin errors
+are below $1.1\times10^{-17}$ for these three controls. Three-level scans separate
+radial, angular, parallel-velocity, moment and timestep errors; velocity tails
+are varied separately. The last changes in both final $Q$ and dissipated fraction pass the $1\%$
+target for every scan. Changes in the dissipated fraction are $0.332\%$ radially,
+rounding-level in the two angular grids for this resolved initial mode,
+$0.709\%$ in parallel velocity, $0.638\%$ in moment resolution, $0.495\%$ in time,
+$0.0578\%$ in parallel-velocity tail extent, and $0.519\%$ in moment-tail extent.
+These are separate refinements of a specified observable, not a mathematical
+continuum convergence theorem. The unmodified 243-node collision matrix has
+39 near-null eigenvalues, compared with the 39-dimensional independent invariant
+span from spatial populations and angular-weighted invariants derived below, with scaled
+eigenpair residual $1.63\times10^{-15}$. Every observed tiny-grid null direction is accounted for by that span; the
+eigenvalues themselves are unchanged. No continuum gap or uniqueness follows
+from that finite matrix.
+
+\texttt{06\_range.py} checks 27 combinations of spatial grid, velocity count and
+Gaussian range. The finest spatial density-rate discrepancy is at most
+$3.03\times10^{-13}$ relative to \eqref{eq:rangespectrum}. Underresolved narrow
+ranges are marked unresolved: for $\ell=0.15$, 16 spatial nodes give a $58.5\%$
+density-rate error, while 32 give $4.75\times10^{-4}$ and 64 reach rounding
+accuracy. This explicitly demonstrates why the range must be resolved before
+interpreting density-nullspace lifting.
+
+\texttt{07\_equilibria.py} independently integrates the stationary density
+\eqref{eq:density} in all five fields with three velocity quadrature orders and
+two tail extents. The largest finest error on $|u|\le7$, $\mu\le20$ is
+$1.61\times10^{-7}$ (dipole). Its separate full-marginal finite-quadrature energy
+solve gives $\beta=1.7310695$, zero reported energy residual and moment-bin
+residual $2.22\times10^{-16}$. This verifies candidate construction, not
+attraction from arbitrary initial data.
+
+\texttt{08\_fields.py} performs actual nonlinear collision-only steps in mirror,
+dipole and perturbed-dipole boxes with the bounds derived above. At three
+spatial resolutions, equilibrium residuals are below $2.8\times10^{-14}$ and
+initial entropy production is positive. The last spatial changes in initial
+production are $0.336\%$, $0.255\%$ and $0.257\%$ respectively. Three positive
+nonlinear steps on each coarse box conserve number, energy and the full moment
+marginal to below $2.0\times10^{-17}$ in the saved run, with positive entropy
+increments. Velocity resolution/tails and longer nonlinear time evolution
+remain unresolved for these boxes. These runs impose natural collision flux
+only; they do not impose a confined dipole Hamiltonian boundary or demonstrate
+dipole self-organization.
+
+Independent controls and direct encounters are described in the preceding sections. Performance
+measurements separate first-call compilation, warmed synchronization, pair chunk
+size and solver residual. Implicit parameter derivatives are checked against
+dense solves and centered finite differences. All performance claims remain
+specific to the saved device and accuracy; no unmeasured GPU speedup is claimed.
+The selected P1--P5 prototype examples have executable structural and
+convergence evidence. This does not certify every geometry or parameter regime;
+box velocity-tail convergence and distinct-state zero-set extensions remain open. Physical
+coefficient calibration, unequal-species closure, self-consistent electrostatics,
+and measured plasma mixing-versus-moment timescale separation are not implemented
+claims.
+
+
+\subsection*{Directional zero-set check}
+At the off-axis dipole state $(1,0.2,0.3,0.6,0.4)$, the independent
+\texttt{test\_orbits.py} calculation approaches coincidence along $u$ and
+$\mu$ separately at separations $10^{-2},10^{-3},10^{-4}$. The two limiting
+$P I_XP$ tensors remain different: there is no direction-independent continuous
+projector extension. For the smooth observable $x^2+u^3+\mu x$, however,
+$\Delta\phi^TP I_XP\Delta\phi$ decreases quadratically along both paths.
+Thus identical-node diagonal contributions vanish in the weak form despite
+the kernel's directional discontinuity. This fact does not authorize deletion
+of distinct states with the same energy-flow vector; the general constructor
+rejects those ambiguous pairs. The uniform directional prescription is derived
+separately and tested against the exact oracle.
+
+\subsection*{Stronger toroidal local-density obstruction}
+The radial--angular collision invariants proved above extend to any smooth
+spatial-only $\phi(\X)$ in this toroidal field. The spatial component
+$\J^{XX}\nabla_X\phi$ is independent of $u,\mu$ at a fixed position, so
+$\Delta\phi$ has only $u,\eta$ components. Both $\dot u$ and $\dot\eta$ vanish
+for the toroidal energy characteristic, hence $\xi=\Delta E$ has spatial
+components only. The tensor $P I_XP$ therefore annihilates $\Delta\phi$.
+Every spatial population is conserved by local collisions, including for the
+nonlinear surrogate. This is a property of the local spatial-block closure,
+not an assertion about physical Coulomb transport or finite-range collisions.
+Hamiltonian streaming can change angular and height marginals, but preserves
+arbitrary radial populations because $\dot R=0$.
+There are further local collision invariants $c(\theta)g(\mu)$,
+$c(\theta)E$ and $c(\theta)mRu$ for arbitrary smooth periodic $c$.
+The first has zero spatial bracket action, the second has spatial pair action
+$c(\theta)\xi$, and the third has spatial action $c(\theta)R\bm e_\theta$,
+independent of velocity. In the last identity the perpendicular bracket action
+from $m u\nabla R$ cancels the curvature contribution from
+$\partial_u(mRu)=mR$. Terms from $c'(\theta)$ enter only the discarded
+nonspatial block. Thus $P I_XP$ annihilates each pair difference for any nonzero
+$q$, positive $m$ and $C$. Unweighted $mRu$ is also a Hamiltonian invariant;
+the angular-weighted families generally are not.
+
+On the $3^5=243$-node test the 27 spatial indicators, nine angular--moment
+indicators, three angular--energy functions and three angular--momentum
+functions have rank 39 (three duplicated angular-only functions are counted
+once). Independent production actions vanish to roundoff, and this span
+accounts for all 39 observed near-null eigenvalues of the unmodified matrix.
+This is complete for the tested finite grid, not a proof that the named
+families exhaust the continuum nullspace. No eigenvalues are changed.
+Primary-source searches combining the authors, toroidal collision nullspace,
+radial invariants and finite range did not locate this specific classification.
+Local-collision density conservation and symmetry-generated invariants are
+established ideas; the candidate contribution is this closure-specific
+geometry and range comparison. Publication priority remains unresolved.
+
+
+\subsection*{Measured costs at matched error}
+For four independent uniform Fourier blocks with 128 velocity nodes each,
+$\Delta t=0.025$ and $\lambda=0.3$, the common temporal error is
+$2.77\times10^{-5}$. On the Apple M4 CPU with JAX 0.11.2 and SOLVAX 0.28.2,
+five synchronized repetitions give the following measured values:
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Route & Compile/first (s) & Median ($\mu$s) & Range ($\mu$s) & Temporary bytes\\
+\midrule
+Dense & 0.092 & 550.3 & 214.2--1297.8 & 262852\\
+PCG & 0.184 & 571.7 & 273.1--804.7 & 16696\\
+Diagonal PCG & 0.225 & 43.8 & 34.5--126.6 & 16832\\
+\bottomrule
+\end{tabular}
+\end{center}
+The implicit solve residuals are below $6\times10^{-13}$; these separable
+uniform timings do not describe general pair-kernel complexity. For 945 actual
+weak pairs, a 16-pair chunk reduces XLA temporary buffers from 118913 to 16480
+bytes, while the warm median increases from $96.3$ to $158.2\,\mu$s.
+The complete benchmark process peaks near 332 MB RSS, including the runtime
+and compiled executables. The base combined toroidal evolution takes 2.38 s
+for six steps after 1.12 s compilation/first execution and 1.22 s setup.
+Its state is 51480 bytes and its stored pair list contains 456885 unordered
+pairs; pair-application chunk workspace and all version/input/commit details
+are in the saved JSON. No extrapolated speedup or isolated-RSS interpretation
+is asserted.
 
 \bibliographystyle{unsrt}
 \bibliography{references}
