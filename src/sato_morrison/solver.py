@@ -4,7 +4,7 @@ import jax
 import jax.numpy as jnp
 import numpy as np
 from solvax import pcg_linear_solve, gmres
-from .collisions import mobility_action
+from .collisions import mobility_action, compact_mobility_tangent
 
 
 class StepFailure(RuntimeError):
@@ -79,7 +79,8 @@ def discrete_gradient_compiler(grid, *, collision_strength=1., method='dense',
                                chunk_size=None,linear_restart=30,linear_max_restarts=10):
     """Reusable DG residual and either a dense Jacobian or Newton-GMRES solve.
 
-    Matrix-free GMRES uses exact JAX Jacobian-vector products. Rows and log increments
+    Matrix-free GMRES uses exact prepared pair tangents (and an independent
+    JAX Jacobian-vector product on explicit-pair reference grids). Rows and log increments
     are scaled by the square root of the previous nodal populations, giving
     an entropy-metric Jacobian without forming a dense matrix. The two routes
     solve the same unscaled discrete-gradient equation.
@@ -98,9 +99,22 @@ def discrete_gradient_compiler(grid, *, collision_strength=1., method='dense',
         mass_root=jnp.sqrt(grid.weights*jnp.exp(old_log))
         scaled=lambda value:residual(value,old_log,timestep)/mass_root
         value=scaled(new_log)
-        # Recompute forward-mode products so linearization cannot retain all
-        # primal pair blocks as a quadratic tape between GMRES iterations.
-        operator=lambda vector:jax.jvp(scaled,(new_log,),(vector/mass_root,))[1]
+        if grid.local_quadrature is None:
+            # The explicit-pair route remains an independent AD reference.
+            operator=lambda vector:jax.jvp(scaled,(new_log,),(vector/mass_root,))[1]
+        else:
+            new,old=jnp.exp(new_log),jnp.exp(old_log)
+            midpoint=(new+old)/2
+            gradient=entropy_discrete_gradient(old_log,new_log)
+            gradient_prime=jax.jvp(lambda value:entropy_discrete_gradient(old_log,value),
+                (new_log,),(jnp.ones_like(new_log),))[1]
+            action_gradient=grid.action(gradient)
+            def operator(vector):
+                increment=vector/mass_root
+                tangent=compact_mobility_tangent(grid,midpoint,action_gradient,
+                    gradient_prime*increment,new/(new+old)*increment,
+                    collision_strength=collision_strength,chunk_size=chunk_size)
+                return (grid.weights*new*increment-timestep*tangent)/mass_root
         answer=gmres(operator,-value,restart=linear_restart,rtol=linear_rtol,
                      atol=0.,max_restarts=linear_max_restarts)
         relative=answer.residual_norm/jnp.maximum(jnp.linalg.norm(value),1e-300)

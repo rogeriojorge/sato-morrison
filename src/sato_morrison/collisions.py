@@ -69,7 +69,7 @@ class WeakGrid:
         return answer.reshape(-1)
 
 
-def derivative_matrix(nodes, *, period=None):
+def derivative_matrix(nodes, *, period=None,method='local_quadratic'):
     """Spectral periodic derivative, or local quadratic nonperiodic derivative.
 
     Nonperiodic matrices enter a weak form with natural zero collision flux;
@@ -79,6 +79,21 @@ def derivative_matrix(nodes, *, period=None):
     n = len(nodes)
     if n < 3 or not np.all(np.isfinite(nodes)) or np.any(np.diff(nodes) <= 0):
         raise ValueError('derivative nodes must increase and contain at least three points')
+    if method not in ('local_quadratic','polynomial'):
+        raise ValueError(f'unsupported derivative method: {method}')
+    if method=='polynomial':
+        if period is not None:
+            raise ValueError('global polynomial derivative requires nonperiodic nodes')
+        # Lagrange collocation derivative. The weak Gram assembly needs no
+        # summation-by-parts identity; positive quadrature and a matching energy
+        # derivative establish the discrete conservation/entropy identities.
+        difference=nodes[:,None]-nodes[None,:]
+        np.fill_diagonal(difference,1.)
+        barycentric=1/np.prod(difference,axis=1)
+        result=barycentric[None,:]/barycentric[:,None]/difference
+        np.fill_diagonal(result,0.)
+        np.fill_diagonal(result,-result.sum(axis=1))
+        return result
     if period is not None:
         if not np.isfinite(period) or period <= 0:
             raise ValueError('finite positive period required')
@@ -236,6 +251,8 @@ def toroidal_grid(radius, theta, z, u, mu, *, strength=1., mass=1., charge=1.,
     recreating a Euclidean projector in cylindrical coordinates.
     """
     from .geometry import Field, common_chart_action
+    if not np.all(np.isfinite([strength,mass,charge])) or strength<=0 or mass<=0 or charge==0:
+        raise ValueError('positive finite field and mass and nonzero charge required')
     radius, theta, z, u, mu = map(np.asarray, (radius, theta, z, u, mu))
     if np.any(radius <= 0) or np.any(mu < 0):
         raise ValueError('toroidal radius must be positive and mu nonnegative')
@@ -270,7 +287,8 @@ def _project_pair(difference,directions):
     return spatial-directions*jnp.sum(directions*spatial,axis=-1)[...,None]
 
 
-def _compact_local_action(grid,f,action,collision_strength,chunk_size):
+def _compact_local_action(grid,f,action,collision_strength,chunk_size,*,
+                          density_ratio=None,base_action=None):
     wx,vw=grid.local_quadrature
     nx,nv=vw.shape
     # Each target row contracts all velocity neighbours. At least one row is
@@ -282,12 +300,17 @@ def _compact_local_action(grid,f,action,collision_strength,chunk_size):
     rows=min(rows,grid.size)
     count=(grid.size+rows-1)//rows
     aa=action.reshape(nx,nv,5);ff=f.reshape(nx,nv)
+    if density_ratio is not None:
+        ratio=density_ratio.reshape(nx,nv)
+        base=base_action.reshape(nx,nv,5)
     def body(index,accumulator):
         targets=index*rows+jnp.arange(rows)
         valid=targets<grid.size
         targets=jnp.minimum(targets,grid.size-1)
         x,i=targets//nv,targets%nv
         delta=aa[x,i,None]-aa[x]
+        if density_ratio is not None:
+            delta=delta+(ratio[x,i,None]+ratio[x])[...,None]*(base[x,i,None]-base[x])
         if grid.uniform_direction is None:
             xi=grid.energy_flow[x,i,None]-grid.energy_flow[x]
             squared=jnp.sum(xi**2,axis=-1)
@@ -300,6 +323,22 @@ def _compact_local_action(grid,f,action,collision_strength,chunk_size):
         # Targets are distinct except padding. Padding has zero flux.
         return accumulator.at[targets].add(flux)
     return jax.lax.fori_loop(0,count,body,jnp.zeros_like(action))
+
+
+def compact_mobility_tangent(grid,f,action_h,delta_h,density_ratio,*,
+                             collision_strength=1.,chunk_size=None):
+    """Exact variation of K(f)h, using cached A h and delta_f/f.
+
+    This is a bounded-workspace tangent, not a frozen-mobility approximation.
+    A pair variation combines ΔA(delta_h)+(delta_f_i/f_i+delta_f_j/f_j)ΔA h
+    inside the same fixed energy projector. Only nodal quantities are cached.
+    """
+    if grid.local_quadrature is None:
+        raise ValueError('compact local grid required for prepared mobility tangent')
+    tangent=grid.action(delta_h)
+    flux=_compact_local_action(grid,jnp.asarray(f),tangent,collision_strength,chunk_size,
+                              density_ratio=jnp.asarray(density_ratio),base_action=action_h)
+    return grid.transpose_action(flux)
 
 
 def mobility_action(grid, f, h, *, collision_strength=1., chunk_size=None):
@@ -366,7 +405,8 @@ def dense_mobility(grid, f, *, collision_strength=1.):
 
 
 def cartesian_grid(x, y, z, u, mu, field, *, mass=1., charge=1.,
-                   velocity_weights=None,compact=False):
+                   velocity_weights=None,compact=False,spatial_weights=None,
+                   spatial_discretization='local_quadratic'):
     """Collision-only Cartesian box with natural zero flux on every face.
 
     Nonperiodic field values are never wrapped. Combined Hamiltonian evolution
@@ -379,7 +419,7 @@ def cartesian_grid(x, y, z, u, mu, field, *, mass=1., charge=1.,
     shape=tuple(map(len,(x,y,z,u,mu)))
     xx,yy,zz,uu,mm=np.meshgrid(x,y,z,u,mu,indexing='ij')
     nodes=np.stack((xx,yy,zz,uu,mm),axis=-1).reshape(-1,5)
-    validate_geometry(nodes[:,:3],field)
+    validate_geometry(nodes[:,:3],field,mass=mass,charge=charge)
     gradients=jnp.eye(5)[:4]
     action=jax.vmap(lambda point:jax.vmap(lambda gradient:common_chart_action(
         point,gradient,field,mass=mass,charge=charge))(gradients))
@@ -387,10 +427,16 @@ def cartesian_grid(x, y, z, u, mu, field, *, mass=1., charge=1.,
     positions=np.stack(np.meshgrid(x,y,z,indexing='ij'),axis=-1).reshape(-1,3)
     strength=np.linalg.norm(np.asarray(jax.vmap(lambda point:field_vector(point,field))(
         jnp.asarray(positions))),axis=1)
-    spatial_weights=np.einsum('i,j,k->ijk',trapezoid_weights(x),trapezoid_weights(y),
-                              trapezoid_weights(z)).ravel()
+    if spatial_weights is None:
+        spatial_weights=tuple(trapezoid_weights(axis) for axis in (x,y,z))
+    if len(spatial_weights)!=3 or any(np.shape(weight)!=np.shape(axis) or
+        not np.all(np.isfinite(weight)) or np.any(np.asarray(weight)<=0)
+        for weight,axis in zip(spatial_weights,(x,y,z))):
+        raise ValueError('positive finite spatial quadrature weights must match three axes')
+    spatial_weights=np.einsum('i,j,k->ijk',*spatial_weights).ravel()
     velocity_weights=strength[:,None]*_velocity_quadrature(u,mu,velocity_weights).reshape(1,-1)
     energy=mass*uu**2/2+mm*strength.reshape(shape[:3]+(1,1))
-    return _complete_grid(shape,tuple((axis,derivative_matrix(nodes)) for axis,nodes in
-        enumerate((x,y,z,u))),coefficients,spatial_weights,velocity_weights,energy,
+    derivatives=tuple((axis,derivative_matrix(nodes,method=spatial_discretization if axis<3
+        else 'local_quadratic')) for axis,nodes in enumerate((x,y,z,u)))
+    return _complete_grid(shape,derivatives,coefficients,spatial_weights,velocity_weights,energy,
         f'{field.kind} collision-only box; natural no-flux collision boundaries',compact=compact)

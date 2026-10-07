@@ -3,6 +3,7 @@ jax.config.update('jax_enable_x64', True)
 import jax.numpy as jnp
 import numpy as np
 import pytest
+from sato_morrison.collisions import compact_mobility_tangent
 from sato_morrison.collisions import (uniform_grid, toroidal_grid, mobility_action,
     dense_mobility, linear_rhs, nonlinear_rhs)
 
@@ -221,3 +222,61 @@ def test_compact_zero_set_and_quadrature_fail_visibly():
         small_grid(model='sm_finite_range',compact=True,spatial_kernel=np.eye(5))
     with pytest.raises(ValueError,match='quadrature weights'):
         small_grid(velocity_weights=(np.ones(3),np.array([1.,0.,1.])))
+def test_prepared_compact_mobility_tangent_matches_independent_AD():
+    from sato_morrison.collisions import cartesian_grid
+    from sato_morrison.geometry import Field
+    grid=cartesian_grid(np.linspace(.8,1.2,3),np.linspace(-.2,.2,3),np.linspace(.1,.5,3),
+        np.linspace(-2,2,3),np.array([.1,1.1]),Field('mirror',amplitude=.15),compact=True)
+    rng=np.random.default_rng(51)
+    tangent=jax.jit(lambda f,h,df,dh:compact_mobility_tangent(grid,f,grid.action(h),dh,df/f,
+        collision_strength=.3,chunk_size=64))
+    independent=jax.jit(lambda f,h,df,dh:jax.jvp(lambda ff,hh:mobility_action(grid,ff,hh,
+        collision_strength=.3,chunk_size=64),(f,h),(df,dh))[1])
+    for _ in range(5):
+        f=jnp.exp(-grid.energy+.1*jnp.asarray(rng.normal(size=grid.size)))
+        h,ratio,dh=[jnp.asarray(rng.normal(size=grid.size)) for _ in range(3)]
+        df=f*ratio
+        np.testing.assert_allclose(tangent(f,h,df,dh),independent(f,h,df,dh),rtol=2e-13,atol=2e-14)
+
+
+def test_positive_polynomial_spatial_weak_grid():
+    from sato_morrison.collisions import derivative_matrix,cartesian_grid
+    from sato_morrison.geometry import Field
+    from sato_morrison.reference import gauss_interval
+    axes_weights=[gauss_interval(5,a,b) for a,b in ((.8,1.2),(-.2,.2),(.1,.5))]
+    axes=[pair[0] for pair in axes_weights];weights=[pair[1] for pair in axes_weights]
+    for nodes in axes:
+        derivative=derivative_matrix(nodes,method='polynomial')
+        for power in range(5):
+            expected=np.zeros_like(nodes) if power==0 else power*nodes**(power-1)
+            np.testing.assert_allclose(derivative@nodes**power,expected,atol=2e-12)
+    grid=cartesian_grid(*axes,np.linspace(-2,2,3),np.array([.1,1.1]),
+        Field('mirror',amplitude=.15),compact=True,spatial_weights=weights,
+        spatial_discretization='polynomial')
+    f=jnp.exp(-grid.energy);h=jnp.asarray(np.random.default_rng(18).normal(size=grid.size))
+    flux=mobility_action(grid,f,h,chunk_size=128)
+    assert abs(float(jnp.sum(flux)))<1e-12
+    assert abs(float(jnp.vdot(grid.energy,flux)))<1e-12
+    assert float(jnp.vdot(h,flux))>=0
+    x,y,z,u,mu=np.meshgrid(*axes,np.linspace(-2,2,3),np.array([.1,1.1]),indexing='ij')
+    # This quadratic vacuum mirror flux is represented exactly by the spatial
+    # polynomial space, so it has no artificial cross-flux relaxation.
+    psi=(x*x+y*y)/2+.15*(x*x+y*y)*z*z/2-.15*(x*x+y*y)**2/8
+    rate=mobility_action(grid,f,jnp.asarray(psi.ravel()),chunk_size=128)
+    assert np.linalg.norm(rate)<1e-11
+    with pytest.raises(ValueError,match='spatial quadrature'):
+        cartesian_grid(*axes,np.linspace(-2,2,3),np.array([.1,1.1]),Field('mirror'),
+            spatial_weights=[np.zeros(5),weights[1],weights[2]])
+
+
+@pytest.mark.parametrize('parameters',[{'mass':-1.},{'mass':float('nan')},{'charge':0.},
+                                      {'charge':float('inf')}])
+def test_nonuniform_constructor_rejects_invalid_physical_parameters(parameters):
+    from sato_morrison.collisions import cartesian_grid
+    from sato_morrison.geometry import Field
+    with pytest.raises(ValueError):
+        cartesian_grid(np.linspace(.8,1.2,3),np.linspace(-.2,.2,3),np.linspace(.1,.5,3),
+            np.linspace(-2,2,3),np.array([.1,1.1]),Field('mirror'),**parameters)
+    with pytest.raises(ValueError):
+        toroidal_grid(np.linspace(1,1.5,3),np.arange(3)*2*np.pi/3,np.arange(3)*2*np.pi/3,
+            np.linspace(-2,2,3),np.array([.1,1.1]),**parameters)
