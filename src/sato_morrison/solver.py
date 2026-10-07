@@ -1,10 +1,13 @@
 """Checked implicit weak collision steps and tangent toroidal transport."""
 from dataclasses import dataclass
+from typing import NamedTuple
+from jax.scipy.linalg import solve_triangular
 import jax
 import jax.numpy as jnp
 import numpy as np
 from solvax import pcg_linear_solve, gmres, pcg
-from .collisions import mobility_action, compact_mobility_tangent, lumped_mobility_diagonal
+from .collisions import (mobility_action, compact_mobility_tangent,
+                         mobility_channel_covariance, mobility_channel_diagonals)
 
 
 class StepFailure(RuntimeError):
@@ -250,11 +253,12 @@ def invariant_diagnostics(grid, f, initial):
 
 @dataclass(frozen=True)
 class LaggedEntropyStep(NonlinearStep):
-    """Lagged-mobility BE budget: entropy change = production + KL + defect."""
+    """Lagged BE: entropy change = production + KL - residual_entropy_defect."""
     generalized_KL: float = 0.
     entropy_production: float = 0.
     entropy_defect_bound: float = 0.
     iteration_history: tuple = ()
+    residual_entropy_defect: float = 0.
 
 
 def _population_difference(new_log,old_log,weights):
@@ -270,6 +274,16 @@ def _expm1_minus_x(value):
     return jnp.where(jnp.abs(value)<1e-3,series,jnp.expm1(value)-value)
 
 
+def _check_preconditioner_axis(axis):
+    if axis is not None and (type(axis) is not int or axis != 0):
+        raise ValueError('preconditioner_axis must be None or Cartesian x axis0')
+
+
+class LinePreconditionerData(NamedTuple):
+    line_q: object
+    other_diagonal: object
+
+
 @dataclass(frozen=True,eq=False)
 class LaggedEntropyCompiler:
     """Reusable kernels bound to one grid and explicit solver configuration."""
@@ -282,15 +296,17 @@ class LaggedEntropyCompiler:
     collision_strength: float
     chunk_size: int
     linear_max_steps: int
+    preconditioner_axis: object
 
 
 def lagged_entropy_compiler(grid, *, collision_strength=1.,chunk_size=65536,
-                            linear_max_steps=1000):
+                            linear_max_steps=1000,preconditioner_axis=None):
     """Reusable exact frozen-mobility residual and entropy-scaled SPD solve.
 
-    All old-state arguments are dynamic. Preparing the positive lumped Jacobi
-    once per step avoids recomputing it during Newton corrections. The lumped
-    diagonal is a preconditioner only: all pair and derivative cross terms stay
+    All old-state arguments are dynamic. Positive covariance is prepared once
+    per step. None selects lumped Jacobi; axis0 retains D_x.T diag(q_x) D_x
+    correlations in independent SPD spatial lines and lumps the other channels.
+    Both affect only preconditioning; all pair and derivative cross terms stay
     in the exact Hessian. PCG's true original residual is independently checked.
     SOLVAX requires linear_rtol to be static when tracing its input validation.
     """
@@ -302,6 +318,16 @@ def lagged_entropy_compiler(grid, *, collision_strength=1.,chunk_size=65536,
         raise ValueError('nonnegative integer linear iteration limit required')
     if not isinstance(chunk_size,int) or chunk_size<1:
         raise ValueError('positive integer chunk size required')
+    _check_preconditioner_axis(preconditioner_axis)
+    if preconditioner_axis is not None:
+        matches=[(component,matrix) for component,(axis,matrix) in enumerate(grid.derivatives) if axis==preconditioner_axis]
+        if len(matches)!=1:raise ValueError('one derivative channel required on line axis')
+        component,derivative=matches[0];length=grid.shape[preconditioner_axis]
+        def lines(value):
+            return jnp.moveaxis(value.reshape(grid.shape),preconditioner_axis,-1).reshape(-1,length)
+        def unlines(value):
+            shape=tuple(n for axis,n in enumerate(grid.shape) if axis!=preconditioner_axis)+(length,)
+            return jnp.moveaxis(value.reshape(shape),-1,preconditioner_axis).reshape(-1)
     def apply(old_log,h):
         return mobility_action(grid,jnp.exp(old_log),h,
             collision_strength=collision_strength,chunk_size=chunk_size)
@@ -309,15 +335,34 @@ def lagged_entropy_compiler(grid, *, collision_strength=1.,chunk_size=65536,
         old_mass=grid.weights*jnp.exp(old_log)
         return _population_difference(new_log,old_log,grid.weights)+dt*apply(old_log,new_log)
     def prepare(old_log):
-        return lumped_mobility_diagonal(grid,jnp.exp(old_log),
+        q=mobility_channel_covariance(grid,jnp.exp(old_log),
             collision_strength=collision_strength,chunk_size=chunk_size)
+        diags=mobility_channel_diagonals(grid,q)
+        if preconditioner_axis is None:return jnp.sum(diags,axis=-1).reshape(-1)
+        other_channels=[diags[...,d] for d in range(len(grid.derivatives)) if d!=component]
+        other=(jnp.sum(jnp.stack(other_channels),axis=0) if other_channels
+               else jnp.zeros(grid.shape,dtype=q.dtype))
+        return LinePreconditionerData(lines(q[...,component]),lines(other))
     def correction(new_log,old_log,dt,diagonal,linear_rtol):
         old_mass=grid.weights*jnp.exp(old_log);root=jnp.sqrt(old_mass)
         ratio=jnp.exp(new_log-old_log);value=evaluate(new_log,old_log,dt)/root
         def operator(vector):
             return ratio*vector+dt*apply(old_log,vector/root)/root
-        approximation=ratio+dt*diagonal/old_mass
-        answer=pcg(operator,-value,precond=lambda vector:vector/approximation,
+        if preconditioner_axis is None:
+            approximation=ratio+dt*diagonal/old_mass
+            inverse=lambda vector:vector/approximation
+        else:
+            masses=lines(old_mass);mass_root=jnp.sqrt(masses)
+            local=jnp.einsum('ki,lk,kj->lij',derivative,diagonal.line_q,derivative)
+            block=dt*local/mass_root[:,:,None]/mass_root[:,None,:]
+            diagonal_entries=lines(ratio)+dt*diagonal.other_diagonal/masses
+            block=block+jnp.eye(length)[None,:,:]*diagonal_entries[:,:,None]
+            factor=jnp.linalg.cholesky(block)
+            def inverse(vector):
+                intermediate=jax.vmap(lambda L,v:solve_triangular(L,v,lower=True))(factor,lines(vector))
+                solved=jax.vmap(lambda L,v:solve_triangular(L.T,v,lower=False))(factor,intermediate)
+                return unlines(solved)
+        answer=pcg(operator,-value,precond=inverse,
             rtol=linear_rtol,atol=0.,max_steps=linear_max_steps)
         direction=answer.x/root
         true=jnp.linalg.norm(operator(answer.x)+value)/jnp.maximum(jnp.linalg.norm(value),1e-300)
@@ -329,13 +374,13 @@ def lagged_entropy_compiler(grid, *, collision_strength=1.,chunk_size=65536,
         return fraction*descent+jnp.sum(new_mass*_expm1_minus_x(shift))+.5*dt*fraction**2*curvature
     return LaggedEntropyCompiler(jax.jit(evaluate),jax.jit(correction,static_argnums=(4,)),
         jax.jit(objective_difference),jax.jit(prepare),jax.jit(apply),
-        grid,float(collision_strength),chunk_size,linear_max_steps)
+        grid,float(collision_strength),chunk_size,linear_max_steps,preconditioner_axis)
 
 
 def lagged_entropy_step(grid,f,dt,*,collision_strength=1.,rtol=1e-11,
                         max_steps=80,compiled=None,chunk_size=65536,
                         linear_rtol=1e-6,linear_max_steps=1000,
-                        iteration_callback=None):
+                        iteration_callback=None,preconditioner_axis=None):
     """First-order positive conservative lagged-mobility entropy step.
 
     The root w(exp(g)-f)+dt K(f)g=0 minimizes a strictly convex coercive
@@ -343,9 +388,10 @@ def lagged_entropy_step(grid,f,dt,*,collision_strength=1.,rtol=1e-11,
     preserve the same actual discrete nullspace. This is a first-order step
     for the original kinetic ODE; KL is numerical entropy dissipation. It does
     not assert a continuum convergence or positivity of polynomial density
-    interpolation. Reuse a compiler built with matching grid/D/linear budget.
+    interpolation. Reuse a compiler built with matching grid/D/linear budget/axis.
     """
     from time import perf_counter
+    _check_preconditioner_axis(preconditioner_axis)
     if not np.isfinite(rtol) or rtol<=0 or not isinstance(max_steps,int) or max_steps<0:
         raise ValueError('positive finite tolerance and nonnegative integer iteration limit required')
     if not np.isfinite(linear_rtol) or not 0<linear_rtol<1:
@@ -366,10 +412,11 @@ def lagged_entropy_step(grid,f,dt,*,collision_strength=1.,rtol=1e-11,
         raise ValueError('positive finite nodal populations required')
     if compiled is None:
         compiled=lagged_entropy_compiler(grid,collision_strength=collision_strength,
-            chunk_size=chunk_size,linear_max_steps=linear_max_steps)
+            chunk_size=chunk_size,linear_max_steps=linear_max_steps,preconditioner_axis=preconditioner_axis)
     if (not isinstance(compiled,LaggedEntropyCompiler) or compiled.grid is not grid
         or compiled.collision_strength!=float(collision_strength)
-        or compiled.chunk_size!=chunk_size or compiled.linear_max_steps!=linear_max_steps):
+        or compiled.chunk_size!=chunk_size or compiled.linear_max_steps!=linear_max_steps
+        or compiled.preconditioner_axis!=preconditioner_axis):
         raise ValueError('lagged compiler grid or configuration mismatch')
     evaluate=compiled.evaluate;correct=compiled.correction
     objective_difference=compiled.objective_difference
@@ -379,8 +426,8 @@ def lagged_entropy_step(grid,f,dt,*,collision_strength=1.,rtol=1e-11,
         raise ValueError('positive finite total mass required')
     old=jnp.log(jnp.asarray(f));new_log=np.asarray(old).copy()
     root=np.sqrt(population);scale=np.sqrt(total_mass)
-    diagonal=prepare(old);diagonal.block_until_ready()
-    if not np.all(np.isfinite(diagonal)) or np.any(np.asarray(diagonal)<0):
+    diagonal=prepare(old);jax.tree.map(lambda value:value.block_until_ready(),diagonal)
+    if any(not np.all(np.isfinite(value)) or np.any(np.asarray(value)<0) for value in jax.tree.leaves(diagonal)):
         raise StepFailure('lagged preconditioner is not finite nonnegative')
     history=[];linear_iterations=0;maximum_linear_residual=0.
     for iteration in range(max_steps+1):
@@ -437,4 +484,4 @@ def lagged_entropy_step(grid,f,dt,*,collision_strength=1.,rtol=1e-11,
         raise StepFailure(f'lagged entropy/finite check rejected step: deltaS={change:.3e}, identity={identity_error:.3e}')
     return LaggedEntropyStep(new,iteration,norm,change,identity_error,float(new.min()),
         linear_iterations,maximum_linear_residual,'entropy_population',
-        divergence,production,bound,tuple(history))
+        divergence,production,bound,tuple(history),residual_defect)

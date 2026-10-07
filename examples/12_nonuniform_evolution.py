@@ -7,6 +7,8 @@ Historical discrete-gradient results remain separate; they cannot resume this me
 import hashlib
 import json
 import os
+import resource
+import sys
 from pathlib import Path
 from time import perf_counter
 import jax
@@ -33,9 +35,10 @@ NX, NU, NMU = 5, 25, 21
 X_ORDERS, U_ORDERS, MU_ORDERS = [3, 5, 7], [17, 21, 25], [13, 17, 21]
 U_MAX, MU_MAX = 4., 20.
 D, FINAL_TIME, DT = .1, .02, .005
-DT_VALUES = [.005, .0025, .00125]
+DT_VALUES = [.005, .0025, .00125, .000625, .0003125]
 CHUNK, NEWTON_RTOL = 1048576, 1e-12
-LINEAR_RTOL, LINEAR_MAX_STEPS, MAX_NEWTON_STEPS = 1e-6, 1000, 80
+LINEAR_RTOL, LINEAR_MAX_STEPS, MAX_NEWTON_STEPS = 1e-6, 3000, 80
+PRECONDITIONER_AXIS = 0
 RELATIVE_TARGET = .01
 OUTPUT = Path(__file__).resolve().parents[1] / 'results' / 'nonuniform_entropy'
 OUTPUT.mkdir(parents=True, exist_ok=True)
@@ -57,7 +60,7 @@ def continuum_moments(field, xx, yy, zz, strength):
     return {'B': strength, 'chi': chi, 'B_squared': strength**2, 'chi_squared': chi**2}
 
 
-def evaluate(field, nx=NX, nu=NU, nmu=NMU, umax=U_MAX, mumax=MU_MAX, dt=DT):
+def evaluate(field, nx=NX, nu=NU, nmu=NMU, umax=U_MAX, mumax=MU_MAX, dt=DT, *, case_name=None):
     spatial = [gauss_interval(nx, a, b) for a, b in BOUNDS]
     axes = [pair[0] for pair in spatial]
     u, wu = gauss_interval(nu, -umax, umax)
@@ -105,8 +108,10 @@ def evaluate(field, nx=NX, nu=NU, nmu=NMU, umax=U_MAX, mumax=MU_MAX, dt=DT):
     reproduction = float(np.max(np.abs(derivative_matrix(u)@(u*u/2)-u)))
     if minimum_grad_b <= 0 or reproduction > 1e-10:
         raise RuntimeError('discrete energy-flow injectivity check failed')
+    print(f'  Preparing/compiling {field.kind}: {grid.size} nodes, '
+          f'{grid.pair_count} local pairs, x-line Newton-PCG', flush=True)
     compiler = lagged_entropy_compiler(grid, collision_strength=D, chunk_size=CHUNK,
-        linear_max_steps=LINEAR_MAX_STEPS)
+        linear_max_steps=LINEAR_MAX_STEPS, preconditioner_axis=PRECONDITIONER_AXIS)
     apply = jax.jit(lambda f, h: mobility_action(grid, f, h, collision_strength=D, chunk_size=CHUNK))
     initial_flux = apply(initial, jnp.log(initial));initial_flux.block_until_ready()
     initial_production = float(jnp.vdot(jnp.log(initial), initial_flux))
@@ -119,7 +124,8 @@ def evaluate(field, nx=NX, nu=NU, nmu=NMU, umax=U_MAX, mumax=MU_MAX, dt=DT):
         start = perf_counter()
         answer = lagged_entropy_step(grid, state, dt, collision_strength=D,
             compiled=compiler, chunk_size=CHUNK, rtol=NEWTON_RTOL,
-            linear_rtol=LINEAR_RTOL, linear_max_steps=LINEAR_MAX_STEPS, max_steps=MAX_NEWTON_STEPS)
+            linear_rtol=LINEAR_RTOL, linear_max_steps=LINEAR_MAX_STEPS, max_steps=MAX_NEWTON_STEPS,
+            preconditioner_axis=PRECONDITIONER_AXIS)
         state = answer.f
         check = invariant_diagnostics(grid, state, initial)
         if max(check[k] for k in ('number_error', 'energy_error', 'marginal_error')) > 1e-9:
@@ -132,16 +138,18 @@ def evaluate(field, nx=NX, nu=NU, nmu=NMU, umax=U_MAX, mumax=MU_MAX, dt=DT):
             'maximum_linear_relative_residual': answer.linear_relative_residual,
             'entropy_change': answer.entropy_change, 'entropy_identity_error': answer.entropy_identity_error,
             'lagged_mobility_dissipation': answer.entropy_production, 'generalized_KL': answer.generalized_KL,
-            'entropy_defect_bound': answer.entropy_defect_bound, 'newton_history': answer.iteration_history,
+            'entropy_defect_bound': answer.entropy_defect_bound,
+            'residual_entropy_defect': answer.residual_entropy_defect, 'newton_history': answer.iteration_history,
             'magnetic_moment_bin_populations': marginal.tolist(),
             'relative_marginal_bin_errors': ((marginal-initial_marginal)/initial_marginal).tolist(),
             **check})
         save_evidence(OUTPUT/'partial_case.json', {'status': 'incomplete',
-            'provenance_id': provenance_id, 'parameters': {'field': field.kind, 'nx': nx,
+            'provenance_id': provenance_id, 'field': field.kind, 'case': case_name,
+            'parameters': {'field': field.kind, 'nx': nx,
                 'nu': nu, 'nmu': nmu, 'umax': umax, 'mumax': mumax, 'dt': dt},
             'initial_magnetic_moment_bin_populations': initial_marginal.tolist(), 'history': history})
         print(f'  {field.kind} {nx}^3 x {nu} x {nmu}, U={umax:g}, M={mumax:g}, dt={dt:g}: '
-              f't={history[-1]["time"]:.3f}, Newton={answer.iterations}, PCG={answer.linear_iterations}, '
+              f't={history[-1]["time"]:.6f}, Newton={answer.iterations}, PCG={answer.linear_iterations}, '
               f'dS={answer.entropy_change:.3e}, {history[-1]["wall_s"]:.2f}s', flush=True)
     final_flux = apply(state, jnp.log(state));final_flux.block_until_ready()
     final_production = float(jnp.vdot(jnp.log(state), final_flux))
@@ -156,6 +164,8 @@ def evaluate(field, nx=NX, nu=NU, nmu=NMU, umax=U_MAX, mumax=MU_MAX, dt=DT):
     row = {'field': field.kind, 'nx': nx, 'nu': nu, 'nmu': nmu, 'umax': umax, 'mumax': mumax, 'dt': dt,
         'nodes': grid.size, 'conceptual_unordered_pairs': grid.pair_count,
         'stored_grid_bytes': sum(array.nbytes for array in stored),
+        'process_peak_rss_bytes': resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024),
+        'peak_rss_scope': 'Cumulative process high-water mark; includes setup and compiled runtime, not grid arrays alone',
         'pair_workspace_budget': CHUNK, 'minimum_discrete_grad_B': minimum_grad_b,
         'minimum_B':float(strength.min()),'maximum_B':float(strength.max()),
         'u_quadratic_derivative_error': reproduction, 'number': number,
@@ -176,15 +186,18 @@ def evaluate(field, nx=NX, nu=NU, nmu=NMU, umax=U_MAX, mumax=MU_MAX, dt=DT):
 
 
 def compare(sequence):
-    previous, last = sequence[-2:]
     observable_names = ['entropy_gain_per_particle', 'final_production_per_particle',
                         'relaxation_moment_change_per_particle']
-    changes = {name: abs(last[name]-previous[name])/max(abs(last[name]), 1e-30)
-               for name in observable_names}
-    return {'relative_changes': changes, 'target': RELATIVE_TARGET,
-        'status': 'passed' if max(changes.values()) < RELATIVE_TARGET else 'unresolved',
-        'previous_parameters': {k: previous[k] for k in ('nx', 'nu', 'nmu', 'umax', 'mumax', 'dt')},
-        'last_parameters': {k: last[k] for k in ('nx', 'nu', 'nmu', 'umax', 'mumax', 'dt')}}
+    def pair(previous, last):
+        changes = {name: abs(last[name]-previous[name])/max(abs(last[name]), 1e-30)
+                   for name in observable_names}
+        return {'relative_changes': changes, 'target': RELATIVE_TARGET,
+            'status': 'passed' if max(changes.values()) < RELATIVE_TARGET else 'unresolved',
+            'previous_parameters': {k: previous[k] for k in ('nx', 'nu', 'nmu', 'umax', 'mumax', 'dt')},
+            'last_parameters': {k: last[k] for k in ('nx', 'nu', 'nmu', 'umax', 'mumax', 'dt')}}
+    return {**pair(*sequence[-2:]),
+        'adjacent_comparisons': [pair(a,b) for a,b in zip(sequence,sequence[1:])],
+        'coarsest_to_finest': pair(sequence[0],sequence[-1])}
 
 
 inputs = {'fields': [field.__dict__ for field in FIELDS], 'bounds': BOUNDS,
@@ -192,6 +205,7 @@ inputs = {'fields': [field.__dict__ for field in FIELDS], 'bounds': BOUNDS,
     'u_domain': [-U_MAX, U_MAX], 'mu_domain': [0, MU_MAX], 'collision_strength': D,
     'final_time': FINAL_TIME, 'dt_values': DT_VALUES, 'newton_rtol': NEWTON_RTOL,
     'pair_chunk': CHUNK, 'time_discretization': 'lagged-mobility backward Euler in entropy variables',
+    'preconditioner_axis': PRECONDITIONER_AXIS,
     'linear_rtol': LINEAR_RTOL, 'linear_max_steps': LINEAR_MAX_STEPS, 'max_newton_steps': MAX_NEWTON_STEPS, 'relative_refinement_target': RELATIVE_TARGET,
     'spatial_discretization':'global Lagrange polynomial derivative on positive Gauss-Legendre quadrature',
     'velocity_discretization':'local quadratic u derivative; positive Gauss-Legendre u/mu quadrature',
@@ -202,17 +216,20 @@ metadata['limitations'] = ('Independent finite-time refinement checks at fixed o
     'no combined-streaming box claim and no E/Gmu-only equilibrium reachability claim. '
     'Finite spatial polynomial spaces may lift continuum invariants: flux/potential moments are measured '
     'as scheme errors, never projected or interpreted as physical relaxation. Tail-domain and '
-    'wider-domain quadrature checks are separate. Timings include concurrent unrelated machine load.')
+    'wider-domain quadrature checks are separate. A fine timestep-pair pass does not certify '
+    'the coarse baseline or jointly refine space and time; all adjacent and coarsest/fine differences '
+    'are retained. Timings include concurrent unrelated machine load.')
 metadata['relaxation_diagnostic']='Relative entropy to mass-normalized exp(-E-.2mu) decreases by the entropy gain because its logarithm is a discrete collision invariant. This stationary reference is not asserted reachable under the additional continuum constraints. Mean/variance of log(f/reference) and the sin(pi*y/.4)*u moment are measured separately.'
-# Thirteen distinct cases; the base case is reused in each independent scan.
+# Fifteen distinct cases; the base case is reused in each independent scan.
 CASES = {'spatial3': {'nx': 3}, 'base': {}, 'spatial7': {'nx': 7},
     'u17': {'nu': 17}, 'u21': {'nu': 21}, 'mu13': {'nmu': 13}, 'mu17': {'nmu': 17},
     'dt_half': {'dt': DT_VALUES[1]}, 'dt_quarter': {'dt': DT_VALUES[2]},
+    'dt_eighth': {'dt': DT_VALUES[3]}, 'dt_sixteenth': {'dt': DT_VALUES[4]},
     'u_tail': {'umax': 5.}, 'mu_tail': {'mumax': 24.},
     'u_wide': {'umax': 5., 'nu': 29}, 'mu_wide': {'mumax': 24., 'nmu': 25}}
 SEQUENCES = {'spatial': ['spatial3', 'base', 'spatial7'],
     'parallel_velocity': ['u17', 'u21', 'base'], 'magnetic_moment': ['mu13', 'mu17', 'base'],
-    'timestep': ['base', 'dt_half', 'dt_quarter'], 'parallel_tail': ['base', 'u_tail'],
+    'timestep': ['base', 'dt_half', 'dt_quarter', 'dt_eighth', 'dt_sixteenth'], 'parallel_tail': ['base', 'u_tail'],
     'moment_tail': ['base', 'mu_tail'], 'wider_parallel_quadrature': ['u_tail', 'u_wide'],
     'wider_moment_quadrature': ['mu_tail', 'mu_wide']}
 
@@ -280,7 +297,13 @@ with progress('Evolve positive nonuniform boxes and compare independent refineme
             print(f'  Starting {field.kind}, {name}: {CASES[name]}', flush=True)
             save_evidence(OUTPUT/'partial_case.json', {'status': 'incomplete',
                 'provenance_id': provenance_id, 'field': field.kind, 'case': name, 'history': []})
-            row = evaluate(field, **CASES[name])
+            try:
+                row = evaluate(field, **CASES[name], case_name=name)
+            except Exception as error:
+                partial = json.loads((OUTPUT/'partial_case.json').read_text())
+                partial.update(status='failed', error_type=type(error).__name__, error=str(error))
+                save_evidence(OUTPUT/'partial_case.json', partial)
+                raise
             row.update({'case': name, 'provenance_id': provenance_id})
             rows.append(row);checkpoint()
             (OUTPUT/'partial_case.json').unlink(missing_ok=True)

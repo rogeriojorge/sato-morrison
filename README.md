@@ -77,9 +77,9 @@ The 216-node pair calculation matches this oracle to relative error `2.36e-16`. 
 
 ![Direct positive-amplitude mirror calculations approach finite-node limits below the uniform value; velocity refinement removes the discrepancy and satisfies an analytic bound.](results/near_uniform/near_uniform.png)
 
-For the local frozen quadratic form with test function $h=\mu x$, equal-$u$ node pairs carry nonzero quadrature weight. Their projector limit differs from the literal uniform prescription. The resulting deficit falls from **34.6% at 8 nodes to 4.76% at 64 nodes**, in agreement with the derived positive-weight bound. Forty direct calculations independently check the analytic limit and common-chart actions.
+For the local frozen quadratic form with test function $h=\mu x$, node pairs with equal $u$ carry nonzero quadrature weight. Their projector limit differs from the literal uniform prescription. The resulting deficit falls from **34.6% at 8 nodes to 4.76% at 64 nodes**, in agreement with the derived positive-weight bound. Forty direct calculations independently check the analytic limit and common-chart actions.
 
-This is a finite-quadrature limitation. The equal-$u$ set has zero continuum measure, and refinement restores the uniform limit. The plotted quantity is a frozen quadratic form, not equilibrium entropy production or a physical discontinuity. [Script](examples/18_near_uniform.py) · [Inputs and checks](results/near_uniform/summary.json) · [Derivation](notes/implementation.pdf)
+This is a finite-quadrature limitation. The set with equal $u$ has zero continuum measure, and refinement restores the uniform limit. The plotted quantity is a frozen quadratic form, not equilibrium entropy production or a physical discontinuity. [Script](examples/18_near_uniform.py) · [Inputs and checks](results/near_uniform/summary.json) · [Derivation](notes/implementation.pdf)
 
 </details>
 
@@ -224,7 +224,7 @@ Run from the repository root with the environment above. Every script prints its
 | `examples/09_visual_summary.py` | Operator animation and README panels; uses recorded results |
 | `examples/10_encounter_ensemble.py` | Bounded incoming flux and held-out scattering table |
 | `examples/11_field_velocity.py` | Nonuniform initial-production velocity/tail convergence |
-| `examples/12_nonuniform_evolution.py` | Positive lagged-mobility evolution; 39 independent refinement cases |
+| `examples/12_nonuniform_evolution.py` | Positive lagged-mobility evolution; 45 independent refinement cases |
 | `examples/13_encounter_validation.py` | Wider incoming-flux coverage and independent table validation |
 | `examples/14_geometry_sensitivity.py` | Local production derivative, independent pair form and finite-difference plateau |
 | `examples/15_dipole_obstruction.py` | Matched constraints, different flux populations and a positive distance floor |

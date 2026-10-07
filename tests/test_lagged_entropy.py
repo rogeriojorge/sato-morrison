@@ -12,7 +12,8 @@ import pytest
 from functools import lru_cache
 from scipy.integrate import solve_ivp
 from scipy.linalg import cho_factor,cho_solve
-from sato_morrison.collisions import cartesian_grid,dense_mobility
+from sato_morrison.collisions import (cartesian_grid,dense_mobility,uniform_grid,
+    mobility_channel_covariance,mobility_action)
 from sato_morrison.geometry import Field
 from sato_morrison.reference import gauss_interval
 from sato_morrison.solver import (StepFailure,lagged_entropy_compiler,
@@ -75,13 +76,17 @@ def make_lagged_case(field):
 def lagged_case(request):return make_lagged_case(request.param)
 
 
-def test_lagged_endpoint_matches_explicit_gram_and_preserves_nulls(lagged_case):
+@pytest.mark.parametrize('axis',[None,0],ids=['diagonal','xline'])
+def test_lagged_endpoint_matches_explicit_gram_and_preserves_nulls(lagged_case,axis):
     _,explicit,grid,initial,matrix,_,nulls,compiler=lagged_case
+    if axis is not None:
+        compiler=lagged_entropy_compiler(grid,collision_strength=.1,chunk_size=64,
+            preconditioner_axis=axis)
     weights=np.asarray(grid.weights);old=weights*initial
     for dt in (.005,.1,1.):
         expected=convex_dense_endpoint(weights,initial,matrix,dt)
         answer=lagged_entropy_step(grid,initial,dt,collision_strength=.1,
-            compiled=compiler,chunk_size=64,rtol=1e-12)
+            compiled=compiler,chunk_size=64,rtol=1e-12,preconditioner_axis=axis)
         actual=np.asarray(answer.f);delta=weights*(actual-initial)
         error=np.linalg.norm(weights*(actual-expected)/np.sqrt(old))/np.sqrt(old.sum())
         assert error<2e-10 and actual.min()>0
@@ -92,6 +97,7 @@ def test_lagged_endpoint_matches_explicit_gram_and_preserves_nulls(lagged_case):
         assert np.max(np.abs(marginal))/old.sum()<2e-10
         assert answer.entropy_change>=-answer.entropy_defect_bound
         assert answer.generalized_KL>=0
+        assert abs(answer.entropy_identity_error+answer.residual_entropy_defect)<=2*answer.entropy_defect_bound
         assert abs(answer.entropy_change-answer.entropy_production-answer.generalized_KL)<=2*answer.entropy_defect_bound
 
 
@@ -118,7 +124,7 @@ def test_lagged_failures_remain_visible(lagged_case):
 
 
 
-@pytest.mark.parametrize('mismatch',['strength','grid','chunk','budget'])
+@pytest.mark.parametrize('mismatch',['strength','grid','chunk','budget','axis'])
 def test_lagged_bound_compiler_rejects_configuration_mismatch(mismatch):
     from dataclasses import replace
     _,_,grid,initial,_,_,_,compiler=make_lagged_case(Field('dipole'))
@@ -127,7 +133,8 @@ def test_lagged_bound_compiler_rejects_configuration_mismatch(mismatch):
     if mismatch=='strength':options['collision_strength']=.2
     elif mismatch=='grid':target=replace(grid)
     elif mismatch=='chunk':options['chunk_size']=32
-    else:options['linear_max_steps']=999
+    elif mismatch=='budget':options['linear_max_steps']=999
+    else:options['preconditioner_axis']=0
     with pytest.raises(ValueError,match='configuration mismatch'):
         lagged_entropy_step(target,initial,.1,compiled=compiler,rtol=1e-12,**options)
 
@@ -153,3 +160,60 @@ def test_lagged_first_order_against_independent_pair_ODE():
         errors.append(np.linalg.norm((weights*state-reference.y[:,-1])/np.sqrt(old))/np.sqrt(old.sum()))
     assert all(b<a for a,b in zip(errors,errors[1:]))
     assert .8<np.log2(errors[-2]/errors[-1])<1.2
+
+
+@pytest.mark.parametrize('axis',[1,-1,.0,False,True,'0',np.int64(0)])
+def test_lagged_invalid_preconditioner_axis_rejected(axis):
+    _,_,grid,initial,_,_,_,_=make_lagged_case(Field('dipole'))
+    with pytest.raises(ValueError,match='preconditioner_axis'):
+        lagged_entropy_compiler(grid,preconditioner_axis=axis)
+    with pytest.raises(ValueError,match='preconditioner_axis'):
+        lagged_entropy_step(grid,initial,.005,preconditioner_axis=axis)
+
+
+def test_channel_covariance_matches_explicit_pair_projectors(lagged_case):
+    _,explicit,compact,initial,_,_,_,_=lagged_case
+    count=len(explicit.derivatives)
+    coefficients=np.asarray(explicit.coefficients).reshape(explicit.size,5,count)
+    expected=np.zeros((explicit.size,count))
+    for left,right,weight,direction in zip(np.asarray(explicit.left),
+            np.asarray(explicit.right),np.asarray(explicit.pair_weights),
+            np.asarray(explicit.kernel_directions)):
+        projector=np.eye(5)-np.outer(direction,direction)
+        pair=.1*weight*initial[left]*initial[right]
+        for node in (left,right):
+            spatial=(projector@coefficients[node])[:3]
+            expected[node]+=pair*np.sum(spatial**2,axis=0)
+    assert np.all(expected>=0)
+    for chunk in (1,64):
+        actual=np.asarray(mobility_channel_covariance(compact,initial,
+            collision_strength=.1,chunk_size=chunk)).reshape(explicit.size,count)
+        np.testing.assert_allclose(actual,expected,rtol=4e-12,atol=2e-16)
+    zero=np.asarray(mobility_channel_covariance(compact,initial,
+        collision_strength=0.,chunk_size=64))
+    np.testing.assert_array_equal(zero,0.)
+
+
+def test_xline_single_active_channel_uniform_corner():
+    # Uniform construction retains a u channel whose I_x P action is exactly
+    # zero. Remove that inactive channel to exercise the empty-other sum.
+    from dataclasses import replace
+    x=2*np.pi*np.arange(8)/8;u=np.array([-1.,0.,1.]);mu=np.array([.1,.8])
+    explicit=uniform_grid(x,u,mu)
+    full=uniform_grid(x,u,mu,compact=True)
+    grid=replace(full,derivatives=full.derivatives[:1],
+        coefficients=full.coefficients[...,:1])
+    xx,uu,_=np.meshgrid(x,u,mu,indexing='ij')
+    initial=np.exp(-np.asarray(grid.energy))*(1+.1*np.cos(xx.ravel())*uu.ravel())
+    matrix=dense_mobility(explicit,initial,collision_strength=.1)
+    probe=np.cos(.3*np.arange(grid.size))
+    np.testing.assert_allclose(np.asarray(mobility_action(grid,initial,probe,
+        collision_strength=.1,chunk_size=64)),matrix@probe,rtol=3e-12,atol=2e-14)
+    compiler=lagged_entropy_compiler(grid,collision_strength=.1,chunk_size=64,
+        preconditioner_axis=0)
+    actual=lagged_entropy_step(grid,initial,.1,collision_strength=.1,
+        compiled=compiler,chunk_size=64,preconditioner_axis=0,rtol=1e-12)
+    weights=np.asarray(grid.weights);old=weights*initial
+    expected=convex_dense_endpoint(weights,initial,matrix,.1)
+    error=np.linalg.norm(weights*(np.asarray(actual.f)-expected)/np.sqrt(old))/np.sqrt(old.sum())
+    assert error<2e-10 and actual.minimum>0

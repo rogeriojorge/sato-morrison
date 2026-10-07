@@ -130,8 +130,8 @@ def current_execution():
 
 def test_case_jobs_are_distinct_and_partial_evidence_cannot_pass(current_execution):
     cases = current_execution['CASES']
-    assert len(cases) == 13
-    assert len({json.dumps(case, sort_keys=True) for case in cases.values()}) == 13
+    assert len(cases) == 15
+    assert len({json.dumps(case, sort_keys=True) for case in cases.values()}) == 15
     with pytest.raises(ValueError):
         current_execution['select_names']('base,base', cases)
     with pytest.raises(ValueError):
@@ -155,3 +155,15 @@ def test_current_campaign_rejects_historical_resume(monkeypatch):
     monkeypatch.setenv('SM_EVOLUTION_RESUME', str(SEED))
     with pytest.raises(ValueError, match='cannot resume historical discrete-gradient'):
         exec(compile(ast.Module(body=[node], type_ignores=[]), str(EXAMPLE), 'exec'), {'os': os})
+
+
+def test_fine_pair_pass_keeps_unresolved_coarse_bias(current_execution):
+    names=('entropy_gain_per_particle','final_production_per_particle',
+           'relaxation_moment_change_per_particle')
+    rows=[dict(nx=5,nu=25,nmu=21,umax=4.,mumax=20.,dt=dt,
+        **{name:value for name in names}) for dt,value in ((.005,2.),(.0025,1.001),(.00125,1.))]
+    result=current_execution['compare'](rows)
+    assert result['status']=='passed'
+    assert result['adjacent_comparisons'][0]['status']=='unresolved'
+    assert result['coarsest_to_finest']['status']=='unresolved'
+    assert result['coarsest_to_finest']['relative_changes'][names[0]]==1.

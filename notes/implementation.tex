@@ -1526,6 +1526,32 @@ residuals are recomputed independently of recursive PCG stopping. The checked
 host step rejects nonfinite populations, failed linear corrections,
 non-descent directions, failed backtracking and inconsistent entropy budgets.
 A compiled operator is associated with its grid and solver configuration.
+For a derivative channel $d$, the positive auxiliary covariance is
+\[
+ q_{i,d}=D w_X v_i f_i\sum_{j\ne i}v_jf_j
+             |I_XP_{ij}C_{i,d}|^2\ge0,
+\]
+where $v_i$ includes the velocity Jacobian and $C_{i,d}$ is the corresponding
+common-chart action column. The diagonal approximation is
+$\sum_d(D_d\circ D_d)^Tq_d$. The optional Cartesian $x$-line inverse instead
+retains $L_x=D_x^T\operatorname{diag}(q_x)D_x$ on each fixed
+$(y,z,u,\mu)$ line. Its entropy-scaled block is
+\[
+ B_x=\operatorname{diag}\!\left(\frac{n_+}{n_-}
+       +\Delta t\frac{\sum_{d\ne x}(D_d\circ D_d)^Tq_d}{n_-}\right)
+       +\Delta t\operatorname{diag}(n_-^{-1/2})L_x
+                   \operatorname{diag}(n_-^{-1/2}).
+\]
+It is SPD for strictly positive finite populations: the first mass term is
+positive diagonal and the remaining terms are PSD. Batched Cholesky factors
+apply its inverse. This changes only PCG preconditioning; the full Hessian
+and all null constraints remain unchanged. Independent explicit-pair
+projectors check the covariance, and both inverse choices converge to the
+same separately assembled dense roots. No uniform conditioning bound follows.
+The campaign uses this line inverse and a 3000-iteration linear budget;
+failed residual checks remain fatal. API defaults retain the diagonal inverse
+and a 1000-iteration budget.
+
 Independent explicit-pair dense roots and a separately assembled pair ODE
 check tiny mirror, dipole and nonaxisymmetric grids. These method checks do
 not resolve the thermal velocity domain or establish a continuum limit.
@@ -2012,17 +2038,20 @@ runner. These are observed run costs, not a matched-error speedup comparison.
 
 
 The current \texttt{12\_nonuniform\_evolution.py} instead uses
-\eqref{eq:laggedentropy}. Its thirteen predefined cases per field independently
+\eqref{eq:laggedentropy}. Its fifteen predefined cases per field independently
 vary spatial order, parallel-velocity and magnetic-moment order, timestep,
 velocity tails and quadrature on each expanded domain. Baseline values are
 $5^3\times25\times21$ nodes, $D=0.1$, $T=0.02$, and $\Delta t=0.005$;
-the first-order timestep sequence is $0.005,0.0025,0.00125$.
+the first-order timestep sequence is $0.005,0.0025,0.00125,0.000625,0.0003125$.
+Every adjacent difference and the coarsest-to-finest difference are retained;
+a finest-pair pass does not certify the original baseline timestep or jointly
+refine the spatial and temporal discretizations.
 The common $1\%$ observable-change target is retained. All units are normalized;
 these times use the freely prescribed coefficient.
 
 \texttt{SM\_EVOLUTION\_FIELDS} and \texttt{SM\_EVOLUTION\_CASES} select
 predefined independent execution jobs, leaving their scientific inputs fixed.
-Without filters the script runs all thirty-nine cases. The CI driver
+Without filters the script runs all forty-five cases. The CI driver
 separates each field/case pair and preserves failed or partial evidence.
 Historical discrete-gradient checkpoints are explicitly rejected by this
 new campaign. A completed selected job is distinct from a passing refinement

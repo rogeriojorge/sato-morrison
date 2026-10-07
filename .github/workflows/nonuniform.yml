@@ -8,9 +8,10 @@ jobs:
     timeout-minutes: 360
     strategy:
       fail-fast: false
+      max-parallel: 12
       matrix:
         field: [mirror, dipole, nonaxisymmetric]
-        case: [spatial3, base, spatial7, u17, u21, mu13, mu17, dt_half, dt_quarter, u_tail, mu_tail, u_wide, mu_wide]
+        case: [spatial3, base, spatial7, u17, u21, mu13, mu17, dt_half, dt_quarter, dt_eighth, dt_sixteenth, u_tail, mu_tail, u_wide, mu_wide]
     steps:
       - uses: actions/checkout@v4
         with:

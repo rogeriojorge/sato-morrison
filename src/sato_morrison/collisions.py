@@ -442,11 +442,11 @@ def cartesian_grid(x, y, z, u, mu, field, *, mass=1., charge=1.,
         f'{field.kind} collision-only box; natural no-flux collision boundaries',compact=compact)
 
 
-def lumped_mobility_diagonal(grid,f,*,collision_strength=1.,chunk_size=65536):
-    """Sum (D_d²)^T q_d with q_d positive partner covariance channels.
+def mobility_channel_covariance(grid,f,*,collision_strength=1.,chunk_size=65536):
+    """Positive partner covariance q_d for auxiliary preconditioners.
 
-    Cross-derivative and cross-pair terms are omitted only in this diagonal
-    approximation. They remain in the exact mobility and Hessian operators.
+    q_i,d = D wX v_i f_i sum(j!=i) v_j f_j ||I_x P_ij C_i,d||².
+    All derivative and pair cross terms remain in the exact mobility/Hessian.
     """
     if isinstance(collision_strength, Real) and (not np.isfinite(collision_strength) or collision_strength<0):
         raise ValueError('finite nonnegative collision strength required')
@@ -476,8 +476,19 @@ def lumped_mobility_diagonal(grid,f,*,collision_strength=1.,chunk_size=65536):
         q=collision_strength*(wx[x]*vw[x,i]*population[x,i])[:,None]*jnp.sum((vw[x]*population[x])[...,None]*channel,axis=1)
         return result.at[target].add(jnp.where(valid[:,None],q,0.))
     q=jax.lax.fori_loop(0,blocks,body,jnp.zeros((grid.size,count_d),dtype=f.dtype)).reshape(grid.shape+(count_d,))
-    diagonal=jnp.zeros(grid.shape,dtype=f.dtype)
+    return q
+
+
+def mobility_channel_diagonals(grid,q):
+    """Positive channel diagonals (D_d squared).T q_d, before summing."""
+    values=[]
     for component,(axis,derivative) in enumerate(grid.derivatives):
         local=jnp.tensordot((derivative*derivative).T,q[...,component],axes=(1,axis))
-        diagonal=diagonal+jnp.moveaxis(local,0,axis)
-    return diagonal.reshape(-1)
+        values.append(jnp.moveaxis(local,0,axis))
+    return jnp.stack(values,axis=-1)
+
+
+def lumped_mobility_diagonal(grid,f,*,collision_strength=1.,chunk_size=65536):
+    """Positive approximate diagonal for preconditioning only, not exact K."""
+    q=mobility_channel_covariance(grid,f,collision_strength=collision_strength,chunk_size=chunk_size)
+    return jnp.sum(mobility_channel_diagonals(grid,q),axis=-1).reshape(-1)
