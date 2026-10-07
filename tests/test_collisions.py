@@ -162,3 +162,62 @@ def test_direction_setup_rejects_exact_zero_and_matches_explicit_kernel():
     flow=np.asarray(grid.action(grid.energy))
     xi=flow[np.asarray(grid.left)]-flow[np.asarray(grid.right)]
     np.testing.assert_allclose(np.asarray(grid.kernels),_kernel(xi),atol=2e-15,rtol=2e-14)
+
+
+@pytest.mark.parametrize('compact',[False,True])
+def test_local_uniform_analytic_limit_with_positive_quadrature(compact):
+    nodes,weights=np.polynomial.legendre.leggauss(5)
+    u=2*nodes;wu=2*weights
+    mu=.8+.7*nodes;wm=.7*weights
+    x=np.arange(5)*2*np.pi/5
+    grid=uniform_grid(x,u,mu,magnetic_field=1.4,velocity_weights=(wu,wm),compact=compact)
+    f=jnp.exp(-grid.energy)
+    masses=np.asarray(grid.weights*f).reshape(grid.shape)[0]/(2*np.pi/5)
+    neutral=u[:,None]**2-np.sum(masses*u[:,None]**2)/np.sum(masses)
+    h=np.broadcast_to(np.cos(x)[:,None,None]*neutral,grid.shape).ravel()
+    rate=np.sum(masses)/(1.4**2)
+    np.testing.assert_allclose(linear_rhs(grid,f,h),-rate*h,atol=3e-13,rtol=2e-13)
+    if compact:
+        assert grid.left is None and grid.kernel_directions is None
+        assert grid.pair_count==5*25*24//2
+
+
+def test_compact_local_ordered_contraction_matches_independent_dense():
+    from sato_morrison.collisions import cartesian_grid
+    from sato_morrison.geometry import Field
+    axes=[np.linspace(a,b,3) for a,b in ((.8,1.2),(-.2,.2),(.1,.5))]
+    u=np.linspace(-1,1,3);mu=np.array([.1,.8])
+    field=Field('mirror',amplitude=.15)
+    explicit=cartesian_grid(*axes,u,mu,field)
+    compact=cartesian_grid(*axes,u,mu,field,compact=True)
+    np.testing.assert_array_equal(compact.weights,explicit.weights)
+    np.testing.assert_array_equal(compact.energy,explicit.energy)
+    rng=np.random.default_rng(88)
+    f=jnp.exp(-compact.energy+.05*jnp.asarray(rng.normal(size=compact.size)))
+    matrix=dense_mobility(explicit,f)
+    operator=jax.jit(lambda h:mobility_action(compact,f,h,chunk_size=19))
+    for _ in range(5):
+        h=rng.normal(size=compact.size)
+        np.testing.assert_allclose(operator(h),matrix@h,atol=2e-13,rtol=2e-12)
+    np.testing.assert_allclose(matrix,matrix.T,atol=1e-14)
+    assert np.linalg.eigvalsh(matrix).min()>-1e-12
+    for invariant in [np.ones(compact.size),compact.energy,(compact.mu_index==0).astype(float)]:
+        np.testing.assert_allclose(operator(invariant),0,atol=2e-13)
+    for chunk in (1,6,17,1000):
+        test=jnp.asarray(rng.normal(size=compact.size))
+        np.testing.assert_allclose(jax.jit(lambda v:mobility_action(compact,f,v,chunk_size=chunk))(test),
+                                   matrix@np.asarray(test),atol=2e-13,rtol=2e-12)
+    with pytest.raises(ValueError,match='explicit-pair'):
+        dense_mobility(compact,f)
+
+
+def test_compact_zero_set_and_quadrature_fail_visibly():
+    from sato_morrison.collisions import _complete_grid,derivative_matrix
+    derivative=derivative_matrix(np.linspace(-1,1,3))
+    with pytest.raises(ValueError,match='zero pair energy direction'):
+        _complete_grid((3,3,3),((0,derivative),(1,derivative)),np.zeros((3,3,3,5,2)),
+                       np.ones(3),np.ones(9),np.ones((3,3,3)),'zero',compact=True)
+    with pytest.raises(ValueError,match='only for spatially local'):
+        small_grid(model='sm_finite_range',compact=True,spatial_kernel=np.eye(5))
+    with pytest.raises(ValueError,match='quadrature weights'):
+        small_grid(velocity_weights=(np.ones(3),np.array([1.,0.,1.])))
