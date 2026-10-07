@@ -147,12 +147,16 @@ def test_uniform_fixed_density_D_and_B_derivatives_against_rebuilt_grids():
         return float(jnp.vdot(nodal_mass*h,value))
     point=jnp.array([.7,1.3]);ad=np.asarray(jax.grad(differentiable)(point))
     assert np.all(np.abs(ad)>1e-4)
+    H=float(jnp.sum(mass*h*h));D,B=map(float,point);denominator=1+.2*D/B**2
+    expected=np.array([-.2*H/(B**2*denominator**2),.4*D*H/(B**3*denominator**2)])
+    np.testing.assert_allclose(ad,expected,rtol=2e-10)
+    np.testing.assert_allclose(differentiable(point),H/denominator,rtol=2e-12)
     errors=[]
-    for eps in (1e-2,3e-3,1e-3,3e-4,1e-4):
+    for eps in (1e-2,3e-3,1e-3,3e-4,1e-4,3e-5,1e-5,3e-6):
         fd=np.array([(rebuilt(.7+eps,1.3)-rebuilt(.7-eps,1.3))/(2*eps),
             (rebuilt(.7,1.3+eps)-rebuilt(.7,1.3-eps))/(2*eps)])
         errors.append(np.max(np.abs((fd-ad)/ad)))
-    assert errors[-1]<2e-7 and errors[-1]<errors[0]/100
+    assert max(errors[-3:])<2e-8 and min(errors[-3:])<errors[0]/10000
 
 
 def test_matrix_free_thermal_tails_and_accumulated_conservation():

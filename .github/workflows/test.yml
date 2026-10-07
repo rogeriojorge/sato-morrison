@@ -1,5 +1,13 @@
 name: tests
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      nonuniform:
+        description: Run the complete nonuniform evolution campaign
+        type: boolean
+        default: false
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -13,3 +21,6 @@ jobs:
         env:
           JAX_ENABLE_X64: 'true'
           MPLBACKEND: Agg
+  nonuniform:
+    if: github.event_name == 'workflow_dispatch' && inputs.nonuniform
+    uses: ./.github/workflows/nonuniform.yml

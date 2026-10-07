@@ -26,8 +26,8 @@ BOUNDS = [(.8, 1.2), (-.2, .2), (.1, .5)]
 NX, NU, NMU = 5, 25, 21
 X_ORDERS, U_ORDERS, MU_ORDERS = [3, 5, 7], [17, 21, 25], [13, 17, 21]
 U_MAX, MU_MAX = 4., 20.
-D, FINAL_TIME, DT = .1, .06, .01
-DT_VALUES = [.02, .01, .005]
+D, FINAL_TIME, DT = .1, .02, .005
+DT_VALUES = [.01, .005, .0025]
 CHUNK, NEWTON_RTOL = 1048576, 1e-12
 RELATIVE_TARGET = .01
 OUTPUT = Path(__file__).resolve().parents[1] / 'results' / 'nonuniform_evolution'
@@ -64,10 +64,21 @@ def evaluate(field, nx=NX, nu=NU, nmu=NMU, umax=U_MAX, mumax=MU_MAX, dt=DT):
     strength = np.linalg.norm(np.asarray(jax.vmap(lambda p: field_vector(p, field))(
         jnp.asarray(positions))), axis=1).reshape(xx.shape)
     x, y, z, uu, mm = np.meshgrid(*axes, u, mu, indexing='ij')
-    initial = jnp.exp(-grid.energy-.2*mm.ravel()+.1*jnp.sin(x.ravel())*uu.ravel()+.04*y.ravel()*mm.ravel())
+    log_equilibrium=-grid.energy-.2*mm.ravel()
+    observable=jnp.asarray(np.sin(np.pi*y.ravel()/.4)*uu.ravel())
+    initial = jnp.exp(log_equilibrium+.1*observable)
     number = float(jnp.sum(grid.weights*initial))
     initial_entropy = float(entropy(initial, grid.weights))
-    observable = jnp.asarray(np.sin(x.ravel())*uu.ravel())
+    reference=jnp.exp(log_equilibrium)
+    reference=reference*number/jnp.sum(grid.weights*reference)
+    log_reference=jnp.log(reference)
+    initial_relative_entropy=float(jnp.sum(grid.weights*(initial*(jnp.log(initial)-log_reference)-initial+reference)))
+    def perturbation_statistics(state):
+        perturbation=jnp.log(state)-log_reference
+        mean=float(jnp.sum(grid.weights*state*perturbation)/number)
+        variance=float(jnp.sum(grid.weights*state*(perturbation-mean)**2)/number)
+        return {'mean':mean,'variance':variance}
+    initial_perturbation=perturbation_statistics(initial)
     moment0 = float(jnp.vdot(grid.weights*initial, observable))
     diagnostics = continuum_moments(field, xx, yy, zz, strength)
     diagnostics = {name: jnp.asarray(np.broadcast_to(value[..., None, None], grid.shape).ravel())
@@ -125,12 +136,17 @@ def evaluate(field, nx=NX, nu=NU, nmu=NMU, umax=U_MAX, mumax=MU_MAX, dt=DT):
         'nodes': grid.size, 'conceptual_unordered_pairs': grid.pair_count,
         'stored_grid_bytes': sum(array.nbytes for array in stored),
         'pair_workspace_budget': CHUNK, 'minimum_discrete_grad_B': minimum_grad_b,
+        'minimum_B':float(strength.min()),'maximum_B':float(strength.max()),
         'u_quadratic_derivative_error': reproduction, 'number': number,
         'entropy_gain_per_particle': gain/number,
+        'initial_relative_entropy_per_particle':initial_relative_entropy/number,
+        'relative_entropy_decrease_fraction':gain/initial_relative_entropy,
+        'initial_perturbation':initial_perturbation,'final_perturbation':perturbation_statistics(state),
         'entropy_telescoping_error': gain-sum(step['entropy_change'] for step in history),
         'initial_production_per_particle': initial_production/number,
         'final_production_per_particle': final_production/number,
         'relaxation_moment_change_per_particle': (float(jnp.vdot(grid.weights*state, observable))-moment0)/number,
+        'relaxation_moment_decrease_fraction':1-float(jnp.vdot(grid.weights*state,observable))/moment0,
         'continuum_invariant_errors': continuous, 'setup_s': setup_s, 'history': history,
         'load_average_start': load_start, 'load_average_end': os.getloadavg(), 'status': 'passed'}
     jax.clear_caches()
@@ -159,10 +175,10 @@ def dense_reference_check():
         spatial_weights=[item[1] for item in spatial],spatial_discretization='polynomial',
         compact=method=='krylov') for method in ('dense','krylov')}
     x,y,z,uu,mm=np.meshgrid(*axes,u,mu,indexing='ij')
-    initial=jnp.exp(-grids['dense'].energy-.2*mm.ravel()+.1*jnp.sin(x.ravel())*uu.ravel()+.04*y.ravel()*mm.ravel())
+    initial=jnp.exp(-grids['dense'].energy-.2*mm.ravel()+.1*jnp.sin(np.pi*y.ravel()/.4)*uu.ravel())
     compilers={method:discrete_gradient_compiler(grid,method=method,collision_strength=D,chunk_size=64)
                for method,grid in grids.items()}
-    endpoints={};timings={};errors={}
+    endpoints={};timings={};compile_timings={};errors={}
     for method,grid in grids.items():
         samples=[]
         for repeat in range(4):
@@ -173,6 +189,8 @@ def dense_reference_check():
             state.block_until_ready()
             if repeat>0:
                 samples.append(perf_counter()-start)
+            else:
+                compile_timings[method]=perf_counter()-start
         endpoints[method]=state;timings[method]=samples
         errors[method]=invariant_diagnostics(grid,state,initial)
     mass=grids['dense'].weights*initial
@@ -182,6 +200,7 @@ def dense_reference_check():
         raise RuntimeError('tiny independent dense matched endpoint failed')
     jax.clear_caches()
     return {'nodes':grids['dense'].size,'dt':FINAL_TIME/3,'steps':3,'matched_relative_entropy_metric_error':matched,
+            'compile_and_first_three_step_wall_s':compile_timings,
             'warm_three_step_wall_s':timings,'invariants':errors,'status':'passed',
             'description':'Explicit unordered pairs+denseNewton versus compact ordered targets+prepared Newton-GMRES; same initial state and discrete equation; compilation excluded after one warm traversal.'}
 
@@ -193,7 +212,7 @@ inputs = {'fields': [field.__dict__ for field in FIELDS], 'bounds': BOUNDS,
     'pair_chunk': CHUNK, 'relative_refinement_target': RELATIVE_TARGET,
     'spatial_discretization':'global Lagrange polynomial derivative on positive Gauss-Legendre quadrature',
     'velocity_discretization':'local quadratic u derivative; positive Gauss-Legendre u/mu quadrature',
-    'initial': 'exp(-E-.2mu+.1sin(x)u+.04y*mu)', 'seed': None}
+    'initial': 'exp(-E-.2mu+.1sin(pi*y/.4)*u)', 'seed': None}
 metadata = run_metadata(inputs, model='sm_local_nonlinear discrete-energy projector',
     boundary='natural no-flux collision-only Cartesian boxes')
 metadata['limitations'] = ('Independent finite-time refinement checks at fixed other parameters; '
@@ -201,6 +220,7 @@ metadata['limitations'] = ('Independent finite-time refinement checks at fixed o
     'Finite spatial polynomial spaces may lift continuum invariants: flux/potential moments are measured '
     'as scheme errors, never projected or interpreted as physical relaxation. Tail-domain and '
     'wider-domain quadrature checks are separate. Timings include concurrent unrelated machine load.')
+metadata['relaxation_diagnostic']='Relative entropy to mass-normalized exp(-E-.2mu) decreases by the entropy gain because its logarithm is a discrete collision invariant. This stationary reference is not asserted reachable under the additional continuum constraints. Mean/variance of log(f/reference) and the sin(pi*y/.4)*u moment are measured separately.'
 rows = [];checks = [];reference_check=None
 
 
@@ -229,7 +249,12 @@ with progress('Evolve nonuniform boxes and compare independent finite-time refin
             'wider_parallel_quadrature': [get(umax=5.), get(umax=5., nu=29)],
             'wider_moment_quadrature': [get(mumax=24.), get(mumax=24., nmu=25)]}
         check = {'field': field.kind, **{name: compare(sequence) for name, sequence in sequences.items()}}
-        check['status'] = 'passed' if all(check[name]['status']=='passed' for name in sequences) else 'unresolved'
+        base=get()
+        check['appreciable_relaxation']={'relative_entropy_decrease_fraction':base['relative_entropy_decrease_fraction'],
+            'moment_decrease_fraction':base['relaxation_moment_decrease_fraction'],
+            'status':'passed' if base['relative_entropy_decrease_fraction']>.1 and base['relaxation_moment_decrease_fraction']>.05 else 'unresolved'}
+        check['status'] = 'passed' if all(check[name]['status']=='passed' for name in
+            [*sequences,'appreciable_relaxation']) else 'unresolved'
         checks.append(check);checkpoint()
         print(f'  {field.kind} refinement status: {check["status"]}; '
               f'{[(name, check[name]["relative_changes"]) for name in sequences]}', flush=True)
