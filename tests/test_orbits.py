@@ -196,3 +196,45 @@ def test_mirror_bounce_integral_and_turning_point():
         np.testing.assert_array_equal(samples[:,4],np.full(81,mu))
     assert deviations[1]<2e-10 and deviations[1]<deviations[0]/30
     assert error<1e-11
+
+
+@pytest.mark.parametrize('field',[Field('uniform'),Field('mirror',amplitude=.15),
+    Field('toroidal'),Field('dipole'),Field('nonaxisymmetric',amplitude=.03)],
+    ids=lambda field:field.kind)
+def test_stationary_density_zero_gamma(field):
+    from sato_morrison.geometry import field_vector
+    from sato_morrison.reference import gauss_interval
+    beta,mass=1.2,1.7
+    positions=jnp.array([[.8,-.2,.1],[1.,.15,.3],[1.2,.2,.5]])
+    strength=np.asarray(jax.vmap(lambda x:jnp.linalg.norm(field_vector(x,field)))(positions))
+    u,wu=gauss_interval(96,-8,8);mu,wm=gauss_interval(96,0,60)
+    # Independent separable velocity quadrature with the actual mu-chart measure.
+    gaussian=np.dot(wu,np.exp(-beta*mass*u*u/2))
+    density=gaussian*strength*(np.exp(-beta*strength[:,None]*mu)@wm)
+    exact=np.sqrt(2*np.pi/(beta*mass))/beta
+    np.testing.assert_allclose(density,exact,rtol=3e-12)
+    assert np.ptp(density)/exact<3e-12
+
+
+def test_stationary_density_controlled_weak_mirror_limit():
+    from sato_morrison.geometry import field_vector
+    from sato_morrison.reference import gauss_interval
+    beta,mass,gamma,b0=1.2,1.7,.3,1.4
+    positions=jnp.array([[.8,-.2,.1],[1.,.15,.3],[1.2,.2,.5]])
+    u,wu=gauss_interval(96,-8,8);mu,wm=gauss_interval(96,0,60)
+    gaussian=np.dot(wu,np.exp(-beta*mass*u*u/2))
+    normalizer=np.sqrt(2*np.pi/(beta*mass))/beta
+    density0=normalizer*b0/(b0+gamma)
+    # B(a)=B0+a*(z^2-R^2/2)+O(a^2), derived from the vector field.
+    x,y,z=np.asarray(positions).T
+    slope=normalizer*gamma*(z*z-(x*x+y*y)/2)/(b0+gamma)**2
+    errors=[]
+    for amplitude in (.08,.04,.02):
+        field=Field('mirror',strength=b0,amplitude=amplitude)
+        strength=np.asarray(jax.vmap(lambda p:jnp.linalg.norm(field_vector(p,field)))(positions))
+        density=gaussian*strength*(np.exp(-beta*(strength[:,None]+gamma)*mu)@wm)
+        exact=normalizer*strength/(strength+gamma)
+        np.testing.assert_allclose(density,exact,rtol=3e-12)
+        errors.append(np.max(abs((density-density0)/amplitude-slope))/np.max(abs(slope)))
+    assert .45<errors[1]/errors[0]<.55 and .45<errors[2]/errors[1]<.55
+    assert errors[-1]<.007

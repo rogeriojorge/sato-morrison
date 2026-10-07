@@ -7573,6 +7573,16 @@
       "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37703141750",
       "log_sha256": "11ea36e766618143a111773388b904117bca5b89de279d1e631c036365c0dc5d",
       "scope": "Includes both entropy preconditioners, independent pair covariance and dense roots, near-uniform limits and nonfinite-evidence rejection. Thermal evolution campaign runs separately at3d842bee."
+    },
+    {
+      "source_commit": "e1bc1abf137bdea156844b21b3a37bc4e346a21e",
+      "command": "python -m pytest -q",
+      "passed": 187,
+      "elapsed_s": 163.38,
+      "environment": "Fresh Ubuntu CI installation",
+      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37704799094/job/113076483962",
+      "log_sha256": "94253449756b7192da0488ae0cf35287f13fc5b0c18a3d48e2d27c7809ecaa8a",
+      "scope": "Adds independent mirror-bounce quadrature, two unit maps with both charge signs and actual implicit-adjoint residual checks."
     }
   ],
   "additional_experiments": [
