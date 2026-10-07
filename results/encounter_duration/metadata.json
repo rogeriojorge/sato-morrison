@@ -1,0 +1,764 @@
+{
+  "model": "encounter",
+  "boundary": "same outgoing-plane events with independently extended flight budgets",
+  "units": "normalized",
+  "inputs": {
+    "prior_metadata_sha256": "c8f2626a09aa81e33d3826f5a4a6b80a892fe973b0d5cd5e33347997da193810",
+    "flight_time_factors": [
+      6.0,
+      12.0,
+      24.0,
+      48.0
+    ],
+    "active_max_steps": [
+      0.2,
+      0.1,
+      0.05
+    ],
+    "endpoint_distances": [
+      24.0,
+      32.0,
+      40.0
+    ],
+    "energy_target": 1e-08,
+    "timestep_moment_target": 0.001,
+    "endpoint_moment_target": 0.005,
+    "independent_pair_velocity_absolute_target": 1e-08,
+    "independent_pair_position_absolute_target": 1e-08,
+    "independent_pair_max_steps": [
+      0.05,
+      0.025
+    ],
+    "scope": "finite flight-budget diagnosis of exact previously failed nodes; original quadrature and interpolation failures retained",
+    "physical_inputs": {
+      "mass": 1.0,
+      "charge": 1.0,
+      "field": 2.0,
+      "strength": 0.03,
+      "screening": 3.0,
+      "theta": 0.5,
+      "theta_definition": "single-particle velocity variance k_B*T/m",
+      "training_bounds": [
+        [
+          1.2,
+          2.4
+        ],
+        [
+          0.7,
+          1.5
+        ],
+        [
+          0.2,
+          0.8
+        ]
+      ],
+      "training_orders": [
+        4,
+        4,
+        4,
+        16
+      ],
+      "holdout_count": 256,
+      "holdout_seed": 1301,
+      "second_moment_rms_target": 0.02,
+      "second_moment_p95_target": 0.05,
+      "impact_annuli": [
+        [
+          0.15,
+          0.4
+        ],
+        [
+          0.4,
+          0.8
+        ],
+        [
+          0.8,
+          1.2
+        ],
+        [
+          1.2,
+          2.4
+        ],
+        [
+          2.4,
+          4.8
+        ],
+        [
+          4.8,
+          8.0
+        ]
+      ],
+      "parallel_bounds": [
+        0.35,
+        3.0
+      ],
+      "perpendicular_bounds": [
+        0.0,
+        2.5
+      ],
+      "sobol_levels": [
+        32,
+        64,
+        128,
+        256
+      ],
+      "sobol_seed": 1307,
+      "replica_seed": 1308,
+      "phase_order": 16,
+      "relative_diffusion_target": 0.05,
+      "start_distance": 24.0,
+      "max_step": 0.2,
+      "rtol": 1e-10,
+      "reverse_checks": 16,
+      "boundary_distances": [
+        18.0,
+        24.0,
+        32.0
+      ],
+      "table_method": "periodic cubic c and logarithmic positive COM variance; reconstruct second and cross moments",
+      "coverage_method": "stratified incoming-flux inverse-CDF scrambled Sobol, explicit phase quadrature, independent replica",
+      "rate_scope": "conditional crossing moments per partner density; screening specified, no SM D inference or plasma lifetime"
+    },
+    "exact_failed_nodes": [
+      [
+        0.9938225266093732,
+        1.9056642462041216,
+        1.9668376625283577,
+        1.5707963267948966
+      ]
+    ]
+  },
+  "commit": "cd7dc1bda2bf30019dce1c581096a92edd939c6c",
+  "working_tree": "M README.md\n M tests/test_solver.py\n?? results/encounter_duration/\n?? results/scattering_table/validation_4096/",
+  "source_sha256": "88137a51db9e36c873116a9a281351991e3d1017bd2818e65392b90dbaaf34e5",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "M tests/test_solver.py",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "unset",
+    "OPENBLAS_NUM_THREADS": "unset",
+    "MKL_NUM_THREADS": "unset",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": true,
+  "experiment_dependency_sha256": {
+    "src/sato_morrison/controls.py": "ea673df34611bd68c60756fec2f335c9ebd10a705149ee22b68917d3102ec077",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+    "examples/17_encounter_duration.py": "72257d5b18b67b713e82c4fdbbf7f84514331a01f29f747d8b2441f715b47620"
+  },
+  "prior_evidence": {
+    "producer_commit": "52916fb6dbac953865a117988021eab218270f78",
+    "dependency_sha256": {
+      "src/sato_morrison/controls.py": "f5171a4d7049272e6ee97a9f4e5a6eb5ced940ff399fc5175ff290adac87f686",
+      "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+      "examples/13_encounter_validation.py": "050b728a3deaa05ee496f7739f866297ca20ed835dc6708105001116b30b2461"
+    },
+    "metadata_sha256": "c8f2626a09aa81e33d3826f5a4a6b80a892fe973b0d5cd5e33347997da193810",
+    "physical_inputs": {
+      "mass": 1.0,
+      "charge": 1.0,
+      "field": 2.0,
+      "strength": 0.03,
+      "screening": 3.0,
+      "theta": 0.5,
+      "theta_definition": "single-particle velocity variance k_B*T/m",
+      "training_bounds": [
+        [
+          1.2,
+          2.4
+        ],
+        [
+          0.7,
+          1.5
+        ],
+        [
+          0.2,
+          0.8
+        ]
+      ],
+      "training_orders": [
+        4,
+        4,
+        4,
+        16
+      ],
+      "holdout_count": 256,
+      "holdout_seed": 1301,
+      "second_moment_rms_target": 0.02,
+      "second_moment_p95_target": 0.05,
+      "impact_annuli": [
+        [
+          0.15,
+          0.4
+        ],
+        [
+          0.4,
+          0.8
+        ],
+        [
+          0.8,
+          1.2
+        ],
+        [
+          1.2,
+          2.4
+        ],
+        [
+          2.4,
+          4.8
+        ],
+        [
+          4.8,
+          8.0
+        ]
+      ],
+      "parallel_bounds": [
+        0.35,
+        3.0
+      ],
+      "perpendicular_bounds": [
+        0.0,
+        2.5
+      ],
+      "sobol_levels": [
+        32,
+        64,
+        128,
+        256
+      ],
+      "sobol_seed": 1307,
+      "replica_seed": 1308,
+      "phase_order": 16,
+      "relative_diffusion_target": 0.05,
+      "start_distance": 24.0,
+      "max_step": 0.2,
+      "rtol": 1e-10,
+      "reverse_checks": 16,
+      "boundary_distances": [
+        18.0,
+        24.0,
+        32.0
+      ],
+      "table_method": "periodic cubic c and logarithmic positive COM variance; reconstruct second and cross moments",
+      "coverage_method": "stratified incoming-flux inverse-CDF scrambled Sobol, explicit phase quadrature, independent replica",
+      "rate_scope": "conditional crossing moments per partner density; screening specified, no SM D inference or plasma lifetime"
+    },
+    "prior_failure_count": 1
+  },
+  "experiment_dependency_sha256_end": {
+    "src/sato_morrison/controls.py": "ea673df34611bd68c60756fec2f335c9ebd10a705149ee22b68917d3102ec077",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+    "examples/17_encounter_duration.py": "72257d5b18b67b713e82c4fdbbf7f84514331a01f29f747d8b2441f715b47620"
+  },
+  "experiment_dependencies_unchanged": true,
+  "results": {
+    "missing_populations": [
+      {
+        "annulus": [
+          0.15,
+          0.4
+        ],
+        "base_missing_count": 0,
+        "base_total": 4096,
+        "base_missing_fraction": 0.0,
+        "replica_missing_count": 0,
+        "replica_total": 2048,
+        "replica_missing_fraction": 0.0
+      },
+      {
+        "annulus": [
+          0.4,
+          0.8
+        ],
+        "base_missing_count": 0,
+        "base_total": 4096,
+        "base_missing_fraction": 0.0,
+        "replica_missing_count": 0,
+        "replica_total": 2048,
+        "replica_missing_fraction": 0.0
+      },
+      {
+        "annulus": [
+          0.8,
+          1.2
+        ],
+        "base_missing_count": 0,
+        "base_total": 4096,
+        "base_missing_fraction": 0.0,
+        "replica_missing_count": 1,
+        "replica_total": 2048,
+        "replica_missing_fraction": 0.00048828125
+      },
+      {
+        "annulus": [
+          1.2,
+          2.4
+        ],
+        "base_missing_count": 0,
+        "base_total": 4096,
+        "base_missing_fraction": 0.0,
+        "replica_missing_count": 0,
+        "replica_total": 2048,
+        "replica_missing_fraction": 0.0
+      },
+      {
+        "annulus": [
+          2.4,
+          4.8
+        ],
+        "base_missing_count": 0,
+        "base_total": 4096,
+        "base_missing_fraction": 0.0,
+        "replica_missing_count": 0,
+        "replica_total": 2048,
+        "replica_missing_fraction": 0.0
+      },
+      {
+        "annulus": [
+          4.8,
+          8.0
+        ],
+        "base_missing_count": 0,
+        "base_total": 4096,
+        "base_missing_fraction": 0.0,
+        "replica_missing_count": 0,
+        "replica_total": 2048,
+        "replica_missing_fraction": 0.0
+      }
+    ],
+    "failure_audits": [
+      {
+        "original_failure": {
+          "node": [
+            0.9938225266093732,
+            1.9056642462041216,
+            1.9668376625283577,
+            1.5707963267948966
+          ],
+          "distance": 24.0,
+          "charge": 1.0,
+          "reason": "Encounter failed to reach an outgoing plane: The solver successfully reached the end of the integration interval."
+        },
+        "budget_audit": [
+          {
+            "node": [
+              0.9938225266093732,
+              1.9056642462041216,
+              1.9668376625283577,
+              1.5707963267948966
+            ],
+            "distance": 24.0,
+            "flight_time_factor": 6.0,
+            "max_step": 0.2,
+            "status": "unresolved",
+            "reason": "Encounter failed to reach an outgoing plane: The solver successfully reached the end of the integration interval.",
+            "integration_diagnostics": {
+              "solver_success": true,
+              "solver_status": 0,
+              "flight_time_factor": 6.0,
+              "budget": 75.5642030262322,
+              "final_time": 75.5642030262322,
+              "final_position": [
+                0.2208465278529899,
+                0.126779969485117,
+                -19.268087456186578
+              ],
+              "final_velocity": [
+                2.4405476850506225,
+                1.2005478701846561,
+                -0.32001559976214955
+              ],
+              "step_count": 545,
+              "evaluations": 6962
+            }
+          },
+          {
+            "node": [
+              0.9938225266093732,
+              1.9056642462041216,
+              1.9668376625283577,
+              1.5707963267948966
+            ],
+            "distance": 24.0,
+            "flight_time_factor": 12.0,
+            "max_step": 0.2,
+            "status": "outgoing_event",
+            "time": 90.35033165375792,
+            "exit": "reflected",
+            "energy_error": 3.569466700832715e-10,
+            "parallel_turns": 1,
+            "final_parallel_velocity": -0.3200282796156183,
+            "max_actual_step": 0.17599531585115358,
+            "step_count": 639,
+            "evaluations": 8093,
+            "moments": [
+              0.22057113558094654,
+              0.11272980922035541,
+              -0.01542655751741881
+            ],
+            "final_position": [
+              -0.19223071048950713,
+              -2.0004214736957096,
+              -24.0
+            ],
+            "final_velocity": [
+              -1.8138546485979485,
+              2.0267017229466133,
+              -0.3200282796156183
+            ]
+          },
+          {
+            "node": [
+              0.9938225266093732,
+              1.9056642462041216,
+              1.9668376625283577,
+              1.5707963267948966
+            ],
+            "distance": 24.0,
+            "flight_time_factor": 24.0,
+            "max_step": 0.2,
+            "status": "outgoing_event",
+            "time": 90.35033165375792,
+            "exit": "reflected",
+            "energy_error": 3.569466700832715e-10,
+            "parallel_turns": 1,
+            "final_parallel_velocity": -0.3200282796156183,
+            "max_actual_step": 0.17599531585115358,
+            "step_count": 639,
+            "evaluations": 8093,
+            "moments": [
+              0.22057113558094654,
+              0.11272980922035541,
+              -0.01542655751741881
+            ],
+            "final_position": [
+              -0.19223071048950713,
+              -2.0004214736957096,
+              -24.0
+            ],
+            "final_velocity": [
+              -1.8138546485979485,
+              2.0267017229466133,
+              -0.3200282796156183
+            ]
+          },
+          {
+            "node": [
+              0.9938225266093732,
+              1.9056642462041216,
+              1.9668376625283577,
+              1.5707963267948966
+            ],
+            "distance": 24.0,
+            "flight_time_factor": 48.0,
+            "max_step": 0.2,
+            "status": "outgoing_event",
+            "time": 90.35033165375792,
+            "exit": "reflected",
+            "energy_error": 3.569466700832715e-10,
+            "parallel_turns": 1,
+            "final_parallel_velocity": -0.3200282796156183,
+            "max_actual_step": 0.17599531585115358,
+            "step_count": 639,
+            "evaluations": 8093,
+            "moments": [
+              0.22057113558094654,
+              0.11272980922035541,
+              -0.01542655751741881
+            ],
+            "final_position": [
+              -0.19223071048950713,
+              -2.0004214736957096,
+              -24.0
+            ],
+            "final_velocity": [
+              -1.8138546485979485,
+              2.0267017229466133,
+              -0.3200282796156183
+            ]
+          }
+        ],
+        "outcome": "original flight budget insufficient; outgoing event reached with extended budget",
+        "restored_chosen_replica_contributions": [
+          {
+            "annulus": [
+              0.8,
+              1.2
+            ],
+            "replica_total_nodes": 2048,
+            "single_node_count_fraction": 0.00048828125,
+            "drift_finite_sum_increment_per_density": 0.00019192201850681617,
+            "diffusion_finite_sum_increment_per_density": 4.9043888439645364e-05,
+            "base_band_finite_diffusion_contribution_per_density": 0.00024373442417295848,
+            "ratio_to_base_band_finite_diffusion_contribution": 0.20121855419504842,
+            "scope": "restored contribution to the original chosen replica finite quadrature only; does not repair its accuracy or bound the continuous integral"
+          }
+        ],
+        "minimum_successful_declared_factor": 12.0,
+        "timestep_audit": [
+          {
+            "node": [
+              0.9938225266093732,
+              1.9056642462041216,
+              1.9668376625283577,
+              1.5707963267948966
+            ],
+            "distance": 24.0,
+            "flight_time_factor": 12.0,
+            "max_step": 0.2,
+            "status": "outgoing_event",
+            "time": 90.35033165375792,
+            "exit": "reflected",
+            "energy_error": 3.569466700832715e-10,
+            "parallel_turns": 1,
+            "final_parallel_velocity": -0.3200282796156183,
+            "max_actual_step": 0.17599531585115358,
+            "step_count": 639,
+            "evaluations": 8093,
+            "moments": [
+              0.22057113558094654,
+              0.11272980922035541,
+              -0.01542655751741881
+            ],
+            "final_position": [
+              -0.19223071048950713,
+              -2.0004214736957096,
+              -24.0
+            ],
+            "final_velocity": [
+              -1.8138546485979485,
+              2.0267017229466133,
+              -0.3200282796156183
+            ]
+          },
+          {
+            "node": [
+              0.9938225266093732,
+              1.9056642462041216,
+              1.9668376625283577,
+              1.5707963267948966
+            ],
+            "distance": 24.0,
+            "flight_time_factor": 12.0,
+            "max_step": 0.1,
+            "status": "outgoing_event",
+            "time": 90.35033095192823,
+            "exit": "reflected",
+            "energy_error": 6.732894203976359e-11,
+            "parallel_turns": 1,
+            "final_parallel_velocity": -0.3200282820523477,
+            "max_actual_step": 0.10000000000000142,
+            "step_count": 960,
+            "evaluations": 11837,
+            "moments": [
+              0.22057113558899905,
+              0.11272980821672439,
+              -0.01542655650668319
+            ],
+            "final_position": [
+              -0.1922294187204122,
+              -2.000422895614618,
+              -24.0
+            ],
+            "final_velocity": [
+              -1.813857509869852,
+              2.02669916219767,
+              -0.3200282820523477
+            ]
+          },
+          {
+            "node": [
+              0.9938225266093732,
+              1.9056642462041216,
+              1.9668376625283577,
+              1.5707963267948966
+            ],
+            "distance": 24.0,
+            "flight_time_factor": 12.0,
+            "max_step": 0.05,
+            "status": "outgoing_event",
+            "time": 90.35033090795412,
+            "exit": "reflected",
+            "energy_error": 4.733417312530026e-11,
+            "parallel_turns": 1,
+            "final_parallel_velocity": -0.32002828220665286,
+            "max_actual_step": 0.05000000000000071,
+            "step_count": 1851,
+            "evaluations": 22457,
+            "moments": [
+              0.22057113559474073,
+              0.11272980819269741,
+              -0.015426556477590406
+            ],
+            "final_position": [
+              -0.1922293384121382,
+              -2.0004229847058994,
+              -24.0
+            ],
+            "final_velocity": [
+              -1.8138576885713664,
+              2.0266990022858367,
+              -0.32002828220665286
+            ]
+          }
+        ],
+        "endpoint_audit": [
+          {
+            "node": [
+              0.9938225266093732,
+              1.9056642462041216,
+              1.9668376625283577,
+              1.5707963267948966
+            ],
+            "distance": 24.0,
+            "flight_time_factor": 48.0,
+            "max_step": 0.05,
+            "status": "outgoing_event",
+            "time": 90.35033090795412,
+            "exit": "reflected",
+            "energy_error": 4.733417312530026e-11,
+            "parallel_turns": 1,
+            "final_parallel_velocity": -0.32002828220665286,
+            "max_actual_step": 0.05000000000000071,
+            "step_count": 1851,
+            "evaluations": 22457,
+            "moments": [
+              0.22057113559474073,
+              0.11272980819269741,
+              -0.015426556477590406
+            ],
+            "final_position": [
+              -0.1922293384121382,
+              -2.0004229847058994,
+              -24.0
+            ],
+            "final_velocity": [
+              -1.8138576885713664,
+              2.0266990022858367,
+              -0.32002828220665286
+            ]
+          },
+          {
+            "node": [
+              0.9938225266093732,
+              1.9056642462041216,
+              1.9668376625283577,
+              1.5707963267948966
+            ],
+            "distance": 32.0,
+            "flight_time_factor": 48.0,
+            "max_step": 0.05,
+            "status": "outgoing_event",
+            "time": 119.53731379693146,
+            "exit": "reflected",
+            "energy_error": 4.0557151029337935e-11,
+            "parallel_turns": 1,
+            "final_parallel_velocity": -0.32005435523532716,
+            "max_actual_step": 0.05000000000000426,
+            "step_count": 2435,
+            "evaluations": 29477,
+            "moments": [
+              0.2205700893563367,
+              0.11269244715303002,
+              -0.015390118515705306
+            ],
+            "final_position": [
+              0.10725003220742967,
+              -2.2505257839519026,
+              -32.0
+            ],
+            "final_velocity": [
+              -2.3145679999341557,
+              1.4284070827751463,
+              -0.32005435523532716
+            ]
+          },
+          {
+            "node": [
+              0.9938225266093732,
+              1.9056642462041216,
+              1.9668376625283577,
+              1.5707963267948966
+            ],
+            "distance": 40.0,
+            "flight_time_factor": 48.0,
+            "max_step": 0.05,
+            "status": "outgoing_event",
+            "time": 148.73036214788988,
+            "exit": "reflected",
+            "energy_error": 4.344692622554837e-11,
+            "parallel_turns": 1,
+            "final_parallel_velocity": -0.32005607694268656,
+            "max_actual_step": 0.05000000000001137,
+            "step_count": 3019,
+            "evaluations": 36485,
+            "moments": [
+              0.22057002041834006,
+              0.11268991946853299,
+              -0.015387651653839075
+            ],
+            "final_position": [
+              0.4489258319279269,
+              -2.401123375696166,
+              -40.0
+            ],
+            "final_velocity": [
+              -2.615797351481182,
+              0.7451006196598473,
+              -0.32005607694268656
+            ]
+          }
+        ],
+        "timestep_second_moment_relative_change": 2.1313772496695002e-10,
+        "endpoint_second_moment_relative_change": 2.2430440175587203e-05,
+        "independent_pair_velocity_max_absolute_error": 1.692881568260418e-08,
+        "independent_pair_mu_absolute_error": 1.1819434320159417e-11,
+        "independent_pair_energy_error": 5.240175831721286e-11,
+        "original_coarse_comparison_status": "unresolved",
+        "independent_pair_refinement": [
+          {
+            "max_step": 0.05,
+            "event_time": 90.35033090795412,
+            "velocity_max_absolute_error": 5.146105763742526e-12,
+            "position_max_absolute_error": 2.5420376914553344e-10,
+            "mu_absolute_error": 1.970423824104728e-12,
+            "energy_error": 5.240175831721286e-11
+          },
+          {
+            "max_step": 0.025,
+            "event_time": 90.35033090795412,
+            "velocity_max_absolute_error": 4.3435088858956306e-11,
+            "position_max_absolute_error": 4.018293253693628e-09,
+            "mu_absolute_error": 8.818612506900081e-12,
+            "energy_error": 2.2137171319279434e-11
+          }
+        ],
+        "independent_pair_refinement_velocity_plateau": 4.633615713345307e-11,
+        "finest_relative_max_step": 0.05,
+        "numerical_status": "passed"
+      }
+    ],
+    "wall_s": 30.986822999984724,
+    "prior_coverage_status_preserved": "unresolved",
+    "original_conditional_integral_not_repaired": true,
+    "interpretation": [
+      "repulsive z acceleration has sign(z), allowing at most one parallel turn; finite nonexit proves neither trapping nor inter-encounter correlation",
+      "positive partial contributions concern chosen finite quadrature sums; no rigorous lower bound on the continuous integral",
+      "the additional flight audit addresses numerical event termination, not omitted-band or kinetic-closure validation"
+    ]
+  }
+}

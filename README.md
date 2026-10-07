@@ -27,7 +27,7 @@ Examples are editable top-level scripts with explicit inputs, progress, diagnost
 
 ## What the calculations establish
 
-**66 tests pass.** The checks compare independent equations, discrete conservation budgets and resolved limits.
+The test suite compares independent equations, discrete conservation budgets and resolved limits. Each claim below links to its measured evidence.
 
 ![Four validation panels: nonlinear entropy, toroidal evolution controls, independent refinements and the raw toroidal null spectrum.](results/visual_summary/validation.png)
 
@@ -72,7 +72,7 @@ C_L[\delta f]=\frac{D}{(qB)^2}\nabla_\perp^2
 
 The 216-node pair calculation matches this oracle to relative error `2.36e-16`. Every homogeneous velocity perturbation and every local density-like mode is undamped. For a nonzero perpendicular Fourier mode, the remaining velocity-neutral modes decay at $\lambda$. [Oracle and timestep evidence](results/uniform_reference/summary.json)
 
-## Two consequences worth investigating
+## Geometry and interaction range select what can relax
 
 ### Finite range changes which density modes survive
 
@@ -104,6 +104,26 @@ h_{\mathrm{joint}}&=\phi(R)+g(\mu)+aE+b\,mRu.
 
 Here “joint” means collision-null and stationary under ideal streaming. The classification assumes $B=C/R>0$, constant potential, positive pair weight and an open product velocity support. Closed periodic/tangent boundaries are required for the stated evolution budgets. The [proof and scope](notes/implementation.pdf) are separate from the finite-grid rank check. No quantitative decay bound follows; publication priority remains unresolved.
 
+### A dipole remembers more than its mean flux
+
+![Dipole flux surfaces, two matched-constraint populations with different flux distributions, and a positive relative-entropy lower bound.](results/dipole_obstruction/obstruction.png)
+
+Local collisions in an axisymmetric poloidal field preserve every meridional spatial population. With closed, compatible ideal boundaries, **the entire poloidal-flux distribution remains conserved**. In a dipole,
+
+```math
+\begin{aligned}
+\psi&=\frac{C R^2}{(R^2+z^2)^{3/2}},\\
+\frac{\mathrm d}{\mathrm dt}\int F(\psi)f\,\mathrm d\Gamma&=0
+\quad\text{for every admissible }F.
+\end{aligned}
+```
+
+The plotted positive distributions have the same number, energy, full magnetic-moment marginal **and mean flux**, but different second flux moments. The initial flux distribution places a `1.5141e-5` lower bound on relative entropy per particle from the stationary candidate. Refining all four quadratures changes that bound by `1.2e-10` relatively.
+
+This is a constructive **negative result for the local surrogate**: the usual energy-and-moment constraints do not determine an accessible final state. The finite-domain calculation is collision-only; it does not simulate confined dipole dynamics. Canonical momentum conservation is established physics; the stronger population constraint and its consequences are checked here without claiming publication priority.
+
+For the specified nonaxisymmetric perturbation, independent exact-rational and automatic-differentiation checks prove that no nonconstant **spatial** ideal invariant survives. This does not classify all phase-space invariants or establish a spectral gap. The proof, parameter interval and domain are in the [notes](notes/implementation.pdf). [Construction and inputs](results/dipole_obstruction/summary.json) · [Script](examples/15_dipole_obstruction.py)
+
 ## Geometry and physical scope
 
 | Field | Implemented evolution and measure | Boundary treatment |
@@ -116,11 +136,26 @@ The known stationary density family and a full-marginal equilibrium multiplier a
 
 **New velocity-tail check:** 36 nonuniform initial-production cases. All three fields pass the Gauss-quadrature target; the largest final change is `0.261%`. Trapezoidal controls remain unresolved at `10–17%`. This does not establish full time-evolution or joint spatial/velocity convergence. [Convergence plot](results/field_velocity/production.png) · [All checks](results/field_velocity/summary.json)
 
-![Bounded encounter ensemble: independent quadrature refinement, gyrophase resolution, thermal center-of-mass contribution and held-out interpolation error.](results/encounter_ensemble/ensemble.png)
+<details>
+<summary>Independent geometry-derivative checks</summary>
 
-**Energy conservation does not imply magnetic-moment conservation.** Direct screened encounters resolve nonzero moment changes. The new incoming-flux ensemble includes thermal center-of-mass fluctuations and independently refines impact, velocity, phase and endpoints. Final direct-quadrature changes are below `0.021%`.
+![Finite-difference roundoff plateaus, independent velocity and tail refinements, and field-dependent local production sensitivity.](results/geometry_sensitivity/sensitivity.png)
 
-**A converged integral is not a validated interpolant.** The scattering table has `20.5%` held-out second-moment error against a `10%` target. It remains unresolved. The sampled speed band covers only `11.6%` of the incoming thermal flux in the chosen annulus, so the conditional coefficients are not full plasma rates.
+The local initial-production derivative includes the field, invariant measure, distribution and pair projector. An independent pair assembly agrees within `1.1e-15`; centered finite differences show a roundoff plateau. All final derivative quadrature/tail changes are below `0.67%`. This is a local observable check, not an implicit evolution gradient. [Script](examples/14_geometry_sensitivity.py) · [Inputs and refinements](results/geometry_sensitivity/summary.json)
+
+</details>
+
+### Encounters expose the limits of a constrained closure
+
+![Direct encounter comparisons, impact-band contributions, unresolved quadrature errors and the effect of widening the speed band.](results/encounter_duration/coverage_summary.png)
+
+**Energy conservation does not imply magnetic-moment conservation.** Direct screened encounters resolve nonzero moment changes. The original narrow incoming-flux integral converges to `0.021%`, but covers only `11.6%` of the selected annulus's incoming thermal flux.
+
+**Wider coverage changes the answer.** A 38,220-trajectory audit covers `88.9%` of that speed flux. In the same impact annulus, the broader speed band gives a second-moment contribution about **35 times larger**. Four inner impact bands remain under-resolved; no complete diffusion coefficient is reported. Positive bars are contributions to the chosen finite quadrature, not rigorous bounds on a continuous integral.
+
+**Small average error can hide a failed tail criterion.** A refined periodic scattering table has `0.228%` normalized second-moment RMS error on 4,096 untouched states, yet its 95th-percentile relative error is `6.26%` (95% order-statistic interval `5.32–7.22%`), above the predeclared `5%` target. The smaller 256-state sample had suggested a pass. Both records are retained; the table remains unresolved.
+
+[Original bounded integral](results/encounter_ensemble/metadata.json) · [Broader coverage](results/encounter_validation/metadata.json) · [Figure script](examples/17_encounter_duration.py) · [Independent tail test](results/scattering_table/validation_4096_pre_duration/metadata.json)
 
 | Independent control | Verified capability | Limit |
 |---|---|---|
@@ -129,7 +164,7 @@ The known stationary density family and a full-marginal equilibrium multiplier a
 | Physical 3V Landau | Coulomb weak moments checked by spherical, Cartesian and independent Laplace quadratures | Not a general Landau time integrator |
 | Magnetized encounters | Direct trajectories, bounded Maxwellian flux and analytic thermal-center moments | Held-out table unresolved; no calibrated constrained coefficient or lifetime |
 
-[Control evidence](results/controls/metadata.json) · [Bounded-flux evidence](results/encounter_ensemble/metadata.json) · [Trajectory controls](results/encounters/metadata.json). The prototype stage is implemented and tested. A physically validated constrained kinetic closure remains open.
+[Control evidence](results/controls/metadata.json) · [Trajectory controls](results/encounters/metadata.json). The prototype stage is implemented and tested. A physically validated constrained kinetic closure remains open.
 
 ## Measured cost
 
@@ -157,6 +192,11 @@ Run from the repository root with the environment above. Every script prints its
 | `examples/09_visual_summary.py` | Operator animation and README panels; uses recorded results |
 | `examples/10_encounter_ensemble.py` | Bounded incoming flux and held-out scattering table |
 | `examples/11_field_velocity.py` | Nonuniform initial-production velocity/tail convergence |
+| `examples/13_encounter_validation.py` | Wider incoming-flux coverage and independent table validation |
+| `examples/14_geometry_sensitivity.py` | Local production derivative, independent pair form and finite-difference plateau |
+| `examples/15_dipole_obstruction.py` | Matched constraints, different flux populations and a positive distance floor |
+| `examples/16_scattering_table.py` | Periodic table; untouched 256- and 4,096-state tests |
+| `examples/17_encounter_duration.py` | Original nonexit: flight budget, timestep, endpoint and independent pair audit |
 
 MP4 export additionally uses `ffmpeg`; GIF export works with the listed Python dependencies.
 
@@ -177,7 +217,7 @@ pdflatex -interaction=nonstopmode -halt-on-error implementation.tex
 
 ## Remaining limits
 
-The nonlinear solver uses a dense Newton Jacobian on tractable grids. Full nonuniform time-evolution and joint spatial/velocity convergence, a universal nonuniform projector zero-set prescription, and general geometry sensitivities are incomplete. No self-consistent electrostatics, unequal-mass multispecies closure, current-carrying-field bracket, physical spectral gap, calibrated collision coefficient or metastable dipole lifetime is established. Encounter convergence alone does not establish a many-body kinetic closure.
+The nonlinear solver has independently compared dense and matrix-free Newton routes. Full nonuniform time-evolution and joint spatial/velocity convergence remain under study. Local energy-flow injectivity is proved away from field-strength critical points; an explicit critical-point counterexample rules out a universal continuous projector prescription. Local initial-production geometry derivatives are verified, while general implicit geometry sensitivities remain incomplete. No self-consistent electrostatics, unequal-mass multispecies closure, current-carrying-field bracket, physical spectral gap, calibrated collision coefficient or metastable dipole lifetime is established. Encounter convergence alone does not establish a many-body kinetic closure.
 
 ## Attribution and license
 

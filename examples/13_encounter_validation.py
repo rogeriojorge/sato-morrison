@@ -33,7 +33,8 @@ relative_diffusion_target=.05
 start_distance,max_step,rtol=24.,.2,1e-10
 reverse_checks=16
 boundary_distances=[18.,24.,32.]
-output=Path(__file__).resolve().parents[1]/'results'/'encounter_validation'
+original_output=Path(__file__).resolve().parents[1]/'results'/'encounter_validation'
+output=original_output/'reproduction'
 show_figures=False
 
 inputs={'mass':mass,'charge':charge,'field':field,'strength':strength,'screening':screening,'theta':theta,
@@ -49,6 +50,7 @@ inputs={'mass':mass,'charge':charge,'field':field,'strength':strength,'screening
     'rate_scope':'conditional crossing moments per partner density; screening specified, no SM D inference or plasma lifetime'}
 output.mkdir(parents=True,exist_ok=True)
 print(f'Model=encounter; uniform B={field}; screened repulsive equal particles; output={output}',flush=True)
+print(f'Original campaign and comparison evidence are preserved at {original_output}; this run writes a fresh reproduction subdirectory.',flush=True)
 print(f'Fresh holdout seed={holdout_seed}, states={holdout_count}; targets RMS={second_moment_rms_target:g}, p95={second_moment_p95_target:g}',flush=True)
 print(f'Coverage: impacts {impact_annuli}, parallel {parallel_bounds}, perpendicular {perpendicular_bounds}, Sobol up to {sobol_levels[-1]}, phases={phase_order}',flush=True)
 print('Explicit density normalization comes from bounded incoming flux. Complete plasma statistics, correlations and SM mixing/lifetime remain outside this calculation.',flush=True)
