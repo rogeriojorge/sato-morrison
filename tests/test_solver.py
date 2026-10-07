@@ -3,8 +3,10 @@ jax.config.update('jax_enable_x64',True)
 import jax.numpy as jnp
 import numpy as np
 import pytest
-from sato_morrison.collisions import uniform_grid,cartesian_grid,mobility_action,dense_mobility
+from sato_morrison.collisions import (uniform_grid,cartesian_grid,mobility_action,
+    dense_mobility,compact_mobility_tangent)
 from sato_morrison.geometry import Field
+from sato_morrison.reference import gauss_interval
 from sato_morrison.solver import (linear_step,checked_linear_step,StepFailure,
     discrete_gradient_step,discrete_gradient_compiler,entropy_discrete_gradient,
     entropy,invariant_diagnostics,toroidal_stream)
@@ -120,6 +122,44 @@ def test_matrix_free_direction_and_visible_linear_failure():
             linear_max_restarts=1,linear_rtol=1e-12)
     with pytest.raises(ValueError,match='unsupported'):
         discrete_gradient_step(grid,initial,.1,method='other')
+
+
+@pytest.mark.parametrize('field',[Field('mirror',amplitude=.15),Field('dipole'),
+    Field('nonaxisymmetric',amplitude=.03)],ids=lambda field:field.kind)
+def test_nonuniform_prepared_residual_jvp_and_equilibrium_identity(field):
+    spatial=[gauss_interval(3,a,b) for a,b in ((.8,1.2),(-.2,.2),(.1,.5))]
+    u,wu=gauss_interval(3,-2,2);mu,wm=gauss_interval(2,.1,1.1)
+    grid=cartesian_grid(*[pair[0] for pair in spatial],u,mu,field,compact=True,
+        spatial_weights=[pair[1] for pair in spatial],velocity_weights=(wu,wm),
+        spatial_discretization='polynomial')
+    _,y,_,uu,mm=np.meshgrid(*[pair[0] for pair in spatial],u,mu,indexing='ij')
+    equilibrium=-grid.energy-.2*jnp.asarray(mm.ravel())
+    old=equilibrium+.1*jnp.sin(jnp.pi*jnp.asarray(y.ravel())/.4)*jnp.asarray(uu.ravel())
+    new=old+.02*jnp.sin(jnp.arange(grid.size))
+    vector=jnp.cos(.31*jnp.arange(grid.size));dt=.005
+    mass_root=jnp.sqrt(grid.weights*jnp.exp(old));increment=vector/mass_root
+    residual,_=discrete_gradient_compiler(grid,method='dense',collision_strength=.1,chunk_size=64)
+    independent=jax.jvp(lambda value:residual(value,old,dt)/mass_root,
+        (new,),(increment,))[1]
+    gradient=entropy_discrete_gradient(old,new)
+    gradient_prime=jax.jvp(lambda value:entropy_discrete_gradient(old,value),
+        (new,),(jnp.ones_like(new),))[1]
+    tangent=compact_mobility_tangent(grid,(jnp.exp(new)+jnp.exp(old))/2,
+        grid.action(gradient),gradient_prime*increment,
+        jnp.exp(new)/(jnp.exp(new)+jnp.exp(old))*increment,
+        collision_strength=.1,chunk_size=64)
+    prepared=(grid.weights*jnp.exp(new)*increment-dt*tangent)/mass_root
+    np.testing.assert_allclose(prepared,independent,rtol=3e-12,atol=2e-12)
+
+    # At equilibrium the mobility variation annihilates the entropy gradient,
+    # leaving the identity plus a symmetric positive collision Gram matrix.
+    f=jnp.exp(equilibrium);mass_root=jnp.sqrt(grid.weights*f)
+    increment=vector/mass_root
+    independent=jax.jvp(lambda value:residual(value,equilibrium,dt)/mass_root,
+        (equilibrium,),(increment,))[1]
+    expected=vector+dt/2*mobility_action(grid,f,increment,
+        collision_strength=.1,chunk_size=64)/mass_root
+    np.testing.assert_allclose(independent,expected,rtol=3e-12,atol=2e-12)
 
 
 def test_uniform_fixed_density_D_and_B_derivatives_against_rebuilt_grids():
