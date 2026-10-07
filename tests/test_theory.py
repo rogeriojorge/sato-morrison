@@ -162,3 +162,22 @@ def test_dipole_flux_coordinate_measure_independent_cartesian_jacobian():
         np.testing.assert_allclose(magnitude*determinant,
             strength*np.cos(latitude)*np.sqrt(1+3*np.sin(latitude)**2)/psi, rtol=2e-14)
         np.testing.assert_allclose(flux(x, field), psi, rtol=2e-14)
+
+
+@pytest.mark.parametrize("amplitude", [-.03, .01, .03])
+def test_nonaxisymmetric_spatial_lie_rank_exact_certificate(amplitude):
+    field = Field("nonaxisymmetric", amplitude=amplitude)
+    position = jnp.array([15/17, 0., 8/17])
+    vector = lambda x: field_vector(x, field)
+    transverse = lambda x: jnp.cross(vector(x), jax.grad(
+        lambda y: jnp.dot(vector(y), vector(y)))(x))
+    p, v = vector(position), transverse(position)
+    bracket = (jax.jacfwd(transverse)(position) @ p
+               - jax.jacfwd(vector)(position) @ v)
+    determinant = float(jnp.dot(p, jnp.cross(v, bracket)))
+    # Independent exact rational differentiation at this unit-radius point.
+    a = amplitude
+    expected = (900*a*(225*a*a+481)
+                *(6709*a**4-313674*a*a+2686977)/6975757441)
+    np.testing.assert_allclose(determinant, expected, rtol=2e-12)
+    assert abs(determinant) > 1.
