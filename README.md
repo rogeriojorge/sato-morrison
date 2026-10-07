@@ -151,7 +151,7 @@ The known stationary density family and a full-marginal equilibrium multiplier a
 
 ![Mirror relative-entropy decrease, eight refinement comparisons, additional continuum-moment errors and discrete conservation budgets.](results/nonuniform_mirror_dg/evolution.png)
 
-Thirteen discrete-gradient runs reach $T=0.02$: relative entropy decreases by **43.74%** on the baseline grid. All eight independent grid, tail and timestep checks pass the 1% target; the largest change is **0.113%**. Number, energy and the full moment marginal stay within `1.4e-13`. Additional continuum constraints are measured as discretization errors.
+Thirteen discrete-gradient runs reach $T=0.02$: relative entropy decreases by **43.74%** on the baseline grid. All eight independent grid, tail and timestep checks pass the 1% target; the largest change is **0.113%**. Number, energy and the full moment marginal stay within `1.4e-13`; marginal bin errors are normalized by total particle number. Additional continuum constraints are measured as discretization errors.
 
 This completed mirror campaign retains its original method and source. Dipole and nonaxisymmetric solves with that method failed visibly; their replacement entropy-variable campaign is separate. The comparisons do not establish joint continuum convergence or resolve every localized constraint. [Inputs, histories and provenance](results/nonuniform_mirror_dg/raw/summary.json) · [Independent audit and costs](results/nonuniform_mirror_dg/audit.json) · [Archived producing source](https://github.com/rogeriojorge/sato-morrison/blob/4ce8e5c770665a396d5083aec1e5f2b89a6a6ecf/examples/12_nonuniform_evolution.py)
 

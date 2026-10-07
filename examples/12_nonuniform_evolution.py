@@ -46,6 +46,18 @@ print(f'Nonuniform positive nonlinear collision evolution; D={D}, T={FINAL_TIME}
       f'natural collision boundaries; lagged-mobility entropy Newton-PCG; output={OUTPUT}', flush=True)
 
 
+def require_finite(value, path='result'):
+    """Reject nonfinite numerical evidence before assigning a passing status."""
+    if isinstance(value, dict):
+        for key, item in value.items():
+            require_finite(item, f'{path}.{key}')
+    elif isinstance(value, (list, tuple)):
+        for index, item in enumerate(value):
+            require_finite(item, f'{path}[{index}]')
+    elif isinstance(value, (float, np.floating)) and not np.isfinite(value):
+        raise ValueError(f'Nonfinite numerical evidence at {path}')
+
+
 def continuum_moments(field, xx, yy, zz, strength):
     """Continuous additional invariants; their drift is scheme error, not decay."""
     radius2 = xx**2 + yy**2
@@ -154,7 +166,8 @@ def evaluate(field, nx=NX, nu=NU, nmu=NMU, umax=U_MAX, mumax=MU_MAX, dt=DT, *, c
     final_flux = apply(state, jnp.log(state));final_flux.block_until_ready()
     final_production = float(jnp.vdot(jnp.log(state), final_flux))
     gain = float(entropy(state, grid.weights))-initial_entropy
-    if initial_production <= 0 or final_production < -1e-13 or gain <= 0:
+    if (not np.all(np.isfinite([initial_production, final_production, gain]))
+        or initial_production <= 0 or final_production < -1e-13 or gain <= 0):
         raise RuntimeError('entropy production/gain failed')
     continuous = {name: {'relative_signed_drift': (float(jnp.vdot(grid.weights*state, value))-moments0[name])/scales[name],
         'initial_relative_rate': rates0[name], 'final_relative_rate': -float(jnp.vdot(value, final_flux))/scales[name]}
@@ -181,6 +194,7 @@ def evaluate(field, nx=NX, nu=NU, nmu=NMU, umax=U_MAX, mumax=MU_MAX, dt=DT, *, c
         'relaxation_moment_decrease_fraction':1-float(jnp.vdot(grid.weights*state,observable))/moment0,
         'continuum_invariant_errors': continuous, 'setup_s': setup_s, 'history': history,
         'load_average_start': load_start, 'load_average_end': os.getloadavg(), 'status': 'passed'}
+    require_finite(row)
     jax.clear_caches()
     return row
 
@@ -188,6 +202,7 @@ def evaluate(field, nx=NX, nu=NU, nmu=NMU, umax=U_MAX, mumax=MU_MAX, dt=DT, *, c
 def compare(sequence):
     observable_names = ['entropy_gain_per_particle', 'final_production_per_particle',
                         'relaxation_moment_change_per_particle']
+    require_finite([{name: row[name] for name in observable_names} for row in sequence])
     def pair(previous, last):
         changes = {name: abs(last[name]-previous[name])/max(abs(last[name]), 1e-30)
                    for name in observable_names}
@@ -273,7 +288,7 @@ rows = [];checks = []
 
 def save_evidence(path, evidence):
     temporary = path.with_suffix(path.suffix+'.tmp')
-    temporary.write_text(json.dumps(evidence, indent=2)+'\n');temporary.replace(path)
+    temporary.write_text(json.dumps(evidence, indent=2, allow_nan=False)+'\n');temporary.replace(path)
 
 
 def checkpoint():

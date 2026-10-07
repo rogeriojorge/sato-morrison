@@ -116,14 +116,14 @@ def test_scientific_anchor_includes_base_dt_and_functions(execution):
 @pytest.fixture(scope='module')
 def current_execution():
     constants = {'FIELDS', 'DT_VALUES', 'RELATIVE_TARGET', 'CASES', 'SEQUENCES'}
-    functions = {'select_names', 'compare', 'refinement_checks'}
+    functions = {'select_names', 'compare', 'refinement_checks', 'require_finite'}
     body = []
     for node in ast.parse(EXAMPLE.read_text()).body:
         if isinstance(node, ast.FunctionDef) and node.name in functions:
             body.append(node)
         elif isinstance(node, ast.Assign) and all(isinstance(t, ast.Name) and t.id in constants for t in node.targets):
             body.append(node)
-    namespace = {'Field': Field}
+    namespace = {'Field': Field, 'np': np}
     exec(compile(ast.Module(body=body, type_ignores=[]), str(EXAMPLE), 'exec'), namespace)
     return namespace
 
@@ -167,3 +167,18 @@ def test_fine_pair_pass_keeps_unresolved_coarse_bias(current_execution):
     assert result['adjacent_comparisons'][0]['status']=='unresolved'
     assert result['coarsest_to_finest']['status']=='unresolved'
     assert result['coarsest_to_finest']['relative_changes'][names[0]]==1.
+
+
+@pytest.mark.parametrize('observable', ['entropy_gain_per_particle',
+    'final_production_per_particle', 'relaxation_moment_change_per_particle'])
+@pytest.mark.parametrize('value', [float('nan'), float('inf'), float('-inf')],
+    ids=['nan', 'positive_inf', 'negative_inf'])
+@pytest.mark.parametrize('position', [0, 1, 2], ids=['coarse', 'middle', 'fine'])
+def test_comparison_rejects_nonfinite_anywhere(current_execution, observable, value, position):
+    names=('entropy_gain_per_particle','final_production_per_particle',
+           'relaxation_moment_change_per_particle')
+    rows=[dict(nx=5,nu=25,nmu=21,umax=4.,mumax=20.,dt=dt,
+        **{name:1. for name in names}) for dt in (.005,.0025,.00125)]
+    rows[position][observable]=value
+    with pytest.raises(ValueError,match='finite'):
+        current_execution['compare'](rows)
