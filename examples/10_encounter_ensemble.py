@@ -121,7 +121,7 @@ checks['held_out_shifted_phase']=max(abs(shifted[key]-accepted[key])/abs(accepte
 numerical_status='passed' if max(checks.values())<=.01 and flux_relative_error<=1e-7 and accepted['max_energy_error']<=1e-8 else 'unresolved'
 timestep_results=[]
 with progress('Independent timestep refinement on eight held-out scattering states'):
-    for step in [.6,.35,.2]:
+    for step in [.2,.1,.05]:
         checked,details=evaluate(test_nodes[:8],start_distance,step)
         timestep_results.append({'max_step':step,'moments':checked.tolist(),'max_energy_error':max(d['energy_error'] for d in details)})
     fine=np.asarray(timestep_results[-1]['moments'])
