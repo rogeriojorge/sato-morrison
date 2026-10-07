@@ -12,7 +12,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from scipy.stats import qmc
 from sato_morrison.controls import (encounter_relative,encounter_thermal_moments,
-    encounter_flux_samples,binary_encounter)
+    encounter_flux_samples,binary_encounter,encounter_reverse_incoming)
 from sato_morrison.reference import progress,run_metadata
 
 # Preserve the failed campaign, then independently vary its finite flight budget.
@@ -30,6 +30,9 @@ independent_pair_position_absolute_target=1e-8
 independent_pair_max_steps=[.05,.025]
 output=repository/'results'/'encounter_duration'
 show_figures=False
+cutoff_counterexample_node=[1.2,.7,.8,float(np.pi/2)]
+cutoff_inverse_moment_absolute_target=1e-10
+cutoff_energy_target=1e-8
 inputs={'prior_metadata_sha256':prior_metadata_sha256,'flight_time_factors':flight_time_factors,
     'active_max_steps':active_max_steps,'endpoint_distances':endpoint_distances,
     'energy_target':energy_target,'timestep_moment_target':timestep_moment_target,
@@ -37,6 +40,11 @@ inputs={'prior_metadata_sha256':prior_metadata_sha256,'flight_time_factors':flig
     'independent_pair_velocity_absolute_target':independent_pair_velocity_absolute_target,
     'independent_pair_position_absolute_target':independent_pair_position_absolute_target,
     'independent_pair_max_steps':independent_pair_max_steps,
+    'cutoff_counterexample_node':cutoff_counterexample_node,
+    'cutoff_inverse_moment_absolute_target':cutoff_inverse_moment_absolute_target,
+    'cutoff_energy_target':cutoff_energy_target,
+    'cutoff_audit_scope':'fixed deterministic boundary counterexample previously inspected; no fitting or independent statistical validation',
+    'scale_audit_definitions':'relative rho=v_perp/abs(Omega); reduced_mass=m/2; b90=strength/(reduced_mass*relative_speed_squared); minimum separation explicitly sampled',
     'scope':'finite flight-budget diagnosis of exact previously failed nodes; original quadrature and interpolation failures retained'}
 output.mkdir(parents=True,exist_ok=True)
 print(f'Model=screened repulsive equal-particle encounter; output={output}',flush=True)
@@ -171,6 +179,49 @@ with progress('Auditing exact nonexit nodes: budget, active timestep, endpoint, 
         campaign.append(report)
         (output/'audit_partial.json').write_text(json.dumps(campaign,indent=2)+'\n')
 
+# Scale diagnostics concern the exact recovered node, never a plasma ordering.
+scale_audits=[]
+for index,pair in pair_paths.items():
+    b,parallel,perpendicular,phase=previous['failures'][index]['node']
+    omega=physical['charge']*physical['field']/physical['mass']
+    speed=np.hypot(parallel,perpendicular)
+    rho=perpendicular/abs(omega)
+    reduced_mass=physical['mass']/2
+    b90=physical['strength']/(reduced_mass*speed**2)
+    free_gap=np.hypot(b-perpendicular*np.sin(phase)/omega,perpendicular*np.cos(phase)/omega)
+    relative_positions=pair['positions'][:,0]-pair['positions'][:,1]
+    sampled_separation=np.linalg.norm(relative_positions,axis=1)
+    min_index=int(np.argmin(sampled_separation));minimum=float(sampled_separation[min_index])
+    relative_velocity=pair['velocities'][min_index,0]-pair['velocities'][min_index,1]
+    local_speed=float(np.linalg.norm(relative_velocity))
+    scale_audits.append({'node_index':index,'relative_larmor_radius':float(rho),'b90':float(b90),
+        'free_helix_gap_at_z_zero':float(free_gap),'free_gap_over_b90':float(free_gap/b90),
+        'minimum_sampled_separation':minimum,'time_at_minimum_sample':float(pair['time'][min_index]),
+        'rho_over_minimum_sampled_separation':float(rho/minimum),
+        'Omega_b90_over_incoming_speed':float(abs(omega)*b90/speed),
+        'Omega_minimum_sampled_separation_over_local_speed':float(abs(omega)*minimum/local_speed),
+        'scope':'one concrete close encounter outside a verified close-collision adiabatic or grazing ordering; not a counterexample to an asymptotic SM regime, not a plasma rate'})
+
+with progress('Deterministic inverse-cutoff counterexample, with independently checked charged-sign reversal'):
+    node=cutoff_counterexample_node
+    forward=solve(node,physical['start_distance'],flight_time_factors[0],active_max_steps[-1])
+    inverse,rotation=encounter_reverse_incoming(forward,field=physical['field'],mass=physical['mass'],charge=physical['charge'],start_distance=physical['start_distance'])
+    b,parallel,perpendicular,phase=inverse
+    reverse=encounter_relative(b,phase,parallel,perpendicular,field=physical['field'],strength=physical['strength'],
+        screening=physical['screening'],start_distance=physical['start_distance'],mass=physical['mass'],charge=-physical['charge'],
+        max_step=active_max_steps[-1],rtol=physical['rtol'],flight_time_factor=flight_time_factors[0])
+    forward_moments=encounter_thermal_moments(forward,physical['theta'],physical['mass'],physical['field'])
+    reverse_moments=encounter_thermal_moments(reverse,physical['theta'],physical['mass'],physical['field'])
+    inverse_error=reverse_moments-forward_moments*np.array([-1,1,1])
+    outside=[i for i,(value,bounds) in enumerate(zip(inverse[:3],physical['training_bounds'])) if not bounds[0]<=value<=bounds[1]]
+    cutoff_audit={'incoming_node':node,'inverse_incoming_node':inverse.tolist(),'training_bounds':physical['training_bounds'],
+        'outside_coordinate_indices':outside,'forward_moments':forward_moments.tolist(),'reverse_moments':reverse_moments.tolist(),
+        'inverse_signed_moment_errors':inverse_error.tolist(),'forward_energy_error':forward['energy_error'],
+        'reverse_energy_error':reverse['energy_error'],
+        'status':'passed' if outside and np.max(np.abs(inverse_error))<=cutoff_inverse_moment_absolute_target and max(forward['energy_error'],reverse['energy_error'])<=cutoff_energy_target else 'unresolved',
+        'scope':'the conditional rectangle is not closed under this tested inverse; its conditional drift is not a full Maxwellian drift or a detailed-balance failure'}
+    print(f'  Inverse speeds={inverse[1:3]}; outside coordinates={outside}; moment error={np.max(np.abs(inverse_error)):.3e}; status={cutoff_audit["status"]}',flush=True)
+
 # Replot saved campaign data with precise finite-quadrature wording, no rerun.
 with np.load(prior_directory/'holdout.npz',allow_pickle=False) as saved:
     direct=saved['direct'];predicted=saved['predicted']
@@ -209,7 +260,8 @@ if pair_paths:
     np.savez_compressed(output/'pair_paths.npz',**paths)
 metadata['experiment_dependency_sha256_end']={str(path.relative_to(repository)):hashlib.sha256(path.read_bytes()).hexdigest() for path in dependencies}
 metadata['experiment_dependencies_unchanged']=metadata['experiment_dependency_sha256']==metadata['experiment_dependency_sha256_end']
-metadata['results']={'missing_populations':missing,'failure_audits':campaign,'wall_s':perf_counter()-started,
+metadata['results']={'fixed_failed_node_scale_audits':scale_audits,'cutoff_reverse_counterexample':cutoff_audit,
+    'missing_populations':missing,'failure_audits':campaign,'wall_s':perf_counter()-started,
     'prior_coverage_status_preserved':previous['coverage_status'],'original_conditional_integral_not_repaired':True,
     'interpretation':['repulsive z acceleration has sign(z), allowing at most one parallel turn; finite nonexit proves neither trapping nor inter-encounter correlation',
         'positive partial contributions concern chosen finite quadrature sums; no rigorous lower bound on the continuous integral',
