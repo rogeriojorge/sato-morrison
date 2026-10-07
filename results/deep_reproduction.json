@@ -7610,6 +7610,16 @@
       "evidence_sha256": "d2b411a3213d5becb1504ba7d654802240505159d52a7b7dcba936cce852f5ab",
       "experiment_dependencies_unchanged": true,
       "timing_scope": "Shared local machine; numerical verification, not an isolated benchmark."
+    },
+    {
+      "command": "MPLBACKEND=Agg python examples/18_near_uniform.py",
+      "cwd": "${REPOSITORY}",
+      "producer_commit": "8bcc813c35f05824e9e162b9385617be64590f0d",
+      "evidence_path": "results/near_uniform/summary.json",
+      "evidence_sha256": "366d6e68beba1ca1cadc22575b0458d2d1a868a4ecc7c120ff45ec61ea6a5aae",
+      "experiment_dependencies_unchanged": true,
+      "wall_seconds": 16.686591834004503,
+      "timing_scope": "Shared local machine; numerical verification, not an isolated benchmark."
     }
   ]
 }

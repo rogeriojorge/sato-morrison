@@ -1,0 +1,469 @@
+{
+  "model": "continuous local frozen-mobility Gram; mirror near-uniform quadrature audit",
+  "boundary": "local volume density; finite positive velocity quadrature; no evolution boundaries",
+  "units": "normalized",
+  "inputs": {
+    "position": [
+      1.0,
+      0.0,
+      0.3
+    ],
+    "mass": 1.0,
+    "charge": 1.0,
+    "strength": 1.0,
+    "D": 1.0,
+    "h": "mu*x",
+    "f": "exp(-E-.2mu)",
+    "observable": "frozen local Gram Q_h; equilibrium entropy production is zero",
+    "velocity_domain": [
+      -4.0,
+      4.0
+    ],
+    "moment_domain": [
+      0.0,
+      5.0
+    ],
+    "mu_order": 8,
+    "parallel_orders": [
+      8,
+      16,
+      32,
+      64
+    ],
+    "positive_amplitudes": [
+      1e-07,
+      4.641588833612782e-07,
+      2.1544346900318822e-06,
+      1e-05,
+      4.641588833612772e-05,
+      0.00021544346900318823,
+      0.001,
+      0.004641588833612773,
+      0.021544346900318822,
+      0.1
+    ]
+  },
+  "commit": "8bcc813c35f05824e9e162b9385617be64590f0d",
+  "working_tree": "",
+  "source_sha256": "bfa5aee28ecf111785d84cc0987bfdf1c919a3947c4b8034b8bf3cc3c2c23a36",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "unset",
+    "OPENBLAS_NUM_THREADS": "unset",
+    "MKL_NUM_THREADS": "unset",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": true,
+  "experiment_dependency_sha256": {
+    "/Users/rogerio/local/sato-morrison/examples/18_near_uniform.py": "56e6da4c61e4c2bfb33a0bd8553d2c2e1c66dca21a92da2ed3453e5f224a6e7e",
+    "/Users/rogerio/local/sato-morrison/src/sato_morrison/geometry.py": "3e96f695e3a031aacdea5257428e40e9a057f6bf2ea1ef052363c79c6345dda6",
+    "/Users/rogerio/local/sato-morrison/src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "rows": [
+    {
+      "nu": 8,
+      "uniform": 2.7384630173279083,
+      "positive_amplitude_limit": 1.7922012767568163,
+      "gap": 0.946261740571092,
+      "gap_bound": 1.0924713056430866,
+      "relative_gap": 0.3455448310178092,
+      "relative_bound": 0.39893593549752593,
+      "max_parallel_weight": 1.4507351335134473,
+      "equal_u_uniform": 1.089866847136946,
+      "equal_u_limit": 0.14360510656585387,
+      "direct": [
+        {
+          "amplitude": 1e-07,
+          "gram": 1.792201517590039,
+          "equal_u_gram": 0.14360514613201328,
+          "unequal_u_gram": 1.6485963714580256,
+          "ad_relative_error": 1.812340925686827e-16,
+          "minimum_distinct_flow_difference": 5.0989987300242655e-08
+        },
+        {
+          "amplitude": 4.641588833612782e-07,
+          "gram": 1.7922023946047154,
+          "equal_u_gram": 0.1436052902157866,
+          "unequal_u_gram": 1.648597104388929,
+          "ad_relative_error": 1.812340655095026e-16,
+          "minimum_distinct_flow_difference": 2.3667459416342148e-07
+        },
+        {
+          "amplitude": 2.1544346900318822e-06,
+          "gram": 1.7922064653277667,
+          "equal_u_gram": 0.1436059589952286,
+          "unequal_u_gram": 1.6486005063325382,
+          "ad_relative_error": 3.6246787982388137e-16,
+          "minimum_distinct_flow_difference": 1.0985469825934456e-06
+        },
+        {
+          "amplitude": 1e-05,
+          "gram": 1.7922253595525068,
+          "equal_u_gram": 0.14360906323341355,
+          "unequal_u_gram": 1.6486162963190933,
+          "ad_relative_error": 1.387778780791543e-17,
+          "minimum_distinct_flow_difference": 5.099021270555785e-06
+        },
+        {
+          "amplitude": 4.641588833612772e-05,
+          "gram": 1.7923130502009714,
+          "equal_u_gram": 0.14362347267085346,
+          "unequal_u_gram": 1.6486895775301182,
+          "ad_relative_error": 1.8123065103873548e-16,
+          "minimum_distinct_flow_difference": 2.3667945037521595e-05
+        },
+        {
+          "amplitude": 0.00021544346900318823,
+          "gram": 1.7927198893117693,
+          "equal_u_gram": 0.14369037345868452,
+          "unequal_u_gram": 1.649029515853085,
+          "ad_relative_error": 1.1637830940431585e-19,
+          "minimum_distinct_flow_difference": 0.00010986516066529423
+        },
+        {
+          "amplitude": 0.001,
+          "gram": 1.7946042772955622,
+          "equal_u_gram": 0.14400128980268015,
+          "unequal_u_gram": 1.6506029874928816,
+          "ad_relative_error": 1.8115980218384864e-16,
+          "minimum_distinct_flow_difference": 0.0005101275341855966
+        },
+        {
+          "amplitude": 0.004641588833612773,
+          "gram": 1.8032638576933382,
+          "equal_u_gram": 0.1454528822791683,
+          "unequal_u_gram": 1.6578109754141699,
+          "ad_relative_error": 1.3877814277568815e-17,
+          "minimum_distinct_flow_difference": 0.0023716508712572936
+        },
+        {
+          "amplitude": 0.021544346900318822,
+          "gram": 1.8415003083322699,
+          "equal_u_gram": 0.15237620115180467,
+          "unequal_u_gram": 1.689124107180465,
+          "ad_relative_error": 1.1576506621811353e-16,
+          "minimum_distinct_flow_difference": 0.011091143568096998
+        },
+        {
+          "amplitude": 0.1,
+          "gram": 1.9748919724592597,
+          "equal_u_gram": 0.1889050436471064,
+          "unequal_u_gram": 1.7859869288121535,
+          "ad_relative_error": 1.7389527422079405e-16,
+          "minimum_distinct_flow_difference": 0.05326116936936654
+        }
+      ],
+      "smallest_amplitude_limit_error": 1.3437844614827554e-07
+    },
+    {
+      "nu": 16,
+      "uniform": 2.7443448330225713,
+      "positive_amplitude_limit": 2.2334237700945123,
+      "gap": 0.510921062928059,
+      "gap_bound": 0.5867378687903972,
+      "relative_gap": 0.18617232673539058,
+      "relative_bound": 0.2137988862515411,
+      "max_parallel_weight": 0.7578024418202743,
+      "equal_u_uniform": 0.5799525189830366,
+      "equal_u_limit": 0.06903145605497737,
+      "direct": [
+        {
+          "amplitude": 1e-07,
+          "gram": 2.233424052991569,
+          "equal_u_gram": 0.0690314747146441,
+          "unequal_u_gram": 2.1643925782769253,
+          "ad_relative_error": 1.812340925686827e-16,
+          "minimum_distinct_flow_difference": 4.86073983140486e-08
+        },
+        {
+          "amplitude": 4.641588833612782e-07,
+          "gram": 2.233425083183721,
+          "equal_u_gram": 0.06903154266551928,
+          "unequal_u_gram": 2.1643935405182013,
+          "ad_relative_error": 1.812340655095026e-16,
+          "minimum_distinct_flow_difference": 2.2561558936454323e-07
+        },
+        {
+          "amplitude": 2.1544346900318822e-06,
+          "gram": 2.233429864858309,
+          "equal_u_gram": 0.06903185806638193,
+          "unequal_u_gram": 2.1643980067919273,
+          "ad_relative_error": 3.6246787982388137e-16,
+          "minimum_distinct_flow_difference": 1.0472154922680215e-06
+        },
+        {
+          "amplitude": 1e-05,
+          "gram": 2.2334520582668684,
+          "equal_u_gram": 0.06903332204559226,
+          "unequal_u_gram": 2.1644187362212763,
+          "ad_relative_error": 1.387778780791543e-17,
+          "minimum_distinct_flow_difference": 4.860758643638985e-06
+        },
+        {
+          "amplitude": 4.641588833612772e-05,
+          "gram": 2.2335550459755384,
+          "equal_u_gram": 0.06904011762486206,
+          "unequal_u_gram": 2.164514928350677,
+          "ad_relative_error": 1.8123065103873548e-16,
+          "minimum_distinct_flow_difference": 2.256196423220991e-05
+        },
+        {
+          "amplitude": 0.00021544346900318823,
+          "gram": 2.23403253439449,
+          "equal_u_gram": 0.0690716683075168,
+          "unequal_u_gram": 2.164960866086973,
+          "ad_relative_error": 2.739539713252681e-20,
+          "minimum_distinct_flow_difference": 0.00010473028090480234
+        },
+        {
+          "amplitude": 0.001,
+          "gram": 2.2362372202800858,
+          "equal_u_gram": 0.06921829469502347,
+          "unequal_u_gram": 2.167018925585062,
+          "ad_relative_error": 1.8115980218384864e-16,
+          "minimum_distinct_flow_difference": 0.0004862639671702896
+        },
+        {
+          "amplitude": 0.004641588833612773,
+          "gram": 2.246217840774825,
+          "equal_u_gram": 0.06990279226428239,
+          "unequal_u_gram": 2.176315048510542,
+          "ad_relative_error": 1.3877814277568815e-17,
+          "minimum_distinct_flow_difference": 0.0022602473990741574
+        },
+        {
+          "amplitude": 0.021544346900318822,
+          "gram": 2.2869336920105505,
+          "equal_u_gram": 0.07316605943740999,
+          "unequal_u_gram": 2.2137676325731412,
+          "ad_relative_error": 1.1212301278967385e-16,
+          "minimum_distinct_flow_difference": 0.01056013343203274
+        },
+        {
+          "amplitude": 0.1,
+          "gram": 2.3646615965839883,
+          "equal_u_gram": 0.0903522035757297,
+          "unequal_u_gram": 2.2743093930082585,
+          "ad_relative_error": 1.7389527422079405e-16,
+          "minimum_distinct_flow_difference": 0.05047974617716085
+        }
+      ],
+      "smallest_amplitude_limit_error": 1.2666519477733118e-07
+    },
+    {
+      "nu": 32,
+      "uniform": 2.744344835222154,
+      "positive_amplitude_limit": 2.4848754665959216,
+      "gap": 0.2594693686262324,
+      "gap_bound": 0.298989850823782,
+      "relative_gap": 0.09454692620842906,
+      "relative_bound": 0.1089476245792482,
+      "max_parallel_weight": 0.3861603540589103,
+      "equal_u_uniform": 0.29454139348351704,
+      "equal_u_limit": 0.035072024857284695,
+      "direct": [
+        {
+          "amplitude": 1e-07,
+          "gram": 2.484875775159433,
+          "equal_u_gram": 0.03507203433948254,
+          "unequal_u_gram": 2.4498037408199504,
+          "ad_relative_error": 1.812340925686827e-16,
+          "minimum_distinct_flow_difference": 4.7939168689856115e-08
+        },
+        {
+          "amplitude": 4.641588833612782e-07,
+          "gram": 2.4848768988149743,
+          "equal_u_gram": 0.035072068869769275,
+          "unequal_u_gram": 2.449804829945205,
+          "ad_relative_error": 1.812340655095026e-16,
+          "minimum_distinct_flow_difference": 2.2251394037558465e-07
+        },
+        {
+          "amplitude": 2.1544346900318822e-06,
+          "gram": 2.484882114240765,
+          "equal_u_gram": 0.03507222914558906,
+          "unequal_u_gram": 2.449809885095176,
+          "ad_relative_error": 3.6246787982388137e-16,
+          "minimum_distinct_flow_difference": 1.0328188735931374e-06
+        },
+        {
+          "amplitude": 1e-05,
+          "gram": 2.484906319491349,
+          "equal_u_gram": 0.03507297308923761,
+          "unequal_u_gram": 2.449833346402112,
+          "ad_relative_error": 1.387778780791543e-17,
+          "minimum_distinct_flow_difference": 4.793934611123522e-06
+        },
+        {
+          "amplitude": 4.641588833612772e-05,
+          "gram": 2.485018614043161,
+          "equal_u_gram": 0.03507642636783712,
+          "unequal_u_gram": 2.449942187675324,
+          "ad_relative_error": 1.8123065103873548e-16,
+          "minimum_distinct_flow_difference": 2.2251776278276873e-05
+        },
+        {
+          "amplitude": 0.00021544346900318823,
+          "gram": 2.4855386263918944,
+          "equal_u_gram": 0.035092459335301085,
+          "unequal_u_gram": 2.4504461670565933,
+          "ad_relative_error": 2.191273120267319e-19,
+          "minimum_distinct_flow_difference": 0.00010329012228027698
+        },
+        {
+          "amplitude": 0.001,
+          "gram": 2.487926131768856,
+          "equal_u_gram": 0.035166969815381866,
+          "unequal_u_gram": 2.452759161953474,
+          "ad_relative_error": 1.8115980218384864e-16,
+          "minimum_distinct_flow_difference": 0.0004795708564792439
+        },
+        {
+          "amplitude": 0.004641588833612773,
+          "gram": 2.4984397690473923,
+          "equal_u_gram": 0.03551480818298226,
+          "unequal_u_gram": 2.46292496086441,
+          "ad_relative_error": 1.3877814277568815e-17,
+          "minimum_distinct_flow_difference": 0.0022289974047201982
+        },
+        {
+          "amplitude": 0.021544346900318822,
+          "gram": 2.534930375806088,
+          "equal_u_gram": 0.037173095186436016,
+          "unequal_u_gram": 2.497757280619652,
+          "ad_relative_error": 1.117664116620234e-16,
+          "minimum_distinct_flow_difference": 0.010411084742732583
+        },
+        {
+          "amplitude": 0.1,
+          "gram": 2.522700123992332,
+          "equal_u_gram": 0.04590661506253323,
+          "unequal_u_gram": 2.4767935089297985,
+          "ad_relative_error": 1.7389527422079405e-16,
+          "minimum_distinct_flow_difference": 0.049696646124361823
+        }
+      ],
+      "smallest_amplitude_limit_error": 1.2417665007369294e-07
+    },
+    {
+      "nu": 64,
+      "uniform": 2.7443448352221655,
+      "positive_amplitude_limit": 2.613592577962757,
+      "gap": 0.1307522572594087,
+      "gap_bound": 0.15079851486161616,
+      "relative_gap": 0.04764425212942447,
+      "relative_bound": 0.05494882163720815,
+      "max_parallel_weight": 0.19476382803655876,
+      "equal_u_uniform": 0.1484258625960392,
+      "equal_u_limit": 0.017673605336630538,
+      "direct": [
+        {
+          "amplitude": 1e-07,
+          "gram": 2.6135928996603406,
+          "equal_u_gram": 0.01767361011492797,
+          "unequal_u_gram": 2.5959192895454124,
+          "ad_relative_error": 1.812340925686827e-16,
+          "minimum_distinct_flow_difference": 4.776386543454507e-08
+        },
+        {
+          "amplitude": 4.641588833612782e-07,
+          "gram": 2.6135940711382246,
+          "equal_u_gram": 0.01767362751553306,
+          "unequal_u_gram": 2.5959204436226915,
+          "ad_relative_error": 1.812340655095026e-16,
+          "minimum_distinct_flow_difference": 2.217002542607058e-07
+        },
+        {
+          "amplitude": 2.1544346900318822e-06,
+          "gram": 2.6135995084011023,
+          "equal_u_gram": 0.01767370828220228,
+          "unequal_u_gram": 2.5959258001189003,
+          "ad_relative_error": 3.6246787982388137e-16,
+          "minimum_distinct_flow_difference": 1.0290420668124182e-06
+        },
+        {
+          "amplitude": 1e-05,
+          "gram": 2.6136247404290387,
+          "equal_u_gram": 0.01767408317250488,
+          "unequal_u_gram": 2.595950657256534,
+          "ad_relative_error": 1.387778780791543e-17,
+          "minimum_distinct_flow_difference": 4.776404002970709e-06
+        },
+        {
+          "amplitude": 4.641588833612772e-05,
+          "gram": 2.6137417383926516,
+          "equal_u_gram": 0.01767582335895798,
+          "unequal_u_gram": 2.596065915033693,
+          "ad_relative_error": 1.8123065103873548e-16,
+          "minimum_distinct_flow_difference": 2.21704015777511e-05
+        },
+        {
+          "amplitude": 0.00021544346900318823,
+          "gram": 2.6142822357428526,
+          "equal_u_gram": 0.017683902739747837,
+          "unequal_u_gram": 2.596598333003105,
+          "ad_relative_error": 2.4411493197422507e-19,
+          "minimum_distinct_flow_difference": 0.00010291231040408581
+        },
+        {
+          "amplitude": 0.001,
+          "gram": 2.616735778247178,
+          "equal_u_gram": 0.017721450283100116,
+          "unequal_u_gram": 2.5990143279640776,
+          "ad_relative_error": 1.8115980218384864e-16,
+          "minimum_distinct_flow_difference": 0.0004778149677082036
+        },
+        {
+          "amplitude": 0.004641588833612773,
+          "gram": 2.626930580672198,
+          "equal_u_gram": 0.017896734030077764,
+          "unequal_u_gram": 2.60903384664212,
+          "ad_relative_error": 1.3877814277568815e-17,
+          "minimum_distinct_flow_difference": 0.002220798870184678
+        },
+        {
+          "amplitude": 0.021544346900318822,
+          "gram": 2.650350254151613,
+          "equal_u_gram": 0.018732382944721272,
+          "unequal_u_gram": 2.631617871206892,
+          "ad_relative_error": 1.1408127765735166e-16,
+          "minimum_distinct_flow_difference": 0.010371974052525762
+        },
+        {
+          "amplitude": 0.1,
+          "gram": 2.5590052068279823,
+          "equal_u_gram": 0.023133403846555767,
+          "unequal_u_gram": 2.5358718029814264,
+          "ad_relative_error": 1.7389527422079405e-16,
+          "minimum_distinct_flow_difference": 0.01549673100588827
+        }
+      ],
+      "smallest_amplitude_limit_error": 1.23086354886226e-07
+    }
+  ],
+  "quadrature_wall_seconds": 16.21421029200428,
+  "checks": {
+    "maximum_ad_relative_error": 3.6246787982388137e-16,
+    "maximum_smallest_amplitude_limit_error": 1.3437844614827554e-07,
+    "all_gap_bounds_hold": true,
+    "deficit_decreases_under_refinement": true
+  },
+  "status": "passed",
+  "wall_seconds": 16.686591834004503
+}

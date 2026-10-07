@@ -72,6 +72,17 @@ C_L[\delta f]=\frac{D}{(qB)^2}\nabla_\perp^2
 
 The 216-node pair calculation matches this oracle to relative error `2.36e-16`. Every homogeneous velocity perturbation and every local density-like mode is undamped. For a nonzero perpendicular Fourier mode, the remaining velocity-neutral modes decay at $\lambda$. [Oracle and timestep evidence](results/uniform_reference/summary.json)
 
+<details>
+<summary>A uniform oracle can miss a near-uniform quadrature bias</summary>
+
+![Direct positive-amplitude mirror calculations approach finite-node limits below the uniform value; velocity refinement removes the discrepancy and satisfies an analytic bound.](results/near_uniform/near_uniform.png)
+
+For the local frozen quadratic form with test function $h=\mu x$, equal-$u$ node pairs carry nonzero quadrature weight. Their projector limit differs from the literal uniform prescription. The resulting deficit falls from **34.6% at 8 nodes to 4.76% at 64 nodes**, in agreement with the derived positive-weight bound. Forty direct calculations independently check the analytic limit and common-chart actions.
+
+This is a finite-quadrature limitation. The equal-$u$ set has zero continuum measure, and refinement restores the uniform limit. The plotted quantity is a frozen quadratic form, not equilibrium entropy production or a physical discontinuity. [Script](examples/18_near_uniform.py) · [Inputs and checks](results/near_uniform/summary.json) · [Derivation](notes/implementation.pdf)
+
+</details>
+
 ## Geometry and interaction range select what can relax
 
 ### Finite range changes which density modes survive
