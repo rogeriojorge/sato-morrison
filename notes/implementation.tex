@@ -1247,6 +1247,34 @@ solve. Parameterizing $n_i^+=w_i e^{g_i^+}$ enforces positive nodal populations,
 but does not prove existence of the solve or positivity between interpolation
 nodes. Check all required quadrature/reconstruction locations.
 
+\subsection*{Angular leaf components of the Cartesian box}
+The mirror and dipole collision-only boxes have an additional domain
+qualification. In the open rectangle $0.8<x<1.2$, $|y|<0.2$, a fixed circle
+with $1.2<R<\sqrt{1.48}$ meets the box in two disconnected angular arcs,
+with $\arccos(1.2/R)<|\theta|<\arcsin(0.2/R)$.
+For $g\in C_c^\infty((1.2,\sqrt{1.48}))$, the observable
+$\phi=g(R)\operatorname{sign}(y)$ is smooth inside the box: its active support
+is separated from $y=0$. Since $\mathbf t$ is azimuthal,
+$\mathbf t\cdot\nabla\phi=0$. Closed local collisions therefore conserve
+these signed component populations as well as the single-valued meridional
+populations. This is a consequence of the natural closed boundary, not a
+failure of that boundary condition.
+
+The corner region has unweighted geometric area fraction
+\begin{equation}
+ \frac{2}{0.16}\int_{\sqrt{1.4}}^{1.2}
+       [0.2-\sqrt{1.44-x^2}]\dd x
+ =0.01394734125\ldots .
+\end{equation}
+Its volume fraction is the same because the $z$ interval is independent;
+its state-measure or particle fraction requires the actual $B$ and density
+weights. Five-point Gauss nodes per axis have maximum $R=1.19506$ and miss
+this region; seven-point nodes reach $R=1.20487$ with two corner nodes in the
+$xy$ grid. Thus independent bulk-observable refinements do not by themselves
+certify preservation of every localized leaf-component constraint or global
+continuum convergence. This analytical limitation is reported independently
+of the finite-time outcomes; it introduces no later acceptance criterion.
+
 \subsection*{Matrix-free Newton--GMRES and residual control}
 The compact nonuniform evolution solves the same discrete-gradient equation
 as the small dense reference. Let $l=\ln f^+$, $l^-=\ln f^-$,
