@@ -111,3 +111,53 @@ def test_toroidal_angular_weighted_invariants_account_for_tiny_nullspace():
     eigenvalues=np.linalg.eigvalsh(scaled)
     tolerance=1e-10*max(np.linalg.norm(scaled,2),1.)
     assert np.count_nonzero(abs(eigenvalues)<tolerance)==39
+
+
+@pytest.mark.parametrize('charge', [-1.3, 1.7])
+def test_toroidal_continuum_null_family_and_streaming_intersection(charge):
+    from sato_morrison.geometry import common_chart_action
+    from sato_morrison.collisions import _kernel
+    field = Field('toroidal', strength=1.4)
+    mass = 1.2
+
+    def coordinates(state):
+        return jnp.hypot(state[0], state[1]), jnp.arctan2(state[1], state[0])
+
+    def collision_invariant(state):
+        radius, theta = coordinates(state)
+        energy = energy_mu(state, field, mass, charge)
+        return (state[0]*jnp.sin(state[2]) + jnp.sin(theta)*state[4]**2
+                + jnp.cos(theta)*energy + jnp.sin(2*theta)*mass*radius*state[3])
+
+    def joint_invariant(state):
+        radius, _ = coordinates(state)
+        return radius**3 + state[4]**2 + .7*energy_mu(state, field, mass, charge) + .3*mass*radius*state[3]
+
+    gradient = jax.grad(collision_invariant)
+    energy_gradient = jax.grad(lambda state: energy_mu(state, field, mass, charge))
+    for radius, theta, height in [(1.1,.3,.2), (1.4,1.7,-.4), (2.2,-.8,.7)]:
+        states = [jnp.array([radius*np.cos(theta), radius*np.sin(theta), height, u, mu])
+                  for u, mu in [(-.7,.2), (.3,.8), (1.1,.4)]]
+        actions, flows = [], []
+        for state in states:
+            grad = gradient(state)
+            action = common_chart_action(state, grad, field, mass, charge)
+            h_r = grad[0]*np.cos(theta)+grad[1]*np.sin(theta)
+            # Independent cylindrical spatial components of J grad(h).
+            cylindrical = np.array([radius*grad[2]/(charge*1.4), grad[3]/mass,
+                (-radius*h_r+state[3]*grad[3])/(charge*1.4)])
+            rotated = np.array([np.cos(theta)*action[0]+np.sin(theta)*action[1],
+                                -np.sin(theta)*action[0]+np.cos(theta)*action[1], action[2]])
+            np.testing.assert_allclose(rotated, cylindrical, atol=2e-14)
+            actions.append(np.asarray(action))
+            flows.append(np.asarray(common_chart_action(state,energy_gradient(state),field,mass,charge)))
+            stream = poisson_mu(state,field,mass,charge)@energy_gradient(state)
+            np.testing.assert_allclose(jax.grad(joint_invariant)(state)@stream,0,atol=2e-14)
+        for i,j in [(0,1),(0,2),(1,2)]:
+            delta = actions[i]-actions[j]
+            np.testing.assert_allclose(_kernel((flows[i]-flows[j])[None])[0]@delta,0,atol=2e-14)
+        # An angularly weighted energy is a collision invariant but is transported.
+        state = states[-1]
+        weighted_energy = lambda point: jnp.sin(coordinates(point)[1])*energy_mu(point,field,mass,charge)
+        stream = poisson_mu(state,field,mass,charge)@energy_gradient(state)
+        assert abs(float(jax.grad(weighted_energy)(state)@stream)) > 1e-3

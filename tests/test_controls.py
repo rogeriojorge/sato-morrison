@@ -176,3 +176,58 @@ def test_landau_small_anisotropy_two_references_and_linear_limit():
         errors.append(abs(rate-linear_rate))
     assert errors[2] < errors[1] < errors[0]
     assert errors[-1]/linear_rate < .002
+
+
+def test_encounter_incoming_flux_normalization_and_jacobians():
+    from sato_morrison.controls import encounter_flux_quadrature, encounter_bounded_flux
+    bounds=((1.2,2.4),(.7,1.5),(.2,.8));theta=.5
+    nodes,weights=encounter_flux_quadrature((8,8,8,12),*bounds,theta)
+    exact=encounter_bounded_flux(*bounds,theta)
+    np.testing.assert_allclose(weights.sum(),exact,rtol=2e-14)
+    assert np.all(weights>0)
+    # Component transformation (V,w)->(v1,v2) has absolute determinant one.
+    transform=np.block([[np.eye(3),.5*np.eye(3)],[np.eye(3),-.5*np.eye(3)]])
+    np.testing.assert_allclose(abs(np.linalg.det(transform)),1.)
+    # Flux is area weighted, not uniform in impact parameter.
+    measured=weights@nodes[:,0]/weights.sum()
+    lower,upper=bounds[0]
+    expected=2*(upper**3-lower**3)/(3*(upper**2-lower**2))
+    np.testing.assert_allclose(measured,expected,rtol=2e-14)
+
+
+@pytest.mark.parametrize('mass,charge',[(1.,1.),(2.3,-.7)])
+def test_relative_encounter_matches_independent_pair_path_and_exit_policy(mass,charge):
+    from sato_morrison.controls import encounter_relative, encounter_incoming
+    b,phase,par,perp,field,distance=1.4,.6,1.1,.4,2.,10.
+    relative=encounter_relative(b,phase,par,perp,field=field,strength=.03,screening=3.,start_distance=distance,mass=mass,charge=charge,max_step=.15,rtol=1e-11)
+    incoming,velocity=encounter_incoming(b,phase,par,perp,distance,charge*field/mass)
+    pair=binary_encounter(incoming,velocity,field=field,strength=.03,screening=3.,duration=relative['time'],mass=mass,charge=charge,max_step=.15,rtol=1e-11)
+    np.testing.assert_allclose(relative['final_relative_velocity'],pair['velocities'][-1,0]-pair['velocities'][-1,1],atol=2e-10)
+    np.testing.assert_allclose(relative['conditional_mu_mean'],pair['delta_mu'][0],atol=2e-12)
+    assert relative['exit']=='transmitted' and relative['parallel_turns']==0
+    assert relative['energy_error']<2e-11
+    reflected=encounter_relative(.4,.6,.25,.1,field=2.,strength=1.,screening=3.,start_distance=10.,max_step=.15,rtol=1e-11)
+    assert reflected['exit']=='reflected' and reflected['parallel_turns']==1
+
+
+@pytest.mark.parametrize('mass,charge',[(1.,1.),(2.3,-.7)])
+def test_thermal_center_moment_formula_independent_gaussian_integration(mass,charge):
+    from sato_morrison.controls import encounter_relative, encounter_thermal_moments
+    field,theta=2.,.7
+    result=encounter_relative(1.4,.6,1.1,.4,field=field,strength=.03,screening=3.,start_distance=10.,mass=mass,charge=charge,max_step=.2,rtol=1e-11)
+    expected=encounter_thermal_moments(result,theta,mass=mass,field=field)
+    # Gauss-Hermite exactly integrates the quadratic polynomial in V_center.
+    x,w=np.polynomial.hermite.hermgauss(3)
+    centers=np.sqrt(theta)*np.stack(np.meshgrid(x,x,x,indexing='ij'),axis=-1).reshape(-1,3)
+    probabilities=np.prod(np.meshgrid(w,w,w,indexing='ij'),axis=0).ravel()/np.pi**1.5
+    angle=charge*field/mass*result['time']
+    rotation=np.array([[np.cos(angle),np.sin(angle),0.],[-np.sin(angle),np.cos(angle),0.],[0.,0.,1.]])
+    final_centers=centers@rotation.T
+    initial_relative=result['initial_relative_velocity'];final_relative=result['final_relative_velocity']
+    increments=[]
+    for sign in [1,-1]:
+        initial=centers+sign*initial_relative/2
+        final=final_centers+sign*final_relative/2
+        increments.append(mass*(np.sum(final[:,:2]**2,axis=1)-np.sum(initial[:,:2]**2,axis=1))/(2*field))
+    computed=np.array([probabilities@increments[0],probabilities@(increments[0]**2),probabilities@(increments[0]*increments[1])])
+    np.testing.assert_allclose(computed,expected,rtol=2e-10,atol=3e-16)

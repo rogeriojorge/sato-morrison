@@ -148,3 +148,17 @@ def test_toroidal_extra_spatial_population_invariants_are_unmodified():
             for vertical in range(3):
                 basis=np.zeros(grid.shape);basis[radial,angular,vertical]=1
                 np.testing.assert_allclose(operator(basis.ravel()),0,atol=1e-12)
+
+
+def test_direction_setup_rejects_exact_zero_and_matches_explicit_kernel():
+    from sato_morrison.collisions import _complete_grid, _kernel, derivative_matrix
+    derivative=derivative_matrix(np.linspace(-1,1,3))
+    with pytest.raises(ValueError,match='zero pair energy direction'):
+        _complete_grid((3,3,3),((0,derivative),(1,derivative)),
+            np.zeros((3,3,3,5,2)),np.ones(3),np.ones(9),
+            np.ones((3,3,3)),'zero energy flow')
+    grid=toroidal_grid(np.linspace(1,1.5,3),np.arange(3)*2*np.pi/3,
+        np.arange(3)*2*np.pi/3,np.linspace(-2,2,3),np.linspace(.1,1.1,3))
+    flow=np.asarray(grid.action(grid.energy))
+    xi=flow[np.asarray(grid.left)]-flow[np.asarray(grid.right)]
+    np.testing.assert_allclose(np.asarray(grid.kernels),_kernel(xi),atol=2e-15,rtol=2e-14)

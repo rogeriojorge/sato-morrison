@@ -150,8 +150,11 @@ def _complete_grid(shape, derivatives, coefficients, spatial_weights, velocity_w
         # Tiny spatial derivative roundoff must not choose a new direction at xi=0.
         direction = np.broadcast_to(np.r_[uniform_direction, 0., 0.], xi.shape).copy()
     else:
-        _kernel(xi)  # reject undefined zero-set limits instead of regularizing
         norms = np.linalg.norm(xi, axis=-1)
+        if np.any(norms == 0):
+            raise ValueError('zero pair energy direction: specify and converge a physical limit')
+        # Only unit directions are retained; do not allocate a discarded P Ix P
+        # tensor of 25 values for every pair merely to validate this zero set.
         direction = xi / norms[:,None]
     return WeakGrid(**{**dummy.__dict__, 'kernel_directions': jnp.asarray(direction)})
 
