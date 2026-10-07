@@ -1,0 +1,26 @@
+Nonuniform positive nonlinear collision evolution; D=0.1, T=0.02; natural collision boundaries; entropy-metric Newton-GMRES; output=/home/runner/work/sato-morrison/sato-morrison/results/nonuniform_evolution
+Execution fields: ['dipole']; accepted 4 completed canonical rows for resume.
+Evolve nonuniform boxes and compare independent finite-time refinements
+  Starting canonical case dipole: {'nx': 3, 'nu': 25, 'nmu': 21, 'umax': 4.0, 'mumax': 20.0, 'dt': 0.005}
+  Evolve nonuniform boxes and compare independent finite-time refinements: 15.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 30.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 45.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 60.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 75.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 90.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 105.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 120.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: returned after 123.380 s
+Traceback (most recent call last):
+  File "/home/runner/work/sato-morrison/sato-morrison/examples/12_nonuniform_evolution.py", line 484, in <module>
+    sequences = {'spatial': [get(nx=n) for n in X_ORDERS],
+                             ^^^^^^^^^
+  File "/home/runner/work/sato-morrison/sato-morrison/examples/12_nonuniform_evolution.py", line 480, in get
+    cache[key] = evaluate(field, **settings)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/sato-morrison/sato-morrison/examples/12_nonuniform_evolution.py", line 119, in evaluate
+    answer = discrete_gradient_step(grid, state, dt, collision_strength=D, method='krylov',
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/sato-morrison/sato-morrison/src/sato_morrison/solver.py", line 186, in discrete_gradient_step
+    raise StepFailure(f'SOLVAX GMRES rejected Newton correction: iterations={int(count)}, '
+sato_morrison.solver.StepFailure: SOLVAX GMRES rejected Newton correction: iterations=300, true relative residual=2.182e-01, target=5.000e-02
