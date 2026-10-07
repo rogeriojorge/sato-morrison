@@ -1,0 +1,612 @@
+{
+  "model": "sm_local_nonlinear continuous initial local weak entropy production",
+  "boundary": "local volume density; truncated positive velocity quadrature; no evolution boundary",
+  "units": "normalized",
+  "inputs": {
+    "position": [
+      1.0,
+      0.12,
+      0.3
+    ],
+    "mass": 1.3,
+    "charge": -0.8,
+    "D": 0.1,
+    "nu": 25,
+    "nmu": 21,
+    "umax": 4.0,
+    "mumax": 20.0,
+    "fields": [
+      {
+        "kind": "mirror",
+        "strength": 1.0,
+        "amplitude": 0.15,
+        "length": 1.0,
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "base": "dipole"
+      },
+      {
+        "kind": "dipole",
+        "strength": 1.0,
+        "amplitude": 0.0,
+        "length": 1.0,
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "base": "dipole"
+      },
+      {
+        "kind": "nonaxisymmetric",
+        "strength": 1.0,
+        "amplitude": 0.03,
+        "length": 1.0,
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "base": "dipole"
+      }
+    ],
+    "finite_difference_steps": [
+      0.04,
+      0.02,
+      0.01,
+      0.005,
+      0.002,
+      0.001,
+      0.0005,
+      0.0002,
+      0.0001,
+      5e-05,
+      1e-05,
+      5e-06,
+      1e-06,
+      2e-07,
+      5e-08,
+      1e-08
+    ],
+    "control": "translation of the sampled x coordinate; all other inputs held fixed"
+  },
+  "commit": "fb1739587243f4e3c8219351f247296a3b8c3cb3",
+  "working_tree": "M README.md\n M notes/implementation.pdf\n M notes/implementation.tex\n M notes/references.bib\n?? results/dipole_obstruction/\n?? results/encounter_validation/\n?? results/geometry_sensitivity/\n?? results/scattering_table/",
+  "source_sha256": "e7f3aa39c8e95980254da82a86b707b8dac12a5c2ac90b911ad1a0f6809fda7a",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "unset",
+    "OPENBLAS_NUM_THREADS": "unset",
+    "MKL_NUM_THREADS": "unset",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": true,
+  "experiment_dependency_sha256": {
+    "examples/14_geometry_sensitivity.py": "8f48025062e8050b6ea52c0c9072e665ad918ded3359a66ba7b58fcdeb00d640",
+    "src/sato_morrison/geometry.py": "3e96f695e3a031aacdea5257428e40e9a057f6bf2ea1ef052363c79c6345dda6",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "experiment_dependency_sha256_end": {
+    "examples/14_geometry_sensitivity.py": "8f48025062e8050b6ea52c0c9072e665ad918ded3359a66ba7b58fcdeb00d640",
+    "src/sato_morrison/geometry.py": "3e96f695e3a031aacdea5257428e40e9a057f6bf2ea1ef052363c79c6345dda6",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "experiment_dependencies_unchanged": true,
+  "rows": [
+    {
+      "field": "mirror",
+      "production": 0.0014298787373812365,
+      "derivative": -0.003162862978287017,
+      "independent_pair_relative_error": 0.0,
+      "fd_steps": [
+        0.04,
+        0.02,
+        0.01,
+        0.005,
+        0.002,
+        0.001,
+        0.0005,
+        0.0002,
+        0.0001,
+        5e-05,
+        1e-05,
+        5e-06,
+        1e-06,
+        2e-07,
+        5e-08,
+        1e-08
+      ],
+      "fd_derivatives": [
+        -0.0031567477089812974,
+        -0.003161333739758979,
+        -0.00316248064232556,
+        -0.0031627673926509217,
+        -0.0031628476845116903,
+        -0.0031628591548408256,
+        -0.003162862022424275,
+        -0.003162862825348842,
+        -0.003162862940052011,
+        -0.003162862968737832,
+        -0.0031628629779145187,
+        -0.0031628629782506214,
+        -0.0031628629784674622,
+        -0.0031628629777085207,
+        -0.0031628629836716327,
+        -0.0031628630270397196
+      ],
+      "fd_relative_errors": [
+        0.0019334600795864224,
+        0.0004834981908910802,
+        0.0001208828722843489,
+        3.02212384006738e-05,
+        4.835421398866768e-06,
+        1.208856095836415e-06,
+        3.0221440157809054e-07,
+        4.8354347372908054e-08,
+        1.208873307803072e-08,
+        3.019158684024723e-09,
+        1.1777256099815275e-10,
+        1.1507232472116793e-11,
+        5.705118111284643e-11,
+        1.8290278652658956e-10,
+        1.7024498163546933e-09,
+        1.5414105110036752e-08
+      ],
+      "refinements": [
+        {
+          "case": "u17",
+          "nu": 17,
+          "nmu": 21,
+          "umax": 4.0,
+          "mumax": 20.0,
+          "production": 0.0014301859738554907,
+          "derivative": -0.003164467110343114,
+          "production_change": 0.0002148689019719857,
+          "derivative_change": 0.0005071772211154763
+        },
+        {
+          "case": "u21",
+          "nu": 21,
+          "nmu": 21,
+          "umax": 4.0,
+          "mumax": 20.0,
+          "production": 0.001429986338561682,
+          "derivative": -0.0031634335709377517,
+          "production_change": 7.525196202484386e-05,
+          "derivative_change": 0.00018040384760631975
+        },
+        {
+          "case": "mu13",
+          "nu": 25,
+          "nmu": 13,
+          "umax": 4.0,
+          "mumax": 20.0,
+          "production": 0.0014298782602238406,
+          "derivative": -0.0031628674977959063,
+          "production_change": 3.337047984343372e-07,
+          "derivative_change": 1.428929713402643e-06
+        },
+        {
+          "case": "mu17",
+          "nu": 25,
+          "nmu": 17,
+          "umax": 4.0,
+          "mumax": 20.0,
+          "production": 0.001429878704094351,
+          "derivative": -0.0031628631558487494,
+          "production_change": 2.3279516318840448e-08,
+          "derivative_change": 5.613955883119837e-08
+        },
+        {
+          "case": "u_tail",
+          "nu": 29,
+          "nmu": 21,
+          "umax": 5.0,
+          "mumax": 20.0,
+          "production": 0.0014299815234879998,
+          "derivative": -0.0031634023207780014,
+          "production_change": 7.188449207348252e-05,
+          "derivative_change": 0.00017052350819079208
+        },
+        {
+          "case": "mu_tail",
+          "nu": 25,
+          "nmu": 25,
+          "umax": 4.0,
+          "mumax": 24.0,
+          "production": 0.0014298788209284442,
+          "derivative": -0.003162862673434182,
+          "production_change": 5.842957559710108e-08,
+          "derivative_change": 9.638509076830926e-08
+        },
+        {
+          "case": "u_tail_order",
+          "nu": 33,
+          "nmu": 21,
+          "umax": 5.0,
+          "mumax": 20.0,
+          "production": 0.0014299140666190983,
+          "derivative": -0.003163039373173605,
+          "production_change": 2.470785594484258e-05,
+          "derivative_change": 5.577063812089067e-05
+        },
+        {
+          "case": "mu_tail_order",
+          "nu": 25,
+          "nmu": 29,
+          "umax": 4.0,
+          "mumax": 24.0,
+          "production": 0.0014298788179748353,
+          "derivative": -0.0031628627004420457,
+          "production_change": 5.6363939643925595e-08,
+          "derivative_change": 8.784603485197044e-08
+        }
+      ],
+      "compile_first_s": 3.135526791011216,
+      "warm_s": [
+        0.02322233299491927,
+        0.018841124983737245,
+        0.02257112498045899,
+        0.02415599999949336,
+        0.022421333997044712
+      ]
+    },
+    {
+      "field": "dipole",
+      "production": 0.005285697846207187,
+      "derivative": 0.0324274534596912,
+      "independent_pair_relative_error": 3.2819194862256037e-16,
+      "fd_steps": [
+        0.04,
+        0.02,
+        0.01,
+        0.005,
+        0.002,
+        0.001,
+        0.0005,
+        0.0002,
+        0.0001,
+        5e-05,
+        1e-05,
+        5e-06,
+        1e-06,
+        2e-07,
+        5e-08,
+        1e-08
+      ],
+      "fd_derivatives": [
+        0.032229930128167175,
+        0.032377242268839944,
+        0.0324148472619943,
+        0.032424298546516406,
+        0.03242694852257548,
+        0.03242732722001434,
+        0.03242742189943186,
+        0.032427448410021154,
+        0.032427452197249934,
+        0.03242745314407068,
+        0.03242745344714422,
+        0.03242745345707551,
+        0.03242745346418788,
+        0.03242745344597328,
+        0.03242745346548892,
+        0.03242745356089871
+      ],
+      "fd_relative_errors": [
+        0.006091237838628065,
+        0.0015484160948274171,
+        0.0003887507760228208,
+        9.729142557286212e-05,
+        1.5571284878857738e-05,
+        3.89298768140217e-06,
+        9.73257409056607e-07,
+        1.5572206585692247e-07,
+        3.8931248924886603e-08,
+        9.733126784877596e-09,
+        3.869245348414594e-10,
+        8.066268445248977e-11,
+        1.3866894639375922e-10,
+        4.230340106515126e-10,
+        1.787905861827072e-10,
+        3.1210441707055594e-09
+      ],
+      "refinements": [
+        {
+          "case": "u17",
+          "nu": 17,
+          "nmu": 21,
+          "umax": 4.0,
+          "mumax": 20.0,
+          "production": 0.005334431222910674,
+          "derivative": 0.032814932373203695,
+          "production_change": 0.009219856700370536,
+          "derivative_change": 0.011949100905939234
+        },
+        {
+          "case": "u21",
+          "nu": 21,
+          "nmu": 21,
+          "umax": 4.0,
+          "mumax": 20.0,
+          "production": 0.005299842805193907,
+          "derivative": 0.03264177936401973,
+          "production_change": 0.0026760816448996283,
+          "derivative_change": 0.006609396713650269
+        },
+        {
+          "case": "mu13",
+          "nu": 25,
+          "nmu": 13,
+          "umax": 4.0,
+          "mumax": 20.0,
+          "production": 0.0052751248785372976,
+          "derivative": 0.03210984909923699,
+          "production_change": 0.0020002974020688256,
+          "derivative_change": 0.009794304719271403
+        },
+        {
+          "case": "mu17",
+          "nu": 25,
+          "nmu": 17,
+          "umax": 4.0,
+          "mumax": 20.0,
+          "production": 0.0052901016287805,
+          "derivative": 0.032413631184588565,
+          "production_change": 0.0008331506456566514,
+          "derivative_change": 0.0004262522531969248
+        },
+        {
+          "case": "u_tail",
+          "nu": 29,
+          "nmu": 21,
+          "umax": 5.0,
+          "mumax": 20.0,
+          "production": 0.005291780124476451,
+          "derivative": 0.032519778450931736,
+          "production_change": 0.0011507048730810343,
+          "derivative_change": 0.002847124315676006
+        },
+        {
+          "case": "mu_tail",
+          "nu": 25,
+          "nmu": 25,
+          "umax": 4.0,
+          "mumax": 24.0,
+          "production": 0.005286598635545291,
+          "derivative": 0.03244872554928192,
+          "production_change": 0.0001704201345430024,
+          "derivative_change": 0.0006559901355550055
+        },
+        {
+          "case": "u_tail_order",
+          "nu": 33,
+          "nmu": 21,
+          "umax": 5.0,
+          "mumax": 20.0,
+          "production": 0.005284560529189665,
+          "derivative": 0.032400489400268365,
+          "production_change": 0.00021516875360889513,
+          "derivative_change": 0.0008315194856836243
+        },
+        {
+          "case": "mu_tail_order",
+          "nu": 25,
+          "nmu": 29,
+          "umax": 4.0,
+          "mumax": 24.0,
+          "production": 0.005288505015263957,
+          "derivative": 0.032460764829954386,
+          "production_change": 0.0005310876895441799,
+          "derivative_change": 0.0010272582860876467
+        }
+      ],
+      "compile_first_s": 14.31657350002206,
+      "warm_s": [
+        0.01904904199182056,
+        0.019822208007099107,
+        0.027837541012559086,
+        0.030516625003656372,
+        0.017502957984106615
+      ]
+    },
+    {
+      "field": "nonaxisymmetric",
+      "production": 0.0050750990633629724,
+      "derivative": 0.031071757577297344,
+      "independent_pair_relative_error": 1.0254322847605503e-15,
+      "fd_steps": [
+        0.04,
+        0.02,
+        0.01,
+        0.005,
+        0.002,
+        0.001,
+        0.0005,
+        0.0002,
+        0.0001,
+        5e-05,
+        1e-05,
+        5e-06,
+        1e-06,
+        2e-07,
+        5e-08,
+        1e-08
+      ],
+      "fd_derivatives": [
+        0.030882690624264256,
+        0.03102371817645462,
+        0.03105969802787425,
+        0.031068739559458533,
+        0.03107127455391034,
+        0.03107163681642742,
+        0.031071727386756433,
+        0.03107175274679125,
+        0.031071756369615948,
+        0.031071757275423495,
+        0.031071757565243743,
+        0.03107175757391736,
+        0.031071757580942994,
+        0.0310717575648968,
+        0.03107175748466584,
+        0.031071757580075632
+      ],
+      "fd_relative_errors": [
+        0.006084849000342045,
+        0.0015460792883445842,
+        0.0003881193200317532,
+        9.713058011935177e-05,
+        1.554541566570733e-05,
+        3.886515580103956e-06,
+        9.71639304145921e-07,
+        1.5546291774223103e-07,
+        3.8867495437138314e-08,
+        9.715377319218584e-09,
+        3.879278841162679e-10,
+        1.0877993574847313e-10,
+        1.1733001408862e-10,
+        3.9909369039180036e-10,
+        2.981212212793902e-09,
+        8.941521925184051e-11
+      ],
+      "refinements": [
+        {
+          "case": "u17",
+          "nu": 17,
+          "nmu": 21,
+          "umax": 4.0,
+          "mumax": 20.0,
+          "production": 0.0051203141546157785,
+          "derivative": 0.03143455881107538,
+          "production_change": 0.008909203680222275,
+          "derivative_change": 0.011676237910761753
+        },
+        {
+          "case": "u21",
+          "nu": 21,
+          "nmu": 21,
+          "umax": 4.0,
+          "mumax": 20.0,
+          "production": 0.005087887436156623,
+          "derivative": 0.03126551426508843,
+          "production_change": 0.0025198272258308515,
+          "derivative_change": 0.006235781394376499
+        },
+        {
+          "case": "mu13",
+          "nu": 25,
+          "nmu": 13,
+          "umax": 4.0,
+          "mumax": 20.0,
+          "production": 0.00506576439429078,
+          "derivative": 0.030766789599535858,
+          "production_change": 0.001839307756488758,
+          "derivative_change": 0.009814957425656272
+        },
+        {
+          "case": "mu17",
+          "nu": 25,
+          "nmu": 17,
+          "umax": 4.0,
+          "mumax": 20.0,
+          "production": 0.005079286473697742,
+          "derivative": 0.031066648624828577,
+          "production_change": 0.0008250893790425829,
+          "derivative_change": 0.000164424315427207
+        },
+        {
+          "case": "u_tail",
+          "nu": 29,
+          "nmu": 21,
+          "umax": 5.0,
+          "mumax": 20.0,
+          "production": 0.0050805950013613,
+          "derivative": 0.03115550656068855,
+          "production_change": 0.0010829223094388106,
+          "derivative_change": 0.002695341040263465
+        },
+        {
+          "case": "mu_tail",
+          "nu": 25,
+          "nmu": 25,
+          "umax": 4.0,
+          "mumax": 24.0,
+          "production": 0.005075919285837125,
+          "derivative": 0.03109175424359729,
+          "production_change": 0.00016161703720690896,
+          "derivative_change": 0.000643564054920333
+        },
+        {
+          "case": "u_tail_order",
+          "nu": 33,
+          "nmu": 21,
+          "umax": 5.0,
+          "mumax": 20.0,
+          "production": 0.005074104736852009,
+          "derivative": 0.03104678835088439,
+          "production_change": 0.00019592258171689187,
+          "derivative_change": 0.0008035987777916325
+        },
+        {
+          "case": "mu_tail_order",
+          "nu": 25,
+          "nmu": 29,
+          "umax": 4.0,
+          "mumax": 24.0,
+          "production": 0.0050776974532526125,
+          "derivative": 0.031103604103240638,
+          "production_change": 0.0005119880138690783,
+          "derivative_change": 0.0010249348098210953
+        }
+      ],
+      "compile_first_s": 6.679040666989749,
+      "warm_s": [
+        0.02591137500712648,
+        0.016680375003488734,
+        0.021145000006072223,
+        0.01925799998571165,
+        0.027479332988150418
+      ]
+    }
+  ],
+  "scope": "No implicit or steady-state geometry derivative, and no physical rate calibration.",
+  "timing_scope": "Compilation and synchronized warm calls under concurrent machine load; not isolated cost comparisons.",
+  "convergence_checks": [
+    {
+      "field": "mirror",
+      "maximum_final_derivative_change": 0.00018040384760631975,
+      "target": 0.01,
+      "status": "passed"
+    },
+    {
+      "field": "dipole",
+      "maximum_final_derivative_change": 0.006609396713650269,
+      "target": 0.01,
+      "status": "passed"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "maximum_final_derivative_change": 0.006235781394376499,
+      "target": 0.01,
+      "status": "passed"
+    }
+  ]
+}

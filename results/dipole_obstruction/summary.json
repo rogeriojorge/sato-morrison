@@ -1,0 +1,367 @@
+{
+  "model": "analytic local collision nullspace and dipole accessibility counterexample",
+  "boundary": "finite-domain quadrature; theorem requires closed flux-compatible ideal boundaries; no time evolution",
+  "units": "normalized",
+  "inputs": {
+    "C": 1.0,
+    "beta": 1.0,
+    "gamma_mu": 0.2,
+    "psi_bounds": [
+      0.4,
+      1.0
+    ],
+    "latitude_bounds": [
+      -0.5235987755982988,
+      0.5235987755982988
+    ],
+    "umax": 4.0,
+    "mumax": 12.0,
+    "order": [
+      32,
+      24,
+      32,
+      32
+    ],
+    "amplitude_bound": 0.4,
+    "dtype": "NumPy float64"
+  },
+  "commit": "fb1739587243f4e3c8219351f247296a3b8c3cb3",
+  "working_tree": "M README.md\n M notes/implementation.pdf\n M notes/implementation.tex\n M notes/references.bib\n?? results/dipole_obstruction/\n?? results/encounter_validation/\n?? results/geometry_sensitivity/\n?? results/scattering_table/",
+  "source_sha256": "e7f3aa39c8e95980254da82a86b707b8dac12a5c2ac90b911ad1a0f6809fda7a",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "unset",
+    "OPENBLAS_NUM_THREADS": "unset",
+    "MKL_NUM_THREADS": "unset",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": false,
+  "experiment_dependency_sha256": {
+    "examples/15_dipole_obstruction.py": "5cc6c89f519de49e1f09c693c4ef4ac3662a850d4676b5aedacca4aec012a6e7",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "experiment_dependency_sha256_end": {
+    "examples/15_dipole_obstruction.py": "5cc6c89f519de49e1f09c693c4ef4ac3662a850d4676b5aedacca4aec012a6e7",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "experiment_dependencies_unchanged": true,
+  "rows": [
+    {
+      "order": [
+        32,
+        24,
+        32,
+        32
+      ],
+      "number": 29.169361195844647,
+      "energy": 30.030748273216773,
+      "projection_coefficients": [
+        -0.0015299605659497065,
+        1.298921273208309
+      ],
+      "gram_condition": 40.53969117824851,
+      "epsilon": 0.23680373965720902,
+      "analytic_relative_population_lower_bound": 0.6,
+      "minimum_relative_population": 0.9640658084871653,
+      "flux_second_moment_difference": 0.0002586856606060322,
+      "independent_squared_residual_identity": 0.0002586856606070584,
+      "identity_relative_error": 3.966966525509569e-12,
+      "flux_KL_lower_bound": 1.5140605401756498e-05,
+      "full_initial_KL": 1.528546508569061e-05,
+      "number_relative_error": 1.33975681553056e-15,
+      "energy_relative_error": 1.1257225691571096e-15,
+      "mu_marginal_relative_error": 2.8013097052002616e-15,
+      "mean_flux_relative_error": 1.377412599567977e-15,
+      "case": "base",
+      "mismatch_relative_change": 5.154987547939527e-12,
+      "KL_relative_change": 1.1017475820551681e-10
+    },
+    {
+      "order": [
+        16,
+        24,
+        32,
+        32
+      ],
+      "number": 29.16936119584461,
+      "energy": 30.03074827321675,
+      "projection_coefficients": [
+        -0.0015299605659496863,
+        1.2989212732083093
+      ],
+      "gram_condition": 40.53969117824863,
+      "epsilon": 0.2368037396572091,
+      "analytic_relative_population_lower_bound": 0.6,
+      "minimum_relative_population": 0.9645501381454251,
+      "flux_second_moment_difference": 0.00025868566060676925,
+      "independent_squared_residual_identity": 0.00025868566060705667,
+      "identity_relative_error": 1.1110859227813985e-12,
+      "flux_KL_lower_bound": 1.5140605402714146e-05,
+      "full_initial_KL": 1.52854650866581e-05,
+      "number_relative_error": 4.871842965565679e-16,
+      "energy_relative_error": 2.933302137818045e-16,
+      "mu_marginal_relative_error": 2.184717079870859e-15,
+      "mean_flux_relative_error": 3.79834445265023e-16,
+      "case": "psi16",
+      "mismatch_relative_change": 2.3058221998439876e-12,
+      "KL_relative_change": 4.692446431420194e-11
+    },
+    {
+      "order": [
+        24,
+        24,
+        32,
+        32
+      ],
+      "number": 29.169361195844587,
+      "energy": 30.030748273216744,
+      "projection_coefficients": [
+        -0.0015299605659497093,
+        1.2989212732083095
+      ],
+      "gram_condition": 40.53969117824865,
+      "epsilon": 0.236803739657209,
+      "analytic_relative_population_lower_bound": 0.6,
+      "minimum_relative_population": 0.9641940223053083,
+      "flux_second_moment_difference": 0.00025868566060707396,
+      "independent_squared_residual_identity": 0.00025868566060705607,
+      "identity_relative_error": 6.915472548431956e-14,
+      "flux_KL_lower_bound": 1.5140605402978394e-05,
+      "full_initial_KL": 1.5285465086882496e-05,
+      "number_relative_error": 1.2179607413914207e-16,
+      "energy_relative_error": 4.4952653084876e-16,
+      "mu_marginal_relative_error": 1.84977787598822e-15,
+      "mean_flux_relative_error": 5.988750432904252e-17,
+      "case": "psi24",
+      "mismatch_relative_change": 1.1278755707166965e-12,
+      "KL_relative_change": 2.9471536322489555e-11
+    },
+    {
+      "order": [
+        32,
+        12,
+        32,
+        32
+      ],
+      "number": 29.169361196183722,
+      "energy": 30.03074827341088,
+      "projection_coefficients": [
+        -0.0015299605659761734,
+        1.29892127320899
+      ],
+      "gram_condition": 40.53969117755286,
+      "epsilon": 0.23680373965698245,
+      "analytic_relative_population_lower_bound": 0.6,
+      "minimum_relative_population": 0.9644587314933499,
+      "flux_second_moment_difference": 0.0002586856606082978,
+      "independent_squared_residual_identity": 0.00025868566060804877,
+      "identity_relative_error": 9.62717602647712e-13,
+      "flux_KL_lower_bound": 1.514060540356141e-05,
+      "full_initial_KL": 1.5285465087431333e-05,
+      "number_relative_error": 3.6538822241317805e-16,
+      "energy_relative_error": 3.9672940296187683e-16,
+      "mu_marginal_relative_error": 1.6746960193937327e-15,
+      "mean_flux_relative_error": 3.5768427242638433e-16,
+      "case": "latitude12",
+      "mismatch_relative_change": 3.603117804118483e-12,
+      "KL_relative_change": 9.035217019004449e-12
+    },
+    {
+      "order": [
+        32,
+        18,
+        32,
+        32
+      ],
+      "number": 29.169361195844623,
+      "energy": 30.03074827321675,
+      "projection_coefficients": [
+        -0.0015299605659496959,
+        1.2989212732083089
+      ],
+      "gram_condition": 40.53969117824852,
+      "epsilon": 0.2368037396572091,
+      "analytic_relative_population_lower_bound": 0.6,
+      "minimum_relative_population": 0.9641719023915156,
+      "flux_second_moment_difference": 0.0002586856606061171,
+      "independent_squared_residual_identity": 0.0002586856606070585,
+      "identity_relative_error": 3.6392150386687346e-12,
+      "flux_KL_lower_bound": 1.5140605401919941e-05,
+      "full_initial_KL": 1.5285465085848103e-05,
+      "number_relative_error": 1.2179607413914191e-15,
+      "energy_relative_error": 8.96049286369309e-16,
+      "mu_marginal_relative_error": 2.496819519852409e-15,
+      "mean_flux_relative_error": 1.2404096787056483e-15,
+      "case": "latitude18",
+      "mismatch_relative_change": 4.8268056218603306e-12,
+      "KL_relative_change": 9.937972667017902e-11
+    },
+    {
+      "order": [
+        32,
+        24,
+        16,
+        32
+      ],
+      "number": 29.169361184155076,
+      "energy": 30.03074841394514,
+      "projection_coefficients": [
+        -0.0015299607211026456,
+        1.2989212735337288
+      ],
+      "gram_condition": 40.53968814684433,
+      "epsilon": 0.23680373863737678,
+      "analytic_relative_population_lower_bound": 0.6,
+      "minimum_relative_population": 0.9641110830679447,
+      "flux_second_moment_difference": 0.0002586856594238687,
+      "independent_squared_residual_identity": 0.00025868565942425075,
+      "identity_relative_error": 1.4769772952789897e-12,
+      "flux_KL_lower_bound": 1.5140605264349797e-05,
+      "full_initial_KL": 1.5285464950947714e-05,
+      "number_relative_error": 4.871842967518055e-16,
+      "energy_relative_error": 3.595287991379518e-16,
+      "mu_marginal_relative_error": 1.6442470015373436e-15,
+      "mean_flux_relative_error": 5.014553018602342e-16,
+      "case": "u16",
+      "mismatch_relative_change": 4.575039236343059e-09,
+      "KL_relative_change": 9.185551763657429e-09
+    },
+    {
+      "order": [
+        32,
+        24,
+        24,
+        32
+      ],
+      "number": 29.16936119584475,
+      "energy": 30.03074827321687,
+      "projection_coefficients": [
+        -0.0015299605659496935,
+        1.2989212732083089
+      ],
+      "gram_condition": 40.53969117824845,
+      "epsilon": 0.2368037396572091,
+      "analytic_relative_population_lower_bound": 0.6,
+      "minimum_relative_population": 0.9640778009408737,
+      "flux_second_moment_difference": 0.00025868566060690575,
+      "independent_squared_residual_identity": 0.0002586856606070585,
+      "identity_relative_error": 5.905394436812446e-13,
+      "flux_KL_lower_bound": 1.5140605402987745e-05,
+      "full_initial_KL": 1.5285465086899477e-05,
+      "number_relative_error": 2.4359214827828276e-16,
+      "energy_relative_error": 4.459451064189685e-17,
+      "mu_marginal_relative_error": 2.146655806702367e-15,
+      "mean_flux_relative_error": 1.6366516594032786e-16,
+      "case": "u24",
+      "mismatch_relative_change": 1.7781331962396507e-12,
+      "KL_relative_change": 2.885391925389058e-11
+    },
+    {
+      "order": [
+        32,
+        24,
+        32,
+        16
+      ],
+      "number": 29.169361195841994,
+      "energy": 30.030748273258762,
+      "projection_coefficients": [
+        -0.001529960564892517,
+        1.298921273205545
+      ],
+      "gram_condition": 40.53969117794473,
+      "epsilon": 0.23680373966420398,
+      "analytic_relative_population_lower_bound": 0.6,
+      "minimum_relative_population": 0.964107747585682,
+      "flux_second_moment_difference": 0.00025868566061239935,
+      "independent_squared_residual_identity": 0.0002586856606121169,
+      "identity_relative_error": 1.0918064235341099e-12,
+      "flux_KL_lower_bound": 1.5140605404142054e-05,
+      "full_initial_KL": 1.5285465088227893e-05,
+      "number_relative_error": 4.871842965566116e-16,
+      "energy_relative_error": 5.665582388278681e-16,
+      "mu_marginal_relative_error": 4.750046891426963e-15,
+      "mean_flux_relative_error": 4.298774283345617e-16,
+      "case": "mu16",
+      "mismatch_relative_change": 1.945843486339527e-11,
+      "KL_relative_change": 4.7385428914026306e-11
+    },
+    {
+      "order": [
+        32,
+        24,
+        32,
+        24
+      ],
+      "number": 29.169361195844452,
+      "energy": 30.030748273216695,
+      "projection_coefficients": [
+        -0.0015299605659496907,
+        1.2989212732083084
+      ],
+      "gram_condition": 40.539691178248894,
+      "epsilon": 0.2368037396572092,
+      "analytic_relative_population_lower_bound": 0.6,
+      "minimum_relative_population": 0.9640768882430675,
+      "flux_second_moment_difference": 0.0002586856606083359,
+      "independent_squared_residual_identity": 0.00025868566060705754,
+      "identity_relative_error": 4.941838595064287e-12,
+      "flux_KL_lower_bound": 1.5140605404727713e-05,
+      "full_initial_KL": 1.5285465088674716e-05,
+      "number_relative_error": 1.5833489638088541e-15,
+      "energy_relative_error": 1.3898237383990213e-15,
+      "mu_marginal_relative_error": 2.0553087510980318e-15,
+      "mean_flux_relative_error": 1.7172536772160156e-15,
+      "case": "mu24",
+      "mismatch_relative_change": 3.750555421788704e-12,
+      "KL_relative_change": 8.606670931499139e-11
+    },
+    {
+      "order": [
+        40,
+        30,
+        40,
+        40
+      ],
+      "number": 29.16936119584456,
+      "energy": 30.030748273216744,
+      "projection_coefficients": [
+        -0.0015299605659497195,
+        1.298921273208309
+      ],
+      "gram_condition": 40.53969117824874,
+      "epsilon": 0.23680373965720894,
+      "analytic_relative_population_lower_bound": 0.6,
+      "minimum_relative_population": 0.9639443036999326,
+      "flux_second_moment_difference": 0.0002586856606073657,
+      "independent_squared_residual_identity": 0.0002586856606070569,
+      "identity_relative_error": 1.193862033588386e-12,
+      "flux_KL_lower_bound": 1.514060540342461e-05,
+      "full_initial_KL": 1.5285465087353816e-05,
+      "number_relative_error": 2.435921482782844e-16,
+      "energy_relative_error": 1.5065088569179722e-16,
+      "mu_marginal_relative_error": 2.2532273715741303e-15,
+      "mean_flux_relative_error": 3.7921916268630097e-16,
+      "case": "joint",
+      "mismatch_relative_change": 0.0,
+      "KL_relative_change": 0.0
+    }
+  ],
+  "scope": "Numerically constructed distributions with matched discrete constraints. The continuum theorem uses conditional integrals in place of sums. The geometric obstruction is conditional on exact local collision and closed ideal boundaries, and is not a physical dipole confinement prediction."
+}
