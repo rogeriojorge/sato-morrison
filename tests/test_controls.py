@@ -231,3 +231,55 @@ def test_thermal_center_moment_formula_independent_gaussian_integration(mass,cha
         increments.append(mass*(np.sum(final[:,:2]**2,axis=1)-np.sum(initial[:,:2]**2,axis=1))/(2*field))
     computed=np.array([probabilities@increments[0],probabilities@(increments[0]**2),probabilities@(increments[0]*increments[1])])
     np.testing.assert_allclose(computed,expected,rtol=2e-10,atol=3e-16)
+
+
+def test_flux_inverse_cdf_and_invalid_inputs():
+    from sato_morrison.controls import encounter_flux_samples, encounter_bounded_flux, encounter_thermal_moments
+    theta=.5;bounds=((.2,4.8),(.35,3.),(0.,2.5))
+    unit=np.array([[0.,0.,0.],[1.,1.,1.],[.3,.6,.7]])
+    nodes=encounter_flux_samples(unit,*bounds,theta)
+    np.testing.assert_allclose(nodes[0],[.2,.35,0.],atol=1e-14)
+    np.testing.assert_allclose(nodes[1],[4.8,3.,2.5],atol=1e-14)
+    recovered=(np.exp(-bounds[1][0]**2/(4*theta))-np.exp(-nodes[:,1]**2/(4*theta)))/(np.exp(-bounds[1][0]**2/(4*theta))-np.exp(-bounds[1][1]**2/(4*theta)))
+    np.testing.assert_allclose(recovered,unit[:,1],atol=2e-15)
+    with pytest.raises(ValueError):
+        encounter_bounded_flux((1.,np.nan),(.7,1.5),(.2,.8),theta)
+    with pytest.raises(ValueError):
+        encounter_thermal_moments({},np.nan)
+
+
+def test_periodic_positive_collision_interpolator():
+    from sato_morrison.controls import encounter_moment_interpolator
+    axes=[np.linspace(1.,2.,4),np.linspace(.6,1.6,4),np.linspace(.2,.8,4),2*np.pi*np.arange(16)/16]
+    b,p,t,phase=np.meshgrid(*axes,indexing='ij')
+    mean=1e-3*(b-p+t)*(np.sin(phase)+.2*np.cos(2*phase))
+    variance=np.exp(-b+2*p-t+.1*np.cos(phase)+.08*np.sin(3*phase))*1e-5
+    moments=np.stack((mean,mean**2+variance,mean**2-variance),axis=-1)
+    interpolation=encounter_moment_interpolator(axes,moments)
+    points=np.array([[1.4,1.1,.45,0.],[1.4,1.1,.45,2*np.pi],[1.4,1.1,.45,-1e-8],[1.4,1.1,.45,1e-8]])
+    predictions=interpolation(points)
+    np.testing.assert_allclose(predictions[0],predictions[1],atol=2e-17)
+    np.testing.assert_allclose(predictions[2],predictions[3],atol=2e-11)
+    h=1e-6
+    seam=interpolation(np.array([[1.4,1.1,.45,0.],[1.4,1.1,.45,h],[1.4,1.1,.45,2*np.pi-h]]))
+    left=(seam[0]-seam[2])/h;right=(seam[1]-seam[0])/h
+    np.testing.assert_allclose(left,right,atol=3e-9,rtol=1e-5)
+    assert np.all(predictions[:,1]>=predictions[:,0]**2)
+    np.testing.assert_allclose(predictions[:,1]+predictions[:,2],2*predictions[:,0]**2,atol=1e-20)
+
+
+@pytest.mark.parametrize('mass,charge',[(1.,1.),(1.7,-.8)])
+def test_reverse_encounter_negates_mean_and_preserves_variance(mass,charge):
+    from sato_morrison.controls import encounter_relative, encounter_reverse_incoming, encounter_thermal_moments
+    kwargs=dict(field=2.,strength=.03,screening=3.,start_distance=12.,mass=mass,max_step=.15,rtol=1e-11)
+    forward=encounter_relative(1.4,.6,1.1,.4,charge=charge,**kwargs)
+    inverse,angle=encounter_reverse_incoming(forward,field=2.,mass=mass,charge=charge,start_distance=12.)
+    b,parallel,perpendicular,phase=inverse
+    reverse=encounter_relative(b,phase,parallel,perpendicular,charge=-charge,**kwargs)
+    initial=forward['initial_relative_velocity']
+    cosine,sine=np.cos(angle),np.sin(angle)
+    expected=np.array([cosine*initial[0]+sine*initial[1],-sine*initial[0]+cosine*initial[1],initial[2]])
+    np.testing.assert_allclose(reverse['final_relative_velocity'],expected,atol=3e-9)
+    moments_forward=encounter_thermal_moments(forward,.5,mass,2.)
+    moments_reverse=encounter_thermal_moments(reverse,.5,mass,2.)
+    np.testing.assert_allclose(moments_reverse,moments_forward*np.array([-1,1,1]),atol=2e-11)
