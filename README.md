@@ -108,9 +108,9 @@ Here “joint” means collision-null and stationary under ideal streaming. The 
 
 | Field | Implemented evolution and measure | Boundary treatment |
 |---|---|---|
-| Uniform | Nonlinear collisions; $B\,\mathrm d^3X\,\mathrm du\,\mathrm d\mu$ | Periodic spatial direction; natural zero collision flux in velocity |
-| Vacuum toroidal | Linear collisions + Hamiltonian streaming; $RB\,\mathrm dR\,\mathrm d\theta\,\mathrm dz\,\mathrm du\,\mathrm d\mu$ | Periodic angle/height; tangent radial walls; zero collision flux |
-| Harmonic mirror, dipole, controlled nonaxisymmetric | Nonlinear collision-only Cartesian boxes; $B\,\mathrm d^3X\,\mathrm du\,\mathrm d\mu$ | Natural zero collision flux; no combined confined dynamics claim |
+| Uniform | Nonlinear collisions; $`B\,\mathrm d^3X\,\mathrm du\,\mathrm d\mu`$ | Periodic spatial direction; natural zero collision flux in velocity |
+| Vacuum toroidal | Linear collisions + Hamiltonian streaming; $`RB\,\mathrm dR\,\mathrm d\theta\,\mathrm dz\,\mathrm du\,\mathrm d\mu`$ | Periodic angle/height; tangent radial walls; zero collision flux |
+| Harmonic mirror, dipole, controlled nonaxisymmetric | Nonlinear collision-only Cartesian boxes; $`B\,\mathrm d^3X\,\mathrm du\,\mathrm d\mu`$ | Natural zero collision flux; no combined confined dynamics claim |
 
 The known stationary density family and a full-marginal equilibrium multiplier are checked independently. A stationary candidate is not a proof of attraction. [Density comparisons](results/equilibria/density.png)
 
