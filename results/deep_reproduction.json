@@ -7544,6 +7544,15 @@
       "environment": "Fresh Ubuntu CI installation",
       "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37693078685/job/113037864827",
       "log_sha256": "b43b066b734b3cc2af070b1830fefb48d7b6eb067eacea3f1cf71dac6359b87e"
+    },
+    {
+      "source_commit": "0eec7eb94d1d6b49557a8017a6642754a8317530",
+      "command": "python -m pytest -q",
+      "passed": 118,
+      "elapsed_s": 82.87,
+      "environment": "Fresh Ubuntu CI installation",
+      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37694944516",
+      "log_sha256": "b2bc0eadccb063472f6b9011872b97c5084ff0a62203db6a9908223f7c4d93ae"
     }
   ],
   "additional_experiments": [
