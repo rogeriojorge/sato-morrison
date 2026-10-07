@@ -1,5 +1,6 @@
 """Local continuous weak-form production and a checked geometry derivative."""
 import json
+import hashlib
 from pathlib import Path
 from time import perf_counter
 import jax
@@ -93,6 +94,16 @@ def independent_value(field, displacement):
                          np.sum(projected[:, :3]**2, axis=1)))
 
 
+metadata = run_metadata({'position':POSITION.tolist(), 'mass':MASS, 'charge':CHARGE,
+    'D':D, 'nu':NU, 'nmu':NMU, 'umax':UMAX, 'mumax':MUMAX,
+    'fields':[field.__dict__ for field in FIELDS], 'finite_difference_steps':STEPS.tolist(),
+    'control':'translation of the sampled x coordinate; all other inputs held fixed'},
+    model='sm_local_nonlinear continuous initial local weak entropy production',
+    boundary='local volume density; truncated positive velocity quadrature; no evolution boundary')
+repository = Path(__file__).resolve().parents[1]
+dependencies = [Path(__file__).resolve(), repository/'src/sato_morrison/geometry.py',
+                repository/'src/sato_morrison/reference.py']
+metadata['experiment_dependency_sha256'] = {str(p.relative_to(repository)):hashlib.sha256(p.read_bytes()).hexdigest() for p in dependencies}
 rows = []
 for field in FIELDS:
     with progress(f'{field.kind}: compile and check geometric sensitivity'):
@@ -131,12 +142,8 @@ for field in FIELDS:
         if comparison > 1e-10 or max(error[-3:]) > 1e-6:
             raise RuntimeError(f'{field.kind}: independent value or derivative plateau failed')
 
-metadata = run_metadata({'position':POSITION.tolist(), 'mass':MASS, 'charge':CHARGE,
-    'D':D, 'nu':NU, 'nmu':NMU, 'umax':UMAX, 'mumax':MUMAX,
-    'fields':[field.__dict__ for field in FIELDS], 'finite_difference_steps':STEPS.tolist(),
-    'control':'translation of the sampled x coordinate; all other inputs held fixed'},
-    model='sm_local_nonlinear continuous initial local weak entropy production',
-    boundary='local volume density; truncated positive velocity quadrature; no evolution boundary')
+metadata['experiment_dependency_sha256_end'] = {str(p.relative_to(repository)):hashlib.sha256(p.read_bytes()).hexdigest() for p in dependencies}
+metadata['experiment_dependencies_unchanged'] = metadata['experiment_dependency_sha256']==metadata['experiment_dependency_sha256_end']
 metadata['rows'] = rows
 metadata['scope'] = 'No implicit or steady-state geometry derivative, and no physical rate calibration.'
 metadata['timing_scope'] = 'Compilation and synchronized warm calls under concurrent machine load; not isolated cost comparisons.'

@@ -1,5 +1,6 @@
 """Constructive dipole flux-marginal obstruction; no time evolution is inferred."""
 import json
+import hashlib
 from pathlib import Path
 import numpy as np
 import matplotlib
@@ -85,6 +86,14 @@ def construct(order):
     return row, (psi, flux_reference, flux_plus, flux_minus)
 
 
+metadata = run_metadata({'C':C, 'beta':BETA, 'gamma_mu':GAMMA_MU,
+    'psi_bounds':PSI_BOUNDS, 'latitude_bounds':LATITUDE_BOUNDS, 'umax':UMAX, 'mumax':MUMAX,
+    'order':ORDER, 'amplitude_bound':AMPLITUDE_BOUND, 'dtype':'NumPy float64'},
+    model='analytic local collision nullspace and dipole accessibility counterexample',
+    boundary='finite-domain quadrature; theorem requires closed flux-compatible ideal boundaries; no time evolution')
+repository = Path(__file__).resolve().parents[1]
+dependencies = [Path(__file__).resolve(), repository/'src/sato_morrison/reference.py']
+metadata['experiment_dependency_sha256'] = {str(p.relative_to(repository)):hashlib.sha256(p.read_bytes()).hexdigest() for p in dependencies}
 rows = []
 for label, order in [('base',ORDER), ('psi16',(16,24,32,32)), ('psi24',(24,24,32,32)),
         ('latitude12',(32,12,32,32)), ('latitude18',(32,18,32,32)),
@@ -104,11 +113,8 @@ reference = rows[-1]
 for row in rows:
     row['mismatch_relative_change'] = abs(row['flux_second_moment_difference']/reference['flux_second_moment_difference']-1)
     row['KL_relative_change'] = abs(row['flux_KL_lower_bound']/reference['flux_KL_lower_bound']-1)
-metadata = run_metadata({'C':C, 'beta':BETA, 'gamma_mu':GAMMA_MU,
-    'psi_bounds':PSI_BOUNDS, 'latitude_bounds':LATITUDE_BOUNDS, 'umax':UMAX, 'mumax':MUMAX,
-    'order':ORDER, 'amplitude_bound':AMPLITUDE_BOUND},
-    model='analytic local collision nullspace and dipole accessibility counterexample',
-    boundary='finite-domain quadrature; theorem requires closed flux-compatible ideal boundaries; no time evolution')
+metadata['experiment_dependency_sha256_end'] = {str(p.relative_to(repository)):hashlib.sha256(p.read_bytes()).hexdigest() for p in dependencies}
+metadata['experiment_dependencies_unchanged'] = metadata['experiment_dependency_sha256']==metadata['experiment_dependency_sha256_end']
 metadata['rows'] = rows
 metadata['scope'] = ('Numerically constructed distributions with matched discrete constraints. The continuum theorem '
     'uses conditional integrals in place of sums. The geometric obstruction is conditional on exact local '
