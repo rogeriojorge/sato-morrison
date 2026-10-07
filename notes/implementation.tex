@@ -650,45 +650,142 @@ system with measured flux budgets. Arbitrary specular reflection need not
 preserve $\mu$. A density-profile test without these choices is not a closed
 relaxation experiment.
 
-\subsection*{Exact extra population invariants in the vacuum toroidal field}
+\subsection*{Complete smooth nullspace of the local toroidal surrogate}
 
-For every smooth $\phi(R,\theta)$ independent of $z,u,\mu$,
-\begin{equation}
- \J_\mu\nabla\phi=
- \left(-\frac{\partial_R\phi}{qB}\bm e_z,
-       -\frac{\partial_\theta\phi}{mR},0\right),\qquad
- (T\J_\mu\nabla\phi)_\eta=0.
- \label{eq:toroidalpopulation}
-\end{equation}
-Here $\nabla B$ is radial, so its contraction with the vertical spatial action
-vanishes. At a fixed spatial point the entire common-chart action is independent
-of both particle velocities. Thus $\Delta\phi=0$ for every local pair, regardless
-of the energy projector. The weak collision form proves exact conservation of
-\begin{equation}
- \int \phi(R,\theta)f\,C\dd R\dd\theta\dd z\dd u\dd\mu
-\end{equation}
-for this particular vacuum toroidal geometry with local collisions.
-Equivalently the collision-only $(R,\theta)$ population marginal is frozen.
-Since $\dot R=0$, every $\phi(R)$ is preserved by the Hamiltonian part as well,
-and the full radial population remains invariant under combined evolution.
-Angle-dependent marginals can change through $\dot\theta=u/R$.
-A general joint $(R,\mu)$ marginal does not follow from this argument because
-$\partial_R\phi(R,\mu)$ would vary across local pair velocities.
+The following classification concerns the specified local $P I_XP$ closure,
+not a conventional Coulomb operator. Assume $B=(C/R)\bm e_\theta$, $C>0$,
+$m>0$, $q\ne0$, constant electrostatic potential and $D>0$.
+Take a connected radial interval away from $R=0$, periodic $\theta,z$, and a
+product velocity domain $I_u\times I_\mu$ with both intervals of positive
+length. The equilibrium weight is strictly positive in this domain.
+Consider real $C^2$ test functions in the weighted form domain, so the pair
+quadratic integral is finite. Periodicity and natural zero collision flux on
+nonperiodic faces give the weak identity \eqref{eq:linearweak}.
 
-Consequently the combined toroidal model cannot relax arbitrary radial
-populations to a unique state determined only by energy and the global moment
-marginal. This is a proved negative mixing result for this specified local,
-vacuum geometry and its stated boundaries. A spatially nonlocal kernel,
-additional fields or a different scattering closure may change the conclusion.
-It does not prove the same invariants in a dipole.
-The nodal derivative implementation verifies all represented
-$\phi(R,\theta)$ pair differences vanish within rounding and verifies the radial
-population under ideal translation. On the $3^5$ tiny grid, the independent
-collision-null span has at least $N_RN_\theta+N_\mu+1-1=12$ dimensions:
-$N_RN_\theta$ spatial populations, $N_\mu$ moment bins and energy, minus the
-constant counted twice. The larger observed nullity 39 is accounted for by the additional families
-derived in the stronger local-density result at the end of these notes.
-That finite-grid count does not establish continuum exhaustiveness.
+\textbf{Proposition.} The smooth collision-null functions are exactly
+\begin{equation}
+ h=\phi(R,\theta,z)+g(\theta,\mu)
+   +a(\theta)E+b(\theta)mRu,
+ \qquad E=\tfrac12mu^2+\mu C/R.
+ \label{eq:toroidalnullspace}
+\end{equation}
+Here the functions are arbitrary subject to the stated regularity,
+periodicity and integrability. Redundant angle-only terms may be moved between
+$\phi$ and $g$. The common collision and ideal stationary functions are exactly
+\begin{equation}
+ h=\phi(R)+g(\mu)+aE+b mRu,
+ \qquad a,b\ \hbox{constant}.
+ \label{eq:toroidalcommonnull}
+\end{equation}
+For a stationary positive $f_0$, skew Hamiltonian transport and the collision
+norm identity imply that these also exhaust the smooth zero modes of the
+combined linear generator. This classifies stationary null modes; it does not
+prove a decay rate, coercivity constant, or spectral gap.
+
+\textbf{Proof of the collision statement.} In the common Cartesian $\eta$ chart,
+write the spatial action in the local orthonormal basis
+$(\bm e_R,\bm e_\theta,\bm e_z)$:
+\begin{equation}
+ A_Xh=\left(\frac{R h_z}{qC},\frac{h_u}{m},
+                 \frac{-R h_R+u h_u}{qC}\right),\qquad
+ V_X=A_XE=\left(0,u,\frac{m u^2+\mu C/R}{qC}\right).
+ \label{eq:toroidalaction}
+\end{equation}
+The factor $m$ in $\bm B^*$ cancels the bracket denominator $m$ in the
+curvature term, so the last numerator contains $u h_u$, not $m u h_u$.
+The energy characteristic has $\dot u=\dot\eta=0$; thus its pair vector
+$\xi$ is spatial-only and $P I_XP$ discards all $u,\eta$ components.
+Zero dissipation is consequently equivalent to
+$A_Xh(v)-A_Xh(v')$ being parallel to $V_X(v)-V_X(v')$ for all local velocity
+pairs. Positivity of the pair weight first gives the statement almost
+everywhere; smoothness extends it throughout the interior.
+
+The radial component gives $h_z$ independent of $(u,\mu)$.
+The map $(u,\mu)\mapsto(u,(m u^2+\mu C/R)/(qC))$ is invertible onto an open
+two-dimensional set. On such a set, a map whose every chord is parallel to the
+corresponding argument chord has the form $F(v)=\alpha v+c$ with scalar
+$\alpha$ constant on that velocity set. To prove this elementary lemma, fix one
+point and compare its chords with two noncollinear chords: parallelism of the
+third chord forces their scalar factors to agree. An open set supplies a
+noncollinear comparison for each additional point.
+Applied to the angular and vertical components of \eqref{eq:toroidalaction},
+this gives
+\begin{equation}
+ \frac{h_u}{m}=\alpha(\X)u+c_\theta(\X),\quad
+ \frac{-R h_R+u h_u}{qC}
+ =\alpha(\X)\frac{m u^2+\mu C/R}{qC}+c_z(\X).
+\end{equation}
+Integrate the first identity in $u$ to obtain
+$h=m\alpha u^2/2+m c_\theta u+d(\X,\mu)$.
+Comparing the $u^2$, $u$ and constant terms in the second yields
+\begin{equation}
+ \alpha_R=0,\qquad (c_\theta)_R=c_\theta/R,\qquad
+ d_R=-\alpha\mu C/R^2-qC c_z/R.
+\end{equation}
+Hence $c_\theta=R b(\theta,z)$ and
+$h=\alpha(\theta,z)E+b(\theta,z)mRu+
+ g(\theta,z,\mu)+\phi(R,\theta,z)$.
+The already obtained velocity independence of $h_z$ forces
+$\alpha_z=b_z=0$ and makes $g_z$ independent of $\mu$; its remaining
+velocity-independent part can be absorbed into $\phi$.
+This proves necessity of \eqref{eq:toroidalnullspace}.
+The product velocity domain ensures the integration constant is a globally
+single-valued function of $\mu$; connected support alone would not exclude
+branchwise functions on disconnected $u$-fibers.
+
+For sufficiency, a spatial-only $\phi$ has velocity-independent spatial action,
+a $g(\theta,\mu)$ has zero spatial action, an $a(\theta)E$ has pair spatial
+action $a\xi$, and a $b(\theta)mRu$ has spatial action
+$b(\theta)R\bm e_\theta$ independent of velocity. In the last identity,
+$\bm b\times(m u\bm e_R)/(qB)$ cancels the curvature part from
+$\partial_u(mRu)=mR$. Their projected pair differences therefore all vanish.
+This also proves that all spatial populations are conserved by local
+collisions, including the nonlinear surrogate. Since the local energy-flow
+map is injective, distinct toroidal velocity states never have $\xi=0$;
+the coincident diagonal has vanishing test-function difference.
+
+\textbf{Proof of the common stationary statement.} The ideal derivative is
+$\mathcal T h=(u/R)h_\theta+
+[(m u^2+\mu C/R)/(qC)]h_z$.
+Substitute \eqref{eq:toroidalnullspace} and regard it as a polynomial in $u$.
+The cubic coefficient forces $a'=0$; the constant coefficient
+$\mu\phi_z/(qR)$ forces $\phi_z=0$, since the moment interval has nonzero
+length. The quadratic coefficient then forces $b'=0$.
+The remaining linear coefficient is $\phi_\theta+g_\theta=0$;
+angle-only redundant terms can be absorbed between $\phi$ and $g$, giving
+\eqref{eq:toroidalcommonnull}. Periodic $z$ supplies the closed boundary for
+the norm argument, but is not needed for this pointwise algebraic intersection.
+A proposed nonperiodic compensator $\phi=-qC b'(\theta)z$ cancels a quadratic
+term but leaves $-\mu C b'/R$, and is not stationary on open moment support.
+
+Thus combined dynamics retain the full radial population, the full moment
+marginal, energy and toroidal canonical momentum $mRu$. A general joint
+$(R,\mu)$ marginal is not implied. Arbitrary radial profiles cannot approach a
+unique state determined only by energy and $G(\mu)$.
+The same argument classifies positive nonlinear collision equilibria by taking
+$h=\ln f$ when the entropy form is finite; their common ideal stationary family
+is $\ln f=\phi(R)+g(\mu)+aE+b mRu$.
+Open boundaries with imposed flux, velocity support of dimension one,
+vanishing pair weights, disconnected velocity fibers, a nonlocal spatial
+kernel, or an electrostatic field that changes the energy-flow components
+are outside this proposition.
+
+On the $3^5=243$-node test, 27 spatial indicators, nine angular--moment
+indicators, three angular--energy functions and three angular--momentum
+functions have rank 39 after three duplicated angle-only functions are counted
+once. Their production actions vanish to roundoff and account for all 39
+observed near-null eigenvalues of the unmodified matrix. The continuum proof
+above is independent of that finite-grid rank check; eigenvalues are not altered.
+A separate continuous-bracket check at $m=1.7$, $q=-0.8$ and three off-axis
+points verifies random classified functions and the cylindrical action formula.
+
+Primary-source searches of the authors with toroidal collision nullspace,
+radial populations and moment constraints, and local review of SM25 and BS25,
+did not locate this specific local-kernel classification. Local density and
+symmetry-generated invariants are established ideas; publication priority for
+this closure-specific classification remains unresolved. No claim about
+physical Coulomb transport, general magnetic geometry, or a measured lifetime
+follows from it.
 
 \subsection*{Nonzero-field bounds for the executed domains}
 
@@ -1194,7 +1291,8 @@ $0.0578\%$ in parallel-velocity tail extent, and $0.519\%$ in moment-tail extent
 These are separate refinements of a specified observable, not a mathematical
 continuum convergence theorem. The unmodified 243-node collision matrix has
 39 near-null eigenvalues, compared with the 39-dimensional independent invariant
-span from spatial populations and angular-weighted invariants derived below, with scaled
+span from spatial populations and angular-weighted invariants in
+\eqref{eq:toroidalnullspace}, with scaled
 eigenpair residual $1.63\times10^{-15}$. Every observed tiny-grid null direction is accounted for by that span; the
 eigenvalues themselves are unchanged. No continuum gap or uniqueness follows
 from that finite matrix.
@@ -1234,7 +1332,7 @@ dense solves and centered finite differences. All performance claims remain
 specific to the saved device and accuracy; no unmeasured GPU speedup is claimed.
 The selected P1--P5 prototype examples have executable structural and
 convergence evidence. This does not certify every geometry or parameter regime;
-box velocity-tail convergence and distinct-state zero-set extensions remain open. Physical
+joint box time-evolution convergence and distinct-state zero-set extensions remain open. Physical
 coefficient calibration, unequal-species closure, self-consistent electrostatics,
 and measured plasma mixing-versus-moment timescale separation are not implemented
 claims.
@@ -1252,43 +1350,6 @@ the kernel's directional discontinuity. This fact does not authorize deletion
 of distinct states with the same energy-flow vector; the general constructor
 rejects those ambiguous pairs. The uniform directional prescription is derived
 separately and tested against the exact oracle.
-
-\subsection*{Stronger toroidal local-density obstruction}
-The radial--angular collision invariants proved above extend to any smooth
-spatial-only $\phi(\X)$ in this toroidal field. The spatial component
-$\J^{XX}\nabla_X\phi$ is independent of $u,\mu$ at a fixed position, so
-$\Delta\phi$ has only $u,\eta$ components. Both $\dot u$ and $\dot\eta$ vanish
-for the toroidal energy characteristic, hence $\xi=\Delta E$ has spatial
-components only. The tensor $P I_XP$ therefore annihilates $\Delta\phi$.
-Every spatial population is conserved by local collisions, including for the
-nonlinear surrogate. This is a property of the local spatial-block closure,
-not an assertion about physical Coulomb transport or finite-range collisions.
-Hamiltonian streaming can change angular and height marginals, but preserves
-arbitrary radial populations because $\dot R=0$.
-There are further local collision invariants $c(\theta)g(\mu)$,
-$c(\theta)E$ and $c(\theta)mRu$ for arbitrary smooth periodic $c$.
-The first has zero spatial bracket action, the second has spatial pair action
-$c(\theta)\xi$, and the third has spatial action $c(\theta)R\bm e_\theta$,
-independent of velocity. In the last identity the perpendicular bracket action
-from $m u\nabla R$ cancels the curvature contribution from
-$\partial_u(mRu)=mR$. Terms from $c'(\theta)$ enter only the discarded
-nonspatial block. Thus $P I_XP$ annihilates each pair difference for any nonzero
-$q$, positive $m$ and $C$. Unweighted $mRu$ is also a Hamiltonian invariant;
-the angular-weighted families generally are not.
-
-On the $3^5=243$-node test the 27 spatial indicators, nine angular--moment
-indicators, three angular--energy functions and three angular--momentum
-functions have rank 39 (three duplicated angular-only functions are counted
-once). Independent production actions vanish to roundoff, and this span
-accounts for all 39 observed near-null eigenvalues of the unmodified matrix.
-This is complete for the tested finite grid, not a proof that the named
-families exhaust the continuum nullspace. No eigenvalues are changed.
-Primary-source searches combining the authors, toroidal collision nullspace,
-radial invariants and finite range did not locate this specific classification.
-Local-collision density conservation and symmetry-generated invariants are
-established ideas; the candidate contribution is this closure-specific
-geometry and range comparison. Publication priority remains unresolved.
-
 
 \subsection*{Measured costs at matched error}
 For four independent uniform Fourier blocks with 128 velocity nodes each,
@@ -1317,6 +1378,150 @@ Its state is 51480 bytes and its stored pair list contains 456885 unordered
 pairs; pair-application chunk workspace and all version/input/commit details
 are in the saved JSON. No extrapolated speedup or isolated-RSS interpretation
 is asserted.
+
+
+
+\subsection*{Nonuniform velocity quadrature and resolved tails}
+The additional \texttt{11\_field\_velocity.py} campaign evaluates the initial
+nonlinear entropy production on the same mirror, dipole and nonaxisymmetric
+boxes, with fixed $3^3$ spatial quadrature. Its positive initial distribution is
+\begin{equation}
+ f=\exp[-E-0.2\mu+0.1\sin(x)u+0.04y\mu].
+\end{equation}
+Positive Gauss--Legendre velocity quadrature replaces both the population
+weight $w_X B w_u w_\mu$ and the local pair weight
+$w_X(Bw_uw_\mu)(Bw'_uw'_\mu)$ consistently. Derivatives and energy directions
+are unchanged. The three-point derivative is exact for the quadratic velocity
+energy and the linear-$u$ logarithmic perturbation on either node family.
+Number and energy are checked independently using shifted Gaussian integrals
+in $u$ and exponential integrals in $\mu$.
+
+The base velocity domain is $u\in[-4,4]$, $\mu\in[0,20]$, with orders 25 and
+21. Separate order scans are $17,21,25$ in $u$ and $13,17,21$ in $\mu$.
+Tail extensions to $|u|=5$ and $\mu=24$ are separately checked at wider-domain
+orders 29 and 25. A Gauss tail extension changes node spacing; these extra
+order checks are essential and are not described as fixed-spacing tests.
+All 36 cases retain their inputs and status. Across all three fields, the
+largest final Gauss production change is $0.261\%$; the largest expanded-domain
+quadrature change is $0.180\%$. Base finite-domain number/energy quadrature
+errors are below $9.4\times10^{-15}$. Independent analytic omitted energy is
+about $0.050\%$, which is not itself a bound on production error.
+
+Equidistant trapezoid controls at $9^2,17^2,25^2$ velocity nodes remain
+unresolved: the last production changes are $16.63\%$, $10.14\%$, and
+$10.15\%$ for mirror, dipole and nonaxisymmetric fields. Their statuses are
+preserved. The successful Gauss checks establish the stated initial-production
+comparison on a fixed spatial grid, not joint spatial--velocity or finite-time
+nonlinear convergence. The constructor now rejects zero pair directions
+without allocating and discarding a 25-component tensor per pair; the
+retained unit directions and collision action are unchanged and tested against
+explicit projector matrices.
+
+\subsection*{Bounded Maxwellian encounter flux and thermal center motion}
+Let $\theta=k_BT/m$ denote a single-particle velocity variance. For two equal
+Maxwellian particles, $\bm w=\bm v_1-\bm v_2$ and
+$\bm V=(\bm v_1+\bm v_2)/2$ are independent, with covariances
+$2\theta I$ and $\theta I/2$. The transformation has absolute Jacobian one.
+The relative distribution and equations for a screened pair potential are
+\begin{align}
+ F_{\rm rel}(\bm w)&=(4\pi\theta)^{-3/2}e^{-|\bm w|^2/(4\theta)},\\
+ \dot{\bm r}&=\bm w,\qquad
+ \dot{\bm w}=\Omega\bm w\times\bm e_z+
+ \frac{2\kappa}{m}\frac{e^{-r/L_s}(1+r/L_s)}{r^3}\bm r,
+ \qquad \Omega=qB/m.
+\end{align}
+The conserved relative energy is $m|\bm w|^2/4+\kappa e^{-r/L_s}/r$;
+center motion follows an independent free helix. The new six-dimensional
+relative integrator is checked against the independent twelve-dimensional
+pair integrator, including nonunit masses and both charge signs.
+
+For guiding-center impact $b$, the translation to the incoming perpendicular
+position has unit Jacobian. Axisymmetry integrates its orientation to
+$2\pi b\,\dd b$. On a plane normal to the field, the two-sided incoming
+crossing measure per partner density is
+\begin{equation}
+ \frac{\dd\nu}{n}=2(2\pi b\,\dd b)\,w_\parallel F_{\rm rel}(\bm w)
+ w_\perp\,\dd w_\perp\,\dd w_\parallel\,\dd\varphi,
+ \qquad w_\parallel>0.
+\end{equation}
+The factor two includes the opposite incoming direction. There is no
+unordered-pair half factor for this tagged-particle flux, and the plane flux
+uses $|w_\parallel|$, not the cross-section flux $|\bm w|$.
+For impact area $A=\pi(b_{\max}^2-b_{\min}^2)$, the bounded integral is
+$2A(2\pi)J_\parallel J_\perp/(4\pi\theta)^{3/2}$, where
+$J(a,b)=2\theta[e^{-a^2/(4\theta)}-e^{-b^2/(4\theta)}]$.
+This supplies an independent analytic normalization.
+
+Undo outgoing free gyromotion when defining
+$\Delta\bm w_\perp=\overline{\bm w}_{\rm out,\perp}-\bm w_{\rm in,\perp}$.
+With $c=m\Delta|\bm w_\perp|^2/(8B)$, the individual changes are
+$\Delta\mu_{1,2}=c\pm[m/(2B)]\bm V_\perp\cdot\Delta\bm w_\perp$.
+Exact Gaussian center averaging therefore gives
+\begin{align}
+ \langle\Delta\mu_1\rangle_V&=c,\\
+ \langle(\Delta\mu_1)^2\rangle_V&=c^2+\sigma_c^2,
+ &\langle\Delta\mu_1\Delta\mu_2\rangle_V&=c^2-\sigma_c^2,\\
+ \sigma_c^2&=\frac{m^2\theta}{8B^2}|\Delta\bm w_\perp|^2.
+\end{align}
+A separate Gaussian quadrature of the actual individual initial/final
+velocities verifies these raw moments. A zero-center trajectory omits
+$\sigma_c^2$. The drift and diffusion moment integrals are
+$A_\mu/n=\int\langle\Delta\mu\rangle_V\dd\nu/n$ and
+$D_{\mu\mu}/n=\tfrac12\int\langle(\Delta\mu)^2\rangle_V\dd\nu/n$;
+the latter half is the second-moment convention, not pair counting.
+
+The executed normalized case uses $m=q=1$, $B=2$, $\kappa=0.03$, $L_s=3$,
+$\theta=0.5$, $b\in[1.2,2.4]$, $w_\parallel\in[0.7,1.5]$ and
+$w_\perp\in[0.2,0.8]$. The $4^3\times16$ base quadrature is independently
+refined in each impact/speed coordinate through orders $3,4,5$, in gyrophase
+through $8,16,32$, and by a half-grid phase shift. Moving the planes through
+$L=18,24,32$ preserves the same incoming free helix. The first outward exit
+is recorded; reflected trajectories are retained, and failure to exit within
+$6L/w_\parallel$ raises. Eight held-out states additionally check active maximum
+steps $0.2,0.1,0.05$. Direct quadrature changes are below $0.021\%$;
+analytic flux normalization error is $1.62\times10^{-9}$.
+The bounded results are $\nu/n=1.2601061$,
+$A_\mu/n=3.11546\times10^{-6}$ and
+$D_{\mu\mu}/n=8.00765\times10^{-7}$ in the stated normalized units.
+
+A supplementary multilinear scattering table is tested on 64 uniformly
+sampled states in the inner quadrature-node hull (seed 701).
+Its held-out second-moment relative RMS error is $20.5\%$, exceeding the
+predeclared $10\%$ target; this surrogate remains unresolved despite converged
+direct integrals. These speed bands contain only $11.6\%$ of the full thermal
+incoming flux in the same annulus. Omitted impact/speed regions and successive
+encounter correlations remain untested. Truncation can exclude reverse
+encounters, so the positive conditional drift is not a full Maxwellian-plasma
+drift. Neither these bounded crossing coefficients nor the interpolation
+checks calibrate the constrained scalar $D$ or establish a dipole lifetime.
+
+\subsection*{Reproducible evolution visualization}
+The README animation is a solution of the uniform linear surrogate at finite
+velocity quadrature, not a nonlinear encounter or physical-rate simulation.
+The nine positive velocity masses $M_j$ are proportional to
+$\exp(-v_j^2/2)$, with $v_j$ equally spaced on $[-2,2]$ and
+$\sum_jM_j=1$. Define
+\begin{equation}
+ p_j=\frac{v_j^2-\sum_iM_iv_i^2}{\max_i|v_i^2-\sum_lM_lv_l^2|},
+ \qquad h_j(x,0)=(0.25+0.20p_j)\cos x.
+\end{equation}
+The density and velocity-neutral amplitudes are evolved using matrix
+exponentials of an independently assembled ordered-pair Fourier matrix
+($N_x=64$, Gaussian range $\ell=0.6$) and the analytic local matrix.
+For $D=0.8$, $B=1.7$, $q=-1.3$, and $\tau=\lambda t$, the exact comparisons are
+\begin{align}
+ h_{j,\mathrm{local}}(x,t)&=[0.25+0.20e^{-\tau}p_j]\cos x,\\
+ h_{j,\mathrm{range}}(x,t)&=[0.25e^{-(1-e^{-0.6^2/2})\tau}
+                            +0.20e^{-\tau}p_j]\cos x.
+\end{align}
+All 65 saved frames on $0\leq\tau\leq8$ are checked against these formulas;
+$1+h_j$ stays positive. Fixed color limits prevent apparent relaxation caused
+by automatic rescaling. The displayed velocity coordinate is a discrete node
+index, not a physical three-dimensional velocity grid. GIF and MP4 use the
+same frames, and the arrays are saved in a compressed archive.
+The accompanying validation and cost panels read the existing experiment JSON
+files. Their metadata retain each source file's hash and source commit, rather
+than attributing old measurements to the visualization revision.
 
 \bibliographystyle{unsrt}
 \bibliography{references}

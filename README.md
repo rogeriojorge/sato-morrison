@@ -1,31 +1,16 @@
-# Magnetic-moment-constrained collision prototypes
+# Sato–Morrison collision prototypes
 
-A small JAX research code that tests what the specified Sato–Morrison collision kernels relax, which null modes survive, and where a magnetic-moment constraint needs independent physical evidence.
+**What relaxes when collisions preserve the full magnetic-moment distribution?**
 
-## Model
+This small JAX research code reproduces the uniform-field limit of Sato–Morrison Eq. (181), tests nonlinear constrained surrogates, and checks their limits against independent collision and encounter calculations. Geometry leaves additional quantities frozen. Finite interaction range can remove some of those constraints.
 
-The state is `f(X,u,mu)` in a prescribed vacuum field, with measure
-`dGamma = B d³X du dmu` and energy `E = m u²/2 + mu B + q Phi`.
-The nonlinear weak surrogate is
+[Derivations & literature](notes/implementation.pdf) · [Validation ledger](results/validation.csv) · [Recorded results](results/summary.csv) · [Reproduce](#reproduce)
 
-\[
-\int\phi C[f]d\Gamma=-\tfrac12\iint ff'\,\Delta\phi^T\Pi\Delta\ln f\,d\Gamma d\Gamma',
-\quad \Delta\phi=J\nabla\phi-J'\nabla'\phi',\quad \Pi=D P I_X P.
-\]
+![Local versus finite-range collision evolution: the local density modulation survives while finite range damps it; both damp the velocity-neutral mode.](results/visual_summary/range_evolution.gif)
 
-Pair vectors are evaluated in the same normalized Cartesian `(X,u,eta=mu B)` chart. Local quadrature uses **two velocity Jacobians**. The discrete projector uses the same discrete energy derivative as the weak form. It therefore preserves discrete energy exactly, while approaching the source projector under refinement. The uniform directional limit is analytic; undefined nonuniform zero directions raise an error.
+**Same perturbation, different nullspaces.** Independently assembled linear operators evolve nine velocity nodes on a fixed color scale. Density structure survives local collisions; finite range damps it. Time uses the prescribed coefficient, without physical rate calibration. [Still image](results/visual_summary/range_poster.png) · [MP4](results/visual_summary/range_evolution.mp4) · [Script](examples/09_visual_summary.py) · [Inputs and checks](results/visual_summary/metadata.json)
 
-- `sm181_local`: fixed-field linear local scalar approximation to Eq. (181), with constant prescribed `D`.
-- `sm_local_nonlinear`: the stated nonlinear extension of this simplified weak kernel, **not the full source Eq. (119)**.
-- `sm_finite_range`: a symmetric, normalized spatial-kernel surrogate; no Coulomb scattering tensor is inferred.
-- `lorentz`: speed-shell Legendre pitch scattering; momentum exchanges with a reservoir.
-- `dougherty`: conserving homogeneous nonlinear evolution of positive Gaussian mixtures, checked against the strong equation.
-- `landau`: independently checked physical **3V Coulomb weak moments**, including a nonGaussian pair evaluator; not a full Landau time integrator.
-- `encounter`: direct equal-charge, equal-mass repulsive two-body Lorentz-force trajectories.
-
-The constrained weak scheme conserves number, fixed-field energy, and every resolved magnetic-moment-bin population. Its nonlinear discrete-gradient step conserves those quantities and increases entropy to the nonlinear residual bound. Logarithmic unknowns enforce positive nodal values; spatial reconstructions are also checked in the reported evolution examples. No populations are clipped or repaired after stepping.
-
-## Install
+## Start here
 
 ```sh
 git clone https://github.com/rogeriojorge/sato-morrison.git
@@ -34,116 +19,151 @@ python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e '.[dev]'
 python -m pytest -q
-```
-
-Scientific checks use float64. Executable examples enable JAX x64; package import does not change global precision. Only SOLVAX is used from UW Plasma, for general linear algebra. No other UW Plasma physics code is imported.
-
-## Run
-
-```sh
 MPLBACKEND=Agg python examples/00_uniform_reference.py
 MPLBACKEND=Agg python examples/01_relaxation.py
-MPLBACKEND=Agg python examples/02_geometry.py
-MPLBACKEND=Agg python examples/03_controls.py
-MPLBACKEND=Agg python examples/04_encounters.py
-MPLBACKEND=Agg python examples/05_benchmarks.py
-MPLBACKEND=Agg python examples/06_range.py
-MPLBACKEND=Agg python examples/07_equilibria.py
-MPLBACKEND=Agg python examples/08_fields.py
 ```
 
-These are editable top-level scripts with explicit inputs, progress messages, diagnostics, plots and saved results. They also run from another working directory after installation. Failed solves raise with diagnostics. Compilation is announced separately from timed warm execution; long phases print elapsed-time heartbeats.
+Examples are editable top-level scripts with explicit inputs, progress, diagnostics and saved plots. They enable float64, announce compilation, and raise on failed solves. SOLVAX supplies general linear algebra; there is no dependency on other UW Plasma physics codes.
 
-## Validation
+## What the calculations establish
 
-A fresh environment passes **58 tests**, and all nine examples are executed from outside the repository. The tests check the continuous geometry, the actual unmodified weak matrix, and independent reference equations. Coverage includes both charge signs; rotations; uniform, harmonic-mirror, vacuum-toroidal, dipole and nonaxisymmetric vacuum fields; Jacobi and Liouville identities in both charts; pair symmetry/PSD/energy degeneracy; ordered versus unordered counting; dense versus matrix-free actions and chunk sizes; nonlinear linearization; full marginal conservation; entropy divided differences; positivity; and solver failures. An independent harmonic-mirror orbit shows fourth-order timestep convergence.
+**66 tests pass.** The checks compare independent equations, discrete conservation budgets and resolved limits.
 
-The uniform reference is
+![Four validation panels: nonlinear entropy, toroidal evolution controls, independent refinements and the raw toroidal null spectrum.](results/visual_summary/validation.png)
 
-\[
-C_L[\delta f]=\frac{D}{(qB)^2}\nabla_\perp^2(n_0\delta f-f_0\delta n),
-\qquad\lambda=\frac{Dn_0k_\perp^2}{(qB)^2}.
-\]
+**A. Nonlinear relaxation.** Number, energy and full magnetic-moment-marginal errors stay below `1e-15`. Entropy increases; nodal and reconstructed positivity pass. Timestep order: `2.00`.
 
-All homogeneous velocity perturbations and local density-like modes are collision null modes. For a nonzero perpendicular Fourier mode, the entropy-weighted spectrum has exactly one zero and `Nv-1` copies of `-lambda`. Homogeneous isotropization is consequently an inappropriate test of this local operator.
+**B–C. Toroidal dynamics.** Combined streaming and collisions give `Q/Q₀ = 0.8109803`. Independent grid, tail and timestep refinements change the dissipated fraction by less than `0.71%`. Streaming alone preserves this norm.
 
-A full toroidal annulus evolves a resolved distribution using collision-only, ideal-only and combined dynamics. The field is `B=C e_theta/R`, the measure is `R B dR dtheta dz du dmu`, and Hamiltonian characteristics satisfy
-`Rdot=udot=mudot=0`, `thetadot=u/R`, `zdot=(m u²+mu B)/(q C)`.
-Periodic angle/height and tangent radial walls close the ideal budgets; the collision weak form has natural no-flux radial/velocity boundaries. The toroidal projector uses Cartesian eta vectors, not a newly defined cylindrical Euclidean metric.
+**D. Null modes are retained.** Independently verified invariants account for all 39 near-zero eigenvalues of the raw 243-node matrix. Signed roundoff values are shown without clipping. This does not establish a continuum gap.
 
-Mirror, dipole and nonaxisymmetric boxes have **collision-only** evolution and natural collision no-flux boundaries. Their spatial production scans pass the reported refinement target; full velocity/tail convergence and combined confined evolution in those boxes are not established. The known `B/(B+gamma)` density family is checked independently by velocity integration for all five fields. A full-marginal constrained equilibrium multiplier is solved separately, without asserting that extra-nullspace dynamics reaches that candidate.
+[Nonlinear data](results/relaxation.json) · [Toroidal data, refinements and eigenvalues](results/geometry.json) · [Figure script](examples/09_visual_summary.py)
 
-## Results
+## The model, and its exact uniform limit
 
-Compact numeric data and complete inputs are in `results/`; [validation.csv](results/validation.csv) maps 62 criteria to evidence and explicitly records unresolved or unrun physical requirements. Each experiment records units, source commit, source digest, package versions, processor and device; a nonempty source-change field marks exploratory runs. The committed evidence is regenerated from the recorded source revision before final reporting.
+For a prescribed vacuum field, the state and invariant measure are
 
-| Comparison | Executed evidence |
+```math
+f=f(\mathbf X,u,\mu),\qquad
+\mathrm d\Gamma=B\,\mathrm d^3X\,\mathrm du\,\mathrm d\mu,
+\qquad E=\tfrac12mu^2+\mu B+q\Phi.
+```
+
+The implemented nonlinear weak surrogate is
+
+```math
+\begin{aligned}
+\int\phi\,C[f]\,\mathrm d\Gamma
+&=-\frac12\iint ff'\,\Delta\phi^{\mathsf T}\Pi\,\Delta\ln f\,
+\mathrm d\Gamma\,\mathrm d\Gamma',\\
+\Delta\phi&=J\nabla\phi-J'\nabla'\phi',\qquad \Pi=D\,P I_X P.
+\end{aligned}
+```
+
+Pair vectors use the same Cartesian chart $(\mathbf X,u,\eta=\mu B)$. Local quadrature includes both velocity Jacobians. The energy projector uses the same discrete derivative as the weak form. Undefined nonuniform zero directions fail visibly.
+
+This simplified kernel and its nonlinear extension are **not the full source Eq. (119)**. The implemented local scalar approximation to Eq. (181) has the independently checked uniform limit
+
+```math
+C_L[\delta f]=\frac{D}{(qB)^2}\nabla_\perp^2
+\bigl(n_0\delta f-f_0\delta n\bigr),
+\qquad \lambda=\frac{Dn_0 k_\perp^2}{(qB)^2}.
+```
+
+The 216-node pair calculation matches this oracle to relative error `2.36e-16`. Every homogeneous velocity perturbation and every local density-like mode is undamped. For a nonzero perpendicular Fourier mode, the remaining velocity-neutral modes decay at $\lambda$. [Oracle and timestep evidence](results/uniform_reference/summary.json)
+
+## Two consequences worth investigating
+
+### Finite range changes which density modes survive
+
+![Finite-range decay branches, spatial kernel convergence, and quartic long-wave density decay.](results/finite_range/range.png)
+
+For a normalized Gaussian spatial kernel of width $\ell$, independent ordered-pair assembly verifies
+
+```math
+\lambda_{\mathrm{neutral}}=\lambda,\qquad
+\lambda_{\mathrm{density}}=\lambda\left(1-e^{-\ell^2|\mathbf k|^2/2}\right).
+```
+
+Finite range lifts the density null mode and gives quartic transverse long-wave decay; homogeneous modes remain undamped. The finest density-rate error across 27 comparisons is `3.03e-13`. The middle panel exposes large errors from unresolved narrow kernels.
+
+This independently checked **surrogate result** has unresolved publication priority and no inferred physical rate. [All 27 comparisons](results/finite_range/summary.csv)
+
+### Toroidal geometry obstructs unique relaxation
+
+Local toroidal collisions preserve **every spatial population**. Streaming still preserves every radial population, obstructing a unique equilibrium determined by energy and the magnetic-moment marginal alone.
+
+An independent smooth-nullspace audit gives
+
+```math
+\begin{aligned}
+h_{\mathrm{collision}}&=\phi(R,\theta,z)+g(\theta,\mu)+a(\theta)E+b(\theta)mRu,\\
+h_{\mathrm{joint}}&=\phi(R)+g(\mu)+aE+b\,mRu.
+\end{aligned}
+```
+
+Here “joint” means collision-null and stationary under ideal streaming. The classification assumes $B=C/R>0$, constant potential, positive pair weight and an open product velocity support. Closed periodic/tangent boundaries are required for the stated evolution budgets. The [proof and scope](notes/implementation.pdf) are separate from the finite-grid rank check. No quantitative decay bound follows; publication priority remains unresolved.
+
+## Geometry and physical scope
+
+| Field | Implemented evolution and measure | Boundary treatment |
+|---|---|---|
+| Uniform | Nonlinear collisions; $B\,\mathrm d^3X\,\mathrm du\,\mathrm d\mu$ | Periodic spatial direction; natural zero collision flux in velocity |
+| Vacuum toroidal | Linear collisions + Hamiltonian streaming; $RB\,\mathrm dR\,\mathrm d\theta\,\mathrm dz\,\mathrm du\,\mathrm d\mu$ | Periodic angle/height; tangent radial walls; zero collision flux |
+| Harmonic mirror, dipole, controlled nonaxisymmetric | Nonlinear collision-only Cartesian boxes; $B\,\mathrm d^3X\,\mathrm du\,\mathrm d\mu$ | Natural zero collision flux; no combined confined dynamics claim |
+
+The known stationary density family and a full-marginal equilibrium multiplier are checked independently. A stationary candidate is not a proof of attraction. [Density comparisons](results/equilibria/density.png)
+
+**New velocity-tail check:** 36 nonuniform initial-production cases. All three fields pass the Gauss-quadrature target; the largest final change is `0.261%`. Trapezoidal controls remain unresolved at `10–17%`. This does not establish full time-evolution or joint spatial/velocity convergence. [Convergence plot](results/field_velocity/production.png) · [All checks](results/field_velocity/summary.json)
+
+![Bounded encounter ensemble: independent quadrature refinement, gyrophase resolution, thermal center-of-mass contribution and held-out interpolation error.](results/encounter_ensemble/ensemble.png)
+
+**Energy conservation does not imply magnetic-moment conservation.** Direct screened encounters resolve nonzero moment changes. The new incoming-flux ensemble includes thermal center-of-mass fluctuations and independently refines impact, velocity, phase and endpoints. Final direct-quadrature changes are below `0.021%`.
+
+**A converged integral is not a validated interpolant.** The scattering table has `20.5%` held-out second-moment error against a `10%` target. It remains unresolved. The sampled speed band covers only `11.6%` of the incoming thermal flux in the chosen annulus, so the conditional coefficients are not full plasma rates.
+
+| Independent control | Verified capability | Limit |
+|---|---|---|
+| Lorentz | Exact speed-shell Legendre decay | Momentum exchanges with a reservoir |
+| Dougherty | Conserving nonlinear Gaussian-mixture evolution; independent strong-equation check | Homogeneous mixture family |
+| Physical 3V Landau | Coulomb weak moments checked by spherical, Cartesian and independent Laplace quadratures | Not a general Landau time integrator |
+| Magnetized encounters | Direct trajectories, bounded Maxwellian flux and analytic thermal-center moments | Held-out table unresolved; no calibrated constrained coefficient or lifetime |
+
+[Control evidence](results/controls/metadata.json) · [Bounded-flux evidence](results/encounter_ensemble/metadata.json) · [Trajectory controls](results/encounters/metadata.json). The prototype stage is implemented and tested. A physically validated constrained kinetic closure remains open.
+
+## Measured cost
+
+![Matched-error implicit-solve costs: synchronized warm time with min–max bars and XLA temporary buffer sizes.](results/visual_summary/cost.png)
+
+Four spatial blocks × 128 velocity nodes, Apple M4 CPU, five synchronized repetitions; all routes have the same time-discretization error `2.77e-5`. Bars show warm medians; whiskers show min–max. Compilation plus first execution is `0.092 / 0.184 / 0.225 s` for dense / PCG / diagonal-PCG.
+
+For the separate 945-pair weak action, chunking by 16 reduces XLA temporary buffers from 118,913 to 16,480 bytes, while warm median time grows from 96.3 to 158.2 μs. These are small CPU measurements, not a general nonuniform speedup claim. Process peak RSS is recorded separately from temporary buffers. [Complete matched-error measurements](results/benchmarks/summary.json)
+
+## Reproduce
+
+Run from the repository root with the environment above. Every script prints its inputs and writes data and figures under `results/`.
+
+| Command (prefix with `MPLBACKEND=Agg python`) | Calculation |
 |---|---|
-| Eq. (181), 216 velocity nodes | Pair/oracle relative error `2.36e-16`; rate `0.1174260355` |
-| Uniform backward Euler | Four timesteps; finest rate error `3.67e-4`; first-order convergence |
-| Nonlinear constrained uniform model | Number/energy/full-marginal errors below `1e-15`; positive reconstruction; entropy identity checked |
-| Nonlinear timestep refinement | Successive errors `7.10e-6`, `1.77e-6`; observed order `2.00` |
-| Toroidal combined dynamics | `Q/Q0=0.8109803`; every independent final refinement changes dissipated fraction by less than `0.71%` |
-| Lorentz | Legendre rates `0, nu, 3nu, 6nu`; speed-shell count/energy conserved |
-| Dougherty | NonGaussian strong-equation check and independent quadrature of drift/covariance/entropy |
-| 3V Landau | Spherical Coulomb moments versus independent Laplace integral; Cartesian, tail, gyrophase and near-diagonal refinement |
-| Nonuniform collision boxes | All three geometries preserve number/energy/marginal; final spatial production changes below `0.34%` |
-| Finite range | 27 grid/range/velocity cases; finest density-rate error `3.03e-13` |
+| `examples/00_uniform_reference.py` | Eq. (181) oracle and backward-Euler convergence |
+| `examples/01_relaxation.py` | Positive nonlinear solve, entropy and timestep refinement |
+| `examples/02_geometry.py` | Toroidal controls, eight refinements and raw nullspace |
+| `examples/03_controls.py` | Lorentz, Dougherty and physical 3V Landau references |
+| `examples/04_encounters.py` | Direct encounters and phase/endpoint controls |
+| `examples/05_benchmarks.py` | Matched-error runtime and memory |
+| `examples/06_range.py` | Finite-range spectrum and kernel resolution |
+| `examples/07_equilibria.py` | Five-field stationary density quadrature |
+| `examples/08_fields.py` | Three nonlinear nonuniform collision boxes |
+| `examples/09_visual_summary.py` | Operator animation and README panels; uses recorded results |
+| `examples/10_encounter_ensemble.py` | Bounded incoming flux and held-out scattering table |
+| `examples/11_field_velocity.py` | Nonuniform initial-production velocity/tail convergence |
 
-![Nonlinear constrained relaxation](results/figures/relaxation.png)
+MP4 export additionally uses `ffmpeg`; GIF export works with the listed Python dependencies.
 
-Script: `examples/01_relaxation.py`; data in `results/relaxation.json`. Distance to a candidate maximum-entropy state is an observable, not a uniqueness or attraction claim.
+Each result records inputs, units, source commit/digest, versions and hardware. Older experiments retain their original provenance when new ones are added. The [validation ledger](results/validation.csv) distinguishes passing, unresolved and unrun requirements; [original](results/reproduction.json) and [continuation](results/continuation.json) records contain executed commands. Detailed mathematics and literature belong in the [notes](notes/implementation.pdf), with [LaTeX source](notes/implementation.tex) and [bibliography](notes/references.bib).
 
-### Candidate result: finite interaction range changes the nullspace
-
-For a homogeneous uniform field and a normalized symmetric spatial kernel with Fourier ratio `r(k)`, the exact finite-velocity-quadrature collision spectrum is
-
-\[
-\lambda_{\rm neutral}=\lambda,\qquad
-\lambda_{\rm density}=\lambda[1-r(k)].
-\]
-
-For a periodized Gaussian of width `ell`, `r(k)=exp(-ell²|k|²/2)`. Thus finite range lifts the local density null mode and produces **quartic transverse long-wave decay**, while every homogeneous velocity perturbation remains undamped. Direct ordered-pair Gram assembly checks the formula without deleting eigenvalues. The local limit is singular in its nullspace; unresolved narrow kernels produce large rate errors. This is an independently checked surrogate result. Related metriplectic and nonlocal relaxation literature was searched; publication priority remains unresolved. No continuum gap or physical collision rate follows from it.
-
-![Finite-range spectrum and convergence](results/finite_range/range.png)
-
-Script: `examples/06_range.py`; all 27 rows are in `results/finite_range/summary.csv` with context in its JSON file.
-
-### Geometry result: frozen toroidal spatial density
-
-For any smooth spatial-only `phi(X)`, the spatial part of `J grad(phi)` is independent of `u,mu` at fixed position. Its local pair difference has only `u,eta` components. The toroidal energy-flow difference has only spatial components, so `P I_X P` annihilates that observable difference. Local collisions therefore preserve **every spatial population**; combined tangent Hamiltonian dynamics preserves every radial population. This is a proved obstruction to unique relaxation based only on energy and the magnetic-moment marginal. Tests check every represented spatial-bin basis vector.
-
-The raw 243-node entropy-weighted matrix has 39 near-null eigenvalues. Spatial populations together with `c(theta)g(mu)`, `c(theta)E` and `c(theta)mRu` have rank 39 and account for every observed tiny-grid null mode. This finite-grid match does not prove an exhaustive continuum classification. The eigenpair residual is `1.63e-15`.
-
-### Physical audit
-
-Energy conservation does not imply magnetic-moment conservation: in uniform `B`,
-`Delta E = (m/2) Delta(u²) + B Delta mu`. The missing parallel-energy term matters. Unbiased increments can also broaden the moment marginal through nonzero variance. The source describes its moment-conservation ordering as a working assumption.
-
-Direct magnetized encounters demonstrate this distinction for specified incoming guiding centers, gyrophases and screened repulsive potentials. Zero-force helices, Rutherford convergence, energy, timestep, gyrophase and incoming/outgoing separation are checked. **There is no incident-flux-weighted plasma rate, held-out kinetic closure, calibrated `D`, or metastable dipole lifetime here.** Full physical validation remains open.
-
-## Performance
-
-`examples/05_benchmarks.py` compares dense, unpreconditioned PCG and diagonal-PCG implicit steps at the same error, with five synchronized warm repetitions and separate compilation/first execution. It also benchmarks the actual pair weak action against an independent dense Gram matrix, varying spatial nodes, velocity nodes and pair chunk size. XLA buffer accounting and measured process peak RSS are recorded separately. RSS is a cumulative process high-water mark, not an isolated workspace measurement.
-
-The exact uniform Fourier reduction is separable and avoids pair work. Its timing must not be extrapolated to a general nonuniform collision kernel. `results/benchmarks/summary.json` records errors, median/spread, iteration counts and memory for each route. CPU measurements are on an Apple M4; no GPU speedup is claimed.
-
-
-Measured four-block, 128-velocity-node implicit step on Apple M4 (five repeats; identical time-discretization error `2.77e-5`):
-
-| Route | Compile + first (s) | Warm median (µs) | Warm min–max (µs) | XLA temporary bytes |
-|---|---:|---:|---:|---:|
-| dense | 0.092 | 550.3 | 214.2–1297.8 | 262852 |
-| pcg | 0.184 | 571.7 | 273.1–804.7 | 16696 |
-| diagonal_pcg | 0.225 | 43.8 | 34.5–126.6 | 16832 |
-
-For 945 explicit weak pairs, chunking by 16 reduces XLA temporary buffers from 118,913 to 16,480 bytes; the measured warm median grows from 96.3 to 158.2 µs on this small case. All action errors are below `8e-16`. Peak process RSS reaches 332 MB in the complete benchmark process; this includes the runtime and compiled executables.
-
-## Structure and notes
-
-Five substantive modules cover geometry, collisions, solvers, independent references and controls. Pair kernels store five-component directions and support bounded application chunks; dense Gram matrices are verification references. The nonlinear prototype uses a dense Newton Jacobian on tractable grids, so it is not yet a scalable large nonlinear solver.
-
-Full derivations, literature review, chart transformations, normalization, discrete conservation proofs and limits are in [the notes](notes/implementation.pdf), with [LaTeX source](notes/implementation.tex) and [bibliography](notes/references.bib). Rebuild the multi-file notes with:
+<details>
+<summary>Rebuild the notes</summary>
 
 ```sh
 cd notes
@@ -153,12 +173,14 @@ pdflatex -interaction=nonstopmode -halt-on-error implementation.tex
 pdflatex -interaction=nonstopmode -halt-on-error implementation.tex
 ```
 
-## Limits
+</details>
 
-No self-consistent electrostatics, unequal-mass multispecies closure, current-carrying-field bracket, universal nonuniform zero-set prescription, long-time continuum spectral gap, calibrated collision coefficient or dipole confinement claim. Additional toroidal finite-grid null modes are retained and reported. Implicit differentiation is checked for a specified linear solve; general geometry/steady-state sensitivities are not advertised. Physical Landau references evaluate weak moments rather than evolving a general distribution. Encounter convergence does not establish many-body Markovian closure.
+## Remaining limits
 
-## References and license
+The nonlinear solver uses a dense Newton Jacobian on tractable grids. Full nonuniform time-evolution and joint spatial/velocity convergence, a universal nonuniform projector zero-set prescription, and general geometry sensitivities are incomplete. No self-consistent electrostatics, unequal-mass multispecies closure, current-carrying-field bracket, physical spectral gap, calibrated collision coefficient or metastable dipole lifetime is established. Encounter convergence alone does not establish a many-body kinetic closure.
 
-Sato and Morrison, *Physics of Plasmas* **32**, 102306 (2025), [DOI](https://doi.org/10.1063/5.0289410); Brizard and Sugama, [arXiv:2506.22289v2](https://arxiv.org/abs/2506.22289v2); Kraus and Hirvijoki, [arXiv:1707.01801v2](https://arxiv.org/abs/1707.01801v2); Jose and Baalrud, [arXiv:2008.06080v1](https://arxiv.org/abs/2008.06080v1). See the bibliography for the complete method/source comparison.
+## Attribution and license
 
-Original code, notes, figures and measured data are MIT licensed. Third-party papers retain their own licenses and are **not distributed in this repository**. SOLVAX is an external dependency; no upstream modification was required.
+Sato and Morrison, *Physics of Plasmas* **32**, 102306 (2025), [DOI](https://doi.org/10.1063/5.0289410); Brizard and Sugama, [arXiv:2506.22289v2](https://arxiv.org/abs/2506.22289v2); Kraus and Hirvijoki, [arXiv:1707.01801v2](https://arxiv.org/abs/1707.01801v2); Jose and Baalrud, [arXiv:2008.06080v1](https://arxiv.org/abs/2008.06080v1). Full comparisons are in the bibliography.
+
+Original code, notes, figures and measured data are [MIT licensed](LICENSE). Third-party papers retain their own licenses and remain outside this repository. SOLVAX is an external dependency; no upstream modification was required.

@@ -17,3 +17,9 @@ toroidal_nullspace,sm181_local,toroidal,1.644178255866263e-17,39-dimensional inv
 field_box_spatial,sm_local_nonlinear,mirror,0.0033551279017575153,initial entropy-production last spatial change,passed,fields/summary.json
 field_box_spatial,sm_local_nonlinear,dipole,0.002551199246642488,initial entropy-production last spatial change,passed,fields/summary.json
 field_box_spatial,sm_local_nonlinear,nonaxisymmetric,0.002571874037929911,initial entropy-production last spatial change,passed,fields/summary.json
+initial_velocity_tails,sm_local_nonlinear,mirror,0.0006304777121195482,largest independent last Gauss initial-production change,passed,field_velocity/summary.json
+initial_velocity_tails,sm_local_nonlinear,dipole,0.002548063824455493,largest independent last Gauss initial-production change,passed,field_velocity/summary.json
+initial_velocity_tails,sm_local_nonlinear,nonaxisymmetric,0.002609571264762689,largest independent last Gauss initial-production change,passed,field_velocity/summary.json
+bounded_flux,encounter,uniform,1.6216781370433162e-09,relative analytic bounded-flux normalization,passed,encounter_ensemble/metadata.json
+bounded_encounter_convergence,encounter,uniform,0.0002064012991600299,largest last direct moment refinement,passed,encounter_ensemble/metadata.json
+held_out_scattering_table,encounter,uniform,0.20475311567259064,64-state second-moment normalized RMS; target0.1,unresolved,encounter_ensemble/metadata.json
