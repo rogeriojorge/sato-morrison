@@ -4,14 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sato-morrison"
-version = "0.0.0"
-description = "Reference calculations for magnetic-moment-constrained collision models"
+version = "0.1.0"
+description = "Verified prototypes for magnetic-moment-constrained collision models"
 requires-python = ">=3.11"
 license = {text = "MIT"}
-dependencies = ["numpy"]
+dependencies = ["numpy", "jax", "solvax>=0.28.2", "scipy"]
 
 [project.optional-dependencies]
-dev = ["pytest", "matplotlib"]
+dev = ["pytest", "matplotlib", "psutil"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

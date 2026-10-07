@@ -7,8 +7,13 @@ from time import perf_counter
 
 import matplotlib.pyplot as plt
 import numpy as np
+import jax
+import jax.numpy as jnp
+from solvax import pcg_linear_solve
 
-from sato_morrison.reference import gauss_interval, pair_rhs
+from sato_morrison.reference import gauss_interval, pair_rhs, run_metadata, progress
+
+jax.config.update("jax_enable_x64", True)
 
 # Inputs: normalized units, a uniform field and one perpendicular Fourier mode.
 nu, neta = 18, 12
@@ -61,6 +66,8 @@ report = {
     "platform": platform.platform(), "numpy_version": np.__version__,
     "elapsed_seconds": perf_counter()-start,
 }
+report["metadata"] = run_metadata(report["inputs"], model="sm181_local", boundary="periodic Fourier mode; finite velocity quadrature")
+
 assert error < 1e-12
 assert max(report["homogeneous_rhs_max"], report["density_rhs_max"]) < 1e-12
 assert abs(eigenvalues[-1]) < 1e-12
@@ -76,3 +83,52 @@ fig.savefig(output / "spectrum.png", dpi=180)
 plt.close(fig)
 print(json.dumps(report, indent=2), flush=True)
 print(f"PASS. Saved summary.json and spectrum.png in {output}", flush=True)
+
+# Time evolution: entropy-scaled backward Euler solved by SOLVAX PCG.
+final_time = 1.0
+step_counts = [20, 40, 80, 160]
+sj = jnp.asarray(root)
+mj = jnp.asarray(measure)
+y0 = sj * jnp.asarray(h + 0.2)
+time_rows = []
+
+def evolve(dt, steps):
+    def step(y, unused):
+        def action(v):
+            return v + dt * rate * (v - sj * jnp.vdot(sj, v) / n0)
+        solution = pcg_linear_solve(action, y, rtol=1e-12, atol=1e-14, max_steps=20)
+        residual = jnp.linalg.norm(action(solution.x)-y) / jnp.linalg.norm(y)
+        return solution.x, (solution.converged, residual)
+    return jax.lax.scan(step, y0, None, length=steps)
+
+for steps in step_counts:
+    dt = final_time / steps
+    compiled = jax.jit(lambda: evolve(dt, steps))
+    with progress(f"Compiling uniform time evolution: {steps} steps"):
+        evolved, (converged, residuals) = compiled()
+        evolved.block_until_ready()
+    if not bool(jnp.all(converged)) or float(jnp.max(residuals)) > 1e-11:
+        raise RuntimeError(f"Uniform implicit solve failed at dt={dt}")
+    numerical_h = np.asarray(evolved / sj)
+    neutral = numerical_h - np.dot(measure, numerical_h) / n0
+    amplitude = np.dot(measure*h, neutral) / np.dot(measure*h, h)
+    fitted_rate = -np.log(amplitude) / final_time
+    rate_error = abs(fitted_rate/rate-1)
+    time_rows.append(dict(dt=dt, steps=steps, fitted_rate=float(fitted_rate),
+                          relative_rate_error=float(rate_error),
+                          density_error=float(abs(np.dot(measure, numerical_h)/n0-0.2)),
+                          linear_residual=float(jnp.max(residuals))))
+assert time_rows[-1]["relative_rate_error"] < 1e-3
+assert all(time_rows[i]["relative_rate_error"] > 1.9*time_rows[i+1]["relative_rate_error"] for i in range(3))
+report["time_evolution"] = time_rows
+report["scope"] = "Eq.181 uniform pair algebra, entropy spectrum and backward-Euler time convergence"
+(output / "summary.json").write_text(json.dumps(report, indent=2)+"\n")
+fig, ax = plt.subplots(figsize=(6.2,3.7))
+ax.loglog([r["dt"] for r in time_rows], [r["relative_rate_error"] for r in time_rows], "o-", label="SOLVAX backward Euler")
+ax.set(xlabel="Timestep (normalized)", ylabel="Relative fitted-rate error")
+ax.legend()
+fig.tight_layout()
+fig.savefig(output / "time_convergence.png", dpi=180)
+plt.close(fig)
+print(json.dumps(time_rows, indent=2), flush=True)
+print("PASS: pair formula, unmodified spectrum and first-order time convergence", flush=True)
