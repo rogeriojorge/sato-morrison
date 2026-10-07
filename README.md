@@ -136,6 +136,14 @@ The known stationary density family and a full-marginal equilibrium multiplier a
 
 **New velocity-tail check:** 36 nonuniform initial-production cases. All three fields pass the Gauss-quadrature target; the largest final change is `0.261%`. Trapezoidal controls remain unresolved at `10–17%`. This does not establish full time-evolution or joint spatial/velocity convergence. [Convergence plot](results/field_velocity/production.png) · [All checks](results/field_velocity/summary.json)
 
+### Finite-time mirror relaxation survives independent refinements
+
+![Mirror relative-entropy decrease, eight refinement comparisons, additional continuum-moment errors and discrete conservation budgets.](results/nonuniform_mirror_dg/evolution.png)
+
+Thirteen discrete-gradient runs reach $T=0.02$: relative entropy decreases by **43.74%** on the baseline grid. All eight independent grid, tail and timestep checks pass the 1% target; the largest change is **0.113%**. Number, energy and the full moment marginal stay within `1.4e-13`. Additional continuum constraints are measured as discretization errors.
+
+This completed mirror campaign retains its original method and source. Dipole and nonaxisymmetric solves with that method failed visibly; their replacement entropy-variable campaign is separate. The comparisons do not establish joint continuum convergence or resolve every localized constraint. [Inputs, histories and provenance](results/nonuniform_mirror_dg/raw/summary.json) · [Independent audit and costs](results/nonuniform_mirror_dg/audit.json) · [Archived producing source](https://github.com/rogeriojorge/sato-morrison/blob/4ce8e5c770665a396d5083aec1e5f2b89a6a6ecf/examples/12_nonuniform_evolution.py)
+
 <details>
 <summary>Independent geometry-derivative checks</summary>
 
@@ -211,6 +219,7 @@ Run from the repository root with the environment above. Every script prints its
 | `examples/15_dipole_obstruction.py` | Matched constraints, different flux populations and a positive distance floor |
 | `examples/16_scattering_table.py` | Periodic table; untouched 256- and 4,096-state tests |
 | `examples/17_encounter_duration.py` | Original nonexit: flight budget, timestep, endpoint and independent pair audit |
+| `examples/18_near_uniform.py` | Analytic and direct near-uniform tensor-quadrature limit |
 
 MP4 export additionally uses `ffmpeg`; GIF export works with the listed Python dependencies.
 
@@ -231,7 +240,7 @@ pdflatex -interaction=nonstopmode -halt-on-error implementation.tex
 
 ## Remaining limits
 
-The discrete-gradient solver has independently compared dense and matrix-free Newton routes. The nonuniform campaign uses a separate lagged-mobility entropy step: its positive root and conservation budget are proved, and independent tiny-grid checks establish first-order time accuracy. Full thermal-domain time-evolution and joint spatial/velocity convergence remain under study. Local energy-flow injectivity is proved away from field-strength critical points; an explicit critical-point counterexample rules out a universal continuous projector prescription. Local initial-production geometry derivatives are verified, while general implicit geometry sensitivities remain incomplete. No self-consistent electrostatics, unequal-mass multispecies closure, current-carrying-field bracket, physical spectral gap, calibrated collision coefficient or metastable dipole lifetime is established. Encounter convergence alone does not establish a many-body kinetic closure.
+The discrete-gradient solver has independently compared dense and matrix-free Newton routes. The nonuniform campaign uses a separate lagged-mobility entropy step: its positive root and conservation budget are proved, and independent tiny-grid checks establish first-order time accuracy. The historical mirror campaign passes eight thermal-domain time-evolution refinements. The new three-field campaign and joint spatial/velocity convergence remain under study. Local energy-flow injectivity is proved away from field-strength critical points; an explicit critical-point counterexample rules out a universal continuous projector prescription. Local initial-production geometry derivatives are verified, while general implicit geometry sensitivities remain incomplete. No self-consistent electrostatics, unequal-mass multispecies closure, current-carrying-field bracket, physical spectral gap, calibrated collision coefficient or metastable dipole lifetime is established. Encounter convergence alone does not establish a many-body kinetic closure.
 
 ## Attribution and license
 

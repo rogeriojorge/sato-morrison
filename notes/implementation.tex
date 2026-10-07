@@ -919,6 +919,42 @@ unique continuous limit. Positive quadrature nodes on such a set need a
 separately declared prescription. No denominator softening is justified by
 this argument.
 
+\paragraph{Near-uniform mirror fields and tensor diagonal weights.}
+Example~18 tests a finite-quadrature limitation using exact continuous local
+actions, independently checked against the common-chart implementation. Its
+observable is the frozen positive pair Gram $Q_h$ for $h=\mu x$, evaluated
+at $f=e^{-E-0.2\mu}$; it is not this equilibrium's entropy production, which
+is zero. At $X=(1,0,0.3)$, $m=q=C=D=1$, the positive-amplitude mirror field
+has $\Delta A h\to(\mu-\mu')e_y$. For $u\ne u'$, $\Delta V\to(u-u')e_z$
+and the projector approaches the literal uniform prescription. For $u=u'$
+and $\mu\ne\mu'$, however,
+\[
+ \Delta V=a(\mu-\mu')L(u)+O(a^2),\qquad
+ L(u)=(0,-1,0,-0.6,0.6u).
+\]
+Consequently the limiting spatial squared projected action is
+$(\mu-\mu')^2r(u)$, with
+$r(u)=[0.36(1+u^2)/(1+0.36(1+u^2))]^2<1$, whereas the uniform prescription
+gives $(\mu-\mu')^2$. For positive tensor quadrature weights $w_i$ in $u$
+and $v_j$ in $\mu$, put $M_k=\sum_j v_je^{-1.2\mu_j}\mu_j^k$ and
+$H=M_0M_2-M_1^2>0$. The unordered pair sum gives exactly
+\[
+ Q_n(0)-\lim_{a\to0^+}Q_n(a)
+ =H\sum_i w_i^2e^{-u_i^2}[1-r(u_i)]
+ \le H\max_iw_i\sum_iw_ie^{-u_i^2}.
+\]
+Thus a fixed quadrature retains a positive discrepancy, while refinement
+with $\max_iw_i\to0$ removes it. On the fixed compact velocity domain the
+projector and analytic test actions are bounded. Dominated convergence
+therefore recovers the same uniform continuum form because $u=u'$ has zero
+product measure. This is a finite-quadrature discontinuity, not a physical
+discontinuity or a claim that the two infinite sequential limits differ.
+The example holds the moment quadrature and velocity tails fixed, isolates
+the parallel-order effect, and reports the direct positive-amplitude checks
+and proved bound. It does not certify the modified discrete-energy projector
+or a full spatial evolution scheme uniformly as $a\to0$, and makes no
+priority claim for this numerical limitation.
+
 \subsection*{Spatial invariants of local collisions}
 For a spatial observable $\phi(\X)$ independent of $u,\mu$, its common-chart
 action is
@@ -1951,6 +1987,29 @@ that validator from Git history to audit the archived rows. Its saved summaries
 lack stage states and gradient-dependent entropy bounds, so rechecking them
 cannot replay every original entropy acceptance decision. Original timings
 and run identifiers remain attached to their producing executions.
+
+The completed historical mirror run contains thirteen cases. Its eight
+independent refinements all pass the original $1\%$ target; the largest
+selected-observable change is $0.1126103\%$, from extending $|u|\le4$ to
+$|u|\le5$. The baseline relative entropy decreases by $43.7427\%$ and the
+active moment by $25.0538\%$ through $T=0.02$. Across all accepted histories,
+number, energy and full moment-bin errors are at most
+$7.779\times10^{-14}$, $1.363\times10^{-13}$ and $2.258\times10^{-14}$;
+the maximum nonlinear residual is $7.545\times10^{-13}$ at target $10^{-12}$.
+The retained minimum nodal density is $1.232\times10^{-16}$ and the largest
+absolute entropy identity discrepancy is $5.877\times10^{-15}$.
+These are fixed-other-parameter comparisons, not joint continuum convergence
+or a classification of every spatially localized constraint.
+
+The archived validator independently accepts all thirteen rows and exactly
+reproduces each saved comparison. Raw summaries, environment, CPU report and
+logs are in \texttt{results/nonuniform\_mirror\_dg/raw}; its separate audit
+retains exact inputs and per-case costs. The $7^3\times25\times21$ case has
+180075 nodes and 41786320 bytes of stored grid arrays (not peak memory).
+Its four accepted steps took 2001.55 seconds including the first compilation,
+versus 366.68 seconds for the $5^3$ case, on a four-logical-CPU AMD EPYC 7763
+runner. These are observed run costs, not a matched-error speedup comparison.
+
 
 The current \texttt{12\_nonuniform\_evolution.py} instead uses
 \eqref{eq:laggedentropy}. Its thirteen predefined cases per field independently
