@@ -6,8 +6,14 @@ jobs:
   evolution:
     runs-on: ubuntu-latest
     timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      matrix:
+        field: [mirror, dipole, nonaxisymmetric]
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -18,17 +24,19 @@ jobs:
           lscpu > results/nonuniform_evolution/cpu.txt
           python -m pip freeze > results/nonuniform_evolution/environment.txt
           git rev-parse HEAD > results/nonuniform_evolution/commit.txt
-      - name: Evolve all three fields and independent refinements
+      - name: Evolve one field and all independent refinements
         run: |
           set -o pipefail
-          python -u examples/12_nonuniform_evolution.py 2>&1 | tee results/nonuniform_evolution/run.log
+          timeout --signal=INT --kill-after=30s 330m python -u examples/12_nonuniform_evolution.py 2>&1 | tee results/nonuniform_evolution/run.log
         env:
           JAX_ENABLE_X64: 'true'
           MPLBACKEND: Agg
+          SM_EVOLUTION_FIELDS: ${{ matrix.field }}
+          SM_EVOLUTION_RESUME: results/nonuniform_evolution_initial/summary.json
       - name: Preserve complete or partial measured evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: nonuniform-evolution-${{ github.sha }}
+          name: nonuniform-evolution-${{ matrix.field }}-${{ github.sha }}
           path: results/nonuniform_evolution/
           if-no-files-found: error
