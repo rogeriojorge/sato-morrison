@@ -27,7 +27,7 @@ Examples are editable top-level scripts with explicit inputs, progress, diagnost
 
 ## What the calculations establish
 
-**105 tests passed on Linux CI.** The test suite compares independent equations, discrete conservation budgets and resolved limits. Each claim below links to its measured evidence.
+**115 tests passed on Linux CI.** The test suite compares independent equations, discrete conservation budgets and resolved limits. Each claim below links to its measured evidence.
 
 ![Four validation panels: nonlinear entropy, toroidal evolution controls, independent refinements and the raw toroidal null spectrum.](results/visual_summary/validation.png)
 

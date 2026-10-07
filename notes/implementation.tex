@@ -1814,6 +1814,40 @@ without allocating and discarding a 25-component tensor per pair; the
 retained unit directions and collision action are unchanged and tested against
 explicit projector matrices.
 
+\subsection*{Finite-time campaign execution and checked resumption}
+The execution driver for \texttt{12\_nonuniform\_evolution.py} optionally uses
+\texttt{SM\_EVOLUTION\_FIELDS} to select a distinct subset of the three
+canonical fields, and \texttt{SM\_EVOLUTION\_RESUME} to read completed rows
+from an earlier campaign summary. These options distribute or resume the
+existing cases; they do not change the scientific functions, parameters,
+refinement sequences or acceptance targets. The CI driver runs the three
+fields in separate jobs and preserves partial checkpoints. Selected-field
+and whole-campaign statuses remain separate; completing one field is not a
+whole-campaign convergence result.
+
+The recovered four mirror rows retain their original execution evidence at
+commit \texttt{fdc625d}. Resumption checks the canonical input hash, exact
+package-source bytes and the abstract syntax trees of the scientific
+functions and constants against that anchor. It also verifies each recorded
+commit and aggregate source hash, clean-source metadata and environment
+records. Every row keeps its original metadata identifier; new rows have the
+current execution identifier. This retains the original device, versions and
+timings rather than assigning earlier measurements to the latest execution.
+Available Git history is required for these checks. Duplicate or noncanonical
+cases, incomplete time histories, nonfinite diagnostics, nonpositive nodal
+populations, and failed retained invariant or solver tolerances are rejected.
+Saved status labels alone do not establish completion, and the small independent
+dense/compact endpoint control is rerun in each execution.
+
+The saved summaries contain entropy changes and identity defects, but not
+the stage states, gradient-dependent defect bound or individual Newton forcing
+values. Resumption rechecks finite entropy diagnostics, endpoint telescoping
+and the retained maximum Krylov residual; it cannot replay the original
+stage-dependent entropy acceptance bound or each individual forcing check.
+Those checks remain evidence of the original executed solver, not newly
+reproduced checks. No final finite-time refinement outcome is asserted by
+this execution-method description.
+
 \subsection*{Bounded Maxwellian encounter flux and thermal center motion}
 Let $\theta=k_BT/m$ denote a single-particle velocity variance. For two equal
 Maxwellian particles, $\bm w=\bm v_1-\bm v_2$ and
