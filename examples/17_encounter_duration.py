@@ -26,6 +26,8 @@ energy_target=1e-8
 timestep_moment_target=.001
 endpoint_moment_target=.005
 independent_pair_velocity_absolute_target=1e-8
+independent_pair_position_absolute_target=1e-8
+independent_pair_max_steps=[.05,.025]
 output=repository/'results'/'encounter_duration'
 show_figures=False
 inputs={'prior_metadata_sha256':prior_metadata_sha256,'flight_time_factors':flight_time_factors,
@@ -33,10 +35,12 @@ inputs={'prior_metadata_sha256':prior_metadata_sha256,'flight_time_factors':flig
     'energy_target':energy_target,'timestep_moment_target':timestep_moment_target,
     'endpoint_moment_target':endpoint_moment_target,
     'independent_pair_velocity_absolute_target':independent_pair_velocity_absolute_target,
+    'independent_pair_position_absolute_target':independent_pair_position_absolute_target,
+    'independent_pair_max_steps':independent_pair_max_steps,
     'scope':'finite flight-budget diagnosis of exact previously failed nodes; original quadrature and interpolation failures retained'}
 output.mkdir(parents=True,exist_ok=True)
 print(f'Model=screened repulsive equal-particle encounter; output={output}',flush=True)
-print(f'Prior evidence SHA={prior_metadata_sha256}; budgets={flight_time_factors}; maxsteps={active_max_steps}; endpointdistances={endpoint_distances}',flush=True)
+print(f'Prior evidence SHA={prior_metadata_sha256}; budgets={flight_time_factors}; maxsteps={active_max_steps}; endpoint distances={endpoint_distances}',flush=True)
 print('The original broad conditional integral remains unresolved. Successful extended flight cannot repair its independent quadrature error.',flush=True)
 print('No compilation; direct DOP853 events plus independently integrated 12D Cartesian pair path.',flush=True)
 started=perf_counter()
@@ -100,7 +104,7 @@ with progress('Auditing exact nonexit nodes: budget, active timestep, endpoint, 
             record,result=attempt(node,distance,budget,active_max_steps[0]);budgets.append(record)
             if result is not None:
                 successful.append((budget,result))
-            print(f'  Failednode{index}: budgetfactor={budget:g}, outcome={record["status"]}, time={record.get("time",record.get("integration_diagnostics",{}).get("final_time"))}',flush=True)
+            print(f'  Failednode {index}: budgetfactor={budget:g}, outcome={record["status"]}, time={record.get("time",record.get("integration_diagnostics",{}).get("final_time"))}',flush=True)
         report={'original_failure':failure,'budget_audit':budgets,'outcome':'unresolved at all predeclared budgets'}
         if successful:
             budget,first=successful[0]
@@ -117,13 +121,36 @@ with progress('Auditing exact nonexit nodes: budget, active timestep, endpoint, 
             pair_final=pair['velocities'][-1,0]-pair['velocities'][-1,1]
             pair_velocity_error=float(np.max(np.abs(pair_final-first['final_relative_velocity'])))
             pair_mu_error=float(abs(pair['delta_mu'][0]-first['conditional_mu_mean']))
-            pair_paths[index]=pair
+            # Keep the original coarse comparison and compare both independently refined
+            # Cartesian paths to the finest already declared relative solve.
+            finest=solve(node,distance,budget,active_max_steps[-1])
+            pair_refinement=[];pair_refinement_paths=[]
+            for pair_step in independent_pair_max_steps:
+                fine_pair=binary_encounter(finest['initial_relative_position'],finest['initial_relative_velocity'],
+                    field=physical['field'],strength=physical['strength'],screening=physical['screening'],duration=finest['time'],
+                    mass=physical['mass'],charge=physical['charge'],max_step=pair_step,rtol=physical['rtol'])
+                pair_position=fine_pair['positions'][-1,0]-fine_pair['positions'][-1,1]
+                pair_velocity=fine_pair['velocities'][-1,0]-fine_pair['velocities'][-1,1]
+                pair_refinement.append({'max_step':pair_step,'event_time':finest['time'],
+                    'velocity_max_absolute_error':float(np.max(np.abs(pair_velocity-finest['final_relative_velocity']))),
+                    'position_max_absolute_error':float(np.max(np.abs(pair_position-finest['final_relative_position']))),
+                    'mu_absolute_error':float(abs(fine_pair['delta_mu'][0]-finest['conditional_mu_mean'])),
+                    'energy_error':fine_pair['energy_error']})
+                pair_refinement_paths.append(fine_pair)
+            pair_plateau=float(np.max(np.abs((pair_refinement_paths[-1]['velocities'][-1,0]-pair_refinement_paths[-1]['velocities'][-1,1])-(pair_refinement_paths[-2]['velocities'][-1,0]-pair_refinement_paths[-2]['velocities'][-1,1]))))
+            pair_passed=all(item['velocity_max_absolute_error']<=independent_pair_velocity_absolute_target and item['position_max_absolute_error']<=independent_pair_position_absolute_target and item['energy_error']<=energy_target for item in pair_refinement) and pair_plateau<=independent_pair_velocity_absolute_target
+            pair_paths[index]=pair_refinement_paths[-1]
             report.update(outcome='original flight budget insufficient; outgoing event reached with extended budget' if budgets[0]['status']=='unresolved' else 'original numerical nonexit not reproduced',
                 minimum_successful_declared_factor=budget,timestep_audit=timesteps,endpoint_audit=endpoints,
                 timestep_second_moment_relative_change=step_change,endpoint_second_moment_relative_change=endpoint_change,
                 independent_pair_velocity_max_absolute_error=pair_velocity_error,independent_pair_mu_absolute_error=pair_mu_error,
                 independent_pair_energy_error=pair['energy_error'],
-                numerical_status='passed' if steps_complete and endpoints_complete and step_change<=timestep_moment_target and endpoint_change<=endpoint_moment_target and pair_velocity_error<=independent_pair_velocity_absolute_target and max(pair['energy_error'],first['energy_error'])<=energy_target else 'unresolved')
+                original_coarse_comparison_status='passed' if pair_velocity_error<=independent_pair_velocity_absolute_target else 'unresolved',
+                independent_pair_refinement=pair_refinement,independent_pair_refinement_velocity_plateau=pair_plateau,
+                finest_relative_max_step=active_max_steps[-1],
+                numerical_status='passed' if steps_complete and endpoints_complete and step_change<=timestep_moment_target and endpoint_change<=endpoint_moment_target and pair_passed and finest['energy_error']<=energy_target else 'unresolved')
+        if 'independent_pair_refinement' in report:
+            print(f"  Independent pair: original coarse velocity error={pair_velocity_error:.3e}; finest velocity error={pair_refinement[-1]['velocity_max_absolute_error']:.3e}; position error={pair_refinement[-1]['position_max_absolute_error']:.3e}; status={report['numerical_status']}",flush=True)
         campaign.append(report)
         (output/'audit_partial.json').write_text(json.dumps(campaign,indent=2)+'\n')
 
@@ -135,7 +162,7 @@ labels=[f'{a:g}–{b:g}' for a,b in physical['impact_annuli']]
 fig,axes=plt.subplots(2,2,figsize=(11,8),layout='constrained')
 axes[0,0].scatter(direct[:,1],predicted[:,1],s=8)
 lo,hi=direct[:,1].min(),direct[:,1].max();axes[0,0].plot([lo,hi],[lo,hi],':',color='gray')
-axes[0,0].set(xlabel='direct second moment',ylabel='original cubic table',title=f'Original256 table: p95 {previous["fresh_holdout_second_p95"]:.1%}; target5% failed')
+axes[0,0].set(xlabel='direct second moment',ylabel='original cubic table',title=f'Original table: 95th-percentile error {previous["fresh_holdout_second_p95"]:.1%}\nTarget 5% failed')
 axes[0,1].bar(np.arange(len(labels)),band_values)
 axes[0,1].set_xticks(np.arange(len(labels)),labels=labels,rotation=25)
 axes[0,1].set(xlabel='guiding-center impact annulus',ylabel='positive finite-quadrature contribution / density',title='Broad campaign; total integral remains unresolved')
@@ -154,8 +181,8 @@ if pair_paths:
     for index,pair in pair_paths.items():
         z=pair['positions'][:,0,2]-pair['positions'][:,1,2]
         wz=pair['velocities'][:,0,2]-pair['velocities'][:,1,2]
-        axes[0].plot(pair['time'],z,label=f'previously unresolved node{index}')
-        axes[1].plot(pair['time'],wz,label=f'node{index}')
+        axes[0].plot(pair['time'],z,label=f'previously unresolved node {index}')
+        axes[1].plot(pair['time'],wz,label=f'node {index}')
         original_budget=6*physical['start_distance']/previous['failures'][index]['node'][1]
         axes[0].axvline(original_budget,color='gray',linestyle=':',label='original flight limit')
         paths.update({f'time_{index}':pair['time'],f'positions_{index}':pair['positions'],f'velocities_{index}':pair['velocities']})
