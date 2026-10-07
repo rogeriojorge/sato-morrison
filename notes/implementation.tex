@@ -943,8 +943,9 @@ $H=M_0M_2-M_1^2>0$. The unordered pair sum gives exactly
  =H\sum_i w_i^2e^{-u_i^2}[1-r(u_i)]
  \le H\max_iw_i\sum_iw_ie^{-u_i^2}.
 \]
-Thus a fixed quadrature retains a positive discrepancy, while refinement
-with $\max_iw_i\to0$ removes it. On the fixed compact velocity domain the
+Thus a fixed quadrature retains a positive discrepancy. Positive Gauss
+refinement has $\sum_iw_i=2U_{\max}$ and $\max_iw_i\to0$, so the
+displayed bound vanishes when the moment rule is held fixed. On the fixed compact velocity domain the
 projector and analytic test actions are bounded. Dominated convergence
 therefore recovers the same uniform continuum form because $u=u'$ has zero
 product measure. This is a finite-quadrature discontinuity, not a physical
@@ -1551,6 +1552,11 @@ same separately assembled dense roots. No uniform conditioning bound follows.
 The campaign uses this line inverse and a 3000-iteration linear budget;
 failed residual checks remain fatal. API defaults retain the diagonal inverse
 and a 1000-iteration budget.
+For $N$ state nodes and $n_x$ nodes on a line, stored Cholesky factors use
+$O(Nn_x)$ entries, their factorization costs $O(Nn_x^2)$, and each inverse
+application costs $O(Nn_x)$. This is additional solver storage beyond the
+earlier compact-grid arrays; the direct pair action still costs $O(N_XN_v^2)$.
+
 
 Independent explicit-pair dense roots and a separately assembled pair ODE
 check tiny mirror, dipole and nonaxisymmetric grids. These method checks do

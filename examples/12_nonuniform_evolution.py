@@ -384,3 +384,11 @@ def plot_evolution_evidence(rows,checks,output,final_time):
 
 plot_evolution_evidence(rows, checks, OUTPUT, FINAL_TIME)
 print(f'Saved {OUTPUT/"summary.json"}; each independent convergence status is explicit.', flush=True)
+
+for check in checks:
+    if check['field'] in field_names:
+        print(f"{check['field']} refinement status: " + json.dumps({key:value['status']
+            for key,value in check.items() if isinstance(value,dict) and 'status' in value}), flush=True)
+if (set(field_names)=={field.kind for field in FIELDS} and set(case_names)==set(CASES)
+    and any(check['status']!='passed' for check in checks)):
+    raise RuntimeError('Full campaign completed but convergence targets remain unresolved; evidence saved')

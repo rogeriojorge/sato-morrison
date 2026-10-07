@@ -27,11 +27,11 @@ Examples are editable top-level scripts with explicit inputs, progress, diagnost
 
 ## What the calculations establish
 
-**134 tests passed on Linux CI.** The test suite compares independent equations, discrete conservation budgets and resolved limits. Each claim below links to its measured evidence.
+**182 tests passed on Linux CI.** The test suite compares independent equations, discrete conservation budgets and resolved limits. Each claim below links to its measured evidence.
 
 ![Four validation panels: nonlinear entropy, toroidal evolution controls, independent refinements and the raw toroidal null spectrum.](results/visual_summary/validation.png)
 
-**A. Nonlinear relaxation.** Number, energy and full magnetic-moment-marginal errors stay below `1e-15`. Entropy increases; nodal and reconstructed positivity pass. Timestep order: `2.00`.
+**A. Nonlinear relaxation.** Number, energy and full resolved moment-bin marginal errors stay below `1e-15`. Entropy increases; nodal and reconstructed positivity pass. Timestep order: `2.00`.
 
 **B–C. Toroidal dynamics.** Combined streaming and collisions give `Q/Q₀ = 0.8109803`. Independent grid, tail and timestep refinements change the dissipated fraction by less than `0.71%`. Streaming alone preserves this norm.
 
@@ -129,7 +129,7 @@ Local collisions in an axisymmetric poloidal field preserve every meridional spa
 \end{aligned}
 ```
 
-The plotted positive distributions have the same number, energy, full magnetic-moment marginal **and mean flux**, but different second flux moments. The initial flux distribution places a `1.5141e-5` lower bound on relative entropy per particle from the stationary candidate. Refining all four quadratures changes that bound by `1.2e-10` relatively.
+The plotted positive quadrature populations have the same number, energy, full resolved moment-bin marginal **and mean flux**, but different second flux moments. The initial flux distribution places a `1.5141e-5` lower bound on relative entropy per particle from the stationary candidate. Refining all four quadratures changes that bound by `1.2e-10` relatively.
 
 This is a constructive **negative result for the local surrogate**: the usual energy-and-moment constraints do not determine an accessible final state. The finite-domain calculation is collision-only; it does not simulate confined dipole dynamics. Canonical momentum conservation is established physics; the stronger population constraint and its consequences are checked here without claiming publication priority.
 
@@ -151,7 +151,7 @@ The known stationary density family and a full-marginal equilibrium multiplier a
 
 ![Mirror relative-entropy decrease, eight refinement comparisons, additional continuum-moment errors and discrete conservation budgets.](results/nonuniform_mirror_dg/evolution.png)
 
-Thirteen discrete-gradient runs reach $T=0.02$: relative entropy decreases by **43.74%** on the baseline grid. All eight independent grid, tail and timestep checks pass the 1% target; the largest change is **0.113%**. Number, energy and the full moment marginal stay within `1.4e-13`; marginal bin errors are normalized by total particle number. Additional continuum constraints are measured as discretization errors.
+Thirteen discrete-gradient runs reach $T=0.02$: relative entropy decreases by **43.74%** on the baseline grid. All eight independent grid, tail and timestep checks pass the 1% target; the largest change is **0.113%**. Number, energy and the full resolved moment-bin marginal stay within `1.4e-13`; marginal bin errors are normalized by total particle number. Additional continuum constraints are measured as discretization errors.
 
 This completed mirror campaign retains its original method and source. Dipole and nonaxisymmetric solves with that method failed visibly; their replacement entropy-variable campaign is separate. The comparisons do not establish joint continuum convergence or resolve every localized constraint. [Inputs, histories and provenance](results/nonuniform_mirror_dg/raw/summary.json) · [Independent audit and costs](results/nonuniform_mirror_dg/audit.json) · [Archived producing source](https://github.com/rogeriojorge/sato-morrison/blob/4ce8e5c770665a396d5083aec1e5f2b89a6a6ecf/examples/12_nonuniform_evolution.py)
 

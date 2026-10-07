@@ -7563,6 +7563,16 @@
       "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37700158410",
       "log_sha256": "4241d9384bcd411ad0ed7685224e3334d1003515754d738a17f0ae1343a051a7",
       "scope": "Includes 14 independent lagged-mobility tests and two current execution checks; nonuniform campaign was not dispatched in this run."
+    },
+    {
+      "source_commit": "8bcf9e7cde520fab77a70059de8f55d3899af759",
+      "command": "python -m pytest -q",
+      "passed": 182,
+      "elapsed_s": 163.66,
+      "environment": "Fresh Ubuntu CI installation",
+      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37703141750",
+      "log_sha256": "11ea36e766618143a111773388b904117bca5b89de279d1e631c036365c0dc5d",
+      "scope": "Includes both entropy preconditioners, independent pair covariance and dense roots, near-uniform limits and nonfinite-evidence rejection. Thermal evolution campaign runs separately at3d842bee."
     }
   ],
   "additional_experiments": [
