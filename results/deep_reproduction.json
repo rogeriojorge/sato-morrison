@@ -7553,6 +7553,16 @@
       "environment": "Fresh Ubuntu CI installation",
       "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37694944516",
       "log_sha256": "b2bc0eadccb063472f6b9011872b97c5084ff0a62203db6a9908223f7c4d93ae"
+    },
+    {
+      "source_commit": "b3eb271024fc6ddcd39d63ed392a47af369db1a3",
+      "command": "python -m pytest -q",
+      "passed": 134,
+      "elapsed_s": 143.61,
+      "environment": "Fresh Ubuntu CI installation",
+      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37700158410",
+      "log_sha256": "4241d9384bcd411ad0ed7685224e3334d1003515754d738a17f0ae1343a051a7",
+      "scope": "Includes 14 independent lagged-mobility tests and two current execution checks; nonuniform campaign was not dispatched in this run."
     }
   ],
   "additional_experiments": [
