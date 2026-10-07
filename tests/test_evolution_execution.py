@@ -1,4 +1,4 @@
-"""Reject incompatible or unfinished evidence without running a thermal grid."""
+"""Audit archived DG provenance and reject incomplete current campaign claims."""
 import ast
 import copy
 import hashlib
@@ -14,6 +14,11 @@ from sato_morrison.geometry import Field
 ROOT = Path(__file__).resolve().parents[1]
 EXAMPLE = ROOT/'examples/12_nonuniform_evolution.py'
 SEED = ROOT/'results/nonuniform_evolution_initial/summary.json'
+# Preserve the validator that produced the archived DG campaign. The current
+# lagged-mobility experiment intentionally cannot resume its different method.
+VALIDATOR_COMMIT = 'b75a9dc'
+VALIDATOR_SOURCE = subprocess.check_output(['git', '-C', str(ROOT), 'show',
+    VALIDATOR_COMMIT+':examples/12_nonuniform_evolution.py']).decode()
 
 
 @pytest.fixture(scope='module')
@@ -26,7 +31,7 @@ def execution():
     functions = {'json_sha256', 'selected_field_names', 'case_parameters', 'scientific_ast',
         'campaign_source_identity', 'require_finite', 'validate_completed_row', 'load_completed_rows'}
     body = []
-    for node in ast.parse(EXAMPLE.read_text()).body:
+    for node in ast.parse(VALIDATOR_SOURCE).body:
         if isinstance(node, ast.FunctionDef) and node.name in functions:
             body.append(node)
         elif isinstance(node, ast.Assign):
@@ -97,7 +102,7 @@ def test_nested_resume_keeps_row_origins_and_rechecks_status(execution, tmp_path
 
 
 def test_scientific_anchor_includes_base_dt_and_functions(execution):
-    source = EXAMPLE.read_text()
+    source = VALIDATOR_SOURCE
     anchor = subprocess.check_output(['git', '-C', str(ROOT), 'show',
         execution['CANONICAL_COMMIT']+':examples/12_nonuniform_evolution.py']).decode()
     fingerprint = execution['scientific_ast']
@@ -106,3 +111,47 @@ def test_scientific_anchor_includes_base_dt_and_functions(execution):
         'D, FINAL_TIME, DT = .1, .02, .01')) != fingerprint(anchor)
     assert fingerprint(source.replace('initial = jnp.exp(log_equilibrium+.1*observable)',
         'initial = jnp.exp(log_equilibrium+.2*observable)')) != fingerprint(anchor)
+
+
+@pytest.fixture(scope='module')
+def current_execution():
+    constants = {'FIELDS', 'DT_VALUES', 'RELATIVE_TARGET', 'CASES', 'SEQUENCES'}
+    functions = {'select_names', 'compare', 'refinement_checks'}
+    body = []
+    for node in ast.parse(EXAMPLE.read_text()).body:
+        if isinstance(node, ast.FunctionDef) and node.name in functions:
+            body.append(node)
+        elif isinstance(node, ast.Assign) and all(isinstance(t, ast.Name) and t.id in constants for t in node.targets):
+            body.append(node)
+    namespace = {'Field': Field}
+    exec(compile(ast.Module(body=body, type_ignores=[]), str(EXAMPLE), 'exec'), namespace)
+    return namespace
+
+
+def test_case_jobs_are_distinct_and_partial_evidence_cannot_pass(current_execution):
+    cases = current_execution['CASES']
+    assert len(cases) == 13
+    assert len({json.dumps(case, sort_keys=True) for case in cases.values()}) == 13
+    with pytest.raises(ValueError):
+        current_execution['select_names']('base,base', cases)
+    with pytest.raises(ValueError):
+        current_execution['select_names']('unplanned', cases)
+    assert current_execution['select_names'](None, cases) == list(cases)
+    rows = json.loads(SEED.read_text())['rows']
+    for row, name in zip(rows, ['spatial3', 'base', 'spatial7', 'u17']):
+        row['case'] = name
+    # Only exercise aggregation using known measurements, not method equivalence.
+    checks = current_execution['refinement_checks'](rows)
+    assert checks[0]['spatial']['status'] == 'passed'
+    assert checks[0]['parallel_velocity']['status'] == 'not_run'
+    assert checks[0]['timestep']['status'] == 'not_run'
+    assert all(check['status'] == 'unresolved' for check in checks)
+
+
+def test_current_campaign_rejects_historical_resume(monkeypatch):
+    import os
+    node = next(node for node in ast.parse(EXAMPLE.read_text()).body
+        if isinstance(node, ast.If) and 'SM_EVOLUTION_RESUME' in ast.unparse(node.test))
+    monkeypatch.setenv('SM_EVOLUTION_RESUME', str(SEED))
+    with pytest.raises(ValueError, match='cannot resume historical discrete-gradient'):
+        exec(compile(ast.Module(body=[node], type_ignores=[]), str(EXAMPLE), 'exec'), {'os': os})

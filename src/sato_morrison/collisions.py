@@ -440,3 +440,44 @@ def cartesian_grid(x, y, z, u, mu, field, *, mass=1., charge=1.,
         else 'local_quadratic')) for axis,nodes in enumerate((x,y,z,u)))
     return _complete_grid(shape,derivatives,coefficients,spatial_weights,velocity_weights,energy,
         f'{field.kind} collision-only box; natural no-flux collision boundaries',compact=compact)
+
+
+def lumped_mobility_diagonal(grid,f,*,collision_strength=1.,chunk_size=65536):
+    """Sum (D_d²)^T q_d with q_d positive partner covariance channels.
+
+    Cross-derivative and cross-pair terms are omitted only in this diagonal
+    approximation. They remain in the exact mobility and Hessian operators.
+    """
+    if isinstance(collision_strength, Real) and (not np.isfinite(collision_strength) or collision_strength<0):
+        raise ValueError('finite nonnegative collision strength required')
+    f=jnp.asarray(f)
+    if grid.local_quadrature is None:
+        raise ValueError('lumped diagonal requires a compact local grid')
+    if chunk_size<1:
+        raise ValueError('positive pair chunk_size required')
+    wx,vw=grid.local_quadrature;nx,nv=vw.shape
+    count_d=len(grid.derivatives)
+    coefficients=grid.coefficients.reshape(nx,nv,5,count_d).swapaxes(-1,-2)
+    population=f.reshape(nx,nv)
+    rows=min(grid.size,max(1,chunk_size//nv));blocks=(grid.size+rows-1)//rows
+    def body(index,result):
+        target=index*rows+jnp.arange(rows);valid=target<grid.size
+        target=jnp.minimum(target,grid.size-1);x,i=target//nv,target%nv
+        if grid.uniform_direction is None:
+            difference=grid.energy_flow[x,i,None]-grid.energy_flow[x]
+            squared=jnp.sum(difference*difference,axis=-1)
+            direction=difference/jnp.sqrt(jnp.where(squared>0,squared,1.))[...,None]
+        else:
+            direction=jnp.broadcast_to(grid.uniform_direction,(rows,nv,5))
+        ci=coefficients[x,i,None]
+        projected=ci-direction[:,:,None,:]*jnp.sum(ci*direction[:,:,None,:],axis=-1)[...,None]
+        channel=jnp.sum(projected[...,:3]**2,axis=-1)
+        channel=jnp.where((i[:,None]!=jnp.arange(nv)[None,:])[...,None],channel,0.)
+        q=collision_strength*(wx[x]*vw[x,i]*population[x,i])[:,None]*jnp.sum((vw[x]*population[x])[...,None]*channel,axis=1)
+        return result.at[target].add(jnp.where(valid[:,None],q,0.))
+    q=jax.lax.fori_loop(0,blocks,body,jnp.zeros((grid.size,count_d),dtype=f.dtype)).reshape(grid.shape+(count_d,))
+    diagonal=jnp.zeros(grid.shape,dtype=f.dtype)
+    for component,(axis,derivative) in enumerate(grid.derivatives):
+        local=jnp.tensordot((derivative*derivative).T,q[...,component],axes=(1,axis))
+        diagonal=diagonal+jnp.moveaxis(local,0,axis)
+    return diagonal.reshape(-1)

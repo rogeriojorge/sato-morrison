@@ -1374,6 +1374,126 @@ not enough. Likewise, nonlinear Hamiltonian transport requires its own
 conservative and positivity-compatible treatment. A linear skew matrix alone
 is not a proof of a nonlinear H-theorem.
 
+\subsection*{Lagged mobility and an implicit entropy-variable step}
+For a finite positive-quadrature grid, let $n_i=w_i f_i$ and freeze the
+constructed mobility at the old density: $K_-=K(f_-)$. Assume finite
+$w_i,n_{-,i}>0$, $K_-=K_-^T\succeq0$, $K_-\bm1=0$, and $\Delta t\ge0$.
+The implemented lagged-mobility step solves
+\begin{equation}
+ n_+-n_-=-\Delta t K_-g_+,
+ \qquad g_{+,i}=\ln(f_{+,i}/f_{\rm ref}),
+ \qquad n_{+,i}=w_i f_{\rm ref}e^{g_{+,i}},
+ \label{eq:laggedentropy}
+\end{equation}
+where $f_{\rm ref}$ is a fixed positive density scale. Computation uses the
+previously specified normalized units with $f_{\rm ref}=1$. A constant change
+of this scale drops out through $K_-\bm1=0$. This changes the time
+discretization of the same nodal collision ODE, not the kernel, its boundaries
+or its physical calibration.
+
+The residual $R=w f_{\rm ref}e^g-n_-+\Delta t K_-g$ is the gradient of
+\begin{equation}
+ \Psi(g)=\sum_i w_i f_{\rm ref}e^{g_i}-n_-^Tg
+        +\frac{\Delta t}{2}g^TK_-g.
+ \label{eq:laggeddualobjective}
+\end{equation}
+Each exponential minus positive linear term tends to infinity at either end
+of the real line and has a finite lower bound. The finite sum is coercive;
+the nonnegative quadratic preserves this property. Moreover
+$\nabla^2\Psi=\operatorname{diag}(n_+)+\Delta t K_-\succ0$ at every finite
+$g$. There is therefore a unique finite minimizer and a unique positive root
+for every nonnegative timestep. This is a finite-dimensional existence
+statement, not a uniform conditioning or finite-precision convergence bound.
+
+For $\Delta t>0$, the equivalent primal problem is
+\begin{equation}
+ \min_{n\ge0,\ n-n_-\in\operatorname{Range}K_-}
+ \left\{\sum_i n_i[\ln(n_i/(w_i f_{\rm ref}))-1]
+  +\frac{(n-n_-)^TK_-^\dagger(n-n_-)}{2\Delta t}\right\}.
+ \label{eq:laggedprimalobjective}
+\end{equation}
+The range constraint retains every actual Gram null constraint. Since
+$\bm1$ is null, the admissible populations have fixed total mass and form a
+compact set. Strict convexity gives a unique minimizer. A boundary minimizer
+is impossible: the feasible direction toward the strictly positive $n_-$ has
+entropy derivative tending to $-\infty$ at each zero component, while the
+quadratic derivative remains finite. At the interior minimizer, project the
+Euler equation onto $\operatorname{Range}K_-$ and multiply by $K_-$ to recover
+\eqref{eq:laggedentropy}. This is a fixed finite-dimensional Onsager metric;
+it is not an exact Wasserstein-distance or JKO step.
+
+At an exact root, $c^T(n_+-n_-)=0$ for every $K_-c=0$. With a residual,
+$c^T(n_+-n_-)=c^TR$. Positive frozen pair weights retain the same actual
+discrete Gram nullspace, including number, discrete energy and resolved
+moment-bin populations. They do not restore continuum constraints lifted by
+the spatial approximation. A represented stationary density remains stationary.
+
+For $S(n)=-\sum_i n_i\ln(n_i/(w_i f_{\rm ref}))$, define
+\begin{equation}
+ \mathcal D(n_-\Vert n_+)=\sum_i
+ [n_{-,i}\ln(n_{-,i}/n_{+,i})-n_{-,i}+n_{+,i}]\ge0.
+\end{equation}
+Direct subtraction gives the exact budget, including a nonzero root residual,
+\begin{equation}
+ S_+-S_- =\Delta t\,g_+^TK_-g_+
+       +\mathcal D(n_-\Vert n_+) -(g_++\bm1)^TR.
+ \label{eq:laggedentropybudget}
+\end{equation}
+With $a_i=\sqrt{n_{-,i}}$, the residual entropy-defect bound is
+$|(g_++\bm1)^TR|\le\|a(g_++\bm1)\|\,\|R/a\|$; invariant defects have
+the analogous bound $|c^TR|\le\|ac\|\,\|R/a\|$.
+The first positive term is discrete mobility dissipation approximating the
+continuous nodal model, without a calibrated physical rate. The KL term is a
+separate contribution from time discretization. For a smooth positive
+solution it is $O(\Delta t^2)$ per step. Positivity and monotone entropy do
+not establish temporal accuracy or continuum convergence.
+
+The implicit-function expansion at $\Delta t=0$ uses the invertible derivative
+$\operatorname{diag}(n_-)$ and gives
+$n_+-n_-=-\Delta t K(f_-)\ln(f_-/f_{\rm ref})+O(\Delta t^2)$.
+Thus the step is first-order consistent with the same fixed spatial ODE.
+This local statement does not supply a mesh-uniform error bound or a
+convergence theorem near vanishing populations.
+
+The positive Hessian permits PCG after entropy scaling, unlike the generally
+nonsymmetric finite-step discrete-gradient Jacobian. Candidate Newton
+directions must pass an objective-descent check, a true Hessian-residual
+check and objective backtracking. For a log increment $s$, use the stable
+exact objective change
+\begin{equation}
+ \Psi(g+s)-\Psi(g)=\sum_i n_i(e^{s_i}-1-s_i)
+                   +R(g)^Ts+\frac{\Delta t}{2}s^TK_-s.
+\end{equation}
+The small-argument exponential remainder is evaluated by its series.
+Comparing independently evaluated objective values can erase the tiny
+Newton decrease near the root. No population clipping, invariant correction,
+nullspace removal or denominator softening is part of this step.
+
+The method is described as lagged-mobility backward Euler in entropy
+variables, without a new-integrator claim. Shen and Xu~\cite{SX21} provide
+a close antecedent: their first-order scheme treats old density in the
+mobility and new logarithmic density implicitly, and their fully discrete
+positive-quadrature proof uses a PSD stiffness pseudoinverse and a constrained
+strictly convex entropy functional (Theorem~3.2, Eqs.~3.12--3.15).
+The present collision Gram matrix can have additional null directions, so
+the finite-dimensional argument above is stated independently; their PDE
+convergence results are not imported. General variational entropy-flow and
+metriplectic antecedents remain relevant context, but do not identify this
+frozen Gram metric with a Wasserstein distance.
+
+\paragraph{Implementation and independent checks.}
+The compiler accepts the old density dynamically and prepares the positive
+channel-lumped Jacobi approximation once per timestep. The approximation drops
+cross-derivative and pair cross terms only from the auxiliary inverse; the
+full Gram operator remains in the residual and Hessian. Original Hessian
+residuals are recomputed independently of recursive PCG stopping. The checked
+host step rejects nonfinite populations, failed linear corrections,
+non-descent directions, failed backtracking and inconsistent entropy budgets.
+A compiled operator is associated with its grid and solver configuration.
+Independent explicit-pair dense roots and a separately assembled pair ODE
+check tiny mirror, dipole and nonaxisymmetric grids. These method checks do
+not resolve the thermal velocity domain or establish a continuum limit.
+
 \section{Scattering physics and validity tests}
 
 The constrained model assumes negligible accumulated change of magnetic moment.
@@ -1814,39 +1934,44 @@ without allocating and discarding a 25-component tensor per pair; the
 retained unit directions and collision action are unchanged and tested against
 explicit projector matrices.
 
-\subsection*{Finite-time campaign execution and checked resumption}
-The execution driver for \texttt{12\_nonuniform\_evolution.py} optionally uses
-\texttt{SM\_EVOLUTION\_FIELDS} to select a distinct subset of the three
-canonical fields, and \texttt{SM\_EVOLUTION\_RESUME} to read completed rows
-from an earlier campaign summary. These options distribute or resume the
-existing cases; they do not change the scientific functions, parameters,
-refinement sequences or acceptance targets. The CI driver runs the three
-fields in separate jobs and preserves partial checkpoints. Selected-field
-and whole-campaign statuses remain separate; completing one field is not a
-whole-campaign convergence result.
+\subsection*{Finite-time campaigns and provenance}
+The historical discrete-gradient campaign and the current lagged-mobility
+campaign are separate time discretizations. The recovered four mirror rows
+retain their original execution at commit \texttt{fdc625d}; the subsequent
+field-split execution uses \texttt{4ce8e5c}. Dipole and nonaxisymmetric first
+steps in that execution failed their original GMRES check, and those failed
+logs and partial summaries remain archived. A failed Newton iteration is not
+a proof that a positive root does not exist.
 
-The recovered four mirror rows retain their original execution evidence at
-commit \texttt{fdc625d}. Resumption checks the canonical input hash, exact
-package-source bytes and the abstract syntax trees of the scientific
-functions and constants against that anchor. It also verifies each recorded
-commit and aggregate source hash, clean-source metadata and environment
-records. Every row keeps its original metadata identifier; new rows have the
-current execution identifier. This retains the original device, versions and
-timings rather than assigning earlier measurements to the latest execution.
-Available Git history is required for these checks. Duplicate or noncanonical
-cases, incomplete time histories, nonfinite diagnostics, nonpositive nodal
-populations, and failed retained invariant or solver tolerances are rejected.
-Saved status labels alone do not establish completion, and the small independent
-dense/compact endpoint control is rerun in each execution.
+The historical resume validator checked exact input hashes, package-source
+bytes and scientific-function syntax against its fixed anchor, together with
+recorded commits, clean-source hashes, environment metadata, complete time
+histories, positivity and retained solver/invariant tolerances. Tests retain
+that validator from Git history to audit the archived rows. Its saved summaries
+lack stage states and gradient-dependent entropy bounds, so rechecking them
+cannot replay every original entropy acceptance decision. Original timings
+and run identifiers remain attached to their producing executions.
 
-The saved summaries contain entropy changes and identity defects, but not
-the stage states, gradient-dependent defect bound or individual Newton forcing
-values. Resumption rechecks finite entropy diagnostics, endpoint telescoping
-and the retained maximum Krylov residual; it cannot replay the original
-stage-dependent entropy acceptance bound or each individual forcing check.
-Those checks remain evidence of the original executed solver, not newly
-reproduced checks. No final finite-time refinement outcome is asserted by
-this execution-method description.
+The current \texttt{12\_nonuniform\_evolution.py} instead uses
+\eqref{eq:laggedentropy}. Its thirteen predefined cases per field independently
+vary spatial order, parallel-velocity and magnetic-moment order, timestep,
+velocity tails and quadrature on each expanded domain. Baseline values are
+$5^3\times25\times21$ nodes, $D=0.1$, $T=0.02$, and $\Delta t=0.005$;
+the first-order timestep sequence is $0.005,0.0025,0.00125$.
+The common $1\%$ observable-change target is retained. All units are normalized;
+these times use the freely prescribed coefficient.
+
+\texttt{SM\_EVOLUTION\_FIELDS} and \texttt{SM\_EVOLUTION\_CASES} select
+predefined independent execution jobs, leaving their scientific inputs fixed.
+Without filters the script runs all thirty-nine cases. The CI driver
+separates each field/case pair and preserves failed or partial evidence.
+Historical discrete-gradient checkpoints are explicitly rejected by this
+new campaign. A completed selected job is distinct from a passing refinement
+comparison. Every row records its actual parameters, full step diagnostics,
+Newton history, separate KL contribution, residual entropy bound and original
+run identifier; metadata record source, versions and hardware. Independent
+refinements do not establish joint continuum convergence. No final outcome
+for the current campaign is asserted by this execution description.
 
 \subsection*{Bounded Maxwellian encounter flux and thermal center motion}
 Let $\theta=k_BT/m$ denote a single-particle velocity variance. For two equal

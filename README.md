@@ -205,6 +205,7 @@ Run from the repository root with the environment above. Every script prints its
 | `examples/09_visual_summary.py` | Operator animation and README panels; uses recorded results |
 | `examples/10_encounter_ensemble.py` | Bounded incoming flux and held-out scattering table |
 | `examples/11_field_velocity.py` | Nonuniform initial-production velocity/tail convergence |
+| `examples/12_nonuniform_evolution.py` | Positive lagged-mobility evolution; 39 independent refinement cases |
 | `examples/13_encounter_validation.py` | Wider incoming-flux coverage and independent table validation |
 | `examples/14_geometry_sensitivity.py` | Local production derivative, independent pair form and finite-difference plateau |
 | `examples/15_dipole_obstruction.py` | Matched constraints, different flux populations and a positive distance floor |
@@ -230,7 +231,7 @@ pdflatex -interaction=nonstopmode -halt-on-error implementation.tex
 
 ## Remaining limits
 
-The nonlinear solver has independently compared dense and matrix-free Newton routes. Full nonuniform time-evolution and joint spatial/velocity convergence remain under study. Local energy-flow injectivity is proved away from field-strength critical points; an explicit critical-point counterexample rules out a universal continuous projector prescription. Local initial-production geometry derivatives are verified, while general implicit geometry sensitivities remain incomplete. No self-consistent electrostatics, unequal-mass multispecies closure, current-carrying-field bracket, physical spectral gap, calibrated collision coefficient or metastable dipole lifetime is established. Encounter convergence alone does not establish a many-body kinetic closure.
+The discrete-gradient solver has independently compared dense and matrix-free Newton routes. The nonuniform campaign uses a separate lagged-mobility entropy step: its positive root and conservation budget are proved, and independent tiny-grid checks establish first-order time accuracy. Full thermal-domain time-evolution and joint spatial/velocity convergence remain under study. Local energy-flow injectivity is proved away from field-strength critical points; an explicit critical-point counterexample rules out a universal continuous projector prescription. Local initial-production geometry derivatives are verified, while general implicit geometry sensitivities remain incomplete. No self-consistent electrostatics, unequal-mass multispecies closure, current-carrying-field bracket, physical spectral gap, calibrated collision coefficient or metastable dipole lifetime is established. Encounter convergence alone does not establish a many-body kinetic closure.
 
 ## Attribution and license
 
