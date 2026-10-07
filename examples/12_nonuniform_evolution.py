@@ -500,18 +500,62 @@ with progress('Evolve nonuniform boxes and compare independent finite-time refin
         print(f'  {field.kind} refinement status: {check["status"]}; '
               f'{[(name, check[name]["relative_changes"]) for name in sequences]}', flush=True)
 
-fig, axes = plt.subplots(1, 2, figsize=(10, 4))
-for field in FIELDS:
-    selected = sorted([row for row in rows if row['field']==field.kind and row['nu']==NU and row['nmu']==NMU
-        and row['umax']==U_MAX and row['mumax']==MU_MAX and row['dt']==DT], key=lambda row: row['nx'])
-    axes[0].plot([row['nx'] for row in selected], [row['entropy_gain_per_particle'] for row in selected], 'o-', label=field.kind)
-    for row in selected:
-        name = 'psi' if field.kind!='nonaxisymmetric' else 'chi'
-        axes[1].scatter(row['nx'], max(abs(row['continuum_invariant_errors'][name]['relative_signed_drift']), 1e-18))
-    axes[1].plot([row['nx'] for row in selected], [max(abs(row['continuum_invariant_errors'][
-        'psi' if field.kind!='nonaxisymmetric' else 'chi']['relative_signed_drift']), 1e-18) for row in selected], label=field.kind)
-axes[0].set(xlabel='Nodes per spatial axis', ylabel='Finite-time entropy gain per particle')
-axes[1].set(xlabel='Nodes per spatial axis', ylabel='Continuous flux/potential relative drift', yscale='log')
-axes[0].legend();axes[1].legend();fig.suptitle(f'Collision-only boxes: T={FINAL_TIME}; scheme errors measured separately')
-fig.tight_layout();fig.savefig(OUTPUT/'evolution.png', dpi=180);plt.close(fig)
+def plot_evolution_evidence(rows,checks,output,final_time):
+    fields=['mirror','dipole','nonaxisymmetric']
+    colors={'mirror':'#2166ac','dipole':'#d95f02','nonaxisymmetric':'#27823b'}
+    keys=['spatial','parallel_velocity','magnetic_moment','timestep','parallel_tail',
+          'moment_tail','wider_parallel_quadrature','wider_moment_quadrature']
+    labels=['Space',r'$u$',r'$\mu$',r'$\Delta t$',r'$u$ tail',r'$\mu$ tail',r'Wide $u$',r'Wide $\mu$']
+    invariant_names=['number_error','energy_error','marginal_error']
+    fig,axes=plt.subplots(2,2,figsize=(11,8))
+    for kind in fields:
+        actual=[row for row in rows if row['field']==kind]
+        if not actual:
+            continue
+        check=next((item for item in checks if item['field']==kind),{})
+        parameters=check.get('spatial',{}).get('last_parameters',actual[0])
+        spatial=sorted([row for row in actual if all(row[key]==parameters[key]
+            for key in ('nu','nmu','umax','mumax','dt'))],key=lambda row:row['nx'])
+        color=colors[kind]
+        axes[0,0].plot([row['nx'] for row in spatial],
+            [100*row['relative_entropy_decrease_fraction'] for row in spatial],
+            'o-',color=color,label=kind)
+        available=[index for index,key in enumerate(keys) if key in check and 'relative_changes' in check[key]]
+        if available:
+            axes[0,1].plot(available,[100*max(check[keys[index]]['relative_changes'].values())
+                for index in available],'o-',color=color,label=kind)
+        axes[1,0].plot([row['nx'] for row in spatial],
+            [max(max(abs(moment['relative_signed_drift']) for moment in
+                row['continuum_invariant_errors'].values()),1e-18) for row in spatial],
+            'o-',color=color,label=kind)
+        axes[1,1].plot(range(3),[max(max(step[name] for row in actual for step in row['history']),1e-18)
+            for name in invariant_names],'o-',color=color,label=kind)
+    axes[0,0].set(xlabel='Nodes per spatial axis',ylabel='Relative entropy decrease (%)',
+                  title='Appreciable measured relaxation')
+    axes[0,0].legend(frameon=False)
+    if not any('relative_changes' in check.get(key,{}) for check in checks for key in keys):
+        axes[0,1].text(.5,.5,'Refinement comparisons not yet complete',
+            transform=axes[0,1].transAxes,ha='center',va='center',fontsize=10,color='#555555')
+    axes[0,1].set(yscale='log',ylabel='Maximum selected observable change (%)',
+                  title='Eight independent refinements')
+    axes[0,1].set_xticks(range(8),labels,rotation=30,ha='right')
+    axes[0,1].axhline(1.,color='#333333',linestyle='--',linewidth=1,label='1% target')
+    axes[0,1].annotate('1% target',(7,1.),xytext=(-2,5),textcoords='offset points',ha='right',fontsize=9)
+    axes[1,0].set(yscale='log',xlabel='Nodes per spatial axis',
+                  ylabel='Largest additional moment relative drift',
+                  title='Continuum constraints: endpoint scheme error')
+    axes[1,1].set(yscale='log',ylabel='Largest cumulative relative error',
+                  title='Discrete conservation: all completed steps')
+    axes[1,1].set_xticks(range(3),['Particle number','Energy',r'Full $\mu$ marginal'])
+    axes[1,1].axhline(1e-9,color='#333333',linestyle='--',linewidth=1)
+    axes[1,1].annotate('1e-9 check',(2,1e-9),xytext=(-2,-13),textcoords='offset points',ha='right',fontsize=9)
+    for axis in axes.ravel():
+        axis.grid(alpha=.2)
+    fig.suptitle(f'Nonlinear collision-only field boxes: T={final_time:g} (normalized)',fontsize=14)
+    fig.tight_layout(rect=(0,0,1,.96))
+    output=Path(output);output.mkdir(parents=True,exist_ok=True)
+    fig.savefig(output/'evolution.png',dpi=180);plt.close(fig)
+
+
+plot_evolution_evidence(rows, checks, OUTPUT, FINAL_TIME)
 print(f'Saved {OUTPUT/"summary.json"}; every independent convergence status remains explicit.', flush=True)
