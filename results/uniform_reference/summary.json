@@ -1,0 +1,43 @@
+{
+  "scope": "Eq. 181 uniform-field algebra only; no general PDE evolution",
+  "velocity_points": 216,
+  "analytic_decay_rate": 0.11742603550295856,
+  "pair_relative_error": 2.3579067116465694e-16,
+  "homogeneous_rhs_max": 0.0,
+  "density_rhs_max": 0.0,
+  "weighted_symmetry_error": 1.3415099126090798e-17,
+  "largest_eigenvalue": -2.1990669371545425e-17,
+  "nonzero_spectrum_error": 3.469446951953614e-16,
+  "inputs": {
+    "u_nodes": 18,
+    "eta_nodes": 12,
+    "u_interval": [
+      -5.0,
+      5.0
+    ],
+    "eta_interval": [
+      0.0,
+      10.0
+    ],
+    "charge": 1.3,
+    "mass": 0.8,
+    "diffusion": 0.7,
+    "density": 1.4,
+    "field": [
+      0.0,
+      0.0,
+      2.0
+    ],
+    "wave_vector": [
+      0.9,
+      0.0,
+      0.0
+    ],
+    "units": "normalized"
+  },
+  "dtype": "float64",
+  "python_version": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "numpy_version": "2.5.3",
+  "elapsed_seconds": 0.0668352080101613
+}

@@ -1,0 +1,745 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=0.88in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,bm,booktabs,longtable,array,graphicx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\setlist{nosep,leftmargin=1.4em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlength{\emergencystretch}{2em}
+\newcommand{\J}{\mathcal J}
+\newcommand{\dd}{\mathrm d}
+\newcommand{\X}{\mathbf X}
+\newcommand{\vct}[1]{\boldsymbol{#1}}
+\newcommand{\R}{\mathbb R}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
+\title{Magnetic-moment-constrained collisions\\\large Equations, numerical design and verification notes}
+\author{Project: \texttt{sato-morrison}}
+\date{6 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+These notes specify a prototype based on Sato and Morrison's reduced collision
+formalism. They distinguish the published equations, derived test cases, proposed
+numerical methods and unresolved physical assumptions. The supplied executable
+code verifies a uniform-field linear limit only. Nonlinear evolution, nonuniform
+geometry and dimensional collision-rate validation remain implementation work.
+\end{abstract}
+
+\section{Scope and equation map}
+
+The primary source is Ref.~\cite{SM25}. Its Eq.~(35) gives a one-species
+noncanonical collision structure. Equations (111) and (119) are different levels
+of description: the former evolves a ten-coordinate pair distribution, while the
+latter closes two five-coordinate species distributions after a pair-factorization
+assumption. Equation (181) is a localized linear approximation with a prescribed
+scalar collision coefficient. This prototype must identify which of these models
+it implements.
+
+The starting model has a prescribed, nonzero vacuum magnetic field, no magnetic
+perturbation, a fixed electrostatic reference potential, and one species. A
+nonlinear local-kernel extension will be named separately from literal Eq.~(181).
+No absolute collision rate or laboratory confinement result is established by the
+starter calculation.
+
+\begin{center}
+\begin{tabular}{p{0.22\linewidth}p{0.67\linewidth}}
+\toprule
+Source equations & Implementation role\\
+\midrule
+SM25 (35), (39)--(59) & Weak form, boundary conditions, invariants and stationary family.\\
+SM25 (73)--(100) & Guiding-center bracket, vacuum assumption and invariant measure.\\
+SM25 (118)--(119) & Pair closure and multispecies kernel; later stage.\\
+SM25 (139)--(150) & Constrained stationary states and initial magnetic-moment marginal.\\
+SM25 (164)--(183) & Linearization, kernel approximations and the first numerical target.\\
+BS25, Sec.~V & Structural comparison to a guiding-center Landau bracket.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Coordinates, measures and the bracket}
+
+We use SI variables before nondimensionalization. Let $u$ be parallel velocity,
+$\mu=m v_\perp^2/(2B)$ the magnetic moment, and $\eta=\mu B$ the perpendicular
+kinetic energy. With $\bm b=\bm B/B$,
+\begin{equation}
+ \bm B^*=\bm B+\frac{m u}{q}\nabla\times\bm b,
+ \qquad B_\parallel^*=\bm b\cdot\bm B^*.
+ \label{eq:bstar}
+\end{equation}
+For the vacuum backgrounds used in Ref.~\cite{SM25},
+$\bm b\cdot\nabla\times\bm b=0$, hence $B_\parallel^*=B$. This does not imply
+$\nabla\times\bm b=0$: curvature terms in $\bm B^*$ generally remain.
+
+In coordinates $z=(\X,u,\mu)$ the gyrophase-independent bracket acts on a
+covector $a=(\bm a_X,a_u,a_\mu)$ as
+\begin{equation}
+ \J_\mu a=
+ \begin{pmatrix}
+ (\bm b\times\bm a_X)/(qB)+\bm B^*a_u/(mB)\\
+ -\bm B^*\cdot\bm a_X/(mB)\\0
+ \end{pmatrix}.
+ \label{eq:jmu}
+\end{equation}
+The Hamiltonian and characteristic equations are
+\begin{align}
+ E&=\frac12m u^2+\mu B+q\Phi,\label{eq:energy}\\
+ \dot\X&=u\frac{\bm B^*}{B}
+ +\frac{\bm b\times(\mu\nabla B+q\nabla\Phi)}{qB},\label{eq:xdot}\\
+ \dot u&=-\frac{\bm B^*\cdot(\mu\nabla B+q\nabla\Phi)}{mB},
+ \qquad \dot\mu=0.\label{eq:udot}
+\end{align}
+The signs in \eqref{eq:jmu} must be checked against the cross-field drift in
+\eqref{eq:xdot}, not inferred from a memorized matrix convention.
+
+The phase-space measures are
+\begin{equation}
+ \dd\Gamma=B\,\dd^3X\,\dd u\,\dd\mu
+ =\dd^3X\,\dd u\,\dd\eta.
+ \label{eq:measure}
+\end{equation}
+We follow the article's normalization: $n(\X)=\int f\,\dd u\,\dd\eta$. If $F$
+is an ordinary gyrotropic velocity density normalized with $\dd^3v$, then
+$\dd^3v=(2\pi B/m)\dd u\dd\mu$ and $f=(2\pi/m)F$. Track this constant,
+particularly in multispecies comparisons.
+
+The coordinate change $\zeta=(\X,u,\eta)$ has derivative
+\begin{equation}
+ T=\frac{\partial\zeta}{\partial z}
+ =\begin{pmatrix}I_3&0&0\\0&1&0\\
+ \mu(\nabla B)^T&0&B\end{pmatrix},
+ \qquad \J_\eta=T\J_\mu T^T.
+ \label{eq:transform}
+\end{equation}
+This constructs the matrix in SM25 (93), equivalently (182), without duplicating
+its entries by hand. It also gives
+\begin{equation}
+ \J_\eta\nabla_\zeta(\eta/B)=0,
+ \qquad \dot\eta=\mu\dot\X\cdot\nabla B.
+ \label{eq:etadot}
+\end{equation}
+Thus a discretization that freezes $\eta$ during spatial transport is not the
+magnetic-moment-preserving model in a nonuniform field.
+
+With general coordinates and measure $\rho(z)\dd z$, conservative divergence
+means $\rho^{-1}\partial_a(\rho F^a)$, not $\partial_aF^a$. Verify the Liouville
+identity $\partial_a(\rho\J^{ab})=0$. The prototype uses $\rho=B$ in the $\mu$
+chart and $\rho=1$ in the article's $\eta$ chart.
+
+\subsection*{Normalization is part of the closure}
+
+Choose fixed scales $L_*,v_*,E_*,t_*$ and a diagonal coordinate scale matrix $S$.
+For $\zeta=S\hat\zeta$, $E=E_*\hat E$ and $t=t_*\hat t$,
+\begin{equation}
+ \hat\J=t_*E_*S^{-1}\J S^{-T}.
+ \label{eq:dimensionless}
+\end{equation}
+State these scales with every dimensional result. A Euclidean phase-space
+projector applied to a vector containing spatial velocities, accelerations and
+energy rates is not defined independently of those scales.
+
+For a purely affine chart change $y=A z$ with time and energy conventions fixed,
+a pair vector transforms as $d_y=A d_z$. Its quadratic form is unchanged only if
+\begin{equation}
+ \Pi_y=A^{-T}\Pi_zA^{-1},\qquad
+ d_y^T\Pi_y e_y=d_z^T\Pi_z e_z.
+ \label{eq:kerneltransform}
+\end{equation}
+Recreating an identity matrix and Euclidean projector in the new chart generally
+specifies a different kernel. For the position-dependent map \eqref{eq:transform},
+compute the two vectors in one common chart before subtracting:
+\begin{equation}
+ \Delta_\eta\phi
+ =T(z)\J_\mu(z)\nabla_z\phi
+ -T(z')\J_\mu(z')\nabla_{z'}\phi'.
+ \label{eq:commonchart}
+\end{equation}
+This is the safe route when storing the state on $\mu$ nodes but reproducing a
+kernel defined in the $\eta$ chart.
+
+\section{Nonlinear collision structure and conservation}
+
+For a single species define
+\begin{equation}
+ \Delta\phi=\J\nabla\phi-\J'\nabla'\phi',\qquad \xi=\Delta E.
+ \label{eq:delta}
+\end{equation}
+A specified kernel must obey exchange symmetry, symmetry of its quadratic form,
+positive semidefiniteness and the energy degeneracy:
+\begin{equation}
+ \Pi=\Pi^T\succeq0,\qquad \Pi\xi=0.
+ \label{eq:kernel}
+\end{equation}
+The source strong form is
+\begin{equation}
+ C[f]=\nabla_z\cdot\left[
+ f\J\int f'\Pi(\J'\nabla'\ln f'-\J\nabla\ln f)\,\dd z'\right]
+ \label{eq:strong}
+\end{equation}
+in a flat invariant-measure chart. Integration by parts, antisymmetry of $\J$
+and exchange of the two labels give
+\begin{equation}
+ \int\phi C[f]\dd\Gamma
+ =-\frac12\iint ff'\,\Delta\phi^T\Pi\Delta\ln f\,
+ \dd\Gamma\dd\Gamma'.
+ \label{eq:weak}
+\end{equation}
+All following equalities require the boundary terms to vanish. The paper states
+conditions for both the total flux and the Hamiltonian part; a finite numerical
+box does not satisfy them automatically.
+
+Set $\phi=1$ in \eqref{eq:weak} to obtain particle conservation. Set $\phi=E$
+and use \eqref{eq:kernel} for collision energy conservation. Since
+$\J\nabla g(\mu)=0$ for every smooth $g$,
+\begin{equation}
+ \frac{\dd}{\dd t}\int f g(\mu)\dd\Gamma=0.
+ \label{eq:casimirs}
+\end{equation}
+For closed evolution this is equivalent to conserving the full marginal
+\begin{equation}
+ G(\mu)=\int B f(\X,u,\mu)\dd^3X\dd u.
+ \label{eq:marginal}
+\end{equation}
+It is stronger than conservation of $\int\mu f\dd\Gamma$ alone.
+
+Define $S[f]=-\int f\ln(f/f_{\rm ref})\dd\Gamma$ with a constant reference
+scale inside the logarithm. Particle conservation removes that scale from the
+entropy rate. Equation \eqref{eq:weak} yields
+\begin{equation}
+ \dot S=\frac12\iint ff'\Delta\ln f^T\Pi\Delta\ln f\,
+ \dd\Gamma\dd\Gamma'\ge0.
+ \label{eq:entropy}
+\end{equation}
+These are structural statements from the model, not a proof of a unique final
+state. Additional null directions of $\Pi$ can prevent mixing.
+
+A candidate observable $p$ is conserved by the full kinetic model only if the
+Hamiltonian flow preserves it and the collision form annihilates $\Delta p$.
+An external dipole field does not imply conservation of all Cartesian momenta.
+For an axisymmetric model, check canonical angular momentum using the actual
+kernel and boundaries rather than inferring it from the field name.
+
+\section{The fixed-field linear model}
+
+Write $f=f_0(1+h)$, where $f_0>0$ is stationary. For the source stationary family,
+\begin{equation}
+ f_0=A\exp[-\beta E_0+g(\mu)],
+ \qquad \J\nabla\ln f_0=-\beta\J\nabla E_0.
+ \label{eq:fzero}
+\end{equation}
+With the fields and kernel fixed, the zeroth-order collision term vanishes.
+The first-order weak form is
+\begin{equation}
+ \int\phi C_L[f_0h]\dd\Gamma
+ =-\frac12\iint f_0f_0'\Delta\phi^T\Pi_0\Delta h\,
+ \dd\Gamma\dd\Gamma'.
+ \label{eq:linearweak}
+\end{equation}
+The local scalar approximation in SM25 (181) uses
+\begin{equation}
+ \Pi_0=D P I_x P\,\delta^3(\X-\X'),\quad
+ P=I-\frac{\xi_0\xi_0^T}{\xi_0^T\xi_0},\quad
+ I_x=\diag(1,1,1,0,0).
+ \label{eq:local}
+\end{equation}
+Here $D$ is a prescribed constant, and the projector is evaluated in a specified
+normalized common chart. The two velocity integrals remain after the spatial
+delta function is used. In a $\mu$ chart, the local pair measure contains two
+velocity Jacobians; do not accidentally retain only one factor of $B$.
+
+The perturbation norm
+\begin{equation}
+ Q[h]=\frac12\int f_0 h^2\dd\Gamma
+ \label{eq:q}
+\end{equation}
+satisfies
+\begin{equation}
+ \dot Q=-\frac12\iint f_0f_0'\Delta h^T\Pi_0\Delta h\,
+ \dd\Gamma\dd\Gamma'\le0
+ \label{eq:qrate}
+\end{equation}
+for collision-only dynamics. A compatible stationary Hamiltonian flow also
+preserves $Q$ under suitable boundary conditions.
+
+For self-consistent fields, \eqref{eq:linearweak} is not a complete linearization
+unless the omitted terms have been ordered out. Differentiating the exact
+energy-degeneracy condition gives
+\begin{equation}
+ \delta\Pi\,\xi_0+\Pi_0\delta\xi=0.
+ \label{eq:deltapi}
+\end{equation}
+The approximations in SM25 (164)--(170) must be carried explicitly into any
+extension. Compare the proposed linear operator with a directional derivative of
+the nonlinear residual at fixed physical normalization.
+
+\section{Uniform-field reduction and exact null modes}
+
+This section is an independent derivation from the source Eq.~(181). Take a
+uniform field, a constant reference potential and $f_0=f_0(u,\eta)$. For
+$\bm b=\bm e_z$,
+\begin{equation}
+ \J a=\left(-\frac{a_y}{qB},\frac{a_x}{qB},
+ \frac{a_u}{m},-\frac{a_z}{m},0\right)^T,
+ \qquad \J\nabla E_0=(0,0,u,0,0)^T.
+ \label{eq:uniformj}
+\end{equation}
+Consequently $\xi_0=(u-u')\bm e_z$ in the spatial block, and
+\begin{equation}
+ P I_xP=\diag(1,1,0,0,0).
+ \label{eq:uniformp}
+\end{equation}
+At $u=u'$ use the continuous limit \eqref{eq:uniformp}; this prescription does not
+extend automatically to a general nonuniform field.
+
+Only perpendicular spatial derivatives survive. Let
+\begin{equation}
+ n_0=\int f_0\dd u\dd\eta,\qquad
+ \delta n=\int\delta f\dd u\dd\eta.
+\end{equation}
+Two applications of the cross-product matrix give
+$(\bm b\times)^2=-I_\perp$. Substitution into the strong form gives
+\begin{equation}
+ \boxed{C_L[\delta f]=\frac{D}{(qB)^2}\nabla_\perp^2
+ (n_0\delta f-f_0\delta n).}
+ \label{eq:uniformreduction}
+\end{equation}
+This is spatial mixing of velocity-dependent structure, not ordinary homogeneous
+velocity-space thermalization.
+
+For a Fourier mode with $\bm k_\perp=\bm k-(\bm k\cdot\bm b)\bm b$, define
+\begin{equation}
+ \lambda=\frac{Dn_0|\bm k_\perp|^2}{(qB)^2},\qquad
+ \bar h=\frac{1}{n_0}\int f_0h\dd u\dd\eta.
+\end{equation}
+The collision-only equation is
+\begin{equation}
+ \partial_t h=-\lambda(h-\bar h),\qquad
+ h(t)=\bar h+[h(0)-\bar h]e^{-\lambda t}.
+ \label{eq:exactdecay}
+\end{equation}
+Thus a density-like perturbation is undamped. If $\bm k_\perp=0$, every velocity
+perturbation is collisionally undamped. A homogeneous anisotropic distribution
+is therefore not an isotropization benchmark for this model.
+
+With positive velocity quadrature weights $w_i$, set
+\begin{equation}
+ m_i=w_i f_{0i},\quad s_i=\sqrt{m_i},\quad n_0=\sum_i m_i.
+\end{equation}
+The matrix for $h$ and its entropy-scaled form are
+\begin{align}
+ L_h&=-\lambda\left(I-\frac{\bm 1\bm m^T}{n_0}\right),\\
+ M_v^{1/2}L_hM_v^{-1/2}
+ &=-\lambda\left(I-\frac{\bm s\bm s^T}{n_0}\right).
+ \label{eq:uniformspectrum}
+\end{align}
+For $\lambda>0$ the spectrum has one zero eigenvalue and $N_v-1$ copies of
+$-\lambda$. This is an exact finite-quadrature statement when the same $n_0$ is
+used throughout. It provides a stringent factor, sign and normalization test.
+
+When parallel streaming is added, $\partial_t h=-ik_\parallel uh+L_hh$.
+A density-like collision null mode need not remain in that nullspace under
+streaming. Distinguish the collision spectrum from the spectrum of the combined
+generator. With $\bm k_\perp=0$ and frozen fields the exact streaming solution is
+$h(t,u,\eta)=h(0,u,\eta)e^{-ik_\parallel ut}$; this is not self-consistent Landau
+damping.
+
+\section{Stationary states and initial constraints}
+
+The source stationary family \eqref{eq:fzero} follows from energy degeneracy and
+the magnetic-moment Casimir. For $g(\mu)=-\beta\gamma\mu$,
+\begin{equation}
+ f_*=A\exp\left[-\beta\left(\frac12m u^2+
+ \mu(B+\gamma)+q\Phi\right)\right],\quad B+\gamma>0.
+ \label{eq:linearg}
+\end{equation}
+Integrating over $u$ and $\mu$ using \eqref{eq:measure} gives
+\begin{equation}
+ n_*(\X)=A\sqrt{\frac{2\pi}{\beta m}}\,
+ e^{-\beta q\Phi}\frac{B}{\beta(B+\gamma)}.
+ \label{eq:density}
+\end{equation}
+The corresponding temperature parameters in energy units are
+\begin{equation}
+ T_\parallel=\beta^{-1},\qquad
+ T_\perp=\frac{B}{\beta(B+\gamma)}.
+ \label{eq:temperatures}
+\end{equation}
+These formulas are useful checks of velocity integration and the definition of
+pressure. They do not establish that an arbitrary initial state evolves to this
+particular family member.
+
+For a prescribed fixed-field energy and a known initial marginal $G_0(\mu)$,
+let
+\begin{equation}
+ Z_\mu(\beta)=\int B(\X)e^{-\beta E(\X,u,\mu)}\dd^3X\dd u.
+\end{equation}
+A candidate constrained maximum-entropy state is
+\begin{equation}
+ f_*(\X,u,\mu)=\frac{G_0(\mu)}{Z_\mu(\beta)}e^{-\beta E(\X,u,\mu)}.
+ \label{eq:generalsteady}
+\end{equation}
+Solve for $\beta$ from total energy. Add other invariant multipliers if they
+actually survive the chosen dynamics. The same initial inverse-temperature
+parameter need not equal the final multiplier. Extra kernel invariants can make
+\eqref{eq:generalsteady} inaccessible.
+
+For self-consistent electrostatics,
+\begin{equation}
+ -\epsilon_0\nabla^2\Phi=\sum_s q_sn_s+\rho_{\rm fixed}.
+ \label{eq:poisson}
+\end{equation}
+The self-field energy is $\epsilon_0\int|\nabla\Phi|^2\dd^3X/2$, with boundary
+terms treated consistently. A prescribed external potential contributes
+$\sum_s\int q_s\Phi_{\rm ext}f_s\dd\Gamma_s$ without the self-interaction
+half-factor. A periodic field solve requires net neutrality and a gauge choice.
+
+\section{Comparison models and what each tests}
+
+The conventional reduced Landau literature retains magnetic-moment friction and
+diffusion even when the distribution is gyrophase independent
+\cite{B04,BBQ15,HBP17,BS25}. Brizard and Sugama explicitly discuss a structural
+reduction with $\bm\Delta_{\rm gc}^{\mu}=0$ and a reduced relative velocity in
+Sec.~V of Ref.~\cite{BS25}. This is a bridge for comparison, not a verification
+that every simplified Sato--Morrison kernel is identical to their Landau tensor.
+The papers use different conventions; convert all masses, charges and unit
+factors before comparing implementations.
+
+\subsection*{Pitch-angle scattering}
+
+With $v=|\bm v|$ and $\xi=u/v$, use
+\begin{equation}
+ C_{\rm Lz}[F]=\frac{\nu(v)}{2}\partial_\xi
+ [(1-\xi^2)\partial_\xi F].
+ \label{eq:lorentz}
+\end{equation}
+The Legendre identity gives $C_{\rm Lz}[P_\ell]=
+-\nu\ell(\ell+1)P_\ell/2$ for constant $\nu$ on a speed shell. Hence degrees
+$0,1,2,3$ have rates $0,\nu,3\nu,6\nu$. Speed-shell population and energy are
+conserved, but momentum of the evolved species can be transferred to the fixed
+reservoir. Since $\mu=m v^2(1-\xi^2)/(2B)$, this is a moment-changing comparison.
+Derive its coordinate transform; it is not bare diffusion at fixed $u$ in $\mu$.
+
+\subsection*{A nonlinear conserving Fokker--Planck model}
+
+The single-species Dougherty form used as a comparison is
+\begin{equation}
+ C_D[F]=\nu\nabla_v\cdot[(\bm v-\bm U)F+\theta\nabla_vF],
+ \quad \bm U=\frac1n\int\bm vF\dd^3v,
+ \quad \theta=\frac{1}{3n}\int|\bm v-\bm U|^2F\dd^3v.
+ \label{eq:dougherty}
+\end{equation}
+Integration by parts shows number and momentum conservation. The trace of the
+centered covariance is constant. Its matrix satisfies
+\begin{equation}
+ \dot\Theta=-2\nu(\Theta-\theta I),\qquad
+ \Theta(t)=\theta I+[\Theta(0)-\theta I]e^{-2\nu t}.
+ \label{eq:covariance}
+\end{equation}
+For an initially Gaussian homogeneous state this specifies the full Gaussian
+solution. Use it as an exact code test. A fixed bath temperature or drift would
+define a different model. Neither version is the exact Coulomb operator.
+
+\subsection*{Physical three-velocity Landau reference}
+
+A one-species normalized reference is
+\begin{align}
+ U(\bm w)&=\frac{I-\hat{\bm w}\hat{\bm w}^{T}}{|\bm w|},\\
+ C_{\rm La}[F]&=\Gamma\nabla_v\cdot\int FF'U(\bm v-\bm v')
+ (\nabla_v\ln F-\nabla_{v'}\ln F')\dd^3v'.
+ \label{eq:landau}
+\end{align}
+Derive the dimensional prefactor for the selected normalization separately. Its
+positive kernel and velocity-difference null direction support conventional
+number, momentum, energy and entropy tests. Use an independently assembled
+small 3V problem before implementing a general transformed operator.
+
+A gyrotropic two-coordinate distribution still has three-dimensional collision
+geometry. Converge the gyrophase integral or derive its analytic average; a
+literal 2V Landau kernel is not an equivalent comparator. Maxwell-molecule and
+BKW-type tests in Ref.~\cite{CHWW20} can test a different kernel's numerical
+machinery, but do not establish Coulomb rates.
+
+\section{Analytic magnetic fields and boundaries}
+
+A vacuum field can be specified locally as the gradient of a harmonic scalar
+potential. Use the following fields with explicit domains.
+
+\textbf{Uniform field.} $\bm B=B_c\bm b_0$, with $|\bm b_0|=1$.
+
+\textbf{Harmonic mirror.} Let $R^2=x^2+y^2$ and
+\begin{align}
+ \Psi_B&=B_cz+a\left(z^3/3-zR^2/2\right),\\
+ \bm B&=\nabla\Psi_B=(-azx,-azy,B_c+a[z^2-R^2/2]).
+ \label{eq:mirrorfield}
+\end{align}
+Its curl and divergence vanish identically. Choose a domain on which $B$ stays
+strictly positive. The dimensionless variation is controlled by $aL^2/B_c$.
+An arbitrary field $B(z)\bm e_z$ is not an admissible substitute.
+
+\textbf{Toroidal vacuum field.} On $R>R_{\min}>0$,
+\begin{equation}
+ \bm B=\frac{C}{R^2}(-y,x,0).
+ \label{eq:toroid}
+\end{equation}
+This provides curvature and field-strength variation without a parallel gradient
+of $B$. Its noncontractible domain is part of the problem.
+
+\textbf{Point dipole.} Away from the source,
+\begin{equation}
+ \bm B=\frac{C_d}{r^5}(3xz,3yz,2z^2-x^2-y^2),
+ \quad \Psi_B=-C_dz/r^3.
+ \label{eq:dipole}
+\end{equation}
+This is a field test, not a model of a finite winding or material boundary. Exclude
+$r=0$ and any near-source region outside the guiding-center ordering.
+
+\textbf{Symmetry breaking.} A controlled addition
+$\delta\Psi_B=\varepsilon B_cxy/L$ is harmonic. Its gradient can be added to a
+vacuum background; check the resulting nonzero-field domain and boundary setup.
+
+Do not make a nonperiodic magnetic field periodic by wrapping its array. Begin
+with collision-only nonuniform tests under natural zero-collision-flux boundary
+conditions. For full dynamics, require tangent Hamiltonian flux, a derived
+invariant-compatible reflection, a specified confining potential, or an open
+system with measured flux budgets. Arbitrary specular reflection need not
+preserve $\mu$. A density-profile test without these choices is not a closed
+relaxation experiment.
+
+\section{Linear weak discretization and SOLVAX}
+
+Represent $h=\sum_i a_i\chi_i$. Define the mass and collision matrices by
+\begin{align}
+ M_{ij}&=\int f_0\chi_i\chi_j\dd\Gamma,\\
+ K_{ij}&=\frac12\iint f_0f_0'\Delta\chi_i^T\Pi_0\Delta\chi_j
+ \dd\Gamma\dd\Gamma'.
+ \label{eq:gram}
+\end{align}
+Positive quadrature gives a Gram form $K=B_p^TW_pB_p\succeq0$. Implement its
+action without assembling the full pair tensor. A dense assembly on a tiny grid
+must remain an independent reference.
+
+If $c$ represents a collision invariant and the derivative/kernel construction
+respects it, then $Kc=0$. Include the discrete energy and all resolved
+magnetic-moment-bin constraints. Finite differences do not automatically obey
+the product rules needed for an arbitrary sampled $\mu B$. Use the same discrete
+energy gradient in the degeneracy direction and in the weak operator, and prove
+consistency as the mesh is refined.
+
+The collision-only system and norm balance are
+\begin{equation}
+ M\dot a=-Ka,\qquad
+ \frac{\dd}{\dd t}\frac12a^TMa=-a^TKa\le0.
+ \label{eq:semidiscrete}
+\end{equation}
+With a compatible stationary Hamiltonian discretization,
+\begin{equation}
+ M\dot a=(A-K)a,\qquad A^T=-A.
+ \label{eq:combined}
+\end{equation}
+Also test $Ac=0$ for the required linear invariants; skew symmetry alone does not
+imply those individual identities.
+
+A backward-Euler collision step solves
+\begin{equation}
+ (M+\Delta tK)a^{n+1}=Ma^n.
+ \label{eq:backward}
+\end{equation}
+For positive-definite $M$, this is an appropriate PCG problem. SOLVAX's
+\texttt{pcg\_linear\_solve} supplies a converged-system differentiation wrapper
+\cite{SOLVAX}. Do not pass $M^{-1}K$ to Euclidean PCG without mass scaling or a
+proof of symmetry. A coupled implicit step with $A$ is generally nonsymmetric
+and calls for GMRES or another suitable method.
+
+For a linear invariant $c$, multiply \eqref{eq:backward} by $c^T$ to check its
+conservation. Backward Euler also satisfies
+\begin{equation}
+ Q^{n+1}-Q^n=-\Delta t(a^{n+1})^TKa^{n+1}
+ -\frac12\norm{a^{n+1}-a^n}_M^2\le0.
+\end{equation}
+This does not prove positivity of a reconstructed finite-amplitude distribution.
+An implicit midpoint step can be second order, but is not automatically a good
+stiff-decay scheme or a nonlinear entropy-preserving integrator.
+
+Local pair application costs $O(N_XN_v^2)$ in a direct quadrature. A spatially
+nonlocal direct application can cost $O(N_X^2N_v^2)$. Chunk pair contractions,
+reuse geometry and quadrature, and keep derivatives sparse. Block-tridiagonal
+solves may be useful in a line preconditioner; the full velocity coupling is not
+generally tridiagonal.
+
+\section{A nonlinear discrete entropy construction}
+
+This is a proposed finite-dimensional construction, not an implemented guarantee
+for a general spatial mesh. It follows the weak-structure approach developed for
+Landau discretizations \cite{KH17,HBK18,H21,ZPH}.
+
+Let $f_i>0$, $w_i>0$, and $n_i=w_if_i$. Construct a symmetric positive mobility
+$K(f)$ from the discrete pair weak form, with
+\begin{equation}
+ K\bm1=0,\quad Ke=0,\quad Kc_\mu=0,
+ \label{eq:discreteconstraints}
+\end{equation}
+where $e$ is the fixed-field energy vector and $c_\mu$ spans the represented
+moment-marginal constraints. Define
+\begin{equation}
+ S(n)=-\sum_i n_i\ln(n_i/w_i).
+\end{equation}
+Then the collision ODE can be written
+\begin{equation}
+ \dot n=K(f)\nabla_nS=-K(f)\ln f.
+ \label{eq:nonlinearode}
+\end{equation}
+The constant term in $\nabla_nS=-\ln f-\bm1$ vanishes through
+\eqref{eq:discreteconstraints}. Consequently $\dot S\ge0$ and
+$\dd(e^Tn)/\dd t=0$. This is an algebraic guarantee only for the actual
+constructed $K$.
+
+For each component define a divided difference of $s_i(n)=-n\ln(n/w_i)$:
+\begin{equation}
+ (\overline\nabla S)_i=
+ \begin{cases}
+ [s_i(n_i^+)-s_i(n_i^-)]/(n_i^+-n_i^-),&n_i^+\ne n_i^-,\\
+ -\ln(n_i^-/w_i)-1,&n_i^+=n_i^-.
+ \end{cases}
+ \label{eq:discretegradient}
+\end{equation}
+Evaluate it stably near equal arguments using logarithmic divided differences,
+not cancellation-prone subtraction. A step
+\begin{equation}
+ n^+-n^-=\Delta t\,\overline K\,\overline\nabla S,
+ \qquad \overline K=\overline K^T\succeq0
+ \label{eq:discretestep}
+\end{equation}
+with the null directions in \eqref{eq:discreteconstraints} gives
+\begin{equation}
+ S(n^+)-S(n^-)=\Delta t\,
+ (\overline\nabla S)^T\overline K\overline\nabla S\ge0.
+\end{equation}
+The conservation laws follow by left multiplication with each invariant vector.
+Use a positive mean state to construct $\overline K$ and a converged nonlinear
+solve. Parameterizing $n_i^+=w_i e^{g_i^+}$ enforces positive nodal populations,
+but does not prove existence of the solve or positivity between interpolation
+nodes. Check all required quadrature/reconstruction locations.
+
+For self-consistent fields the energy is nonlinear in $n$. Its discrete gradient
+must enter the collision degeneracy consistently; the fixed vector $e$ above is
+not enough. Likewise, nonlinear Hamiltonian transport requires its own
+conservative and positivity-compatible treatment. A linear skew matrix alone
+is not a proof of a nonlinear H-theorem.
+
+\section{Scattering physics and validity tests}
+
+The constrained model assumes negligible accumulated change of magnetic moment.
+That assumption is stronger than a small collision frequency compared with the
+gyrofrequency. At constant $B$, an energy change satisfies
+\begin{equation}
+ \Delta E=\frac{m}{2}\Delta(u^2)+B\Delta\mu+q\Delta\Phi.
+ \label{eq:energychange}
+\end{equation}
+Small $\Delta E$ does not separately bound $\Delta\mu$. For independent unbiased
+increments, zero mean accumulation can coexist with
+\begin{equation}
+ \operatorname{Var}\left(\sum_{j=1}^N\delta\mu_j\right)
+ =N\operatorname{Var}(\delta\mu).
+\end{equation}
+These are audit points for the physical ordering around SM25 (85)--(86), not
+replacements for that paper's stated assumptions.
+
+A controlled microscopic reference can integrate
+\begin{equation}
+ m_s\dot{\bm v}_s=q_s\bm v_s\times\bm B-\nabla_{\bm r_s}V,
+ \qquad \dot{\bm r}_s=\bm v_s,
+ \label{eq:encounter}
+\end{equation}
+with a specified screened potential, for example
+$V(r)=q_1q_2e^{-r/\lambda}/(4\pi\epsilon_0r)$. Screening is a declared model
+choice, not a result of this two-body calculation. Resolve close encounters or
+exclude them with a stated grazing criterion. The generalized magnetized
+scattering theory in Ref.~\cite{JB20} is an important reference.
+
+For uniform $\bm B$, compare with the unperturbed helical orbit at identical
+incoming conditions. Use
+\begin{equation}
+ \bm R_s=\bm r_s+\frac{\bm v_s\times\bm b}{\Omega_s},\qquad
+ \mu_s=\frac{m_s|\bm v_{\perp s}|^2}{2B},\quad \Omega_s=q_sB/m_s.
+\end{equation}
+Extract asymptotic incoming/outgoing guiding-center data at a common reference
+time. A raw endpoint displacement can contain an arbitrary flight-time
+contribution after the encounter changes parallel velocity.
+
+Sample incident flux, impact parameters, gyrophases and relative velocities with
+the appropriate measure. Check timestep, start/end distance, angular sampling and
+screening/cutoff convergence independently. Recover a Rutherford limit before
+using strong-field results. Attractive close encounters outside the grazing
+regime are not automatically described by the reduced kinetic closure.
+
+For independent encounters at a stated rate $\nu_{\rm enc}$, diagnostic drift and
+diffusion coefficients are
+\begin{equation}
+ A_\mu=\nu_{\rm enc}\langle\delta\mu\rangle,\qquad
+ D_{\mu\mu}=\frac{\nu_{\rm enc}}2\langle(\delta\mu)^2\rangle.
+ \label{eq:driftdiffusion}
+\end{equation}
+Use both, together with cross-covariances and correlation tests. A timescale
+estimate must specify a nonzero population scale $\mu_{\rm ref}$; the quantities
+$\mu_{\rm ref}/|A_\mu|$ and $\mu_{\rm ref}^2/(2D_{\mu\mu})$ diagnose different
+failures of the constraint. Near $\mu=0$, use a suitable distribution-level metric.
+
+Compare these with an independently determined mixing time. A physically
+supported constrained interval requires
+\begin{equation}
+ \tau_{\rm mix}\ll t\ll\tau_\mu.
+\end{equation}
+Choosing a small input pitch-angle rate establishes a synthetic asymptotic test,
+not this physical inequality. Adding two collision terms also requires a
+nonoverlapping process decomposition; it can otherwise double count encounters.
+
+\section{Research questions and evidence}
+
+\textbf{Geometry and nullspace.} Begin with the proven finite-quadrature spectrum
+\eqref{eq:uniformspectrum}. Track its changes under a valid mirror, toroidal or
+dipole field. Separate collision null modes from decay generated through coupling
+to Hamiltonian transport. A small positive eigenvalue on one finite grid is not a
+continuum gap. Vary all resolutions, domains and velocity tails.
+
+\textbf{Localization.} Compare the local kernel with a specified symmetric
+finite-range kernel, using a derived normalization as the range shrinks.
+Boundary renormalization must retain pair symmetry. A Gaussian-range surrogate
+remains a surrogate unless independent scattering physics supports it.
+
+\textbf{Constrained dipole states.} Ref.~\cite{S23} studies maximum-entropy dipole
+states and additional adiabatic constraints. Here the result sought is a dynamical
+relaxation law, an extra invariant, a loss of mixing, or an independently measured
+lifetime. Reproducing \eqref{eq:density} is verification rather than discovery.
+
+For any geometry-amplitude scaling, compare competing fits and inspect projector
+degeneracies before using regular perturbation theory. For steady-state parameter
+derivatives specify which particle, energy and marginal constraints are held
+fixed; otherwise a nullspace can make the derivative underdetermined.
+
+\subsection*{Executed starter evidence}
+
+The supplied NumPy example uses 216 velocity nodes. Its normalized exact decay
+rate is $0.11742603550295856$. During package preparation, the direct pair
+contraction agreed with \eqref{eq:uniformreduction} to $3.63\times10^{-16}$ in
+relative norm. Homogeneous and density-like collision actions were zero in that
+run. The entropy-weighted nonzero spectrum agreed with $-\lambda$ to
+$3.20\times10^{-16}$ in absolute error. These are algebra checks, not time-series
+PDE benchmarks. The independent test file passed five tests, including tilted
+fields, both charge signs and parallel wave vectors.
+
+The script, inputs and JSON are in the starter repository. Roundoff and elapsed
+time vary by machine. The earlier supplied script and its output are preserved
+outside the public starter for provenance. No nonuniform nonlinear simulation,
+physical coefficient calibration or new dipole result is claimed here.
+
+The implementation handoff and validation matrix prescribe the remaining tests:
+conservation, positive entropy production, positivity, limiting cases,
+independent comparisons, numerical convergence and matched-error performance.
+Update this section with measured results as those stages are completed.
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+\end{document}
