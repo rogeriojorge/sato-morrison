@@ -23,3 +23,8 @@ initial_velocity_tails,sm_local_nonlinear,nonaxisymmetric,0.002609571264762689,l
 bounded_flux,encounter,uniform,1.6216781370433162e-09,relative analytic bounded-flux normalization,passed,encounter_ensemble/metadata.json
 bounded_encounter_convergence,encounter,uniform,0.0002064012991600299,largest last direct moment refinement,passed,encounter_ensemble/metadata.json
 held_out_scattering_table,encounter,uniform,0.20475311567259064,64-state second-moment normalized RMS; target0.1,unresolved,encounter_ensemble/metadata.json
+local_production_derivative,sm_local_nonlinear,mirror,0.00018040384760631975,largest independent final derivative quadrature/tail change; target0.01,passed,geometry_sensitivity/summary.json
+local_production_derivative,sm_local_nonlinear,dipole,0.006609396713650269,largest independent final derivative quadrature/tail change; target0.01,passed,geometry_sensitivity/summary.json
+local_production_derivative,sm_local_nonlinear,nonaxisymmetric,0.006235781394376499,largest independent final derivative quadrature/tail change; target0.01,passed,geometry_sensitivity/summary.json
+dipole_flux_KL_floor,sm_local_nonlinear,dipole,9.185551763657429e-09,largest listed quadrature relative change from finest positive KL floor,passed,dipole_obstruction/summary.json
+fresh4096_scattering_p95,encounter,uniform,0.0626098,95th-percentile pointwise relative second-moment error; target0.05 fails,unresolved,scattering_table/validation_4096_pre_duration/metadata.json
