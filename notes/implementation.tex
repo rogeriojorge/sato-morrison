@@ -1977,12 +1977,43 @@ $\bm r_\perp=(b-w_\perp\sin\varphi/\Omega,
 the free relative orbit's closest perpendicular gap is only
 $b-\rho_{\rm rel}=0.0104037$. The interacting independent Cartesian path
 has sampled minimum separation $0.0225124$. These are relative-orbit
-geometrical quantities, not individual thermal gyro-radii. The close approach
-helps interpret this node's large finite moment contribution, but does not
-certify a gyro-adiabatic scattering regime or an ensemble relaxation law.
+geometrical quantities, not individual thermal gyro-radii. The Coulomb reference length is
+$b_{90}=\kappa/[(m/2)|\bm w_{\rm in}|^2]=0.00799999$,
+so the free gap is $1.30046b_{90}$, despite the much larger guiding-center
+impact. This is the unscreened Coulomb $90$-degree reference length, not an
+exact deflection parameter for the screened magnetized trajectory.
+At the sampled closest point, the actual relative perpendicular velocity
+gives $\rho_{\rm kin}=|\bm w_\perp(t)|/|\Omega|=0.683913$ and
+$\rho_{\rm kin}/r=30.3794$; these differ from the incoming ratio
+$\rho_{\rm rel}/r=43.6835$. The measured full-speed ratio is
+$|\Omega|r/|\bm w(t)|=0.0302907$, while
+$|\Omega|b_{90}/|\bm w_{\rm in}|=0.00584237$.
+These local scales place this concrete close encounter outside a verified
+grazing or close-collision adiabatic ordering. They help interpret its large
+finite moment contribution, but are not a counterexample to an asymptotic
+SM working regime or an ensemble relaxation law.
 Resolving the trajectory does not settle the independent Sobol/phase spread,
 omitted bands or kinetic closure. Example 13's original aggregate remains
 unresolved and its metadata and failed comparisons remain available.
+
+The same final audit gives a deterministic inverse-cutoff counterexample,
+with the field explicitly fixed at $B=2$ in both trajectory and thermal-center
+moment calculations. The incoming node
+$(b,w_\parallel,w_\perp,\varphi)=(1.2,0.7,0.8,\pi/2)$ maps under the tested
+microscopic inverse to
+$(1.20082758,0.69429998,0.80495188,3.94743171)$.
+Both inverse speeds lie outside the original narrow bands. Its forward
+mean and second moment are $4.96721\times10^{-4}$ and
+$7.44799\times10^{-6}$. The reverse mean negation, second-moment equality
+and cross-moment equality have absolute errors respectively
+$5.07\times10^{-16}$, $3.19\times10^{-18}$ and $2.18\times10^{-18}$;
+energy errors are below $1.52\times10^{-14}$. This is a fixed boundary
+counterexample, not an independent statistical validation or a fitted state.
+The outgoing event is transverse, so continuity also gives nearby interior
+incoming states with inverse speeds outside the bands. The incident rectangle
+therefore is genuinely not closed under this inverse. Conditional drift on
+that rectangle is not a full Maxwellian drift or evidence against microscopic
+reversibility.
 
 \subsection*{Positive periodic scattering table: bulk accuracy and a failed tail target}
 The refined table interpolates the signed conditional mean $c$ and
@@ -2017,6 +2048,12 @@ The same table is then tested without retraining on 4096 new independent
 uniform states (seed 1321). All direct trajectories exit. The original
 256-state measurements and training archive remain separate; cached nodes,
 producer metadata, dependency hashes and interpolant values are verified.
+After a duration-helper change invalidated that cache's controls hash, the
+complete training table, original 256-state stage and fresh 4096-state stage
+were regenerated at source revision \texttt{cdb577b}. All eleven saved
+training, moment, derivative and validation arrays are identical in shape,
+dtype and element bytes to the archived \texttt{90abe1d} measurements;
+the negative tail result is reproduced without retuning.
 The fresh bulk error is $0.2282\%$, with an empirical 2000-resample
 bootstrap interval $[0.1912\%,0.2700\%]$. The observed 95th percentile is
 $6.2610\%$ and its two-sided $95\%$ order-statistic interval is
