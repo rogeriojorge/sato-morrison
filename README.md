@@ -23,7 +23,7 @@ MPLBACKEND=Agg python examples/00_uniform_reference.py
 MPLBACKEND=Agg python examples/01_relaxation.py
 ```
 
-Examples are editable top-level scripts with explicit inputs, progress, diagnostics and saved plots. They enable float64, announce compilation, and raise on failed solves. SOLVAX supplies general linear algebra; there is no dependency on other UW Plasma physics codes.
+Examples are editable top-level scripts with explicit inputs, progress, diagnostics and saved plots. They enable float64, announce compilation, and report failed solves explicitly. SOLVAX supplies general linear algebra; there is no dependency on other UW Plasma physics codes.
 
 ## What the calculations establish
 
@@ -108,7 +108,7 @@ Here “joint” means collision-null and stationary under ideal streaming. The 
 
 ![Dipole flux surfaces, two matched-constraint populations with different flux distributions, and a positive relative-entropy lower bound.](results/dipole_obstruction/obstruction.png)
 
-Local collisions in an axisymmetric poloidal field preserve every meridional spatial population. With closed, compatible ideal boundaries, **the entire poloidal-flux distribution remains conserved**. In a dipole,
+Local collisions in an axisymmetric poloidal field preserve every meridional spatial population. For an axisymmetric electrostatic potential and closed, compatible ideal boundaries, **the entire poloidal-flux distribution remains conserved**. In a dipole,
 
 ```math
 \begin{aligned}
@@ -122,7 +122,7 @@ The plotted positive distributions have the same number, energy, full magnetic-m
 
 This is a constructive **negative result for the local surrogate**: the usual energy-and-moment constraints do not determine an accessible final state. The finite-domain calculation is collision-only; it does not simulate confined dipole dynamics. Canonical momentum conservation is established physics; the stronger population constraint and its consequences are checked here without claiming publication priority.
 
-For the specified nonaxisymmetric perturbation, independent exact-rational and automatic-differentiation checks prove that no nonconstant **spatial** ideal invariant survives. This does not classify all phase-space invariants or establish a spectral gap. The proof, parameter interval and domain are in the [notes](notes/implementation.pdf). [Construction and inputs](results/dipole_obstruction/summary.json) · [Script](examples/15_dipole_obstruction.py)
+For the specified nonaxisymmetric perturbation, independent exact-rational and automatic-differentiation checks prove that no nonconstant **C² spatial** ideal invariant common to all velocities survives. This does not classify all phase-space invariants or establish a spectral gap. The proof, parameter interval and domain are in the [notes](notes/implementation.pdf). [Construction and inputs](results/dipole_obstruction/summary.json) · [Script](examples/15_dipole_obstruction.py)
 
 ## Geometry and physical scope
 
@@ -162,9 +162,11 @@ The upper-left panel shows the earlier coarse table. The independent tail test b
 
 ![The refined table closely follows direct second moments, but its independent relative-error distribution misses the 95-percent coverage target at five-percent error.](results/scattering_table/validation_4096/robust_validation.png)
 
-The same table is tested without retraining. Dashed lines mark the required 95% coverage at 5% relative error. [Script](examples/16_scattering_table.py) · [Fresh sample and confidence interval](results/scattering_table/validation_4096/metadata.json)
+The same fixed table is tested without parameter retuning. Dashed lines mark the required 95% coverage at 5% relative error. [Script](examples/16_scattering_table.py) · [Fresh sample and confidence interval](results/scattering_table/validation_4096/metadata.json)
 
 </details>
+
+The [extended-flight audit](results/encounter_duration/metadata.json) resolves one rare reflected encounter and checks it against an independent 12D pair trajectory. Its close approach lies outside verified grazing and adiabatic ordering; it does not refute the source’s asymptotic working regime.
 
 [Original bounded integral](results/encounter_ensemble/metadata.json) · [Broader coverage](results/encounter_validation/metadata.json) · [Figure script](examples/17_encounter_duration.py) · [Independent tail test](results/scattering_table/validation_4096/metadata.json)
 
