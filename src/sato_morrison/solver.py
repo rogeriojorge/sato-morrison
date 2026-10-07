@@ -3,7 +3,7 @@ from dataclasses import dataclass
 import jax
 import jax.numpy as jnp
 import numpy as np
-from solvax import pcg_linear_solve
+from solvax import pcg_linear_solve, gmres
 from .collisions import mobility_action
 
 
@@ -61,75 +61,143 @@ class NonlinearStep:
     entropy_change: float
     entropy_identity_error: float
     minimum: float
+    linear_iterations: int = 0
+    linear_relative_residual: float = 0.
+    residual_metric: str = "population"
+
+
+def _discrete_gradient_residual(grid,collision_strength,chunk_size):
+    def residual(new_log,old_log,timestep):
+        new,old=jnp.exp(new_log),jnp.exp(old_log)
+        return grid.weights*(new-old)-timestep*mobility_action(grid,(new+old)/2,
+            entropy_discrete_gradient(old_log,new_log),collision_strength=collision_strength,
+            chunk_size=chunk_size)
+    return residual
+
+
+def discrete_gradient_compiler(grid, *, collision_strength=1., method='dense',
+                               chunk_size=None,linear_restart=30,linear_max_restarts=10):
+    """Reusable DG residual and either a dense Jacobian or Newton-GMRES solve.
+
+    Matrix-free GMRES uses exact JAX Jacobian-vector products. Rows and log increments
+    are scaled by the square root of the previous nodal populations, giving
+    an entropy-metric Jacobian without forming a dense matrix. The two routes
+    solve the same unscaled discrete-gradient equation.
+    """
+    if method not in ('dense','krylov'):
+        raise ValueError(f'unsupported discrete-gradient method: {method}')
+    if linear_restart<1 or linear_max_restarts<1:
+        raise ValueError('positive Krylov iteration limits required')
+    if method=='krylov' and chunk_size is None:
+        chunk_size=65536
+    residual=_discrete_gradient_residual(grid,collision_strength,chunk_size)
+    evaluate=jax.jit(residual)
+    if method=='dense':
+        return evaluate,jax.jit(jax.jacfwd(residual,argnums=0))
+    def correction(new_log,old_log,timestep,linear_rtol):
+        mass_root=jnp.sqrt(grid.weights*jnp.exp(old_log))
+        scaled=lambda value:residual(value,old_log,timestep)/mass_root
+        value=scaled(new_log)
+        # Recompute forward-mode products so linearization cannot retain all
+        # primal pair blocks as a quadratic tape between GMRES iterations.
+        operator=lambda vector:jax.jvp(scaled,(new_log,),(vector/mass_root,))[1]
+        answer=gmres(operator,-value,restart=linear_restart,rtol=linear_rtol,
+                     atol=0.,max_restarts=linear_max_restarts)
+        relative=answer.residual_norm/jnp.maximum(jnp.linalg.norm(value),1e-300)
+        return answer.x/mass_root,answer.iterations,relative,answer.converged
+    return evaluate,jax.jit(correction)
 
 
 def discrete_gradient_step(grid, f, dt, *, collision_strength=1., rtol=1e-11,
-                           max_steps=30, compiled_residual=None):
-    """Positive nodal fixed-field entropy step with an arithmetic mean mobility.
+                           max_steps=30, compiled_residual=None,method='dense',
+                           chunk_size=None,linear_restart=30,linear_max_restarts=10,
+                           linear_rtol=None):
+    """Positive conservative entropy step, using dense or matrix-free Newton.
 
-    Newton's unknown is log(f+). A line search accepts residual decrease; no
-    clipping or population/energy correction is applied. Nonconvergence raises.
-    This guarantees nodal positivity, not positivity of a high-order interpolant.
+    Newton's unknown is log(f+). A residual-decreasing line search rejects
+    inadmissible/nonfinite candidates. There is no population clipping or
+    invariant correction. Krylov stopping uses an entropy-weighted residual;
+    dense stopping retains the population metric for the small reference.
+    Neither route establishes positivity of an arbitrary high-order interpolant.
     """
-    f = np.asarray(f, dtype=float).reshape(-1)
-    if np.any(f <= 0) or not np.all(np.isfinite(f)) or not np.isfinite(dt) or dt < 0:
+    if method not in ('dense','krylov'):
+        raise ValueError(f'unsupported discrete-gradient method: {method}')
+    if not np.isfinite(rtol) or rtol<=0 or max_steps<0:
+        raise ValueError('positive finite tolerance and nonnegative iteration limit required')
+    if linear_rtol is not None and (not np.isfinite(linear_rtol) or not 0<linear_rtol<1):
+        raise ValueError('linear_rtol must lie in (0,1)')
+    f=np.asarray(f,dtype=float).reshape(-1)
+    if np.any(f<=0) or not np.all(np.isfinite(f)) or not np.isfinite(dt) or dt<0:
         raise ValueError('finite strictly positive distribution and nonnegative dt required')
-    old = jnp.log(jnp.asarray(f))
-    population = grid.weights * f
-    scale = max(float(jnp.linalg.norm(population)), 1e-30)
-
-    def residual(new_log, old_log, timestep):
-        new, previous = jnp.exp(new_log), jnp.exp(old_log)
-        mean = (new + previous)/2
-        gradient = entropy_discrete_gradient(old_log, new_log)
-        return grid.weights*(new-previous) - timestep*mobility_action(
-            grid, mean, gradient, collision_strength=collision_strength)
-
+    old=jnp.log(jnp.asarray(f))
+    population=np.asarray(grid.weights)*f
+    if np.any(population<=0) or not np.all(np.isfinite(population)):
+        raise ValueError('positive finite nodal populations required')
+    mass_root=np.sqrt(population)
+    if method=='krylov':
+        metric=mass_root
+        scale=np.sqrt(population.sum())
+    else:
+        metric=np.ones_like(population)
+        scale=np.linalg.norm(population)
+    scale=max(float(scale),1e-300)
     if compiled_residual is None:
-        compiled_residual = (jax.jit(residual), jax.jit(jax.jacfwd(residual, argnums=0)))
-    evaluate, jacobian = compiled_residual
-    new_log = np.array(old)
-    norm = np.inf
+        compiled_residual=discrete_gradient_compiler(grid,collision_strength=collision_strength,
+            method=method,chunk_size=chunk_size,linear_restart=linear_restart,
+            linear_max_restarts=linear_max_restarts)
+    evaluate,solve_or_jacobian=compiled_residual
+    new_log=np.array(old)
+    norm=np.inf
+    linear_iterations=0;maximum_linear_residual=0.
     for iteration in range(max_steps+1):
-        value = np.asarray(evaluate(new_log, old, dt))
-        norm = np.linalg.norm(value)/scale
-        if np.isfinite(norm) and norm <= rtol:
+        value=np.asarray(evaluate(new_log,old,dt))
+        norm=np.linalg.norm(value/metric)/scale
+        if np.isfinite(norm) and norm<=rtol:
             break
-        if iteration == max_steps or not np.isfinite(norm):
+        if iteration==max_steps or not np.isfinite(norm):
             raise StepFailure(f'discrete-gradient Newton rejected step: iteration={iteration}, residual={norm:.3e}')
-        matrix = np.asarray(jacobian(new_log, old, dt))
-        try:
-            direction = np.linalg.solve(matrix, -value)
-        except np.linalg.LinAlgError as error:
-            raise StepFailure('singular discrete-gradient Newton system') from error
-        accepted = False
+        if method=='dense':
+            matrix=np.asarray(solve_or_jacobian(new_log,old,dt))
+            try:
+                direction=np.linalg.solve(matrix,-value)
+            except np.linalg.LinAlgError as error:
+                raise StepFailure('singular discrete-gradient Newton system') from error
+        else:
+            forcing=linear_rtol if linear_rtol is not None else min(.05,max(1e-5,.5*np.sqrt(norm)))
+            direction,count,linear_residual,converged=solve_or_jacobian(new_log,old,dt,forcing)
+            direction=np.asarray(direction)
+            linear_iterations+=int(count)
+            maximum_linear_residual=max(maximum_linear_residual,float(linear_residual))
+            if not bool(converged) or not np.isfinite(float(linear_residual)) or float(linear_residual)>5*forcing:
+                raise StepFailure(f'SOLVAX GMRES rejected Newton correction: iterations={int(count)}, '
+                                  f'true relative residual={float(linear_residual):.3e}, target={forcing:.3e}')
+        if not np.all(np.isfinite(direction)):
+            raise StepFailure('nonfinite discrete-gradient Newton correction')
+        accepted=False
         for backtrack in range(24):
-            candidate = new_log + direction*2.**(-backtrack)
-            candidate_norm = np.linalg.norm(np.asarray(evaluate(candidate, old, dt)))/scale
-            if np.isfinite(candidate_norm) and candidate_norm < norm:
-                new_log, accepted = candidate, True
+            candidate=new_log+direction*2.**(-backtrack)
+            # Underflow/overflow cannot be hidden by a small population norm.
+            if not np.all(np.isfinite(candidate)) or np.any(candidate>np.log(np.finfo(float).max)) or np.any(candidate<np.log(np.nextafter(0.,1.))):
+                continue
+            candidate_norm=np.linalg.norm(np.asarray(evaluate(candidate,old,dt))/metric)/scale
+            if np.isfinite(candidate_norm) and candidate_norm<norm:
+                new_log,accepted=candidate,True
                 break
         if not accepted:
             raise StepFailure(f'discrete-gradient line search rejected step: residual={norm:.3e}')
-    new = jnp.exp(jnp.asarray(new_log))
-    gradient = entropy_discrete_gradient(old, jnp.asarray(new_log))
-    change = float(entropy(new, grid.weights)-entropy(jnp.asarray(f), grid.weights))
-    production = float(dt*jnp.vdot(gradient, mobility_action(grid, (new+f)/2, gradient,
-                                 collision_strength=collision_strength)))
-    identity_error = change-production
-    bound = float(jnp.linalg.norm(gradient))*norm*scale + 100*np.finfo(float).eps*max(abs(change), 1.)
-    if change < -bound or abs(identity_error) > 2*bound or not np.all(np.isfinite(new)) or np.any(np.asarray(new)<=0):
+    new=jnp.exp(jnp.asarray(new_log))
+    gradient=entropy_discrete_gradient(old,jnp.asarray(new_log))
+    change=float(entropy(new,grid.weights)-entropy(jnp.asarray(f),grid.weights))
+    production=float(dt*jnp.vdot(gradient,mobility_action(grid,(new+f)/2,gradient,
+                      collision_strength=collision_strength,chunk_size=chunk_size)))
+    identity_error=change-production
+    # The exact entropy identity defect is gradient dot unscaled root residual.
+    bound=float(jnp.linalg.norm(gradient*jnp.asarray(metric)))*norm*scale+100*np.finfo(float).eps*max(abs(change),1.)
+    if change < -bound or abs(identity_error)>2*bound or not np.all(np.isfinite(new)) or np.any(np.asarray(new)<=0):
         raise StepFailure(f'entropy/finite check rejected step: deltaS={change:.3e}, identity residual={identity_error:.3e}')
-    return NonlinearStep(new, iteration, norm, change, identity_error, float(new.min()))
-
-
-def discrete_gradient_compiler(grid, *, collision_strength=1.):
-    """Reusable residual and Jacobian compiled once across host Newton steps."""
-    def residual(new_log, old_log, timestep):
-        new, old = jnp.exp(new_log), jnp.exp(old_log)
-        return grid.weights*(new-old) - timestep*mobility_action(grid, (new+old)/2,
-            entropy_discrete_gradient(old_log, new_log), collision_strength=collision_strength)
-    return jax.jit(residual), jax.jit(jax.jacfwd(residual, argnums=0))
+    return NonlinearStep(new,iteration,norm,change,identity_error,float(new.min()),
+                         linear_iterations,maximum_linear_residual,
+                         'entropy_population' if method=='krylov' else 'population')
 
 
 def toroidal_stream(state, shape, radius, u, mu, dt, *, strength=1., mass=1., charge=1.,
