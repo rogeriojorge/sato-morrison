@@ -149,13 +149,24 @@ The local initial-production derivative includes the field, invariant measure, d
 
 ![Direct encounter comparisons, impact-band contributions, unresolved quadrature errors and the effect of widening the speed band.](results/encounter_duration/coverage_summary.png)
 
+The upper-left panel shows the earlier coarse table. The independent tail test below evaluates its refined replacement.
+
 **Energy conservation does not imply magnetic-moment conservation.** Direct screened encounters resolve nonzero moment changes. The original narrow incoming-flux integral converges to `0.021%`, but covers only `11.6%` of the selected annulus's incoming thermal flux.
 
 **Wider coverage changes the answer.** A 38,220-trajectory audit covers `88.9%` of that speed flux. In the same impact annulus, the broader speed band gives a second-moment contribution about **35 times larger**. Four inner impact bands remain under-resolved; no complete diffusion coefficient is reported. Positive bars are contributions to the chosen finite quadrature, not rigorous bounds on a continuous integral.
 
-**Small average error can hide a failed tail criterion.** A refined periodic scattering table has `0.228%` normalized second-moment RMS error on 4,096 untouched states, yet its 95th-percentile relative error is `6.26%` (95% order-statistic interval `5.32–7.22%`), above the predeclared `5%` target. The smaller 256-state sample had suggested a pass. Both records are retained; the table remains unresolved.
+**Small average error can hide a failed tail criterion.** A refined periodic scattering table has `0.228%` normalized second-moment RMS error on 4,096 untouched states within its training hull, yet its 95th-percentile relative error is `6.26%` (95% order-statistic interval `5.32–7.22%`), above the predeclared `5%` target. The smaller 256-state sample had suggested a pass. Both records are retained; the table remains unresolved.
 
-[Original bounded integral](results/encounter_ensemble/metadata.json) · [Broader coverage](results/encounter_validation/metadata.json) · [Figure script](examples/17_encounter_duration.py) · [Independent tail test](results/scattering_table/validation_4096_pre_duration/metadata.json)
+<details>
+<summary>Why the scatter plot alone is insufficient</summary>
+
+![The refined table closely follows direct second moments, but its independent relative-error distribution misses the 95-percent coverage target at five-percent error.](results/scattering_table/validation_4096/robust_validation.png)
+
+The same table is tested without retraining. Dashed lines mark the required 95% coverage at 5% relative error. [Script](examples/16_scattering_table.py) · [Fresh sample and confidence interval](results/scattering_table/validation_4096/metadata.json)
+
+</details>
+
+[Original bounded integral](results/encounter_ensemble/metadata.json) · [Broader coverage](results/encounter_validation/metadata.json) · [Figure script](examples/17_encounter_duration.py) · [Independent tail test](results/scattering_table/validation_4096/metadata.json)
 
 | Independent control | Verified capability | Limit |
 |---|---|---|
