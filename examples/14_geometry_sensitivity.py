@@ -20,7 +20,8 @@ FIELDS = [Field('mirror', amplitude=.15), Field('dipole'),
 POSITION = np.array([1., .12, .3])
 MASS, CHARGE, D = 1.3, -.8, .1
 NU, NMU, UMAX, MUMAX = 25, 21, 4., 20.
-STEPS = np.array([.04, .02, .01, .005, .002, .001, .0005, .0002, .0001, .00005])
+STEPS = np.array([.04, .02, .01, .005, .002, .001, .0005, .0002, .0001, .00005,
+                  .00001, .000005, .000001, .0000002, .00000005, .00000001])
 OUTPUT = Path(__file__).resolve().parents[1] / 'results' / 'geometry_sensitivity'
 OUTPUT.mkdir(parents=True, exist_ok=True)
 print('Continuous local entropy production and d/dx at fixed physical u, mu; '
