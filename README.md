@@ -174,14 +174,14 @@ The upper-left panel shows the earlier coarse table. The independent tail test b
 
 **Wider coverage changes the answer.** A 38,220-trajectory audit covers `88.9%` of that speed flux. In the same impact annulus, the broader speed band gives a second-moment contribution about **35 times larger**. Four inner impact bands remain under-resolved; no complete diffusion coefficient is reported. Positive bars are contributions to the chosen finite quadrature, not rigorous bounds on a continuous integral.
 
-**Small average error can hide a failed tail criterion.** A refined periodic scattering table has `0.228%` normalized second-moment RMS error on 4,096 untouched states within its training hull, yet its 95th-percentile relative error is `6.26%` (95% order-statistic interval `5.32–7.22%`), above the predeclared `5%` target. The smaller 256-state sample had suggested a pass. Both records are retained; the table remains unresolved.
+**Small average error can hide a failed tail criterion.** A refined periodic scattering table has `0.228%` normalized second-moment RMS error on 4,096 untouched states within its training hull, yet its 95th-percentile relative error is `6.26%` (95% order-statistic interval `5.32–7.22%`), above the predeclared `5%` target. The smaller 256-state sample had suggested a pass. Both records are retained; the table remains unresolved. A predeclared `8³×32` refinement keeps the original validation domain and targets, with a fresh 4,096-state test pending. [Current script](examples/16_scattering_table.py)
 
 <details>
 <summary>Why the scatter plot alone is insufficient</summary>
 
 ![The refined table closely follows direct second moments, but its independent relative-error distribution misses the 95-percent coverage target at five-percent error.](results/scattering_table/validation_4096/robust_validation.png)
 
-The same fixed table is tested without parameter retuning. Dashed lines mark the required 95% coverage at 5% relative error. [Script](examples/16_scattering_table.py) · [Fresh sample and confidence interval](results/scattering_table/validation_4096/metadata.json)
+The archived `6³×32` table was tested without parameter retuning. Dashed lines mark the required 95% coverage at 5% relative error. [Producing script](https://github.com/rogeriojorge/sato-morrison/blob/cdb577b5620df82670c0d2485c19cb51a4cdf243/examples/16_scattering_table.py) · [Fresh sample and confidence interval](results/scattering_table/validation_4096/metadata.json)
 
 </details>
 
@@ -228,9 +228,10 @@ Run from the repository root with the environment above. Every script prints its
 | `examples/13_encounter_validation.py` | Wider incoming-flux coverage and independent table validation |
 | `examples/14_geometry_sensitivity.py` | Local production derivative, independent pair form and finite-difference plateau |
 | `examples/15_dipole_obstruction.py` | Matched constraints, different flux populations and a positive distance floor |
-| `examples/16_scattering_table.py` | Periodic table; untouched 256- and 4,096-state tests |
+| `examples/16_scattering_table.py` | Predeclared 8-node table refinement; fresh tests pending |
 | `examples/17_encounter_duration.py` | Original nonexit: flight budget, timestep, endpoint and independent pair audit |
 | `examples/18_near_uniform.py` | Analytic and direct near-uniform tensor-quadrature limit |
+| `examples/19_solver_accuracy.py` | Separate nonlinear/linear tolerance scans at fixed grid and timestep |
 
 MP4 export additionally uses `ffmpeg`; GIF export works with the listed Python dependencies.
 

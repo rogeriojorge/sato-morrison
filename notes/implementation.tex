@@ -1923,6 +1923,52 @@ and measured plasma mixing-versus-moment timescale separation are not implemente
 claims.
 
 
+\subsection*{Focused trajectory, unit and adjoint verification}
+On the symmetry axis of the harmonic mirror, $B(z)=B_0+a z^2$,
+$\dot z=u$ and $m\dot u=-2\mu a z$. For initial $z=0$ and
+$u=u_0>0$, a separate scalar energy calculation locates the positive
+turning point from $\mu B(z_t)=m u_0^2/2+\mu B_0$ by bracketing.
+The bounce integral is
+\[
+ T_b=4\int_0^{z_t}\frac{\dd z}
+ {\sqrt{2[E-\mu B(z)]/m}}.
+\]
+The substitution $z=z_t(1-s^2)$ removes its endpoint singularity and gives
+$T_b=4\int_0^1 2z_t\,[2\mu a z_t^2(2-s^2)/m]^{-1/2}\dd s$.
+Numerical quadrature is compared with turning-point events of a separately
+integrated five-coordinate Poisson flow. Both event position and period
+converge under integrator-tolerance refinement; the check uses nonunit mass
+and negative charge, and does not infer a collision rate from the orbit.
+
+A uniform Fourier-pair regression also changes the base units rather than
+changing the physical input. Let the new units be $L_*,T_*,M_*,Q_*,N_*$,
+where $N_*$ is a number-density unit. Then $U_*=L_*/T_*$,
+$E_*=M_*U_*^2$, $B_*=M_*/(Q_*T_*)$, and the prescribed uniform coefficient
+has unit $D_*=M_*^2L_*^2/(T_*^3N_*)$. In the $(u,\eta)$ chart,
+\[
+ \widehat u=u/U_*,\quad\widehat\eta=\eta/E_*,\quad
+ \widehat w_v=w_v/(U_*E_*),\quad
+ \widehat f=fU_*E_*/N_*,\quad\widehat k=kL_*.
+\]
+Mass, charge, field and coefficient are divided by their respective units,
+and $\partial_{\widehat u}h=U_*\partial_u h$.
+The independent pair calculation verifies
+$\widehat C=T_*U_*E_*C/N_*$ and
+$\widehat\lambda=T_*\lambda$ for the density-neutral observable
+$\lambda=-\langle h,C\rangle_v/\langle f h^2\rangle_v$,
+for two unit maps and both charge signs. This check is restricted to the
+uniform reduced kernel; it does not replace the metric pullback required
+for a general coordinate or units change in phase space.
+
+For the linear implicit system $A x=Mh$, $A=M+\Delta t K$, and observable
+$J=x^Tx$, the adjoint obeys $A^T\lambda=2x$ and
+$\partial_DJ=-\Delta t\lambda^TKx$ at unit coefficient.
+The actual implicitly differentiated solver's VJP with respect to $h$
+returns $M\lambda$. Dividing by the positive diagonal mass recovers the
+adjoint, whose true residual is checked against the independently assembled
+dense matrix alongside the primal residual, dense derivative and centered
+finite-difference plateau. These are finite-grid derivative checks.
+
 \subsection*{Directional zero-set check}
 At the off-axis dipole state $(1,0.2,0.3,0.6,0.4)$, the independent
 \texttt{test\_orbits.py} calculation approaches coincidence along $u$ and

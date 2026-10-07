@@ -34,6 +34,17 @@ def test_solvax_dense_step_and_implicit_derivative():
     for eps in (1e-3,1e-4,1e-5):
         fd=(solve_d(1+eps)-solve_d(1-eps))/(2*eps)
         np.testing.assert_allclose(fd,jax.grad(solve_d)(1.),rtol=2e-6)
+    # Recover the actual custom-linear-solve transpose solution from its VJP.
+    # dx/dh=A^-1 M, so the input cotangent is M lambda for A^T lambda=2x.
+    _,pullback=jax.vjp(lambda initial:linear_step(mass,stiffness,initial,dt).x,h)
+    cotangent=2*answer.x
+    adjoint=pullback(cotangent)[0]/mass
+    matrix=jnp.diag(mass)+dt*dense
+    primal_residual=jnp.linalg.norm(matrix@answer.x-mass*h)/jnp.linalg.norm(mass*h)
+    adjoint_residual=jnp.linalg.norm(matrix.T@adjoint-cotangent)/jnp.linalg.norm(cotangent)
+    assert float(primal_residual)<5e-11 and float(adjoint_residual)<5e-11
+    implicit_gradient=-dt*jnp.vdot(adjoint,dense@answer.x)
+    np.testing.assert_allclose(implicit_gradient,jax.grad(solve_d)(1.),rtol=2e-9)
     with pytest.raises(StepFailure,match='rejected'):
         checked_linear_step(mass,stiffness,h,dt,max_steps=0)
 

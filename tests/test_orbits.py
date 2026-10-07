@@ -161,3 +161,38 @@ def test_toroidal_continuum_null_family_and_streaming_intersection(charge):
         weighted_energy = lambda point: jnp.sin(coordinates(point)[1])*energy_mu(point,field,mass,charge)
         stream = poisson_mu(state,field,mass,charge)@energy_gradient(state)
         assert abs(float(jax.grad(weighted_energy)(state)@stream)) > 1e-3
+
+
+def test_mirror_bounce_integral_and_turning_point():
+    from scipy.integrate import quad, solve_ivp
+    from scipy.optimize import brentq
+    mass, charge, mu, speed = 1.7, -1.1, .5, .4
+    field=Field('mirror',strength=1.3,amplitude=.4)
+    initial=np.array([0.,0.,0.,speed,mu])
+    # Independent scalar energy and field on the symmetry axis.
+    energy=.5*mass*speed**2+mu*field.strength
+    potential=lambda z:mu*(field.strength+field.amplitude*z*z)
+    turning=brentq(lambda z:potential(z)-energy,0.,2.,xtol=1e-14)
+    # z=z_turn*(1-s^2) removes the integrable endpoint singularity.
+    quarter,error=quad(lambda s:2*turning/np.sqrt(
+        2*mu*field.amplitude*turning**2*(2-s*s)/mass),0.,1.,epsabs=1e-12,epsrel=1e-12)
+    period=4*quarter
+    flow=jax.jit(lambda z:poisson_mu(z,field,mass,charge)@jax.grad(
+        lambda state:energy_mu(state,field,mass,charge))(z))
+    def event(t,state):
+        return state[3]
+    deviations=[]
+    for tolerance in (1e-8,1e-11):
+        orbit=solve_ivp(lambda t,state:np.asarray(flow(jnp.asarray(state))),
+            (0,2.1*period),initial,method='DOP853',events=event,
+            rtol=tolerance,atol=tolerance*.01,dense_output=True)
+        assert orbit.success and len(orbit.t_events[0])==4
+        measured=2*(orbit.t_events[0][1]-orbit.t_events[0][0])
+        measured_turn=orbit.y_events[0][0,2]
+        deviations.append(max(abs(measured/period-1),abs(measured_turn/turning-1)))
+        samples=orbit.sol(np.linspace(0,period,81)).T
+        energies=np.asarray(jax.vmap(lambda z:energy_mu(z,field,mass,charge))(jnp.asarray(samples)))
+        assert np.max(abs(energies-energy))/energy<20*tolerance
+        np.testing.assert_array_equal(samples[:,4],np.full(81,mu))
+    assert deviations[1]<2e-10 and deviations[1]<deviations[0]/30
+    assert error<1e-11
