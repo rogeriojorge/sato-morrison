@@ -123,7 +123,8 @@ timestep_results=[]
 with progress('Independent timestep refinement on eight held-out scattering states'):
     for step in [.2,.1,.05]:
         checked,details=evaluate(test_nodes[:8],start_distance,step)
-        timestep_results.append({'max_step':step,'moments':checked.tolist(),'max_energy_error':max(d['energy_error'] for d in details)})
+        timestep_results.append({'max_step':step,'moments':checked.tolist(),'max_energy_error':max(d['energy_error'] for d in details),
+                                 'total_rhs_evaluations':sum(d['evaluations'] for d in details)})
     fine=np.asarray(timestep_results[-1]['moments'])
     medium=np.asarray(timestep_results[-2]['moments'])
     timestep_relative_change=np.linalg.norm(fine[:,1]-medium[:,1])/np.linalg.norm(fine[:,1])
@@ -133,12 +134,12 @@ with progress('Independent timestep refinement on eight held-out scattering stat
 fig,axes_plot=plt.subplots(2,2,figsize=(10,7),layout='constrained')
 for label in ['impact','parallel','perpendicular']:
     group=[s for s in summaries if s['case'].startswith(label+'_')]
-    errors=[abs(s['conditional_second_moment_delta_mu']/accepted['conditional_second_moment_delta_mu']-1) for s in group]
-    axes_plot[0,0].semilogy(refinement_orders,np.maximum(errors,1e-14),'o-',label=label)
-axes_plot[0,0].set(xlabel='Gauss order in one coordinate',ylabel='relative second-moment change',title='Refine each physical integration separately');axes_plot[0,0].legend()
-phase_errors=[abs(s['conditional_second_moment_delta_mu']/accepted['conditional_second_moment_delta_mu']-1) for s in phase_group]
-axes_plot[0,1].semilogy(phase_orders,np.maximum(phase_errors,1e-14),'o-')
-axes_plot[0,1].set(xlabel='gyrophases',ylabel='relative second-moment change',title='Explicit 3V phase geometry')
+    errors=[abs(s['conditional_second_moment_delta_mu']/group[-1]['conditional_second_moment_delta_mu']-1) for s in group[:-1]]
+    axes_plot[0,0].semilogy(refinement_orders[:-1],errors,'o-',label=label)
+axes_plot[0,0].set(xlabel='Gauss order in one coordinate',ylabel='second-moment error vs order 5',title='Independent coordinate refinement');axes_plot[0,0].legend()
+phase_errors=[abs(s['conditional_second_moment_delta_mu']/phase_group[-1]['conditional_second_moment_delta_mu']-1) for s in phase_group[:-1]]
+axes_plot[0,1].semilogy(phase_orders[:-1],phase_errors,'o-')
+axes_plot[0,1].set(xlabel='gyrophases',ylabel='second-moment error vs 32 phases',title='Resolved gyrophase dependence')
 base_weights=weights.reshape(*accepted_orders)
 base_moments=moments.reshape(*accepted_orders,3)
 impact_nodes=np.unique(nodes[:,0])
