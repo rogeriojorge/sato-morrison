@@ -25,6 +25,16 @@
     0.05,
     0.025
   ],
+  "cutoff_counterexample_node": [
+    1.2,
+    0.7,
+    0.8,
+    1.5707963267948966
+  ],
+  "cutoff_inverse_moment_absolute_target": 1e-10,
+  "cutoff_energy_target": 1e-08,
+  "cutoff_audit_scope": "fixed deterministic boundary counterexample previously inspected; no fitting or independent statistical validation",
+  "scale_audit_definitions": "relative rho=v_perp/abs(Omega); reduced_mass=m/2; b90=strength/(reduced_mass*relative_speed_squared); minimum separation explicitly sampled",
   "scope": "finite flight-budget diagnosis of exact previously failed nodes; original quadrature and interpolation failures retained",
   "physical_inputs": {
     "mass": 1.0,

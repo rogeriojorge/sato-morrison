@@ -27,7 +27,7 @@ Examples are editable top-level scripts with explicit inputs, progress, diagnost
 
 ## What the calculations establish
 
-The test suite compares independent equations, discrete conservation budgets and resolved limits. Each claim below links to its measured evidence.
+**105 tests passed on Linux CI.** The test suite compares independent equations, discrete conservation budgets and resolved limits. Each claim below links to its measured evidence.
 
 ![Four validation panels: nonlinear entropy, toroidal evolution controls, independent refinements and the raw toroidal null spectrum.](results/visual_summary/validation.png)
 
@@ -200,7 +200,7 @@ Run from the repository root with the environment above. Every script prints its
 
 MP4 export additionally uses `ffmpeg`; GIF export works with the listed Python dependencies.
 
-Each result records inputs, units, source commit/digest, versions and hardware. Older experiments retain their original provenance when new ones are added. The [validation ledger](results/validation.csv) distinguishes passing, unresolved and unrun requirements; [original](results/reproduction.json) and [continuation](results/continuation.json) records contain executed commands. Detailed mathematics and literature belong in the [notes](notes/implementation.pdf), with [LaTeX source](notes/implementation.tex) and [bibliography](notes/references.bib).
+Each result records inputs, units, source commit/digest, versions and hardware. Older experiments retain their original provenance when new ones are added. The [validation ledger](results/validation.csv) distinguishes passing, unresolved and unrun requirements; [original](results/reproduction.json), [continuation](results/continuation.json) and [fresh-install reproduction](results/deep_reproduction.json) records contain executed commands and scientific comparisons. Detailed mathematics and literature belong in the [notes](notes/implementation.pdf), with [LaTeX source](notes/implementation.tex) and [bibliography](notes/references.bib).
 
 <details>
 <summary>Rebuild the notes</summary>

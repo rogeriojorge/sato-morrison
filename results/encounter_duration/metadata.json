@@ -29,6 +29,16 @@
       0.05,
       0.025
     ],
+    "cutoff_counterexample_node": [
+      1.2,
+      0.7,
+      0.8,
+      1.5707963267948966
+    ],
+    "cutoff_inverse_moment_absolute_target": 1e-10,
+    "cutoff_energy_target": 1e-08,
+    "cutoff_audit_scope": "fixed deterministic boundary counterexample previously inspected; no fitting or independent statistical validation",
+    "scale_audit_definitions": "relative rho=v_perp/abs(Omega); reduced_mass=m/2; b90=strength/(reduced_mass*relative_speed_squared); minimum separation explicitly sampled",
     "scope": "finite flight-budget diagnosis of exact previously failed nodes; original quadrature and interpolation failures retained",
     "physical_inputs": {
       "mass": 1.0,
@@ -128,9 +138,9 @@
       ]
     ]
   },
-  "commit": "cd7dc1bda2bf30019dce1c581096a92edd939c6c",
-  "working_tree": "M README.md\n M tests/test_solver.py\n?? results/encounter_duration/\n?? results/scattering_table/validation_4096/",
-  "source_sha256": "88137a51db9e36c873116a9a281351991e3d1017bd2818e65392b90dbaaf34e5",
+  "commit": "176098fa4cc5e7ab5654ee7bd05bd00cee94b7b0",
+  "working_tree": "",
+  "source_sha256": "be7f662b9b91a7b075fa7cf83dd2d48764ecaeba1efe9eb3dac33b74e435b4c8",
   "versions": {
     "sato-morrison": "0.1.0",
     "jax": "0.11.2",
@@ -140,7 +150,7 @@
     "scipy": "1.18.1",
     "matplotlib": "3.11.2"
   },
-  "source_changes": "M tests/test_solver.py",
+  "source_changes": "",
   "logical_cpus": 10,
   "thread_environment": {
     "OMP_NUM_THREADS": "unset",
@@ -158,7 +168,7 @@
   "experiment_dependency_sha256": {
     "src/sato_morrison/controls.py": "ea673df34611bd68c60756fec2f335c9ebd10a705149ee22b68917d3102ec077",
     "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
-    "examples/17_encounter_duration.py": "72257d5b18b67b713e82c4fdbbf7f84514331a01f29f747d8b2441f715b47620"
+    "examples/17_encounter_duration.py": "998b1ed887fe74fdae3cb1995f494cb782ab149708a74198d30df016d087d15f"
   },
   "prior_evidence": {
     "producer_commit": "52916fb6dbac953865a117988021eab218270f78",
@@ -262,10 +272,76 @@
   "experiment_dependency_sha256_end": {
     "src/sato_morrison/controls.py": "ea673df34611bd68c60756fec2f335c9ebd10a705149ee22b68917d3102ec077",
     "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
-    "examples/17_encounter_duration.py": "72257d5b18b67b713e82c4fdbbf7f84514331a01f29f747d8b2441f715b47620"
+    "examples/17_encounter_duration.py": "998b1ed887fe74fdae3cb1995f494cb782ab149708a74198d30df016d087d15f"
   },
   "experiment_dependencies_unchanged": true,
   "results": {
+    "fixed_failed_node_scale_audits": [
+      {
+        "node_index": 0,
+        "relative_larmor_radius": 0.9834188312641788,
+        "b90": 0.007999992949338761,
+        "free_helix_gap_at_z_zero": 0.010403695345194364,
+        "free_gap_over_b90": 1.3004630642898605,
+        "minimum_sampled_separation": 0.02251235812880642,
+        "time_at_minimum_sample": 12.608049116501315,
+        "rho_over_minimum_sampled_separation": 43.68351043624405,
+        "Omega_b90_over_incoming_speed": 0.005842366223111062,
+        "Omega_minimum_sampled_separation_over_local_speed": 0.0302906507452567,
+        "scope": "one concrete close encounter outside a verified close-collision adiabatic or grazing ordering; not a counterexample to an asymptotic SM regime, not a plasma rate"
+      }
+    ],
+    "cutoff_reverse_counterexample": {
+      "incoming_node": [
+        1.2,
+        0.7,
+        0.8,
+        1.5707963267948966
+      ],
+      "inverse_incoming_node": [
+        1.2008275827554742,
+        0.6942999840220204,
+        0.8049518830497979,
+        3.9474317140137316
+      ],
+      "training_bounds": [
+        [
+          1.2,
+          2.4
+        ],
+        [
+          0.7,
+          1.5
+        ],
+        [
+          0.2,
+          0.8
+        ]
+      ],
+      "outside_coordinate_indices": [
+        1,
+        2
+      ],
+      "forward_moments": [
+        0.0004967208765884606,
+        7.447989748076675e-06,
+        -6.954526489599057e-06
+      ],
+      "reverse_moments": [
+        -0.0004967208765889672,
+        7.447989748079861e-06,
+        -6.954526489601237e-06
+      ],
+      "inverse_signed_moment_errors": [
+        -5.065392549852277e-16,
+        3.1856909146234236e-18,
+        -2.1794157732853148e-18
+      ],
+      "forward_energy_error": 1.513045075621956e-14,
+      "reverse_energy_error": 1.0610965465400783e-14,
+      "status": "passed",
+      "scope": "the conditional rectangle is not closed under this tested inverse; its conditional drift is not a full Maxwellian drift or a detailed-balance failure"
+    },
     "missing_populations": [
       {
         "annulus": [
@@ -752,7 +828,7 @@
         "numerical_status": "passed"
       }
     ],
-    "wall_s": 30.986822999984724,
+    "wall_s": 5.638162666000426,
     "prior_coverage_status_preserved": "unresolved",
     "original_conditional_integral_not_repaired": true,
     "interpretation": [
