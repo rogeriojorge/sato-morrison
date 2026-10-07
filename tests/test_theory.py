@@ -103,6 +103,29 @@ def test_critical_mirror_distinct_state_weak_limit_is_not_unique():
                                flow(critical.at[4].set(.9), field, mass, charge), atol=0.)
 
 
+def test_distinct_remote_dipole_pair_has_directional_weak_limit():
+    field = Field("dipole")
+    first = jnp.array([1., 0., 0., .2, .5])
+    second = jnp.array([2., 0., 0., .2, .76])
+    observable = lambda z: z[3]
+    np.testing.assert_allclose(flow(first, field, 1., 1.),
+                               flow(second, field, 1., 1.), atol=0.)
+    np.testing.assert_allclose(action(first, observable, field, 1., 1.)
+                               - action(second, observable, field, 1., 1.),
+                               [0., -1.8, 0., 0., 0.], atol=5e-16)
+    # The singular pair itself is never projected. Its two nonsingular
+    # approaches have different weak limits even though both grad B are nonzero.
+    for delta in [1e-3, 1e-4, 1e-5]:
+        mu_path = weak_factor(first.at[4].add(delta), second, observable,
+                             field, 1., 1.)
+        u_path = weak_factor(first.at[3].add(delta), second, observable,
+                            field, 1., 1.)
+        assert mu_path < 1e-28
+        expected = (1.8-3*delta)**2/(1+(1.2+3*delta)**2)
+        np.testing.assert_allclose(u_path, expected, rtol=3e-11)
+    assert abs(u_path-1.8**2/(1+1.2**2)) < 1e-4
+
+
 @pytest.mark.parametrize("field", [Field("mirror", amplitude=.15), Field("dipole"),
                                    Field("nonaxisymmetric", amplitude=.03)])
 def test_vacuum_scalar_potential_and_joint_spatial_invariants(field):

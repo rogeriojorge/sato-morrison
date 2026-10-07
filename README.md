@@ -13,7 +13,7 @@ This small JAX research code reproduces the uniform-field limit of Sato–Morris
 ## Start here
 
 ```sh
-git clone https://github.com/rogeriojorge/sato-morrison.git
+git clone --branch visual-evidence https://github.com/rogeriojorge/sato-morrison.git
 cd sato-morrison
 python3.12 -m venv .venv
 source .venv/bin/activate
@@ -176,7 +176,7 @@ For the separate 945-pair weak action, chunking by 16 reduces XLA temporary buff
 
 ## Reproduce
 
-Run from the repository root with the environment above. Every script prints its inputs and writes data and figures under `results/`.
+Run from the repository root with the environment above. Every script prints its inputs and writes data and figures under `results/`. Example 13 writes fresh runs in `results/encounter_validation/reproduction/`, preserving the original campaign audited by example 17.
 
 | Command (prefix with `MPLBACKEND=Agg python`) | Calculation |
 |---|---|

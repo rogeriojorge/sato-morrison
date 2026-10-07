@@ -846,8 +846,25 @@ $(\X,u,\mu)=((1,0,0),0.2,0.5)$ and
 $((2,0,0),0.2,0.76)$ both have common-chart energy flow
 $(0,1.62,-0.2,0,0)$, even though $\nabla B$ is nonzero at both positions.
 At the equator $B=C/R^3$, $\mathbf b=-\mathbf e_z$, and the azimuthal
-flow is $3[mu^2R^2/C+\mu/R]/q$. Thus local injectivity supplies no
-general equal-flow exclusion for the nonlocal source Eq.~(119).
+flow is $3[mu^2R^2/C+\mu/R]/q$. This distinct remote pair also has a nonremovable directional weak limit
+for the spatial scalar projector. For $h=u$,
+$(Au)_X=-\mathbf e_z+3uR^2\mathbf e_\theta$,
+so the pair action difference is $-1.8\mathbf e_\theta$.
+Perturbing only $\mu$ at the first state makes $\xi$ parallel to
+$\mathbf e_\theta$ and the weak factor vanish. Perturbing only $u$ by
+$\delta$ instead gives
+\begin{equation}
+ \left|I_XP\Delta Au\right|^2
+ =\frac{(1.8-3\delta)^2}{1+(1.2+3\delta)^2}
+ \longrightarrow\frac{3.24}{2.44}=1.327868852\ldots .
+ \label{eq:nonlocaldirectionallimit}
+\end{equation}
+The actual common-chart action and projection are tested along three
+nonsingular values of each perturbation; the singular pair is not assigned
+a projector. Thus local injectivity supplies no general equal-flow exclusion
+or continuous zero-vector prescription for a nonlocal scalar extension.
+This observation alone does not analyze the full interaction tensor in the
+nonlocal source Eq.~(119).
 
 The point dipole has no critical strength point away from its source:
 homogeneity gives $\X\cdot\nabla B=-3B$. For the mirror, writing
@@ -1919,6 +1936,53 @@ motion; it does not establish a bound pair or a failure of molecular chaos.
 The omitted impact and speed tails, incident-domain reverse closure and
 successive-encounter correlations remain unchecked. No physical constrained
 coefficient, plasma relaxation time or dipole lifetime follows.
+
+\subsection*{Resolving the failed encounter's flight budget}
+Example 17 preserves the original broad-campaign metadata and replays its
+exact failed node. The declared flight factors $6,12,24,48$ vary only the
+finite integration budget. Factor 6 ends at $t=75.5642$, after reflection,
+with $z=-19.268$ and $\dot z=-0.320016$; the particle is already travelling
+toward the incoming plane. Factor 12 reaches the reflected outgoing event
+$z=-24$ at $t=90.3503$, with one parallel turn. Factors 24 and 48 reach the
+same event. This diagnoses an insufficient original numerical flight budget,
+not a trapped trajectory.
+
+Active maximum steps $0.2,0.1,0.05$ give a final conditional second-moment
+change $2.13\times10^{-10}$; independently moving the planes through
+$L=24,32,40$ gives a final change $2.24\times10^{-5}$. The original comparison
+of the $0.2$ relative solve to the Cartesian pair path has velocity error
+$1.69\times10^{-8}$, above the unchanged $10^{-8}$ absolute target, and
+is retained as an unresolved coarse comparison. The finest declared relative
+solve instead uses maximum step $0.05$ and its own event time
+$t=90.350330908$. Independent twelve-dimensional pair paths with maximum
+steps $0.05$ and $0.025$ agree with it in relative velocity to
+$5.15\times10^{-12}$ and $4.34\times10^{-11}$, and in relative position to
+$2.54\times10^{-10}$ and $4.02\times10^{-9}$. Their velocity plateau is
+$4.63\times10^{-11}$. Both satisfy the unchanged $10^{-8}$ position and
+velocity targets. No discrepancy is removed by an invariant correction.
+
+Restoring this one node changes only the chosen replica's finite quadrature.
+Its conditional thermal-center mean, second and cross moments are
+$(0.2205711,0.1127298,-0.0154266)$. The positive second-moment increment to
+that replica is $4.90439\times10^{-5}$ per partner density, equal to about
+$20.12\%$ of the \emph{base} annulus's reported finite diffusion sum, even
+though the node represents only $1/2048=0.04883\%$ of the replica count.
+The two populations are distinct; this ratio is a diagnostic of numerical
+leverage, not a percentage correction to a converged continuous coefficient.
+For this node the unperturbed relative gyro-radius is
+$\rho_{\rm rel}=w_\perp/|\Omega|=0.9834188$.
+At the declared zero-plane phase $\varphi=\pi/2$ and $\Omega=2$,
+$\bm r_\perp=(b-w_\perp\sin\varphi/\Omega,
+              w_\perp\cos\varphi/\Omega)$;
+the free relative orbit's closest perpendicular gap is only
+$b-\rho_{\rm rel}=0.0104037$. The interacting independent Cartesian path
+has sampled minimum separation $0.0225124$. These are relative-orbit
+geometrical quantities, not individual thermal gyro-radii. The close approach
+helps interpret this node's large finite moment contribution, but does not
+certify a gyro-adiabatic scattering regime or an ensemble relaxation law.
+Resolving the trajectory does not settle the independent Sobol/phase spread,
+omitted bands or kinetic closure. Example 13's original aggregate remains
+unresolved and its metadata and failed comparisons remain available.
 
 \subsection*{Positive periodic scattering table: bulk accuracy and a failed tail target}
 The refined table interpolates the signed conditional mean $c$ and
