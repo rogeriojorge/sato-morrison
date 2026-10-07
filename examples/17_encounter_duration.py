@@ -61,12 +61,13 @@ metadata['prior_evidence']={'producer_commit':prior['commit'],'dependency_sha256
 units=qmc.Sobol(3,scramble=True,seed=physical['sobol_seed']).random_base2(int(np.log2(physical['sobol_levels'][-1])))
 replica_units=qmc.Sobol(3,scramble=True,seed=physical['replica_seed']).random_base2(int(np.log2(physical['sobol_levels'][-2])))
 phases=2*np.pi*np.arange(physical['phase_order'])/physical['phase_order']
-missing=[]
+missing=[];replica_population_keys={}
 for annulus in physical['impact_annuli']:
-    def quadrature_keys(unit):
+    def quadrature_keys(unit,annulus):
         samples=encounter_flux_samples(unit,annulus,physical['parallel_bounds'],physical['perpendicular_bounds'],physical['theta'])
         return {tuple(np.round((*sample,phase),12)) for sample in samples for phase in phases}
-    base_keys=quadrature_keys(units);replica_keys=quadrature_keys(replica_units)
+    base_keys=quadrature_keys(units,annulus);replica_keys=quadrature_keys(replica_units,annulus)
+    replica_population_keys[tuple(annulus)]=replica_keys
     failed_keys={tuple(np.round(failure['node'],12)) for failure in previous['failures'] if failure['distance']==physical['start_distance'] and failure['charge']==physical['charge']}
     base_count=len(failed_keys&base_keys);replica_count=len(failed_keys&replica_keys)
     missing.append({'annulus':annulus,'base_missing_count':base_count,'base_total':len(base_keys),
@@ -140,6 +141,22 @@ with progress('Auditing exact nonexit nodes: budget, active timestep, endpoint, 
             pair_plateau=float(np.max(np.abs((pair_refinement_paths[-1]['velocities'][-1,0]-pair_refinement_paths[-1]['velocities'][-1,1])-(pair_refinement_paths[-2]['velocities'][-1,0]-pair_refinement_paths[-2]['velocities'][-1,1]))))
             pair_passed=all(item['velocity_max_absolute_error']<=independent_pair_velocity_absolute_target and item['position_max_absolute_error']<=independent_pair_position_absolute_target and item['energy_error']<=energy_target for item in pair_refinement) and pair_plateau<=independent_pair_velocity_absolute_target
             pair_paths[index]=pair_refinement_paths[-1]
+            recovered=[]
+            for annulus,keys in replica_population_keys.items():
+                if tuple(np.round(node,12)) not in keys:
+                    continue
+                band=next(row for row in previous['coverage'] if (row['impact_lower'],row['impact_upper'])==annulus)
+                moment=encounter_thermal_moments(finest,physical['theta'],physical['mass'],physical['field'])
+                population_size=len(keys)
+                drift_increment=band['flux_per_density']*moment[0]/population_size
+                diffusion_increment=band['flux_per_density']*moment[1]/(2*population_size)
+                recovered.append({'annulus':list(annulus),'replica_total_nodes':population_size,
+                    'single_node_count_fraction':1/population_size,'drift_finite_sum_increment_per_density':float(drift_increment),
+                    'diffusion_finite_sum_increment_per_density':float(diffusion_increment),
+                    'base_band_finite_diffusion_contribution_per_density':band['partial_diffusion_lower_bound_per_density'],
+                    'ratio_to_base_band_finite_diffusion_contribution':float(diffusion_increment/band['partial_diffusion_lower_bound_per_density']),
+                    'scope':'restored contribution to the original chosen replica finite quadrature only; does not repair its accuracy or bound the continuous integral'})
+            report['restored_chosen_replica_contributions']=recovered
             report.update(outcome='original flight budget insufficient; outgoing event reached with extended budget' if budgets[0]['status']=='unresolved' else 'original numerical nonexit not reproduced',
                 minimum_successful_declared_factor=budget,timestep_audit=timesteps,endpoint_audit=endpoints,
                 timestep_second_moment_relative_change=step_change,endpoint_second_moment_relative_change=endpoint_change,
