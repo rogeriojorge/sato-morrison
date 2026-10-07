@@ -375,16 +375,16 @@ def encounter_bounded_flux(impact_bounds, parallel_bounds, perpendicular_bounds,
 
 def encounter_relative(impact, phase, parallel_speed, perpendicular_speed, *,
                        field, strength, screening, start_distance, mass=1.,
-                       charge=1., max_step=.3, rtol=1e-10):
+                       charge=1., max_step=.3, rtol=1e-10, flight_time_factor=6.):
     """Equal-particle 6D relative Lorentz-force solve to the first outgoing plane.
 
     Initial data share a free incoming helix. Terminal z=+L crossing is transmitted;
     z=-L with negative velocity is reflected. Initial incoming -L is not an exit.
-    No exit by 6L/v_parallel rejects the encounter. Internal turning points are
-    reported; repeated incoming/outgoing interactions need a separate kinetic
-    interpretation. The event planes have finite screened force tails.
+    No exit by flight_time_factor*L/v_parallel rejects the encounter (default6).
+    A finite budget failure does not imply trapping. Repulsive parallel acceleration
+    has sign(z), hence at most one parallel turn. Event planes have finite tails.
     """
-    if not np.all(np.isfinite([impact,phase,parallel_speed,perpendicular_speed,field,strength,start_distance,mass,charge,max_step,rtol])) or field <= 0 or strength < 0 or not screening > 0 or mass <= 0 or charge == 0 or max_step <= 0 or rtol <= 0:
+    if not np.all(np.isfinite([impact,phase,parallel_speed,perpendicular_speed,field,strength,start_distance,mass,charge,max_step,rtol,flight_time_factor])) or field <= 0 or strength < 0 or not screening > 0 or mass <= 0 or charge == 0 or max_step <= 0 or rtol <= 0 or flight_time_factor <= 0:
         raise ValueError("Invalid encounter physical/integration parameters.")
     omega=charge*field/mass
     position,velocity=encounter_incoming(impact,phase,parallel_speed,perpendicular_speed,start_distance,omega)
@@ -400,9 +400,14 @@ def encounter_relative(impact, phase, parallel_speed, perpendicular_speed, *,
     def reflected(t,y):
         return y[2]+start_distance
     reflected.terminal=True;reflected.direction=-1
-    result=solve_ivp(rhs,(0.,6*start_distance/parallel_speed),initial,method='DOP853',rtol=rtol,atol=rtol*.01,max_step=max_step,events=[transmitted,reflected])
+    result=solve_ivp(rhs,(0.,flight_time_factor*start_distance/parallel_speed),initial,method='DOP853',rtol=rtol,atol=rtol*.01,max_step=max_step,events=[transmitted,reflected])
     if not result.success or result.status != 1 or not np.all(np.isfinite(result.y)):
-        raise RuntimeError('Encounter failed to reach an outgoing plane: '+result.message)
+        error=RuntimeError('Encounter failed to reach an outgoing plane: '+result.message)
+        error.integration_diagnostics={'solver_success':bool(result.success),'solver_status':int(result.status),
+            'flight_time_factor':float(flight_time_factor),'budget':float(flight_time_factor*start_distance/parallel_speed),
+            'final_time':float(result.t[-1]),'final_position':result.y[:3,-1].tolist(),
+            'final_velocity':result.y[3:,-1].tolist(),'step_count':len(result.t)-1,'evaluations':result.nfev}
+        raise error
     radius=np.linalg.norm(result.y[:3],axis=0)
     energy=mass/4*np.sum(result.y[3:]**2,axis=0)+strength*np.exp(-radius/screening)/radius
     final=result.y[3:,-1]
@@ -416,6 +421,7 @@ def encounter_relative(impact, phase, parallel_speed, perpendicular_speed, *,
         'initial_relative_position':position,'final_relative_position':result.y[:3,-1],
         'step_count':len(result.t)-1,'min_step':float(np.diff(result.t).min()),
         'max_actual_step':float(np.diff(result.t).max()),'time':float(result.t[-1]),
+        'flight_time_factor':float(flight_time_factor),'flight_budget':float(flight_time_factor*start_distance/parallel_speed),
         'energy_error':float(np.max(np.abs(energy-energy[0]))/abs(energy[0])),
         'end_force':float(strength*np.exp(-radius[-1]/screening)*(1+radius[-1]/screening)/radius[-1]**2),
         'min_separation':float(radius.min()),'exit':'transmitted' if len(result.t_events[0]) else 'reflected',

@@ -147,7 +147,9 @@ with progress('Integrating stratified broad incoming flux and independent covera
             'partial_diffusion_lower_bound_per_density':float(flux*np.nansum(moments[...,1])/(len(samples)*phase_order)/2),
             'last_diffusion_relative_uncertainty':float(error),'drift_replica_difference':float(abs(fine[0]-replica_rate[0])),
             'phase_diffusion_relative_change':float(abs(fine[1]-phase8_rate[1])/abs(fine[1])),
-            'missing_fraction':missing_fraction,'reflected_fraction':float(sum(d['exit']=='reflected' for d in valid_details)/(len(samples)*phase_order)),
+            'missing_fraction':missing_fraction,'replica_missing_fraction':float(1-np.all(np.isfinite(replica),axis=-1).mean()),
+            'partial_diffusion_scope':'positive partial contribution to this finite quadrature sum; not a rigorous continuous-integral bound',
+            'reflected_fraction':float(sum(d['exit']=='reflected' for d in valid_details)/(len(samples)*phase_order)),
             'max_parallel_turns':max(d['parallel_turns'] for d in valid_details) if valid_details else None,
             'max_energy_error':float(energy),'max_actual_step':max(d['max_actual_step'] for d in valid_details) if valid_details else None,
             'status':status}
@@ -192,7 +194,7 @@ axes_plot[0,1].set_xticks(np.arange(len(centers)),labels=[f'{a:g}–{b:g}' for a
 axes_plot[0,1].set(xlabel='guiding-center impact annulus',ylabel='conditional diffusion integral / density',title='Broad velocities reveal cutoff sensitivity')
 for data in coverage_data:
     axes_plot[1,0].plot(sobol_levels,[rate[1]/2 for rate in data['rates']],'-o',label=f"{data['annulus'][0]:g}–{data['annulus'][1]:g}")
-axes_plot[1,0].set(xlabel='Sobol points ×16 phases',ylabel='diffusion integral / density',title='Explicit phase average; nonexits yield partial lower bounds');axes_plot[1,0].legend(fontsize=8,ncol=2)
+axes_plot[1,0].set(xlabel='Sobol points ×16 phases',ylabel='diffusion integral / density',title='Phase averages: partial finite-quadrature contributions');axes_plot[1,0].legend(fontsize=8,ncol=2)
 axes_plot[1,1].bar(['old narrow bands','broad velocities + impacts'],[old_rate,total_diffusion or sum(diffusions)])
 axes_plot[1,1].set(ylabel='conditional diffusion integral / density',title=f'Broad speed flux retained: {velocity_fraction:.1%}')
 fig.savefig(output/'validation.png',dpi=160)
@@ -216,5 +218,9 @@ metadata['results']={'table_status':table_status,'fresh_holdout_rms':rms.tolist(
 (output/'metadata.json').write_text(json.dumps(metadata,indent=2)+'\n')
 with (output/'summary.csv').open('w',newline='') as file:
     writer=csv.DictWriter(file,fieldnames=list(coverage_rows[0]));writer.writeheader();writer.writerows(coverage_rows)
-np.savez_compressed(output/'holdout.npz',training_nodes=training_nodes,training_moments=training,heldout=heldout,direct=direct,predicted=predicted)
+np.savez_compressed(output/'holdout.npz',coverage_rates=np.asarray([data['rates'] for data in coverage_data]),
+    coverage_replica_rates=np.asarray([data['replica_rate'] for data in coverage_data]),
+    coverage_samples=np.asarray([data['samples'] for data in coverage_data]),
+    coverage_moments=np.asarray([data['moments'] for data in coverage_data]),training_nodes=training_nodes,training_moments=training,heldout=heldout,direct=direct,predicted=predicted)
+print(f'Actual failed encounters={len(failures)}; all failures and replica missing fractions are retained in metadata.',flush=True)
 print(f'Finished: new table={table_status}, broad bounded coverage={status}, unique direct encounters={len(cache)}, elapsed={perf_counter()-started:.1f}s',flush=True)

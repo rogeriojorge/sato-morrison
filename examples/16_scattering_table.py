@@ -75,7 +75,14 @@ def direct_moment(node):
     result=encounter_relative(impact,phase,parallel,perpendicular,field=field,strength=strength,screening=screening,start_distance=start_distance,mass=mass,charge=charge,max_step=max_step,rtol=rtol)
     return encounter_thermal_moments(result,theta,mass,field),result
 
-cache_used=reuse_training_cache and (original_output/'table_data.npz').exists() and (original_output/'metadata.json').exists()
+cache_available=reuse_training_cache and (original_output/'table_data.npz').exists() and (original_output/'metadata.json').exists()
+cache_controls_compatible=False
+if cache_available:
+    cached_metadata=json.loads((original_output/'metadata.json').read_text())
+    cache_controls_compatible=cached_metadata['experiment_dependency_sha256']['src/sato_morrison/controls.py']==metadata['experiment_dependency_sha256']['src/sato_morrison/controls.py']
+cache_used=cache_available and cache_controls_compatible
+if cache_available and not cache_controls_compatible:
+    print('Controls SHA changed since original cache: explicitly regenerating training and both independent validation stages.',flush=True)
 if cache_used:
     with progress('Verifying immutable training cache and original independent test'):
         data_path=original_output/'table_data.npz';producer_path=original_output/'metadata.json'
@@ -116,7 +123,8 @@ if cache_used:
             'producer_commit':producer['commit'],'producer_dependency_sha256':producer['experiment_dependency_sha256'],
             'original_256_evidence_preserved':str(original_output.relative_to(repository)),'original_results':original}
 else:
-    metadata['training_cache']={'used':False,'reason':'disabled or absent; regenerating the same training table and original 256-state stage'}
+    metadata['training_cache']={'used':False,'reason':'disabled, absent, or controls SHA changed; regenerating the same training table and original 256-state stage',
+        'cache_available':cache_available,'cache_controls_compatible':cache_controls_compatible}
     with progress('Building the refined periodic positive table'):
         nodes,weights=encounter_flux_quadrature(training_orders,*training_bounds,theta)
         training=[];energies=[];reflected=0
@@ -203,7 +211,8 @@ with progress('Testing the same table on 4096 fresh independent states, without 
             robust_bootstrap.extend(np.sqrt(np.mean(robust_differences[indices,1]**2,axis=1))/np.sqrt(np.mean(robust_direct[indices,1]**2,axis=1)))
         robust_status='passed' if robust_rms[1]<=second_moment_rms_target and robust_p95<=second_moment_p95_target and robust_interval[1]<=p95_confidence_upper_target and max(robust_energies)<=1e-8 else 'unresolved'
         robust_results.update(status=robust_status,rms_errors=robust_rms.tolist(),second_moment_p95=robust_p95,
-            p95_order_statistic_95_interval=robust_interval,p95_interval_order_ranks=[robust_low,robust_high],
+            p95_order_statistic_95_interval=robust_interval,p95_interval_order_ranks=[max(1,robust_low),min(robust_holdout_count,robust_high+1)],
+            p95_interval_binomial_count_cutoffs=[robust_low,robust_high],
             second_moment_rms_bootstrap_95_interval=np.quantile(robust_bootstrap,[.025,.975]).tolist(),
             fraction_exceeding_five_percent=float(np.mean(robust_relative>second_moment_p95_target)),
             fraction_exceeding_one=float(np.mean(robust_relative>1.)))
@@ -239,7 +248,8 @@ metadata['experiment_dependency_sha256_end']={str(path.relative_to(repository)):
 metadata['experiment_dependencies_unchanged']=metadata['experiment_dependency_sha256']==metadata['experiment_dependency_sha256_end']
 metadata['fresh_4096_results']=robust_results
 metadata['results']={'status':status,'rms_errors':rms.tolist(),'second_moment_p95':p95,
-    'p95_order_statistic_95_interval':p95_interval,'p95_interval_order_ranks':[rank_low,rank_high],
+    'p95_order_statistic_95_interval':p95_interval,'p95_interval_binomial_count_cutoffs':[rank_low,rank_high],
+    'p95_interval_order_ranks':[max(1,rank_low),min(holdout_count,rank_high+1)],
     'second_moment_rms_bootstrap_95_interval':rms_interval,'one_state_fraction':1/holdout_count,
     'training_inner_hull':inner_hull,'training_states':len(nodes),'max_training_energy_error':max(energies),
     'max_test_energy_error':max(test_energies),'training_reflected_states':reflected,

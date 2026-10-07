@@ -283,3 +283,22 @@ def test_reverse_encounter_negates_mean_and_preserves_variance(mass,charge):
     moments_forward=encounter_thermal_moments(forward,.5,mass,2.)
     moments_reverse=encounter_thermal_moments(reverse,.5,mass,2.)
     np.testing.assert_allclose(moments_reverse,moments_forward*np.array([-1,1,1]),atol=2e-11)
+
+
+
+def test_encounter_explicit_flight_budget_and_failure_evidence():
+    from sato_morrison.controls import encounter_relative
+    inputs=dict(field=2.,strength=.03,screening=3.,start_distance=8.,max_step=.2)
+    default=encounter_relative(1.4,.6,1.1,.4,**inputs)
+    explicit=encounter_relative(1.4,.6,1.1,.4,flight_time_factor=6.,**inputs)
+    np.testing.assert_array_equal(default['final_relative_velocity'],explicit['final_relative_velocity'])
+    assert default['time']==explicit['time'] and default['evaluations']==explicit['evaluations']
+    with pytest.raises(RuntimeError) as caught:
+        encounter_relative(1.4,.6,1.1,.4,flight_time_factor=.5,**inputs)
+    diagnostic=caught.value.integration_diagnostics
+    assert diagnostic['solver_success'] and diagnostic['solver_status']==0
+    assert diagnostic['final_time']==diagnostic['budget']
+    assert diagnostic['final_position'][2]<8.
+    for factor in [0.,-1.,float('nan')]:
+        with pytest.raises(ValueError):
+            encounter_relative(1.4,.6,1.1,.4,flight_time_factor=factor,**inputs)
