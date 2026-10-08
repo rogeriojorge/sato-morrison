@@ -7613,6 +7613,16 @@
       "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37712734136/job/113102146787",
       "log_sha256": "35e13253c5f569437a8d90a9a0789179b22a14a43f3e99dcbcbfd1098f3c9708",
       "scope": "Adds independent fixed-reference dense roots/Hessians and physical budgets; immutable-reference and total-match validation; unchanged defaults; true-residual failure guards; stable extreme-tail norm diagnostics. Three-field thermal pilot runs separately at the same source."
+    },
+    {
+      "source_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+      "command": "python -m pytest -q",
+      "passed": 235,
+      "elapsed_s": 178.58,
+      "environment": "Fresh Ubuntu CI installation",
+      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37714642617/job/113108227194",
+      "log_sha256": "8d2cd99ee6c1a698cc557fdfede84a32e7a04b885e4ea5c8c4400ec756ad8e76",
+      "scope": "Adds optional spatial channel blocks; noncubic independent covariance, dense auxiliary inverse and exact Hessian tests; three-field dense roots and fixed-reference budgets; strict layout validation and failure checks. Existing diagonal and line routes remain unchanged."
     }
   ],
   "additional_experiments": [

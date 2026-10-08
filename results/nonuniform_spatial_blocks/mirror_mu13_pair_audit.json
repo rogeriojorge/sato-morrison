@@ -1,0 +1,119 @@
+{
+  "status": "passed",
+  "audit_utc": "2026-10-08T01:52:42.202874+00:00",
+  "deadline_s": 120,
+  "scope": "One final saved-step residual, analytic mirror geometry and independent NumPy unordered pairs; no nonlinear solve or complete-history pair audit.",
+  "audit_source_sha256": "911a6720d50da62c92aebd8c271390ac7a1889603528efac3a3a0ea984c22ddb",
+  "helper_source_sha256": "a1ac3755a0c9ca946cdb601cf11b9639bd9fadaa589e424482a48ba1c114fc4e",
+  "numpy": "2.5.3",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "predeclared_checks": {
+    "reference_normalized_residual_max": 2e-12,
+    "entropy_identity_absolute_max": 3e-15,
+    "global_invariants_max": 1e-09,
+    "weights_relative_max": 2e-14
+  },
+  "producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+  "producer_source_sha256": "b981adcaa6de59acc94174069759446322978e5b10b13161d6fb86175ddae282",
+  "provenance_id": "0625162b8b905ca245a2098f2829bdea18774769bfa0905d456029d6eab0f19b",
+  "workflow_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37714657167",
+  "artifact_id": 11523207457,
+  "saved_hashes": {
+    "last_state.npz": "508b9b13094d5a75edc23d168dca06956efc83e51330409bef0e79791946c58e",
+    "summary.json": "fd672c660294ea980d263a4f44f13ff1e3f79f5c3a390244b3c5ab66fa3b7094",
+    "_download_receipt.json": "7b4e138a6d9f848bcd2f11cb71cad136cab18fa2431c3eb03455ceb193b55a9b"
+  },
+  "parameters": {
+    "field": "mirror",
+    "case": "mu13",
+    "nx": 5,
+    "nu": 25,
+    "nmu": 13,
+    "umax": 4.0,
+    "mumax": 20.0,
+    "dt": 0.005,
+    "residual_metric": "fixed_reference_population"
+  },
+  "last_time": 0.02,
+  "pair_wall_s": 0.5945102910045534,
+  "minimum_pair_flow_squared": 0.0079619681223623,
+  "weights_relative_error": 1.63202784619898e-14,
+  "initial_analytic_relative_error": 7.327471962526033e-15,
+  "reference_total": 0.13258719664297938,
+  "reference_old_mass_relative_difference": 2.220446049250313e-16,
+  "reference_normalized_residual": 6.722491430237936e-16,
+  "old_population_normalized_residual": 6.810881009364618e-16,
+  "raw_R_l2": 1.236203410752223e-18,
+  "reported_reference_normalized_residual": 6.035209505560405e-16,
+  "reported_old_population_normalized_residual": 6.134635590631722e-16,
+  "entropy_change": 2.8296352288431637e-05,
+  "dt_frozen_mobility_quadratic": 2.7305698378458573e-05,
+  "generalized_KL": 9.906539099878972e-07,
+  "residual_entropy_defect": 1.773995046963426e-18,
+  "entropy_identity_with_residual": -1.3059245925353881e-17,
+  "reference_cauchy_bound": 1.175933822724891e-16,
+  "reference_cauchy_plus_roundoff_bound": 8.937955401640944e-15,
+  "last_step_invariants": {
+    "number_relative": 4.6211794113132585e-18,
+    "energy_relative": 1.2987604019570038e-17,
+    "full_mu_marginal_global_relative": 4.622690752592542e-18
+  },
+  "cumulative_invariants": {
+    "number_relative": 1.1390690678988627e-17,
+    "energy_relative": 2.2855281236981468e-17,
+    "full_mu_marginal_global_relative": 1.0562350102757769e-17
+  },
+  "minimum_f": 1.7433953877677258e-14,
+  "reported_entropy_difference": -1.34136137527191e-17,
+  "reported_quadratic_difference": 3.7269449679189215e-20,
+  "reported_KL_difference": 2.329340604949326e-21,
+  "method_limits": [
+    "Only the final accepted step has its physical residual independently assembled; intermediate states are not saved.",
+    "Energy and coefficients are independently analytic; saved nref/initial weights match independent quadrature before use.",
+    "NPZ stores densities, not internal log iterates; log(saved f) includes an exp/log rounding roundtrip.",
+    "Fixed-reference and old-population residual norms are separate, with no tolerance equivalence claim.",
+    "Downloaded extracted-file hashes are verified; GitHub ZIP digest is retained but the ZIP was not independently checked.",
+    "No continuum convergence, all-three-field campaign pass, or physical rate calibration is inferred."
+  ],
+  "cross_producer_comparison": {
+    "old_summary_sha256": "70910f42f545f64f52a28ed6ca24cf8972a1a326d952386514b076442ad3e054",
+    "old_state_sha256": "86d02a281293ea90fa80f00d5f8460fff9c3266eb0f569e40b58fe75eb84d474",
+    "initial_and_reference_bitwise_equal": true,
+    "reported_bulk_diagnostics": {
+      "entropy_gain_per_particle": {
+        "old_3eb6a27": 0.0010653014552105416,
+        "new_93bf752": 0.0010653014552105416,
+        "difference": 0.0,
+        "relative_difference": 0.0
+      },
+      "final_production_per_particle": {
+        "old_3eb6a27": 0.04121612937625201,
+        "new_93bf752": 0.04121612937625197,
+        "difference": -4.163336342344337e-17,
+        "relative_difference": 1.0101230768998837e-15
+      },
+      "relaxation_moment_change_per_particle": {
+        "old_3eb6a27": -0.012141410021369934,
+        "new_93bf752": -0.01214141002136996,
+        "difference": -2.6020852139652106e-17,
+        "relative_difference": 2.143149114794171e-15
+      },
+      "relative_entropy_decrease_fraction": {
+        "old_3eb6a27": 0.425838608438913,
+        "new_93bf752": 0.425838608438913,
+        "difference": 0.0,
+        "relative_difference": 0.0
+      },
+      "relaxation_moment_decrease_fraction": {
+        "old_3eb6a27": 0.2428191955724852,
+        "new_93bf752": 0.24281919557248566,
+        "difference": 4.440892098500626e-16,
+        "relative_difference": 1.8288883990536674e-15
+      }
+    },
+    "weighted_density_relative_L2": 1.4662212868197439e-15,
+    "reference_weighted_log_L2": 1.5399832917752333e-15,
+    "scope": "Bulk reported diagnostics and saved endpoints only; final instantaneous production is not independently reassembled because this audit permits only one final-step pair call. No timing or general speedup inference."
+  },
+  "wall_s": 0.888171250000596
+}

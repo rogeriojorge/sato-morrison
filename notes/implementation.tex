@@ -1647,13 +1647,88 @@ apply its inverse. This changes only PCG preconditioning; the full Hessian
 and all null constraints remain unchanged. Independent explicit-pair
 projectors check the covariance, and both inverse choices converge to the
 same separately assembled dense roots. No uniform conditioning bound follows.
-The campaign uses this line inverse and a 3000-iteration linear budget;
+The archived line-preconditioned campaign uses this inverse and a
+3000-iteration linear budget;
 failed residual checks remain fatal. API defaults retain the diagonal inverse
 and a 1000-iteration budget.
 For $N$ state nodes and $n_x$ nodes on a line, stored Cholesky factors use
 $O(Nn_x)$ entries, their factorization costs $O(Nn_x^2)$, and each inverse
 application costs $O(Nn_x)$. This is additional solver storage beyond the
 earlier compact-grid arrays; the direct pair action still costs $O(N_XN_v^2)$.
+
+
+\paragraph{Optional full spatial-block auxiliary.}
+For the five-axis Cartesian tensor grids $(x,y,z,u,\mu)$, the option
+\texttt{preconditioner\_axis=(0,1,2)} retains each spatial channel's Gram
+on the entire spatial tensor at fixed $(u,\mu)$. It requires coherent three-axis
+spatial and two-axis velocity shapes and one matching derivative channel on
+each selected spatial axis. Let $D_d$ denote the corresponding derivative
+lifted to all state nodes, and define
+\[
+ Q_{\rm sp}=\sum_{d=x,y,z}D_d^T\operatorname{diag}(q_d)D_d,
+ \qquad
+ L_u=\operatorname{diag}\!\bigl((D_u\circ D_u)^Tq_u\bigr),
+ \qquad Q_{\rm xyz}=Q_{\rm sp}+L_u.
+\]
+The implementation stores the nonnegative $q_d$ and remaining-channel diagonal
+as prepared data, then constructs the spatial Gram blocks. Thus the existing
+finite, nonnegative prepared-data check applies without incorrectly requiring
+Gram off-diagonal entries to be nonnegative. Each spatial Gram is PSD and
+$L_u$ is nonnegative diagonal. With
+$A_{\rm m}=\operatorname{diag}(\sqrt{n^{\rm m}})$, the auxiliary is
+\[
+ P_{\rm xyz}=\operatorname{diag}(n_+/n^{\rm m})
+             +\Delta t A_{\rm m}^{-1}Q_{\rm xyz}A_{\rm m}^{-1}.
+\]
+It is SPD for positive finite $n_+$ and $n^{\rm m}$ and $\Delta t\ge0$.
+Batched Cholesky factors apply its inverse. This retains spatial correlations
+within each derivative channel, rather than the cross-channel covariance
+$C_{i,d}^TP_{ij}I_XP_{ij}C_{i,e}$ for $d\ne e$ or the pair endpoint cross
+terms. All such terms remain in the exact residual and Hessian
+\[
+ H=\operatorname{diag}(n_+/n^{\rm m})
+                     +\Delta t A_{\rm m}^{-1}K_-A_{\rm m}^{-1}.
+\]
+Consequently this option changes neither the physical root equation nor its
+invariant nullspace, entropy budget or chosen residual norm. Mathematical
+SPD does not guarantee well-conditioned, representable floating-point factors;
+failed corrections and the independently recomputed original Hessian residual
+remain checked.
+
+A one-sided algebraic comparison is available for the implemented four
+channels and three-point local quadratic $u$ derivative. Write
+$Z_{ij}=I_XP_{ij}$ and $a_{i,d}=C_{i,d}(D_dh)_i$. Endpoint and channel
+Cauchy--Schwarz give
+\[
+ \left|Z_{ij}\sum_{d=1}^4(a_{i,d}-a_{j,d})\right|^2
+ \le8\sum_{d=1}^4\bigl(|Z_{ij}a_{i,d}|^2+|Z_{ij}a_{j,d}|^2\bigr).
+\]
+Summing with the positive symmetric unordered pair weights defining $K_-$
+produces each $q_{i,d}$ once, hence
+\[
+ K_-\preceq8Q_{\rm all},\qquad
+ Q_{\rm all}=\sum_{d=x,y,z,u}D_d^T\operatorname{diag}(q_d)D_d.
+\]
+Because each $D_u$ row has at most three nonzero entries,
+$D_u^T\operatorname{diag}(q_u)D_u\preceq3L_u$. Therefore
+\[
+ K_-\preceq24Q_{\rm xyz},\qquad H\preceq24P_{\rm xyz}.
+\]
+The constant uses the stated channel count and derivative row support; it is
+not asserted for arbitrary derivative schemes. There is no converse uniform
+bound: the auxiliary can penalize exact $K_-$ null functions, and positive
+population ratios can vary without a uniform bound. No field-, state- or
+refinement-independent condition estimate or speedup follows.
+
+With $N_s=n_xn_yn_z$ and $N_v=n_un_\mu$, one dense spatial factor contains
+$N_vN_s^2$ entries, its factorization costs $O(N_vN_s^3)$, and applying its
+inverse costs $O(N_vN_s^2)$. Simultaneously retained Gram blocks require another
+$N_vN_s^2$ entries; prepared covariances, derivative lifts and compiled workspace
+are additional. This storage is not $O(N_sN_v)$ under balanced spatial
+refinement. A noncubic explicit-pair test independently assembles the covariance,
+spatial derivatives and dense auxiliary inverse under both population metrics,
+and checks the exact Hessian and the one-sided Gram bound. These finite-grid
+checks do not imply continuum convergence or a general conditioning guarantee.
 
 
 Independent explicit-pair dense roots and a separately assembled pair ODE
@@ -2214,7 +2289,10 @@ Every adjacent difference and the coarsest-to-finest difference are retained;
 a finest-pair pass does not certify the original baseline timestep or jointly
 refine the spatial and temporal discretizations.
 The common $1\%$ observable-change target is retained. All units are normalized;
-these times use the freely prescribed coefficient.
+these times use the freely prescribed coefficient. The current example binds
+the fixed initial population as its numerical reference and uses the optional
+three-axis spatial channel-Gram auxiliary; earlier line-preconditioned results
+retain their separate source revisions and result directories.
 
 \texttt{SM\_EVOLUTION\_FIELDS} and \texttt{SM\_EVOLUTION\_CASES} select
 predefined independent execution jobs, leaving their scientific inputs fixed.
@@ -2342,7 +2420,18 @@ moment-marginal errors below $2\times10^{-15}$. The entropy gain per particle
 is $0.00106530145521$; selected bulk observables agree with the archived
 same-grid mirror case to rounding. Intermediate states have producer checks,
 not an independent full-pair replay. Dipole and nonaxisymmetric pilots remain
-in progress at this checkpoint. One completed case is not a three-field or
+in progress at this checkpoint. A separate three-field spatial-block pilot
+at source \texttt{93bf752d} uses the same physical inputs and residual metric;
+its evidence is not merged into the line-preconditioned record. Its completed
+mirror case uses 156 PCG iterations and $110.54$ seconds of summed accepted-step
+wall time on a four-logical-CPU AMD EPYC 7763 runner, with cumulative peak RSS
+$911200256$ bytes. The single spatial factor occupies $40625000$ bytes.
+These different-runner times do not establish a speedup. A separate final-step
+NumPy pair check gives residual $6.72\times10^{-16}$; selected bulk differences
+from the line pilot are at most $2.15\times10^{-15}$ relatively. Weighted log
+endpoint difference is $1.54\times10^{-15}$, but the largest raw log difference
+is $7.69\times10^{-8}$ in tiny tails: weighted agreement does not certify
+uniform pointwise relative accuracy. One completed case is not a three-field or
 continuum convergence result; the chosen numerical norm supplies no physical
 rate calibration.
 

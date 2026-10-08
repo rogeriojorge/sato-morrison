@@ -1,0 +1,99 @@
+{
+  "inputs": {
+    "first_audit": "fixed_reference_campaign_audit_3eb6a27.json.comparison_snapshot",
+    "second_audit": "spatial_block_campaign_audit_93bf752.json.comparison_snapshot",
+    "fields": [
+      "mirror",
+      "dipole",
+      "nonaxisymmetric"
+    ],
+    "case": "mu13",
+    "scope": "Same declared fixed-reference physical inputs; preconditioner differs; timings are separate-run observations, not controlled benchmarks"
+  },
+  "audit_source_sha256": "1611bf4f783db558672bed8964be948c230076db5d1b5f8421f5e691f4b75b55",
+  "frozen_summary_hashes": {
+    "first": "bffc3969b8b081637e4191df23e4d0681b5b6f64f4188c70dcacb12efb1644d3",
+    "second": "eac8943e8eaf2497c6283aebbb6a71badbe43886083a7adbcc96320b63b97910"
+  },
+  "producer_commits": [
+    "3eb6a270eedd5d8151967a5554bdc01621a383cc",
+    "93bf752da33a31ec158a229f87eaa285aeb5c58b"
+  ],
+  "units": "normalized; both comparison norms are dimensionless",
+  "norm_definitions": {
+    "reference": "r_i = w_i * f_initial,i; positive quadrature population held fixed and bitwise shared by both runs",
+    "normalization": "N_reference = sum_i r_i; normalized weight p_i = r_i / N_reference",
+    "weighted_population_endpoint_difference": "sqrt(sum_i p_i * ((f_first,i - f_second,i) / f_initial,i)^2)",
+    "weighted_log_endpoint_difference": "sqrt(sum_i p_i * (log(f_first,i) - log(f_second,i))^2)",
+    "maximum_raw_log_difference": "max_i abs(log(f_first,i) - log(f_second,i))",
+    "principal_relative_differences": "abs(observable_first - observable_second) / max(abs(observable_second), 1e-30)"
+  },
+  "postprocess_metadata": {
+    "python": "3.12.13",
+    "numpy": "2.5.3",
+    "dtype": "float64",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "processor": "Apple M4",
+    "logical_cpus": 10,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "unset",
+      "OPENBLAS_NUM_THREADS": "unset",
+      "MKL_NUM_THREADS": "unset"
+    },
+    "load_average_start": [
+      5.1337890625,
+      5.25927734375,
+      8.45068359375
+    ],
+    "load_average_end": [
+      5.1337890625,
+      5.25927734375,
+      8.45068359375
+    ],
+    "wall_seconds": 0.04110629198839888,
+    "scope": "Local NumPy saved-data postprocessing only; hardware/timing do not describe the trajectory producer"
+  },
+  "limitations": [
+    "Weighted agreement does not certify uniform pointwise relative accuracy, especially at tiny reference-population tails.",
+    "The maximum raw log difference and its reference mass fraction are reported separately, without applying a uniform-accuracy target.",
+    "These are fixed-grid, fixed-time, fixed-reference numerical endpoint comparisons; neither continuum accuracy nor physical calibration follows.",
+    "Producer histories/provenance retain distinct commits and preconditioners; no controlled runtime speedup is inferred."
+  ],
+  "rows": [
+    {
+      "field": "mirror",
+      "case": "mu13",
+      "parameters": {
+        "nx": 5,
+        "nu": 25,
+        "nmu": 13,
+        "umax": 4.0,
+        "mumax": 20.0,
+        "dt": 0.005
+      },
+      "final_time": 0.02,
+      "first_state_sha256": "86d02a281293ea90fa80f00d5f8460fff9c3266eb0f569e40b58fe75eb84d474",
+      "second_state_sha256": "508b9b13094d5a75edc23d168dca06956efc83e51330409bef0e79791946c58e",
+      "initial_and_reference_vectors_bitwise_identical": true,
+      "normalizing_reference_population_total": 0.13258719664297938,
+      "weighted_population_endpoint_difference": 1.5333068084107962e-15,
+      "weighted_log_endpoint_difference": 1.5399832917752333e-15,
+      "maximum_raw_log_difference": 7.69167449732322e-08,
+      "reference_population_fraction_at_maximum_raw_log_difference": 1.3053916771374917e-18,
+      "principal_relative_differences": {
+        "entropy_gain_per_particle": 0.0,
+        "final_production_per_particle": 1.0101230768998847e-15,
+        "relaxation_moment_change_per_particle": 2.143149114794171e-15
+      },
+      "first_provenance_id": "ca60d12d05d2fce0b92c82a9fc102ffdbe03574c0cfa341f73fecb5bfc86512b",
+      "second_provenance_id": "0625162b8b905ca245a2098f2829bdea18774769bfa0905d456029d6eab0f19b",
+      "first_preconditioner_axis": 0,
+      "second_preconditioner_axis": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}
