@@ -1,0 +1,155 @@
+{
+  "status": "passed_scoped_independent_checks_with_historical_degree40_failure",
+  "example_source_sha256": "8537d3521eb3b29a9bd31abfa4288f9b5e292dffa064cb50e02dae1f5d4a44ac",
+  "inputs": {
+    "tau": 0.05,
+    "degree": 40,
+    "projection_order": 96,
+    "radial_order": 64,
+    "pitch_order": 64,
+    "covariance": [
+      1.15,
+      1.15,
+      0.7
+    ],
+    "mass": 1,
+    "field": 1
+  },
+  "double_quadrature": [
+    {
+      "radius": 8.0,
+      "minimum_density": 2.311181298689461e-21,
+      "speed": 7.997220166943089,
+      "xi": -0.9993050417357722,
+      "negative_node_count": 0,
+      "negative_quadrature_mass": 0.0,
+      "negative_abs_max": 0.0,
+      "quadrature_number": 0.9999999999986852
+    },
+    {
+      "radius": 9.0,
+      "minimum_density": 1.880239925322718e-26,
+      "speed": 8.996872687810976,
+      "xi": -0.9993050417357723,
+      "negative_node_count": 0,
+      "negative_quadrature_mass": 0.0,
+      "negative_abs_max": 0.0,
+      "quadrature_number": 0.9999999999999998
+    },
+    {
+      "radius": 10.0,
+      "minimum_density": 4.854153679535617e-32,
+      "speed": 9.996525208678861,
+      "xi": -0.9993050417357722,
+      "negative_node_count": 0,
+      "negative_quadrature_mass": 0.0,
+      "negative_abs_max": 0.0,
+      "quadrature_number": 1.0000000000000004
+    },
+    {
+      "radius": 12.0,
+      "minimum_density": -1.2553635167874615e-36,
+      "speed": 10.879591890736785,
+      "xi": -0.9963401167719552,
+      "negative_node_count": 42,
+      "negative_quadrature_mass": 2.3657054798466624e-36,
+      "negative_abs_max": 1.2553635167874615e-36,
+      "quadrature_number": 1.0000000000000009
+    }
+  ],
+  "current_degree56_double_probe": {
+    "degree": 56,
+    "radius": 12,
+    "minimum_density": 2.522397068421403e-44,
+    "negative_node_count": 0,
+    "density_at_degree40_worst_point": 6.01889838902802e-37
+  },
+  "high_precision": {
+    "mpmath_dps": 120,
+    "independent_method": "Exact polynomial Legendre coefficients with analytic incomplete-gamma Gaussian moments; no use of NumPy projection",
+    "density_by_degree": {
+      "40": "-1.256044663543507084188040283006870986297e-36",
+      "56": "6.012554515633281538318806838233167867386e-37",
+      "60": "6.012554516494845715744073398515041368989e-37",
+      "80": "6.012554516495193980261180169941414807854e-37",
+      "100": "6.012554516495193980261180169926974946315e-37",
+      "120": "6.012554516495193980261180169926974946315e-37",
+      "160": "6.012554516495193980261180169926974946315e-37",
+      "180": "6.012554516495193980261180169926974946315e-37"
+    },
+    "analytic_coefficient_vs_mpmath_integral_absolute_error": {
+      "0": "8.008332380732403697718341e-146",
+      "2": "0.0",
+      "40": "2.25624672637122980521174e-140",
+      "60": "9.508047260837563858968505e-136"
+    },
+    "shell_positive_lower_bound": "1.262625990471789220545972121044174884906e-38",
+    "initial_density_at_failed_point": "1.607876303141309820415203390951900809235e-38",
+    "last_term_abs": "3.1919712991805344647e-204",
+    "degree56_double_relative_error_at_historical_worst_point": 0.0010551043679391105,
+    "degree56_high_precision_truncation_relative_error_at_historical_worst_point": 1.4335210202368038e-10
+  },
+  "tail_upper_bounds": {
+    "8": {
+      "mass_upper_bound": "4.983891960545275624517326e-12",
+      "radial_moment_upper_bounds": {
+        "0": "4.983891960545275624517326e-12",
+        "2": "3.306276903878700531307959e-10",
+        "4": "2.196083805966553934797959e-8"
+      },
+      "relative_entropy_upper_bound": "7.610701955921579300719778e-11",
+      "parallel_truncation_mu_marginal_absolute_bound_uniform_mu_ge_0": "9.640603702653552501861839e-14"
+    },
+    "9": {
+      "mass_upper_bound": "3.444725377015226384403283e-15",
+      "radial_moment_upper_bounds": {
+        "0": "3.444725377015226384403283e-15",
+        "2": "2.870535899301530849111321e-13",
+        "4": "2.393927041983387510291921e-11"
+      },
+      "relative_entropy_upper_bound": "6.510782034931176496329427e-14",
+      "parallel_truncation_mu_marginal_absolute_bound_uniform_mu_ge_0": "5.302355179611124229496627e-17"
+    },
+    "10": {
+      "mass_upper_bound": "9.865822978142725627257774e-19",
+      "radial_moment_upper_bounds": {
+        "0": "9.865822978142725627257774e-19",
+        "2": "1.009526058781267935797435e-16",
+        "4": "1.033536717886598438691748e-14"
+      },
+      "relative_entropy_upper_bound": "2.265889565147071649265473e-17",
+      "parallel_truncation_mu_marginal_absolute_bound_uniform_mu_ge_0": "1.236414034153847358740872e-20"
+    },
+    "12": {
+      "mass_upper_bound": "5.802151282011337623601628e-27",
+      "radial_moment_upper_bounds": {
+        "0": "5.802151282011337623601628e-27",
+        "2": "8.489588377852270361080497e-25",
+        "4": "1.242490772014345161257751e-22"
+      },
+      "relative_entropy_upper_bound": "1.879462419795386402314045e-25",
+      "parallel_truncation_mu_marginal_absolute_bound_uniform_mu_ge_0": "5.083901104244530111509925e-29"
+    }
+  },
+  "tail_bound_derivation": "Couple V=diag(sqrt(a),sqrt(a),sqrt(c))Z, so |V|<=sqrt(a)|Z|. For radial moment p, bound E[|V|^p 1_|V|>R] by (2a)^(p/2) Gamma((p+3)/2,R^2/(2a))/Gamma(3/2). Lorentz preserves radial law. Heat maximum principle puts F(r,xi,t) between its initial angular min and max, hence |log(F/FM)|<=abs(log(a sqrt(c)))+r^2 max(abs(1/2-1/(2a)),abs(1/2-1/(2c))). H tail <=(1+C0)*mass_tail+C2*second_tail+FM_mass_tail. For the fixed-mu parallel marginal, F<=Cinitial exp[-(u^2+2mu)/(2a)] gives Gtail(mu)<=erfc(R/sqrt(2a))/sqrt(a*c)*exp(-mu/a), with m=B=1. Dougherty Gaussian eigenvalues <=a for all t; same coupling bounds apply, with no claim of pointwise spectral positivity.",
+  "limits": "Moment bounds concern exact conserved radial tail for initial anisotropic Gaussian and Lorentz evolution; positive exact-density certification uses shell-minimum maximum principle. Does not certify double reconstruction pointwise accuracy or all times, and no density clipping is applied. n64 projected quadrature is not a rigorous continuous integral bound.",
+  "versions": {
+    "python": "3.12.13",
+    "numpy": "2.5.3",
+    "mpmath": "1.3.0"
+  },
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "wall_s": 0.8438620829838328,
+  "producer_commit": "05060a921c4fd19569bdeb3b9aaba880d76ed786",
+  "units": "normalized",
+  "source_targets_sha256": {
+    "examples/29_operator_comparison.py": "8537d3521eb3b29a9bd31abfa4288f9b5e292dffa064cb50e02dae1f5d4a44ac",
+    "src/sato_morrison/controls.py": "0da35e11110fa778ff32d65c19f65f7f686a7846a1564934c20897ad0ad2bd27"
+  },
+  "producer_input_sha256": {
+    "results/operator_comparison/summary.json": "cc4f66fa060266d555b20305e42f37dbe1cef9c7cca1390d1ccc3d7b29a0dac1",
+    "results/operator_comparison/arrays.npz": "79aef65869d378d77ae643d9ed37e47ed81598e73bb8ac0da9b5748be22e4618"
+  },
+  "historical_probe_scope": "Explicit degree40/projection96 tau=.05 probe reproduced independently using unchanged Gaussian/coefficient definitions; this is not the final degree56 production configuration.",
+  "current_production_scope": "Degree56 final production passed its own all-time declared checks. This independent audit checks tau=.05 at R12 only, plus rigorous exact-model tail bounds at R8/R9/R10; it does not certify uniform relative density accuracy in deep tails."
+}

@@ -1,0 +1,141 @@
+{
+  "status": "passed_independent_scalar_and_spherical_references",
+  "executed_utc": "2026-10-08T20:01:15.614464+00:00",
+  "units": "normalized",
+  "reference_execution": "Independent instantaneous physical Coulomb Gaussian reference; not a kinetic trajectory or a calibrated constrained-model rate.",
+  "associated_comparison_producer": "05060a921c4fd19569bdeb3b9aaba880d76ed786",
+  "associated_comparison_summary_sha256": "cc4f66fa060266d555b20305e42f37dbe1cef9c7cca1390d1ccc3d7b29a0dac1",
+  "auditor_source_basename": "common_collision_theory.py",
+  "auditor_source_sha256": "ff250440b1a06f172df3f4f38bfb0960ad9ff5d49edc06a677243e100c71677b",
+  "auditor_source_scope": "Private original checker archived outside the public tree; no production collision package imports.",
+  "normalized_command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 .venv/bin/python common_collision_theory.py",
+  "inputs": {
+    "density": 1.0,
+    "mass": 1.0,
+    "field": 1.0,
+    "gamma": 1.0,
+    "mean_velocity": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "covariance": [
+      1.15,
+      1.15,
+      0.7
+    ],
+    "relative_spherical_quadrature": {
+      "radial_order": 44,
+      "pitch_order": 48,
+      "phase_order": 48,
+      "relative_radius": 12.0
+    },
+    "scalar_quadrature": {
+      "absolute_tolerance": 2e-12,
+      "relative_tolerance": 2e-12
+    }
+  },
+  "reference_results": {
+    "status": "passed_independent_scalar_and_spherical_references",
+    "covariance": [
+      1.15,
+      1.15,
+      0.7
+    ],
+    "normalization": {
+      "number": 1,
+      "theta": 1,
+      "mass": 1.0,
+      "field": 1.0,
+      "Gamma": 1.0
+    },
+    "covariance_derivative": [
+      -0.07403925375622224,
+      -0.07403925375622224,
+      0.14807850751244453
+    ],
+    "spherical_covariance_derivative": [
+      -0.07403925375621499,
+      -0.07403925375621496,
+      0.1480785075124314
+    ],
+    "alpha": 0.4935950250414818,
+    "Lorentz_nu": 0.16453167501382726,
+    "Dougherty_nu": 0.2467975125207409,
+    "fourth_cumulant_derivative_Landau": [
+      0.11974067662015353,
+      0.11974067662015353,
+      -0.11660318778400036
+    ],
+    "spherical_fourth_cumulant_derivative": [
+      0.11974067662030088,
+      0.11974067662030066,
+      -0.11660318778400902
+    ],
+    "initial_mu_second_rate_Landau": -0.2607534495317381,
+    "initial_mu_second_rate_Laplace": -0.2607534495318532,
+    "initial_mu_second_rate_matched_controls": -0.3405805672786224,
+    "initial_speed_fourth_rate_Landau": -0.13327065676119398,
+    "initial_speed_fourth_rate_Dougherty": -0.2665413135224002,
+    "initial_speed_fourth_rate_Lorentz": 0.0,
+    "initial_speed_fourth": 15.27,
+    "initial_mu_squared": 2.6449999999999996,
+    "Lorentz_mu_squared_limit": 2.036,
+    "Dougherty_mu_squared_limit": 2.0,
+    "initial_KL_to_Maxwellian": 0.03857552959420763,
+    "Lorentz_KL_floor": 0.00029414497421946246,
+    "Lorentz_KL_scalar_quad_error_estimate": 8.505715569994086e-15,
+    "Lorentz_angle_average_normalization": 1.0000000000000013,
+    "initial_entropy_slope": 0.041388402720869605,
+    "matched_Lorentz_Dougherty_initial_entropy_slope": 0.041388402720869584,
+    "elapsed_s": 0.051254749996587634,
+    "versions": {
+      "python": "3.12.13",
+      "numpy": "2.5.3"
+    },
+    "source_sha256": "ff250440b1a06f172df3f4f38bfb0960ad9ff5d49edc06a677243e100c71677b",
+    "scope": "No production collision package import and no kinetic evolution. Physical Coulomb Gaussian instantaneous weak moments independently integrate relative velocity and analytic COM; Lorentz angular-average equilibrium uses a scalar integral."
+  },
+  "formula_details": {
+    "weak_form": "C=Gamma div_v integral F Fprime U(v-vprime)(grad log F-gradprime log Fprime) d3vprime; U=(I-wwT/|w|\u00b2)/|w|.",
+    "Gaussian_relative_COM": "w~N(0,2A), V~N(0,A/2), independent; v=V+w/2,vprime=V-w/2.",
+    "fourth_cumulant": "dot kappa_i=Gamma I4_i/2-3 A_i dot A_i; I4_i=E[w_i\u00b3 (U A^-1 w)_i].",
+    "mu_second": "mu=m(vx\u00b2+vy\u00b2)/(2B); dot<mu\u00b2>=4a dot A_perp+(2/3)dot kappa_perp for m=B=1.",
+    "speed_fourth": "dot<|v|\u2074>=2 tr(A dot A), rather than the Gaussian-closure 4 tr(A dot A).",
+    "normalization": "Gamma_SI=q\u2074 lnLambda/(8pi epsilon0\u00b2 m\u00b2); normalized frequency Gamma_SI*n/v0\u00b3.",
+    "rate_matching": "alpha=-(dot A_perp-dot A_parallel)/(a-c), nu_L=alpha/3, nu_D=alpha/2; a comparison convention."
+  },
+  "primary_sources": [
+    {
+      "title": "Energy-, momentum-, density-, and positivity-preserving spatio-temporal discretizations for the nonlinear Landau collision operator",
+      "url": "https://arxiv.org/abs/1804.08546",
+      "used": "Equations2-4 physical homogeneous weak form; moment derivations here are independently evaluated."
+    },
+    {
+      "title": "Fitzpatrick: Landau Collision Operator",
+      "url": "https://farside.ph.utexas.edu/teaching/plasma/lectures1/node37.html",
+      "used": "Coulomb prefactor conventions."
+    }
+  ],
+  "environment": {
+    "python": "3.12.13",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "processor": "Apple M4",
+    "logical_cpus": 10,
+    "thread_environment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    }
+  },
+  "limits": [
+    "Initial Gaussian instantaneous rates only; Landau does not preserve the Gaussian family.",
+    "No full Landau time evolution, convergence campaign, plasma lifetime, or applicability in the strong-field constrained ordering is inferred.",
+    "Lorentz and Dougherty are specified conventional controls; matching anisotropy slope does not match fourth-moment or full-distribution evolution."
+  ],
+  "wall_s": 0.051254749996587634,
+  "wall_s_scope": "Original scalar and spherical quadratures and assertions, excluding imports and receipt writing."
+}

@@ -1,0 +1,86 @@
+{
+  "status": "passed_independent_common_problem_checks",
+  "producer_commit": "05060a921c4fd19569bdeb3b9aaba880d76ed786",
+  "executed_utc": "2026-10-08T19:52:35.318354+00:00",
+  "units": "normalized",
+  "input_summary_sha256": "cc4f66fa060266d555b20305e42f37dbe1cef9c7cca1390d1ccc3d7b29a0dac1",
+  "producer_combined_source_sha256": "8ecceeef2b110c49e65dd0571c8d0375c36bfea4eeb073ed56f7d8801fd87c7a",
+  "producer_example_sha256": "8537d3521eb3b29a9bd31abfa4288f9b5e292dffa064cb50e02dae1f5d4a44ac",
+  "rendered_output_sha256": {
+    "arrays.npz": "79aef65869d378d77ae643d9ed37e47ed81598e73bb8ac0da9b5748be22e4618",
+    "comparison.gif": "65f0a6c637a3708cb4782530d03b3f713d3962cd0e2af78e199a1900de497879",
+    "comparison.mp4": "a8c8010d15990dc337ff772df126acf9651ba5d61409f6c0833eb4a55dbb6499",
+    "comparison.png": "de1d714313ebe621eaad8bf32a7349dc063a0cf391de8d3898a9cd35688887e1",
+    "comparison.svg": "bf92fb99cb0379cc10f15a5789f1368cc40124368c14dec10e1f6d058ba01864",
+    "equations.png": "459a44653778f3a76b52b81fc893599c05dff6f0256d1ca5993f2cb70e8dc5a6",
+    "equations.svg": "e87f827b25cbc243491bcd0becb7ee61e1eaefed57cf5bc92911e68081cc7831",
+    "velocity_poster.png": "3f928fdf3e59a8a05ed82a8742e28e9eb1f4ca553339779dec02450b71b26314"
+  },
+  "auditor_source_basename": "audit_operator_comparison29.py",
+  "auditor_source_sha256": "b76eed227c5af2b55dfaf16809c303700f09e8bef1354a6c8072f5cc85505502",
+  "normalized_command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 .venv/bin/python audit_operator_comparison29.py",
+  "auditor_source_scope": "Private original checker retained outside the public tree; command omits its private directory. No production collision package imports or nonlinear evolution calls.",
+  "checks": {
+    "exact_moment_curve_max_absolute_errors": {
+      "number": 3.219646771412954e-15,
+      "momentum": 1.9596954267675493e-17,
+      "energy": 6.217248937900877e-15,
+      "anisotropy": 6.467049118441537e-15,
+      "mean_mu": 7.105427357601002e-15,
+      "mu_second": 1.4210854715202004e-14,
+      "speed_fourth": 5.684341886080802e-14
+    },
+    "initial_KL": 0.03857552959420763,
+    "Dougherty_KL_max_absolute_error": 1.5959455978986625e-16,
+    "density_map_max_absolute_difference": 1.995625886763719e-14,
+    "density_map_difference_over_initial_peak": 3.02409751816105e-13,
+    "mu_marginal_max_absolute_difference": 2.2870594307278225e-13,
+    "independent_marginal_parallel_tail_bound": 9.640603702653491e-14,
+    "Lorentz_KL_max_absolute_difference": 4.163336342344337e-15,
+    "Lorentz_KL_floor": 0.00029414497421945596,
+    "producer_KL_floor_difference": 2.6785214671254387e-16,
+    "degree24_failure_preserved": true,
+    "Bernstein_generator_eigenvalue_max_error": 3.637978807091713e-12,
+    "movie": {
+      "gif_frames": 61,
+      "gif_duration_ms": 6100,
+      "gif_per_frame_duration_ms": 100,
+      "mp4_stream": {
+        "avg_frame_rate": "10/1",
+        "duration": "6.100000",
+        "nb_frames": "61"
+      }
+    }
+  },
+  "independent_representation": {
+    "Lorentz": "Positive Gaussian power expansion in (1-xi\u00b2), lifted to Bernstein degree128; independent symmetric birth/death angular generator diagonalization. This is distinct from producer Legendre projection.",
+    "Dougherty": "Direct analytic single-Gaussian covariance, no mixture implementation import.",
+    "constrained": "Homogeneous distribution unchanged; physicalF and nativef=2piF distinguished. Production kernel null check is retained evidence, not re-evaluated by this array audit.",
+    "mu_marginal": "128-point Gauss parallel integral on[-8,8] versus producer64/[-10,10]; positive-heat radial majorant provides stated omitted-tail bound.",
+    "Lorentz_entropy": "72radial/76pitch quadrature using independent Bernstein heat evaluation; scalar erf angle-average equilibrium integrated adaptively."
+  },
+  "limits": [
+    "Rate matching is a comparison convention, not physical calibration or equivalence of collision models.",
+    "Lorentz preserves radial populations and approaches a generally non-Maxwellian isotropic state.",
+    "No finite-time Landau curve is present; physical Landau contributes an instantaneous initial rate only.",
+    "Angular reconstructions and velocity quadratures are finite numerical approximations; this audit does not claim uniform relative accuracy in exponential tails.",
+    "GIF/MP4 frames are checked for count/time and hashes, not independently rendered pixels."
+  ],
+  "environment": {
+    "python": "3.12.13",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "pillow": "12.3.0",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "logical_cpus": 10,
+    "processor": "Apple M4",
+    "thread_environment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    }
+  },
+  "wall_s": 6.346959541959222,
+  "wall_s_scope": "Historical source/output hashing, independent analytical and angular reconstruction, quadratures, and movie manifests; excludes imports/final receipt writing."
+}

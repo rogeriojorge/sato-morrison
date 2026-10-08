@@ -7712,6 +7712,16 @@
       "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37829869940",
       "log_sha256": "3255daf5564580ba13caf2a41660eb7fd1cd6d9c7c589ad57400c6ecdd947f31",
       "scope": "Full suite at the final spatial rendering source revision. New rendering examples were separately executed and independently audited against saved simulation data."
+    },
+    {
+      "source_commit": "05060a921c4fd19569bdeb3b9aaba880d76ed786",
+      "command": "python -m pytest -q",
+      "passed": 253,
+      "elapsed_s": 210.91,
+      "environment": "Fresh Ubuntu CI installation",
+      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37834305455",
+      "log_sha256": "174b858880f0eb5db69c6d7f0e99b58f2fff78b1f12f7cf1df6200a7d7eb07e6",
+      "scope": "Full suite including independent dense Landau Gram/root, unrepaired nullspace, first-order distribution evolution, Maxwellian and visible failure checks."
     }
   ],
   "additional_experiments": [
@@ -8039,6 +8049,20 @@
       "independent_evidence_path": "results/spatial_relaxation/independent_audit.json",
       "independent_evidence_sha256": "e8eb16129fff95c72bf86d4c51671810d611df717ea0fbfcf8112819b640e0f9",
       "scope": "Prescribed analytic dipole lines and three accepted collision-pilot states. B-weighted flow/conditionalvelocity/full\u03bc populations independently reconstructed; no interpolated states or new solves. Full nonuniform refinement and rates unresolved."
+    },
+    {
+      "command": "MPLBACKEND=Agg python examples/29_operator_comparison.py",
+      "cwd": "${REPOSITORY}",
+      "producer_commit": "05060a921c4fd19569bdeb3b9aaba880d76ed786",
+      "evidence_path": "results/operator_comparison/summary.json",
+      "evidence_sha256": "cc4f66fa060266d555b20305e42f37dbe1cef9c7cca1390d1ccc3d7b29a0dac1",
+      "exit_code": 0,
+      "status": "passed",
+      "checks_wall_s": 24.59776466700714,
+      "independent_evidence_path": "results/operator_comparison/independent_audit.json",
+      "independent_evidence_sha256": "df61befca402fa26249597417d90d94ecd131e5f65e24e0751dc2b0d572a7b05",
+      "angular_tail_audit_sha256": "c4887f9683ae1cfdd1b3fe4050d2af8ad5b44a8164cb6187d6b3ab329abb2f3b",
+      "scope": "Shared Gaussian constrained/Lorentz/Dougherty evolution with independently checked physical3V Landau initial pressure rate. Exact modal time factors and converged angular/velocity reconstructions; failed coarse degree24 retained. No physical rate calibration."
     }
   ]
 }

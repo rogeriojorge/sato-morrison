@@ -3783,6 +3783,141 @@ pilot's unresolved grid/tail/timestep scope. Inputs, plotted arrays, tests
 of number, energy and all moment bins, field-line checks, source commits,
 versions and hardware are in \path{results/spatial_relaxation/}.
 
+\section{Collision operators on a common homogeneous initial state}
+\label{sec:commonoperators}
+Example 29 uses one physical three-velocity density throughout:
+\[
+ F_0(\mathbf v)=\frac{\exp[-(v_x^2+v_y^2)/(2a)-v_z^2/(2c)]}
+ {(2\pi)^{3/2}a\sqrt c},\qquad a=1.15,\quad c=0.7.
+\]
+Here $n=m=B=1$, $\mathbf U=0$, and $\theta=(2a+c)/3=1$.
+The energy is $3/2$. For a gyrotropic density, $u=v_z$ and
+$\mu=v_\perp^2/2$, so $d^3v=2\pi\,du\,d\mu$ and the native
+guiding-center density in the repository's measure is $f=2\pi F$.
+The magnetic-moment marginal is
+\[
+ G(\mu,t)=2\pi\int_{-\infty}^{\infty}F(u,\sqrt{2\mu},t)\,du,
+ \qquad G(\mu,0)=a^{-1}e^{-\mu/a}.
+\]
+Thus all operators start with the same distribution, number, momentum,
+energy and pressure anisotropy, rather than merely matching these moments
+between different test cases. Homogeneous states are stationary for the
+uniform local constrained kernel: its projected spatial derivative
+vanishes. The example checks this with the actual nonlinear weak
+implementation at a finite-amplitude state. It also agrees with the
+homogeneous null branch of source Eq.~(181). This statement concerns the
+implemented reduced kernel, not a claim that ordinary Coulomb collisions
+leave anisotropic homogeneous plasmas unchanged.
+
+\subsection{Constant-frequency Lorentz and conserving Dougherty controls}
+The gyroangle-independent angular operator is
+\[
+ C_L[F]=\frac{\nu_L}{2}\partial_\xi[(1-\xi^2)\partial_\xi F],
+ \qquad \xi=v_z/|\mathbf v|.
+\]
+Its Legendre degree $\ell$ decays at
+$\nu_L\ell(\ell+1)/2$ and each speed-shell population is conserved.
+The constant frequency used here is a model choice; the Coulomb
+deflection frequency in Ref.~\cite{ABC09}, Eqs.~(3) and (10), depends on
+speed. The long-time state is
+\[
+ F_{L,\infty}(r)=\frac12\int_{-1}^{1}F_0(r,\xi)\,d\xi.
+\]
+It is isotropic but generally non-Maxwellian. Angular scattering can
+transfer the species' momentum to its scattering reservoir; the common
+zero-drift initial state does not test this distinction, which is covered
+separately by the degree-one control.
+
+The single-species conserving Dougherty operator is
+\[
+ C_D[F]=\nu_D\nabla_v\cdot[(\mathbf v-\mathbf U)F+\theta\nabla_vF].
+\]
+Its drift and temperature are the distribution's own conserved moments,
+not externally fixed bath parameters; see Ref.~\cite{HHHH24}.
+The Gaussian covariance evolves exactly as
+$A_D(t)=I+(A_0-I)e^{-2\nu_Dt}$, and the full density follows the
+Gaussian-mixture solution already tested against the strong equation.
+The final state is $F_M=(2\pi)^{-3/2}e^{-|\mathbf v|^2/2}$.
+
+\subsection{A rate convention that does not equate the operators}
+With $\Gamma=1$, the independent Laplace and spherical physical-3V
+Landau integrals give
+\[
+ \dot A_{\rm La}(0)=\operatorname{diag}
+ (-0.0740392537562,-0.0740392537562,0.1480785075124).
+\]
+For $\delta=T_\perp-T_\parallel=a-c=0.45$, define
+\[
+ \alpha=-\frac{\dot\delta_{\rm La}(0)}{\delta(0)}
+ =0.493595025041\ldots,\qquad
+ \nu_L=\alpha/3,\quad\nu_D=\alpha/2,\quad\tau=\alpha t.
+\]
+Both conventional controls then have
+$\delta(\tau)=0.45e^{-\tau}$ and
+$\langle\mu\rangle=1+0.15e^{-\tau}$ at every time. Matching this one
+initial Landau slope neither equates subsequent kinetic evolution nor
+calibrates a constrained collision coefficient. The time units remain
+normalized; no density, Coulomb logarithm or magnetized encounter rate
+has been inferred from this matching.
+
+Higher moments resolve the difference. Wick's rule gives
+\[
+ \langle r^4\rangle_0=(\operatorname{tr}A_0)^2+
+ 2\operatorname{tr}(A_0^2)=15.27.
+\]
+Lorentz preserves this value, whereas Dougherty gives
+$\langle r^4\rangle_D=15+0.27e^{-2\tau}$.
+Using
+$(1-\xi^2)^2=8/15-16P_2(\xi)/21+8P_4(\xi)/35$ and the initial
+moments $\langle r^4P_2\rangle_0=-3.015$,
+$\langle r^4P_4\rangle_0=0.6075$, one obtains
+\begin{align*}
+ \langle\mu^2\rangle_L&=2.036+
+ 0.574285714285714\,e^{-\tau}+
+ 0.034714285714286\,e^{-10\tau/3},\\
+ \langle\mu^2\rangle_D&=2(1+0.15e^{-\tau})^2.
+\end{align*}
+The equilibria therefore have second magnetic-moment moments $2.036$
+and $2$, despite identical pressure relaxation. This is a benchmark
+consequence of the known operators and their invariants, not a novelty
+claim. The constrained state retains $\langle\mu^2\rangle=2a^2=2.645$.
+
+The plotted relative entropy is
+\[
+ H(F\mid F_M)=\int[F\log(F/F_M)-F+F_M]\,d^3v.
+\]
+For Dougherty it equals
+$-\tfrac12\log[(1+0.15e^{-\tau})^2(1-0.3e^{-\tau})]$.
+Independent scalar integration gives
+$H(F_{L,\infty}\mid F_M)=0.000294144974219\ldots$; the initial value
+is $0.0385755295942\ldots$. The nonzero Lorentz limit follows from
+its conserved non-Maxwellian speed distribution.
+
+\subsection{Numerical representation and interpretation}
+The conventional time factors are analytic. Example 29 reconstructs
+Lorentz densities with a finite Legendre expansion and positive velocity
+quadrature; it does not claim that truncation preserves positivity at
+every velocity. The retained production expansion uses degree 56 and
+96 angular projection nodes. Spherical observables use 64 radial and
+64 pitch nodes with radius 10; $G(\mu)$ uses independent parallel
+quadrature on $[-10,10]$. The displayed marginal covers $0\le\mu\le6$;
+its second moment is calculated from the full spherical quadrature,
+not from this plotting window.
+
+Refinement checks include $\tau=0,0.05,1,3$, including the first positive
+movie time when high angular degrees have decayed least. They vary
+quadrature order, tail radius, retained angular degree and projection
+order separately, and check both the plotted density and the marginal.
+Errors in densities are scaled by the initial peak density; they are
+not uniform relative errors in exponentially small tails. No negative
+reconstruction is clipped. The failed coarse degree-24 reconstruction
+is retained in the ledger. The final two levels in every accepted
+direction must pass the declared absolute $2\times10^{-8}$ tolerance
+in normalized units. The movie evaluates analytic modal time factors at
+each of its 61 times, with fixed color limits and explicitly saturated
+colors. All plotted arrays, failed coarse checks and source/runtime
+metadata are saved under \path{results/operator_comparison/}.
+
 \bibliographystyle{unsrt}
 \bibliography{references}
 \end{document}

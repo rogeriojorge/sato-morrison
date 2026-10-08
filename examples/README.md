@@ -35,6 +35,7 @@ Prefix each command below with `MPLBACKEND=Agg python`.
 | `examples/26_tail_guard.py` | Recorded failed Newton-ray trials and floating-point positivity guards; no new solve |
 | `examples/27_encounter_movie.py` | 3D particle paths, equal-scale close projections and shared-clock movies from checked encounters |
 | `examples/28_spatial_relaxation.py` | Dipole geometry, three accepted spatial-flow maps, velocity shapes and conserved μ-bin populations |
+| `examples/29_operator_comparison.py` | Shared Gaussian data: constrained stationarity, Lorentz and Dougherty evolution, matched initial Landau pressure rate, full μ marginals and velocity-distribution movie |
 
 Example 12 uses dense spatial blocks per velocity node and writes `results/nonuniform_spatial_blocks/`. A single predefined case can be run with:
 

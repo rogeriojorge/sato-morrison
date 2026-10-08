@@ -56,6 +56,24 @@ Let **nᵢ = wᵢfᵢ** be a node's population, with positive quadrature weight 
 
 Small nonlinear reference problems use a second-order discrete-gradient step. The large nonuniform runs use the displayed first-order step, freezing K at the old density. Newton corrections use matrix-free Hessian products and SOLVAX PCG. Acceptance checks include the true linear residual, nonlinear residual, positive population and objective decrease. Failed steps raise an error and retain their last accepted state.
 
+## Comparing collision operators
+
+Start every model from the same uniform plasma: perpendicular temperature **T⊥ = 1.15**, parallel temperature **T∥ = 0.7**, zero mean velocity and **n = m = B = 1**. Here F is the density in all three physical velocity dimensions.
+
+![Common initial Gaussian and the constrained, Lorentz, Dougherty and physical three-velocity Landau equations.](results/operator_comparison/equations.svg)
+
+We match the initial pressure-anisotropy decay of Lorentz and Dougherty to the independently calculated Landau slope: **α = 0.493595**, **νL = α/3**, **νD = α/2**, **τ = αt**. This choice makes their entire pressure curves coincide. The uniform constrained state remains stationary.
+
+![Shared initial data: identical Lorentz and Dougherty pressure decay, different magnetic-moment second moments, entropy and full moment marginals.](results/operator_comparison/comparison.png)
+
+Pressure alone misses the difference. Lorentz preserves the number of particles at every speed and approaches an isotropic, non-Maxwellian distribution. Dougherty redistributes speeds and approaches a Maxwellian. Their limiting **⟨μ²⟩** values are **2.036** and **2**, respectively; the constrained model retains **2.645**. Lorentz retains a relative-entropy distance **H = 2.94145×10⁻⁴** from the Maxwellian.
+
+![Evolution of the same initial velocity distribution under the constrained, Lorentz and Dougherty models.](results/operator_comparison/comparison.gif)
+
+Red shows excess population relative to the energy-matched Maxwellian; blue shows a deficit. The plots use analytical mode-time factors and checked angular reconstruction. Final quadrature, tail and angular refinements change the reported observables by less than **6×10⁻¹²** in normalized units. A coarse angular reconstruction that produced negative tail densities remains recorded as a failure. [Inputs, arrays and checks](results/operator_comparison/summary.json)
+
+The Lorentz frequency here is constant; physical Coulomb deflection has a speed-dependent frequency. Matching one initial slope is a comparison convention and supplies no physical Sato–Morrison coefficient. The full Landau density solver now passes independent finite-grid matrix, nullspace, conservation, entropy and timestep-order checks. Its resolved distribution-evolution comparisons are the next validation stage. [Independent 3V matrix audit](results/landau_evolution/independent_gram_audit.json)
+
 ## Fields, boundaries and simulations
 
 | Field | Domain and boundary treatment |
@@ -130,7 +148,7 @@ The earlier 2,048-angle study passed its narrower second-moment criterion. That 
 
 Near the boundary between transmission and reflection, refined trajectories disagree by tens to hundreds of length units despite energy errors near **10⁻¹²**. One predicted reflection becomes transmission. The exact flow's continuity implies slow intermediate trajectories between true opposite exits, but the finest computed bracket fails its trajectory checks. No trapping classification or collision rate follows from these data.
 
-Lorentz and Dougherty operators supply separate relaxation controls. The physical 3V Landau reference evaluates Gaussian weak moments: independent spherical and Laplace calculations agree to **4.14×10⁻¹⁴**. Full Landau time evolution and plasma-rate calibration remain open.
+The physical 3V Landau Gaussian weak-moment reference has independent spherical and Laplace calculations agreeing to **4.14×10⁻¹⁴**. This checks instantaneous rates. Convergence of full Landau trajectories and plasma-rate calibration remain open.
 
 ## Runtime, memory and failure diagnostics
 
@@ -159,11 +177,12 @@ MPLBACKEND=Agg python examples/22_first_principles.py
 MPLBACKEND=Agg python examples/24_encounter_phase.py
 MPLBACKEND=Agg python examples/27_encounter_movie.py
 MPLBACKEND=Agg python examples/28_spatial_relaxation.py
+MPLBACKEND=Agg python examples/29_operator_comparison.py
 ```
 
 Example 24 exits nonzero because the declared angular and Cartesian checks remain unresolved. It saves the results before raising the error.
 
-**247 tests pass locally and on fresh Linux CI.** Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
+**253 tests pass on fresh Linux CI.** Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
 
 | Capability | Current evidence |
 |---|---|
@@ -171,7 +190,9 @@ Example 24 exits nonzero because the declared angular and Cartesian checks remai
 | Nonlinear constrained evolution | Number, energy, full μ marginal, entropy, positivity and solver-failure tests |
 | Toroidal decay | Eight final refinement changes below **0.71%**; all **39** sampled collision nulls explained |
 | Nonuniform evolution | Completed three-field pilots and mirror refinement; dipole/nonaxisymmetric refinements remain open |
-| Physical controls | Lorentz, Dougherty, 3V Landau weak moments and independently checked binary trajectories |
+| Collision-model comparison | Shared initial data for constrained, Lorentz and Dougherty evolution; independently checked initial 3V Landau rates |
+| Landau evolution | Full 3V nodal density and structural tests; resolved trajectory comparisons remain open |
+| Physical encounters | Independently checked binary trajectories; angular and rate-calibration limits retained |
 | Physical rates and lifetimes | Uncalibrated; no metastable regime or dipole lifetime established |
 
 The [example catalogue](examples/README.md), [validation ledger](results/validation.csv), [reproduction record](results/deep_reproduction.json) and [technical notes](notes/implementation.pdf) contain the complete commands and derivations. [LaTeX source](notes/implementation.tex) · [Bibliography](notes/references.bib). Original project material is [MIT](LICENSE); third-party papers are stored outside the public repository.
