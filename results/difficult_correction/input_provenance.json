@@ -1,0 +1,104 @@
+{
+  "scope": "Frozen first-step Newton6 input for one linear correction, not an accepted finite-time endpoint.",
+  "input_sha256": "40f087b53270b29e7ef37768964192d281b95ca3110c1a1545e569f33ecc05ab",
+  "original_input_sha256": "f820ef22048cef391cea8937ffd1fcbc59ec61a1d83fc52d4d05afd9a3b6e9a8",
+  "original_initial_sha256": "4af49105bbff57d44b192f500564e4fddd90aea41718a475772dcb804492e20e",
+  "original_replay_receipt_sha256": "0bd662afd6a48b33ccab2e24eeb5a71f00ae5285b890ee7b3add4b8231cf77bb",
+  "original_driver_sha256": "a2cd92c33f7734e289a504567bae016b50f6682f68cff2576ae4e2585cd8633a",
+  "original_core_source_sha256": {
+    "src/sato_morrison/controls.py": "ea673df34611bd68c60756fec2f335c9ebd10a705149ee22b68917d3102ec077",
+    "src/sato_morrison/solver.py": "6b5a55eb6e37d3fa620b6d7bba68caaa3e55f4c79ec9cb029469dbe1632969f0",
+    "src/sato_morrison/__init__.py": "cecda7c67a69ac4e7b47cac6fb2994d74d58c46b7af85d0817952981daafd713",
+    "src/sato_morrison/collisions.py": "cf13b3000c2df1ee39e63872b8c0094089adadde3941abf53b92d5e2c8ad6d52",
+    "src/sato_morrison/geometry.py": "3e96f695e3a031aacdea5257428e40e9a057f6bf2ea1ef052363c79c6345dda6",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "original_solvax_pcg_source_sha256": "48f53c820d767a6d5174cbde62c5127c2c1a9114d05bb6467ad96a4a333cc7d3",
+  "original_python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "original_platform": "macOS-26.6.2-arm64-arm-64bit",
+  "original_replay_status": "deadline_expired",
+  "source_context": "The saved input predates the original private replay deadline; no completed trajectory or convergence claim is inherited. The original receipt did not retain an overall Git commit.",
+  "parameters": {
+    "field": "dipole",
+    "strength": 1.0,
+    "mass": 1.0,
+    "charge": 1.0,
+    "bounds": [
+      [
+        0.8,
+        1.2
+      ],
+      [
+        -0.2,
+        0.2
+      ],
+      [
+        0.1,
+        0.5
+      ]
+    ],
+    "shape": [
+      5,
+      5,
+      5,
+      25,
+      13
+    ],
+    "u_domain": [
+      -4.0,
+      4.0
+    ],
+    "mu_domain": [
+      0.0,
+      20.0
+    ],
+    "D": 0.1,
+    "dt": 0.005,
+    "initial": "exp(-E-.2mu+.1sin(pi*y/.4)*u)",
+    "boundary": "natural weak collision-only no-flux; no streaming",
+    "metric": "old population; same as initial population in this first-step correction",
+    "units": "normalized"
+  },
+  "payload_arrays": {
+    "old_log": {
+      "shape": [
+        40625
+      ],
+      "dtype": "float64",
+      "bytes_sha256": "b7d8c3b3098cbb8305287b99b1cb91e2c0aac73db798a43f1149327a5cd00f2e"
+    },
+    "new_log": {
+      "shape": [
+        40625
+      ],
+      "dtype": "float64",
+      "bytes_sha256": "026e51dea4b6a8cd868de74dbe42e0511093e4c2fc8e2ec14b7cea44286ba174"
+    },
+    "dt": {
+      "shape": [],
+      "dtype": "float64",
+      "bytes_sha256": "2ea434dcc0f1e9d4c0b1682b83e4e4b965414ff3d685c4020d28396fdb927238"
+    },
+    "weights": {
+      "shape": [
+        40625
+      ],
+      "dtype": "float64",
+      "bytes_sha256": "a44eca879fb55e402529e30a7b2bc66173be93dd5e0223b9b5d108287c0a1489"
+    },
+    "energy": {
+      "shape": [
+        40625
+      ],
+      "dtype": "float64",
+      "bytes_sha256": "4597d9bbfba2173af738c877db9efab6062e739205a83a2611e5334180fdfda5"
+    },
+    "mu_index": {
+      "shape": [
+        40625
+      ],
+      "dtype": "int64",
+      "bytes_sha256": "a3089ce3335081460667db2e083e9eb2abdf1e7d8aa2cf37232bb692660c9be9"
+    }
+  }
+}
