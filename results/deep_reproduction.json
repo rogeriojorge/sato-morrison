@@ -7759,6 +7759,30 @@
       "experiment_dependencies_unchanged": true,
       "checks_wall_s": 6.235976083000423,
       "timing_scope": "Shared M4; setup, factor decompositions, compilation and probes; excludes imports, metadata and rendering. Pending documentation/output edits disclosed. Scientific arrays and metrics identical to first e6de605 run; plot labels changed."
+    },
+    {
+      "command": "MPLBACKEND=Agg python examples/22_first_principles.py",
+      "cwd": "${REPOSITORY}",
+      "producer_commit": "9727a57e33210c92f7e39d25a1ccaf3f8de05c19",
+      "evidence_path": "results/first_principles/summary.json",
+      "evidence_sha256": "400109235c8d3a407dd6e5f54b64936bd388813a53d94adc39ff280b4aac2418",
+      "checks_wall_s": 0.5939672499662265,
+      "timing_scope": "Analytic checks, saved-data comparisons and figure rendering; excludes imports and initial metadata.",
+      "scope": "Exact analytical orbit and schematic constraints; reused checked uniform operator data. No new physical calibration."
+    },
+    {
+      "producer_commit": "3eb6a270eedd5d8151967a5554bdc01621a383cc",
+      "evidence_path": "results/nonuniform_fixed_reference/summary.json",
+      "evidence_sha256": "c97b4b8ce7b1229eddb76da68a8c32babf43e9114dce72e45d892d8880f88b45",
+      "scope": "Completed three-field mu13 pilot with independent final pair audits. Full refinement attempt separate.",
+      "workflow_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37712765957"
+    },
+    {
+      "producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+      "evidence_path": "results/nonuniform_spatial_blocks/summary.json",
+      "evidence_sha256": "8826a377f7d6a8d363f6a49236e205de9c42f24c9e21a6b45ea78a2b92b773f4",
+      "scope": "Completed three-field mu13 pilot with independent final pair audits. Full refinement attempt separate.",
+      "workflow_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37714657167"
     }
   ]
 }

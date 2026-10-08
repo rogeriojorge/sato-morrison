@@ -1,0 +1,327 @@
+{
+  "status": "passed",
+  "audit_context": {
+    "utc": "2026-10-08T15:43:50.228488+00:00",
+    "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "Apple M4",
+    "logical_cpus": 10,
+    "load_start": [
+      4.953125,
+      6.93017578125,
+      4.53564453125
+    ],
+    "versions": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "matplotlib": "3.11.2"
+    },
+    "thread_environment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "arithmetic": "NumPy binary64; JAX is not imported or used by this audit",
+    "checkout_commit": "6e503bc3af721c96962fb4652ca1b7cd3cc8f92d",
+    "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 .venv/bin/python audit_pilot_endpoints.py"
+  },
+  "scope": "Final saved step only; independent analytic vacuum geometry and NumPy unordered pairs; no nonlinear solve or all-history pair audit",
+  "audit_source_sha256": "049e068c9eca5d86ffdd0a710c5b2bf2ffb4a42ef20b2e5e814287992d780ff8",
+  "pair_oracle_source_sha256": "942f64c1aacde0b695b9804a6cdd9521469ff1da679b8097b584703e502cf33d",
+  "producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+  "producer_source_sha256": "b981adcaa6de59acc94174069759446322978e5b10b13161d6fb86175ddae282",
+  "producer_metadata": {
+    "model": "sm_local_nonlinear discrete-energy projector",
+    "boundary": "natural no-flux collision-only Cartesian boxes",
+    "units": "normalized",
+    "inputs": {
+      "fields": [
+        {
+          "kind": "mirror",
+          "strength": 1.0,
+          "amplitude": 0.15,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        },
+        {
+          "kind": "dipole",
+          "strength": 1.0,
+          "amplitude": 0.0,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        },
+        {
+          "kind": "nonaxisymmetric",
+          "strength": 1.0,
+          "amplitude": 0.03,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        }
+      ],
+      "bounds": [
+        [
+          0.8,
+          1.2
+        ],
+        [
+          -0.2,
+          0.2
+        ],
+        [
+          0.1,
+          0.5
+        ]
+      ],
+      "nx": 5,
+      "nu": 25,
+      "nmu": 21,
+      "x_orders": [
+        3,
+        5,
+        7
+      ],
+      "u_orders": [
+        17,
+        21,
+        25
+      ],
+      "mu_orders": [
+        13,
+        17,
+        21
+      ],
+      "u_domain": [
+        -4.0,
+        4.0
+      ],
+      "mu_domain": [
+        0,
+        20.0
+      ],
+      "collision_strength": 0.1,
+      "final_time": 0.02,
+      "dt_values": [
+        0.005,
+        0.0025,
+        0.00125,
+        0.000625,
+        0.0003125
+      ],
+      "newton_rtol": 1e-12,
+      "pair_chunk": 1048576,
+      "time_discretization": "lagged-mobility backward Euler in entropy variables",
+      "preconditioner_axis": [
+        0,
+        1,
+        2
+      ],
+      "preconditioner": "Dense three-axis spatial channel-Gram sum per velocity node, with remaining velocity-channel diagonal; exact Hessian unchanged",
+      "residual_metric": "fixed_reference_population",
+      "reference_population": "positive quadrature weights times the fixed initial distribution; same total particle number",
+      "linear_rtol": 1e-06,
+      "linear_max_steps": 3000,
+      "max_newton_steps": 80,
+      "relative_refinement_target": 0.01,
+      "spatial_discretization": "global Lagrange polynomial derivative on positive Gauss-Legendre quadrature",
+      "velocity_discretization": "local quadratic u derivative; positive Gauss-Legendre u/mu quadrature",
+      "initial": "exp(-E-.2mu+.1sin(pi*y/.4)*u)",
+      "seed": null
+    },
+    "commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+    "working_tree": "?? results/nonuniform_spatial_blocks/",
+    "source_sha256": "b981adcaa6de59acc94174069759446322978e5b10b13161d6fb86175ddae282",
+    "versions": {
+      "sato-morrison": "0.1.0",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2"
+    },
+    "source_changes": "",
+    "logical_cpus": 4,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "unset",
+      "OPENBLAS_NUM_THREADS": "unset",
+      "MKL_NUM_THREADS": "unset",
+      "XLA_FLAGS": "unset"
+    },
+    "python": "3.12.14",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "processor": "x86_64",
+    "devices": [
+      "cpu:0"
+    ],
+    "x64": true,
+    "limitations": "Independent finite-time refinement checks at fixed other parameters; no combined-streaming box claim and no E/Gmu-only equilibrium reachability claim. Finite spatial polynomial spaces may lift continuum invariants: flux/potential moments are measured as scheme errors, never projected or interpreted as physical relaxation. Tail-domain and wider-domain quadrature checks are separate. A fine timestep-pair pass does not certify the coarse baseline or jointly refine space and time; all adjacent and coarsest/fine differences are retained. Fixed-reference and old-population residual norms are different; no equality of their nominal tolerances is claimed. Timings include concurrent unrelated machine load.",
+    "relaxation_diagnostic": "Relative entropy to mass-normalized exp(-E-.2mu) decreases by the entropy gain because its logarithm is a discrete collision invariant. This stationary reference is not asserted reachable under the additional continuum constraints. Mean/variance of log(f/reference) and the sin(pi*y/.4)*u moment are measured separately.",
+    "execution": {
+      "selected_fields": [
+        "nonaxisymmetric"
+      ],
+      "selected_cases": [
+        "mu13"
+      ],
+      "description": "Independent predefined cases; each completed row retains its producing run."
+    }
+  },
+  "artifact_name": "nonuniform-spatial-blocks-nonaxisymmetric-mu13-93bf752da33a31ec158a229f87eaa285aeb5c58b",
+  "artifact_id": 11527379827,
+  "workflow_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37714657167",
+  "artifact_reported_zip_digest": "sha256:84992766f1e0f39f2467c09337fb540645081339ee80008f1d368c8c049dcdea",
+  "saved_file_sha256": {
+    "last_state.npz": "f179f3764472001954fa9e27b0e0256f3aa5fe7cb411caab9435e84117fd9c08",
+    "summary.json": "e51d7c4492c9e1d31b5e6cc56584be8c5ce8bc65c6430a35fb0627dbcf2c9f0a",
+    "_download_receipt.json": "6fa2c1b48d8b2114e1c737778723a0ecc68c5eab78e988fc63bbf1c0ceed14e3",
+    "commit.txt": "abe9dcfb69d229fc649bde6c646b767be5d1ee6987a6d8c0f68ae34568e0cc56",
+    "cpu.txt": "4476e601951bb5e5dc85ca4b9d2e3bc795bb83c0d4e62b8d9f2bdec6659b0e7a",
+    "environment.txt": "3efa0f0f01834039f33414c49e047a10c967bc5991daffaf02ed69302fab1694"
+  },
+  "parameters": {
+    "field": "nonaxisymmetric",
+    "case": "mu13",
+    "nx": 5,
+    "nu": 25,
+    "nmu": 13,
+    "umax": 4.0,
+    "mumax": 20.0,
+    "dt": 0.005,
+    "residual_metric": "fixed_reference_population"
+  },
+  "predeclared_checks": {
+    "reference_normalized_residual_max": 2e-12,
+    "entropy_identity_absolute_max": 3e-15,
+    "global_invariants_max": 1e-09,
+    "weights_relative_max": 2e-14,
+    "initial_relative_max": 3e-14
+  },
+  "field_B_range": [
+    0.548722668344659,
+    1.8198033490821854
+  ],
+  "last_time": 0.02,
+  "weights_relative_error": 1.6431300764452317e-14,
+  "initial_analytic_relative_error": 2.1316282072803006e-14,
+  "reference_total": 0.13248590921297107,
+  "reference_old_mass_relative_difference": 0.0,
+  "reference_normalized_residual": 1.3177284672832126e-14,
+  "old_population_normalized_residual": 1.700425184159099e+88,
+  "raw_R_l2": 1.2135727129651803e-18,
+  "reported_reference_normalized_residual": 9.686190982206102e-15,
+  "reported_old_population_normalized_residual": 1.129301560154685e+88,
+  "entropy_change": 2.9601644732417797e-05,
+  "dt_frozen_mobility_quadratic": 2.7765232159988075e-05,
+  "generalized_KL": 1.8364125724296687e-06,
+  "residual_entropy_defect": -6.130782294059734e-20,
+  "entropy_identity_with_residual": -7.944747263576417e-21,
+  "reference_cauchy_bound": 2.3035852949128333e-15,
+  "numerical_roundoff_allowance": 3.2428782447589734e-17,
+  "reference_cauchy_plus_roundoff_bound": 2.3360140773604232e-15,
+  "last_step_invariants": {
+    "number_relative": 3.1087817040250143e-19,
+    "energy_relative": 1.4016489206943396e-19,
+    "full_mu_marginal_global_relative": 1.3891654135372311e-18,
+    "mu_population_difference": [
+      -6.652052069301909e-20,
+      -7.189585050611837e-20,
+      1.84044842859693e-19,
+      3.190358074434601e-21,
+      -4.501575054650397e-21,
+      3.4041390263398096e-22,
+      -4.495272245344298e-22,
+      8.419561666344345e-23,
+      -1.379323292778939e-23,
+      -9.998338657133192e-25,
+      -4.764625204226285e-25,
+      2.2457666958761744e-25,
+      -1.1690425577309632e-26
+    ]
+  },
+  "cumulative_invariants": {
+    "number_relative": 6.032155347552907e-18,
+    "energy_relative": 6.648508099362163e-18,
+    "full_mu_marginal_global_relative": 3.405262279212458e-18,
+    "mu_population_difference": [
+      6.747880943266177e-20,
+      2.6867012411360163e-19,
+      4.511492691700966e-19,
+      -5.85195386699175e-20,
+      -7.658290142608817e-21,
+      -5.0018989640035035e-21,
+      -7.185566116057566e-23,
+      2.934804653056758e-22,
+      2.4655828660021e-23,
+      2.343009185232316e-24,
+      -1.9283280815391077e-24,
+      8.817416840245732e-25,
+      1.4414000146578483e-24
+    ]
+  },
+  "full_mu_bin_population": [
+    0.05408142439189783,
+    0.052426774087991054,
+    0.020168033772548742,
+    0.004796546929520733,
+    0.00086189878837215,
+    0.00013026332635858646,
+    1.8027454107690072e-05,
+    2.486555327364839e-06,
+    3.7125816073302014e-07,
+    6.450255171068213e-08,
+    1.369791428834375e-08,
+    3.540702369118132e-09,
+    9.075176648892186e-10
+  ],
+  "relative_mu_bin_cumulative_errors": [
+    -1.2830457004284755e-15,
+    1.3235401232700794e-16,
+    -3.4405406011130063e-16,
+    -4.159100341738243e-15,
+    -3.773768522867564e-16,
+    -1.0403946786036806e-15,
+    -1.8794288804051963e-16,
+    2.214193304513244e-15,
+    -7.129750238872692e-16,
+    1.8466557531228643e-15,
+    -1.6908455304902625e-15,
+    -5.840512180349189e-16,
+    1.4811485741853363e-15
+  ],
+  "minimum_f": 2.662893880613316e-209,
+  "reported_entropy_difference": -1.2536087619363645e-19,
+  "reported_quadratic_difference": 4.743384504624082e-20,
+  "reported_KL_difference": 3.3881317890172014e-21,
+  "pair_wall_s": 0.5849268750171177,
+  "minimum_pair_flow_squared": 0.3204708855853118,
+  "limits": [
+    "Intermediate states are not saved; only the last accepted root is independently assembled.",
+    "Independent analytic coefficients/energy and shifted-cardinal derivatives are binary64 reconstructions, not bitwise producer geometry.",
+    "Exact saved weights are recovered from nref/initial after independent quadrature agreement.",
+    "NPZ stores positive densities, not final internal log iterates; log(saved f) includes an exp/log roundtrip.",
+    "Fixed-reference and old-population norms are separate; no tolerance-equivalence or old-metric passing claim.",
+    "Roundoff allowance is numerical, not rigorous; no pointwise tail-relative accuracy bound.",
+    "Extracted file digests checked; reported GitHub ZIP digest retained but ZIP not independently verified.",
+    "No continuum convergence, complete45case campaign pass, or speedup claim."
+  ],
+  "residual_arrays_sha256": "abeb41bd449bfbe2d986680a0a1300cf6b3c908e97b90b2202d28b20a3c28101",
+  "checks_wall_s": 0.6689261670107953
+}

@@ -28,6 +28,7 @@ Prefix each command below with `MPLBACKEND=Agg python`.
 | `examples/19_solver_accuracy.py` | Separate nonlinear/linear tolerance scans at fixed grid and timestep |
 | `examples/20_local_mixed_null.py` | Mixed local dipole moment, separated-pair and ideal controls, angular obstruction and spatial derivative refinement |
 | `examples/21_collocation_nullspace.py` | Unmodified rectangular pair factors, explained finite-grid nulls and exact angular overintegration |
+| `examples/22_first_principles.py` | Guiding-center coordinates, full-marginal conservation and exact uniform-mode explanations |
 
 Example 12 uses dense spatial blocks per velocity node and writes `results/nonuniform_spatial_blocks/`. A single predefined case can be run with:
 

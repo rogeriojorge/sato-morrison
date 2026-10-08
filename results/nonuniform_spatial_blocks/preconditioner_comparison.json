@@ -1,7 +1,7 @@
 {
   "inputs": {
-    "first_audit": "fixed_reference_campaign_audit_3eb6a27.json.comparison_snapshot",
-    "second_audit": "spatial_block_campaign_audit_93bf752.json.comparison_snapshot",
+    "first_audit": "fixed_reference_campaign_audit_3eb6a27.json.complete_pilot_snapshot",
+    "second_audit": "spatial_block_campaign_audit_93bf752.json.complete_pilot_snapshot",
     "fields": [
       "mirror",
       "dipole",
@@ -10,10 +10,10 @@
     "case": "mu13",
     "scope": "Same declared fixed-reference physical inputs; preconditioner differs; timings are separate-run observations, not controlled benchmarks"
   },
-  "audit_source_sha256": "1611bf4f783db558672bed8964be948c230076db5d1b5f8421f5e691f4b75b55",
+  "audit_source_sha256": "075025f4a7ca0ae754dd96f27fb438c24d5ba4a80c80415b6c8a730f11860e7c",
   "frozen_summary_hashes": {
-    "first": "bffc3969b8b081637e4191df23e4d0681b5b6f64f4188c70dcacb12efb1644d3",
-    "second": "eac8943e8eaf2497c6283aebbb6a71badbe43886083a7adbcc96320b63b97910"
+    "first": "8e55acc31902d2392e12858d4540f4bf4a4164fad721cc20a754f0b40dfe7433",
+    "second": "203cbaeefed25ef378dc061d46cbdaf5ce6784c1d6d922ab91ca4730411888e2"
   },
   "producer_commits": [
     "3eb6a270eedd5d8151967a5554bdc01621a383cc",
@@ -42,16 +42,16 @@
       "MKL_NUM_THREADS": "unset"
     },
     "load_average_start": [
-      5.1337890625,
-      5.25927734375,
-      8.45068359375
+      1.26904296875,
+      1.53271484375,
+      1.67236328125
     ],
     "load_average_end": [
-      5.1337890625,
-      5.25927734375,
-      8.45068359375
+      1.26904296875,
+      1.53271484375,
+      1.67236328125
     ],
-    "wall_seconds": 0.04110629198839888,
+    "wall_seconds": 0.05049854202661663,
     "scope": "Local NumPy saved-data postprocessing only; hardware/timing do not describe the trajectory producer"
   },
   "limitations": [
@@ -88,6 +88,74 @@
       },
       "first_provenance_id": "ca60d12d05d2fce0b92c82a9fc102ffdbe03574c0cfa341f73fecb5bfc86512b",
       "second_provenance_id": "0625162b8b905ca245a2098f2829bdea18774769bfa0905d456029d6eab0f19b",
+      "first_preconditioner_axis": 0,
+      "second_preconditioner_axis": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "field": "dipole",
+      "case": "mu13",
+      "parameters": {
+        "nx": 5,
+        "nu": 25,
+        "nmu": 13,
+        "umax": 4.0,
+        "mumax": 20.0,
+        "dt": 0.005
+      },
+      "final_time": 0.02,
+      "first_state_sha256": "29793d8dbaa19a7c1f532dff7636c735d9e8ff5cdefb957274ed2e41cae00403",
+      "second_state_sha256": "fcec71607fa066fc095b94de5ab92cf6fd4bfe7724620fd56d249cdf5f27c7a7",
+      "initial_and_reference_vectors_bitwise_identical": true,
+      "normalizing_reference_population_total": 0.13246857132437762,
+      "weighted_population_endpoint_difference": 1.5104771629234514e-15,
+      "weighted_log_endpoint_difference": 1.2428361921462708e-14,
+      "maximum_raw_log_difference": 0.0001247443818215288,
+      "reference_population_fraction_at_maximum_raw_log_difference": 1.5521256105674466e-23,
+      "principal_relative_differences": {
+        "entropy_gain_per_particle": 0.0,
+        "final_production_per_particle": 1.6461386413542333e-16,
+        "relaxation_moment_change_per_particle": 3.8040223094417083e-16
+      },
+      "first_provenance_id": "6c1ddc285fcdf7b4a8dd1076b6ad0a7eb8da3c085e07f856e76c1f8d132af8df",
+      "second_provenance_id": "61f2d95af789341d11694660ab9c22d63465dfb7e1c42481762f458dd405a9eb",
+      "first_preconditioner_axis": 0,
+      "second_preconditioner_axis": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "mu13",
+      "parameters": {
+        "nx": 5,
+        "nu": 25,
+        "nmu": 13,
+        "umax": 4.0,
+        "mumax": 20.0,
+        "dt": 0.005
+      },
+      "final_time": 0.02,
+      "first_state_sha256": "d1ed6800b4f75cbc0377500aacee324645ba2a5eab1e68b753f67e2de893794d",
+      "second_state_sha256": "f179f3764472001954fa9e27b0e0256f3aa5fe7cb411caab9435e84117fd9c08",
+      "initial_and_reference_vectors_bitwise_identical": true,
+      "normalizing_reference_population_total": 0.13248590921297107,
+      "weighted_population_endpoint_difference": 8.166394603044669e-13,
+      "weighted_log_endpoint_difference": 1.5001983493992654e-12,
+      "maximum_raw_log_difference": 0.08741961256242803,
+      "reference_population_fraction_at_maximum_raw_log_difference": 6.950655285868996e-25,
+      "principal_relative_differences": {
+        "entropy_gain_per_particle": 0.0,
+        "final_production_per_particle": 0.0,
+        "relaxation_moment_change_per_particle": 0.0
+      },
+      "first_provenance_id": "96bd4426aa1349f2e65a54acf669d161f8777672e5ad43a3b91e6fa7876190d8",
+      "second_provenance_id": "77f02cbb3f17c90085431c9361d2cc381903320f1d33fdb3cd199b4affbb0d65",
       "first_preconditioner_axis": 0,
       "second_preconditioner_axis": [
         0,
