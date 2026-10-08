@@ -1,0 +1,106 @@
+{
+  "status": "passed_independent_endpoint_and_tiny_step_checks",
+  "source_sha256": {
+    "src/sato_morrison/controls.py": "133ab11be35c08497703791c70a48bd9627f5d532ca4d63e8c61c6a307db63b7",
+    "src/sato_morrison/solver.py": "0960124138032882d7e3eaddea3fa27787f9fab22da9d44f2a4a46ad6cfb535c"
+  },
+  "pilot_summary_sha256": "8d741fe48a55ac0b1dc08beb38265561148336546cc6b8348404fc7b4f5f5ba0",
+  "saved_endpoints": [
+    {
+      "order": 16,
+      "input_sha256": "00aa9e740f863379be1a87dd81e5dd4107c87524ded77addd85ab06f4e728767",
+      "nodes": 4096,
+      "minimum_f": 1.1692423781964076e-18,
+      "all_positive_finite": true,
+      "unprojected_N_Px_Py_Pz_E_errors": [
+        1.2544685003778274e-16,
+        1.0864044581483658e-17,
+        5.038441483482973e-18,
+        4.335538069435303e-18,
+        1.6470926326155912e-16
+      ],
+      "total_entropy_gain": 0.006923113735511296,
+      "scope": "Final two-step endpoint and total entropy only; intermediate state was not saved, so no independent final residual/production/KL or per-step accepted-timeline re-evaluation."
+    },
+    {
+      "order": 20,
+      "input_sha256": "f2376c807a1333b488fb0ac2f04c32f92de6965735563ef4b0838bfd57275f0c",
+      "nodes": 8000,
+      "minimum_f": 7.231771089193091e-19,
+      "all_positive_finite": true,
+      "unprojected_N_Px_Py_Pz_E_errors": [
+        1.148794502010646e-12,
+        2.9375102610779136e-18,
+        4.6110356066155975e-20,
+        4.264825365086122e-18,
+        5.0619415296329e-12
+      ],
+      "total_entropy_gain": 0.007063873855274896,
+      "scope": "Final two-step endpoint and total entropy only; intermediate state was not saved, so no independent final residual/production/KL or per-step accepted-timeline re-evaluation."
+    }
+  ],
+  "tiny_step": {
+    "order": 5,
+    "extent": 2.0,
+    "dt": 0.1,
+    "gamma": 0.8,
+    "derivative": "local_quadratic",
+    "independent_dense_iterations": 4,
+    "independent_dense_true_residual": 2.328154740711406e-16,
+    "public_iterations": 3,
+    "public_true_residual_independent_Gram": 8.425700018076697e-13,
+    "weighted_log_relative_difference": 1.7012450352970974e-13,
+    "unprojected_five_invariant_drift": [
+      1.335489344776058e-13,
+      1.1174007049023632e-19,
+      1.9684362908716626e-18,
+      -9.58128146141435e-18,
+      3.278341975105254e-13
+    ],
+    "raw_null_count": 5,
+    "null_action_relative": 9.067862876343349e-17,
+    "history": [
+      {
+        "iteration": 1,
+        "residual": 0.02074510914468681,
+        "fraction": 1.0
+      },
+      {
+        "iteration": 2,
+        "residual": 0.0005992534939454978,
+        "fraction": 1.0
+      },
+      {
+        "iteration": 3,
+        "residual": 6.554421073863587e-07,
+        "fraction": 1.0
+      },
+      {
+        "iteration": 4,
+        "residual": 8.423969444327349e-13,
+        "fraction": 1.0
+      }
+    ]
+  },
+  "scope": "Discrete finite Gram arithmetic/finite-step consistency only; substantive initial fourth/RHS continuum defects remain. Saved n16/n20 endpoints do not supply intermediate state, so no independent final physical root certification.",
+  "versions": {
+    "python": "3.12.13",
+    "numpy": "2.5.3",
+    "jax": "0.11.2"
+  },
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "wall_s": 2.792906375019811,
+  "verification_source_commit": "60052b26aab31e0b28c9deb988d1fb66c1b32058",
+  "source_targets_sha256": {
+    "src/sato_morrison/controls.py": "133ab11be35c08497703791c70a48bd9627f5d532ca4d63e8c61c6a307db63b7",
+    "src/sato_morrison/solver.py": "0960124138032882d7e3eaddea3fa27787f9fab22da9d44f2a4a46ad6cfb535c",
+    "src/sato_morrison/collisions.py": "cf13b3000c2df1ee39e63872b8c0094089adadde3941abf53b92d5e2c8ad6d52"
+  },
+  "units": "normalized",
+  "archived_private_sources": {
+    "landau_local_finite_step_audit.py": "bf3be993ba7c3c28e2ba6286848793072d3d9bdac7dd115aeb946dc48afa05f6"
+  },
+  "tiny_state_arrays_sha256": {
+    "landau_local_tiny_finite_step_audit.npz": "6c1d68f0ac97e9d8016a632aa3f7311467466ecb6159f04d06a8275d1ca86475"
+  }
+}

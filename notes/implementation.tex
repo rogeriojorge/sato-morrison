@@ -3918,6 +3918,160 @@ each of its 61 times, with fixed color limits and explicitly saturated
 colors. All plotted arrays, failed coarse checks and source/runtime
 metadata are saved under \path{results/operator_comparison/}.
 
+\section{Full three-velocity Landau discretization and consistency}
+\subsection{Unprojected finite weak operator}
+The physical homogeneous Landau equation, with a specified coefficient
+$\Gamma$, is
+\begin{align}
+ \partial_t F&=\Gamma\nabla_v\cdot\int_{\mathbb R^3}
+ U(v-v')FF'\bigl(\nabla_v\log F-\nabla_{v'}\log F'\bigr)\,d^3v',\\
+ U(r)&=\frac{I-\widehat r\widehat r^T}{|r|}.
+\end{align}
+Here $F$ is density per physical velocity volume. It has no gyroangle or
+magnetic-moment reduction. Positive tensor Gauss weights $w_i$ on a
+finite cube give populations $n_i=w_iF_i$. Let $D$ be a nodal gradient,
+exact on constants, linear functions and quadratics, and set
+$\Delta_{ij}Dh=(Dh)_i-(Dh)_j$. The matrix-free finite weak form is
+\begin{equation}
+ h^T K(F)k=\Gamma\sum_{i<j}n_in_j
+ (\Delta_{ij}Dh)^TU(v_i-v_j)(\Delta_{ij}Dk),
+ \qquad w_i\dot F_i=-[K(F)\log F]_i.
+\end{equation}
+All pairs and all cross terms are retained. The coincident-node
+contribution is zero. For smooth tests the weak pair integrand tends to
+zero at coincidence, but this fact supplies no error bound for the
+near-diagonal quadrature. Optional softening replaces only $|r|$ in
+the denominator by $\sqrt{|r|^2+\epsilon^2}$; it defines a different
+kernel until convergence to $\epsilon=0$ is demonstrated.
+
+The five functions $1,v_x,v_y,v_z,|v|^2/2$ lie in the raw nullspace:
+the energy gradient difference is $v_i-v_j$, which $U$ annihilates.
+They are never imposed by a posteriori projection. Independently
+assembled small matrices have exactly these five numerical null modes;
+this is a finite-grid statement. Symmetry and positivity give
+\begin{equation}
+ \frac{d}{dt}\left[-\sum_i w_iF_i\log F_i\right]
+ = (\log F)^TK(F)\log F\geq0.
+\end{equation}
+The default derivative is global polynomial interpolation. The explicit
+\texttt{local\_quadratic} option uses three-point quadratic interpolation
+and is retained as a consistency diagnostic. Both have the five
+invariants, but they define different finite weak equations. In
+particular, the local derivative does not differentiate fourth-degree
+test functions exactly. Natural weak no-flux conditions close the cube;
+these require tail checks against the infinite-domain reference.
+
+\subsection{Full-density implicit step}
+For $g=\log F$, freeze $K$ at the previous density and solve
+\begin{equation}
+ w\odot(e^{g^{n+1}}-F^n)+\Delta t K(F^n)g^{n+1}=0.
+\end{equation}
+This is the stationary equation of the convex objective
+$\sum_iw_i[e^{g_i}-F_i^ng_i]+\Delta t\,g^TK(F^n)g/2$.
+Its Newton Hessian is
+$\operatorname{diag}(w\odot e^g)+\Delta t K(F^n)$.
+The existing SOLVAX conjugate-gradient and line-search host evaluates
+this Hessian without storing the full pair matrix. The diagonal
+preconditioner is an auxiliary approximation; it changes no pair
+interaction in the residual. Every nodal log density is an unknown,
+so the scheme imposes no Gaussian closure.
+
+The discrete entropy budget contains the frozen-mobility production,
+a nonnegative time-step relative-entropy term, and the measured residual
+defect. Frozen production is a numerical budget, rather than the
+instantaneous production of the unfrozen physical equation. Independent
+dense convex solves and finite-grid ODE integrations check accepted
+steps, conservation, positivity, entropy and first-order time accuracy.
+A converged nonlinear solve of this finite equation is insufficient to
+establish physical velocity-space accuracy.
+
+\subsection{An independent continuum Gaussian collision term}
+Let $F$ be a normalized Gaussian with mean $b$ and positive diagonal
+covariance $A=\operatorname{diag}(A_1,A_2,A_3)$. Write $x=v-b$,
+$s=-A^{-1}x$, and
+$\mathcal D(v)=\int U(v-v')F(v')\,d^3v'$.
+Integration by parts gives
+$\int U\nabla'F'\,d^3v'=\nabla\cdot\mathcal D$.
+The derivatives of the two flux terms cancel their first-derivative
+cross terms, leaving
+\begin{equation}
+ \frac{C[F](v)}{F(v)}=\Gamma\left[
+ \mathcal D(v):(ss^T-A^{-1})+8\pi F(v)\right].
+ \label{eq:gaussian-strong}
+\end{equation}
+The sign and factor follow from
+$\partial_a\partial_bU_{ab}=-8\pi\delta(r)$ in three dimensions.
+This formula is instantaneous. A nonisotropic Gaussian does not remain
+Gaussian under Landau evolution, as its nonzero fourth-cumulant
+production already demonstrates.
+
+Using $1/r=(2/\sqrt\pi)\int_0^\infty e^{-z^2r^2}\,dz$,
+define
+\begin{align}
+ d_i&=1+2A_i z^2,& V_i&=A_i/d_i,& m_i&=x_i/d_i,\\
+ Z&=\prod_i d_i^{-1/2}\exp\left[-z^2\sum_i x_i^2/d_i\right].
+\end{align}
+Completing the Gaussian square yields
+\begin{equation}
+ \mathcal D(v)=\frac2{\sqrt\pi}\int_0^\infty
+ Z\left[I-2z^2\{\operatorname{diag}(V)+mm^T\}\right]dz.
+\end{equation}
+Example 30 uses $z=q/(1-q)$ and separately refines the scalar Gauss
+integral. The independent audit instead uses adaptive vector
+quadrature at selected velocities, checks a separate fourth-order
+finite difference of the original flux divergence, and integrates the
+strong expression with Gaussian Hermite quadrature. Isotropic
+Gaussians at three temperatures with nonzero drift give zero to
+$1.84\times10^{-15}$. The strong covariance rates agree with the
+independent weak Gaussian oracle to $1.32\times10^{-13}$ relatively;
+fourth-cumulant rates agree within $1.9\times10^{-14}$ absolutely.
+The independent flux-divergence check differs by at most
+$2.21\times10^{-12}$ at the sampled velocities.
+
+\subsection{What the consistency test measures}
+For $A=(1.15,1.15,0.7)$ and $\Gamma=1$, example 30 compares the complete
+initial collision term at the same velocity nodes, without rescaling
+or repairing the sampled Gaussian. Its primary error is
+\begin{equation}
+ E_1=\frac{\sum_iw_i|C_i^{\rm discrete}-C[F](v_i)|}
+ {\sum_iw_i|C[F](v_i)|}.
+\end{equation}
+It also reports the population-weighted RMS error in $C/F$, the
+core $|v|\leq3$ error, separate core/tail contributions to $E_1$,
+pressure and fourth-cumulant rates, and the initial quadrature mass
+defect. The RMS is especially sensitive to small tail populations;
+neither it nor a pointwise maximum replaces the weighted distribution
+error. Grid, cube extent and softening scans are recorded separately.
+Varying the extent at fixed point count changes both tail truncation
+and interior resolution.
+
+The independent $16^3$ calculation already shows the distinction:
+global polynomial differentiation has $1.98\%$ pressure-rate error
+but $37.72\%$ full collision-term error $E_1$. Local quadratic
+ differentiation has the same pressure rate but $49.31\%$ full-term
+error. Its second magnetic-moment rate is $-0.31479$, versus the
+continuum $-0.26075$. A private five-point quartic diagnostic improves
+fourth moments but still has $34.09\%$ full-term error at this grid.
+Conservation alone therefore cannot qualify any of these trajectories
+as a physical Landau reference. The public refinement arrays and
+figures are under \path{results/landau_consistency/}; independent
+structural and continuum checks are under
+\path{results/landau_evolution/}.
+
+The completed public scan at $28^3$ nodes and extent 5 gives polynomial
+$E_1=0.0072544$, pressure-rate error $0.0023141$ and fourth-cumulant-rate
+error $0.0053675$. The local quadratic values are respectively
+$0.2459123$, $0.0023141$ and $0.4930163$. The polynomial result passes
+this single initial weighted $L^1$ target; its tail-sensitive RMS error
+in $C/F$ is still $0.2100$, and no trajectory accuracy follows.
+The entire 18-action-case study takes 183.07 s, including compilation,
+three warm repeats per case, references and rendering, with peak process
+RSS 781156352 bytes. The polynomial $28^3$ warm median is 8.384 s.
+These are observed CPU costs on the recorded Apple M4 environment;
+the two derivatives have not reached matched accuracy. Example 30
+retains all measurements and exits with an accuracy failure because
+the local scheme has not met the declared 1\% full-term target.
+
 \bibliographystyle{unsrt}
 \bibliography{references}
 \end{document}

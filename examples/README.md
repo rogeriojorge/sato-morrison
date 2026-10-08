@@ -56,3 +56,5 @@ Example 25 writes `results/encounter_censoring/precision_checked/`. It preserves
 Examples 27 and 28 render recorded data. Example 27 writes 120-frame GIF and MP4 movies; MP4 encoding uses `ffmpeg` when installed. Its 3D view compresses the long z direction, while the close projections use equal spatial scales. Example 28 verifies exact dipole field lines and reconstructs observables with the B-weighted quadrature measure. It shows only the three archived spatial states at t = 0, 0.015 and 0.02. Neither example runs a new collision solve.
 
 Every scientific result records its producing commit, inputs, normalized units, versions and hardware. See the [validation ledger](../results/validation.csv) and [reproduction record](../results/deep_reproduction.json).
+
+`30_landau_consistency.py` compares the full initial Coulomb collision term with an independent continuum Gaussian formula. It records velocity, extent and softening scans, saves figures and arrays, and raises an accuracy failure when the declared full-term target remains unresolved.

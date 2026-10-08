@@ -7722,6 +7722,16 @@
       "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37834305455",
       "log_sha256": "174b858880f0eb5db69c6d7f0e99b58f2fff78b1f12f7cf1df6200a7d7eb07e6",
       "scope": "Full suite including independent dense Landau Gram/root, unrepaired nullspace, first-order distribution evolution, Maxwellian and visible failure checks."
+    },
+    {
+      "source_commit": "60052b26aab31e0b28c9deb988d1fb66c1b32058",
+      "command": "python -m pytest -q",
+      "passed": 255,
+      "elapsed_s": 134.4,
+      "environment": "Fresh Ubuntu CI installation",
+      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37837124805",
+      "log_sha256": "f2b7a569e32f58ed4b758c1df01dc1d207ef29281a36bce2629b4d9f08fd92c2",
+      "scope": "Full suite including the explicit local derivative diagnostic, independently checked raw pair action and five null modes."
     }
   ],
   "additional_experiments": [
@@ -8063,6 +8073,20 @@
       "independent_evidence_sha256": "df61befca402fa26249597417d90d94ecd131e5f65e24e0751dc2b0d572a7b05",
       "angular_tail_audit_sha256": "c4887f9683ae1cfdd1b3fe4050d2af8ad5b44a8164cb6187d6b3ab329abb2f3b",
       "scope": "Shared Gaussian constrained/Lorentz/Dougherty evolution with independently checked physical3V Landau initial pressure rate. Exact modal time factors and converged angular/velocity reconstructions; failed coarse degree24 retained. No physical rate calibration."
+    },
+    {
+      "command": "MPLBACKEND=Agg python examples/30_landau_consistency.py",
+      "cwd": "${REPOSITORY}",
+      "producer_commit": "60052b26aab31e0b28c9deb988d1fb66c1b32058",
+      "evidence_path": "results/landau_consistency/summary.json",
+      "evidence_sha256": "829517fc37437860a81d5997b29c0e36e1c117f6ec5deaf612ae14951f2983e9",
+      "exit_code": 1,
+      "status": "unresolved",
+      "checks_wall_s": 183.07357970898738,
+      "process_peak_rss_bytes": 781156352,
+      "scope": "18 initial full collision-term cases; polynomial28 weighted L1 error .7254%; local28 error24.59%; scalar reference refined independently. Expected declared accuracy failure retained. No finite-time or physical-rate claim.",
+      "independent_evidence_path": "results/landau_consistency/independent_audit.json",
+      "independent_evidence_sha256": "d763b351e728a47207d802f3460873e4a8b812aa1c8d77910c3885c038362b45"
     }
   ]
 }

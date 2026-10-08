@@ -1,0 +1,197 @@
+{
+  "status": "completed_finite_grid_steps_with_unresolved_continuum_consistency",
+  "metadata": {
+    "model": "private local-quadratic full3V Landau timestep feasibility",
+    "boundary": "finite weak noflux velocity cube",
+    "units": "normalized",
+    "inputs": {
+      "orders": [
+        16,
+        20
+      ],
+      "extent": 5.0,
+      "dt": 0.1,
+      "steps": 2,
+      "rtol": 1e-10,
+      "linear_rtol": 1e-07,
+      "covariance": [
+        1.15,
+        1.15,
+        0.7
+      ],
+      "gamma": 1.0,
+      "softening": 0.0,
+      "derivative": "local_quadratic"
+    },
+    "commit": "05060a921c4fd19569bdeb3b9aaba880d76ed786",
+    "working_tree": "M README.md\n M examples/README.md\n M notes/implementation.pdf\n M notes/implementation.tex\n M notes/references.bib\n M results/deep_reproduction.json\n M src/sato_morrison/controls.py\n M tests/test_controls.py\n?? examples/30_landau_evolution.py\n?? results/landau_evolution/\n?? results/operator_comparison/",
+    "source_sha256": "269e5bae4ad07a455610ddb8cdabe12c227fa0d06e6eec5d11124860ab38d226",
+    "versions": {
+      "sato-morrison": "0.1.0",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2"
+    },
+    "source_changes": "M examples/README.md\n M src/sato_morrison/controls.py\n M tests/test_controls.py\n?? examples/30_landau_evolution.py",
+    "logical_cpus": 10,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "unset",
+      "XLA_FLAGS": "unset"
+    },
+    "python": "3.12.13",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "Apple M4",
+    "devices": [
+      "cpu:0"
+    ],
+    "x64": true,
+    "pilot_source_sha256": "75fc0658076ae0b8b1dd66d726f6b829b77cb3ff5ff1d208a6335930f9ce568b"
+  },
+  "accepted_steps": [
+    {
+      "order": 16,
+      "step": 1,
+      "wall_s": 15.813605542003643,
+      "newton": 4,
+      "pcg": 33,
+      "relative_residual": 4.038301812732657e-16,
+      "min_f": 1.1361727410839231e-18,
+      "entropy_gain": 0.0036711732137778173,
+      "status": "passed_step"
+    },
+    {
+      "order": 16,
+      "step": 2,
+      "wall_s": 10.923081583052408,
+      "newton": 4,
+      "pcg": 32,
+      "relative_residual": 1.9016688834452134e-16,
+      "min_f": 1.1692423781964076e-18,
+      "entropy_gain": 0.0032519405217329034,
+      "status": "passed_step"
+    },
+    {
+      "order": 20,
+      "step": 1,
+      "wall_s": 61.76403829199262,
+      "newton": 3,
+      "pcg": 29,
+      "relative_residual": 5.373029627770174e-11,
+      "min_f": 7.50325215017327e-19,
+      "entropy_gain": 0.00373529669044636,
+      "status": "passed_step"
+    },
+    {
+      "order": 20,
+      "step": 2,
+      "wall_s": 111.53966120799305,
+      "newton": 3,
+      "pcg": 28,
+      "relative_residual": 3.055238281970565e-11,
+      "min_f": 7.231771089193091e-19,
+      "entropy_gain": 0.0033285771648287775,
+      "status": "passed_step"
+    }
+  ],
+  "interrupted_attempts": [
+    {
+      "method": "polynomial_diagonal",
+      "status": "interrupted_feasibility_attempt",
+      "completed_full_steps": 0,
+      "maximum_logged_Newton_iteration": 7,
+      "reason": "Owned process stopped after conditioning/strong-RHS-consistency evidence; not a solver failure or a converged endpoint.",
+      "raw_log_sha256": "044839dbece8fb6e170ec6b785051d24ad300fc03a223b80ce94d2dc53558505",
+      "sanitized_log_sha256": "0d11a85db2230d515c186e9a7d4418c6223b58640cada148911cbf3d19451664"
+    },
+    {
+      "method": "polynomial_tensor",
+      "status": "interrupted_feasibility_attempt",
+      "completed_full_steps": 0,
+      "maximum_logged_Newton_iteration": 2,
+      "reason": "Owned process stopped after conditioning/strong-RHS-consistency evidence; not a solver failure or a converged endpoint.",
+      "raw_log_sha256": "67caaac32c330d5c04ea2042d9d661320a45ea63fec7a290674bf5cf19932ed0",
+      "sanitized_log_sha256": "bfbe70aefbaf7e105cada88d1448f5eab03352134a83854cc831bd4031d04199"
+    },
+    {
+      "method": "local_quartic_diagonal",
+      "status": "interrupted_feasibility_attempt",
+      "completed_full_steps": 0,
+      "maximum_logged_Newton_iteration": 19,
+      "reason": "Owned process stopped after conditioning/strong-RHS-consistency evidence; not a solver failure or a converged endpoint.",
+      "raw_log_sha256": "c46843949c6e13cb00625787fa3e86645c9ef72db980c4ca54968080680b354a",
+      "sanitized_log_sha256": "d7823b51dcc07b8625a19ed52cc1853500e68920fe877fae62dac6b1c897c58f"
+    }
+  ],
+  "inputs_scope": "Initial Gaussian formula is sampled and normalized to actual finite-grid mass1; this differs from the unrenormalized continuum-input comparison. Local derivative matrices reproduce quadratics; fourth test gradients are approximate.",
+  "scientific_scope": [
+    "Two accepted lagged-entropy full-density steps at each of orders16 and20, extent5,dt.1,T.2,Gamma1,softening0. Strict nodal positivity and the executed host root/entropy checks passed.",
+    "Independent endpoint arrays support number/momentum/energy and telescoped entropy checks. Only initial and final states were retained: no independent final-step root, production or KL replay is possible without its previous stage.",
+    "No velocity-grid, tail, timestep, near-diagonal kernel or continuum strong-RHS accuracy is certified by these finite-grid trajectories. Initial local quadratic fourth-cumulant rates remain severely underresolved.",
+    "Reported wall times are observed concurrent feasibility costs, not an isolated-machine or matched-error performance benchmark.",
+    "Global polynomial and private local-quartic attempts were deliberately interrupted without an accepted endpoint; their exact retained logs are separate from completed local-quadratic steps."
+  ],
+  "source_context": {
+    "commit": "05060a921c4fd19569bdeb3b9aaba880d76ed786",
+    "clean_source_claim": false,
+    "controls_sha256_held_during_corrected_local_run": "133ab11be35c08497703791c70a48bd9627f5d532ca4d63e8c61c6a307db63b7",
+    "tests_sha256_at_successful_suite": "5dd5726bad65b849c318192b64240b5aebd1df34491dbe21d8d8cf95bb75f300",
+    "unchanged_physics_definitions_against_commit_05060a9": [
+      "LandauVelocityGrid",
+      "LandauEntropyCompiler",
+      "landau_entropy_compiler",
+      "landau_entropy_step"
+    ],
+    "factory_change": "Added explicitly selected local_quadratic derivative; private producer constructs the same local matrix using the unchanged generic derivative helper.",
+    "receipt_builder_sha256": "c22a70a74b61bd509eb9306a38f86dc3cdd9e207791f6b9c1a2b9c23342ba0d6"
+  },
+  "verification": {
+    "full_controls_command": "PYTHONPATH=src .venv/bin/pytest -q tests/test_controls.py",
+    "full_controls_result": "36 passed in11.80s",
+    "landau_subset_command": "PYTHONPATH=src .venv/bin/pytest -q tests/test_controls.py -k landau",
+    "landau_subset_result": "13 passed,23 deselected in24.86s"
+  },
+  "artifact_sha256": {
+    "landau_local_step_feasibility.log": "0c0cdd92db1c469b92f60d3951b530de7fa0f5b16fc117d75e8d63e61a80fe28",
+    "landau_local_step_16.npz": "00aa9e740f863379be1a87dd81e5dd4107c87524ded77addd85ab06f4e728767",
+    "landau_local_step_20.npz": "f2376c807a1333b488fb0ac2f04c32f92de6965735563ef4b0838bfd57275f0c",
+    "landau_thermal_step_feasibility.log": "0d11a85db2230d515c186e9a7d4418c6223b58640cada148911cbf3d19451664",
+    "landau_tensor_step_feasibility.log": "bfbe70aefbaf7e105cada88d1448f5eab03352134a83854cc831bd4031d04199",
+    "landau_quartic_step_feasibility.log": "d7823b51dcc07b8625a19ed52cc1853500e68920fe877fae62dac6b1c897c58f",
+    "controls_local_full_tests.log": "ec513ff651ecb9febe3e3916ded5c3689ced65c363649fe74c0eb140385cd0d7",
+    "landau_all_current_tests.log": "81c99df1bae08940eb69168592e7f1101f4248c52f4518a3f66124dcaffe45c5",
+    "landau_local_tests.log": "a80f53b76429ab0a0e847bc6d62c5c1d396de0e982b6287c295fd92a53484f1f"
+  },
+  "original_unsanitized_artifact_sha256": {
+    "landau_local_step_feasibility.log": "0c0cdd92db1c469b92f60d3951b530de7fa0f5b16fc117d75e8d63e61a80fe28",
+    "landau_local_step_16.npz": "00aa9e740f863379be1a87dd81e5dd4107c87524ded77addd85ab06f4e728767",
+    "landau_local_step_20.npz": "f2376c807a1333b488fb0ac2f04c32f92de6965735563ef4b0838bfd57275f0c",
+    "landau_thermal_step_feasibility.log": "044839dbece8fb6e170ec6b785051d24ad300fc03a223b80ce94d2dc53558505",
+    "landau_tensor_step_feasibility.log": "67caaac32c330d5c04ea2042d9d661320a45ea63fec7a290674bf5cf19932ed0",
+    "landau_quartic_step_feasibility.log": "c46843949c6e13cb00625787fa3e86645c9ef72db980c4ca54968080680b354a",
+    "controls_local_full_tests.log": "ec513ff651ecb9febe3e3916ded5c3689ced65c363649fe74c0eb140385cd0d7",
+    "landau_all_current_tests.log": "81c99df1bae08940eb69168592e7f1101f4248c52f4518a3f66124dcaffe45c5",
+    "landau_local_tests.log": "a80f53b76429ab0a0e847bc6d62c5c1d396de0e982b6287c295fd92a53484f1f"
+  },
+  "sanitization": "Only filesystem prefixes replaced by <verification>,<repository>,<user> in public text copies; binary arrays unchanged. Original hashes retained.",
+  "archived_private_sources": {
+    "landau_local_step_feasibility.py": "75fc0658076ae0b8b1dd66d726f6b829b77cb3ff5ff1d208a6335930f9ce568b",
+    "landau_thermal_step_feasibility.py": "67ad85f4452ec387420b09920c7db5d5754d7386ab4b33b75fb958790a694b4f",
+    "landau_tensor_step_feasibility.py": "1df23a9d2b477826e982b09303f1b440912dfedc5c5113bd44246105d2f778bd",
+    "landau_tensor_candidate.py": "15d92d97cb85252e773b712b5be196b9f2ef799a1be3c76bfbb2ad974e88f6a2",
+    "landau_quartic_step_feasibility.py": "da24d443d0a1e05310a3e636a7c5e7e1437c8a45c2a1793d6d5d57bcea12f4b5"
+  },
+  "archived_private_sources_scope": "Source files retained privately and identified by hashes; not distributed here and not represented as public reproducers. Executed dirty-source producer metadata remains unchanged.",
+  "publication_verification_source_commit": "60052b26aab31e0b28c9deb988d1fb66c1b32058",
+  "publication_verified_source_targets_sha256": {
+    "src/sato_morrison/controls.py": "133ab11be35c08497703791c70a48bd9627f5d532ca4d63e8c61c6a307db63b7",
+    "src/sato_morrison/solver.py": "0960124138032882d7e3eaddea3fa27787f9fab22da9d44f2a4a46ad6cfb535c",
+    "src/sato_morrison/collisions.py": "cf13b3000c2df1ee39e63872b8c0094089adadde3941abf53b92d5e2c8ad6d52"
+  },
+  "independent_endpoint_audit": "../local_independent_finite_step_audit.json",
+  "independent_raw_Gram_audit": "../local_independent_gram_audit.json"
+}

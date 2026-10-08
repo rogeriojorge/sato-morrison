@@ -72,7 +72,32 @@ Pressure alone misses the difference. Lorentz preserves the number of particles 
 
 Red shows excess population relative to the energy-matched Maxwellian; blue shows a deficit. The plots use analytical mode-time factors and checked angular reconstruction. Final quadrature, tail and angular refinements change the reported observables by less than **6×10⁻¹²** in normalized units. A coarse angular reconstruction that produced negative tail densities remains recorded as a failure. [Inputs, arrays and checks](results/operator_comparison/summary.json)
 
-The Lorentz frequency here is constant; physical Coulomb deflection has a speed-dependent frequency. Matching one initial slope is a comparison convention and supplies no physical Sato–Morrison coefficient. The full Landau density solver now passes independent finite-grid matrix, nullspace, conservation, entropy and timestep-order checks. Its resolved distribution-evolution comparisons are the next validation stage. [Independent 3V matrix audit](results/landau_evolution/independent_gram_audit.json)
+The initial higher-moment rates already distinguish the conventional operators. Here μ = (vₓ² + vᵧ²)/2, and the Landau coefficient is Γ = 1 in normalized units:
+
+| Initial rate | Constrained | Lorentz | Dougherty | Physical 3V Landau |
+|---|---:|---:|---:|---:|
+| Pressure anisotropy | 0 | −0.222118 | −0.222118 | −0.222118 |
+| Mean squared magnetic moment | 0 | −0.340581 | −0.340581 | −0.260753 |
+| Fourth speed moment | 0 | 0 | −0.266541 | −0.133271 |
+
+The Landau entries have independent Gaussian integral checks. Its nonzero fourth-cumulant rates also show that the evolving distribution leaves the Gaussian family. [Initial-rate derivation and evidence](results/operator_comparison/physical_initial_rates.json)
+
+The Lorentz frequency here is constant; physical Coulomb deflection has a speed-dependent frequency. Matching one initial slope is a comparison convention and supplies no physical Sato–Morrison coefficient. The full Landau density solver passes independent finite-grid matrix, nullspace, conservation, entropy and timestep-order checks. The velocity-space consistency test below determines how much those checks establish. [Independent 3V matrix audit](results/landau_evolution/independent_gram_audit.json)
+
+### Checking the full Landau collision term
+
+A collision operator moves particles between velocities. Red regions below gain population; blue regions lose it. Starting from the same Gaussian, we can calculate this initial redistribution independently through a one-dimensional Coulomb integral. The other panels apply the discrete Landau operator to that distribution.
+
+![Initial Landau population gain and loss: continuum Gaussian reference and two discrete velocity derivatives, evaluated on the same velocity plane.](results/landau_consistency/redistribution.png)
+
+Matching a few moments can conceal distribution errors. Both derivatives conserve number, momentum and energy and give the same initial pressure rate. At **20³ nodes**, that rate has **0.86% error**, while the full collision-term errors are **9.67%** and **39.39%**. The error measure integrates the absolute difference over physical velocity volume and divides by the reference collision term’s absolute integral.
+
+![Velocity-grid refinement of the full collision term, pressure and fourth-cumulant rates, with measured warm action costs.](results/landau_consistency/convergence.png)
+
+At **28³ nodes**, polynomial differentiation reaches **0.73% full-term error**, **0.23% pressure-rate error** and **0.54% fourth-cumulant-rate error**. Large relative errors remain at low-density tail nodes. The local quadratic option still has **24.59% full-term error**. It is retained as a diagnostic of the difference between conservation and accuracy. The polynomial action takes **8.38 s** on the recorded M4 run; the two methods have not reached matched accuracy, so their timings establish no speedup.
+
+These are initial collision terms. Full Landau trajectories still need velocity, tail, timestep and kernel convergence. Example 30 saves every refinement and exits with a visible failure because the declared 1% target is unresolved for the local option. [Inputs and measured errors](results/landau_consistency/summary.json) · [Independent array audit](results/landau_consistency/independent_audit.json) · [Independent continuum derivation and checks](results/landau_evolution/independent_strong_audit.json)
+
 
 ## Fields, boundaries and simulations
 
@@ -178,11 +203,13 @@ MPLBACKEND=Agg python examples/24_encounter_phase.py
 MPLBACKEND=Agg python examples/27_encounter_movie.py
 MPLBACKEND=Agg python examples/28_spatial_relaxation.py
 MPLBACKEND=Agg python examples/29_operator_comparison.py
+# Saves the underresolved Landau study, then exits with a declared accuracy failure:
+MPLBACKEND=Agg python examples/30_landau_consistency.py
 ```
 
 Example 24 exits nonzero because the declared angular and Cartesian checks remain unresolved. It saves the results before raising the error.
 
-**253 tests pass on fresh Linux CI.** Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
+**255 tests pass on fresh Linux CI.** Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
 
 | Capability | Current evidence |
 |---|---|
@@ -191,7 +218,7 @@ Example 24 exits nonzero because the declared angular and Cartesian checks remai
 | Toroidal decay | Eight final refinement changes below **0.71%**; all **39** sampled collision nulls explained |
 | Nonuniform evolution | Completed three-field pilots and mirror refinement; dipole/nonaxisymmetric refinements remain open |
 | Collision-model comparison | Shared initial data for constrained, Lorentz and Dougherty evolution; independently checked initial 3V Landau rates |
-| Landau evolution | Full 3V nodal density and structural tests; resolved trajectory comparisons remain open |
+| Landau evolution | Full 3V nodal density; structural checks and initial continuum comparison; converged trajectories remain open |
 | Physical encounters | Independently checked binary trajectories; angular and rate-calibration limits retained |
 | Physical rates and lifetimes | Uncalibrated; no metastable regime or dipole lifetime established |
 

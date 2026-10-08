@@ -1,0 +1,584 @@
+{
+  "status": "passed_continuum_oracle_checks_finite_weak_consistency_unresolved",
+  "published_utc": "2026-10-08T20:05:54.676229+00:00",
+  "units": "normalized",
+  "scope": "Independent instantaneous continuum Gaussian Coulomb strong-form oracle and finite weak-adjoint consistency diagnostics. No kinetic time evolution or convergence acceptance.",
+  "checker_sources": [
+    {
+      "basename": "gaussian_landau_strong.py",
+      "sha256": "a0169f8796c18981e23afa225c218a04af8fc2e1a9e904ae52063309d8cab89f",
+      "result_sha256": "d37509bf0ed45026fb70a60d4653e6b41fa7d8a6c09c3887e4f89bf4c6a1aca8",
+      "normalized_command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 .venv/bin/python gaussian_landau_strong.py"
+    },
+    {
+      "basename": "landau_strong_consistency.py",
+      "sha256": "f6cdcb919c3f936fe71cd22b8c24f85e58d7c017150f1fa45c408ba4b41e49e9",
+      "result_sha256": "8103681aacf8a7732ee190927c8211d8a541877b47159ae0614e55349deddd18",
+      "arrays_sha256": "4572d00895c8631be72d689092c38a92a3743ef7df3004d7a384b58e7a600dfd",
+      "normalized_command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 .venv/bin/python landau_strong_consistency.py"
+    }
+  ],
+  "checker_source_scope": "Private original NumPy/SciPy source and diagnostic arrays archived outside the public tree. No production collision imports. Commands omit private directories.",
+  "inputs": {
+    "density": 1.0,
+    "mass": 1.0,
+    "gamma": 1.0,
+    "covariance": [
+      1.15,
+      1.15,
+      0.7
+    ],
+    "drift": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "derivation": {
+    "density": "F_A(v)=(2pi)^(-3/2)det(A)^(-1/2)exp[-(v-U)^T A^-1(v-U)/2], number1.",
+    "diffusion": "D(v)=integral U_L(v-vprime)F_A(vprime)d3vprime, U_L(w)=(I-wwT/r\u00b2)/r.",
+    "IBP": "integral U_L gradprime Fprime=div_v D; C=Gamma div_v[F(D s-div D)], s=-A^-1(v-U).",
+    "distribution_identity": "div div U_L=-8pi delta, so C/F=Gamma[D:(ssT-A^-1)+8pi F].",
+    "Laplace": "D=(2/sqrtpi)integral_0^infinity Z[I-2s\u00b2(V+mmT)]ds; d_i=1+2A_i s\u00b2, V_i=A_i/d_i, m_i=(v_i-U_i)/d_i, Z=product(d_i)^(-1/2)exp[-s\u00b2 sum((v_i-U_i)\u00b2/d_i)].",
+    "normalization": "For number density n, F includes n and D includes n. Normalized frequency is Gamma_SI*n/v0\u00b3; Gamma_SI=q\u2074lnLambda/(8pi epsilon0\u00b2m\u00b2).",
+    "finite_weak": "Gaussian scores exact for all checked D: fdot=-D_vector^T[Gamma n_i sum_j n_j U_L(v_i-v_j)(score_i-score_j)]/w_i, n_i=w_iF_i; self pairs zero.",
+    "metrics": "C/F RMS error=sqrt(sum_i w_iF_i(fdot_i/F_i-C_i/F_i)\u00b2); weighted L1=sum_i w_i|fdot_i-C_i| /sum_i w_i|C_i|. Core r<=3, tail r>3, boundary max|v_coordinate|>=4.",
+    "derivative_scope": "Polynomial coefficient constraints define global and local3/5-point rows independently. Local quartic is a private diagnostic, not a production option."
+  },
+  "continuum_oracle_checks": {
+    "point_checks": [
+      {
+        "velocity": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "C_over_F": -0.05853204045281313,
+        "flux_centered_FD_C_over_F": [
+          -0.05853204039645293,
+          -0.058532040449291126,
+          -0.05853204045259323
+        ],
+        "FD_abs_error": 2.1990048670872397e-13,
+        "adaptive_integral_error_estimate": 4.7299253632493957e-14
+      },
+      {
+        "velocity": [
+          1.2,
+          -0.4,
+          0.7
+        ],
+        "C_over_F": -0.009606255402673236,
+        "flux_centered_FD_C_over_F": [
+          -0.009606255455233465,
+          -0.00960625540594555,
+          -0.009606255402789097
+        ],
+        "FD_abs_error": 1.1586044623701497e-13,
+        "adaptive_integral_error_estimate": 5.424297113351369e-14
+      },
+      {
+        "velocity": [
+          3.0,
+          0.2,
+          -1.0
+        ],
+        "C_over_F": -0.07790487317329434,
+        "flux_centered_FD_C_over_F": [
+          -0.07790487324572266,
+          -0.07790487317782954,
+          -0.07790487317349186
+        ],
+        "FD_abs_error": 1.9752255386862316e-13,
+        "adaptive_integral_error_estimate": 2.984570320160458e-14
+      },
+      {
+        "velocity": [
+          7.0,
+          0.0,
+          0.0
+        ],
+        "C_over_F": -0.12372360928042997,
+        "flux_centered_FD_C_over_F": [
+          -0.12372360870824753,
+          -0.12372360924465604,
+          -0.1237236092782242
+        ],
+        "FD_abs_error": 2.2057633497496454e-12,
+        "adaptive_integral_error_estimate": 1.7209437544466468e-14
+      }
+    ],
+    "isotropic_drift_checks": [
+      {
+        "theta": 0.4,
+        "velocity_relative_to_drift": [
+          0,
+          0,
+          0
+        ],
+        "C_over_F": -8.881784197001252e-16,
+        "error_estimate": 9.106000464764518e-14
+      },
+      {
+        "theta": 0.4,
+        "velocity_relative_to_drift": [
+          1.2,
+          -0.4,
+          0.7
+        ],
+        "C_over_F": 1.1102230246251565e-16,
+        "error_estimate": 7.437264887160916e-14
+      },
+      {
+        "theta": 0.4,
+        "velocity_relative_to_drift": [
+          4.0,
+          0,
+          0
+        ],
+        "C_over_F": 1.8379835486583496e-15,
+        "error_estimate": 3.5385710480457063e-14
+      },
+      {
+        "theta": 1.0,
+        "velocity_relative_to_drift": [
+          0,
+          0,
+          0
+        ],
+        "C_over_F": 0.0,
+        "error_estimate": 4.553795364121083e-14
+      },
+      {
+        "theta": 1.0,
+        "velocity_relative_to_drift": [
+          1.2,
+          -0.4,
+          0.7
+        ],
+        "C_over_F": 1.1102230246251565e-16,
+        "error_estimate": 5.41625191299392e-14
+      },
+      {
+        "theta": 1.0,
+        "velocity_relative_to_drift": [
+          4.0,
+          0,
+          0
+        ],
+        "C_over_F": 1.3053794156725473e-16,
+        "error_estimate": 2.436912752331402e-14
+      },
+      {
+        "theta": 2.3,
+        "velocity_relative_to_drift": [
+          0,
+          0,
+          0
+        ],
+        "C_over_F": 5.551115123125783e-17,
+        "error_estimate": 3.462667080184772e-14
+      },
+      {
+        "theta": 2.3,
+        "velocity_relative_to_drift": [
+          1.2,
+          -0.4,
+          0.7
+        ],
+        "C_over_F": 0.0,
+        "error_estimate": 3.274052147164097e-14
+      },
+      {
+        "theta": 2.3,
+        "velocity_relative_to_drift": [
+          4.0,
+          0,
+          0
+        ],
+        "C_over_F": -3.122502256758253e-17,
+        "error_estimate": 2.5658771940689706e-14
+      }
+    ],
+    "strong_Gaussian_quadrature_scans": [
+      {
+        "order": 12,
+        "scalar_order": 192,
+        "number_rate": -4.9773693513999184e-08,
+        "momentum_rate": [
+          7.21833509361067e-18,
+          1.572936865112188e-19,
+          1.3457076109688868e-19
+        ],
+        "covariance_rate": [
+          -0.07403725981846052,
+          -0.07403725981846034,
+          0.14807661253956694
+        ],
+        "fourth_cumulant_rate": [
+          0.11969189424697624,
+          0.1196918942469753,
+          -0.11657487155871382
+        ],
+        "mu_second_rate": -0.26076974337844855,
+        "speed_fourth_rate": -0.1333164819620536,
+        "entropy_rate": 0.04138864773088946,
+        "weighted_C_over_F_absolute_integral": 0.1412676321563563
+      },
+      {
+        "order": 20,
+        "scalar_order": 192,
+        "number_rate": -5.878190295627306e-12,
+        "momentum_rate": [
+          3.469446951953614e-18,
+          -6.640738306473715e-19,
+          1.9085516024168092e-18
+        ],
+        "covariance_rate": [
+          -0.07403925344178913,
+          -0.07403925344178885,
+          0.14807850724082158
+        ],
+        "fourth_cumulant_rate": [
+          0.11974066500023434,
+          0.11974066500023356,
+          -0.11660318172263484
+        ],
+        "mu_second_rate": -0.26075345406890316,
+        "speed_fourth_rate": -0.1332706701079821,
+        "entropy_rate": 0.04138840278429471,
+        "weighted_C_over_F_absolute_integral": 0.14103034894115055
+      },
+      {
+        "order": 28,
+        "scalar_order": 192,
+        "number_rate": 4.867634073590921e-15,
+        "momentum_rate": [
+          -6.093720400509101e-17,
+          -1.8047749325805764e-18,
+          -9.554522421729913e-19
+        ],
+        "covariance_rate": [
+          -0.07403925375615893,
+          -0.07403925375615888,
+          0.14807850751241577
+        ],
+        "fourth_cumulant_rate": [
+          0.11974067661773818,
+          0.11974067661773696,
+          -0.11660318778280909
+        ],
+        "mu_second_rate": -0.2607534495327998,
+        "speed_fourth_rate": -0.1332706567638507,
+        "entropy_rate": 0.04138840272091729,
+        "weighted_C_over_F_absolute_integral": 0.1399905709630223
+      },
+      {
+        "order": 36,
+        "scalar_order": 192,
+        "number_rate": 5.5936158482872145e-15,
+        "momentum_rate": [
+          -3.602307703294171e-18,
+          -2.773189696741784e-19,
+          -9.296248635577057e-19
+        ],
+        "covariance_rate": [
+          -0.07403925375620743,
+          -0.0740392537562074,
+          0.14807850751245594
+        ],
+        "fourth_cumulant_rate": [
+          0.11974067662013538,
+          0.11974067662013499,
+          -0.1166031877840048
+        ],
+        "mu_second_rate": -0.26075344953179724,
+        "speed_fourth_rate": -0.1332706567608513,
+        "entropy_rate": 0.04138840272090584,
+        "weighted_C_over_F_absolute_integral": 0.13950872352920218
+      }
+    ],
+    "relative_covariance_error_against_independent_weak_reference": 1.3158409573731778e-13,
+    "weak_reference_sha256": "f4f44f3f1d5383ba6a8326540fd05d504e226644af68fd26fb8c4a4d8f902015"
+  },
+  "finite_weak_consistency": {
+    "inputs": {
+      "covariance": [
+        1.15,
+        1.15,
+        0.7
+      ],
+      "density": 1.0,
+      "gamma": 1.0,
+      "mass": 1.0,
+      "orders": [
+        12,
+        16
+      ],
+      "extent": 5.0,
+      "derivatives": [
+        "polynomial",
+        "local_quadratic",
+        "local_quartic"
+      ],
+      "core_definition": "Euclidean |v|<=3",
+      "tail_definition": "|v|>3",
+      "boundary_definition": "max coordinate absolute value>=4",
+      "pair_chunk": 64,
+      "coincident_pair": "zero quadrature contribution, no softening",
+      "strong_scalar_orders": [
+        192,
+        256
+      ]
+    },
+    "rows": [
+      {
+        "order": 12,
+        "extent": 5.0,
+        "initial_number": 0.9992328190198976,
+        "tail_mass_r_gt3": 0.04315602220258333,
+        "boundary_mass_maxcoord_ge4": 0.0001202333962728197,
+        "strong_scalar192_vs256_max_abs_difference": 2.8543833963112775e-13,
+        "schemes": [
+          {
+            "name": "polynomial",
+            "stencil_width": 12,
+            "quadratic_reproduction_max_abs_error": 1.438849039914203e-13,
+            "Gaussian_score_max_abs_error": 1.127986593019159e-13,
+            "C_over_F_max_abs": 247288.17609908213,
+            "continuum_C_over_F_max_abs": 0.5952725666986657,
+            "weighted_L1_error_over_reference_L1": 1.3453696249406673,
+            "weighted_C_over_F_RMS_error": 24.636183490043837,
+            "weighted_C_over_F_RMS_error_over_reference_RMS": 163.7074480646605,
+            "core_C_over_F_max_abs_error": 0.3497086456527246,
+            "core_C_over_F_RMS_error": 0.1119727836078278,
+            "core_L1_error_over_full_reference_L1": 0.6577987558646514,
+            "tail_L1_error_over_full_reference_L1": 0.6875708690760156,
+            "boundary_L1_error_over_full_reference_L1": 0.12248942044318709,
+            "tail_share_of_weighted_RMS_squared_error": 0.9999802498286534,
+            "number_rate": -3.469446951953614e-18,
+            "momentum_rate": [
+              -1.6196931785271677e-17,
+              1.7711908944345043e-18,
+              -1.1167168848339322e-17
+            ],
+            "covariance_rate": [
+              -0.07077902829705178,
+              -0.07077902829705192,
+              0.1415580565941047
+            ],
+            "speed_fourth_rate": -0.14874702928497946,
+            "mu_second_rate": -0.2527896147183152
+          },
+          {
+            "name": "local_quadratic",
+            "stencil_width": 3,
+            "quadratic_reproduction_max_abs_error": 1.2434497875801753e-14,
+            "Gaussian_score_max_abs_error": 2.842170943040401e-14,
+            "C_over_F_max_abs": 12.404436858949213,
+            "continuum_C_over_F_max_abs": 0.5952725666986657,
+            "weighted_L1_error_over_reference_L1": 0.520358866956916,
+            "weighted_C_over_F_RMS_error": 0.1459504008405565,
+            "weighted_C_over_F_RMS_error_over_reference_RMS": 0.9698404655606527,
+            "core_C_over_F_max_abs_error": 0.1410781373567188,
+            "core_C_over_F_RMS_error": 0.047873563153970476,
+            "core_L1_error_over_full_reference_L1": 0.3867265351871567,
+            "tail_L1_error_over_full_reference_L1": 0.1336323317697591,
+            "boundary_L1_error_over_full_reference_L1": 0.0005223327089917809,
+            "tail_share_of_weighted_RMS_squared_error": 0.8971335625484,
+            "number_rate": 0.0,
+            "momentum_rate": [
+              -2.478920624189403e-17,
+              -2.5139086742361047e-18,
+              9.274844769363288e-19
+            ],
+            "covariance_rate": [
+              -0.07077902829705167,
+              -0.07077902829705165,
+              0.14155805659410312
+            ],
+            "speed_fourth_rate": -0.1301260221351993,
+            "mu_second_rate": -0.34862529804269815
+          },
+          {
+            "name": "local_quartic",
+            "stencil_width": 5,
+            "quadratic_reproduction_max_abs_error": 3.552713678800501e-15,
+            "Gaussian_score_max_abs_error": 4.440892098500626e-14,
+            "C_over_F_max_abs": 330.88483326680375,
+            "continuum_C_over_F_max_abs": 0.5952725666986657,
+            "weighted_L1_error_over_reference_L1": 0.3780730481507781,
+            "weighted_C_over_F_RMS_error": 0.38423675148451697,
+            "weighted_C_over_F_RMS_error_over_reference_RMS": 2.5532533504471595,
+            "core_C_over_F_max_abs_error": 0.08282762053428888,
+            "core_C_over_F_RMS_error": 0.024735617261163113,
+            "core_L1_error_over_full_reference_L1": 0.22904020865701394,
+            "tail_L1_error_over_full_reference_L1": 0.14903283949376417,
+            "boundary_L1_error_over_full_reference_L1": 0.003545528452526274,
+            "tail_share_of_weighted_RMS_squared_error": 0.9960377627254972,
+            "number_rate": 1.734723475976807e-18,
+            "momentum_rate": [
+              -1.3143531397356042e-17,
+              2.419797594831547e-18,
+              -9.040446310975921e-18
+            ],
+            "covariance_rate": [
+              -0.07077902829705195,
+              -0.0707790282970516,
+              0.14155805659410317
+            ],
+            "speed_fourth_rate": -0.14874702928498096,
+            "mu_second_rate": -0.2527896147183142
+          }
+        ]
+      },
+      {
+        "order": 16,
+        "extent": 5.0,
+        "initial_number": 0.9999891621513446,
+        "tail_mass_r_gt3": 0.03613547934672215,
+        "boundary_mass_maxcoord_ge4": 0.00023950118619764027,
+        "strong_scalar192_vs256_max_abs_difference": 2.9054536554440347e-13,
+        "schemes": [
+          {
+            "name": "polynomial",
+            "stencil_width": 16,
+            "quadratic_reproduction_max_abs_error": 2.007283228522283e-13,
+            "Gaussian_score_max_abs_error": 2.2026824808563106e-13,
+            "C_over_F_max_abs": 139349.12082065997,
+            "continuum_C_over_F_max_abs": 0.6068609907305,
+            "weighted_L1_error_over_reference_L1": 0.3772358820422044,
+            "weighted_C_over_F_RMS_error": 12.226897407197438,
+            "weighted_C_over_F_RMS_error_over_reference_RMS": 70.73860819961929,
+            "core_C_over_F_max_abs_error": 0.5965789184543097,
+            "core_C_over_F_RMS_error": 0.0768211236406721,
+            "core_L1_error_over_full_reference_L1": 0.18506159742972403,
+            "tail_L1_error_over_full_reference_L1": 0.19217428461248032,
+            "boundary_L1_error_over_full_reference_L1": 0.04926350563034634,
+            "tail_share_of_weighted_RMS_squared_error": 0.999961951294551,
+            "number_rate": -4.336808689942018e-19,
+            "momentum_rate": [
+              -9.107298248878237e-18,
+              6.478107980600889e-18,
+              -1.3115458155285586e-17
+            ],
+            "covariance_rate": [
+              -0.07257546117745553,
+              -0.07257546117745538,
+              0.14515092235491142
+            ],
+            "speed_fourth_rate": -0.13181972095652672,
+            "mu_second_rate": -0.2573694636834585
+          },
+          {
+            "name": "local_quadratic",
+            "stencil_width": 3,
+            "quadratic_reproduction_max_abs_error": 1.7763568394002505e-14,
+            "Gaussian_score_max_abs_error": 4.884981308350689e-14,
+            "C_over_F_max_abs": 6.01598934525611,
+            "continuum_C_over_F_max_abs": 0.6068609907305,
+            "weighted_L1_error_over_reference_L1": 0.49310664419957484,
+            "weighted_C_over_F_RMS_error": 0.10872360933087472,
+            "weighted_C_over_F_RMS_error_over_reference_RMS": 0.6290194925474627,
+            "core_C_over_F_max_abs_error": 0.4607056113675729,
+            "core_C_over_F_RMS_error": 0.09065974195046446,
+            "core_L1_error_over_full_reference_L1": 0.440791983126155,
+            "tail_L1_error_over_full_reference_L1": 0.052314661073419935,
+            "boundary_L1_error_over_full_reference_L1": 0.00035921891030322474,
+            "tail_share_of_weighted_RMS_squared_error": 0.3298186384082551,
+            "number_rate": 6.938893903907228e-18,
+            "momentum_rate": [
+              -4.7704895589362195e-17,
+              4.404571325722362e-18,
+              1.2197274440461925e-19
+            ],
+            "covariance_rate": [
+              -0.07257546117745564,
+              -0.07257546117745566,
+              0.14515092235491098
+            ],
+            "speed_fourth_rate": -0.12198487116224765,
+            "mu_second_rate": -0.31479145803588915
+          },
+          {
+            "name": "local_quartic",
+            "stencil_width": 5,
+            "quadratic_reproduction_max_abs_error": 2.6645352591003757e-14,
+            "Gaussian_score_max_abs_error": 7.460698725481052e-14,
+            "C_over_F_max_abs": 40.17807093535667,
+            "continuum_C_over_F_max_abs": 0.6068609907305,
+            "weighted_L1_error_over_reference_L1": 0.34094204991095256,
+            "weighted_C_over_F_RMS_error": 0.12635318554494526,
+            "weighted_C_over_F_RMS_error_over_reference_RMS": 0.7310152518149245,
+            "core_C_over_F_max_abs_error": 0.5644083485475104,
+            "core_C_over_F_RMS_error": 0.07893023355598028,
+            "core_L1_error_over_full_reference_L1": 0.29255527460668035,
+            "tail_L1_error_over_full_reference_L1": 0.04838677530427219,
+            "boundary_L1_error_over_full_reference_L1": 0.0009976678121232602,
+            "tail_share_of_weighted_RMS_squared_error": 0.6238808068995809,
+            "number_rate": 3.469446951953614e-18,
+            "momentum_rate": [
+              -2.0599841277224584e-17,
+              6.572975670693371e-18,
+              -8.312781344353704e-18
+            ],
+            "covariance_rate": [
+              -0.07257546117745531,
+              -0.07257546117745532,
+              0.14515092235491164
+            ],
+            "speed_fourth_rate": -0.13181972095652578,
+            "mu_second_rate": -0.25736946368346203
+          }
+        ]
+      }
+    ],
+    "observed_public_controls_sha256": "133ab11be35c08497703791c70a48bd9627f5d532ca4d63e8c61c6a307db63b7",
+    "observed_git_commit": "0acbc011b15053efd3bad37f75011716dc258084",
+    "association": "Observed worktree source association only; independent checker did not call this source and does not claim a frozen public producer. Finite local-quadratic and polynomial definitions match the stated Gauss/derivative design."
+  },
+  "primary_sources": [
+    {
+      "title": "Hirvijoki, Burby and Kraus: nonlinear Landau structure-preserving discretizations",
+      "url": "https://arxiv.org/abs/1804.08546",
+      "scope": "Equations2-4 homogeneous Coulomb weak form; strong Gaussian IBP/Laplace derivation here independently checked."
+    },
+    {
+      "title": "Fitzpatrick: Landau Collision Operator",
+      "url": "https://farside.ph.utexas.edu/teaching/plasma/lectures1/node37.html",
+      "scope": "Coulomb normalization."
+    }
+  ],
+  "interpretation": [
+    "All tested finite weak schemes preserve quadratic moments algebraically, but pointwise and full-F RHS agreement remains unresolved on n12/16 extent5.",
+    "Global polynomial relative tail rates are very large; the measured core error also rules out explaining the entire discrepancy as negligible far-tail division.",
+    "Local quadratic lowers weighted tail amplification but introduces finite higher-observable derivative error; local quartic moment improvement does not establish full-distribution accuracy.",
+    "Finite no-flux velocity cube, singular pair quadrature and selected derivative adjoint all require refinement and separate validation before trustworthy continuum Landau evolution."
+  ],
+  "limits": [
+    "Continuum instantaneous Gaussian only; no full-F finite-time convergence claim.",
+    "FD is an independent differential check using the same Laplace diffusion representation, not a separately solved kinetic equation.",
+    "Small energy error or weak moment agreement alone does not bound pointwise velocity-tail accuracy.",
+    "No finite-time kinetic step, positivity, convergence acceptance or physical calibration claimed.",
+    "Natural finite weak no-flux cube operator need not approximate continuum pointwise at its boundary.",
+    "Core and full-F weighted errors supplement conserved moments; no single metric establishes all velocity accuracy."
+  ],
+  "environment": {
+    "python": "3.12.13",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "Apple M4",
+    "logical_cpus": 10,
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    }
+  },
+  "numerical_wall_s": {
+    "continuum_oracle": 3.8732520829653367,
+    "weak_consistency": 2.1232162920059636
+  },
+  "wall_s_scope": "Adaptive diffusion, FD checks and strong quadratures excluding imports/final JSON writing. Independent scalar references, pair fluxes, derivatives and error diagnostics, excluding imports/receipt writing."
+}
