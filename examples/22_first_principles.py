@@ -142,7 +142,7 @@ ax.text(.02,.87,'Closed constrained dynamics preserve every bin.',fontsize=12,fo
 ax.text(.02,.62,r'$G(\mu,t)=\int B f\,d^3\!X\,du$',fontsize=23)
 ax.text(.02,.42,r'$G(\mu,t)=G(\mu,0)$',fontsize=22,color=TEAL)
 ax.text(.02,.22,'A cannot evolve into B under this constraint,\neven though their particle counts and means agree.',fontsize=11)
-ax.text(.02,.025,'Schematic populations, not a simulated trajectory.\nThe full profile is a stronger constraint than one mean.',fontsize=10)
+ax.text(.02,.025,'Two populations with equal number and mean μ.\nTheir full magnetic-moment distributions differ.',fontsize=10)
 save(fig,'full_marginal')
 
 source=ROOT/inputs['uniform_mode_source'];raw=source.read_bytes()
@@ -174,9 +174,9 @@ ax=axes[1]
 ax.plot(tau,density_local/density_local[0],color=TEAL,lw=2,label='local density pattern')
 ax.plot(tau,density_finite/density_finite[0],color=TEAL,lw=2,ls='--',label='density with finite range')
 ax.plot(tau,neutral_amplitude,color=ORANGE,lw=2,label='zero-density part, both models')
-ax.set(xlabel=r'model time $\tau=\lambda t$',ylabel='amplitude / initial',ylim=(0,1.15),title='Only permitted parts can relax')
+ax.set(xlabel=r'model time $\tau=\lambda t$',ylabel='amplitude / initial',ylim=(0,1.15),title='Exact mode amplitudes')
 ax.legend(frameon=False,fontsize=9,loc='lower center',bbox_to_anchor=(.5,1.02))
-ax.set_title('Only permitted parts can relax',pad=66)
+ax.set_title('Exact mode amplitudes',pad=66)
 save(fig,'mode_decomposition')
 
 fig=plt.figure(figsize=(9,3.25))
