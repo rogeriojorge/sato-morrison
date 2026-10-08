@@ -1,0 +1,38 @@
+{
+  "artifact": {
+    "id": 11566245600,
+    "node_id": "MDg6QXJ0aWZhY3QxMTU2NjI0NTYwMA==",
+    "name": "nonuniform-spatial-blocks-dipole-mu_tail-93bf752da33a31ec158a229f87eaa285aeb5c58b",
+    "size_in_bytes": 1877459,
+    "url": "https://api.github.com/repos/rogeriojorge/sato-morrison/actions/artifacts/11566245600",
+    "archive_download_url": "https://api.github.com/repos/rogeriojorge/sato-morrison/actions/artifacts/11566245600/zip",
+    "expired": false,
+    "digest": "sha256:703ce39d849896605ef23c0fd0df936d6ec1495357f66cb46d35d63457e22e1a",
+    "created_at": "2026-10-08T16:57:09Z",
+    "updated_at": "2026-10-08T16:57:09Z",
+    "expires_at": "2027-01-06T15:47:49Z",
+    "workflow_run": {
+      "id": 37803682825,
+      "repository_id": 1409074075,
+      "head_repository_id": 1409074075,
+      "head_branch": "campaign-spatial-93bf752",
+      "head_sha": "93bf752da33a31ec158a229f87eaa285aeb5c58b"
+    }
+  },
+  "workflow_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37803682825",
+  "run": "37803682825",
+  "producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+  "downloaded_utc": "2026-10-08T16:57:23.950256+00:00",
+  "watcher_sha256": "643bd390c4101cc37d471bc49b69a8a0df9f2c5b75c5f8cb56b69c9c27cbe93c",
+  "files": {
+    "summary.json": "68b4bd64abed8058fb195824c5ab8cc5915041850ca9743171d900b8dbf00b6d",
+    "commit.txt": "abe9dcfb69d229fc649bde6c646b767be5d1ee6987a6d8c0f68ae34568e0cc56",
+    "run.log": "a522f97a5cf81c527de8eff9cc66970fa8c8e3f903cedad6be820e1f24ef3259",
+    "cpu.txt": "d893a2e1fe38c883e9c6304826742490a3e71cb4324cac80c4809870147219b4",
+    "last_correction.json": "2b1d05ed09b20304cde4dcaa3a70589d1736e672d6998b849f7c84933fd8c303",
+    "last_state.npz": "edbebee34d16035e7c50e231f0dd45728e815aac479391c800d8ca24454a909e",
+    "partial_case.json": "ab6e356de998de50c4d72f16998e39cca4be843d2ff93fa90fb11693f3eac1d7",
+    "environment.txt": "3efa0f0f01834039f33414c49e047a10c967bc5991daffaf02ed69302fab1694"
+  },
+  "scope": "GitHub archive digest is preserved as supplied, not independently verified against a downloaded ZIP; extracted file hashes computed locally."
+}

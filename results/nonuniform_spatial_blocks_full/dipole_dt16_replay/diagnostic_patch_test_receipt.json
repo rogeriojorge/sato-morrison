@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "focused_command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 python -m pytest -q tests/test_lagged_entropy.py -k \"line_search_reports_population or default_reference_none or endpoint_matches_explicit\"",
+  "focused_result": "11 passed, 54 deselected in 13.47s",
+  "full_command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 python -m pytest -q",
+  "full_result": "247 passed in 87.93s",
+  "full_log_sha256": "06da1056b5cca8ec8d272f8a05f68a87b52973234f943375ea17d563be4452f3",
+  "files_sha256": {
+    "src/sato_morrison/solver.py": "0960124138032882d7e3eaddea3fa27787f9fab22da9d44f2a4a46ad6cfb535c",
+    "tests/test_lagged_entropy.py": "96a1ec01973b5e0f095a7c72979d2ac91b4fcfa07c5309d1f7c7f1483f919d17"
+  },
+  "tested_x64": true,
+  "tested_x64_source": "Explicit jax.config.update in tests/test_lagged_entropy.py; this receipt does not infer test settings from a separate metadata-only interpreter.",
+  "successful_comparison_sha256": "00b179ab5e2b8848bd709ac06fd66035671208e25a2a9923b8c0fab4f91dc629",
+  "successful_bitwise_routes": 6,
+  "scope": "Only failed line-search diagnostics changed; no equations, numerical guards, fractions, tolerances, preconditioners, successful states or conserved/entropy outputs changed. Timings are test durations, not performance claims."
+}

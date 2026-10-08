@@ -1,0 +1,33 @@
+{
+  "scope": "Independent NumPy log-range diagnosis only; no JAX invocation, new line search acceptance, solver step or root claim",
+  "input_sha256": "e497c2cc04c0e6467aa871099a2731874f77458288e9a4eda28047e53d17ac58",
+  "log_smallest_normal": -708.3964185322641,
+  "limiting_node": 5774,
+  "trials": [
+    {
+      "backtrack": 29,
+      "alpha": 1.862645149230957e-09,
+      "min_log": -708.3964189851673,
+      "nodes_below_log_normal": 1
+    },
+    {
+      "backtrack": 30,
+      "alpha": 9.313225746154785e-10,
+      "min_log": -708.3964184608172,
+      "nodes_below_log_normal": 0
+    },
+    {
+      "backtrack": 31,
+      "alpha": 4.656612873077393e-10,
+      "min_log": -708.3964181986421,
+      "nodes_below_log_normal": 0
+    },
+    {
+      "backtrack": 32,
+      "alpha": 2.3283064365386963e-10,
+      "min_log": -708.3964180675546,
+      "nodes_below_log_normal": 0
+    }
+  ],
+  "maximum_alpha_keeping_decreasing_nodes_at_least_normal": 1.058222696042756e-09
+}

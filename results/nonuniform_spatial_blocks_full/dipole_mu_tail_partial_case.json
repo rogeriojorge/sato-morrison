@@ -1,0 +1,9 @@
+{
+  "status": "failed",
+  "provenance_id": "2d3a724e9024a07e6d3e78fb436e0a6d4144f60f957a8fabc5b7eef5dadd72dd",
+  "field": "dipole",
+  "case": "mu_tail",
+  "history": [],
+  "error_type": "StepFailure",
+  "error": "lagged convex objective line search rejected step: residual=4.002e-01"
+}

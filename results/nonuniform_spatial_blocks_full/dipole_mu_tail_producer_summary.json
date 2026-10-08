@@ -1,0 +1,409 @@
+{
+  "metadata": {
+    "model": "sm_local_nonlinear discrete-energy projector",
+    "boundary": "natural no-flux collision-only Cartesian boxes",
+    "units": "normalized",
+    "inputs": {
+      "fields": [
+        {
+          "kind": "mirror",
+          "strength": 1.0,
+          "amplitude": 0.15,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        },
+        {
+          "kind": "dipole",
+          "strength": 1.0,
+          "amplitude": 0.0,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        },
+        {
+          "kind": "nonaxisymmetric",
+          "strength": 1.0,
+          "amplitude": 0.03,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        }
+      ],
+      "bounds": [
+        [
+          0.8,
+          1.2
+        ],
+        [
+          -0.2,
+          0.2
+        ],
+        [
+          0.1,
+          0.5
+        ]
+      ],
+      "nx": 5,
+      "nu": 25,
+      "nmu": 21,
+      "x_orders": [
+        3,
+        5,
+        7
+      ],
+      "u_orders": [
+        17,
+        21,
+        25
+      ],
+      "mu_orders": [
+        13,
+        17,
+        21
+      ],
+      "u_domain": [
+        -4.0,
+        4.0
+      ],
+      "mu_domain": [
+        0,
+        20.0
+      ],
+      "collision_strength": 0.1,
+      "final_time": 0.02,
+      "dt_values": [
+        0.005,
+        0.0025,
+        0.00125,
+        0.000625,
+        0.0003125
+      ],
+      "newton_rtol": 1e-12,
+      "pair_chunk": 1048576,
+      "time_discretization": "lagged-mobility backward Euler in entropy variables",
+      "preconditioner_axis": [
+        0,
+        1,
+        2
+      ],
+      "preconditioner": "Dense three-axis spatial channel-Gram sum per velocity node, with remaining velocity-channel diagonal; exact Hessian unchanged",
+      "residual_metric": "fixed_reference_population",
+      "reference_population": "positive quadrature weights times the fixed initial distribution; same total particle number",
+      "linear_rtol": 1e-06,
+      "linear_max_steps": 3000,
+      "max_newton_steps": 80,
+      "relative_refinement_target": 0.01,
+      "spatial_discretization": "global Lagrange polynomial derivative on positive Gauss-Legendre quadrature",
+      "velocity_discretization": "local quadratic u derivative; positive Gauss-Legendre u/mu quadrature",
+      "initial": "exp(-E-.2mu+.1sin(pi*y/.4)*u)",
+      "seed": null
+    },
+    "commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+    "working_tree": "?? results/nonuniform_spatial_blocks/",
+    "source_sha256": "b981adcaa6de59acc94174069759446322978e5b10b13161d6fb86175ddae282",
+    "versions": {
+      "sato-morrison": "0.1.0",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2"
+    },
+    "source_changes": "",
+    "logical_cpus": 4,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "unset",
+      "OPENBLAS_NUM_THREADS": "unset",
+      "MKL_NUM_THREADS": "unset",
+      "XLA_FLAGS": "unset"
+    },
+    "python": "3.12.15",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "processor": "x86_64",
+    "devices": [
+      "cpu:0"
+    ],
+    "x64": true,
+    "limitations": "Independent finite-time refinement checks at fixed other parameters; no combined-streaming box claim and no E/Gmu-only equilibrium reachability claim. Finite spatial polynomial spaces may lift continuum invariants: flux/potential moments are measured as scheme errors, never projected or interpreted as physical relaxation. Tail-domain and wider-domain quadrature checks are separate. A fine timestep-pair pass does not certify the coarse baseline or jointly refine space and time; all adjacent and coarsest/fine differences are retained. Fixed-reference and old-population residual norms are different; no equality of their nominal tolerances is claimed. Timings include concurrent unrelated machine load.",
+    "relaxation_diagnostic": "Relative entropy to mass-normalized exp(-E-.2mu) decreases by the entropy gain because its logarithm is a discrete collision invariant. This stationary reference is not asserted reachable under the additional continuum constraints. Mean/variance of log(f/reference) and the sin(pi*y/.4)*u moment are measured separately.",
+    "execution": {
+      "selected_fields": [
+        "dipole"
+      ],
+      "selected_cases": [
+        "mu_tail"
+      ],
+      "description": "Independent predefined cases; each completed row retains its producing run."
+    }
+  },
+  "provenance_runs": {
+    "2d3a724e9024a07e6d3e78fb436e0a6d4144f60f957a8fabc5b7eef5dadd72dd": {
+      "model": "sm_local_nonlinear discrete-energy projector",
+      "boundary": "natural no-flux collision-only Cartesian boxes",
+      "units": "normalized",
+      "inputs": {
+        "fields": [
+          {
+            "kind": "mirror",
+            "strength": 1.0,
+            "amplitude": 0.15,
+            "length": 1.0,
+            "direction": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "base": "dipole"
+          },
+          {
+            "kind": "dipole",
+            "strength": 1.0,
+            "amplitude": 0.0,
+            "length": 1.0,
+            "direction": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "base": "dipole"
+          },
+          {
+            "kind": "nonaxisymmetric",
+            "strength": 1.0,
+            "amplitude": 0.03,
+            "length": 1.0,
+            "direction": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "base": "dipole"
+          }
+        ],
+        "bounds": [
+          [
+            0.8,
+            1.2
+          ],
+          [
+            -0.2,
+            0.2
+          ],
+          [
+            0.1,
+            0.5
+          ]
+        ],
+        "nx": 5,
+        "nu": 25,
+        "nmu": 21,
+        "x_orders": [
+          3,
+          5,
+          7
+        ],
+        "u_orders": [
+          17,
+          21,
+          25
+        ],
+        "mu_orders": [
+          13,
+          17,
+          21
+        ],
+        "u_domain": [
+          -4.0,
+          4.0
+        ],
+        "mu_domain": [
+          0,
+          20.0
+        ],
+        "collision_strength": 0.1,
+        "final_time": 0.02,
+        "dt_values": [
+          0.005,
+          0.0025,
+          0.00125,
+          0.000625,
+          0.0003125
+        ],
+        "newton_rtol": 1e-12,
+        "pair_chunk": 1048576,
+        "time_discretization": "lagged-mobility backward Euler in entropy variables",
+        "preconditioner_axis": [
+          0,
+          1,
+          2
+        ],
+        "preconditioner": "Dense three-axis spatial channel-Gram sum per velocity node, with remaining velocity-channel diagonal; exact Hessian unchanged",
+        "residual_metric": "fixed_reference_population",
+        "reference_population": "positive quadrature weights times the fixed initial distribution; same total particle number",
+        "linear_rtol": 1e-06,
+        "linear_max_steps": 3000,
+        "max_newton_steps": 80,
+        "relative_refinement_target": 0.01,
+        "spatial_discretization": "global Lagrange polynomial derivative on positive Gauss-Legendre quadrature",
+        "velocity_discretization": "local quadratic u derivative; positive Gauss-Legendre u/mu quadrature",
+        "initial": "exp(-E-.2mu+.1sin(pi*y/.4)*u)",
+        "seed": null
+      },
+      "commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+      "working_tree": "?? results/nonuniform_spatial_blocks/",
+      "source_sha256": "b981adcaa6de59acc94174069759446322978e5b10b13161d6fb86175ddae282",
+      "versions": {
+        "sato-morrison": "0.1.0",
+        "jax": "0.11.2",
+        "jaxlib": "0.11.2",
+        "solvax": "0.28.2",
+        "numpy": "2.5.3",
+        "scipy": "1.18.1",
+        "matplotlib": "3.11.2"
+      },
+      "source_changes": "",
+      "logical_cpus": 4,
+      "thread_environment": {
+        "OMP_NUM_THREADS": "unset",
+        "OPENBLAS_NUM_THREADS": "unset",
+        "MKL_NUM_THREADS": "unset",
+        "XLA_FLAGS": "unset"
+      },
+      "python": "3.12.15",
+      "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+      "processor": "x86_64",
+      "devices": [
+        "cpu:0"
+      ],
+      "x64": true,
+      "limitations": "Independent finite-time refinement checks at fixed other parameters; no combined-streaming box claim and no E/Gmu-only equilibrium reachability claim. Finite spatial polynomial spaces may lift continuum invariants: flux/potential moments are measured as scheme errors, never projected or interpreted as physical relaxation. Tail-domain and wider-domain quadrature checks are separate. A fine timestep-pair pass does not certify the coarse baseline or jointly refine space and time; all adjacent and coarsest/fine differences are retained. Fixed-reference and old-population residual norms are different; no equality of their nominal tolerances is claimed. Timings include concurrent unrelated machine load.",
+      "relaxation_diagnostic": "Relative entropy to mass-normalized exp(-E-.2mu) decreases by the entropy gain because its logarithm is a discrete collision invariant. This stationary reference is not asserted reachable under the additional continuum constraints. Mean/variance of log(f/reference) and the sin(pi*y/.4)*u moment are measured separately.",
+      "execution": {
+        "selected_fields": [
+          "dipole"
+        ],
+        "selected_cases": [
+          "mu_tail"
+        ],
+        "description": "Independent predefined cases; each completed row retains its producing run."
+      }
+    }
+  },
+  "rows": [],
+  "checks": [
+    {
+      "field": "mirror",
+      "spatial": {
+        "status": "not_run"
+      },
+      "parallel_velocity": {
+        "status": "not_run"
+      },
+      "magnetic_moment": {
+        "status": "not_run"
+      },
+      "timestep": {
+        "status": "not_run"
+      },
+      "parallel_tail": {
+        "status": "not_run"
+      },
+      "moment_tail": {
+        "status": "not_run"
+      },
+      "wider_parallel_quadrature": {
+        "status": "not_run"
+      },
+      "wider_moment_quadrature": {
+        "status": "not_run"
+      },
+      "appreciable_relaxation": {
+        "status": "not_run"
+      },
+      "status": "unresolved"
+    },
+    {
+      "field": "dipole",
+      "spatial": {
+        "status": "not_run"
+      },
+      "parallel_velocity": {
+        "status": "not_run"
+      },
+      "magnetic_moment": {
+        "status": "not_run"
+      },
+      "timestep": {
+        "status": "not_run"
+      },
+      "parallel_tail": {
+        "status": "not_run"
+      },
+      "moment_tail": {
+        "status": "not_run"
+      },
+      "wider_parallel_quadrature": {
+        "status": "not_run"
+      },
+      "wider_moment_quadrature": {
+        "status": "not_run"
+      },
+      "appreciable_relaxation": {
+        "status": "not_run"
+      },
+      "status": "unresolved"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "spatial": {
+        "status": "not_run"
+      },
+      "parallel_velocity": {
+        "status": "not_run"
+      },
+      "magnetic_moment": {
+        "status": "not_run"
+      },
+      "timestep": {
+        "status": "not_run"
+      },
+      "parallel_tail": {
+        "status": "not_run"
+      },
+      "moment_tail": {
+        "status": "not_run"
+      },
+      "wider_parallel_quadrature": {
+        "status": "not_run"
+      },
+      "wider_moment_quadrature": {
+        "status": "not_run"
+      },
+      "appreciable_relaxation": {
+        "status": "not_run"
+      },
+      "status": "unresolved"
+    }
+  ],
+  "completed_cases_by_field": {
+    "mirror": 0,
+    "dipole": 0,
+    "nonaxisymmetric": 0
+  },
+  "status": "unresolved",
+  "selected_execution_complete": false
+}

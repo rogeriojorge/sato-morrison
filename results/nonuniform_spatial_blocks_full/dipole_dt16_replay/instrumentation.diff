@@ -1,0 +1,38 @@
+--- original_solver.py
++++ instrumented_solver.py
+@@ -522,6 +522,7 @@
+         if np.isfinite(norm) and norm<=rtol:break
+         if iteration==max_steps or not np.isfinite(norm):
+             raise StepFailure(f'lagged entropy Newton rejected step: iteration={iteration}, residual={norm:.3e}')
++        _replay_checkpoint(iteration+1,new_log,old,dt,value,norm)
+         start=perf_counter();answer=correct(new_log,old,dt,diagonal,linear_rtol)
+         answer[0].block_until_ready()
+         direction=np.asarray(answer[0]);count=int(answer[1]);true=float(answer[2])
+@@ -533,6 +534,7 @@
+             'minimum_signed_log_direction':float(np.min(direction)),
+             'maximum_signed_log_direction':float(np.max(direction)),
+             'objective_descent':descent,'mobility_curvature':curvature}
++        _replay_direction(iteration+1,new_log,direction,record)
+         history.append(record)
+         if iteration_callback is not None:iteration_callback(dict(record))
+         if not bool(answer[3]) or not np.isfinite(true) or true>5*linear_rtol:
+@@ -542,10 +544,17 @@
+         alpha0=1.
+         for backtrack in range(30):
+             fraction=alpha0*2.**(-backtrack);candidate=new_log+fraction*direction
+-            if not np.all(np.isfinite(candidate)) or np.any(candidate>np.log(np.finfo(float).max)) or np.any(candidate<np.log(np.nextafter(0.,1.))):continue
++            trial=_replay_trial_start(iteration+1,backtrack,fraction,candidate,weights)
++            if not np.all(np.isfinite(candidate)) or np.any(candidate>np.log(np.finfo(float).max)) or np.any(candidate<np.log(np.nextafter(0.,1.))):
++                _replay_trial_end(trial,'log_range_guard');continue
+             candidate_population=weights*np.asarray(jnp.exp(jnp.asarray(candidate)))
+-            if not np.all(np.isfinite(candidate_population)) or np.any(candidate_population<=0):continue
++            trial.update({'actual_jax_weighted_population_min':float(np.min(candidate_population)),
++                          'actual_jax_nonpositive_population_count':int(np.sum(candidate_population<=0))})
++            if not np.all(np.isfinite(candidate_population)) or np.any(candidate_population<=0):
++                _replay_trial_end(trial,'population_guard');continue
+             change=float(objective_difference(new_log,old,dt,direction,fraction,descent,curvature))
++            trial.update({'objective_change':change,'armijo_rhs':1e-4*fraction*descent})
++            _replay_trial_end(trial,'accepted' if np.isfinite(change) and change<=1e-4*fraction*descent else 'armijo_guard')
+             if np.isfinite(change) and change<=1e-4*fraction*descent:
+                 new_log=candidate
+                 record.update({'fraction':fraction,'backtracks':backtrack,

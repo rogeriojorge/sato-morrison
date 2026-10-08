@@ -1,0 +1,1243 @@
+{
+  "model": "full-IVP phase search for finite-budget plane censoring",
+  "boundary": "unabsorbed IVP at fixed T; separate first-outgoing-plane event checks; extended finite budgets",
+  "units": "normalized",
+  "inputs": {
+    "mass": 1.0,
+    "charge": 1.0,
+    "field": 2.0,
+    "strength": 0.03,
+    "screening": 3.0,
+    "fixed_incoming_triple": [
+      0.9938225266093732,
+      1.9056642462041216,
+      1.9668376625283577
+    ],
+    "phase_definition": "free incoming helix at z=0",
+    "phase_bracket": [
+      1.5610876065934445,
+      1.561088355607501
+    ],
+    "prior_summary_sha256": "13a304f77197aca56fc0e8d96d480d9a22d47d3a7a1996c20b5cc84524b5b158",
+    "start_distance": 24.0,
+    "flight_time_factor": 12.0,
+    "max_step": 0.025,
+    "rtol": 1e-12,
+    "max_bisections": 40,
+    "interior_z_target": 12.0,
+    "search_rule": "Recheck prior opposite exits and full-IVP F=z(T) signs; bisect F signs without monotonicity assumption; stop at |F|<L/2, failed solve,40 attempts or machine bracket width.",
+    "refined_step": 0.0125,
+    "larger_flight_factors": [
+      24.0,
+      48.0
+    ],
+    "fallback_precision_controls": "If no interior candidate is found, check both final endpoints at the sameT and saved binary64 initial arrays.",
+    "precision_control_rtol": [
+      1e-12,
+      1e-13
+    ],
+    "precision_control_max_step": 0.0125,
+    "precision_cartesian_rtol": 1e-13,
+    "position_absolute_target": 1e-08,
+    "velocity_absolute_target": 1e-08,
+    "energy_target": 1e-08,
+    "diagnostic_pass_rule": "Rechecked opposite exits; full-IVP interior candidate confirmed nonexit by public event helper at both steps; half-step and independent12D endpoint errors below unchanged targets; all recorded paths pass and dependencies unchanged.",
+    "limits": "No censor-interval width, phase integral, asymptotic trapping, plasma rate or lifetime; larger-budget outcomes remain diagnostic. An outgoing-scattering integral needs almost-everywhere finite exits or an explicit extension convention."
+  },
+  "commit": "17ec229101d612280cebe997e4e46dded61a9bcf",
+  "working_tree": "M README.md\n M notes/implementation.tex\n?? results/encounter_censoring/refined/",
+  "source_sha256": "6f73100922278d93f244dcb852bfa7cec6d56d04f02f88fa3ac78d412c3dd728",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "unset",
+    "OPENBLAS_NUM_THREADS": "unset",
+    "MKL_NUM_THREADS": "unset",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": false,
+  "prior_evidence": {
+    "summary_path": "results/encounter_censoring/summary.json",
+    "summary_sha256": "13a304f77197aca56fc0e8d96d480d9a22d47d3a7a1996c20b5cc84524b5b158",
+    "paths_path": "results/encounter_censoring/paths.npz",
+    "paths_sha256": "47facfe4bdbe551d6f40d2a55812821f04adaeae9d31387422ab905cbd1c6883",
+    "producer_commit": "687be1278e802e8f6eee655b8f8f35bc5e4da627",
+    "declared_endpoint_rows": [
+      {
+        "phase": 1.5610876065934445,
+        "max_step": 0.05,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "outgoing_event",
+        "exit": "transmitted",
+        "time": 60.68994911889444,
+        "energy_error": 1.0795630969286097e-10,
+        "evaluations": 16481,
+        "final_position": [
+          0.041103871124866145,
+          -2.097965204366215,
+          24.0
+        ],
+        "final_velocity": [
+          -2.055354821005558,
+          -1.7155078393336016,
+          0.5766767541865105
+        ],
+        "recorded_path_energy_error": 1.0795630969286097e-10,
+        "recorded_path_position_error": 4.440892098500626e-16,
+        "recorded_path_velocity_error": 8.881784197001252e-16,
+        "recorded_path_check": "passed",
+        "wall_s": 0.15895470802206546,
+        "label": "bisection_12"
+      },
+      {
+        "phase": 1.561088355607501,
+        "max_step": 0.05,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "outgoing_event",
+        "exit": "reflected",
+        "time": 32.2902304679407,
+        "energy_error": 1.0355616023991675e-10,
+        "evaluations": 9917,
+        "final_position": [
+          -0.3094851377756662,
+          -1.4096223916408341,
+          -23.999999999999996
+        ],
+        "final_velocity": [
+          -1.7153771312580222,
+          -1.1496135035199855,
+          -1.7988542816370179
+        ],
+        "recorded_path_energy_error": 1.0355616023991675e-10,
+        "recorded_path_position_error": 9.547918011776346e-15,
+        "recorded_path_velocity_error": 1.9317880628477724e-14,
+        "recorded_path_check": "passed",
+        "wall_s": 0.08470512501662597,
+        "label": "bisection_13"
+      }
+    ]
+  },
+  "experiment_dependency_sha256": {
+    "examples/25_encounter_censoring.py": "29406f121c70738a67d7070acc12e7dcc381b37a7ddeade391f905d242a37fda",
+    "src/sato_morrison/controls.py": "ea673df34611bd68c60756fec2f335c9ebd10a705149ee22b68917d3102ec077",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "experiment_dependency_sha256_end": {
+    "examples/25_encounter_censoring.py": "29406f121c70738a67d7070acc12e7dcc381b37a7ddeade391f905d242a37fda",
+    "src/sato_morrison/controls.py": "ea673df34611bd68c60756fec2f335c9ebd10a705149ee22b68917d3102ec077",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "results": {
+    "status": "unresolved",
+    "search_stop": "machine_width",
+    "last_search_bracket": [
+      1.5610882243791782,
+      1.5610882243791784
+    ],
+    "last_search_width": 2.220446049250313e-16,
+    "found_phase": null,
+    "selected_F": null,
+    "half_step_check": null,
+    "independent_12D_check": null,
+    "extended_budget_results": [],
+    "attempts": [
+      {
+        "phase": 1.5610876065934445,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "outgoing_event",
+        "exit": "transmitted",
+        "time": 60.68987062475822,
+        "energy_error": 1.1854208209702805e-12,
+        "evaluations": 31865,
+        "final_position": [
+          0.041265007249204975,
+          -2.097830359896564,
+          24.0
+        ],
+        "final_velocity": [
+          -2.055085454770206,
+          -1.715830155787548,
+          0.5766778274219988
+        ],
+        "recorded_path_energy_error": 1.1854208209702805e-12,
+        "recorded_path_position_error": 6.938893903907228e-18,
+        "recorded_path_velocity_error": 0.0,
+        "recorded_path_check": "passed",
+        "wall_s": 0.2723106669727713,
+        "label": "left_event"
+      },
+      {
+        "phase": 1.561088355607501,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "outgoing_event",
+        "exit": "reflected",
+        "time": 32.29029937587625,
+        "energy_error": 1.082865932762462e-12,
+        "evaluations": 18569,
+        "final_position": [
+          -0.3095927913846149,
+          -1.4097096735385652,
+          -24.0
+        ],
+        "final_velocity": [
+          -1.7155327465679497,
+          -1.149395834067321,
+          -1.798844976394423
+        ],
+        "recorded_path_energy_error": 1.082865932762462e-12,
+        "recorded_path_position_error": 2.220446049250313e-16,
+        "recorded_path_velocity_error": 2.220446049250313e-16,
+        "recorded_path_check": "passed",
+        "wall_s": 0.1571716659818776,
+        "label": "right_event"
+      },
+      {
+        "phase": 1.5610876065934445,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": 76.15401897657826,
+        "final_position": [
+          0.38270281801437045,
+          -0.475800509897787,
+          76.15401897657826
+        ],
+        "final_velocity": [
+          1.1889741965479155,
+          -2.3987058395848493,
+          0.5766792369793374
+        ],
+        "energy_error": 1.1854208209702805e-12,
+        "recorded_path_energy_error": 1.1854208209702805e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.3405635829549283,
+        "label": "left_endpoint"
+      },
+      {
+        "phase": 1.561088355607501,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -237.77138470138019,
+        "final_position": [
+          0.1425872499802757,
+          -0.44441425696771913,
+          -237.77138470138019
+        ],
+        "final_velocity": [
+          0.21505806784231493,
+          -2.0537559312450226,
+          -1.7988454323852225
+        ],
+        "energy_error": 1.082865932762462e-12,
+        "recorded_path_energy_error": 1.082865932762462e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.3405090420274064,
+        "label": "right_endpoint"
+      },
+      {
+        "phase": 1.5610879811004728,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": 161.5010702238142,
+        "final_position": [
+          0.304720114137203,
+          -0.46525108592909004,
+          161.5010702238142
+        ],
+        "final_velocity": [
+          0.8781033062685852,
+          -2.2882664735815803,
+          1.2217935245704272
+        ],
+        "energy_error": 1.1561701773359488e-12,
+        "recorded_path_energy_error": 1.1561701773359488e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.34313595900312066,
+        "label": "bisection_00"
+      },
+      {
+        "phase": 1.561088168353987,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": 247.10107898817887,
+        "final_position": [
+          -0.21550015230711525,
+          -0.40159405366352446,
+          247.10107898817887
+        ],
+        "final_velocity": [
+          -1.2879337834141653,
+          -1.5316883191343265,
+          1.8695362392444135
+        ],
+        "energy_error": 1.1553412117268788e-12,
+        "recorded_path_energy_error": 1.1553412117268788e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.3443385830032639,
+        "label": "bisection_01"
+      },
+      {
+        "phase": 1.561088261980744,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -201.691647322793,
+        "final_position": [
+          -0.34329498129752783,
+          -0.38601994814096,
+          -201.691647322793
+        ],
+        "final_velocity": [
+          -1.8338644036210963,
+          -1.3446628680765138,
+          -1.526050919080775
+        ],
+        "energy_error": 1.1538017041671772e-12,
+        "recorded_path_energy_error": 1.1538017041671772e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.34363562503131106,
+        "label": "bisection_02"
+      },
+      {
+        "phase": 1.5610882151673655,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": 64.87299130487423,
+        "final_position": [
+          -0.47255845614495495,
+          -0.3589344377280399,
+          64.87299130487423
+        ],
+        "final_velocity": [
+          -2.43658571449767,
+          -1.14906358779217,
+          0.492657299137481
+        ],
+        "energy_error": 1.3019497008738527e-12,
+        "recorded_path_energy_error": 1.3019497008738527e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.34679608297301456,
+        "label": "bisection_03"
+      },
+      {
+        "phase": 1.5610882385740548,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -92.39717710267703,
+        "final_position": [
+          -0.465050323756377,
+          -0.3661012254674216,
+          -92.39717710267703
+        ],
+        "final_velocity": [
+          -2.3784195769107854,
+          -1.1633386752844508,
+          -0.6998369310303348
+        ],
+        "energy_error": 1.169433627081071e-12,
+        "recorded_path_energy_error": 1.169433627081071e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.3405575000215322,
+        "label": "bisection_04"
+      },
+      {
+        "phase": 1.56108822687071,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -40.362053437315254,
+        "final_position": [
+          -0.4470165094802858,
+          -0.33021726921769906,
+          -40.362053437315254
+        ],
+        "final_velocity": [
+          -2.456289313960292,
+          -1.169559849917314,
+          -0.3142942038937663
+        ],
+        "energy_error": 1.412557397855495e-12,
+        "recorded_path_energy_error": 1.412557397855495e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.3450630420120433,
+        "label": "bisection_05"
+      },
+      {
+        "phase": 1.5610882210190378,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": 40.846720713596696,
+        "final_position": [
+          -0.453734285809916,
+          -0.3361323199208054,
+          40.846720713596696
+        ],
+        "final_velocity": [
+          -2.4586561391681374,
+          -1.1639955069736232,
+          0.3164375653594888
+        ],
+        "energy_error": 1.3750170981304624e-12,
+        "recorded_path_energy_error": 1.3750170981304624e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.3461462919949554,
+        "label": "bisection_06"
+      },
+      {
+        "phase": 1.561088223944874,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": 87.49955310517583,
+        "final_position": [
+          -0.4393724156133276,
+          -0.30637683134286914,
+          87.49955310517583
+        ],
+        "final_velocity": [
+          -2.4222089608545083,
+          -1.0828272865935427,
+          0.6785256845848588
+        ],
+        "energy_error": 1.4750850895110705e-12,
+        "recorded_path_energy_error": 1.4750850895110705e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.34548758302116767,
+        "label": "bisection_07"
+      },
+      {
+        "phase": 1.561088225407792,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -49.82095380406057,
+        "final_position": [
+          -0.4401484234636861,
+          -0.32178201648919524,
+          -49.82095380406057
+        ],
+        "final_velocity": [
+          -2.449336730336346,
+          -1.161991730020945,
+          -0.3879859377828067
+        ],
+        "energy_error": 1.4678612463463163e-12,
+        "recorded_path_energy_error": 1.4678612463463163e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.4427687079878524,
+        "label": "bisection_08"
+      },
+      {
+        "phase": 1.561088224676333,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -119.60551358624078,
+        "final_position": [
+          -0.43478051097898235,
+          -0.28354741489957147,
+          -119.60551358624078
+        ],
+        "final_velocity": [
+          -2.38266655585107,
+          -0.9814982944066979,
+          -0.9271296937227468
+        ],
+        "energy_error": 1.515585980697068e-12,
+        "recorded_path_energy_error": 1.515585980697068e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.3490804170141928,
+        "label": "bisection_09"
+      },
+      {
+        "phase": 1.5610882243106035,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": 258.1893604056606,
+        "final_position": [
+          -0.3660210206255229,
+          0.08397970001748076,
+          258.1893604056606
+        ],
+        "final_velocity": [
+          -1.7232870062945076,
+          0.72447884611367,
+          2.0013546868930057
+        ],
+        "energy_error": 1.564376527973767e-12,
+        "recorded_path_energy_error": 1.564376527973767e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.3459917919826694,
+        "label": "bisection_10"
+      },
+      {
+        "phase": 1.561088224493468,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -231.55568877077448,
+        "final_position": [
+          -0.3999593780633843,
+          -0.10372795594618943,
+          -231.55568877077448
+        ],
+        "final_velocity": [
+          -2.0623124223128015,
+          -0.1594238799033328,
+          -1.794842552027675
+        ],
+        "energy_error": 1.5615343601712408e-12,
+        "recorded_path_energy_error": 1.5615343601712408e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.34653712494764477,
+        "label": "bisection_11"
+      },
+      {
+        "phase": 1.5610882244020359,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -152.24274783880873,
+        "final_position": [
+          -0.31073797627022876,
+          0.3841792808753198,
+          -152.24274783880873
+        ],
+        "final_velocity": [
+          -1.1759881518341457,
+          2.173443631303448,
+          -1.180340177901805
+        ],
+        "energy_error": 1.5660344591919071e-12,
+        "recorded_path_energy_error": 1.5660344591919071e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.3503515000338666,
+        "label": "bisection_12"
+      },
+      {
+        "phase": 1.5610882243563196,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": 152.22565555752354,
+        "final_position": [
+          -0.31073416950343025,
+          0.38419719916705725,
+          152.22565555752354
+        ],
+        "final_velocity": [
+          -1.1759548340555177,
+          2.173533570202154,
+          1.1802077506705604
+        ],
+        "energy_error": 1.5682845087022402e-12,
+        "recorded_path_energy_error": 1.5682845087022402e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.3492905829916708,
+        "label": "bisection_13"
+      },
+      {
+        "phase": 1.5610882243791777,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": 40.04504356003076,
+        "final_position": [
+          0.35267425784787265,
+          0.19950855485362567,
+          40.04504356003076
+        ],
+        "final_velocity": [
+          2.5207157071246216,
+          1.018764939694674,
+          0.32881393522824603
+        ],
+        "energy_error": 1.8751202077166257e-12,
+        "recorded_path_energy_error": 1.8751202077166257e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.3533737499965355,
+        "label": "bisection_14"
+      },
+      {
+        "phase": 1.5610882243906068,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -84.71935280269852,
+        "final_position": [
+          -0.29706594841807715,
+          0.43088051484617745,
+          -84.71935280269852
+        ],
+        "final_velocity": [
+          -1.0852411916849265,
+          2.426884893125488,
+          -0.657639383451707
+        ],
+        "energy_error": 1.5667450011425387e-12,
+        "recorded_path_energy_error": 1.5667450011425387e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.34686108300229535,
+        "label": "bisection_15"
+      },
+      {
+        "phase": 1.5610882243848923,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -50.50648674049119,
+        "final_position": [
+          -0.28439036121671696,
+          0.43035460335108744,
+          -50.50648674049119
+        ],
+        "final_velocity": [
+          -1.07377562704196,
+          2.4881878081360167,
+          -0.39488684629239323
+        ],
+        "energy_error": 1.5676923904100476e-12,
+        "recorded_path_energy_error": 1.5676923904100476e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.34899358300026506,
+        "label": "bisection_16"
+      },
+      {
+        "phase": 1.561088224382035,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -39.75563516673014,
+        "final_position": [
+          -0.2690785570430494,
+          0.41246349843068464,
+          -39.75563516673014
+        ],
+        "final_velocity": [
+          -1.0883242133283166,
+          2.4931485084322023,
+          -0.3158626340091747
+        ],
+        "energy_error": 1.6651550613050063e-12,
+        "recorded_path_energy_error": 1.6651550613050063e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.34534983400953934,
+        "label": "bisection_17"
+      },
+      {
+        "phase": 1.5610882243806063,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -41.552976932688125,
+        "final_position": [
+          -0.25908848175904975,
+          0.39989741161300185,
+          -41.552976932688125
+        ],
+        "final_velocity": [
+          -1.095512521483778,
+          2.487824938563316,
+          -0.3325472520177437
+        ],
+        "energy_error": 1.7966053221718407e-12,
+        "recorded_path_energy_error": 1.7966053221718407e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.35968991596018896,
+        "label": "bisection_18"
+      },
+      {
+        "phase": 1.561088224379892,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -54.15517562731731,
+        "final_position": [
+          -0.25505478219880706,
+          0.39874237132786533,
+          -54.15517562731731
+        ],
+        "final_velocity": [
+          -1.0765702758478053,
+          2.480847381652878,
+          -0.4317418179294362
+        ],
+        "energy_error": 1.7692494570725268e-12,
+        "recorded_path_energy_error": 1.7692494570725268e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.3623632090166211,
+        "label": "bisection_19"
+      },
+      {
+        "phase": 1.5610882243795348,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -89.50698682638483,
+        "final_position": [
+          -0.24093805803812238,
+          0.39669932223899235,
+          -89.50698682638483
+        ],
+        "final_velocity": [
+          -0.9966028657846766,
+          2.449602896149982,
+          -0.711503103547919
+        ],
+        "energy_error": 1.8008685738756299e-12,
+        "recorded_path_energy_error": 1.8008685738756299e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.3576232919585891,
+        "label": "bisection_20"
+      },
+      {
+        "phase": 1.5610882243793562,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -149.04547752885216,
+        "final_position": [
+          -0.19476927384516157,
+          0.3841422916214496,
+          -149.04547752885216
+        ],
+        "final_velocity": [
+          -0.7616001239451523,
+          2.34889498438145,
+          -1.1843419653250937
+        ],
+        "energy_error": 1.8421984306706978e-12,
+        "recorded_path_energy_error": 1.8421984306706978e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.3481474170112051,
+        "label": "bisection_21"
+      },
+      {
+        "phase": 1.561088224379267,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -229.57148799657696,
+        "final_position": [
+          -0.05798673315968222,
+          0.3493280000684794,
+          -229.57148799657696
+        ],
+        "final_velocity": [
+          -0.038926091281783134,
+          2.0421890199424055,
+          -1.8242689093226319
+        ],
+        "energy_error": 1.849895968469206e-12,
+        "recorded_path_energy_error": 1.849895968469206e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.3523180420161225,
+        "label": "bisection_22"
+      },
+      {
+        "phase": 1.5610882243792223,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -231.36875909783217,
+        "final_position": [
+          0.21455962541478726,
+          0.283250116120184,
+          -231.36875909783217
+        ],
+        "final_velocity": [
+          1.449381819170039,
+          1.4207785997209657,
+          -1.8386649504765078
+        ],
+        "energy_error": 1.850488086761399e-12,
+        "recorded_path_energy_error": 1.850488086761399e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.45913045800989494,
+        "label": "bisection_23"
+      },
+      {
+        "phase": 1.5610882243792,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -190.12466059059054,
+        "final_position": [
+          0.30034570822257933,
+          0.26208888564450916,
+          -190.12466059059054
+        ],
+        "final_velocity": [
+          1.9291392004669066,
+          1.222852271677944,
+          -1.5109806597538786
+        ],
+        "energy_error": 1.8542776438314338e-12,
+        "recorded_path_energy_error": 1.8542776438314338e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.3488197500118986,
+        "label": "bisection_24"
+      },
+      {
+        "phase": 1.5610882243791888,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -139.70951180949646,
+        "final_position": [
+          0.35671952685879477,
+          0.24706677765743515,
+          -139.70951180949646
+        ],
+        "final_velocity": [
+          2.2533487760898954,
+          1.0905134005960098,
+          -1.1104990336289882
+        ],
+        "energy_error": 1.8494222738354514e-12,
+        "recorded_path_energy_error": 1.8494222738354514e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.3568620409932919,
+        "label": "bisection_25"
+      },
+      {
+        "phase": 1.5610882243791833,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -151.88441169689403,
+        "final_position": [
+          0.3459726316515196,
+          0.2501281914140439,
+          -151.88441169689403
+        ],
+        "final_velocity": [
+          2.190204104018159,
+          1.1161034103818663,
+          -1.2071981806448495
+        ],
+        "energy_error": 1.854396067489872e-12,
+        "recorded_path_energy_error": 1.854396067489872e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.3529810000327416,
+        "label": "bisection_26"
+      },
+      {
+        "phase": 1.5610882243791804,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -134.56325041861473,
+        "final_position": [
+          0.3608089293756994,
+          0.24584722798257944,
+          -134.56325041861473
+        ],
+        "final_velocity": [
+          2.2777250434486165,
+          1.0806801882656305,
+          -1.0696294893154707
+        ],
+        "energy_error": 1.8485933082263817e-12,
+        "recorded_path_energy_error": 1.8485933082263817e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.5217469580238685,
+        "label": "bisection_27"
+      },
+      {
+        "phase": 1.561088224379179,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -134.56325041861473,
+        "final_position": [
+          0.3608089293756994,
+          0.24584722798257944,
+          -134.56325041861473
+        ],
+        "final_velocity": [
+          2.2777250434486165,
+          1.0806801882656305,
+          -1.0696294893154707
+        ],
+        "energy_error": 1.8485933082263817e-12,
+        "recorded_path_energy_error": 1.8485933082263817e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.4709482089965604,
+        "label": "bisection_28"
+      },
+      {
+        "phase": 1.5610882243791784,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": -134.56325041861473,
+        "final_position": [
+          0.3608089293756994,
+          0.24584722798257944,
+          -134.56325041861473
+        ],
+        "final_velocity": [
+          2.2777250434486165,
+          1.0806801882656305,
+          -1.0696294893154707
+        ],
+        "energy_error": 1.8485933082263817e-12,
+        "recorded_path_energy_error": 1.8485933082263817e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.35040641599334776,
+        "label": "bisection_29"
+      },
+      {
+        "phase": 1.5610882243791782,
+        "max_step": 0.025,
+        "flight_time_factor": 12.0,
+        "flight_budget": 151.1284060524644,
+        "status": "full_budget_path",
+        "time": 151.1284060524644,
+        "search_F": 40.04504356003076,
+        "final_position": [
+          0.35267425784787265,
+          0.19950855485362567,
+          40.04504356003076
+        ],
+        "final_velocity": [
+          2.5207157071246216,
+          1.018764939694674,
+          0.32881393522824603
+        ],
+        "energy_error": 1.8751202077166257e-12,
+        "recorded_path_energy_error": 1.8751202077166257e-12,
+        "recorded_path_check": "passed",
+        "wall_s": 0.351565666962415,
+        "label": "bisection_30"
+      }
+    ],
+    "precision_controls": [
+      {
+        "endpoint_index": 0,
+        "phase": 1.5610882243791782,
+        "method": "relative6D_DOP853",
+        "rtol": 1e-12,
+        "max_step": 0.0125,
+        "baseline_outside_label": "transmitted",
+        "final_state": [
+          -0.06702113276402853,
+          0.35155596746456574,
+          226.44720931508314,
+          -0.08740052262353548,
+          2.062617914265991,
+          1.7994379054792595
+        ],
+        "search_F": 226.44720931508314,
+        "energy_error": 1.1880261414559296e-12,
+        "outside_plane_label": "transmitted",
+        "difference_from_primary": {
+          "position_error": 186.40216575505238,
+          "velocity_error": 2.6081162297481573
+        },
+        "same_initial_double_arrays": true,
+        "status": "unresolved",
+        "wall_s": 0.6750211670296267
+      },
+      {
+        "endpoint_index": 0,
+        "phase": 1.5610882243791782,
+        "method": "relative6D_DOP853",
+        "rtol": 1e-13,
+        "max_step": 0.0125,
+        "baseline_outside_label": "transmitted",
+        "final_state": [
+          0.3826913866366469,
+          0.23788971624458127,
+          97.89387162800791,
+          2.4169992445159347,
+          1.0256454165360063,
+          0.7785720383060473
+        ],
+        "search_F": 97.89387162800791,
+        "energy_error": 2.9191431805112304e-13,
+        "outside_plane_label": "transmitted",
+        "difference_from_primary": {
+          "position_error": 57.84882806797715,
+          "velocity_error": 0.44975810307780123
+        },
+        "same_initial_double_arrays": true,
+        "difference_from_half_step": {
+          "position_error": 128.5533376870752,
+          "velocity_error": 2.5043997671394704
+        },
+        "status": "unresolved",
+        "wall_s": 0.6825567079940811
+      },
+      {
+        "endpoint_index": 0,
+        "phase": 1.5610882243791782,
+        "method": "individual12D_DOP853",
+        "rtol": 1e-13,
+        "max_step": 0.0125,
+        "baseline_outside_label": "transmitted",
+        "final_state": [
+          0.3069895648718535,
+          0.26040291736769844,
+          185.52965777421088,
+          1.966743364358274,
+          1.2074158101908068,
+          1.4744747835544045
+        ],
+        "search_F": 185.52965777421088,
+        "energy_error": 3.043488021871749e-13,
+        "outside_plane_label": "transmitted",
+        "difference_from_primary": {
+          "position_error": 145.4846142141801,
+          "velocity_error": 1.1456608483261586
+        },
+        "difference_from_tight_relative": {
+          "position_error": 87.63578614620296,
+          "velocity_error": 0.6959027452483573
+        },
+        "same_initial_double_arrays": true,
+        "evaluations": 149810,
+        "status": "unresolved",
+        "wall_s": 2.094426166964695
+      },
+      {
+        "endpoint_index": 1,
+        "phase": 1.5610882243791784,
+        "method": "relative6D_DOP853",
+        "rtol": 1e-12,
+        "max_step": 0.0125,
+        "baseline_outside_label": "reflected",
+        "final_state": [
+          -0.07951023890374935,
+          0.35464603701741537,
+          221.73586659467975,
+          -0.15428773636130041,
+          2.0908326965738975,
+          1.761993818555401
+        ],
+        "search_F": 221.73586659467975,
+        "energy_error": 1.1871971758468595e-12,
+        "outside_plane_label": "transmitted",
+        "difference_from_primary": {
+          "position_error": 356.29911701329445,
+          "velocity_error": 2.8316233078708715
+        },
+        "same_initial_double_arrays": true,
+        "status": "unresolved",
+        "wall_s": 0.6738369999802671
+      },
+      {
+        "endpoint_index": 1,
+        "phase": 1.5610882243791784,
+        "method": "relative6D_DOP853",
+        "rtol": 1e-13,
+        "max_step": 0.0125,
+        "baseline_outside_label": "reflected",
+        "final_state": [
+          0.3238738979668852,
+          0.25605330017164923,
+          172.54218915557647,
+          2.0628128930641774,
+          1.1680566840326712,
+          1.371296772540013
+        ],
+        "search_F": 172.54218915557647,
+        "energy_error": 2.961775697549123e-13,
+        "outside_plane_label": "transmitted",
+        "difference_from_primary": {
+          "position_error": 307.1054395741912,
+          "velocity_error": 2.4409262618554837
+        },
+        "same_initial_double_arrays": true,
+        "difference_from_half_step": {
+          "position_error": 49.19367743910328,
+          "velocity_error": 2.217100629425478
+        },
+        "status": "unresolved",
+        "wall_s": 0.6833945420221426
+      },
+      {
+        "endpoint_index": 1,
+        "phase": 1.5610882243791784,
+        "method": "individual12D_DOP853",
+        "rtol": 1e-13,
+        "max_step": 0.0125,
+        "baseline_outside_label": "reflected",
+        "final_state": [
+          0.38993774600894676,
+          0.23038748918912252,
+          67.22663030964597,
+          2.492772265913952,
+          0.999503954739219,
+          0.5358045931440526
+        ],
+        "search_F": 67.22663030964597,
+        "energy_error": 3.0399353121185914e-13,
+        "outside_plane_label": "transmitted",
+        "difference_from_primary": {
+          "position_error": 201.7898807282607,
+          "velocity_error": 1.6054340824595235
+        },
+        "difference_from_tight_relative": {
+          "position_error": 105.3155588459305,
+          "velocity_error": 0.8354921793959603
+        },
+        "same_initial_double_arrays": true,
+        "evaluations": 149798,
+        "status": "unresolved",
+        "wall_s": 2.5037015000125393
+      }
+    ],
+    "input_preparation": [
+      {
+        "endpoint_index": 0,
+        "phase": 1.5610882243791782,
+        "phase_hex": "0x1.8fa37a55e1188p+0",
+        "free_flight_angle": 25.188067675410736,
+        "free_flight_angle_hex": "0x1.93025340352e8p+4",
+        "incoming_angle": 26.749155899789912,
+        "incoming_angle_hex": "0x1.abfc8ae593400p+4",
+        "initial_double_state": [
+          0.011426781588523616,
+          -0.044846380566698554,
+          -24.0,
+          -0.08969276113339711,
+          1.9647914900416992,
+          1.9056642462041216
+        ],
+        "initial_double_state_hex": [
+          "0x1.766eca9c51b80p-7",
+          "-0x1.6f61ad3c18162p-5",
+          "-0x1.8000000000000p+4",
+          "-0x1.6f61ad3c18162p-4",
+          "0x1.f6fc9339302e6p+0",
+          "0x1.e7d99cae9a6afp+0"
+        ]
+      },
+      {
+        "endpoint_index": 1,
+        "phase": 1.5610882243791784,
+        "phase_hex": "0x1.8fa37a55e1189p+0",
+        "free_flight_angle": 25.188067675410736,
+        "free_flight_angle_hex": "0x1.93025340352e8p+4",
+        "incoming_angle": 26.749155899789915,
+        "incoming_angle_hex": "0x1.abfc8ae593401p+4",
+        "initial_double_state": [
+          0.011426781588523727,
+          -0.044846380566702045,
+          -24.0,
+          -0.08969276113340409,
+          1.964791490041699,
+          1.9056642462041216
+        ],
+        "initial_double_state_hex": [
+          "0x1.766eca9c51bc0p-7",
+          "-0x1.6f61ad3c18359p-5",
+          "-0x1.8000000000000p+4",
+          "-0x1.6f61ad3c18359p-4",
+          "0x1.f6fc9339302e5p+0",
+          "0x1.e7d99cae9a6afp+0"
+        ]
+      }
+    ],
+    "precision_controls_scope": "Same physical inputs and exact initial double arrays; all paths use DOP853. Endpoint disagreement is not error relative to a known exact trajectory. Smaller energy error alone cannot certify trajectory accuracy.",
+    "dependencies_unchanged": true,
+    "wall_s": 27.306226291984785,
+    "wall_s_scope": "Numerical solves/checks and intermediate checkpoint writes; excludes imports, metadata initialization, plots and final output.",
+    "scope": "Finite-budget nonexit is censoring, not trapping. Last search bracket is not a censor-interval width or coverage bound. Original diagnostics and phase integral remain unresolved. Classifications are floating-point ODE evidence, not interval certification. Eventual outgoing-moment bounds do not define a scattering integral on non-exiting phases."
+  },
+  "paths_sha256": "a875be5b99616c6faac5b0ea17aaac0ec5b6cecbe0cfe52d6629c1bcc9d57808"
+}

@@ -2817,6 +2817,46 @@ hardware/version record are in \path{results/difficult_correction/}.
 This is one linear correction, not an accepted trajectory or a nonuniform
 continuum-convergence benchmark.
 
+\paragraph{A reproduced floating-point tail barrier.}
+The full campaign's dipole $\Delta t=0.0003125$ case accepts its first step
+with residual $2.54\times10^{-14}$, then rejects step two at Newton
+correction 18. The last inner true residual $8.19\times10^{-7}$ passes;
+the nonlinear residual remains $2.886$. Its saved first-step minimum density
+is $3.55\times10^{-199}$. The remote artifact does not contain every failed
+trial, so its particular guard cannot be reconstructed from that checkpoint
+alone.
+
+An unchanged-equation, instrumented Apple M4 replay from the exact saved
+first-step state fails at correction 19 after $474.99$ seconds. Its final
+30 trial fractions produce four log-range rejections and 26 population
+rejections, with no objective test reached. At the last fraction $2^{-29}$,
+the minimum trial log density is $-708.396418985$, just below
+$\log(\mathrm{tiny})=-708.396418532$, where ``tiny'' is the smallest normal
+binary64 number. NumPy gives a positive subnormal exponential
+$2.22507285\times10^{-308}$ and weighted population
+$7.550768\times10^{-314}$, while the actual JAX exponential is zero.
+The unchanged positivity guard therefore rejects the trial.
+An independent stable objective evaluation instead gives
+$\Delta\Phi=-5.63\times10^{-17}$, satisfying the Armijo right-hand side
+$-5.63\times10^{-21}$. This replay localizes exhaustion to tail
+representability on the selected Newton ray, not PCG or non-descent.
+
+The next untried fraction $2^{-30}$ has a minimum log value above the normal
+threshold in independent NumPy arithmetic. This does not establish its
+actual JAX acceptance, subsequent progress, or representability of the
+desired root. Nor is the M4 replay bitwise identical to the Linux producer.
+The public solver now records counts of log-range, positive-population and
+Armijo rejections, together with the last trial values, on exhaustion.
+Its 30 trial fractions and successful-step arithmetic are unchanged. A
+focused synthetic convex guard test verifies visible rejection without an
+accepted state; six successful routes retain bitwise-identical states and
+non-timing diagnostics. All 247 regression tests pass.
+No density floor, invariant projection, tolerance relaxation or SOLVAX
+change follows from this diagnosis. The independently failed
+$\Delta t=0.000625$ case also rejects step two after an accepted first step;
+the fine timestep comparison remains unavailable. All partials and their
+producer/source hashes remain distinct from completed refinement cases.
+
 \paragraph{An elementary obstruction to a relative maximum principle.}
 Let the finite collision matrix $K$ be symmetric with $K\bm1=0$ and
 $KE=0$. If all off-diagonal entries satisfy $K_{ij}\le0$, then
@@ -3491,6 +3531,59 @@ the bracket nor defines moments of infinite-time nonexit trajectories.
 The mixed channels have the antecedents described in~\cite{NZ09,NZ10};
 the continuity argument is an elementary coverage limitation, with no
 priority claim for a new scattering mechanism.
+
+\paragraph{Searching the unresolved phase interval.}
+Example 25 retains three successive, separately committed searches with the
+same physical inputs. The original producer \texttt{687be127} performs 14
+bisections of outgoing-event labels and stops at its declared width
+$7.49\times10^{-7}$ radians without finding a finite-budget nonexit.
+Producer \texttt{661e3c7} instead bisects the continued full-IVP observable
+$F(\varphi)=z_\varphi(T)$, with $T=151.1284061$, maximum step $0.025$ and
+relative integration tolerance $10^{-12}$. It seeks $|F|<12$ rather than
+assuming any monotonicity of exit times. After 31 bisections the phase
+bracket reaches one binary64 spacing, $2.22\times10^{-16}$ radians,
+without verifying an interior trajectory. Both searches exit nonzero;
+neither final bracket is a measured nonexit-interval width.
+
+Producer \texttt{17ec229} repeats this full-IVP search and then checks both
+final endpoints with maximum step $0.0125$, relative tolerances $10^{-12}$
+and $10^{-13}$, and independent individual-particle Cartesian equations
+at the tighter setting. All six controls retain the same physical inputs
+and exactly the same saved binary64 initial arrays. All use DOP853; this
+is an equation/coordinate and refinement check, not an independent
+integration-method comparison. The unchanged absolute endpoint targets
+are $10^{-8}$ in position and velocity.
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Computed continued $z(T)$ & Left phase & Right phase\\
+\midrule
+Primary relative trajectory & $40.045$ & $-134.563$\\
+Half step, tolerance $10^{-12}$ & $226.447$ & $221.736$\\
+Half step, tolerance $10^{-13}$ & $97.894$ & $172.542$\\
+Individual Cartesian, tolerance $10^{-13}$ & $185.530$ & $67.227$\\
+\bottomrule
+\end{tabular}
+\end{center}
+All six endpoint checks fail. Their relative energy errors are only
+approximately $10^{-12}$ (or $3\times10^{-13}$ at the tighter settings),
+yet refined endpoints disagree by tens to hundreds of length units.
+The right endpoint changes from a computed reflected outcome to
+transmission. Thus small energy drift does not certify trajectory accuracy;
+the final machine-width bracket does not verify opposite exact exits.
+Adding the free-flight angle also loses low phase bits in binary64 input
+preparation, but controls at identical initial arrays show that this alone
+does not explain the disagreement. No chaos, trapping, phase-coverage bound
+or physical collision coefficient follows. The coarse independent endpoint
+checks of example 24 remain separate evidence for the conditional
+continuity argument.
+
+The precision-checked search takes $27.31$ seconds on the recorded shared
+M4, including numerical checks and checkpoint writes, excluding imports,
+metadata initialization and final plots/output. All attempted paths,
+hexadecimal initial values, six failed controls and source hashes are
+retained under \path{results/encounter_censoring/precision_checked/}; earlier
+failed searches remain in the parent and \path{refined/} directories.
 
 \section{Reader-facing analytical figures}
 \texttt{examples/22\_first\_principles.py} generates the introductory README

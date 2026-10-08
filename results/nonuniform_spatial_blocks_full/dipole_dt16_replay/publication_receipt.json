@@ -1,0 +1,35 @@
+{
+  "status": "copied_and_hash_verified",
+  "frozen_diagnostic_patch_commit": "17ec229101d612280cebe997e4e46dded61a9bcf",
+  "test_provenance": "Focused/full tests ran on the pre-commit working tree; the recorded tested solver and test file hashes equal the frozen commit blobs. The tests were not re-executed at this commit. No full Git tree hash was captured during the original test run; comparison is limited to the recorded owned files.",
+  "tested_files_vs_commit": {
+    "src/sato_morrison/solver.py": {
+      "tested_file_sha256": "0960124138032882d7e3eaddea3fa27787f9fab22da9d44f2a4a46ad6cfb535c",
+      "frozen_commit_blob_sha256": "0960124138032882d7e3eaddea3fa27787f9fab22da9d44f2a4a46ad6cfb535c",
+      "identical": true
+    },
+    "tests/test_lagged_entropy.py": {
+      "tested_file_sha256": "96a1ec01973b5e0f095a7c72979d2ac91b4fcfa07c5309d1f7c7f1483f919d17",
+      "frozen_commit_blob_sha256": "96a1ec01973b5e0f095a7c72979d2ac91b4fcfa07c5309d1f7c7f1483f919d17",
+      "identical": true
+    }
+  },
+  "working_directory": "repository root",
+  "exact_focused_command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 .venv/bin/python -m pytest -q tests/test_lagged_entropy.py -k 'line_search_reports_population or default_reference_none or endpoint_matches_explicit'",
+  "exact_full_command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 .venv/bin/python -m pytest -q",
+  "focused_log_sha256": null,
+  "focused_log_scope": "Original console output is recorded in the test receipt; no original standalone focused log file was captured.",
+  "full_log_sha256": "06da1056b5cca8ec8d272f8a05f68a87b52973234f943375ea17d563be4452f3",
+  "copies_sha256": {
+    "summary.json": "10a3631e74e51008a14a2962e9abb90ad66d615c7b1e108a71f5124c8512bef1",
+    "independent_backtrack_log_threshold.json": "ebfa5ea9f2e62f0b64dde87d2170afea90b5acf531c3e1dd5e47a9b3afc6b7d9",
+    "instrumentation.diff": "aa7bdd4e1b27667f0fa5a49cce02dc66d3eae3be4fb3651a5210f1d2933be6a6",
+    "final_ray.npz": "fcc00234eb276d0dae89de0f6adc8d0418b98a4f49811d5dcbaff25aaa9e09f4",
+    "trial_ledger.jsonl": "84c967a92ff9e1805d8a329f2f1bbd16037d748e580c90e7b5836519acc8a408",
+    "diagnostic_patch_test_receipt.json": "7b02bd0a7563e93ae8cca0ef0771497d95b1f7391609785acd67ead011b5ce64",
+    "successful_outputs_comparison.json": "00b179ab5e2b8848bd709ac06fd66035671208e25a2a9923b8c0fab4f91dc629",
+    "full_suite.log": "06da1056b5cca8ec8d272f8a05f68a87b52973234f943375ea17d563be4452f3"
+  },
+  "privacy_check": "All copied textual evidence scanned and contains no private filesystem paths. NPZ contains only numerical arrays.",
+  "scope": "Original Linux failure, M4 logging-only replay, and later diagnostic-only source/test commit remain separate identities."
+}

@@ -75,6 +75,25 @@ A **null mode** is a change the operator leaves untouched. Some sampled nulls ar
 
 </details>
 
+## Do real encounters preserve magnetic moment?
+
+Real encounters can exchange parallel and perpendicular energy, changing μ. To test the model's exact constraint, we integrate two repelling particles in a uniform field. We fix the separation of their spiral centers and their incoming relative speeds, then vary the **incoming phase**, the angle around the spiral as they approach.
+
+![A narrow band of incoming phases dominates magnetic-moment change. Resolving each trajectory accurately does not resolve the average over phases.](results/encounter_phase/phase_convergence.png)
+
+The left panel measures squared change in μ, averaged over motion of the pair's center of mass (COM). A few phases dominate the sampled average. Halving the integration timestep changes the 512-phase average by only **3.13×10⁻¹¹**, but doubling the phase count still changes it by **3.94%**. Agreement at sampled angles does not resolve the angles between them. This conditional study remains **unresolved**. [Inputs and controls](results/encounter_phase/summary.json) · [Script](examples/24_encounter_phase.py)
+
+<details>
+<summary>Why can a finite phase grid miss slow encounters?</summary>
+
+Some incoming phases pass through; others reflect. If two exact trajectories have opposite exits before a fixed time, continuity implies an interval of intermediate angles that have not yet exited. A finite phase grid can miss that interval. This is a conditional mathematical statement; the computed trajectories are not certified exact solutions.
+
+![A phase search reaches floating-point resolution without locating a verified slow trajectory. Refined trajectories conserve energy closely but disagree strongly on final position.](results/encounter_censoring/precision_checked/finite_budget_censoring.png)
+
+The finer search remains unresolved. Its right panel compares trajectories from smaller integration steps and separate individual-particle equations. Their energy errors are near **10⁻¹²**, yet their final positions disagree by tens to hundreds of normalized length units; one predicted reflection becomes transmission. **Energy conservation alone is not an accuracy test.** Neither these disagreements nor a timeout proves chaotic motion or trapping. [Derivation and antecedents](notes/implementation.pdf) · [All six failed trajectory checks](results/encounter_censoring/precision_checked/summary.json)
+
+</details>
+
 ## What has actually been checked?
 
 | Question | Evidence |
@@ -84,7 +103,7 @@ A **null mode** is a change the operator leaves untouched. Some sampled nulls ar
 | Does nonlinear mirror relaxation survive refinement? | **15 runs**, eight checks; largest final change **0.197%**; coarse timesteps still have **2–3% bias** |
 | Are difficult-field solves reproducible? | Both three-field pilots completed; two preconditioners agree within **1.50e−12** in the weighted log norm; full refinement remains open |
 | Is the encounter table accurate everywhere? | **No.** Fresh 4,096-state p95 error **2.54%**, but **8 states exceed 100%** relative error |
-| Do the regression tests pass? | **246 passed** on fresh Linux CI |
+| Do the regression tests pass? | **247 passed** locally and on fresh Linux CI, including underflow failure handling |
 
 [Reproduction record](results/deep_reproduction.json) · [Mirror refinements](results/nonuniform_entropy/mirror_audit.json) · [Independent solver audit](results/solver_accuracy/audit.json) · [Scattering validation](results/scattering_table/refined8_validation4096/audit.json) · [Completed pilot comparison](results/nonuniform_spatial_blocks/preconditioner_comparison.json) · [Full refinement attempt](https://github.com/rogeriojorge/sato-morrison/actions/runs/37803682825)
 
@@ -108,7 +127,7 @@ The [editable examples](examples/README.md) expose inputs at the top, print prog
 
 The nonlinear local kernel and finite-range kernel are **specified surrogate models** extending the source's simplified linear setting. They are not an evaluation of the full source Eq. (119). Lorentz, Dougherty, physical 3V Landau weak moments and direct magnetized encounters provide separate controls.
 
-Remaining work includes dipole/nonaxisymmetric refinement, complete-trajectory cost comparisons, wider encounter coverage, and physical calibration. Confined dipole dynamics also need compatible ideal boundaries. No physical collision rate, spectral gap or metastable lifetime is claimed.
+Remaining work includes dipole/nonaxisymmetric refinement, complete-trajectory cost comparisons, wider encounter coverage, and physical calibration. Several full-campaign dipole cases fail visibly in extreme tails; their accepted partial states and diagnostics are retained. Confined dipole dynamics also need compatible ideal boundaries. No physical collision rate, spectral gap or metastable lifetime is claimed.
 
 At matched error on an Apple M4, the small implicit benchmark takes **43.8 μs** with diagonal-PCG versus **550 μs** dense, using **16.8 kB** versus **263 kB** of temporary buffers. These synchronized warm measurements do not establish a general nonuniform speedup. [Benchmark](results/benchmarks/summary.json)
 

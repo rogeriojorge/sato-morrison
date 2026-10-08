@@ -1,0 +1,447 @@
+{
+  "kind": "independent saved-array arithmetic audit",
+  "arithmetic_status": "passed",
+  "data_producer_commit": "661e3c79a2fe4b927c40a751705f31054c0c0fb2",
+  "data_producer_source_changes": "",
+  "input_sha256": {
+    "results/encounter_censoring/refined/summary.json": "250fb85bf398df789b70f61aabed1e77aea394c5bb5b04249f6a0f33582e465d",
+    "results/encounter_censoring/refined/paths.npz": "73deae2696ee9551db55c022c8ec3e48d0130aba46b5621375918f144c9b471f"
+  },
+  "producer_dependency_sha256": {
+    "examples/25_encounter_censoring.py": "a783ee6550599dd3834ea2e4f5a041d34e55f2e6f3ecbb1f43b20c49b895ea36",
+    "src/sato_morrison/controls.py": "ea673df34611bd68c60756fec2f335c9ebd10a705149ee22b68917d3102ec077",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "audit_execution_head": "17ec229101d612280cebe997e4e46dded61a9bcf",
+  "private_checker": {
+    "basename": "audit_encounter_refined_661.py",
+    "sha256": "7f3f3c1f68e50f93aa7f77468b109749ca356d76dd64ffd75eae4f6671486c36",
+    "archive": "Checker source archived outside public tree; formula and comparisons stated here."
+  },
+  "formula": "H=|w|\u00b2/4 + .03 exp(-|r|/3)/|r|; relative energy defect=max_t|H(t)-H(0)|/|H(0)|.",
+  "checks": [
+    {
+      "label": "left_event",
+      "energy_relative_error": 1.1854208209702805e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 6.938893903907228e-18,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": null
+    },
+    {
+      "label": "right_event",
+      "energy_relative_error": 1.082865932762462e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 2.220446049250313e-16,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 2.220446049250313e-16,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": null
+    },
+    {
+      "label": "left_endpoint",
+      "energy_relative_error": 1.1854208209702805e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "right_endpoint",
+      "energy_relative_error": 1.082865932762462e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_00",
+      "energy_relative_error": 1.1561701773359488e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_01",
+      "energy_relative_error": 1.1553412117268788e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_02",
+      "energy_relative_error": 1.1538017041671772e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_03",
+      "energy_relative_error": 1.3019497008738527e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_04",
+      "energy_relative_error": 1.169433627081071e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_05",
+      "energy_relative_error": 1.412557397855495e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_06",
+      "energy_relative_error": 1.3750170981304624e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_07",
+      "energy_relative_error": 1.4750850895110705e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_08",
+      "energy_relative_error": 1.4678612463463163e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_09",
+      "energy_relative_error": 1.515585980697068e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_10",
+      "energy_relative_error": 1.564376527973767e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_11",
+      "energy_relative_error": 1.5615343601712408e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_12",
+      "energy_relative_error": 1.5660344591919071e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_13",
+      "energy_relative_error": 1.5682845087022402e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_14",
+      "energy_relative_error": 1.8751202077166257e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_15",
+      "energy_relative_error": 1.5667450011425387e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_16",
+      "energy_relative_error": 1.5676923904100476e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_17",
+      "energy_relative_error": 1.6651550613050063e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_18",
+      "energy_relative_error": 1.7966053221718407e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_19",
+      "energy_relative_error": 1.7692494570725268e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_20",
+      "energy_relative_error": 1.8008685738756299e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_21",
+      "energy_relative_error": 1.8421984306706978e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_22",
+      "energy_relative_error": 1.849895968469206e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_23",
+      "energy_relative_error": 1.850488086761399e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_24",
+      "energy_relative_error": 1.8542776438314338e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_25",
+      "energy_relative_error": 1.8494222738354514e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_26",
+      "energy_relative_error": 1.854396067489872e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_27",
+      "energy_relative_error": 1.8485933082263817e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_28",
+      "energy_relative_error": 1.8485933082263817e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_29",
+      "energy_relative_error": 1.8485933082263817e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    },
+    {
+      "label": "bisection_30",
+      "energy_relative_error": 1.8751202077166257e-12,
+      "reported_energy_discrepancy": 0.0,
+      "endpoint_position_discrepancy": 0.0,
+      "reported_position_comparison_discrepancy": 0.0,
+      "endpoint_velocity_discrepancy": 0.0,
+      "reported_velocity_comparison_discrepancy": 0.0,
+      "time_discrepancy": 0.0,
+      "F_discrepancy": 0.0
+    }
+  ],
+  "last_adjacent_phase_difference": -2.220446049250313e-16,
+  "last_adjacent_initial_state_max_difference": 6.980527267330672e-15,
+  "last_adjacent_final_state_max_difference": 174.6082939786455,
+  "repeated_initial_array_labels": [
+    "bisection_27",
+    "bisection_28",
+    "bisection_29"
+  ],
+  "repeated_initial_arrays_bitwise_equal": true,
+  "environment": {
+    "versions": {
+      "sato-morrison": "0.1.0",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2"
+    },
+    "logical_cpus": 10,
+    "python": "3.12.13",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "Apple M4",
+    "devices": [
+      "cpu:0"
+    ],
+    "x64": false,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "unset",
+      "OPENBLAS_NUM_THREADS": "unset",
+      "MKL_NUM_THREADS": "unset",
+      "XLA_FLAGS": "unset"
+    }
+  },
+  "audit_wall_s": 0.05811829201411456,
+  "audit_numpy": "2.5.3",
+  "audit_python": "3.12.13",
+  "scope": "Independent arithmetic only, no ODE reexecution; current public script differs from producer661. Scientific diagnostic is unresolved at machine width. No discovered nonexit, half-step/12D certification, censor width, exact discontinuity or chaos claim. Current public precision_checked producer documents separate failed trajectory controls."
+}

@@ -1,0 +1,176 @@
+[
+  {
+    "endpoint_index": 0,
+    "phase": 1.5610882243791782,
+    "method": "relative6D_DOP853",
+    "rtol": 1e-12,
+    "max_step": 0.0125,
+    "baseline_outside_label": "transmitted",
+    "final_state": [
+      -0.06702113276402853,
+      0.35155596746456574,
+      226.44720931508314,
+      -0.08740052262353548,
+      2.062617914265991,
+      1.7994379054792595
+    ],
+    "search_F": 226.44720931508314,
+    "energy_error": 1.1880261414559296e-12,
+    "outside_plane_label": "transmitted",
+    "difference_from_primary": {
+      "position_error": 186.40216575505238,
+      "velocity_error": 2.6081162297481573
+    },
+    "same_initial_double_arrays": true,
+    "status": "unresolved",
+    "wall_s": 0.6750211670296267
+  },
+  {
+    "endpoint_index": 0,
+    "phase": 1.5610882243791782,
+    "method": "relative6D_DOP853",
+    "rtol": 1e-13,
+    "max_step": 0.0125,
+    "baseline_outside_label": "transmitted",
+    "final_state": [
+      0.3826913866366469,
+      0.23788971624458127,
+      97.89387162800791,
+      2.4169992445159347,
+      1.0256454165360063,
+      0.7785720383060473
+    ],
+    "search_F": 97.89387162800791,
+    "energy_error": 2.9191431805112304e-13,
+    "outside_plane_label": "transmitted",
+    "difference_from_primary": {
+      "position_error": 57.84882806797715,
+      "velocity_error": 0.44975810307780123
+    },
+    "same_initial_double_arrays": true,
+    "difference_from_half_step": {
+      "position_error": 128.5533376870752,
+      "velocity_error": 2.5043997671394704
+    },
+    "status": "unresolved",
+    "wall_s": 0.6825567079940811
+  },
+  {
+    "endpoint_index": 0,
+    "phase": 1.5610882243791782,
+    "method": "individual12D_DOP853",
+    "rtol": 1e-13,
+    "max_step": 0.0125,
+    "baseline_outside_label": "transmitted",
+    "final_state": [
+      0.3069895648718535,
+      0.26040291736769844,
+      185.52965777421088,
+      1.966743364358274,
+      1.2074158101908068,
+      1.4744747835544045
+    ],
+    "search_F": 185.52965777421088,
+    "energy_error": 3.043488021871749e-13,
+    "outside_plane_label": "transmitted",
+    "difference_from_primary": {
+      "position_error": 145.4846142141801,
+      "velocity_error": 1.1456608483261586
+    },
+    "difference_from_tight_relative": {
+      "position_error": 87.63578614620296,
+      "velocity_error": 0.6959027452483573
+    },
+    "same_initial_double_arrays": true,
+    "evaluations": 149810,
+    "status": "unresolved",
+    "wall_s": 2.094426166964695
+  },
+  {
+    "endpoint_index": 1,
+    "phase": 1.5610882243791784,
+    "method": "relative6D_DOP853",
+    "rtol": 1e-12,
+    "max_step": 0.0125,
+    "baseline_outside_label": "reflected",
+    "final_state": [
+      -0.07951023890374935,
+      0.35464603701741537,
+      221.73586659467975,
+      -0.15428773636130041,
+      2.0908326965738975,
+      1.761993818555401
+    ],
+    "search_F": 221.73586659467975,
+    "energy_error": 1.1871971758468595e-12,
+    "outside_plane_label": "transmitted",
+    "difference_from_primary": {
+      "position_error": 356.29911701329445,
+      "velocity_error": 2.8316233078708715
+    },
+    "same_initial_double_arrays": true,
+    "status": "unresolved",
+    "wall_s": 0.6738369999802671
+  },
+  {
+    "endpoint_index": 1,
+    "phase": 1.5610882243791784,
+    "method": "relative6D_DOP853",
+    "rtol": 1e-13,
+    "max_step": 0.0125,
+    "baseline_outside_label": "reflected",
+    "final_state": [
+      0.3238738979668852,
+      0.25605330017164923,
+      172.54218915557647,
+      2.0628128930641774,
+      1.1680566840326712,
+      1.371296772540013
+    ],
+    "search_F": 172.54218915557647,
+    "energy_error": 2.961775697549123e-13,
+    "outside_plane_label": "transmitted",
+    "difference_from_primary": {
+      "position_error": 307.1054395741912,
+      "velocity_error": 2.4409262618554837
+    },
+    "same_initial_double_arrays": true,
+    "difference_from_half_step": {
+      "position_error": 49.19367743910328,
+      "velocity_error": 2.217100629425478
+    },
+    "status": "unresolved",
+    "wall_s": 0.6833945420221426
+  },
+  {
+    "endpoint_index": 1,
+    "phase": 1.5610882243791784,
+    "method": "individual12D_DOP853",
+    "rtol": 1e-13,
+    "max_step": 0.0125,
+    "baseline_outside_label": "reflected",
+    "final_state": [
+      0.38993774600894676,
+      0.23038748918912252,
+      67.22663030964597,
+      2.492772265913952,
+      0.999503954739219,
+      0.5358045931440526
+    ],
+    "search_F": 67.22663030964597,
+    "energy_error": 3.0399353121185914e-13,
+    "outside_plane_label": "transmitted",
+    "difference_from_primary": {
+      "position_error": 201.7898807282607,
+      "velocity_error": 1.6054340824595235
+    },
+    "difference_from_tight_relative": {
+      "position_error": 105.3155588459305,
+      "velocity_error": 0.8354921793959603
+    },
+    "same_initial_double_arrays": true,
+    "evaluations": 149798,
+    "status": "unresolved",
+    "wall_s": 2.5037015000125393
+  }
+]

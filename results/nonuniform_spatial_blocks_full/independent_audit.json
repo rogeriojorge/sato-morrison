@@ -1,15 +1,15 @@
 {
   "status": "passed",
   "audit_context": {
-    "utc": "2026-10-08T16:10:46.462799+00:00",
+    "utc": "2026-10-08T16:37:13.843909+00:00",
     "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
     "platform": "macOS-26.6.2-arm64-arm-64bit",
     "processor": "arm",
     "logical_cpus": 10,
     "load_start": [
-      13.06494140625,
-      8.63134765625,
-      7.92333984375
+      9.20654296875,
+      13.14404296875,
+      15.6181640625
     ],
     "versions": {
       "numpy": "2.5.3",
@@ -25,7 +25,7 @@
       "VECLIB_MAXIMUM_THREADS": "1"
     },
     "arithmetic": "NumPy binary64; no JAX import or computation in endpoint audits",
-    "checkout_commit": "58cc3e139c1c0082f49da0dc10e841b55632669d",
+    "checkout_commit": "687be1278e802e8f6eee655b8f8f35bc5e4da627",
     "command": [
       "audit_full_campaign_endpoints.py"
     ],
@@ -33,14 +33,14 @@
   },
   "audit_source_sha256": "2b4dc65f9a1260b0395c12c6dbe072ce31f00fac7a563e943af8281a6a9c162a",
   "pair_oracle_source_sha256": "942f64c1aacde0b695b9804a6cdd9521469ff1da679b8097b584703e502cf33d",
-  "strict_ledger_sha256": "31c34303962733c14bc7f035ddb0b00314558c7363af7326e1048002ac38b090",
+  "strict_ledger_sha256": "756a2208889e4460a03d5858092646d0cd08d0c737d0c2e09febd7e8f04145fb",
   "producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
   "strict_completed_case_count": 1,
   "audited_completed_case_count": 1,
   "cached_skip_count": 1,
-  "partial_cases_not_audited": 0,
+  "partial_cases_not_audited": 1,
   "full_campaign_complete": false,
-  "checks_wall_s": 0.33944120799424127,
+  "checks_wall_s": 0.32098404195858166,
   "scope": "All presently completed strict rows final-step pair audits; no incomplete case is promoted or independently solved",
   "rows": [
     {
@@ -425,7 +425,9 @@
       "public_residual_arrays_file": "dipole_spatial3_pair_residual_arrays.npz"
     }
   ],
-  "original_private_aggregate_sha256": "007daecd599f45e9b2c4d03143eb29f2a3549adda7f2802545f22d0dadaa669d",
+  "original_private_aggregate_sha256": "10c542557fa5b7c7d95578cffbeb1274b627738f9c459be8bb19a278c0c75788",
   "partial_campaign_status": "unresolved",
+  "current_snapshot_partial_cases_not_reevaluated": 3,
+  "association_note": "Original partial_cases_not_audited belongs to original aggregate ledger snapshot; current_snapshot_partial_cases_not_reevaluated describes this publication snapshot. All completed rows match canonical SHA exactly.",
   "source_scope": "Independent audit source/oracle SHA retained; path sanitation changes JSON serialization, never numerical values"
 }

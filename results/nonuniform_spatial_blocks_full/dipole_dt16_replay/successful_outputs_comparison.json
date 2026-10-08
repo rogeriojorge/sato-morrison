@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "rows": [
+    {
+      "axis": null,
+      "fixed_reference": false,
+      "bitwise_state_and_scalar_diagnostics": true,
+      "residual": 1.0149035885383323e-16
+    },
+    {
+      "axis": null,
+      "fixed_reference": true,
+      "bitwise_state_and_scalar_diagnostics": true,
+      "residual": 1.0149035885383323e-16
+    },
+    {
+      "axis": 0,
+      "fixed_reference": false,
+      "bitwise_state_and_scalar_diagnostics": true,
+      "residual": 9.81671563083093e-17
+    },
+    {
+      "axis": 0,
+      "fixed_reference": true,
+      "bitwise_state_and_scalar_diagnostics": true,
+      "residual": 9.81671563083093e-17
+    },
+    {
+      "axis": [
+        0,
+        1,
+        2
+      ],
+      "fixed_reference": false,
+      "bitwise_state_and_scalar_diagnostics": true,
+      "residual": 9.13717519521727e-17
+    },
+    {
+      "axis": [
+        0,
+        1,
+        2
+      ],
+      "fixed_reference": true,
+      "bitwise_state_and_scalar_diagnostics": true,
+      "residual": 9.13717519521727e-17
+    }
+  ],
+  "old_solver_sha256": "b9eb5567ca9684068eb894790ab174f5d3aba1a499289300b5cd8f26fdf50055",
+  "new_solver_sha256": "0960124138032882d7e3eaddea3fa27787f9fab22da9d44f2a4a46ad6cfb535c",
+  "excluded_difference": "Measured linear_wall_s only; no numerical differences"
+}

@@ -7671,6 +7671,27 @@
       "log_sha256": "7f1b9d49296de75b332c570c02d503c6802d7fd5e67e85bb2f564f77a8086171",
       "scope": "Full regression suite at frozen correction/phase experiment source. No core-source changes.",
       "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37806548658"
+    },
+    {
+      "source_commit": "17ec229101d612280cebe997e4e46dded61a9bcf",
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 python -m pytest -q",
+      "passed": 247,
+      "elapsed_s": 87.93,
+      "environment": "Shared Apple M4 local environment; versions in replay summary",
+      "evidence_path": "results/nonuniform_spatial_blocks_full/dipole_dt16_replay/diagnostic_patch_test_receipt.json",
+      "evidence_sha256": "7b02bd0a7563e93ae8cca0ef0771497d95b1f7391609785acd67ead011b5ce64",
+      "log_sha256": "06da1056b5cca8ec8d272f8a05f68a87b52973234f943375ea17d563be4452f3",
+      "scope": "Tests ran before commit; solver and test file hashes independently equal frozen blobs. Diagnostic-only guard reporting; six successful route outputs bitwise unchanged. No full-tree test-time hash was captured."
+    },
+    {
+      "source_commit": "17ec229101d612280cebe997e4e46dded61a9bcf",
+      "command": "python -m pytest -q",
+      "passed": 247,
+      "elapsed_s": 134.52,
+      "environment": "Fresh Ubuntu CI installation",
+      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37813334304/job/113435502998",
+      "log_sha256": "39e8ea7f2687b9b09a3a85b98e187be9d69782d08e9bdc61b6d09abc8b46760a",
+      "scope": "Full suite at diagnostic-only source change; successful-state arithmetic unchanged, explicit underflow failure reporting test included."
     }
   ],
   "additional_experiments": [
@@ -7811,15 +7832,20 @@
       "producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
       "workflow_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37803682825",
       "evidence_path": "results/nonuniform_spatial_blocks_full/summary.json",
-      "evidence_sha256": "838763d4dc1586769f14a2d4159220b80137b029feed0d8c9eb8e951dd0ce156",
+      "evidence_sha256": "b2fdb2a9d89124bcf13e9ae7465d66eebfbd85708f5d060527c79c05ec8ded7d",
       "independent_evidence_path": "results/nonuniform_spatial_blocks_full/independent_audit.json",
-      "independent_evidence_sha256": "f6e56aa85f92f4af75d708d50491dbd60fd2a9ba3cc6d06a8231697f6fbf53ba",
-      "scope": "Separate full-campaign snapshot: one of45 completed, one failed partial. Completed final step independently pair-audited; partial failure retained without promoting it. No refinement pass or pilot timing pooling.",
+      "independent_evidence_sha256": "dd92e2b5d3926870e8f44ccf57ff063a164ab5c63a8359fb55993fcd11b6eccc",
+      "scope": "Separate full-campaign snapshot: one of45 completed; three failed partials (two accepted first steps and one initial state only). Completed final step independently pair-audited. No refinement pass or pilot timing pooling.",
       "snapshot_history": [
         {
           "publication_commit": "f53daaa",
           "evidence_sha256": "399e3dcffe0720273f2735fc53401e2e974c75879d3122cb2caa37a37f04036f",
           "scope": "Separate full-campaign snapshot: one of45 cases complete; independently audited final step. No refinement pass or pilot timing pooling."
+        },
+        {
+          "publication_commit": "661e3c79a2fe4b927c40a751705f31054c0c0fb2",
+          "evidence_sha256": "838763d4dc1586769f14a2d4159220b80137b029feed0d8c9eb8e951dd0ce156",
+          "scope": "Separate full-campaign snapshot: one of45 completed, one failed partial. Completed final step independently pair-audited; partial failure retained without promoting it. No refinement pass or pilot timing pooling."
         }
       ]
     },
@@ -7846,6 +7872,40 @@
       "checks_wall_s": 2.5349110410315916,
       "timing_scope": "Numerical solves/checks and intermediate checkpoint writes; excludes imports, metadata initialization, plots and final output.",
       "scope": "Finite-budget nonexit is censoring, not a trapping claim. The last search bracket is not a censored-interval width or coverage bound. The original phase-integral result remains unresolved. Classifications are floating-point ODE evidence, not interval-certified trajectories. Bounds on eventual outgoing moments do not define a scattering integral on phases with no finite exit."
+    },
+    {
+      "command": "MPLBACKEND=Agg python examples/25_encounter_censoring.py",
+      "cwd": "${REPOSITORY}",
+      "producer_commit": "661e3c79a2fe4b927c40a751705f31054c0c0fb2",
+      "evidence_path": "results/encounter_censoring/refined/summary.json",
+      "evidence_sha256": "250fb85bf398df789b70f61aabed1e77aea394c5bb5b04249f6a0f33582e465d",
+      "experiment_dependencies_unchanged": true,
+      "exit_code": 1,
+      "status": "unresolved",
+      "checks_wall_s": 21.494722999981605,
+      "timing_scope": "Numerical solves/checks and intermediate checkpoint writes; excludes imports, metadata initialization, plots and final output.",
+      "scope": "Finite-budget nonexit is censoring, not trapping. Last search bracket is not a censor-interval width or coverage bound. Original diagnostics and phase integral remain unresolved. Classifications are floating-point ODE evidence, not interval certification. Eventual outgoing-moment bounds do not define a scattering integral on non-exiting phases."
+    },
+    {
+      "command": "MPLBACKEND=Agg python examples/25_encounter_censoring.py",
+      "cwd": "${REPOSITORY}",
+      "producer_commit": "17ec229101d612280cebe997e4e46dded61a9bcf",
+      "evidence_path": "results/encounter_censoring/precision_checked/summary.json",
+      "evidence_sha256": "fd460f574b5363bcf26614592f92152754e58a42ea8a6c6e4057ebbf978917e6",
+      "experiment_dependencies_unchanged": true,
+      "exit_code": 1,
+      "status": "unresolved",
+      "checks_wall_s": 27.306226291984785,
+      "timing_scope": "Numerical solves/checks and intermediate checkpoint writes; excludes imports, metadata initialization, plots and final output.",
+      "scope": "Finite-budget nonexit is censoring, not trapping. Last search bracket is not a censor-interval width or coverage bound. Original diagnostics and phase integral remain unresolved. Classifications are floating-point ODE evidence, not interval certification. Eventual outgoing-moment bounds do not define a scattering integral on non-exiting phases.",
+      "independent_evidence_path": "results/encounter_censoring/precision_checked/independent_audit.json",
+      "independent_evidence_sha256": "ab29ed337d992e3ce5f99347749bf00ffc3ca1eb7aeccc903880cf21f9e22b9b"
+    },
+    {
+      "evidence_path": "results/nonuniform_spatial_blocks_full/dipole_dt16_replay/summary.json",
+      "evidence_sha256": "10a3631e74e51008a14a2962e9abb90ad66d615c7b1e108a71f5124c8512bef1",
+      "producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+      "scope": "Original Linux first-step checkpoint replayed with logging-only frozen solver on M4. Failed Newton ray recorded; no accepted second step. Replay provenance and private instrumentation hashes retained in evidence. Not a bitwise reproduction of Linux iteration count or proof of root unrepresentability."
     }
   ]
 }

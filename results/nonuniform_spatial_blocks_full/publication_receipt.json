@@ -1,24 +1,24 @@
 {
-  "prepared_utc": "2026-10-08T16:29:54.165634+00:00",
-  "status": "reviewed_snapshot",
+  "prepared_utc": "2026-10-08T17:03:19.686472+00:00",
+  "status": "reviewed_hashes_and_scientific_scope",
   "producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
   "producer_source_sha256": "b981adcaa6de59acc94174069759446322978e5b10b13161d6fb86175ddae282",
   "workflow_run_id": 37803682825,
   "workflow_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37803682825",
-  "publication_source_sha256": "91e95139bef7eb77fb6e801ef7be03893be3252aeda4b4f9757d0210467d09f4",
+  "publication_source_sha256": "9c35e080819d56b71c73c868248e00e9a2205f092ece0f832489eb7601f5f34b",
   "strict_collector_source_sha256": "0c89760ce5a1fcfb19cbd01b0ed2bef380f5725605b531ab7f6b0725abf084e1",
   "independent_audit_source_sha256": "2b4dc65f9a1260b0395c12c6dbe072ce31f00fac7a563e943af8281a6a9c162a",
   "original_input_hashes": {
-    "strict_ledger": "756a2208889e4460a03d5858092646d0cd08d0c737d0c2e09febd7e8f04145fb",
-    "aggregate_pair_audit": "007daecd599f45e9b2c4d03143eb29f2a3549adda7f2802545f22d0dadaa669d"
+    "strict_ledger": "9f1a7f020ca508e1823c326cd4a68767df6e7905f7b92384be08d7b259f922ac",
+    "aggregate_pair_audit": "10c542557fa5b7c7d95578cffbeb1274b627738f9c459be8bb19a278c0c75788"
   },
   "public_layout": "results/nonuniform_spatial_blocks_full",
   "pilot_rows_pooled": false,
   "complete_case_count": 1,
   "expected_case_count": 45,
-  "failed_partial_case_count": 1,
+  "failed_partial_case_count": 3,
   "missing_final_case_count": 44,
-  "pair_audit_original_ledger_sha256": "31c34303962733c14bc7f035ddb0b00314558c7363af7326e1048002ac38b090",
+  "pair_audit_original_ledger_sha256": "756a2208889e4460a03d5858092646d0cd08d0c737d0c2e09febd7e8f04145fb",
   "pair_audit_association": "Every completed row exact canonical SHA matched; additional partial failures were not pair reevaluated",
   "campaign_status": "unresolved",
   "selected_snapshot_pair_audits_status": "passed",
@@ -29,6 +29,51 @@
     "scope": "JSON sanitation and byte-for-byte copies only; no numerical solves or new pair actions"
   },
   "output_hashes": {
+    "state_dipole_dt_eighth.npz": {
+      "original_sha256": "cc42258082d3110f0c21229bf8c1a8873418a6b937352a8642f2c81459d8729c",
+      "output_sha256": "cc42258082d3110f0c21229bf8c1a8873418a6b937352a8642f2c81459d8729c",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_dt_eighth_producer_summary.json": {
+      "original_sha256": "ac495cacd615547760f7bb1040eb9f9973a762386b2df686c3b1d8af9f8d5d0c",
+      "output_sha256": "ac495cacd615547760f7bb1040eb9f9973a762386b2df686c3b1d8af9f8d5d0c",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_dt_eighth_run.log": {
+      "original_sha256": "9330f7d523f25297605ba11f6f16e01ceb4914cc3e39a1fd94ab44d37259c35e",
+      "output_sha256": "9330f7d523f25297605ba11f6f16e01ceb4914cc3e39a1fd94ab44d37259c35e",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_dt_eighth_cpu.txt": {
+      "original_sha256": "4476e601951bb5e5dc85ca4b9d2e3bc795bb83c0d4e62b8d9f2bdec6659b0e7a",
+      "output_sha256": "4476e601951bb5e5dc85ca4b9d2e3bc795bb83c0d4e62b8d9f2bdec6659b0e7a",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_dt_eighth_environment.txt": {
+      "original_sha256": "3efa0f0f01834039f33414c49e047a10c967bc5991daffaf02ed69302fab1694",
+      "output_sha256": "3efa0f0f01834039f33414c49e047a10c967bc5991daffaf02ed69302fab1694",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_dt_eighth_commit.txt": {
+      "original_sha256": "abe9dcfb69d229fc649bde6c646b767be5d1ee6987a6d8c0f68ae34568e0cc56",
+      "output_sha256": "abe9dcfb69d229fc649bde6c646b767be5d1ee6987a6d8c0f68ae34568e0cc56",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_dt_eighth_last_correction.json": {
+      "original_sha256": "d0386f545caca04ba67f2611d60e2facb6992a00edbcff7ec14d502bb32e4c26",
+      "output_sha256": "d0386f545caca04ba67f2611d60e2facb6992a00edbcff7ec14d502bb32e4c26",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_dt_eighth_download_receipt.json": {
+      "original_sha256": "fd7a45eeb6af026eb85dc267adac6d1e7018716cff7b31a2d063173a41323b36",
+      "output_sha256": "fd7a45eeb6af026eb85dc267adac6d1e7018716cff7b31a2d063173a41323b36",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_dt_eighth_partial_case.json": {
+      "original_sha256": "c6efc672e453d67c9802beb2381e69994cd415f21d7dcdaddc9f910ee97d2051",
+      "output_sha256": "c6efc672e453d67c9802beb2381e69994cd415f21d7dcdaddc9f910ee97d2051",
+      "mode": "byte-for-byte artifact copy"
+    },
     "state_dipole_dt_sixteenth.npz": {
       "original_sha256": "5f1955b9e09b44707c86c6639c34a47560f6095088cc7377a1e690cad502cd94",
       "output_sha256": "5f1955b9e09b44707c86c6639c34a47560f6095088cc7377a1e690cad502cd94",
@@ -72,6 +117,51 @@
     "dipole_dt_sixteenth_partial_case.json": {
       "original_sha256": "d6f8c7a18fbbfd2713dd7b280494e740b14c2db3e2e9720b852a882dbc1df778",
       "output_sha256": "d6f8c7a18fbbfd2713dd7b280494e740b14c2db3e2e9720b852a882dbc1df778",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "state_dipole_mu_tail.npz": {
+      "original_sha256": "edbebee34d16035e7c50e231f0dd45728e815aac479391c800d8ca24454a909e",
+      "output_sha256": "edbebee34d16035e7c50e231f0dd45728e815aac479391c800d8ca24454a909e",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_mu_tail_producer_summary.json": {
+      "original_sha256": "68b4bd64abed8058fb195824c5ab8cc5915041850ca9743171d900b8dbf00b6d",
+      "output_sha256": "68b4bd64abed8058fb195824c5ab8cc5915041850ca9743171d900b8dbf00b6d",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_mu_tail_run.log": {
+      "original_sha256": "a522f97a5cf81c527de8eff9cc66970fa8c8e3f903cedad6be820e1f24ef3259",
+      "output_sha256": "a522f97a5cf81c527de8eff9cc66970fa8c8e3f903cedad6be820e1f24ef3259",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_mu_tail_cpu.txt": {
+      "original_sha256": "d893a2e1fe38c883e9c6304826742490a3e71cb4324cac80c4809870147219b4",
+      "output_sha256": "d893a2e1fe38c883e9c6304826742490a3e71cb4324cac80c4809870147219b4",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_mu_tail_environment.txt": {
+      "original_sha256": "3efa0f0f01834039f33414c49e047a10c967bc5991daffaf02ed69302fab1694",
+      "output_sha256": "3efa0f0f01834039f33414c49e047a10c967bc5991daffaf02ed69302fab1694",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_mu_tail_commit.txt": {
+      "original_sha256": "abe9dcfb69d229fc649bde6c646b767be5d1ee6987a6d8c0f68ae34568e0cc56",
+      "output_sha256": "abe9dcfb69d229fc649bde6c646b767be5d1ee6987a6d8c0f68ae34568e0cc56",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_mu_tail_last_correction.json": {
+      "original_sha256": "2b1d05ed09b20304cde4dcaa3a70589d1736e672d6998b849f7c84933fd8c303",
+      "output_sha256": "2b1d05ed09b20304cde4dcaa3a70589d1736e672d6998b849f7c84933fd8c303",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_mu_tail_download_receipt.json": {
+      "original_sha256": "f513b1398bd1e1f1bd8c69234b822ec0d62945e783093dd1cfa260e0711075f2",
+      "output_sha256": "f513b1398bd1e1f1bd8c69234b822ec0d62945e783093dd1cfa260e0711075f2",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_mu_tail_partial_case.json": {
+      "original_sha256": "ab6e356de998de50c4d72f16998e39cca4be843d2ff93fa90fb11693f3eac1d7",
+      "output_sha256": "ab6e356de998de50c4d72f16998e39cca4be843d2ff93fa90fb11693f3eac1d7",
       "mode": "byte-for-byte artifact copy"
     },
     "state_dipole_spatial3.npz": {
@@ -130,23 +220,23 @@
       "mode": "Private paths sanitized; numerical values unchanged"
     },
     "summary.json": {
-      "original_sha256": "756a2208889e4460a03d5858092646d0cd08d0c737d0c2e09febd7e8f04145fb",
-      "output_sha256": "838763d4dc1586769f14a2d4159220b80137b029feed0d8c9eb8e951dd0ce156",
+      "original_sha256": "9f1a7f020ca508e1823c326cd4a68767df6e7905f7b92384be08d7b259f922ac",
+      "output_sha256": "b2fdb2a9d89124bcf13e9ae7465d66eebfbd85708f5d060527c79c05ec8ded7d",
       "mode": "Private paths sanitized; numerical values unchanged"
     },
     "independent_audit.json": {
-      "original_sha256": "007daecd599f45e9b2c4d03143eb29f2a3549adda7f2802545f22d0dadaa669d",
-      "output_sha256": "f6e56aa85f92f4af75d708d50491dbd60fd2a9ba3cc6d06a8231697f6fbf53ba",
+      "original_sha256": "10c542557fa5b7c7d95578cffbeb1274b627738f9c459be8bb19a278c0c75788",
+      "output_sha256": "dd92e2b5d3926870e8f44ccf57ff063a164ab5c63a8359fb55993fcd11b6eccc",
       "mode": "Private paths sanitized; numerical values unchanged"
     },
     "full_campaign_dt_sixteenth_failure_review.json": {
-      "original_sha256": "6b5cc97b7366bc4cc0b609bed8b49272ab190eea23602fce4b6be69b5291b51e",
-      "output_sha256": "6b5cc97b7366bc4cc0b609bed8b49272ab190eea23602fce4b6be69b5291b51e",
+      "original_sha256": "f6afed1b4cd349a3554b58847dcadb42a7045ce0ceec056b18546847eed52635",
+      "output_sha256": "f6afed1b4cd349a3554b58847dcadb42a7045ce0ceec056b18546847eed52635",
       "mode": "Read-only failure diagnosis; no pair reevaluation"
     },
     "dipole_dt_sixteenth_line_search_review.md": {
-      "original_sha256": "4732d4005da70b3bc9785e04a1cc54afe01ada8365503531da3f1f6d64752251",
-      "output_sha256": "4732d4005da70b3bc9785e04a1cc54afe01ada8365503531da3f1f6d64752251",
+      "original_sha256": "c97d1ce33ae4961d94cbf62150861f832591d104e2a1bea5ac9f09894e83c125",
+      "output_sha256": "c97d1ce33ae4961d94cbf62150861f832591d104e2a1bea5ac9f09894e83c125",
       "mode": "Read-only failure diagnosis; no pair reevaluation"
     },
     "full_campaign_quadrature_preflight_diagnostic.json": {
@@ -161,5 +251,20 @@
     "Fixed-reference acceptance does not imply uniform tail accuracy; old-population norms remain diagnostics.",
     "Perproducer grid-array/factor storage does not equal process peak RSS.",
     "Original extracted artifact digests and source identities retained; GitHub ZIP digests only reported, not ZIP-verified."
-  ]
+  ],
+  "publication_validation": {
+    "utc": "2026-10-08T17:03:19.917180+00:00",
+    "validation_source_sha256": "b786e5d7003e720ba3a85695c89831f6f4d0d7ea6cbd3b37a06b1b28bf1af428",
+    "prepared_receipt_sha256": "eb5e6966b4691d0ad9b80f96f8216ba2fbd41b2486bf826ce72ef71c5997c2f3",
+    "original_file_hashes_verified": true,
+    "copied_output_hashes_verified": true,
+    "finite_json_diagnostics_verified": true,
+    "private_paths_absent": true,
+    "root_owned_replay_folder_preserved": true,
+    "scope": "Data-only publication of1completed case and3explicit failed partials; unchanged completed row association; no new numerical actions or promotions",
+    "context": {
+      "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
+      "platform": "macOS-26.6.2-arm64-arm-64bit"
+    }
+  }
 }

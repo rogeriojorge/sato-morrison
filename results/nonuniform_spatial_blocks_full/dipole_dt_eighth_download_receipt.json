@@ -1,0 +1,38 @@
+{
+  "artifact": {
+    "id": 11565491718,
+    "node_id": "MDg6QXJ0aWZhY3QxMTU2NTQ5MTcxOA==",
+    "name": "nonuniform-spatial-blocks-dipole-dt_eighth-93bf752da33a31ec158a229f87eaa285aeb5c58b",
+    "size_in_bytes": 1888765,
+    "url": "https://api.github.com/repos/rogeriojorge/sato-morrison/actions/artifacts/11565491718",
+    "archive_download_url": "https://api.github.com/repos/rogeriojorge/sato-morrison/actions/artifacts/11565491718/zip",
+    "expired": false,
+    "digest": "sha256:d4248b91b3576749f59234e019d17997d32d7a057c0a63320ac8e64b05deff88",
+    "created_at": "2026-10-08T16:49:02Z",
+    "updated_at": "2026-10-08T16:49:02Z",
+    "expires_at": "2027-01-06T15:47:49Z",
+    "workflow_run": {
+      "id": 37803682825,
+      "repository_id": 1409074075,
+      "head_repository_id": 1409074075,
+      "head_branch": "campaign-spatial-93bf752",
+      "head_sha": "93bf752da33a31ec158a229f87eaa285aeb5c58b"
+    }
+  },
+  "workflow_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37803682825",
+  "run": "37803682825",
+  "producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+  "downloaded_utc": "2026-10-08T16:49:09.702418+00:00",
+  "watcher_sha256": "643bd390c4101cc37d471bc49b69a8a0df9f2c5b75c5f8cb56b69c9c27cbe93c",
+  "files": {
+    "summary.json": "ac495cacd615547760f7bb1040eb9f9973a762386b2df686c3b1d8af9f8d5d0c",
+    "commit.txt": "abe9dcfb69d229fc649bde6c646b767be5d1ee6987a6d8c0f68ae34568e0cc56",
+    "run.log": "9330f7d523f25297605ba11f6f16e01ceb4914cc3e39a1fd94ab44d37259c35e",
+    "cpu.txt": "4476e601951bb5e5dc85ca4b9d2e3bc795bb83c0d4e62b8d9f2bdec6659b0e7a",
+    "last_correction.json": "d0386f545caca04ba67f2611d60e2facb6992a00edbcff7ec14d502bb32e4c26",
+    "last_state.npz": "cc42258082d3110f0c21229bf8c1a8873418a6b937352a8642f2c81459d8729c",
+    "partial_case.json": "c6efc672e453d67c9802beb2381e69994cd415f21d7dcdaddc9f910ee97d2051",
+    "environment.txt": "3efa0f0f01834039f33414c49e047a10c967bc5991daffaf02ed69302fab1694"
+  },
+  "scope": "GitHub archive digest is preserved as supplied, not independently verified against a downloaded ZIP; extracted file hashes computed locally."
+}

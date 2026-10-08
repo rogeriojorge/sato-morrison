@@ -1,0 +1,237 @@
+{
+  "kind": "independent saved-array arithmetic audit",
+  "public_producer_commit": "17ec229101d612280cebe997e4e46dded61a9bcf",
+  "public_source_changes": "",
+  "public_paths": {
+    "summary": "results/encounter_censoring/precision_checked/summary.json",
+    "arrays": "results/encounter_censoring/precision_checked/paths.npz"
+  },
+  "sha256": {
+    "results/encounter_censoring/precision_checked/summary.json": "fd460f574b5363bcf26614592f92152754e58a42ea8a6c6e4057ebbf978917e6",
+    "results/encounter_censoring/precision_checked/paths.npz": "a875be5b99616c6faac5b0ea17aaac0ec5b6cecbe0cfe52d6629c1bcc9d57808",
+    "examples/25_encounter_censoring.py": "29406f121c70738a67d7070acc12e7dcc381b37a7ddeade391f905d242a37fda",
+    "src/sato_morrison/controls.py": "ea673df34611bd68c60756fec2f335c9ebd10a705149ee22b68917d3102ec077",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+    "results/encounter_censoring/refined/summary.json": "250fb85bf398df789b70f61aabed1e77aea394c5bb5b04249f6a0f33582e465d",
+    "results/encounter_censoring/refined/paths.npz": "73deae2696ee9551db55c022c8ec3e48d0130aba46b5621375918f144c9b471f",
+    "results/encounter_censoring/summary.json": "13a304f77197aca56fc0e8d96d480d9a22d47d3a7a1996c20b5cc84524b5b158"
+  },
+  "private_checker": {
+    "basename": "audit_encounter_precision_checked.py",
+    "sha256": "dbc4382cc4797aff50f43bb03594bb787bdcee1c88be81ffcc9d8bd894a758a8",
+    "archive": "Checker source archived outside the public tree; formulas and comparisons specified in this receipt."
+  },
+  "formulae": {
+    "relative_energy": "H=|w|^2/4 + .03 exp(-|r|/3)/|r|",
+    "individual_energy": "H=(|v1|^2+|v2|^2)/2 + .03 exp(-|r1-r2|/3)/|r1-r2|",
+    "endpoint_comparison": "Maximum absolute Cartesian coordinate and velocity differences at the same fixed T; no exact trajectory reference.",
+    "precision_scope": "Only double-precision preparation is audited here; no arbitrary-precision ODE."
+  },
+  "inputs": {
+    "mass": 1.0,
+    "charge": 1.0,
+    "field": 2.0,
+    "strength": 0.03,
+    "screening": 3.0,
+    "fixed_incoming_triple": [
+      0.9938225266093732,
+      1.9056642462041216,
+      1.9668376625283577
+    ],
+    "phase_definition": "free incoming helix at z=0",
+    "phase_bracket": [
+      1.5610876065934445,
+      1.561088355607501
+    ],
+    "prior_summary_sha256": "13a304f77197aca56fc0e8d96d480d9a22d47d3a7a1996c20b5cc84524b5b158",
+    "start_distance": 24.0,
+    "flight_time_factor": 12.0,
+    "max_step": 0.025,
+    "rtol": 1e-12,
+    "max_bisections": 40,
+    "interior_z_target": 12.0,
+    "search_rule": "Recheck prior opposite exits and full-IVP F=z(T) signs; bisect F signs without monotonicity assumption; stop at |F|<L/2, failed solve,40 attempts or machine bracket width.",
+    "refined_step": 0.0125,
+    "larger_flight_factors": [
+      24.0,
+      48.0
+    ],
+    "fallback_precision_controls": "If no interior candidate is found, check both final endpoints at the sameT and saved binary64 initial arrays.",
+    "precision_control_rtol": [
+      1e-12,
+      1e-13
+    ],
+    "precision_control_max_step": 0.0125,
+    "precision_cartesian_rtol": 1e-13,
+    "position_absolute_target": 1e-08,
+    "velocity_absolute_target": 1e-08,
+    "energy_target": 1e-08,
+    "diagnostic_pass_rule": "Rechecked opposite exits; full-IVP interior candidate confirmed nonexit by public event helper at both steps; half-step and independent12D endpoint errors below unchanged targets; all recorded paths pass and dependencies unchanged.",
+    "limits": "No censor-interval width, phase integral, asymptotic trapping, plasma rate or lifetime; larger-budget outcomes remain diagnostic. An outgoing-scattering integral needs almost-everywhere finite exits or an explicit extension convention."
+  },
+  "public_environment": {
+    "versions": {
+      "sato-morrison": "0.1.0",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2"
+    },
+    "logical_cpus": 10,
+    "python": "3.12.13",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "Apple M4",
+    "devices": [
+      "cpu:0"
+    ],
+    "x64": false,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "unset",
+      "OPENBLAS_NUM_THREADS": "unset",
+      "MKL_NUM_THREADS": "unset",
+      "XLA_FLAGS": "unset"
+    }
+  },
+  "checks": [
+    {
+      "endpoint_index": 0,
+      "method": "relative6D_DOP853",
+      "rtol": 1e-12,
+      "energy_relative_error": 1.1880261414559296e-12,
+      "reported_energy_discrepancy": 0.0,
+      "difference_from_primary": {
+        "position_error": 186.40216575505238,
+        "velocity_error": 2.6081162297481573
+      },
+      "difference_from_other_control": null,
+      "max_reported_endpoint_difference_discrepancy": 0.0,
+      "final_F": 226.44720931508314,
+      "reported_F_discrepancy": 0.0,
+      "initial_state_matches_primary_bitwise": true,
+      "endpoint_matches_reported_bitwise": true
+    },
+    {
+      "endpoint_index": 0,
+      "method": "relative6D_DOP853",
+      "rtol": 1e-13,
+      "energy_relative_error": 2.9191431805112304e-13,
+      "reported_energy_discrepancy": 0.0,
+      "difference_from_primary": {
+        "position_error": 57.84882806797715,
+        "velocity_error": 0.44975810307780123
+      },
+      "difference_from_other_control": {
+        "position_error": 128.5533376870752,
+        "velocity_error": 2.5043997671394704
+      },
+      "max_reported_endpoint_difference_discrepancy": 0.0,
+      "final_F": 97.89387162800791,
+      "reported_F_discrepancy": 0.0,
+      "initial_state_matches_primary_bitwise": true,
+      "endpoint_matches_reported_bitwise": true
+    },
+    {
+      "endpoint_index": 0,
+      "method": "individual12D_DOP853",
+      "rtol": 1e-13,
+      "energy_relative_error": 3.043488021871749e-13,
+      "reported_energy_discrepancy": 0.0,
+      "difference_from_primary": {
+        "position_error": 145.4846142141801,
+        "velocity_error": 1.1456608483261586
+      },
+      "difference_from_other_control": {
+        "position_error": 87.63578614620296,
+        "velocity_error": 0.6959027452483573
+      },
+      "max_reported_endpoint_difference_discrepancy": 0.0,
+      "final_F": 185.52965777421088,
+      "reported_F_discrepancy": 0.0,
+      "initial_state_matches_primary_bitwise": true,
+      "endpoint_matches_reported_bitwise": true
+    },
+    {
+      "endpoint_index": 1,
+      "method": "relative6D_DOP853",
+      "rtol": 1e-12,
+      "energy_relative_error": 1.1871971758468595e-12,
+      "reported_energy_discrepancy": 0.0,
+      "difference_from_primary": {
+        "position_error": 356.29911701329445,
+        "velocity_error": 2.8316233078708715
+      },
+      "difference_from_other_control": null,
+      "max_reported_endpoint_difference_discrepancy": 0.0,
+      "final_F": 221.73586659467975,
+      "reported_F_discrepancy": 0.0,
+      "initial_state_matches_primary_bitwise": true,
+      "endpoint_matches_reported_bitwise": true
+    },
+    {
+      "endpoint_index": 1,
+      "method": "relative6D_DOP853",
+      "rtol": 1e-13,
+      "energy_relative_error": 2.961775697549123e-13,
+      "reported_energy_discrepancy": 0.0,
+      "difference_from_primary": {
+        "position_error": 307.1054395741912,
+        "velocity_error": 2.4409262618554837
+      },
+      "difference_from_other_control": {
+        "position_error": 49.19367743910328,
+        "velocity_error": 2.217100629425478
+      },
+      "max_reported_endpoint_difference_discrepancy": 0.0,
+      "final_F": 172.54218915557647,
+      "reported_F_discrepancy": 0.0,
+      "initial_state_matches_primary_bitwise": true,
+      "endpoint_matches_reported_bitwise": true
+    },
+    {
+      "endpoint_index": 1,
+      "method": "individual12D_DOP853",
+      "rtol": 1e-13,
+      "energy_relative_error": 3.0399353121185914e-13,
+      "reported_energy_discrepancy": 0.0,
+      "difference_from_primary": {
+        "position_error": 201.7898807282607,
+        "velocity_error": 1.6054340824595235
+      },
+      "difference_from_other_control": {
+        "position_error": 105.3155588459305,
+        "velocity_error": 0.8354921793959603
+      },
+      "max_reported_endpoint_difference_discrepancy": 0.0,
+      "final_F": 67.22663030964597,
+      "reported_F_discrepancy": 0.0,
+      "initial_state_matches_primary_bitwise": true,
+      "endpoint_matches_reported_bitwise": true
+    }
+  ],
+  "input_preparation_checks": [
+    {
+      "endpoint_index": 0,
+      "state_hex_roundtrip_exact": true,
+      "phase_hex_roundtrip_exact": true,
+      "angle_hex_roundtrip_exact": true,
+      "angle_matches_double_expression": true
+    },
+    {
+      "endpoint_index": 1,
+      "state_hex_roundtrip_exact": true,
+      "phase_hex_roundtrip_exact": true,
+      "angle_hex_roundtrip_exact": true,
+      "angle_matches_double_expression": true
+    }
+  ],
+  "search_F_report_max_discrepancy": 0.0,
+  "search_max_relative_energy_error": 1.8751202077166257e-12,
+  "search_arrays_bitwise_identical_to_refined661e3c79": true,
+  "audit_wall_s": 0.1181792079587467,
+  "numpy": "2.5.3",
+  "python": "3.12.13",
+  "scope": "Arithmetic audit passes; scientific endpoint agreement fails unchanged1e-8 targets and original diagnostic stays unresolved. All paths use DOP853;12D supplies separate equations/coordinates, not a different integrator. Low energy defects do not bound trajectory errors. No validated opposite final bracket, censor interval, trapping, phase integral or rate is established.",
+  "arithmetic_status": "passed"
+}

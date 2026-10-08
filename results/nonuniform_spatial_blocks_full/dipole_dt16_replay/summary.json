@@ -1,0 +1,168 @@
+{
+  "status": "failed_private_diagnostic",
+  "original_failure_producer": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+  "original_failure_case": "dipole-dt_sixteenth",
+  "replay_initialization": "OLD is the original accepted first-step state at t=.0003125. Fixed reference is original initial population. Second-step Newton starts at log(OLD).",
+  "inputs": {
+    "field": "dipole",
+    "nx": 5,
+    "nu": 25,
+    "nmu": 21,
+    "u_bounds": [
+      -4.0,
+      4.0
+    ],
+    "mu_bounds": [
+      0.0,
+      20.0
+    ],
+    "spatial_bounds": [
+      [
+        0.8,
+        1.2
+      ],
+      [
+        -0.2,
+        0.2
+      ],
+      [
+        0.1,
+        0.5
+      ]
+    ],
+    "D": 0.1,
+    "dt": 0.0003125,
+    "step": 2,
+    "rtol": 1e-12,
+    "linear_rtol": 1e-06,
+    "linear_max_steps": 3000,
+    "max_newton_steps": 80,
+    "chunk": 1048576,
+    "preconditioner_axis": [
+      0,
+      1,
+      2
+    ],
+    "wall_deadline_s": 900
+  },
+  "model": "Private diagnostic replay; original lagged entropy root and scalar line-search guards unchanged",
+  "boundary": "Natural weak collision boundary; no streaming",
+  "units": "normalized",
+  "replay_source_context": {
+    "commit": "687be1278e802e8f6eee655b8f8f35bc5e4da627",
+    "source_sha256": "ffe692b823c14a77bdebef915f35697bfd649aa973c0ce13caccc1cb25080f73",
+    "source_changes": "",
+    "working_tree": "M .gitignore\n M README.md\n M notes/implementation.tex\n M notes/references.bib\n M results/deep_reproduction.json\n M results/nonuniform_spatial_blocks_full/publication_receipt.json\n M results/nonuniform_spatial_blocks_full/summary.json\n M results/validation.csv\n?? results/difficult_correction/difficult_correction.png\n?? results/difficult_correction/reference_vectors.npz\n?? results/difficult_correction/summary.json\n?? results/encounter_censoring/\n?? results/encounter_phase/literature_receipt.json\n?? results/nonuniform_spatial_blocks_full/dipole_dt_sixteenth_commit.txt\n?? results/nonuniform_spatial_blocks_full/dipole_dt_sixteenth_cpu.txt\n?? results/nonuniform_spatial_blocks_full/dipole_dt_sixteenth_download_receipt.json\n?? results/nonuniform_spatial_blocks_full/dipole_dt_sixteenth_environment.txt\n?? results/nonuniform_spatial_blocks_full/dipole_dt_sixteenth_last_correction.json\n?? results/nonuniform_spatial_blocks_full/dipole_dt_sixteenth_line_search_review.md\n?? results/nonuniform_spatial_blocks_full/dipole_dt_sixteenth_partial_case.json\n?? results/nonuniform_spatial_blocks_full/dipole_dt_sixteenth_producer_summary.json\n?? results/nonuniform_spatial_blocks_full/full_campaign_dt_sixteenth_failure_review.json\n?? results/nonuniform_spatial_blocks_full/state_dipole_dt_sixteenth.npz"
+  },
+  "replay_source_contract": {
+    "original_producer": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+    "original_solver_sha256": "b9eb5567ca9684068eb894790ab174f5d3aba1a499289300b5cd8f26fdf50055",
+    "instrumented_solver_sha256": "c77c7b12f0004e3a0b300b3fc49c7390360fd3b392c1e380c0cf23a09d3c5aa5",
+    "physics_sha256": {
+      "collisions.py": "cf13b3000c2df1ee39e63872b8c0094089adadde3941abf53b92d5e2c8ad6d52",
+      "geometry.py": "3e96f695e3a031aacdea5257428e40e9a057f6bf2ea1ef052363c79c6345dda6"
+    },
+    "modifications": "Only durable input/direction checkpoints and trial guard diagnostics; original equation, q, populations, tolerances, preconditioner, PCG and line-search inequalities unchanged"
+  },
+  "replay_driver_sha256": "c46f02bd66d03631a52c4e2b679681ed5ab9f437c76db54a642eaa34f0572944",
+  "original_checkpoint_sha256": "5f1955b9e09b44707c86c6639c34a47560f6095088cc7377a1e690cad502cd94",
+  "environment": {
+    "versions": {
+      "sato-morrison": "0.1.0",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2"
+    },
+    "python": "3.12.13",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "Apple M4",
+    "logical_cpus": 10,
+    "devices": [
+      "cpu:0"
+    ],
+    "x64": true,
+    "thread_environment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    }
+  },
+  "replay_wall_s": 474.98725524998736,
+  "launcher": {
+    "status": "failed",
+    "exit_code": 1,
+    "wall_s": 475.87382962496486,
+    "deadline_s": 900
+  },
+  "last_correction": {
+    "iteration": 19,
+    "relative_residual": 2.8874129243052495,
+    "linear_iterations": 33,
+    "true_linear_relative_residual": 8.183725752423975e-07,
+    "linear_wall_s": 17.241551249986514,
+    "maximum_log_direction": 571.5944955881482,
+    "minimum_signed_log_direction": -571.5944955881482,
+    "maximum_signed_log_direction": 141.9510282732782,
+    "objective_descent": -3.0201073677615195e-08,
+    "mobility_curvature": 3.838108109287863e-06
+  },
+  "last_trial": {
+    "iteration": 19,
+    "backtrack": 29,
+    "alpha": 1.862645149230957e-09,
+    "node": 5774,
+    "node_tensor_index": [
+      0,
+      2,
+      0,
+      24,
+      20
+    ],
+    "current_log_at_node": -708.3964179364671,
+    "direction_at_node": -563.0166703662087,
+    "trial_log_at_node": -708.3964189851673,
+    "current_jax_density_at_node": 2.225075184200029e-308,
+    "current_pure_jax_population_zero_count": 4,
+    "current_original_guard_population_zero_count": 0,
+    "numpy_density_at_node": 2.2250728507643385e-308,
+    "jax_density_at_node": 0.0,
+    "numpy_population_at_node": 7.5507683854e-314,
+    "pure_jax_population_at_node": 0.0,
+    "original_guard_population_at_node": 0.0,
+    "numpy_nonpositive_density_count": 0,
+    "jax_nonpositive_density_count": 1,
+    "pure_jax_nonpositive_population_count": 4,
+    "independent_numpy_objective_change": -5.625388333478617e-17,
+    "armijo_rhs": -5.6253883387176685e-21,
+    "independent_numpy_armijo_would_pass": true,
+    "log_smallest_normal_float": -708.3964185322641,
+    "log_smallest_positive_float": -744.4400719213812
+  },
+  "final_rejection_counts": {
+    "log_range_guard": 4,
+    "population_guard": 26,
+    "armijo_guard": 0,
+    "accepted": 0
+  },
+  "total_trials": 295,
+  "arithmetic_audit": {
+    "source_sha256": "1781dec55b16e8b9d3708f153b63e71421d401e6f46ccc6e192772e7b16f88a6",
+    "maximum_descent_numpy_difference": 6.617444900424222e-24,
+    "maximum_objective_difference_over_absolute_terms": 3.468291560584341e-16
+  },
+  "interpretation": "This unchanged-equation M4 replay exhausts its 30 trial fractions at JAX exp subnormal flushing. Last trial remains positive in NumPy but is zero through JAX exp. It is rejected before objective evaluation; independent NumPy last-ray objective satisfies Armijo. It is not bitwise reproduction of the Linux Newton18 failure, no accepted second timestep, and no proof that a representable root or other Newton path cannot exist.",
+  "population_representation_scope": "The original guard multiplies NumPy weights by a NumPy copy of JAX exp. Separate pure-JAX weighted multiplication flushes four populations at the current iterate despite positive density and original-guard population. No values were clipped, floored, or repaired.",
+  "last_ray_formula": "alpha*(R dot direction) + sum(weights*exp(g)*(expm1(alpha*direction)-alpha*direction)) + dt*alpha^2*curvature/2; curvature=direction dot K(OLD)direction from the saved original correction.",
+  "cost_scope": "Single diagnostic replay on shared M4; no performance or full-trajectory claim. Original Linux failed artifact remains separate.",
+  "files_sha256": {
+    "independent_backtrack_log_threshold.json": "ebfa5ea9f2e62f0b64dde87d2170afea90b5acf531c3e1dd5e47a9b3afc6b7d9",
+    "instrumentation.diff": "aa7bdd4e1b27667f0fa5a49cce02dc66d3eae3be4fb3651a5210f1d2933be6a6",
+    "final_ray.npz": "fcc00234eb276d0dae89de0f6adc8d0418b98a4f49811d5dcbaff25aaa9e09f4",
+    "trial_ledger.jsonl": "84c967a92ff9e1805d8a329f2f1bbd16037d748e580c90e7b5836519acc8a408"
+  },
+  "supplementary_log_range_receipt": "independent_backtrack_log_threshold.json",
+  "supplementary_scope": "An untried 31st fraction clears the log-normal threshold in a NumPy check only. No JAX/Armijo acceptance, new correction, timestep, convergence or guard change was executed."
+}

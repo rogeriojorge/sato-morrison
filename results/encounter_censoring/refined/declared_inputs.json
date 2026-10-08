@@ -1,0 +1,35 @@
+{
+  "mass": 1.0,
+  "charge": 1.0,
+  "field": 2.0,
+  "strength": 0.03,
+  "screening": 3.0,
+  "fixed_incoming_triple": [
+    0.9938225266093732,
+    1.9056642462041216,
+    1.9668376625283577
+  ],
+  "phase_definition": "free incoming helix at z=0",
+  "phase_bracket": [
+    1.5610876065934445,
+    1.561088355607501
+  ],
+  "prior_summary_sha256": "13a304f77197aca56fc0e8d96d480d9a22d47d3a7a1996c20b5cc84524b5b158",
+  "start_distance": 24.0,
+  "flight_time_factor": 12.0,
+  "max_step": 0.025,
+  "rtol": 1e-12,
+  "max_bisections": 40,
+  "interior_z_target": 12.0,
+  "search_rule": "Recheck prior opposite exits and full-IVP F=z(T) signs; bisect F signs without monotonicity assumption; stop at |F|<L/2, failed solve,40 attempts or machine bracket width.",
+  "refined_step": 0.0125,
+  "larger_flight_factors": [
+    24.0,
+    48.0
+  ],
+  "position_absolute_target": 1e-08,
+  "velocity_absolute_target": 1e-08,
+  "energy_target": 1e-08,
+  "diagnostic_pass_rule": "Rechecked opposite exits; full-IVP interior candidate confirmed nonexit by public event helper at both steps; half-step and independent12D endpoint errors below unchanged targets; all recorded paths pass and dependencies unchanged.",
+  "limits": "No censor-interval width, phase integral, asymptotic trapping, plasma rate or lifetime; larger-budget outcomes remain diagnostic. An outgoing-scattering integral needs almost-everywhere finite exits or an explicit extension convention."
+}
