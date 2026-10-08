@@ -1,0 +1,1345 @@
+{
+  "audit_time_utc": "2026-10-08T01:27:08.050432+00:00",
+  "collector_sha256": "6175d43f774adac97cfa2b1154eae451f085821371c25bd7360eff6c17616b0e",
+  "expected_commit": "3eb6a270eedd5d8151967a5554bdc01621a383cc",
+  "expected_source_sha256": "aa0f83c4c03cf47aea9aa1abe038b42b00224e322f7853df7f622d15ac8e64a3",
+  "expected_example_sha256": "396caacbc79921c4956e4bd6fca782b7e7d919d63a81747a5f576336f4b8133b",
+  "canonical_inputs": {
+    "fields": [
+      {
+        "kind": "mirror",
+        "strength": 1.0,
+        "amplitude": 0.15,
+        "length": 1.0,
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "base": "dipole"
+      },
+      {
+        "kind": "dipole",
+        "strength": 1.0,
+        "amplitude": 0.0,
+        "length": 1.0,
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "base": "dipole"
+      },
+      {
+        "kind": "nonaxisymmetric",
+        "strength": 1.0,
+        "amplitude": 0.03,
+        "length": 1.0,
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "base": "dipole"
+      }
+    ],
+    "bounds": [
+      [
+        0.8,
+        1.2
+      ],
+      [
+        -0.2,
+        0.2
+      ],
+      [
+        0.1,
+        0.5
+      ]
+    ],
+    "nx": 5,
+    "nu": 25,
+    "nmu": 21,
+    "x_orders": [
+      3,
+      5,
+      7
+    ],
+    "u_orders": [
+      17,
+      21,
+      25
+    ],
+    "mu_orders": [
+      13,
+      17,
+      21
+    ],
+    "u_domain": [
+      -4.0,
+      4.0
+    ],
+    "mu_domain": [
+      0,
+      20.0
+    ],
+    "collision_strength": 0.1,
+    "final_time": 0.02,
+    "dt_values": [
+      0.005,
+      0.0025,
+      0.00125,
+      0.000625,
+      0.0003125
+    ],
+    "newton_rtol": 1e-12,
+    "pair_chunk": 1048576,
+    "time_discretization": "lagged-mobility backward Euler in entropy variables",
+    "preconditioner_axis": 0,
+    "linear_rtol": 1e-06,
+    "linear_max_steps": 3000,
+    "max_newton_steps": 80,
+    "relative_refinement_target": 0.01,
+    "spatial_discretization": "global Lagrange polynomial derivative on positive Gauss-Legendre quadrature",
+    "velocity_discretization": "local quadratic u derivative; positive Gauss-Legendre u/mu quadrature",
+    "initial": "exp(-E-.2mu+.1sin(pi*y/.4)*u)",
+    "seed": null,
+    "residual_metric": "fixed_reference_population",
+    "reference_population": "positive quadrature weights times the fixed initial distribution; same total particle number"
+  },
+  "provenance_runs": {
+    "ca60d12d05d2fce0b92c82a9fc102ffdbe03574c0cfa341f73fecb5bfc86512b": {
+      "model": "sm_local_nonlinear discrete-energy projector",
+      "boundary": "natural no-flux collision-only Cartesian boxes",
+      "units": "normalized",
+      "inputs": {
+        "fields": [
+          {
+            "kind": "mirror",
+            "strength": 1.0,
+            "amplitude": 0.15,
+            "length": 1.0,
+            "direction": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "base": "dipole"
+          },
+          {
+            "kind": "dipole",
+            "strength": 1.0,
+            "amplitude": 0.0,
+            "length": 1.0,
+            "direction": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "base": "dipole"
+          },
+          {
+            "kind": "nonaxisymmetric",
+            "strength": 1.0,
+            "amplitude": 0.03,
+            "length": 1.0,
+            "direction": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "base": "dipole"
+          }
+        ],
+        "bounds": [
+          [
+            0.8,
+            1.2
+          ],
+          [
+            -0.2,
+            0.2
+          ],
+          [
+            0.1,
+            0.5
+          ]
+        ],
+        "nx": 5,
+        "nu": 25,
+        "nmu": 21,
+        "x_orders": [
+          3,
+          5,
+          7
+        ],
+        "u_orders": [
+          17,
+          21,
+          25
+        ],
+        "mu_orders": [
+          13,
+          17,
+          21
+        ],
+        "u_domain": [
+          -4.0,
+          4.0
+        ],
+        "mu_domain": [
+          0,
+          20.0
+        ],
+        "collision_strength": 0.1,
+        "final_time": 0.02,
+        "dt_values": [
+          0.005,
+          0.0025,
+          0.00125,
+          0.000625,
+          0.0003125
+        ],
+        "newton_rtol": 1e-12,
+        "pair_chunk": 1048576,
+        "time_discretization": "lagged-mobility backward Euler in entropy variables",
+        "preconditioner_axis": 0,
+        "residual_metric": "fixed_reference_population",
+        "reference_population": "positive quadrature weights times the fixed initial distribution; same total particle number",
+        "linear_rtol": 1e-06,
+        "linear_max_steps": 3000,
+        "max_newton_steps": 80,
+        "relative_refinement_target": 0.01,
+        "spatial_discretization": "global Lagrange polynomial derivative on positive Gauss-Legendre quadrature",
+        "velocity_discretization": "local quadratic u derivative; positive Gauss-Legendre u/mu quadrature",
+        "initial": "exp(-E-.2mu+.1sin(pi*y/.4)*u)",
+        "seed": null
+      },
+      "commit": "3eb6a270eedd5d8151967a5554bdc01621a383cc",
+      "working_tree": "?? results/nonuniform_fixed_reference/",
+      "source_sha256": "aa0f83c4c03cf47aea9aa1abe038b42b00224e322f7853df7f622d15ac8e64a3",
+      "versions": {
+        "sato-morrison": "0.1.0",
+        "jax": "0.11.2",
+        "jaxlib": "0.11.2",
+        "solvax": "0.28.2",
+        "numpy": "2.5.3",
+        "scipy": "1.18.1",
+        "matplotlib": "3.11.2"
+      },
+      "source_changes": "",
+      "logical_cpus": 4,
+      "thread_environment": {
+        "OMP_NUM_THREADS": "unset",
+        "OPENBLAS_NUM_THREADS": "unset",
+        "MKL_NUM_THREADS": "unset",
+        "XLA_FLAGS": "unset"
+      },
+      "python": "3.12.14",
+      "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+      "processor": "x86_64",
+      "devices": [
+        "cpu:0"
+      ],
+      "x64": true,
+      "limitations": "Independent finite-time refinement checks at fixed other parameters; no combined-streaming box claim and no E/Gmu-only equilibrium reachability claim. Finite spatial polynomial spaces may lift continuum invariants: flux/potential moments are measured as scheme errors, never projected or interpreted as physical relaxation. Tail-domain and wider-domain quadrature checks are separate. A fine timestep-pair pass does not certify the coarse baseline or jointly refine space and time; all adjacent and coarsest/fine differences are retained. Fixed-reference and old-population residual norms are different; no equality of their nominal tolerances is claimed. Timings include concurrent unrelated machine load.",
+      "relaxation_diagnostic": "Relative entropy to mass-normalized exp(-E-.2mu) decreases by the entropy gain because its logarithm is a discrete collision invariant. This stationary reference is not asserted reachable under the additional continuum constraints. Mean/variance of log(f/reference) and the sin(pi*y/.4)*u moment are measured separately.",
+      "execution": {
+        "selected_fields": [
+          "mirror"
+        ],
+        "selected_cases": [
+          "mu13"
+        ],
+        "description": "Independent predefined cases; each completed row retains its producing run."
+      }
+    }
+  },
+  "artifact_receipts": [
+    {
+      "state_audit": {
+        "status": "passed",
+        "sha256": "86d02a281293ea90fa80f00d5f8460fff9c3266eb0f569e40b58fe75eb84d474",
+        "field": "mirror",
+        "case": "mu13",
+        "time": 0.02,
+        "accepted_steps": 4,
+        "number": 0.1325871966429795,
+        "number_error": 1.271566501820468e-16,
+        "energy_error": 8.279026564246092e-17,
+        "marginal_error": 1.9363790844442884e-15,
+        "full_mu_populations": [
+          0.051086837943751295,
+          0.054416039488262034,
+          0.021865735326835754,
+          0.00457349042824928,
+          0.0005872277943685988,
+          5.354648355597291e-05,
+          4.009771375846108e-06,
+          2.8493056168332315e-07,
+          2.2049797580400657e-08,
+          2.0989073323901206e-09,
+          2.693580130314819e-10,
+          4.8024278306671325e-11,
+          9.931484300795663e-12
+        ],
+        "entropy_gain_per_particle": 0.0010653014552104492,
+        "scope": "Independent NumPy analytic-field/quadrature endpoint invariant and entropy audit; no full pair residual reevaluation",
+        "public_state_file": "state_mirror_mu13.npz",
+        "independent_pair_audit_file": "mirror_mu13_pair_audit.json",
+        "independent_pair_audit_sha256": "78d3a6910d146cd814cce90bee59eada9bfafb88e0ee89143a23566e28cf9130"
+      },
+      "last_correction_audit": {
+        "status": "retained_diagnostic",
+        "sha256": "e86433f03bef48c48eada3dd4ac90bcf52e84d37b4e581ac0c4cd2a443c5a03d",
+        "checkpoint": {
+          "field": "mirror",
+          "case": "mu13",
+          "step": 4,
+          "provenance_id": "ca60d12d05d2fce0b92c82a9fc102ffdbe03574c0cfa341f73fecb5bfc86512b",
+          "residual_metric": "fixed_reference_population",
+          "iteration": 3,
+          "relative_residual": 5.636482032900266e-10,
+          "linear_iterations": 18,
+          "true_linear_relative_residual": 9.611245308810509e-07,
+          "linear_wall_s": 5.8547988530000055,
+          "maximum_log_direction": 0.00019467589982812288,
+          "minimum_signed_log_direction": -0.00011799446650759424,
+          "maximum_signed_log_direction": 0.00019467589982812288,
+          "objective_descent": -3.626454624920827e-20,
+          "mobility_curvature": 5.5962068466568315e-19,
+          "fraction": 1.0,
+          "backtracks": 0,
+          "maximum_log_step": 0.00019467589982812288,
+          "objective_change": -1.8132273164837774e-20
+        },
+        "scope": "May include a rejected Newton correction; not an accepted step or a successful solve"
+      },
+      "summary_path": "${ARTIFACTS}/mirror-mu13-artifact11522467017/summary.json",
+      "sha256": "70910f42f545f64f52a28ed6ca24cf8972a1a326d952386514b076442ad3e054",
+      "provenance_id": "ca60d12d05d2fce0b92c82a9fc102ffdbe03574c0cfa341f73fecb5bfc86512b",
+      "completed_cases": 1,
+      "selected_execution_complete": true,
+      "auxiliary_files": [
+        {
+          "path": "${ARTIFACTS}/mirror-mu13-artifact11522467017/_download_receipt.json",
+          "sha256": "c63e9f7928e341337402c196dc69ee06c58462aade5d901e50fdccffd9a4ad0c",
+          "bytes": 2121
+        },
+        {
+          "path": "${ARTIFACTS}/mirror-mu13-artifact11522467017/commit.txt",
+          "sha256": "f0e130ff6c887f073f2d16f5f7e23e2ff33d52820b56d633e0e861881c5ad847",
+          "bytes": 41
+        },
+        {
+          "path": "${ARTIFACTS}/mirror-mu13-artifact11522467017/cpu.txt",
+          "sha256": "0535bb1480e83c69fe356e41634e13a277dab7414cf5d563975b02388982cb37",
+          "bytes": 3362,
+          "contents": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           48 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  4\nOn-line CPU(s) list:                     0-3\nVendor ID:                               AuthenticAMD\nModel name:                              AMD EPYC 9V45 96-Core Processor\nCPU family:                              26\nModel:                                   2\nThread(s) per core:                      2\nCore(s) per socket:                      2\nSocket(s):                               1\nStepping:                                1\nBogoMIPS:                                5192.24\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid extd_apicid aperfmperf tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves user_shstk avx_vnni avx512_bf16 clzero xsaveerptr rdpru arat npt nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload avx512vbmi umip avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid fsrm avx512_vp2intersect\nVirtualization:                          AMD-V\nHypervisor vendor:                       Microsoft\nVirtualization type:                     full\nL1d cache:                               96 KiB (2 instances)\nL1i cache:                               64 KiB (2 instances)\nL2 cache:                                2 MiB (2 instances)\nL3 cache:                                32 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-3\nVulnerability Gather data sampling:      Not affected\nVulnerability Ghostwrite:                Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Old microcode:             Not affected\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Vulnerable: Safe RET, no microcode\nVulnerability Spec store bypass:         Vulnerable\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Retpolines; STIBP disabled; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Not affected\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Not affected\n"
+        },
+        {
+          "path": "${ARTIFACTS}/mirror-mu13-artifact11522467017/environment.txt",
+          "sha256": "52bf125d9cdc545b6319a670730c096aa29b73d5dfcab0a2452a960509dc6bf8",
+          "bytes": 549,
+          "contents": "contourpy==1.4.0\ncycler==0.12.1\nequinox==0.13.8\nfonttools==4.66.1\niniconfig==2.3.1\njax==0.11.2\njaxlib==0.11.2\njaxtyping==0.3.11\nkiwisolver==1.5.1\nmatplotlib==3.11.2\nml_dtypes==0.6.0\nnumpy==2.5.3\nopt_einsum==3.4.0\npackaging==26.3\npillow==12.3.0\npluggy==1.6.0\npsutil==7.2.2\nPygments==2.21.0\npyparsing==3.3.3\npytest==9.1.1\npython-dateutil==2.9.0.post0\n-e git+https://github.com/rogeriojorge/sato-morrison@3eb6a270eedd5d8151967a5554bdc01621a383cc#egg=sato_morrison\nscipy==1.18.1\nsix==1.17.0\nsolvax==0.28.2\ntyping_extensions==4.16.0\nwadler_lindig==0.1.7\n"
+        },
+        {
+          "path": "${ARTIFACTS}/mirror-mu13-artifact11522467017/evolution.png",
+          "sha256": "3032124f36c5eb9076aa2c8ee903d3945b1300599b06f3637bed28f8e6eb8981",
+          "bytes": 186165
+        },
+        {
+          "path": "${ARTIFACTS}/mirror-mu13-artifact11522467017/last_correction.json",
+          "sha256": "e86433f03bef48c48eada3dd4ac90bcf52e84d37b4e581ac0c4cd2a443c5a03d",
+          "bytes": 775
+        },
+        {
+          "path": "${ARTIFACTS}/mirror-mu13-artifact11522467017/last_state.npz",
+          "sha256": "86d02a281293ea90fa80f00d5f8460fff9c3266eb0f569e40b58fe75eb84d474",
+          "bytes": 960003
+        },
+        {
+          "path": "${ARTIFACTS}/mirror-mu13-artifact11522467017/run.log",
+          "sha256": "c43627894921074d340def30d810d7787b9da7826cab8a72e3d31509ca40ea2a",
+          "bytes": 2641
+        }
+      ]
+    }
+  ],
+  "exact_duplicate_artifacts": [],
+  "rows": [
+    {
+      "field": "mirror",
+      "nx": 5,
+      "nu": 25,
+      "nmu": 13,
+      "umax": 4.0,
+      "mumax": 20.0,
+      "dt": 0.005,
+      "nodes": 40625,
+      "conceptual_unordered_pairs": 6581250,
+      "residual_metric": "fixed_reference_population",
+      "reference_population_total": 0.13258719664297938,
+      "minimum_reference_population": 2.9491411841577197e-20,
+      "stored_grid_bytes": 9431600,
+      "process_peak_rss_bytes": 874364928,
+      "peak_rss_scope": "Cumulative process high-water mark; includes setup and compiled runtime, not grid arrays alone",
+      "pair_workspace_budget": 1048576,
+      "minimum_discrete_grad_B": 0.12813919941136864,
+      "minimum_B": 0.8952565387949317,
+      "maximum_B": 0.9862326633222585,
+      "u_quadratic_derivative_error": 2.4868995751603507e-14,
+      "number": 0.13258719664297938,
+      "initial_magnetic_moment_bin_populations": [
+        0.05108683794375142,
+        0.05441603948826196,
+        0.0218657353268358,
+        0.004573490428249286,
+        0.0005872277943686008,
+        5.354648355597311e-05,
+        4.009771375846093e-06,
+        2.8493056168331976e-07,
+        2.204979758040154e-08,
+        2.0989073323904263e-09,
+        2.6935801303148694e-10,
+        4.8024278306664456e-11,
+        9.931484300794682e-12
+      ],
+      "entropy_gain_per_particle": 0.0010653014552105416,
+      "initial_relative_entropy_per_particle": 0.002501655402068505,
+      "relative_entropy_decrease_fraction": 0.425838608438913,
+      "initial_perturbation": {
+        "mean": 0.002501655402068783,
+        "variance": 0.005012684679272423
+      },
+      "final_perturbation": {
+        "mean": 0.0014363539468581956,
+        "variance": 0.0028816570910855234
+      },
+      "entropy_telescoping_error": 1.1085967213664283e-17,
+      "initial_production_per_particle": 0.07211118723572456,
+      "final_production_per_particle": 0.04121612937625201,
+      "relaxation_moment_change_per_particle": -0.012141410021369934,
+      "relaxation_moment_decrease_fraction": 0.2428191955724852,
+      "continuum_invariant_errors": {
+        "psi": {
+          "relative_signed_drift": -4.185126915401273e-16,
+          "initial_relative_rate": -2.8609266023250887e-18,
+          "final_relative_rate": -1.021759500830389e-18
+        },
+        "psi_squared": {
+          "relative_signed_drift": 1.5940117348610672e-12,
+          "initial_relative_rate": 9.270400424679795e-11,
+          "final_relative_rate": 6.791109081576018e-11
+        },
+        "radius_squared": {
+          "relative_signed_drift": -2.0404392672884556e-16,
+          "initial_relative_rate": -7.97046588784553e-19,
+          "final_relative_rate": 1.7933548247652442e-18
+        },
+        "z": {
+          "relative_signed_drift": -1.7430809417210529e-16,
+          "initial_relative_rate": -1.8724502303644122e-18,
+          "final_relative_rate": 9.362251151822061e-19
+        },
+        "z_squared": {
+          "relative_signed_drift": 0.0,
+          "initial_relative_rate": -1.0186287147016624e-18,
+          "final_relative_rate": 3.0867536809141285e-19
+        },
+        "radius_squared_z": {
+          "relative_signed_drift": -3.397962018713662e-16,
+          "initial_relative_rate": 6.636644567800122e-19,
+          "final_relative_rate": 1.3273289135600243e-18
+        }
+      },
+      "setup_s": 3.1299280429999996,
+      "history": [
+        {
+          "time": 0.005,
+          "wall_s": 20.384902900999997,
+          "newton_iterations": 3,
+          "pcg_iterations": 49,
+          "nonlinear_relative_residual": 1.127475240111922e-15,
+          "residual_metric": "fixed_reference_population",
+          "recomputed_reference_relative_residual": 1.1380688531355911e-15,
+          "old_population_relative_residual": 1.1380688531355911e-15,
+          "unscaled_population_residual_norm": 1.780847309480623e-18,
+          "maximum_linear_relative_residual": 9.75439506045245e-07,
+          "entropy_change": 4.301660752264708e-05,
+          "entropy_identity_error": -2.7350693866841358e-18,
+          "lagged_mobility_dissipation": 4.149877026438018e-05,
+          "generalized_KL": 1.5178372582696355e-06,
+          "entropy_defect_bound": 9.013284318339282e-15,
+          "residual_entropy_defect": 2.740680883608353e-18,
+          "newton_history": [
+            {
+              "iteration": 1,
+              "relative_residual": 0.0051638516137817204,
+              "linear_iterations": 13,
+              "true_linear_relative_residual": 7.78670630315415e-07,
+              "linear_wall_s": 5.285690588999998,
+              "maximum_log_direction": 0.0923246722276087,
+              "minimum_signed_log_direction": -0.0923246722276087,
+              "maximum_signed_log_direction": 0.07657775485370269,
+              "objective_descent": -3.27186644206613e-06,
+              "mobility_curvature": 4.678127105987163e-05,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.0923246722276087,
+              "objective_change": -1.6352917747055182e-06
+            },
+            {
+              "iteration": 2,
+              "relative_residual": 2.4043238732189985e-05,
+              "linear_iterations": 17,
+              "true_linear_relative_residual": 9.75439506045245e-07,
+              "linear_wall_s": 5.496309663999995,
+              "maximum_log_direction": 0.0034145532567895595,
+              "minimum_signed_log_direction": -0.0034145532567895595,
+              "maximum_signed_log_direction": 5.239097624774568e-06,
+              "objective_descent": -7.247867533268259e-11,
+              "mobility_curvature": 5.570713936014377e-10,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.0034145532567895595,
+              "objective_change": -3.624028897087828e-11
+            },
+            {
+              "iteration": 3,
+              "relative_residual": 1.1510312957297154e-09,
+              "linear_iterations": 19,
+              "true_linear_relative_residual": 9.362327052200182e-07,
+              "linear_wall_s": 6.065512472000009,
+              "maximum_log_direction": 0.00018530996285443291,
+              "minimum_signed_log_direction": -0.00011305384360106879,
+              "maximum_signed_log_direction": 0.00018530996285443291,
+              "objective_descent": -1.6011982728706543e-19,
+              "mobility_curvature": 2.1060547865630674e-18,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.00018530996285443291,
+              "objective_change": -8.005991397853956e-20
+            }
+          ],
+          "magnetic_moment_bin_populations": [
+            0.05108683794375128,
+            0.0544160394882622,
+            0.02186573532683579,
+            0.004573490428249295,
+            0.0005872277943685994,
+            5.354648355597287e-05,
+            4.009771375846099e-06,
+            2.8493056168332024e-07,
+            2.204979758040177e-08,
+            2.098907332390404e-09,
+            2.6935801303147727e-10,
+            4.802427830666185e-11,
+            9.93148430079388e-12
+          ],
+          "relative_marginal_bin_errors": [
+            -2.7165094506523258e-15,
+            4.463045986452954e-15,
+            -4.760114718431946e-16,
+            1.8964984219294104e-15,
+            -2.400197738846198e-15,
+            -4.429221294864056e-15,
+            1.4786954354795326e-15,
+            1.6721829698285972e-15,
+            1.0353920403675566e-14,
+            -1.0640715859282791e-14,
+            -3.5891538181503427e-14,
+            -5.422937213558322e-14,
+            -8.068594725026408e-14
+          ],
+          "number_error": 1.1634252138403346e-16,
+          "energy_error": 8.369814342096544e-17,
+          "marginal_error": 4.6385792346908155e-17,
+          "min_f": 1.5843351934327283e-14
+        },
+        {
+          "time": 0.01,
+          "wall_s": 17.752081615999998,
+          "newton_iterations": 3,
+          "pcg_iterations": 48,
+          "nonlinear_relative_residual": 6.00218465402069e-16,
+          "residual_metric": "fixed_reference_population",
+          "recomputed_reference_relative_residual": 6.173322817206364e-16,
+          "old_population_relative_residual": 6.199835659117249e-16,
+          "unscaled_population_residual_norm": 1.0044933601354274e-18,
+          "maximum_linear_relative_residual": 7.623204399723339e-07,
+          "entropy_change": 3.740223049162532e-05,
+          "entropy_identity_error": 9.198777807181702e-19,
+          "lagged_mobility_dissipation": 3.6088064870094706e-05,
+          "generalized_KL": 1.314165621529691e-06,
+          "entropy_defect_bound": 8.92267224652164e-15,
+          "residual_entropy_defect": -9.252376633395244e-19,
+          "newton_history": [
+            {
+              "iteration": 1,
+              "relative_residual": 0.004789115005170365,
+              "linear_iterations": 13,
+              "true_linear_relative_residual": 7.623204399723339e-07,
+              "linear_wall_s": 4.527364559999995,
+              "maximum_log_direction": 0.06917544529071055,
+              "minimum_signed_log_direction": -0.06917544529071055,
+              "maximum_signed_log_direction": 0.06298280305818758,
+              "objective_descent": -2.8253067006549064e-06,
+              "mobility_curvature": 3.899865926629327e-05,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.06917544529071055,
+              "objective_change": -1.4120931518309057e-06
+            },
+            {
+              "iteration": 2,
+              "relative_residual": 2.115774622609515e-05,
+              "linear_iterations": 17,
+              "true_linear_relative_residual": 5.193925449279581e-07,
+              "linear_wall_s": 5.3320964600000025,
+              "maximum_log_direction": 0.0026582550965945895,
+              "minimum_signed_log_direction": -0.0026582550965945895,
+              "maximum_signed_log_direction": 0.0010885368362464787,
+              "objective_descent": -5.589307967778971e-11,
+              "mobility_curvature": 4.5165867420579056e-10,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.0026582550965945895,
+              "objective_change": -2.794720020938998e-11
+            },
+            {
+              "iteration": 3,
+              "relative_residual": 9.220792247040757e-10,
+              "linear_iterations": 18,
+              "true_linear_relative_residual": 5.43718720355816e-07,
+              "linear_wall_s": 5.691362990999991,
+              "maximum_log_direction": 9.339789059038935e-05,
+              "minimum_signed_log_direction": -9.339789059038935e-05,
+              "maximum_signed_log_direction": 5.571334933253606e-05,
+              "objective_descent": -1.0071383027297043e-19,
+              "mobility_curvature": 1.4323269187135758e-18,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 9.339789059038935e-05,
+              "objective_change": -5.035691531285657e-20
+            }
+          ],
+          "magnetic_moment_bin_populations": [
+            0.051086837943751476,
+            0.05441603948826203,
+            0.02186573532683581,
+            0.004573490428249277,
+            0.0005872277943685987,
+            5.354648355597299e-05,
+            4.0097713758461005e-06,
+            2.8493056168332246e-07,
+            2.2049797580401905e-08,
+            2.0989073323903783e-09,
+            2.6935801303149294e-10,
+            4.802427830667123e-11,
+            9.931484300796341e-12
+          ],
+          "relative_marginal_bin_errors": [
+            1.0866037802609304e-15,
+            1.2751559961294154e-15,
+            4.760114718431946e-16,
+            -2.0861482641223517e-15,
+            -3.5079813106213664e-15,
+            -2.151336057505399e-15,
+            1.9011798456165416e-15,
+            9.475703495695385e-15,
+            1.6506249918903077e-14,
+            -2.285783406808896e-14,
+            2.2264269674087686e-14,
+            1.410232803922859e-13,
+            1.6706545932665567e-13
+          ],
+          "number_error": 1.1670187435694042e-16,
+          "energy_error": 8.004736699599755e-17,
+          "marginal_error": 4.895501047520322e-17,
+          "min_f": 1.640610320132557e-14
+        },
+        {
+          "time": 0.015,
+          "wall_s": 17.868536378,
+          "newton_iterations": 3,
+          "pcg_iterations": 47,
+          "nonlinear_relative_residual": 5.603079275116254e-16,
+          "residual_metric": "fixed_reference_population",
+          "recomputed_reference_relative_residual": 5.766429256218896e-16,
+          "old_population_relative_residual": 5.783639735906112e-16,
+          "unscaled_population_residual_norm": 1.1013138348704938e-18,
+          "maximum_linear_relative_residual": 7.775045255644281e-07,
+          "entropy_change": 3.253014322332082e-05,
+          "entropy_identity_error": -6.011816343137397e-19,
+          "lagged_mobility_dissipation": 3.1389659506079516e-05,
+          "generalized_KL": 1.1404837172419044e-06,
+          "entropy_defect_bound": 8.91712446116171e-15,
+          "residual_entropy_defect": 5.991853679086875e-19,
+          "newton_history": [
+            {
+              "iteration": 1,
+              "relative_residual": 0.004459612216616645,
+              "linear_iterations": 13,
+              "true_linear_relative_residual": 7.067613028415614e-07,
+              "linear_wall_s": 4.482176418999998,
+              "maximum_log_direction": 0.05253898169296571,
+              "minimum_signed_log_direction": -0.050812145325904834,
+              "maximum_signed_log_direction": 0.05253898169296571,
+              "objective_descent": -2.4498096005660216e-06,
+              "mobility_curvature": 3.343337243510365e-05,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.05253898169296571,
+              "objective_change": -1.2244281603514161e-06
+            },
+            {
+              "iteration": 2,
+              "relative_residual": 1.8556241043193773e-05,
+              "linear_iterations": 15,
+              "true_linear_relative_residual": 7.775045255644281e-07,
+              "linear_wall_s": 4.926574429999988,
+              "maximum_log_direction": 0.0014897459488376012,
+              "minimum_signed_log_direction": -0.0014897459488376012,
+              "maximum_signed_log_direction": 0.0007693652655981913,
+              "objective_descent": -4.277414500903457e-11,
+              "mobility_curvature": 3.557697079463232e-10,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.0014897459488376012,
+              "objective_change": -2.138752139651089e-11
+            },
+            {
+              "iteration": 3,
+              "relative_residual": 7.253289937850414e-10,
+              "linear_iterations": 19,
+              "true_linear_relative_residual": 6.272740048483685e-07,
+              "linear_wall_s": 6.162225327000002,
+              "maximum_log_direction": 0.00012089429550889529,
+              "minimum_signed_log_direction": -0.00012089429550889529,
+              "maximum_signed_log_direction": 7.352088291807357e-05,
+              "objective_descent": -6.111973955814752e-20,
+              "mobility_curvature": 9.13210061307217e-19,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.00012089429550889529,
+              "objective_change": -3.0559869865867495e-20
+            }
+          ],
+          "magnetic_moment_bin_populations": [
+            0.05108683794375119,
+            0.05441603948826216,
+            0.021865735326835816,
+            0.0045734904282492715,
+            0.0005872277943686018,
+            5.354648355597289e-05,
+            4.009771375846104e-06,
+            2.849305616833206e-07,
+            2.2049797580400502e-08,
+            2.0989073323900727e-09,
+            2.6935801303144796e-10,
+            4.802427830665924e-11,
+            9.931484300792498e-12
+          ],
+          "relative_marginal_bin_errors": [
+            -4.482240593576338e-15,
+            3.697952388775305e-15,
+            7.933524530719908e-16,
+            -3.224047317279998e-15,
+            1.6616753576627525e-15,
+            -4.0495737553042796e-15,
+            2.74614866589056e-15,
+            2.9727697241397283e-15,
+            -4.7117840677596053e-14,
+            -1.6847800110531087e-13,
+            -1.4471775288156997e-13,
+            -1.0859330847001404e-13,
+            -2.1993427556926823e-13
+          ],
+          "number_error": 1.553203405120084e-16,
+          "energy_error": 1.0651790424088339e-16,
+          "marginal_error": 6.5396305515995e-17,
+          "min_f": 1.693792227252726e-14
+        },
+        {
+          "time": 0.02,
+          "wall_s": 18.136620937000004,
+          "newton_iterations": 3,
+          "pcg_iterations": 47,
+          "nonlinear_relative_residual": 6.421216444939663e-16,
+          "residual_metric": "fixed_reference_population",
+          "recomputed_reference_relative_residual": 6.562303344957358e-16,
+          "old_population_relative_residual": 6.588283411283409e-16,
+          "unscaled_population_residual_norm": 9.834526779176516e-19,
+          "maximum_linear_relative_residual": 9.734325572578202e-07,
+          "entropy_change": 2.8296352288447876e-05,
+          "entropy_identity_error": 1.4090393077575286e-18,
+          "lagged_mobility_dissipation": 2.7305698378458566e-05,
+          "generalized_KL": 9.90653909987901e-07,
+          "entropy_defect_bound": 8.932685339955783e-15,
+          "residual_entropy_defect": -1.4152894106421825e-18,
+          "newton_history": [
+            {
+              "iteration": 1,
+              "relative_residual": 0.004157755789442654,
+              "linear_iterations": 13,
+              "true_linear_relative_residual": 6.077532942390262e-07,
+              "linear_wall_s": 4.687191224999992,
+              "maximum_log_direction": 0.0448514614056655,
+              "minimum_signed_log_direction": -0.039093260124788025,
+              "maximum_signed_log_direction": 0.0448514614056655,
+              "objective_descent": -2.1271573855029203e-06,
+              "mobility_curvature": 2.8892541752144485e-05,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.0448514614056655,
+              "objective_change": -1.06318183327188e-06
+            },
+            {
+              "iteration": 2,
+              "relative_residual": 1.623067651451371e-05,
+              "linear_iterations": 16,
+              "true_linear_relative_residual": 9.734325572578202e-07,
+              "linear_wall_s": 5.339195751999995,
+              "maximum_log_direction": 0.0007874780923165353,
+              "minimum_signed_log_direction": -0.0007874780923165353,
+              "maximum_signed_log_direction": 0.00022176696917526568,
+              "objective_descent": -3.25539586967523e-11,
+              "mobility_curvature": 2.754963753478525e-10,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.0007874780923165353,
+              "objective_change": -1.62772801121119e-11
+            },
+            {
+              "iteration": 3,
+              "relative_residual": 5.636482032900266e-10,
+              "linear_iterations": 18,
+              "true_linear_relative_residual": 9.611245308810509e-07,
+              "linear_wall_s": 5.8547988530000055,
+              "maximum_log_direction": 0.00019467589982812288,
+              "minimum_signed_log_direction": -0.00011799446650759424,
+              "maximum_signed_log_direction": 0.00019467589982812288,
+              "objective_descent": -3.626454624920827e-20,
+              "mobility_curvature": 5.5962068466568315e-19,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.00019467589982812288,
+              "objective_change": -1.8132273164837774e-20
+            }
+          ],
+          "magnetic_moment_bin_populations": [
+            0.0510868379437512,
+            0.05441603948826202,
+            0.021865735326835806,
+            0.004573490428249282,
+            0.0005872277943685993,
+            5.3546483555972985e-05,
+            4.0097713758461115e-06,
+            2.8493056168332363e-07,
+            2.204979758040068e-08,
+            2.0989073323901215e-09,
+            2.6935801303148265e-10,
+            4.80242783066713e-11,
+            9.93148430079564e-12
+          ],
+          "relative_marginal_bin_errors": [
+            -4.3464151210437216e-15,
+            1.1476403965164738e-15,
+            3.1734098122879637e-16,
+            -9.482492109647052e-16,
+            -2.5848283341420595e-15,
+            -2.2778852373586575e-15,
+            4.647328511507102e-15,
+            1.356326186638751e-14,
+            -3.901477253558909e-14,
+            -1.4522606644984107e-13,
+            -1.593046881852826e-14,
+            1.425034865796095e-13,
+            9.64652554826746e-14
+          ],
+          "number_error": 1.2713748469015855e-16,
+          "energy_error": 8.264818397420686e-17,
+          "marginal_error": 5.585153538453666e-17,
+          "min_f": 1.7433953882815684e-14
+        }
+      ],
+      "load_average_start": [
+        0.7939453125,
+        0.21728515625,
+        0.07470703125
+      ],
+      "load_average_end": [
+        2.8642578125,
+        0.9755859375,
+        0.35205078125
+      ],
+      "status": "passed",
+      "case": "mu13",
+      "provenance_id": "ca60d12d05d2fce0b92c82a9fc102ffdbe03574c0cfa341f73fecb5bfc86512b"
+    }
+  ],
+  "partials": [],
+  "missing_cases": [
+    {
+      "field": "mirror",
+      "case": "spatial3"
+    },
+    {
+      "field": "mirror",
+      "case": "base"
+    },
+    {
+      "field": "mirror",
+      "case": "spatial7"
+    },
+    {
+      "field": "mirror",
+      "case": "u17"
+    },
+    {
+      "field": "mirror",
+      "case": "u21"
+    },
+    {
+      "field": "mirror",
+      "case": "mu17"
+    },
+    {
+      "field": "mirror",
+      "case": "dt_half"
+    },
+    {
+      "field": "mirror",
+      "case": "dt_quarter"
+    },
+    {
+      "field": "mirror",
+      "case": "dt_eighth"
+    },
+    {
+      "field": "mirror",
+      "case": "dt_sixteenth"
+    },
+    {
+      "field": "mirror",
+      "case": "u_tail"
+    },
+    {
+      "field": "mirror",
+      "case": "mu_tail"
+    },
+    {
+      "field": "mirror",
+      "case": "u_wide"
+    },
+    {
+      "field": "mirror",
+      "case": "mu_wide"
+    },
+    {
+      "field": "dipole",
+      "case": "spatial3"
+    },
+    {
+      "field": "dipole",
+      "case": "base"
+    },
+    {
+      "field": "dipole",
+      "case": "spatial7"
+    },
+    {
+      "field": "dipole",
+      "case": "u17"
+    },
+    {
+      "field": "dipole",
+      "case": "u21"
+    },
+    {
+      "field": "dipole",
+      "case": "mu13"
+    },
+    {
+      "field": "dipole",
+      "case": "mu17"
+    },
+    {
+      "field": "dipole",
+      "case": "dt_half"
+    },
+    {
+      "field": "dipole",
+      "case": "dt_quarter"
+    },
+    {
+      "field": "dipole",
+      "case": "dt_eighth"
+    },
+    {
+      "field": "dipole",
+      "case": "dt_sixteenth"
+    },
+    {
+      "field": "dipole",
+      "case": "u_tail"
+    },
+    {
+      "field": "dipole",
+      "case": "mu_tail"
+    },
+    {
+      "field": "dipole",
+      "case": "u_wide"
+    },
+    {
+      "field": "dipole",
+      "case": "mu_wide"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "spatial3"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "base"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "spatial7"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "u17"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "u21"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "mu13"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "mu17"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "dt_half"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "dt_quarter"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "dt_eighth"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "dt_sixteenth"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "u_tail"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "mu_tail"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "u_wide"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "mu_wide"
+    }
+  ],
+  "checks": [
+    {
+      "field": "mirror",
+      "spatial": {
+        "status": "not_run"
+      },
+      "parallel_velocity": {
+        "status": "not_run"
+      },
+      "magnetic_moment": {
+        "status": "not_run"
+      },
+      "timestep": {
+        "status": "not_run"
+      },
+      "parallel_tail": {
+        "status": "not_run"
+      },
+      "moment_tail": {
+        "status": "not_run"
+      },
+      "wider_parallel_quadrature": {
+        "status": "not_run"
+      },
+      "wider_moment_quadrature": {
+        "status": "not_run"
+      },
+      "appreciable_relaxation": {
+        "status": "not_run"
+      },
+      "status": "unresolved"
+    },
+    {
+      "field": "dipole",
+      "spatial": {
+        "status": "not_run"
+      },
+      "parallel_velocity": {
+        "status": "not_run"
+      },
+      "magnetic_moment": {
+        "status": "not_run"
+      },
+      "timestep": {
+        "status": "not_run"
+      },
+      "parallel_tail": {
+        "status": "not_run"
+      },
+      "moment_tail": {
+        "status": "not_run"
+      },
+      "wider_parallel_quadrature": {
+        "status": "not_run"
+      },
+      "wider_moment_quadrature": {
+        "status": "not_run"
+      },
+      "appreciable_relaxation": {
+        "status": "not_run"
+      },
+      "status": "unresolved"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "spatial": {
+        "status": "not_run"
+      },
+      "parallel_velocity": {
+        "status": "not_run"
+      },
+      "magnetic_moment": {
+        "status": "not_run"
+      },
+      "timestep": {
+        "status": "not_run"
+      },
+      "parallel_tail": {
+        "status": "not_run"
+      },
+      "moment_tail": {
+        "status": "not_run"
+      },
+      "wider_parallel_quadrature": {
+        "status": "not_run"
+      },
+      "wider_moment_quadrature": {
+        "status": "not_run"
+      },
+      "appreciable_relaxation": {
+        "status": "not_run"
+      },
+      "status": "unresolved"
+    }
+  ],
+  "time_refinement_progress": [
+    {
+      "field": "mirror",
+      "adjacent_comparisons": [
+        {
+          "previous_case": "base",
+          "last_case": "dt_half",
+          "status": "not_run",
+          "missing_cases": [
+            "base",
+            "dt_half"
+          ]
+        },
+        {
+          "previous_case": "dt_half",
+          "last_case": "dt_quarter",
+          "status": "not_run",
+          "missing_cases": [
+            "dt_half",
+            "dt_quarter"
+          ]
+        },
+        {
+          "previous_case": "dt_quarter",
+          "last_case": "dt_eighth",
+          "status": "not_run",
+          "missing_cases": [
+            "dt_quarter",
+            "dt_eighth"
+          ]
+        },
+        {
+          "previous_case": "dt_eighth",
+          "last_case": "dt_sixteenth",
+          "status": "not_run",
+          "missing_cases": [
+            "dt_eighth",
+            "dt_sixteenth"
+          ]
+        }
+      ],
+      "finest_pair": {
+        "previous_case": "dt_eighth",
+        "last_case": "dt_sixteenth",
+        "status": "not_run",
+        "missing_cases": [
+          "dt_eighth",
+          "dt_sixteenth"
+        ]
+      },
+      "coarsest_to_finest": {
+        "status": "not_run"
+      },
+      "all_adjacent_pairs_passed": false,
+      "fine_pair_does_not_certify_baseline": true
+    },
+    {
+      "field": "dipole",
+      "adjacent_comparisons": [
+        {
+          "previous_case": "base",
+          "last_case": "dt_half",
+          "status": "not_run",
+          "missing_cases": [
+            "base",
+            "dt_half"
+          ]
+        },
+        {
+          "previous_case": "dt_half",
+          "last_case": "dt_quarter",
+          "status": "not_run",
+          "missing_cases": [
+            "dt_half",
+            "dt_quarter"
+          ]
+        },
+        {
+          "previous_case": "dt_quarter",
+          "last_case": "dt_eighth",
+          "status": "not_run",
+          "missing_cases": [
+            "dt_quarter",
+            "dt_eighth"
+          ]
+        },
+        {
+          "previous_case": "dt_eighth",
+          "last_case": "dt_sixteenth",
+          "status": "not_run",
+          "missing_cases": [
+            "dt_eighth",
+            "dt_sixteenth"
+          ]
+        }
+      ],
+      "finest_pair": {
+        "previous_case": "dt_eighth",
+        "last_case": "dt_sixteenth",
+        "status": "not_run",
+        "missing_cases": [
+          "dt_eighth",
+          "dt_sixteenth"
+        ]
+      },
+      "coarsest_to_finest": {
+        "status": "not_run"
+      },
+      "all_adjacent_pairs_passed": false,
+      "fine_pair_does_not_certify_baseline": true
+    },
+    {
+      "field": "nonaxisymmetric",
+      "adjacent_comparisons": [
+        {
+          "previous_case": "base",
+          "last_case": "dt_half",
+          "status": "not_run",
+          "missing_cases": [
+            "base",
+            "dt_half"
+          ]
+        },
+        {
+          "previous_case": "dt_half",
+          "last_case": "dt_quarter",
+          "status": "not_run",
+          "missing_cases": [
+            "dt_half",
+            "dt_quarter"
+          ]
+        },
+        {
+          "previous_case": "dt_quarter",
+          "last_case": "dt_eighth",
+          "status": "not_run",
+          "missing_cases": [
+            "dt_quarter",
+            "dt_eighth"
+          ]
+        },
+        {
+          "previous_case": "dt_eighth",
+          "last_case": "dt_sixteenth",
+          "status": "not_run",
+          "missing_cases": [
+            "dt_eighth",
+            "dt_sixteenth"
+          ]
+        }
+      ],
+      "finest_pair": {
+        "previous_case": "dt_eighth",
+        "last_case": "dt_sixteenth",
+        "status": "not_run",
+        "missing_cases": [
+          "dt_eighth",
+          "dt_sixteenth"
+        ]
+      },
+      "coarsest_to_finest": {
+        "status": "not_run"
+      },
+      "all_adjacent_pairs_passed": false,
+      "fine_pair_does_not_certify_baseline": true
+    }
+  ],
+  "complete_case_count": 1,
+  "expected_case_count": 45,
+  "all_expected_cases_complete": false,
+  "status": "unresolved",
+  "limitations": [
+    "Audits source provenance, finite saved diagnostics, complete accepted histories and internal numerical consistency; no independent trajectory/kernel rerun.",
+    "The exact scalar entropy guard is recomputed from saved identity error, residual contraction and defect budget; this is not independent PDE residual evaluation from full state vectors.",
+    "Finest adjacent time-pair status is distinct from coarsest-to-finest and every intervening pair; no fine-pair certification of the baseline.",
+    "Grid-array bytes, workspace index count and cumulative process high-water RSS are separate measurements; timings retain each producing hardware/load record.",
+    "Only frozen-source fixed-reference artifacts are eligible; old-population and historical discrete-gradient evidence are excluded.",
+    "Fixed-reference native and represented-state residuals are acceptance diagnostics; the old-population norm is only a finite nonnegative diagnostic with no acceptance threshold.",
+    "Saved endpoint invariants, full mu populations and entropy are independently checked using NumPy quadrature and analytic field formulas; the full pair residual is not independently recomputed here."
+  ],
+  "workflow_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37712765957",
+  "execution_scope": "Three-field mu13 pilot; full 45-case refinement campaign not dispatched. Only accepted complete rows count.",
+  "reproduce": "SM_EVOLUTION_FIELDS=mirror SM_EVOLUTION_CASES=mu13 MPLBACKEND=Agg python examples/12_nonuniform_evolution.py",
+  "figure_provenance": {
+    "source_commit": "3eb6a270eedd5d8151967a5554bdc01621a383cc",
+    "script_sha256": "396caacbc79921c4956e4bd6fca782b7e7d919d63a81747a5f576336f4b8133b",
+    "function": "plot_evolution_evidence",
+    "scope": "Plot-only execution on strictly audited saved rows; no solver rerun"
+  }
+}

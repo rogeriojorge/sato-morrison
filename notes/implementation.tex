@@ -2320,6 +2320,32 @@ different residual metric requires its own validation. This failure is not a phy
 decay measurement or a converged dipole refinement. No clipping, kernel
 change or relaxed tolerance is used to turn it into a passing result.
 
+\paragraph{Fixed-reference pilot, kept separate from refinement.}
+The old-population campaign was stopped after the scale-amplification
+reproduction, preserving sixteen completed cases and thirteen partial records.
+The replacement uses $n^{\rm r}=w f(0)$ without changing the equation or its
+physical inputs. Producer \texttt{3eb6a270} first runs one $n_\mu=13$ case in
+each field before any full refinement campaign. Its completed mirror case has
+$5^3\times25\times13=40625$ nodes, $u\in[-4,4]$, $\mu\in[0,20]$,
+$D=0.1$, $T=0.02$ and $\Delta t=0.005$, all normalized. Four accepted steps
+use twelve Newton corrections and 191 PCG iterations. Summed step wall time,
+including compilation and recorded diagnostics, is $74.1421$ seconds on a
+four-logical-CPU AMD EPYC 9V45 Linux runner; cumulative process peak RSS is
+$874364928$ bytes. Setup is separate, and these are not matched-run speedups.
+
+Saved initial, previous and final densities are in
+\texttt{results/}\allowbreak\texttt{nonuniform\_fixed\_reference/}. An independent
+analytic-field NumPy pair assembly checks the final root with reference residual
+$7.09\times10^{-16}$ and entropy-budget defect $1.62\times10^{-17}$.
+Independent population audits put cumulative number, energy and full
+moment-marginal errors below $2\times10^{-15}$. The entropy gain per particle
+is $0.00106530145521$; selected bulk observables agree with the archived
+same-grid mirror case to rounding. Intermediate states have producer checks,
+not an independent full-pair replay. Dipole and nonaxisymmetric pilots remain
+in progress at this checkpoint. One completed case is not a three-field or
+continuum convergence result; the chosen numerical norm supplies no physical
+rate calibration.
+
 \paragraph{An elementary obstruction to a relative maximum principle.}
 Let the finite collision matrix $K$ be symmetric with $K\bm1=0$ and
 $KE=0$. If all off-diagonal entries satisfy $K_{ij}\le0$, then

@@ -1,0 +1,79 @@
+{
+  "status": "passed",
+  "audit_utc": "2026-10-08T01:31:42.119707+00:00",
+  "deadline_s": 120,
+  "scope": "One final saved-step residual, analytic mirror geometry and independent NumPy unordered pairs; no nonlinear solve or complete-history pair audit.",
+  "audit_source_sha256": "9cd6d7c3184a42d287c02d693469a18688a7914bad3eedacc3d3539565cddafd",
+  "helper_source_sha256": "a1ac3755a0c9ca946cdb601cf11b9639bd9fadaa589e424482a48ba1c114fc4e",
+  "numpy": "2.5.3",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "predeclared_checks": {
+    "reference_normalized_residual_max": 2e-12,
+    "entropy_identity_absolute_max": 3e-15,
+    "global_invariants_max": 1e-09,
+    "weights_relative_max": 2e-14
+  },
+  "producer_commit": "3eb6a270eedd5d8151967a5554bdc01621a383cc",
+  "producer_source_sha256": "aa0f83c4c03cf47aea9aa1abe038b42b00224e322f7853df7f622d15ac8e64a3",
+  "provenance_id": "ca60d12d05d2fce0b92c82a9fc102ffdbe03574c0cfa341f73fecb5bfc86512b",
+  "workflow_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37712765957",
+  "artifact_id": 11522467017,
+  "saved_hashes": {
+    "last_state.npz": "86d02a281293ea90fa80f00d5f8460fff9c3266eb0f569e40b58fe75eb84d474",
+    "summary.json": "70910f42f545f64f52a28ed6ca24cf8972a1a326d952386514b076442ad3e054",
+    "_download_receipt.json": "c63e9f7928e341337402c196dc69ee06c58462aade5d901e50fdccffd9a4ad0c"
+  },
+  "parameters": {
+    "field": "mirror",
+    "case": "mu13",
+    "nx": 5,
+    "nu": 25,
+    "nmu": 13,
+    "umax": 4.0,
+    "mumax": 20.0,
+    "dt": 0.005,
+    "residual_metric": "fixed_reference_population"
+  },
+  "last_time": 0.02,
+  "pair_wall_s": 0.6901962500123773,
+  "minimum_pair_flow_squared": 0.0079619681223623,
+  "weights_relative_error": 1.63202784619898e-14,
+  "initial_analytic_relative_error": 7.327471962526033e-15,
+  "reference_total": 0.13258719664297938,
+  "reference_old_mass_relative_difference": 0.0,
+  "reference_normalized_residual": 7.085538149467769e-16,
+  "old_population_normalized_residual": 7.109060496162201e-16,
+  "raw_R_l2": 1.1589507721052308e-18,
+  "reported_reference_normalized_residual": 6.562303344957358e-16,
+  "reported_old_population_normalized_residual": 6.588283411283409e-16,
+  "entropy_change": 2.8296352288431637e-05,
+  "dt_frozen_mobility_quadratic": 2.73056983784586e-05,
+  "generalized_KL": 9.90653909987904e-07,
+  "residual_entropy_defect": -1.3611033066852936e-18,
+  "entropy_identity_with_residual": -1.6228225596892775e-17,
+  "reference_cauchy_bound": 1.2394398785974766e-16,
+  "reference_cauchy_plus_roundoff_bound": 8.944306007228203e-15,
+  "last_step_invariants": {
+    "number_relative": 2.6824900865342575e-17,
+    "energy_relative": 2.331147777986066e-17,
+    "full_mu_marginal_global_relative": 1.0166126797372361e-17
+  },
+  "cumulative_invariants": {
+    "number_relative": 1.3079809364083745e-16,
+    "energy_relative": 8.525020503435055e-17,
+    "full_mu_marginal_global_relative": 5.790010204726079e-17
+  },
+  "minimum_f": 1.7433953882815684e-14,
+  "reported_entropy_difference": -1.6239315664759446e-17,
+  "reported_quadratic_difference": 3.3881317890172014e-20,
+  "reported_KL_difference": 2.964615315390051e-21,
+  "method_limits": [
+    "Only the final accepted step has its physical residual independently assembled; intermediate states are not saved.",
+    "Energy and coefficients are independently analytic; saved nref/initial weights match independent quadrature before use.",
+    "NPZ stores densities, not internal log iterates; log(saved f) includes an exp/log rounding roundtrip.",
+    "Fixed-reference and old-population residual norms are separate, with no tolerance equivalence claim.",
+    "Downloaded extracted-file hashes are verified; GitHub ZIP digest is retained but the ZIP was not independently checked.",
+    "No continuum convergence, all-three-field campaign pass, or physical rate calibration is inferred."
+  ],
+  "wall_s": 1.0763745410076808
+}

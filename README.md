@@ -37,7 +37,7 @@ The full flux distribution supplies additional constraints. Two populations can 
 
 ![Nonlinear relaxation, independent refinement checks, sampled continuum-constraint errors and discrete conservation. The title reports how many planned cases are complete.](results/nonuniform_entropy/evolution.png)
 
-The mirror campaign passes, but its coarse timestep retains **2–3% bias**. Finest-pair agreement does not certify a coarse run. **One dipole solve was rejected. The remaining campaign was stopped after diagnosing extreme tail amplification in its residual scale; a separate [fixed-reference pilot is running](https://github.com/rogeriojorge/sato-morrison/actions/runs/37712765957).** [Complete histories and pending cases](results/nonuniform_entropy/summary.json) · [Script](examples/12_nonuniform_evolution.py)
+The mirror campaign passes, but its coarse timestep retains **2–3% bias**. Finest-pair agreement does not certify a coarse run. **One dipole solve was rejected. The remaining campaign was stopped after diagnosing extreme tail amplification in its residual scale; a separate [fixed-reference pilot is running](https://github.com/rogeriojorge/sato-morrison/actions/runs/37712765957).** [Archived campaign](results/nonuniform_entropy/summary.json) · [Pilot evidence](results/nonuniform_fixed_reference/summary.json) · [Script](examples/12_nonuniform_evolution.py)
 
 ## Run
 
@@ -65,7 +65,7 @@ At matched error on an Apple M4, the small implicit benchmark takes **43.8 μs**
 | Lorentz, Dougherty and physical 3V Landau references | A general Landau time integrator |
 | Direct magnetized encounters; bounded interpolation | A calibrated kinetic coefficient or dipole lifetime |
 
-The scattering table passes its distributional target, but **8 of 4,096 states still exceed 100% relative error**. Wider impact/speed coverage remains unresolved. No physical spectral gap or metastable regime is claimed. The [42-page notes](notes/implementation.pdf) contain derivations, literature comparisons and the limits of each result; [source](notes/implementation.tex) and [bibliography](notes/references.bib) are included.
+The scattering table passes its distributional target, but **8 of 4,096 states still exceed 100% relative error**. Wider impact/speed coverage remains unresolved. No physical spectral gap or metastable regime is claimed. The [technical notes](notes/implementation.pdf) contain derivations, literature comparisons and the limits of each result; [source](notes/implementation.tex) and [bibliography](notes/references.bib) are included.
 
 ## License
 
