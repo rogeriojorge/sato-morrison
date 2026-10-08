@@ -88,6 +88,51 @@ def test_toroidal_exact_streaming_translation_norm_and_invariants():
     np.testing.assert_allclose(np.asarray(state).reshape(shape).sum(axis=(1,2)),initial.sum(axis=(1,2)),atol=1e-13)
 
 
+@pytest.mark.parametrize('charge', [-.8, 1.3])
+def test_uniform_parallel_streaming_distribution_and_zero_collision_limit(charge):
+    from scipy.integrate import solve_ivp
+    from sato_morrison.geometry import poisson_mu,energy_mu
+    from sato_morrison.reference import pair_rhs
+    mass, strength, wave_number = 1.7, 2.3, 2.
+    field=Field('uniform',strength=strength)
+    u=np.linspace(-1.8,1.8,5);mu=np.linspace(.2,1.4,3)
+    uu,mm=np.meshgrid(u,mu,indexing='ij')
+    nodes=jnp.asarray(np.stack((np.zeros_like(uu),np.zeros_like(uu),np.zeros_like(uu),uu,mm),axis=-1).reshape(-1,5))
+    flow=jax.vmap(lambda z:poisson_mu(z,field,mass=mass,charge=charge)
+                  @jax.grad(lambda state:energy_mu(state,field,mass=mass,charge=charge))(z))(nodes)
+    equilibrium=np.exp(-mass*uu.ravel()**2/2-strength*mm.ravel())
+    coefficient=.08*(1+.2*uu.ravel())+.04j*(mm.ravel()-.8)
+    # Integrate the generator obtained from the actual Poisson characteristic;
+    # the independent reference is the analytic phase at each physical u.
+    times=np.array([0.,.2,.7,1.1])
+    answer=solve_ivp(lambda t,h:-1j*wave_number*np.asarray(flow[:,2])*h,
+                     (times[0],times[-1]),coefficient,t_eval=times,
+                     method='DOP853',rtol=2e-12,atol=2e-14)
+    assert answer.success
+    exact=coefficient[:,None]*np.exp(-1j*wave_number*uu.ravel()[:,None]*times)
+    np.testing.assert_allclose(answer.y,exact,rtol=2e-11,atol=3e-13)
+    assert np.max(abs(answer.y))<1  # Positive for every continuous spatial phase.
+    z=np.arange(17)*2*np.pi/17
+    population=equilibrium[None,:,None]*(1+np.real(np.exp(1j*wave_number*z[:,None,None])*answer.y[None]))
+    reference=equilibrium[None,:,None]*(1+np.real(np.exp(1j*wave_number*z[:,None,None])*exact[None]))
+    assert np.min(population)>0
+    np.testing.assert_allclose(population,reference,rtol=2e-12,atol=3e-13)
+    np.testing.assert_allclose(population.sum(axis=0),np.broadcast_to((17*equilibrium)[:,None],answer.y.shape),rtol=2e-14)
+    # Parallel modes have zero collision action even at nonzero D.
+    parallel=pair_rhs(uu.ravel(),np.ones(uu.size),equilibrium,coefficient,np.full(uu.size,.016),
+                      charge=charge,field=[0.,0.,strength],mass=mass,diffusion=.3,k=[0.,0.,wave_number])
+    np.testing.assert_allclose(parallel,0.,atol=2e-15)
+    # Independently exercise D=0 on a genuinely active perpendicular grid.
+    grid=uniform_grid(z,u,mu,magnetic_field=strength,mass=mass,charge=charge)
+    background=jnp.exp(-grid.energy)
+    state=jnp.asarray((np.cos(2*z)[:,None,None]*(uu**2)[None]).ravel())
+    assert float(jnp.linalg.norm(mobility_action(grid,background,state)))>1e-6
+    zero=lambda h:mobility_action(grid,background,h,collision_strength=0.)
+    np.testing.assert_array_equal(zero(state),np.zeros(grid.size))
+    unchanged=checked_linear_step(grid.weights*background,zero,state,.73)
+    np.testing.assert_allclose(unchanged.x,state,rtol=2e-12,atol=2e-13)
+
+
 def test_nonfinite_inputs_reject_without_repair():
     grid,f=setup();mass=grid.weights*f
     with pytest.raises(ValueError):

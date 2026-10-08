@@ -35,6 +35,50 @@ def test_shell_coordinate_measure():
     np.testing.assert_allclose(abs(np.linalg.det(jacobian))*2*np.pi*field/mass, 2*np.pi*v*v)
 
 
+@pytest.mark.parametrize('ell,rate', [(0,0.),(1,1.),(2,3.),(3,6.)])
+def test_lorentz_evolved_modes_in_u_mu_measure(ell, rate):
+    # A mapped speed/pitch quadrature in (u,mu), rather than a rectangular box.
+    # Its full 3V measure must preserve both the radial and angular moments.
+    mass, field, nu, time, amplitude = 1.7, 2.3, .6, .8, .15
+    lower, upper = .4, 2.
+    speed_nodes, speed_weights = np.polynomial.legendre.leggauss(12)
+    speed_nodes = lower+(upper-lower)*(speed_nodes+1)/2
+    speed_weights *= (upper-lower)/2
+    xi, pitch_weights = np.polynomial.legendre.leggauss(12)
+    speed, pitch = np.meshgrid(speed_nodes, xi, indexing='ij')
+    u = speed*pitch
+    mu = mass*speed**2*(1-pitch**2)/(2*field)
+    recovered_speed = np.sqrt(u*u+2*field*mu/mass)
+    recovered_pitch = u/recovered_speed
+    # Independent determinant of the actual coordinate map at every node.
+    jacobian = np.empty(speed.shape+(2,2))
+    jacobian[...,0,0], jacobian[...,0,1] = pitch, speed
+    jacobian[...,1,0] = mass*speed*(1-pitch*pitch)/field
+    jacobian[...,1,1] = -mass*speed*speed*pitch/field
+    measure = (2*np.pi*field/mass * abs(np.linalg.det(jacobian))
+               * speed_weights[:,None]*pitch_weights[None,:])
+    radial = 1+.3*recovered_speed**2
+    mode = np.polynomial.legendre.Legendre.basis(ell)(recovered_pitch)
+    initial = radial*(1+amplitude*mode)
+    evolved = np.array([lorentz_evolve(recovered_pitch[i], initial[i], nu, time, 3)
+                        for i in range(len(speed_nodes))])
+    np.testing.assert_allclose(evolved,radial*(1+amplitude*np.exp(-rate*nu*time)*mode),
+                               rtol=2e-14,atol=2e-14)
+    integral = lambda power: ((upper**(power+1)-lower**(power+1))/(power+1)
+                            +.3*(upper**(power+3)-lower**(power+3))/(power+3))
+    factor = 1+amplitude if ell==0 else 1.
+    energy = mass*u*u/2+field*mu
+    for population in (initial,evolved):
+        assert np.min(population)>0
+        np.testing.assert_allclose(np.sum(measure*population),4*np.pi*integral(2)*factor,rtol=2e-14)
+        np.testing.assert_allclose(np.sum(measure*energy*population),2*np.pi*mass*integral(4)*factor,rtol=2e-14)
+    initial_momentum = 4*np.pi*mass*amplitude*integral(3)/3 if ell==1 else 0.
+    np.testing.assert_allclose(np.sum(measure*mass*u*initial),initial_momentum,atol=2e-13)
+    np.testing.assert_allclose(np.sum(measure*mass*u*evolved),initial_momentum*np.exp(-nu*time),atol=2e-13)
+    if ell==1:
+        assert np.sum(measure*mass*u*evolved)<initial_momentum
+
+
 def test_nonlinear_dougherty_mixture_exact_strong_equation():
     initial = mixture()
     v = np.random.default_rng(301).normal(size=(23,3))

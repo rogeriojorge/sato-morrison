@@ -16,7 +16,7 @@ JAX experiments on **what relaxes—and what remains frozen—when collisions pr
 | Toroidal streaming + collisions | Eight final refinement changes below **0.71%**; all **39** collision null modes explained on the 243-node grid |
 | Nonlinear mirror evolution | **15 runs**, eight refinement checks; largest final change **0.197%** |
 | Independent solver audit | All **20 saved steps** rechecked with a separate NumPy pair operator |
-| Conditional scattering table | Fresh **4,096-state** test: p95 error **2.54%**, confidence interval **2.06–3.37%** |
+| Conditional scattering table | Fresh **4,096-state** test: p95 error **2.54%**, 95% confidence interval **2.06–3.37%** |
 | Test suite | **193 passed** on fresh Linux CI |
 
 [Reproduction record](results/deep_reproduction.json) · [Mirror data](results/nonuniform_entropy/mirror_audit.json) · [Solver audit](results/solver_accuracy/audit.json) · [Scattering audit](results/scattering_table/refined8_validation4096/audit.json)
@@ -65,7 +65,7 @@ At matched error on an Apple M4, the small implicit benchmark takes **43.8 μs**
 | Lorentz, Dougherty and physical 3V Landau references | A general Landau time integrator |
 | Direct magnetized encounters; bounded interpolation | A calibrated kinetic coefficient or dipole lifetime |
 
-The scattering table passes its distributional target, but **8 of 4,096 states still exceed 100% relative error**. Wider impact/speed coverage remains unresolved. No physical spectral gap or metastable regime is claimed. The [40-page notes](notes/implementation.pdf) contain derivations, literature comparisons and the limits of each result; [source](notes/implementation.tex) and [bibliography](notes/references.bib) are included.
+The scattering table passes its distributional target, but **8 of 4,096 states still exceed 100% relative error**. Wider impact/speed coverage remains unresolved. No physical spectral gap or metastable regime is claimed. The [41-page notes](notes/implementation.pdf) contain derivations, literature comparisons and the limits of each result; [source](notes/implementation.tex) and [bibliography](notes/references.bib) are included.
 
 ## License
 
