@@ -170,3 +170,19 @@ metadata.update({"status":"passed","matrix_exponential_vs_exact_max_error":float
     "limitations":"Exact uniform linear branches at finite velocity quadrature; no nonlinear or physical-rate claim."})
 (OUTPUT/"metadata.json").write_text(json.dumps(metadata,indent=2)+"\n")
 print(f"Saved {OUTPUT}; operator evolution max error={error:.3e}; elapsed={metadata['elapsed_s']:.1f}s",flush=True)
+
+
+def plot_uniform_oracle(output):
+    """Portable equation figure for Markdown viewers without math support."""
+    fig=plt.figure(figsize=(8,1.55),facecolor='white')
+    fig.text(.5,.70,r'$C_L[\delta f]=\frac{D}{(qB)^2}\nabla_\perp^2(n_0\delta f-f_0\delta n)$',
+        ha='center',va='center',fontsize=22,color='#172534')
+    fig.text(.5,.23,r'$\lambda=\frac{D n_0 k_\perp^2}{(qB)^2}$',
+        ha='center',va='center',fontsize=22,color='#172534')
+    fig.savefig(output/'uniform_oracle.svg',bbox_inches='tight',pad_inches=.2,
+        metadata={'Creator':None,'Date':None})
+    plt.close(fig)
+
+
+plot_uniform_oracle(OUTPUT)
+print(f"Saved the uniform-oracle equation figure in {OUTPUT}",flush=True)
