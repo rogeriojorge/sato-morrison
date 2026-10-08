@@ -570,20 +570,25 @@ class LandauVelocityGrid:
     @property
     def size(self):return int(np.prod(self.shape))
 
-def landau_velocity_grid(order=12,extent=5.):
-    """Positive 3V Gauss cube with quadratic-exact global polynomial gradients.
+def landau_velocity_grid(order=12,extent=5.,*,derivative='polynomial'):
+    """Positive 3V Gauss cube with explicitly selected quadratic-exact gradients.
 
     Density is represented at every node, with natural no-flux weak collision
     boundary. Positivity concerns nodal/quadrature densities, not polynomial
-    interpolation between nodes. Grid and tail convergence must be demonstrated.
+    interpolation between nodes. The default global polynomial derivative and
+    the optional three-point local_quadratic derivative define different finite
+    weak operators. Both reproduce energy/momentum exactly; the local option
+    requires refinement for higher polynomial test gradients. Grid and tail
+    convergence must be demonstrated for the selected operator.
     """
     from .collisions import derivative_matrix
-    if type(order) is not int or order<3 or not np.isfinite(extent) or extent<=0:
+    if (type(order) is not int or order<3 or not np.isfinite(extent) or extent<=0
+        or derivative not in ('polynomial','local_quadratic')):
         raise ValueError('Need integer order>=3 and finite positive velocity extent')
     x,w=np.polynomial.legendre.leggauss(order);x=extent*x;w=extent*w
     v=np.stack(np.meshgrid(x,x,x,indexing='ij'),axis=-1).reshape(-1,3)
     weights=np.prod(np.meshgrid(w,w,w,indexing='ij'),axis=0).ravel()
-    return LandauVelocityGrid((order,)*3,v,weights,derivative_matrix(x,method='polynomial'))
+    return LandauVelocityGrid((order,)*3,v,weights,derivative_matrix(x,method=derivative))
 
 @dataclass(frozen=True,eq=False)
 class LandauEntropyCompiler(LaggedEntropyCompiler):

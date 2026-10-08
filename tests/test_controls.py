@@ -476,3 +476,48 @@ def test_landau_visible_failure_and_bound_kernel_reference_validation(landau_den
     zero=landau_entropy_compiler(grid,gamma=0.)
     a=landau_entropy_step(grid,f,.1,compiled=zero,gamma=0.)
     np.testing.assert_allclose(a.f,f,rtol=2e-15,atol=0.)
+
+
+def test_landau_local_quadratic_unrepaired_nulls_and_independent_pair_action():
+    from sato_morrison.controls import landau_velocity_grid,landau_entropy_compiler
+    local=landau_velocity_grid(4,3.,derivative='local_quadratic')
+    polynomial=landau_velocity_grid(4,3.)
+    explicit=landau_velocity_grid(4,3.,derivative='polynomial')
+    np.testing.assert_array_equal(polynomial.derivative,explicit.derivative)
+    v,w,D=map(np.asarray,(local.velocity,local.weights,local.derivative))
+    G=np.stack([np.kron(np.kron(D if d==0 else np.eye(4),D if d==1 else np.eye(4)),
+                        D if d==2 else np.eye(4)) for d in range(3)],axis=1)
+    f=np.exp(-.5*np.sum((v-np.array([.2,-.3,.1]))**2/np.array([1.15,1.15,.7]),axis=1));f/=w@f
+    i,j=np.triu_indices(len(v),1);r=v[i]-v[j];length=np.linalg.norm(r,axis=1)
+    U=(np.eye(3)-r[:,:,None]*r[:,None,:]/length[:,None,None]**2)/length[:,None,None]
+    delta=G[i]-G[j];n=w*f
+    expected=np.einsum('p,pdi,pde,pej->ij',n[i]*n[j],delta,U,delta,optimize=True)
+    c=landau_entropy_compiler(local)
+    actual=np.column_stack([np.asarray(c.apply(np.log(f),h)) for h in np.eye(len(v))])
+    np.testing.assert_allclose(actual,expected,rtol=5e-13,atol=2e-16)
+    nulls=np.column_stack((np.ones(len(v)),v,np.sum(v*v,axis=1)/2))
+    np.testing.assert_allclose(actual@nulls,0.,atol=2e-15)
+    eigen=np.linalg.eigvalsh(actual)
+    assert eigen.min()>-1e-14*eigen[-1]
+    assert np.count_nonzero(abs(eigen)<1e-11*eigen[-1])==5
+    # Quadratic Gaussian scores and pressure tests are exact for both gradients;
+    # pointwise weak rates need not agree between their distinct finite operators.
+    g=np.log(f);global_c=landau_entropy_compiler(polynomial)
+    rhs_local=-np.asarray(c.apply(g,g));rhs_global=-np.asarray(global_c.apply(g,g))
+    np.testing.assert_allclose((v*v).T@rhs_local,(v*v).T@rhs_global,atol=3e-15)
+    assert np.linalg.norm(rhs_local-rhs_global)>1e-5
+    for drift in [np.zeros(3),np.array([.2,-.3,.1])]:
+        ell=-np.sum((v-drift)**2,axis=1)/(2*.8)
+        np.testing.assert_allclose(c.apply(ell,ell),0.,atol=2e-15)
+
+
+def test_landau_local_higher_test_gradient_refines_and_invalid_option_rejects():
+    from sato_morrison.controls import landau_velocity_grid
+    errors=[]
+    for order in [12,20,28]:
+        grid=landau_velocity_grid(order,5.,derivative='local_quadratic')
+        x,weights=np.polynomial.legendre.leggauss(order);x=5*x;weights=5*weights
+        exact=4*x**3;difference=np.asarray(grid.derivative)@(x**4)-exact
+        errors.append(np.sqrt(np.sum(weights*np.exp(-x*x/2)*difference**2)))
+    assert errors[1]<.6*errors[0] and errors[2]<.65*errors[1]
+    with pytest.raises(ValueError):landau_velocity_grid(4,3.,derivative='unspecified')
