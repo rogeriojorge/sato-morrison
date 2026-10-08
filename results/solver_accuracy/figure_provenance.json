@@ -1,0 +1,7 @@
+{
+  "source_commit": "719b4c1919d1947ad6fadb20f34f14e4d0ad4a54",
+  "script_sha256": "732ceae3390b854e5c5493ef3465689cd7a1f64b8255261b3a5bc9ebd9b6cdb8",
+  "measurement_source_commit": "e1bc1abf137bdea156844b21b3a37bc4e346a21e",
+  "input_summary_sha256": "ced42b6e200c4dc2995581c089c45c301d865a5a0650f542ab252dd645ac5088",
+  "scope": "Plot-only execution of final figure block; original solved states and numerical evidence unchanged; zero annotation repositioned for legibility."
+}

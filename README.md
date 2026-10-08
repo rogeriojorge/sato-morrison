@@ -27,11 +27,11 @@ Examples are editable top-level scripts with explicit inputs, progress, diagnost
 
 ## What the calculations establish
 
-**187 tests passed on Linux CI.** The test suite compares independent equations, discrete conservation budgets and resolved limits. Each claim below links to its measured evidence.
+**193 tests passed on Linux CI.** The test suite compares independent equations, discrete conservation budgets and resolved limits. Each claim below links to its measured evidence.
 
 ![Four validation panels: nonlinear entropy, toroidal evolution controls, independent refinements and the raw toroidal null spectrum.](results/visual_summary/validation.png)
 
-**A. Nonlinear relaxation.** Number, energy and full resolved moment-bin marginal errors stay below `1e-15`. Entropy increases; nodal and reconstructed positivity pass. Timestep order: `2.00`.
+**A. Uniform nonlinear relaxation.** Number, energy and full resolved moment-bin marginal errors stay below `1e-15`. Entropy increases; nodal and reconstructed positivity pass. Timestep order: `2.00`.
 
 **B–C. Toroidal dynamics.** Combined streaming and collisions give `Q/Q₀ = 0.8109803`. Independent grid, tail and timestep refinements change the dissipated fraction by less than `0.71%`. Streaming alone preserves this norm.
 
@@ -147,13 +147,25 @@ The known stationary density family and a full-marginal equilibrium multiplier a
 
 **New velocity-tail check:** 36 nonuniform initial-production cases. All three fields pass the Gauss-quadrature target; the largest final change is `0.261%`. Trapezoidal controls remain unresolved at `10–17%`. This does not establish full time-evolution or joint spatial/velocity convergence. [Convergence plot](results/field_velocity/production.png) · [All checks](results/field_velocity/summary.json)
 
-### Finite-time mirror relaxation survives independent refinements
+### Nonlinear relaxation: convergence and timestep bias
+
+![Completed nonlinear cases with eight refinement directions, sampled continuum-constraint errors and discrete conservation budgets.](results/nonuniform_entropy/evolution.png)
+
+**Mirror: all 15 cases complete.** Eight independent refinement checks pass; the largest final change is **0.197%**. Spatial refinement from five to seven nodes per axis changes the three observables by at most **0.057%**. The other two field campaigns are still running; the figure reports completed cases explicitly.
+
+The spatial curves use a fixed coarse timestep. Reducing that timestep from `0.005` to `0.0003125` changes the mirror relative-entropy decrease from **42.58% to 43.65%**. A finest-pair pass does not make the coarse baseline accurate. The lagged-mobility method retains its numerical KL dissipation in the entropy budget. [Inputs, step histories, costs and refinement checks](results/nonuniform_entropy/summary.json) · [Independent mirror audit](results/nonuniform_entropy/mirror_audit.json) · [Script](examples/12_nonuniform_evolution.py)
+
+<details>
+<summary>Historical discrete-gradient mirror comparison</summary>
+
 
 ![Mirror relative-entropy decrease, eight refinement comparisons, additional continuum-moment errors and discrete conservation budgets.](results/nonuniform_mirror_dg/evolution.png)
 
 Thirteen discrete-gradient runs reach $T=0.02$: relative entropy decreases by **43.74%** on the baseline grid. All eight independent grid, tail and timestep checks pass the 1% target; the largest change is **0.113%**. Number, energy and the full resolved moment-bin marginal stay within `1.4e-13`; marginal bin errors are normalized by total particle number. Additional continuum constraints are measured as discretization errors.
 
 This completed mirror campaign retains its original method and source. Dipole and nonaxisymmetric solves with that method failed visibly; their replacement entropy-variable campaign is separate. The comparisons do not establish joint continuum convergence or resolve every localized constraint. [Inputs, histories and provenance](results/nonuniform_mirror_dg/raw/summary.json) · [Independent audit and costs](results/nonuniform_mirror_dg/audit.json) · [Archived producing source](https://github.com/rogeriojorge/sato-morrison/blob/4ce8e5c770665a396d5083aec1e5f2b89a6a6ecf/examples/12_nonuniform_evolution.py)
+
+</details>
 
 <details>
 <summary>Independent geometry-derivative checks</summary>
@@ -174,12 +186,12 @@ The upper-left panel shows the earlier coarse table. The independent tail test b
 
 **Wider coverage changes the answer.** A 38,220-trajectory audit covers `88.9%` of that speed flux. In the same impact annulus, the broader speed band gives a second-moment contribution about **35 times larger**. Four inner impact bands remain under-resolved; no complete diffusion coefficient is reported. Positive bars are contributions to the chosen finite quadrature, not rigorous bounds on a continuous integral.
 
-**Small average error can hide a failed tail criterion.** A refined periodic scattering table has `0.228%` normalized second-moment RMS error on 4,096 untouched states within its training hull, yet its 95th-percentile relative error is `6.26%` (95% order-statistic interval `5.32–7.22%`), above the predeclared `5%` target. The smaller 256-state sample had suggested a pass. Both records are retained; the table remains unresolved. A predeclared `8³×32` refinement keeps the original validation domain and targets, with a fresh 4,096-state test pending. [Current script](examples/16_scattering_table.py)
+**Small average error can hide a failed tail criterion.** A refined periodic scattering table has `0.228%` normalized second-moment RMS error on 4,096 untouched states within its training hull, yet its 95th-percentile relative error is `6.26%` (95% order-statistic interval `5.32–7.22%`), above the predeclared `5%` target. The smaller 256-state sample had suggested a pass. Both records are retained. A predeclared `8³×32` refinement, tested on **4,096 fresh states in the unchanged domain**, passes: RMS **0.115%**, p95 **2.54%**, confidence interval **2.06–3.37%**. Eight states still exceed 100% relative error; this is a distributional criterion, not a pointwise guarantee. [Script](examples/16_scattering_table.py) · [Independent audit](results/scattering_table/refined8_validation4096/audit.json)
 
 <details>
-<summary>Why the scatter plot alone is insufficient</summary>
+<summary>Refinement improves the error distribution; rare large errors remain</summary>
 
-![The refined table closely follows direct second moments, but its independent relative-error distribution misses the 95-percent coverage target at five-percent error.](results/scattering_table/validation_4096/robust_validation.png)
+![Fresh refined-table moments and their independent relative-error distribution; the 95th-percentile confidence interval now meets the declared target.](results/scattering_table/refined8_validation4096/robust_validation.png)
 
 The archived `6³×32` table was tested without parameter retuning. Dashed lines mark the required 95% coverage at 5% relative error. [Producing script](https://github.com/rogeriojorge/sato-morrison/blob/cdb577b5620df82670c0d2485c19cb51a4cdf243/examples/16_scattering_table.py) · [Fresh sample and confidence interval](results/scattering_table/validation_4096/metadata.json)
 
@@ -194,7 +206,7 @@ The [extended-flight audit](results/encounter_duration/metadata.json) resolves o
 | Lorentz | Exact speed-shell Legendre decay | Momentum exchanges with a reservoir |
 | Dougherty | Conserving nonlinear Gaussian-mixture evolution; independent strong-equation check | Homogeneous mixture family |
 | Physical 3V Landau | Coulomb weak moments checked by spherical, Cartesian and independent Laplace quadratures | Not a general Landau time integrator |
-| Magnetized encounters | Direct trajectories, bounded Maxwellian flux and analytic thermal-center moments | Held-out table unresolved; no calibrated constrained coefficient or lifetime |
+| Magnetized encounters | Direct trajectories, bounded Maxwellian flux and analytic thermal-center moments | Bounded interpolation passes; no calibrated constrained coefficient or lifetime |
 
 [Control evidence](results/controls/metadata.json) · [Trajectory controls](results/encounters/metadata.json). The prototype stage is implemented and tested. A physically validated constrained kinetic closure remains open.
 
@@ -205,6 +217,15 @@ The [extended-flight audit](results/encounter_duration/metadata.json) resolves o
 Four spatial blocks × 128 velocity nodes, Apple M4 CPU, five synchronized repetitions; all routes have the same time-discretization error `2.77e-5`. Bars show warm medians; whiskers show min–max. Compilation plus first execution is `0.092 / 0.184 / 0.225 s` for dense / PCG / diagonal-PCG.
 
 For the separate 945-pair weak action, chunking by 16 reduces XLA temporary buffers from 118,913 to 16,480 bytes, while warm median time grows from 96.3 to 158.2 μs. These are small CPU measurements, not a general nonuniform speedup claim. Process peak RSS is recorded separately from temporary buffers. [Complete matched-error measurements](results/benchmarks/summary.json)
+
+<details>
+<summary>Separate solver-tolerance checks</summary>
+
+![Fixed-grid endpoint errors under nonlinear and linear tolerance refinement, alongside the corresponding PCG iteration counts.](results/solver_accuracy/accuracy.png)
+
+Five mirror runs vary nonlinear and linear tolerances separately, reusing the baseline. An independent NumPy pair operator rechecks every accepted state. The last linear comparison changes the weighted endpoint by less than `1.4e-14`; all three nonlinear settings reach identical endpoints. Unweighted relative errors in tiny-population tails are larger. These checks isolate solver error on one fixed grid and timestep. [Script](examples/19_solver_accuracy.py) · [Saved states and diagnostics](results/solver_accuracy/summary.json) · [Independent audit](results/solver_accuracy/audit.json)
+
+</details>
 
 ## Reproduce
 
@@ -228,7 +249,7 @@ Run from the repository root with the environment above. Every script prints its
 | `examples/13_encounter_validation.py` | Wider incoming-flux coverage and independent table validation |
 | `examples/14_geometry_sensitivity.py` | Local production derivative, independent pair form and finite-difference plateau |
 | `examples/15_dipole_obstruction.py` | Matched constraints, different flux populations and a positive distance floor |
-| `examples/16_scattering_table.py` | Predeclared 8-node table refinement; fresh tests pending |
+| `examples/16_scattering_table.py` | Eight-node periodic table and fresh independent validation |
 | `examples/17_encounter_duration.py` | Original nonexit: flight budget, timestep, endpoint and independent pair audit |
 | `examples/18_near_uniform.py` | Analytic and direct near-uniform tensor-quadrature limit |
 | `examples/19_solver_accuracy.py` | Separate nonlinear/linear tolerance scans at fixed grid and timestep |

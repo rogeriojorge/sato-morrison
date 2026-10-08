@@ -2132,6 +2132,100 @@ run identifier; metadata record source, versions and hardware. Independent
 refinements do not establish joint continuum convergence. No final outcome
 for the current campaign is asserted by this execution description.
 
+\paragraph{Completed mirror lagged-mobility campaign.}
+The retained collection contains 16 of 45 planned cases and remains
+unresolved overall. All fifteen independently executed mirror cases reach $T=0.02$ with the
+lagged-mobility entropy step, retaining a separate provenance record from
+the historical discrete-gradient campaign. The eight final, fixed-other-parameter
+comparisons all meet the original $1\%$ target. Their largest change is
+$0.197278\%$, in the active-moment change for the final timestep pair.
+At $\Delta t=0.005$, the $5\to7$ spatial-order changes in entropy gain,
+final production and active-moment change are respectively
+$0.045351\%$, $0.024860\%$ and $0.056944\%$.
+The corresponding largest tail change is $0.112113\%$.
+
+The timestep sequence provides important qualification of these passes.
+For $\Delta t=0.005\to0.0025$, entropy gain and active-moment change
+still differ by $1.30210\%$ and $1.51359\%$. For the finest pair,
+$0.000625\to0.0003125$, the entropy-gain, final-production and
+active-moment discrepancies are $0.168910\%$, $0.131882\%$ and
+$0.197278\%$. Successive absolute increments approximately halve,
+as expected for this first-order method. These are measured differences,
+not rigorous continuum error bounds; a first-order Richardson indicator
+additionally assumes the asymptotic expansion. The coarse-to-finest differences
+are still $2.45276\%$, $1.91519\%$ and $2.85202\%$.
+A finest-pair pass therefore does not retrospectively certify the original
+coarse timestep. Spatial scans use the coarse timestep, whereas the time
+scan fixes spatial order five; joint refinement is not asserted.
+
+At $\Delta t=0.005$, the lagged baseline relative entropy decreases by
+$42.5839\%$, compared with $43.7427\%$ in the historical same-grid
+discrete-gradient baseline at the same timestep. The finest lagged result,
+$\Delta t=0.0003125$, decreases relative entropy by $43.6546\%$.
+
+The smallest stored historical discrete-gradient timestep is
+$\Delta t=0.0025$; its same-grid relative-entropy decrease
+is $43.7322\%$. Comparing this historical $0.0025$ endpoint with the
+finest lagged $0.0003125$ endpoint gives discrepancies of $0.177401\%$
+in entropy gain, $0.138914\%$ in final production and $0.207378\%$
+in active-moment-change magnitude. Both comparisons hold all other grid,
+domain, initial-condition and coefficient inputs fixed. These cross-method
+differences do not identify either discrete endpoint with continuum truth.
+The separate numerical KL contribution to the entropy gain decreases from
+$3.51384\%$ at the baseline timestep to $0.227342\%$ at the finest;
+it is not included in the continuous nodal collision production.
+
+Across the completed mirror histories, maximum number, energy and
+moment-bin errors normalized by the declared global scales are
+$1.648\times10^{-12}$, $4.312\times10^{-12}$ and
+$4.862\times10^{-13}$. Every stored entropy identity defect is within
+its recorded residual bound. These bounds certify step budgets, not
+spatial or temporal truncation error. Sampled meridional constraints improve
+with spatial order: the mirror $\psi^2$ drift decreases from
+$1.363\times10^{-10}$ at order three to $1.594\times10^{-12}$ at order
+five and roundoff at order seven. This does not exhaust the disconnected
+Cartesian-cap population invariants or prove continuum mixing.
+
+Accepted-step walls are observed costs of distinct shared Linux CI jobs,
+including each first-step compilation and excluding setup and separate
+initial/final diagnostics. The baseline four steps take $369.79$ seconds;
+the finest timestep's 64 steps take $1456.37$ seconds. These costs are not
+a matched-error speedup comparison with the historical method. Stored grid
+array bytes exclude other workspace and line factors; process RSS is a
+high-water mark including compiled runtime. No dipole or nonaxisymmetric
+campaign conclusion is inferred from these mirror results.
+
+The \href{https://github.com/rogeriojorge/sato-morrison/blob/main/results/nonuniform_entropy/mirror_audit.json}{public mirror audit}
+retains the original per-case provenance and recomputes all eight comparisons,
+including every adjacent timestep difference and the coarse-to-finest bias.
+
+\paragraph{Solver-tolerance audit on one fixed mirror grid.}
+Example 19 at source revision \texttt{e1bc1ab} retains every state in five
+four-step runs on $3^3\times25\times21$ nodes, with $D=0.1$, $T=0.02$
+and $\Delta t=0.005$. Outer Newton tolerances $10^{-10},10^{-11},10^{-12}$
+at inner tolerance $10^{-6}$ give byte-identical endpoints; this is not an
+outer-error-order estimate. At outer tolerance $10^{-12}$, the separate
+inner sequence is $10^{-4},10^{-5},10^{-6}$. An
+\href{https://github.com/rogeriojorge/sato-morrison/blob/main/results/solver_accuracy/audit.json}{independent NumPy saved-state audit}
+reconstructs all 20 nonlinear residuals and entropy/invariant budgets, with
+explicit unordered-pair production checks. The maximum independently
+recomputed nonlinear relative residual is $2.162\times10^{-13}$; maximum
+cumulative number, energy and full moment-bin errors are respectively
+$1.019\times10^{-14}$, $1.579\times10^{-14}$ and $4.135\times10^{-15}$.
+The last inner pair has entropy-scaled log endpoint difference
+$1.393\times10^{-14}$ and maximum independently recomputed relative change
+in the three principal observables $5.27\times10^{-13}$, well below the
+unchanged $10^{-8}$ endpoint and $10^{-6}$ observable targets. The fixed
+finite-dimensional reference is not continuum truth. Krylov correction
+vectors are not archived, so their true residual scalars are checked as
+producer records rather than independently replayed vectors.
+The five recorded run costs sum to 89.698 seconds on the Apple M4; the
+separate 3.670-second setup/initial-diagnostic cost is excluded from that
+sum. These observed costs retain first-use compilation, evidence writes and
+concurrent load, and supply no speedup claim. Exact normalized inputs,
+versions and hardware are retained in
+\href{https://github.com/rogeriojorge/sato-morrison/blob/main/results/solver_accuracy/summary.json}{the producing summary}.
+
 \subsection*{Bounded Maxwellian encounter flux and thermal center motion}
 Let $\theta=k_BT/m$ denote a single-particle velocity variance. For two equal
 Maxwellian particles, $\bm w=\bm v_1-\bm v_2$ and
@@ -2420,6 +2514,64 @@ estimate. A failed tail target is retained as a result, with no parameter
 retuning on those validation states. Table resolution and conditional moment
 accuracy do not supply kinetic closure, screening validation, inter-encounter
 independence or a constrained collision coefficient.
+
+\subsection*{Predeclared eight-node refinement on the unchanged validation domain}
+A separate, predeclared $8^3\times32$ table uses 16384 direct training
+states, with the same signed-mean/log-variance interpolation, physical inputs,
+integration tolerances and accuracy targets. The validation domain remains
+exactly the original six-node inner hull: the impact and two speed intervals
+are approximately $[1.2405183,2.3594817]$, $[0.7270122,1.4729878]$ and
+$[0.2202591,0.7797409]$, respectively, with uniform gyrophase on $[0,2\pi)$.
+The larger eight-node training hull is not substituted for this fixed test
+domain. Gauss-six and Gauss-eight training nodes have no bit-identical full
+states, so no earlier trajectory is reused. The failed six-node record above
+remains available and is not revised by the new outcome.
+
+Source revision \texttt{e1bc1ab} declares 4096 fresh primary states with
+seed 1331 and bootstrap seed 1332, and 256 fresh secondary states with seed
+1333 and bootstrap seed 1334, before training or inspecting their outcomes.
+The normalized inputs remain $m=q=1$, $B=2$, $\kappa=0.03$,
+$\lambda_s=3$, $\theta=0.5$, incoming/outgoing planes $L=24$, maximum
+DOP853 step $0.2$ and relative tolerance $10^{-10}$. The exact hull,
+source, versions and hardware are recorded in
+\href{https://github.com/rogeriojorge/sato-morrison/blob/main/results/scattering_table/refined8_validation4096/metadata.json}{the public normalized-input metadata}.
+
+All 4096 primary direct encounters exit. Their second-moment bulk relative
+error is $0.11506\%$, with 2000-resample bootstrap interval
+$[0.08909\%,0.14119\%]$. The observed 95th percentile is $2.53760\%$;
+the two-sided $95\%$ order-statistic interval is
+$[2.05643\%,3.36706\%]$. Thus the unchanged criteria---bulk error at most
+$2\%$, observed 95th percentile at most $5\%$, and confidence upper limit
+at most $5\%$---all pass for this declared sampling distribution. The
+secondary sample has bulk error $0.05963\%$ and observed 95th percentile
+$3.90539\%$, but its much wider interval $[1.25255\%,10.00161\%]$
+illustrates why the larger primary sample is the confidence evidence.
+The eight impact-direction checks give derivative relative error
+$0.47585\%$, below the original $5\%$ target; their direct finite-difference
+plateau change is $6.7149\times10^{-7}$. Maximum saved training, secondary
+and primary energy errors are respectively $5.76\times10^{-10}$,
+$3.59\times10^{-10}$ and $4.39\times10^{-10}$, below the unchanged
+$10^{-8}$ guard applied jointly to all three stages.
+
+The pass is not a pointwise accuracy bound: 140 of 4096 states
+($3.4180\%$) exceed $5\%$ relative error, and eight ($0.1953\%$) exceed
+$100\%$; the maximum relative error is $293.95\%$. Small direct moments
+still permit large relative outliers. An
+\href{https://github.com/rogeriojorge/sato-morrison/blob/main/results/scattering_table/refined8_validation4096/audit.json}{independent saved-array audit}
+reconstructs the seeds and fixed domain, verifies no overlap with earlier
+states, rebuilds the interpolant and reproduces the reported statistics and
+derivative comparisons. It verifies source dependencies against the producer
+revision. Training energy maxima are replayed from the saved checkpoint;
+secondary and primary energy checks use saved producer maxima rather than
+rerunning individual trajectories.
+
+The calculation comprises $16384+4096+256+48=20784$ direct solves, including
+48 finite-difference solves for the eight derivative states, and takes
+354.638 seconds on the recorded Apple M4. This is one observed whole-run
+cost including concurrent machine load, not a matched-cost speedup over the
+older table. The successful bounded conditional interpolation test does not
+validate a physical kinetic closure, a calibrated collision coefficient,
+inter-encounter independence or accuracy outside the declared hull.
 
 \subsection*{Reproducible evolution visualization}
 The README animation is a solution of the uniform linear surrogate at finite

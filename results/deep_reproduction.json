@@ -7583,6 +7583,16 @@
       "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37704799094/job/113076483962",
       "log_sha256": "94253449756b7192da0488ae0cf35287f13fc5b0c18a3d48e2d27c7809ecaa8a",
       "scope": "Adds independent mirror-bounce quadrature, two unit maps with both charge signs and actual implicit-adjoint residual checks."
+    },
+    {
+      "source_commit": "11863119fc55a59dc95043c1be75610d4c7c75da",
+      "command": "python -m pytest -q",
+      "passed": 193,
+      "elapsed_s": 119.2,
+      "environment": "Fresh Ubuntu CI installation",
+      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37705184513/job/113077746242",
+      "log_sha256": "7d1ce726141183e53925b42589a59396767292788b9257c0aba24e9b69c9453c",
+      "scope": "Includes explicit gamma=0 stationary-density and controlled weak-field limits."
     }
   ],
   "additional_experiments": [
@@ -7640,6 +7650,24 @@
       "experiment_dependencies_unchanged": true,
       "wall_seconds": 16.686591834004503,
       "timing_scope": "Shared local machine; numerical verification, not an isolated benchmark."
+    },
+    {
+      "command": "MPLBACKEND=Agg python examples/16_scattering_table.py",
+      "cwd": "${REPOSITORY}",
+      "producer_commit": "e1bc1abf137bdea156844b21b3a37bc4e346a21e",
+      "evidence_path": "results/scattering_table/refined8_validation4096/metadata.json",
+      "evidence_sha256": "d11fc2ecb366656165bd2fef2cf648677e051340ff6bf761a03afe941235c966",
+      "experiment_dependencies_unchanged": true,
+      "timing_scope": "Shared local M4; measured durations include setup and concurrent work, not an isolated benchmark."
+    },
+    {
+      "command": "MPLBACKEND=Agg python examples/19_solver_accuracy.py",
+      "cwd": "${REPOSITORY}",
+      "producer_commit": "e1bc1abf137bdea156844b21b3a37bc4e346a21e",
+      "evidence_path": "results/solver_accuracy/summary.json",
+      "evidence_sha256": "ced42b6e200c4dc2995581c089c45c301d865a5a0650f542ab252dd645ac5088",
+      "experiment_dependencies_unchanged": true,
+      "timing_scope": "Shared local M4; measured durations include setup and concurrent work, not an isolated benchmark."
     }
   ]
 }
