@@ -1,0 +1,348 @@
+{
+  "metadata": {
+    "model": "one frozen lagged-entropy SPD linear correction",
+    "boundary": "natural weak collision-only box",
+    "units": "normalized",
+    "inputs": {
+      "fixture_sha256": "40f087b53270b29e7ef37768964192d281b95ca3110c1a1545e569f33ecc05ab",
+      "fixture_origin": "Frozen first-step Newton6 input for one linear correction, not an accepted finite-time endpoint.",
+      "geometry": {
+        "field": "dipole",
+        "strength": 1.0,
+        "mass": 1.0,
+        "charge": 1.0,
+        "bounds": [
+          [
+            0.8,
+            1.2
+          ],
+          [
+            -0.2,
+            0.2
+          ],
+          [
+            0.1,
+            0.5
+          ]
+        ],
+        "shape": [
+          5,
+          5,
+          5,
+          25,
+          13
+        ],
+        "u_domain": [
+          -4.0,
+          4.0
+        ],
+        "mu_domain": [
+          0.0,
+          20.0
+        ],
+        "D": 0.1,
+        "dt": 0.005,
+        "initial": "exp(-E-.2mu+.1sin(pi*y/.4)*u)",
+        "boundary": "natural weak collision-only no-flux; no streaming",
+        "metric": "old population; same as initial population in this first-step correction",
+        "units": "normalized"
+      },
+      "collision_strength": 0.1,
+      "timestep": 0.005,
+      "route_linear_rtol": 1e-06,
+      "route_linear_budget": 3000,
+      "reference_linear_tolerances": [
+        1e-09,
+        1e-11
+      ],
+      "reference_linear_budget": 6000,
+      "correction_relative_error_target": 1e-07,
+      "reference_relative_change_target": 1e-09,
+      "independent_reference_residual_target": 5e-11,
+      "true_residual_guard": "fresh ||H v+rhs||/||rhs|| <=5*linear_rtol and native converged",
+      "error_metric": "||sqrt(w*f_old)*(dlog-dlog_reference)||/||sqrt(w*f_old)*dlog_reference||",
+      "warm_repeats": 3,
+      "excluded_runtime_warmups_per_route": 1,
+      "chunk": 1048576,
+      "route_order": "alternate xline/xyz and xyz/xline",
+      "metric": "original old population; no rescaling or reference-mass change",
+      "seed": null
+    },
+    "commit": "58cc3e139c1c0082f49da0dc10e841b55632669d",
+    "working_tree": "?? results/encounter_phase/",
+    "source_sha256": "c94410ad0e58bd0a99e1d7f6c5e4c48afeef346e88be05792af85ad4edeb4f4b",
+    "versions": {
+      "sato-morrison": "0.1.0",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2"
+    },
+    "source_changes": "",
+    "logical_cpus": 10,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "unset",
+      "XLA_FLAGS": "unset"
+    },
+    "python": "3.12.13",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "Apple M4",
+    "devices": [
+      "cpu:0"
+    ],
+    "x64": true,
+    "example_sha256": "1bf5b5e736ed77276c33a6c83be9ba75c3fd680407356da51445f095918f4b2d",
+    "fixture_manifest_sha256": "3518caa05a208a6cef72d5ea6b77d4307cc03584990634def50cdaad996dee6b"
+  },
+  "status": "passed_one_frozen_matched_error_correction",
+  "load_start": [
+    6.6171875,
+    7.77587890625,
+    7.68017578125
+  ],
+  "routes": {
+    "xline": {
+      "prepare_compile_wall_s": 0.19169658300234005,
+      "prepare_execute_wall_s": 0.28153733402723446,
+      "correction_compile_wall_s": 0.51548504200764,
+      "xla_correction_memory": {
+        "argument_size_in_bytes": 1300008,
+        "output_size_in_bytes": 325089,
+        "temp_size_in_bytes": 163820832,
+        "alias_size_in_bytes": 0,
+        "generated_code_size_in_bytes": 0
+      },
+      "xla_prepare_memory": {
+        "argument_size_in_bytes": 325000,
+        "output_size_in_bytes": 650016,
+        "temp_size_in_bytes": 286543320,
+        "alias_size_in_bytes": 0,
+        "generated_code_size_in_bytes": 0
+      },
+      "prepared_array_bytes": 650000,
+      "one_factor_array_bytes": 1625000,
+      "cumulative_process_peak_rss_after_compile_bytes": 773586944,
+      "warm": [
+        {
+          "repeat": 1,
+          "wall_s": 171.9362547500059,
+          "correction_relative_error": 3.0718899079043324e-08,
+          "load_start": [
+            13.53564453125,
+            12.4697265625,
+            10.1455078125
+          ],
+          "load_end": [
+            12.31884765625,
+            12.98779296875,
+            10.826171875
+          ],
+          "cumulative_process_peak_rss_bytes": 900595712,
+          "iterations": 1100,
+          "fresh_true_relative_residual": 8.824869671572485e-07,
+          "native_true_relative_residual": 8.824869557610445e-07
+        },
+        {
+          "repeat": 2,
+          "wall_s": 259.72137266700156,
+          "correction_relative_error": 3.0718899079043324e-08,
+          "load_start": [
+            32.3984375,
+            19.08154296875,
+            13.40771484375
+          ],
+          "load_end": [
+            26.2314453125,
+            28.66943359375,
+            19.6748046875
+          ],
+          "cumulative_process_peak_rss_bytes": 900595712,
+          "iterations": 1100,
+          "fresh_true_relative_residual": 8.824869671572485e-07,
+          "native_true_relative_residual": 8.824869557610445e-07
+        },
+        {
+          "repeat": 3,
+          "wall_s": 210.1118466660264,
+          "correction_relative_error": 3.0718899079043324e-08,
+          "load_start": [
+            26.2314453125,
+            28.66943359375,
+            19.6748046875
+          ],
+          "load_end": [
+            15.3720703125,
+            21.92333984375,
+            18.7265625
+          ],
+          "cumulative_process_peak_rss_bytes": 900595712,
+          "iterations": 1100,
+          "fresh_true_relative_residual": 8.824869671572485e-07,
+          "native_true_relative_residual": 8.824869557610445e-07
+        }
+      ],
+      "excluded_runtime_warmup": {
+        "wall_s": 157.841174375033,
+        "correction_relative_error": 3.0718899079043324e-08,
+        "load_start": [
+          14.591796875,
+          11.443359375,
+          9.26025390625
+        ],
+        "load_end": [
+          14.65966796875,
+          12.5302734375,
+          10.056640625
+        ],
+        "cumulative_process_peak_rss_bytes": 900595712,
+        "iterations": 1100,
+        "fresh_true_relative_residual": 8.824869671572485e-07,
+        "native_true_relative_residual": 8.824869557610445e-07
+      },
+      "median_warm_wall_s": 210.1118466660264,
+      "maximum_correction_relative_error": 3.0718899079043324e-08
+    },
+    "xyz": {
+      "prepare_compile_wall_s": 0.15435249998699874,
+      "prepare_execute_wall_s": 0.18512337503489107,
+      "correction_compile_wall_s": 0.42003508302150294,
+      "xla_correction_memory": {
+        "argument_size_in_bytes": 1950008,
+        "output_size_in_bytes": 325089,
+        "temp_size_in_bytes": 241820832,
+        "alias_size_in_bytes": 0,
+        "generated_code_size_in_bytes": 0
+      },
+      "xla_prepare_memory": {
+        "argument_size_in_bytes": 325000,
+        "output_size_in_bytes": 1300016,
+        "temp_size_in_bytes": 286543320,
+        "alias_size_in_bytes": 0,
+        "generated_code_size_in_bytes": 0
+      },
+      "prepared_array_bytes": 1300000,
+      "one_factor_array_bytes": 40625000,
+      "cumulative_process_peak_rss_after_compile_bytes": 869154816,
+      "warm": [
+        {
+          "repeat": 1,
+          "wall_s": 43.60070112498943,
+          "correction_relative_error": 1.1699622213343839e-08,
+          "load_start": [
+            12.31884765625,
+            12.98779296875,
+            10.826171875
+          ],
+          "load_end": [
+            17.6064453125,
+            14.26416015625,
+            11.4052734375
+          ],
+          "cumulative_process_peak_rss_bytes": 900595712,
+          "iterations": 247,
+          "fresh_true_relative_residual": 8.862369087364259e-07,
+          "native_true_relative_residual": 8.862368945191594e-07
+        },
+        {
+          "repeat": 2,
+          "wall_s": 64.42210791597608,
+          "correction_relative_error": 1.1699622213343839e-08,
+          "load_start": [
+            17.6064453125,
+            14.26416015625,
+            11.4052734375
+          ],
+          "load_end": [
+            32.3984375,
+            19.08154296875,
+            13.40771484375
+          ],
+          "cumulative_process_peak_rss_bytes": 900595712,
+          "iterations": 247,
+          "fresh_true_relative_residual": 8.862369087364259e-07,
+          "native_true_relative_residual": 8.862368945191594e-07
+        },
+        {
+          "repeat": 3,
+          "wall_s": 51.729321707971394,
+          "correction_relative_error": 1.1699622213343839e-08,
+          "load_start": [
+            15.3720703125,
+            21.92333984375,
+            18.7265625
+          ],
+          "load_end": [
+            16.0947265625,
+            21.13916015625,
+            18.61962890625
+          ],
+          "cumulative_process_peak_rss_bytes": 900595712,
+          "iterations": 247,
+          "fresh_true_relative_residual": 8.862369087364259e-07,
+          "native_true_relative_residual": 8.862368945191594e-07
+        }
+      ],
+      "excluded_runtime_warmup": {
+        "wall_s": 41.168133791012224,
+        "correction_relative_error": 1.1699622213343839e-08,
+        "load_start": [
+          14.65966796875,
+          12.5302734375,
+          10.056640625
+        ],
+        "load_end": [
+          13.53564453125,
+          12.4697265625,
+          10.1455078125
+        ],
+        "cumulative_process_peak_rss_bytes": 900595712,
+        "iterations": 247,
+        "fresh_true_relative_residual": 8.862369087364259e-07,
+        "native_true_relative_residual": 8.862368945191594e-07
+      },
+      "median_warm_wall_s": 51.729321707971394,
+      "maximum_correction_relative_error": 1.1699622213343839e-08
+    }
+  },
+  "reference": [
+    {
+      "rtol": 1e-09,
+      "compile_wall_s": 0.5120494579896331,
+      "solve_wall_s": 82.39300779200858,
+      "iterations": 429,
+      "fresh_true_relative_residual": 9.53174735340221e-10,
+      "native_true_relative_residual": 9.531673879255498e-10
+    },
+    {
+      "rtol": 1e-11,
+      "compile_wall_s": 0.511429458972998,
+      "solve_wall_s": 95.82794483297039,
+      "iterations": 540,
+      "fresh_true_relative_residual": 2.0016618724238268e-11,
+      "native_true_relative_residual": 2.0291621833687277e-11
+    }
+  ],
+  "limits": [
+    "One saved first-step Newton iterate, not an accepted trajectory endpoint or full nonuniform evolution benchmark.",
+    "Reference refinement and independent residual give empirical finite-dimensional accuracy; no rigorous forward/pointwise tail bound.",
+    "XLA memory is compiled buffer analysis, not measured RSS; RSS is a cumulative whole-process peak.",
+    "Warm timings include the public correction kernel's auxiliary factorization; partner setup and compilation are separate.",
+    "Concurrent machine load is recorded; no portable hardware or general solver speedup claim."
+  ],
+  "checks_and_benchmark_wall_s": 1187.0503274159855,
+  "cumulative_process_peak_rss_bytes": 900595712,
+  "grid_setup_wall_s": 1.761087624996435,
+  "reference_relative_change": 2.5291373579419965e-12,
+  "independent_reference_true_residual": 2.0753461232162715e-11,
+  "independent_pair_check_wall_s": 1.013976874994114,
+  "load_end": [
+    16.0947265625,
+    21.13916015625,
+    18.61962890625
+  ],
+  "reference_vectors_sha256": "6dab971e4aff785b7a85771248720c913c01b62d478516cc78f1b9921863117c"
+}

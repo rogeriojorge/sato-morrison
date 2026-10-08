@@ -1,0 +1,21 @@
+{
+  "status": "reviewed",
+  "scope": "Narrow primary-source attribution and independent finite-budget continuity proof; no numerical integration or priority claim; original review receipt retained after public integration",
+  "files": {
+    "verification/phase_coverage_literature_review.md": "739601a2d0b68698c35a565f8c5ab4772e1423ca052ae666c4b356237e104a62",
+    "verification/phase_coverage_literature_refs.bib": "077a7906665d5b6ab8ccebba75671bbe11309f2a10a998770605ecfa27417abf",
+    "literature/sources.json": "84cd96a6d5a7422f6a69acaa7b57926036660f7a126d6afcd59e021e9c70a959",
+    "literature/fetch.py": "79ef41a72b4b3193c816954f1da7bb9967ff25f9c7de90566b0d43e9be726424",
+    "literature/download_report.json": "ee3b79a3f31c0a0573b010cd3cda0440b2441245fa8ddbb02c3aa9e1d82f1b0f",
+    "literature/local_pdfs/nersisyan_zwicknagel_2009.pdf": "febb360bb799df0e997c980f375e59e3a6a9a389aec679d7bceb6760d0c8f2a3",
+    "literature/local_pdfs/nersisyan_zwicknagel_2010.pdf": "7181b737ab0d190f0b36e604839eee687e8cafda1baab4b3489aa8e34ae4741e"
+  },
+  "sources": [
+    "https://arxiv.org/abs/0812.4192v1",
+    "https://arxiv.org/abs/1001.2095v1",
+    "https://journals.aps.org/pre/abstract/10.1103/PhysRevE.65.056212",
+    "https://journals.aps.org/pra/abstract/10.1103/PhysRevA.22.101"
+  ],
+  "download_mechanism": "existing private literature/fetch.py",
+  "public_edits": false
+}

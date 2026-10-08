@@ -1,21 +1,25 @@
 {
-  "prepared_utc": "2026-10-08T16:14:25.429168+00:00",
+  "prepared_utc": "2026-10-08T16:29:54.165634+00:00",
   "status": "reviewed_snapshot",
   "producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
   "producer_source_sha256": "b981adcaa6de59acc94174069759446322978e5b10b13161d6fb86175ddae282",
   "workflow_run_id": 37803682825,
   "workflow_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37803682825",
-  "publication_source_sha256": "5fc906e1e5777f85dc372b2f1a838827536dcc034653424da1a149dd30478327",
+  "publication_source_sha256": "91e95139bef7eb77fb6e801ef7be03893be3252aeda4b4f9757d0210467d09f4",
   "strict_collector_source_sha256": "0c89760ce5a1fcfb19cbd01b0ed2bef380f5725605b531ab7f6b0725abf084e1",
   "independent_audit_source_sha256": "2b4dc65f9a1260b0395c12c6dbe072ce31f00fac7a563e943af8281a6a9c162a",
   "original_input_hashes": {
-    "strict_ledger": "31c34303962733c14bc7f035ddb0b00314558c7363af7326e1048002ac38b090",
+    "strict_ledger": "756a2208889e4460a03d5858092646d0cd08d0c737d0c2e09febd7e8f04145fb",
     "aggregate_pair_audit": "007daecd599f45e9b2c4d03143eb29f2a3549adda7f2802545f22d0dadaa669d"
   },
   "public_layout": "results/nonuniform_spatial_blocks_full",
   "pilot_rows_pooled": false,
   "complete_case_count": 1,
   "expected_case_count": 45,
+  "failed_partial_case_count": 1,
+  "missing_final_case_count": 44,
+  "pair_audit_original_ledger_sha256": "31c34303962733c14bc7f035ddb0b00314558c7363af7326e1048002ac38b090",
+  "pair_audit_association": "Every completed row exact canonical SHA matched; additional partial failures were not pair reevaluated",
   "campaign_status": "unresolved",
   "selected_snapshot_pair_audits_status": "passed",
   "units": "normalized",
@@ -25,6 +29,51 @@
     "scope": "JSON sanitation and byte-for-byte copies only; no numerical solves or new pair actions"
   },
   "output_hashes": {
+    "state_dipole_dt_sixteenth.npz": {
+      "original_sha256": "5f1955b9e09b44707c86c6639c34a47560f6095088cc7377a1e690cad502cd94",
+      "output_sha256": "5f1955b9e09b44707c86c6639c34a47560f6095088cc7377a1e690cad502cd94",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_dt_sixteenth_producer_summary.json": {
+      "original_sha256": "2e7c6e2b840c57e32c624b0def98c780e53a03ba2717a18bd88c1ca783947916",
+      "output_sha256": "2e7c6e2b840c57e32c624b0def98c780e53a03ba2717a18bd88c1ca783947916",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_dt_sixteenth_run.log": {
+      "original_sha256": "820c3ca77ab2bce6c007581545aa6d14314ba7235bc32f6cb90d2320545ec246",
+      "output_sha256": "820c3ca77ab2bce6c007581545aa6d14314ba7235bc32f6cb90d2320545ec246",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_dt_sixteenth_cpu.txt": {
+      "original_sha256": "054ac26e3c43c7cb95d2ed81dc61e0458712a29867a92dde06103a60338e2352",
+      "output_sha256": "054ac26e3c43c7cb95d2ed81dc61e0458712a29867a92dde06103a60338e2352",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_dt_sixteenth_environment.txt": {
+      "original_sha256": "3efa0f0f01834039f33414c49e047a10c967bc5991daffaf02ed69302fab1694",
+      "output_sha256": "3efa0f0f01834039f33414c49e047a10c967bc5991daffaf02ed69302fab1694",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_dt_sixteenth_commit.txt": {
+      "original_sha256": "abe9dcfb69d229fc649bde6c646b767be5d1ee6987a6d8c0f68ae34568e0cc56",
+      "output_sha256": "abe9dcfb69d229fc649bde6c646b767be5d1ee6987a6d8c0f68ae34568e0cc56",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_dt_sixteenth_last_correction.json": {
+      "original_sha256": "047ad2ace4f9a03b6e1b3ec4f498a2c3a561ab2e9aee4410e3178f74e597c931",
+      "output_sha256": "047ad2ace4f9a03b6e1b3ec4f498a2c3a561ab2e9aee4410e3178f74e597c931",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_dt_sixteenth_download_receipt.json": {
+      "original_sha256": "c75f72cbbe30f15f7df91d96ba955865481a3355928742bfcf2ef495707a2276",
+      "output_sha256": "c75f72cbbe30f15f7df91d96ba955865481a3355928742bfcf2ef495707a2276",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_dt_sixteenth_partial_case.json": {
+      "original_sha256": "d6f8c7a18fbbfd2713dd7b280494e740b14c2db3e2e9720b852a882dbc1df778",
+      "output_sha256": "d6f8c7a18fbbfd2713dd7b280494e740b14c2db3e2e9720b852a882dbc1df778",
+      "mode": "byte-for-byte artifact copy"
+    },
     "state_dipole_spatial3.npz": {
       "original_sha256": "b129e40eb6234774e6c24747f56e6b19db9d8c793447f213057c88da33a5e499",
       "output_sha256": "b129e40eb6234774e6c24747f56e6b19db9d8c793447f213057c88da33a5e499",
@@ -81,14 +130,24 @@
       "mode": "Private paths sanitized; numerical values unchanged"
     },
     "summary.json": {
-      "original_sha256": "31c34303962733c14bc7f035ddb0b00314558c7363af7326e1048002ac38b090",
-      "output_sha256": "399e3dcffe0720273f2735fc53401e2e974c75879d3122cb2caa37a37f04036f",
+      "original_sha256": "756a2208889e4460a03d5858092646d0cd08d0c737d0c2e09febd7e8f04145fb",
+      "output_sha256": "838763d4dc1586769f14a2d4159220b80137b029feed0d8c9eb8e951dd0ce156",
       "mode": "Private paths sanitized; numerical values unchanged"
     },
     "independent_audit.json": {
       "original_sha256": "007daecd599f45e9b2c4d03143eb29f2a3549adda7f2802545f22d0dadaa669d",
       "output_sha256": "f6e56aa85f92f4af75d708d50491dbd60fd2a9ba3cc6d06a8231697f6fbf53ba",
       "mode": "Private paths sanitized; numerical values unchanged"
+    },
+    "full_campaign_dt_sixteenth_failure_review.json": {
+      "original_sha256": "6b5cc97b7366bc4cc0b609bed8b49272ab190eea23602fce4b6be69b5291b51e",
+      "output_sha256": "6b5cc97b7366bc4cc0b609bed8b49272ab190eea23602fce4b6be69b5291b51e",
+      "mode": "Read-only failure diagnosis; no pair reevaluation"
+    },
+    "dipole_dt_sixteenth_line_search_review.md": {
+      "original_sha256": "4732d4005da70b3bc9785e04a1cc54afe01ada8365503531da3f1f6d64752251",
+      "output_sha256": "4732d4005da70b3bc9785e04a1cc54afe01ada8365503531da3f1f6d64752251",
+      "mode": "Read-only failure diagnosis; no pair reevaluation"
     },
     "full_campaign_quadrature_preflight_diagnostic.json": {
       "original_sha256": "9ae26117e584e7f6ea48fb6b320334672b16f8465869d918d817bdda118fa1ce",

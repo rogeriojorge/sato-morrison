@@ -1,0 +1,38 @@
+{
+  "artifact": {
+    "id": 11563068615,
+    "node_id": "MDg6QXJ0aWZhY3QxMTU2MzA2ODYxNQ==",
+    "name": "nonuniform-spatial-blocks-dipole-dt_sixteenth-93bf752da33a31ec158a229f87eaa285aeb5c58b",
+    "size_in_bytes": 1888340,
+    "url": "https://api.github.com/repos/rogeriojorge/sato-morrison/actions/artifacts/11563068615",
+    "archive_download_url": "https://api.github.com/repos/rogeriojorge/sato-morrison/actions/artifacts/11563068615/zip",
+    "expired": false,
+    "digest": "sha256:8309b9a36d9659fa2e9adc6e28c34b2b03592baccdaeebebaac1cc212f670aab",
+    "created_at": "2026-10-08T16:17:54Z",
+    "updated_at": "2026-10-08T16:17:54Z",
+    "expires_at": "2027-01-06T15:47:49Z",
+    "workflow_run": {
+      "id": 37803682825,
+      "repository_id": 1409074075,
+      "head_repository_id": 1409074075,
+      "head_branch": "campaign-spatial-93bf752",
+      "head_sha": "93bf752da33a31ec158a229f87eaa285aeb5c58b"
+    }
+  },
+  "workflow_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37803682825",
+  "run": "37803682825",
+  "producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+  "downloaded_utc": "2026-10-08T16:18:14.763607+00:00",
+  "watcher_sha256": "643bd390c4101cc37d471bc49b69a8a0df9f2c5b75c5f8cb56b69c9c27cbe93c",
+  "files": {
+    "summary.json": "2e7c6e2b840c57e32c624b0def98c780e53a03ba2717a18bd88c1ca783947916",
+    "commit.txt": "abe9dcfb69d229fc649bde6c646b767be5d1ee6987a6d8c0f68ae34568e0cc56",
+    "run.log": "820c3ca77ab2bce6c007581545aa6d14314ba7235bc32f6cb90d2320545ec246",
+    "cpu.txt": "054ac26e3c43c7cb95d2ed81dc61e0458712a29867a92dde06103a60338e2352",
+    "last_correction.json": "047ad2ace4f9a03b6e1b3ec4f498a2c3a561ab2e9aee4410e3178f74e597c931",
+    "last_state.npz": "5f1955b9e09b44707c86c6639c34a47560f6095088cc7377a1e690cad502cd94",
+    "partial_case.json": "d6f8c7a18fbbfd2713dd7b280494e740b14c2db3e2e9720b852a882dbc1df778",
+    "environment.txt": "3efa0f0f01834039f33414c49e047a10c967bc5991daffaf02ed69302fab1694"
+  },
+  "scope": "GitHub archive digest is preserved as supplied, not independently verified against a downloaded ZIP; extracted file hashes computed locally."
+}

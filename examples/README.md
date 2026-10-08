@@ -31,6 +31,7 @@ Prefix each command below with `MPLBACKEND=Agg python`.
 | `examples/22_first_principles.py` | Guiding-center coordinates, full-marginal conservation and exact uniform-mode explanations |
 | `examples/23_difficult_correction.py` | Two auxiliaries on one frozen dipole correction: tightened reference, independent residual, matched-error timings and memory |
 | `examples/24_encounter_phase.py` | Fixed close encounter: nested incoming phases, timestep refinement and independent Cartesian trajectories |
+| `examples/25_encounter_censoring.py` | Continuous full-trajectory phase search between transmitted and reflected exits, with independent checks of any finite-budget nonexit |
 
 Example 12 uses dense spatial blocks per velocity node and writes `results/nonuniform_spatial_blocks/`. A single predefined case can be run with:
 
@@ -43,5 +44,7 @@ It saves the last accepted state and each Newton correction's diagnostics. The e
 Example 13 preserves its original audit inputs and writes new runs in `results/encounter_validation/reproduction/`. MP4 export in example 09 uses `ffmpeg`; GIF export uses the Python dependencies.
 
 Example 23 verifies the frozen input and exact reconstructed grid before timing. It measures one linear correction, not a complete trajectory. Run without other computational work for interpretable timing comparisons. Example 24 deliberately exits with an error if its declared phase convergence checks fail; the original 512-phase run does fail those checks, despite passing its trajectory controls. Its saved outputs distinguish these outcomes.
+
+Example 25 writes `results/encounter_censoring/refined/` and preserves the earlier search from commit `687be127`, which reached its declared phase-width limit without finding a nonexit. The refined search uses the continuous final position at a fixed time; it does not assume that exit times vary monotonically with phase.
 
 Every scientific result records its producing commit, inputs, normalized units, versions and hardware. See the [validation ledger](../results/validation.csv) and [reproduction record](../results/deep_reproduction.json).

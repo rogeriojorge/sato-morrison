@@ -2235,6 +2235,18 @@ integration or Gaussian closure trajectory is claimed.
 
 \subsection*{Direct screened encounter audit}
 
+The identical-particle relative and center equations and separate energies
+are established in Nersisyan and Zwicknagel~\cite{NZ09}, Eqs.~(4)--(8).
+Their Sec.~V, Eqs.~(66)--(76), distinguishes transmission over the repulsive
+barrier from backscattering, including two velocity-transfer branches in
+Eq.~(73). The finite-transverse-motion extension~\cite{NZ10}, Sec.~IV,
+further limits the simple strong-field barrier picture. We inspected the
+stated author-preprint versions locally. Their potential is regularized at
+the origin; neither their strong-field threshold nor their scattering
+cross sections are substituted for the finite-field, singular screened
+potential and finite event planes used here. Mixed exit channels are thus
+an established antecedent, not a newly discovered mechanism.
+
 \texttt{04\_encounters.py} directly integrates equal-mass, equal-charge repulsive
 pairs in a uniform field with $V(r)=\kappa e^{-r/\lambda}/r$. It measures changes
 relative to the free helix at identical incoming conditions. Endpoint refinement
@@ -2758,6 +2770,52 @@ artifacts and case ledger; pilot and full-campaign timings are not pooled.
 The 330-minute per-case execution bound is a feasibility limit, not a promise
 that every case will converge or finish. All partial/failure evidence must
 remain visible when interpreting final refinement coverage.
+
+\paragraph{One difficult correction at matched error.}
+Example 23 freezes a first-step dipole Newton iterate on the
+$5^3\times25\times13$ grid with $D=0.1$ and $\Delta t=0.005$.
+The two auxiliaries solve exactly the same original Hessian and right-hand
+side, without changing the old-population metric. If $s_i=\sqrt{w_i f_i^n}$,
+the measured correction error is
+\[
+ \epsilon_p=\frac{\|s\,(p-p_{\rm ref})\|_2}{\|s\,p_{\rm ref}\|_2}.
+\]
+Tightened references at linear tolerances $10^{-9}$ and $10^{-11}$ require
+429 and 540 iterations and differ by $2.53\times10^{-12}$ in this norm.
+A separate analytic-dipole NumPy unordered-pair Hessian evaluation checks
+the fine reference residual at $2.08\times10^{-11}$. These supply empirical
+finite-dimensional reference accuracy, not a rigorous forward-error or
+pointwise tail bound.
+
+Each route executes an excluded, checked runtime warm-up after explicit
+compilation, followed by three alternating paired repetitions. All measured
+corrections pass the same $10^{-7}$ error target and the unchanged native
+and fresh true-residual checks. On the recorded Apple M4:
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+Auxiliary & PCG & Median seconds & Maximum $\epsilon_p$ & Temporary MB\\
+\midrule
+Line &1100&210.112&$3.072\times10^{-8}$&163.821\\
+Spatial &247&51.729&$1.170\times10^{-8}$&241.821\\
+\bottomrule
+\end{tabular}
+\end{center}
+The three line times are $171.94,259.72,210.11$ seconds and the paired
+spatial times are $43.60,64.42,51.73$ seconds. The ten-logical-CPU machine
+has one-minute load readings ranging from $12.32$ to $32.40$ at recorded
+timing boundaries. These are measured shared-machine costs, with no selected
+repeat or isolated/general speedup claim. The temporary-memory figures are
+XLA compiled buffer analyses in decimal MB; individual factors occupy
+$1.625$ and $40.625$ MB. Measured whole-process peak RSS is $900.60$ MB,
+cumulative across both routes and references, so it is not attributed to
+either route alone. Warm kernel times include auxiliary factorization;
+preparation, compilation and excluded warm-up costs are recorded separately.
+The complete checks take $1187.05$ seconds. The frozen producer is
+\texttt{58cc3e1}; fixture provenance, reference vectors, every timing and
+hardware/version record are in \path{results/difficult_correction/}.
+This is one linear correction, not an accepted trajectory or a nonuniform
+continuum-convergence benchmark.
 
 \paragraph{An elementary obstruction to a relative maximum principle.}
 Let the finite collision matrix $K$ be symmetric with $K\bm1=0$ and
@@ -3330,6 +3388,109 @@ flux-compatible ideal boundaries. Specular reversal of $u$ at latitude
 endcaps preserves energy, moment and flux, but does not by itself close
 finite-$u$ walls. No kinetic trajectory, approach rate or physical dipole
 confinement time is inferred from this constructive obstruction.
+
+\subsection*{Separating trajectory accuracy from incoming-phase resolution}
+Example 24 fixes the original close-encounter triple
+\[
+(b,w_\parallel,w_\perp)=(0.9938225266,1.9056642462,1.9668376625)
+\]
+and averages over its incoming phase. For each phase let
+$M_2(\varphi)=\langle(\Delta\mu_1)^2\rangle_V$ be the exact Gaussian
+center average already derived above. The conditional target and its nested
+periodic quadrature are
+\begin{equation}
+ I_2=\frac1{2\pi}\int_0^{2\pi}M_2(\varphi)\,\dd\varphi,
+ \qquad I_{2,N}=\frac1N\sum_{j=0}^{N-1}M_2(2\pi j/N).
+\end{equation}
+This is a conditional second moment, not an impact/speed integral or a
+collision rate. The declared $N=32,64,128,256,512$ study requires two
+successive relative changes below $1\%$, without renormalizing missing
+phase weights. All 512 phases reach outgoing events within the fixed flight
+budget, but successive changes are $56.34\%$, $15.62\%$, $1.741\%$ and
+$3.943\%$. The original run therefore fails its phase criterion and exits
+nonzero. The last finite sum is $I_{2,512}=0.002194413424$;
+it is not a converged value of $I_2$.
+
+Repeating the entire 512-phase sum with maximum step reduced from $0.05$ to
+$0.025$ changes it by $3.13\times10^{-11}$ relatively. Three declared
+phases also pass independent individual-particle Cartesian trajectory checks
+at both steps; the largest position discrepancy is $4.27\times10^{-9}$,
+velocity discrepancy $4.63\times10^{-11}$ and magnetic-moment discrepancy
+$1.09\times10^{-11}$. These use distinct equations and coordinates but the
+same DOP853 integrator. An independent saved-array audit recomputes the
+thermal-center moments, all phase sums and individual path energies; its
+moment and sum discrepancies are below $5.56\times10^{-17}$ and
+$5.21\times10^{-18}$ respectively. Accurate trajectories do not resolve an
+undersampled phase integral.
+
+The largest 6 of the 512 phase-node contributions account for $54.71\%$ of
+this positive finite sum; 26 nodes account for $88.36\%$. These are finite
+quadrature concentration diagnostics, not certified fractions of the
+continuous integral. The 1024 relative solves and six Cartesian controls
+take $59.19$ seconds on the recorded shared Apple M4, including intermediate
+checkpoint/path writes but excluding imports and final plotting/output.
+The frozen producer is \texttt{58cc3e1}; inputs, every phase result,
+failed criterion and independent paths remain under
+\path{results/encounter_phase/}. No coefficient calibration or lifetime
+follows from this conditional study.
+
+\paragraph{A continuity obstruction to finite-budget phase coverage.}
+For the exact repulsive screened relative equations,
+\begin{equation}
+ \ddot z=a(r)z,\qquad
+ a(r)=\frac{2\kappa}{m r^3}e^{-r/L_s}(1+r/L_s)>0.
+\end{equation}
+Initial speed is fixed and initial radius satisfies $r\ge L$ uniformly in
+phase. Hence relative energy obeys
+\begin{equation}
+ H\le H_{\max}=\frac m4(w_\parallel^2+w_\perp^2)
+       +\frac{\kappa e^{-L/L_s}}L,
+ \qquad |w|^2\le W^2=4H_{\max}/m.
+\end{equation}
+Since the potential diverges at $r=0$, energy also excludes a common positive
+radius around the origin. The full IVP, continued through event planes, has
+a smooth global flow and continuous phase dependence at each finite time.
+An outgoing plane crossing is transversal: a zero-velocity first contact
+would have outward acceleration and would already lie outside just before
+contact. Once $z=L,\dot z>0$ or $z=-L,\dot z<0$, the acceleration has the
+same outward sign and reentry is impossible.
+
+Suppose two phases have opposite outgoing exits before a common time $T$.
+Their continued positions satisfy $z(T)>L$ and $z(T)<-L$. Continuity supplies
+an intermediate phase with $z(T)=0$, and an open neighborhood with
+$|z(T)|<L$. Irreversibility implies that none of these trajectories has
+exited before $T$. Thus opposite observed channels imply a positive-measure
+finite-budget nonexit interval, even if every node of a finite phase grid
+has exited. The 512-node evidence brackets such an interval between
+$\varphi=1.5585244805$ (transmitted at $t=90.45180$) and $\pi/2$
+(reflected at $t=90.35033$), for $T=151.12841$.
+This theorem is conditional on the exact endpoints having the displayed
+classifications; the numerical trajectories have independently checked,
+substantial transverse margins but are not interval-certified solutions.
+
+More generally the finite-time transmitted and reflected phase sets are
+disjoint open sets. If both meet a connected bracket, they cannot cover it;
+at least one phase has no finite outgoing-plane exit. This does not prove
+bounded three-dimensional motion, a positive infinite-time nonexit measure,
+or a trapped physical pair. In particular, the outgoing scattering integral
+on such phases needs an almost-everywhere finite-exit result or an explicit
+extension convention. A finite timeout alone decides none of these issues.
+
+For any finite terminal time, or an eventual finite outgoing event, the
+center-averaged second moment obeys the uniform bound
+\begin{equation}
+ M_2\le
+ \left[\frac{m}{8B}\max(W^2-w_\perp^2,w_\perp^2)\right]^2
+ +\frac{m^2\theta}{8B^2}(W+w_\perp)^2=:M_{2,\max}.
+\end{equation}
+Here $M_{2,\max}=0.40441415$. The whole displayed bracket can therefore
+contribute at most $0.0007898714$ under uniform phase weighting, if its
+outgoing moments exist. This is about $36\%$ of the unresolved finite sum,
+not a small omission estimate. It neither controls phase quadrature outside
+the bracket nor defines moments of infinite-time nonexit trajectories.
+The mixed channels have the antecedents described in~\cite{NZ09,NZ10};
+the continuity argument is an elementary coverage limitation, with no
+priority claim for a new scattering mechanism.
 
 \section{Reader-facing analytical figures}
 \texttt{examples/22\_first\_principles.py} generates the introductory README

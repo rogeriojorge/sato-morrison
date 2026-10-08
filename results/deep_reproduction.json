@@ -7661,6 +7661,16 @@
       "log_sha256": "aa5a9c0d4fb0cf9be2b53c151e71173cc12b814ec76029f51161269ba5e118e2",
       "scope": "Adds three exact planar angular-alias and overintegration cases plus three independent unmodified pair-factor/nullspace checks. No core-source changes.",
       "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37721600467/job/113130269753"
+    },
+    {
+      "command": "python -m pytest -q",
+      "producer_commit": "58cc3e139c1c0082f49da0dc10e841b55632669d",
+      "passed": 246,
+      "elapsed_s": 132.61,
+      "environment": "Fresh Ubuntu CI installation",
+      "log_sha256": "7f1b9d49296de75b332c570c02d503c6802d7fd5e67e85bb2f564f77a8086171",
+      "scope": "Full regression suite at frozen correction/phase experiment source. No core-source changes.",
+      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37806548658"
     }
   ],
   "additional_experiments": [
@@ -7801,10 +7811,41 @@
       "producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
       "workflow_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37803682825",
       "evidence_path": "results/nonuniform_spatial_blocks_full/summary.json",
-      "evidence_sha256": "399e3dcffe0720273f2735fc53401e2e974c75879d3122cb2caa37a37f04036f",
+      "evidence_sha256": "838763d4dc1586769f14a2d4159220b80137b029feed0d8c9eb8e951dd0ce156",
       "independent_evidence_path": "results/nonuniform_spatial_blocks_full/independent_audit.json",
       "independent_evidence_sha256": "f6e56aa85f92f4af75d708d50491dbd60fd2a9ba3cc6d06a8231697f6fbf53ba",
-      "scope": "Separate full-campaign snapshot: one of45 cases complete; independently audited final step. No refinement pass or pilot timing pooling."
+      "scope": "Separate full-campaign snapshot: one of45 completed, one failed partial. Completed final step independently pair-audited; partial failure retained without promoting it. No refinement pass or pilot timing pooling.",
+      "snapshot_history": [
+        {
+          "publication_commit": "f53daaa",
+          "evidence_sha256": "399e3dcffe0720273f2735fc53401e2e974c75879d3122cb2caa37a37f04036f",
+          "scope": "Separate full-campaign snapshot: one of45 cases complete; independently audited final step. No refinement pass or pilot timing pooling."
+        }
+      ]
+    },
+    {
+      "command": "MPLBACKEND=Agg python examples/23_difficult_correction.py",
+      "cwd": "${REPOSITORY}",
+      "producer_commit": "58cc3e139c1c0082f49da0dc10e841b55632669d",
+      "evidence_path": "results/difficult_correction/summary.json",
+      "evidence_sha256": "37f650f8dd7a3d64bac5c02e35ea74e5e57c535bcb1b880ccf848292cb2791e7",
+      "exit_code": 0,
+      "status": "passed_one_frozen_matched_error_correction",
+      "checks_wall_s": 1187.0503274159855,
+      "timing_scope": "Shared M4; setup/reference checks, excluded warm-ups and all paired repeats; final figure excluded. Compiled buffers and cumulative process RSS are distinct.",
+      "scope": "One frozen dipole correction at empirical matched error; all repeats and varying machine load retained, no complete-trajectory or isolated speedup claim."
+    },
+    {
+      "command": "MPLBACKEND=Agg python examples/25_encounter_censoring.py",
+      "cwd": "${REPOSITORY}",
+      "producer_commit": "687be1278e802e8f6eee655b8f8f35bc5e4da627",
+      "evidence_path": "results/encounter_censoring/summary.json",
+      "evidence_sha256": "13a304f77197aca56fc0e8d96d480d9a22d47d3a7a1996c20b5cc84524b5b158",
+      "exit_code": 1,
+      "status": "unresolved",
+      "checks_wall_s": 2.5349110410315916,
+      "timing_scope": "Numerical solves/checks and intermediate checkpoint writes; excludes imports, metadata initialization, plots and final output.",
+      "scope": "Finite-budget nonexit is censoring, not a trapping claim. The last search bracket is not a censored-interval width or coverage bound. The original phase-integral result remains unresolved. Classifications are floating-point ODE evidence, not interval-certified trajectories. Bounds on eventual outgoing moments do not define a scattering integral on phases with no finite exit."
     }
   ]
 }

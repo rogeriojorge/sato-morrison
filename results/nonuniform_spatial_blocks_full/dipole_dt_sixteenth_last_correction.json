@@ -1,0 +1,17 @@
+{
+  "field": "dipole",
+  "case": "dt_sixteenth",
+  "step": 2,
+  "provenance_id": "4d5cc661933a4a12e25843e0a5557f52b35007f6d0e6fcb6441fb68860aa31c4",
+  "residual_metric": "fixed_reference_population",
+  "iteration": 18,
+  "relative_residual": 2.8859796899745525,
+  "linear_iterations": 33,
+  "true_linear_relative_residual": 8.186177203653159e-07,
+  "linear_wall_s": 29.92226940899991,
+  "maximum_log_direction": 571.5703204001983,
+  "minimum_signed_log_direction": -571.5703204001983,
+  "maximum_signed_log_direction": 141.95102353444196,
+  "objective_descent": -3.0201080448420175e-08,
+  "mobility_curvature": 3.83810916606823e-06
+}

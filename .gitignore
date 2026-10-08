@@ -19,3 +19,5 @@ results/**/last_state.npz
 results/**/last_state.npz.tmp
 results/encounter_phase/nodes_partial.json
 results/encounter_phase/levels_partial.json
+results/encounter_censoring/**/attempts_partial.json
+results/encounter_censoring/**/paths_partial.npz

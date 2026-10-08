@@ -1,0 +1,35 @@
+{
+  "mass": 1.0,
+  "charge": 1.0,
+  "field": 2.0,
+  "strength": 0.03,
+  "screening": 3.0,
+  "fixed_incoming_triple": [
+    0.9938225266093732,
+    1.9056642462041216,
+    1.9668376625283577
+  ],
+  "phase_definition": "free incoming helix at z=0",
+  "phase_bracket": [
+    1.5585244804918115,
+    1.5707963267948966
+  ],
+  "prior_summary_sha256": "33f5e206d6a748518abe6808945b96d003b4e2fef283d318bd63f04973d2812e",
+  "start_distance": 24.0,
+  "flight_time_factor": 12.0,
+  "max_step": 0.05,
+  "rtol": 1e-10,
+  "max_bisections": 20,
+  "phase_width_target": 1e-06,
+  "search_rule": "Bisect opposite outgoing-exit endpoints; stop at first numerical nonexit, failed solve, width target or attempt cap.",
+  "refined_step": 0.025,
+  "larger_flight_factors": [
+    24.0,
+    48.0
+  ],
+  "position_absolute_target": 1e-08,
+  "velocity_absolute_target": 1e-08,
+  "energy_target": 1e-08,
+  "diagnostic_pass_rule": "Opposite initial exits; found nonexit retained at .025; recorded-path checks, half-step and independent12D endpoint errors below targets; unchanged source dependencies.",
+  "limits": "No estimate of censor interval width, phase integral, asymptotic trapping, plasma rate or lifetime; larger-budget outcomes remain diagnostic. An outgoing-scattering integral is not defined on infinite-time nonexit phases without an extension convention or an almost-everywhere finite-exit result."
+}

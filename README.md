@@ -18,7 +18,7 @@ Here **m** is particle mass and **B** is field strength. The magnetic moment **�
 
 The left side transports particles through the prescribed field. **C[f]** is the chosen collision operator: it describes how interactions redistribute the population. Most nonuniform examples isolate collisions; the toroidal example also includes compatible ideal motion. The factor **B** in the volume element tells us how to count particles in these coordinates.
 
-The operator preserves particle number, total energy and the complete magnetic-moment distribution. Its positive pair form makes entropy increase. These constraints still do **not** guarantee complete mixing or a unique final state.
+The operator preserves particle number, total energy and the complete magnetic-moment distribution. It also makes entropy—a measure of how the population is spread through phase space—nondecreasing. These properties still do **not** guarantee complete mixing or a unique final state.
 
 ## Preserving a whole distribution is stronger than preserving its mean
 
@@ -60,7 +60,7 @@ In the local dipole model, magnetic **flux surfaces**—surfaces containing fiel
 
 ![Dipole flux surfaces, two populations with matching stated constraints but different flux distributions, and the measured positive distance from the stationary candidate.](results/dipole_obstruction/obstruction.png)
 
-The construction above matches number, energy, G(μ) and mean flux, yet the two populations cannot both reach the same proposed stationary distribution. The relative-entropy distance has a positive lower bound of **1.5141e−5 per particle**. Joint quadrature refinement changes that bound by **1.1e−10** relatively. This is a checked obstruction for the specified local model; it is not a physical dipole lifetime or a claim of publication priority. [Construction and inputs](examples/15_dipole_obstruction.py) · [Evidence](results/dipole_obstruction/summary.json)
+The construction above matches number, energy, G(μ) and mean flux, yet the two populations cannot both reach the same proposed stationary distribution. Relative entropy measures their difference from that candidate: it is zero only when the distributions coincide. Here it stays above **1.5141e−5 per particle**. Joint quadrature refinement changes that bound by **1.1e−10** relatively. This is a checked obstruction for the specified local model; it is not a physical dipole lifetime or a claim of publication priority. [Construction and inputs](examples/15_dipole_obstruction.py) · [Evidence](results/dipole_obstruction/summary.json)
 
 <details>
 <summary>Two more checks: angular boundaries and numerical null modes</summary>
@@ -108,8 +108,19 @@ The [editable examples](examples/README.md) expose inputs at the top, print prog
 
 The nonlinear local kernel and finite-range kernel are **specified surrogate models** extending the source's simplified linear setting. They are not an evaluation of the full source Eq. (119). Lorentz, Dougherty, physical 3V Landau weak moments and direct magnetized encounters provide separate controls.
 
-Remaining work includes dipole/nonaxisymmetric refinement, matched-error costs for difficult fields, wider encounter coverage, and physical calibration. Confined dipole dynamics also need compatible ideal boundaries. No physical collision rate, spectral gap or metastable lifetime is claimed.
+Remaining work includes dipole/nonaxisymmetric refinement, complete-trajectory cost comparisons, wider encounter coverage, and physical calibration. Confined dipole dynamics also need compatible ideal boundaries. No physical collision rate, spectral gap or metastable lifetime is claimed.
 
 At matched error on an Apple M4, the small implicit benchmark takes **43.8 μs** with diagonal-PCG versus **550 μs** dense, using **16.8 kB** versus **263 kB** of temporary buffers. These synchronized warm measurements do not establish a general nonuniform speedup. [Benchmark](results/benchmarks/summary.json)
+
+<details>
+<summary>What does a difficult dipole solve cost?</summary>
+
+An implicit timestep repeatedly solves a linear system. A **preconditioner** supplies a cheaper approximation that helps the iterative solver reach the same answer. Here `xline` couples grid points along one direction; `xyz` uses all three spatial directions.
+
+![Three paired timings, correction errors below the same target, and the larger temporary-memory requirement of full spatial blocks.](results/difficult_correction/difficult_correction.png)
+
+For one frozen dipole correction, median times were **210.1 s** and **51.7 s**, both below **10⁻⁷** relative correction error. Full spatial blocks used more temporary memory. The spread reflects a shared M4 under varying load; this is not a full-trajectory or general speedup result. [Inputs, all repeats and memory accounting](results/difficult_correction/summary.json) · [Script](examples/23_difficult_correction.py)
+
+</details>
 
 The [technical notes](notes/implementation.pdf), [LaTeX source](notes/implementation.tex) and [bibliography](notes/references.bib) contain full derivations, literature comparisons and limitations. Original code, notes, figures and data are [MIT](LICENSE); third-party papers remain outside the repository.

@@ -1,0 +1,196 @@
+{
+  "producer": "687be1278e802e8f6eee655b8f8f35bc5e4da627",
+  "command": "repo .venv/bin/python, saved-array NumPy energy/endpoint audit; no new trajectories",
+  "source_paths": {
+    "summary": "results/encounter_censoring/summary.json",
+    "paths": "results/encounter_censoring/paths.npz"
+  },
+  "sha256": {
+    "summary.json": "13a304f77197aca56fc0e8d96d480d9a22d47d3a7a1996c20b5cc84524b5b158",
+    "paths.npz": "47facfe4bdbe551d6f40d2a55812821f04adaeae9d31387422ab905cbd1c6883",
+    "25_encounter_censoring.py": "71e986f0364c02509557a1465fc718e8dbb7290f7baf931a2e42e26bafd035ec"
+  },
+  "checks": [
+    {
+      "label": "left_endpoint",
+      "min_sampled_separation": 0.027732513294477075,
+      "energy_relative_error": 4.570383461947929e-11,
+      "final_plane_absolute_error": 0.0,
+      "final_parallel_velocity": 0.32478603399377065,
+      "sampled_plane_excess": 0.0,
+      "path_final_position_error": 2.220446049250313e-16,
+      "path_final_velocity_error": 2.220446049250313e-16,
+      "recorded_time_error": 0.0
+    },
+    {
+      "label": "right_endpoint",
+      "min_sampled_separation": 0.022504006462809898,
+      "energy_relative_error": 4.733417312530026e-11,
+      "final_plane_absolute_error": 0.0,
+      "final_parallel_velocity": -0.32002828220665286,
+      "sampled_plane_excess": 0.0,
+      "path_final_position_error": 2.6645352591003757e-15,
+      "path_final_velocity_error": 5.10702591327572e-15,
+      "recorded_time_error": 0.0
+    },
+    {
+      "label": "bisection_00",
+      "min_sampled_separation": 0.024817333346473774,
+      "energy_relative_error": 4.647654899083569e-11,
+      "final_plane_absolute_error": 3.552713678800501e-15,
+      "final_parallel_velocity": -0.31208879222018215,
+      "sampled_plane_excess": 0.0,
+      "path_final_position_error": 6.217248937900877e-15,
+      "path_final_velocity_error": 1.2434497875801753e-14,
+      "recorded_time_error": 0.0
+    },
+    {
+      "label": "bisection_01",
+      "min_sampled_separation": 0.026284279662461087,
+      "energy_relative_error": 5.099263520536845e-11,
+      "final_plane_absolute_error": 0.0,
+      "final_parallel_velocity": -0.7601790359488275,
+      "sampled_plane_excess": 0.0,
+      "path_final_position_error": 7.827072323607354e-15,
+      "path_final_velocity_error": 1.554312234475219e-14,
+      "recorded_time_error": 0.0
+    },
+    {
+      "label": "bisection_02",
+      "min_sampled_separation": 0.026998473864372964,
+      "energy_relative_error": 5.129473395803314e-11,
+      "final_plane_absolute_error": 0.0,
+      "final_parallel_velocity": 0.4498174524360541,
+      "sampled_plane_excess": 0.0,
+      "path_final_position_error": 1.1102230246251565e-16,
+      "path_final_velocity_error": 4.440892098500626e-16,
+      "recorded_time_error": 0.0
+    },
+    {
+      "label": "bisection_03",
+      "min_sampled_separation": 0.026642444518577345,
+      "energy_relative_error": 4.9179924265642934e-11,
+      "final_plane_absolute_error": 3.552713678800501e-15,
+      "final_parallel_velocity": 1.2845487261431634,
+      "sampled_plane_excess": 3.552713678800501e-15,
+      "path_final_position_error": 7.716050021144838e-15,
+      "path_final_velocity_error": 1.509903313490213e-14,
+      "recorded_time_error": 0.0
+    },
+    {
+      "label": "bisection_04",
+      "min_sampled_separation": 0.02561579564021488,
+      "energy_relative_error": 4.90815142054834e-11,
+      "final_plane_absolute_error": 3.552713678800501e-15,
+      "final_parallel_velocity": -1.9412413061665774,
+      "sampled_plane_excess": 3.552713678800501e-15,
+      "path_final_position_error": 4.9404924595819466e-15,
+      "path_final_velocity_error": 9.769962616701378e-15,
+      "recorded_time_error": 0.0
+    },
+    {
+      "label": "bisection_05",
+      "min_sampled_separation": 0.021583012149618018,
+      "energy_relative_error": 5.758954352234386e-11,
+      "final_plane_absolute_error": 0.0,
+      "final_parallel_velocity": 1.9279016915314195,
+      "sampled_plane_excess": 0.0,
+      "path_final_position_error": 0.0,
+      "path_final_velocity_error": 0.0,
+      "recorded_time_error": 0.0
+    },
+    {
+      "label": "bisection_06",
+      "min_sampled_separation": 0.019196283166177525,
+      "energy_relative_error": 7.081675562798459e-11,
+      "final_plane_absolute_error": 3.552713678800501e-15,
+      "final_parallel_velocity": -0.999064418621454,
+      "sampled_plane_excess": 0.0,
+      "path_final_position_error": 4.884981308350689e-15,
+      "path_final_velocity_error": 9.325873406851315e-15,
+      "recorded_time_error": 0.0
+    },
+    {
+      "label": "bisection_07",
+      "min_sampled_separation": 0.019143941096912104,
+      "energy_relative_error": 6.71984391680514e-11,
+      "final_plane_absolute_error": 3.552713678800501e-15,
+      "final_parallel_velocity": 0.9400853493602966,
+      "sampled_plane_excess": 0.0,
+      "path_final_position_error": 3.885780586188048e-15,
+      "path_final_velocity_error": 7.993605777301127e-15,
+      "recorded_time_error": 0.0
+    },
+    {
+      "label": "bisection_08",
+      "min_sampled_separation": 0.018809284936546395,
+      "energy_relative_error": 1.0221015693810378e-10,
+      "final_plane_absolute_error": 3.552713678800501e-15,
+      "final_parallel_velocity": -0.45348761240792,
+      "sampled_plane_excess": 0.0,
+      "path_final_position_error": 1.3877787807814457e-16,
+      "path_final_velocity_error": 4.440892098500626e-16,
+      "recorded_time_error": 0.0
+    },
+    {
+      "label": "bisection_09",
+      "min_sampled_separation": 0.018875357759270704,
+      "energy_relative_error": 7.950289412713783e-11,
+      "final_plane_absolute_error": 0.0,
+      "final_parallel_velocity": 0.5092408813782667,
+      "sampled_plane_excess": 0.0,
+      "path_final_position_error": 4.440892098500626e-16,
+      "path_final_velocity_error": 8.881784197001252e-16,
+      "recorded_time_error": 0.0
+    },
+    {
+      "label": "bisection_10",
+      "min_sampled_separation": 0.018848795717061866,
+      "energy_relative_error": 9.284249028463594e-11,
+      "final_plane_absolute_error": 3.552713678800501e-15,
+      "final_parallel_velocity": 0.33349573722602094,
+      "sampled_plane_excess": 3.552713678800501e-15,
+      "path_final_position_error": 9.325873406851315e-15,
+      "path_final_velocity_error": 1.865174681370263e-14,
+      "recorded_time_error": 0.0
+    },
+    {
+      "label": "bisection_11",
+      "min_sampled_separation": 0.018809563343472818,
+      "energy_relative_error": 1.0785896544562446e-10,
+      "final_plane_absolute_error": 0.0,
+      "final_parallel_velocity": 0.3255575436945903,
+      "sampled_plane_excess": 0.0,
+      "path_final_position_error": 8.881784197001252e-15,
+      "path_final_velocity_error": 1.7763568394002505e-14,
+      "recorded_time_error": 0.0
+    },
+    {
+      "label": "bisection_12",
+      "min_sampled_separation": 0.018824237961348057,
+      "energy_relative_error": 1.0795630969286097e-10,
+      "final_plane_absolute_error": 0.0,
+      "final_parallel_velocity": 0.5766767541865107,
+      "sampled_plane_excess": 0.0,
+      "path_final_position_error": 4.440892098500626e-16,
+      "path_final_velocity_error": 8.881784197001252e-16,
+      "recorded_time_error": 0.0
+    },
+    {
+      "label": "bisection_13",
+      "min_sampled_separation": 0.018804548736773966,
+      "energy_relative_error": 1.0355616023991675e-10,
+      "final_plane_absolute_error": 3.552713678800501e-15,
+      "final_parallel_velocity": -1.7988542816370179,
+      "sampled_plane_excess": 0.0,
+      "path_final_position_error": 9.547918011776346e-15,
+      "path_final_velocity_error": 1.9317880628477724e-14,
+      "recorded_time_error": 0.0
+    }
+  ],
+  "wall_s": 0.012317374988924712,
+  "python": "3.12.13",
+  "numpy": "2.5.3",
+  "hardware": "arm64",
+  "scope": "Independent saved-array energy and endpoint arithmetic only; the recorded6D integration shares equations and DOP853 with the primary event helper. No discovered nonexit and no half-step/12D/larger-budget checks. No uniform phase-coverage or trajectory interval certification."
+}
