@@ -13,7 +13,7 @@ JAX experiments on **what relaxes—and what remains frozen—when collisions pr
 | Check | Measured result |
 |---|---|
 | Eq. (181), uniform field | Independent pair calculation agrees to **2.36e−16** |
-| Toroidal streaming + collisions | Eight final refinement changes below **0.71%**; all **39** observed null modes explained |
+| Toroidal streaming + collisions | Eight final refinement changes below **0.71%**; all **39** collision null modes explained on the 243-node grid |
 | Nonlinear mirror evolution | **15 runs**, eight refinement checks; largest final change **0.197%** |
 | Independent solver audit | All **20 saved steps** rechecked with a separate NumPy pair operator |
 | Conditional scattering table | Fresh **4,096-state** test: p95 error **2.54%**, confidence interval **2.06–3.37%** |
@@ -25,7 +25,7 @@ JAX experiments on **what relaxes—and what remains frozen—when collisions pr
 
 ![C_L[delta f] = D/(qB)^2 times the perpendicular Laplacian of (n_0 delta f minus f_0 delta n); lambda = D n_0 k_perp^2/(qB)^2.](results/visual_summary/uniform_oracle.svg)
 
-Density-like and spatially homogeneous modes are undamped. A perpendicular, density-neutral Fourier mode decays at the rate shown above. The nonlinear kernel is a **simplified surrogate**, not the full source Eq. (119). [Equations and assumptions](notes/implementation.pdf) · [Oracle test](examples/00_uniform_reference.py)
+Density-like and spatially homogeneous modes are undamped. A perpendicular, density-neutral Fourier mode decays at the rate shown above. The nonlinear kernel is a **simplified surrogate**, not the full source Eq. (119). [Equations and assumptions](notes/implementation.pdf) · [Oracle test](examples/00_uniform_reference.py) · [Equation figure](examples/09_visual_summary.py)
 
 ### A dipole remembers more than its mean flux
 
@@ -37,7 +37,7 @@ The full flux distribution supplies additional constraints. Two populations can 
 
 ![Nonlinear relaxation, independent refinement checks, sampled continuum-constraint errors and discrete conservation. The title reports how many planned cases are complete.](results/nonuniform_entropy/evolution.png)
 
-The mirror campaign passes, but its coarse timestep retains **2–3% bias**. Finest-pair agreement does not certify a coarse run. **Dipole and nonaxisymmetric refinements are still running.** [Complete histories and pending cases](results/nonuniform_entropy/summary.json)
+The mirror campaign passes, but its coarse timestep retains **2–3% bias**. Finest-pair agreement does not certify a coarse run. **Dipole and nonaxisymmetric refinements are still running.** [Complete histories and pending cases](results/nonuniform_entropy/summary.json) · [Script](examples/12_nonuniform_evolution.py)
 
 ## Run
 
