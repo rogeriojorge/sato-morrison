@@ -151,3 +151,93 @@ def test_random_vacuum_samples_and_measure_quadrature():
                     lambda v: observable(to_mu(v, field)))(to_eta(state, field)))
             np.testing.assert_allclose(common[0] - common[1],
                                        transformed[0] - transformed[1], atol=1e-13)
+
+
+def _mixed_dipole_candidate(z,mass,charge,strength):
+    x,y,zz,u,_=z;radius2=x*x+y*y
+    magnitude=strength*jnp.sqrt(radius2+4*zz*zz)/(radius2+zz*zz)**2
+    return mass*u/magnitude-charge*jnp.arctan2(y,x)*zz*(3*radius2+8*zz*zz)/(radius2+2*zz*zz)
+
+
+def _independent_mixed_dipole_data(position,charge,strength):
+    x,y,z=np.asarray(position);radius2=x*x+y*y;r2=radius2+z*z;d=radius2+4*z*z
+    magnitude=strength*np.sqrt(d)/r2**2
+    unit=strength*np.array([3*x*z,3*y*z,2*z*z-radius2])/r2**2.5/magnitude
+    grad=magnitude*(np.array([x,y,4*z])/d-4*np.array([x,y,z])/r2)
+    den=radius2+2*z*z;theta=np.arctan2(y,x)
+    coefficient=-z*(3*radius2+8*z*z)/den
+    gradcoefficient=np.array([4*x*z**3/den**2,4*y*z**3/den**2,-3-6*z*z/den+8*z**4/den**2])
+    gradphi=charge*(coefficient*np.array([-y/radius2,x/radius2,0.])+theta*gradcoefficient)
+    return magnitude,unit,grad,gradphi,coefficient
+
+
+@pytest.mark.parametrize('charge',[.7,-1.3])
+def test_mixed_dipole_local_common_action_is_velocity_independent(charge):
+    mass,strength=1.7,1.3;field=Field('dipole',strength=strength)
+    for position in ([1.,.1,.3],[.85,-.15,.4],[1.15,.18,.15]):
+        B,b,g,gradphi,_=_independent_mixed_dipole_data(position,charge,strength)
+        np.testing.assert_allclose(np.cross(b,g)@gradphi,charge*np.dot(b,g),rtol=2e-14,atol=2e-14)
+        expected=np.r_[b/B+np.cross(b,gradphi)/(charge*B),-b@gradphi/mass,0.]
+        actions=[]
+        for u,mu in [(-.8,.15),(.2,.6),(1.1,1.)]:
+            state=jnp.array([*position,u,mu])
+            gradient=jax.grad(lambda z:_mixed_dipole_candidate(z,mass,charge,strength))(state)
+            np.testing.assert_allclose(gradient,np.r_[-mass*u*g/B**2+gradphi,mass/B,0.],rtol=2e-14,atol=2e-14)
+            actual=np.asarray(common_chart_action(state,gradient,field,mass,charge));actions.append(actual)
+            np.testing.assert_allclose(actual,expected,rtol=2e-14,atol=2e-14)
+        np.testing.assert_allclose(np.asarray(actions)-actions[0],0.,atol=2e-14)
+
+
+def test_mixed_dipole_moment_locality_square_and_ideal_controls():
+    field=Field('dipole');left=jnp.array([1.,0.,.3,.4,.2])
+    same=jnp.array([1.,0.,.3,-.6,.7]);separated=jnp.array([1.1,.05,.35,-.6,.7])
+    def observable_action(z,power=1):
+        gradient=jax.grad(lambda w:_mixed_dipole_candidate(w,1.,1.,1.)**power)(z)
+        return np.asarray(common_chart_action(z,gradient,field))
+    def energy_action(z):
+        return np.asarray(common_chart_action(z,jax.grad(lambda w:energy_mu(w,field))(z),field))
+    def projected_quadratic(right,power=1):
+        delta=observable_action(left,power)-observable_action(right,power)
+        xi=energy_action(left)-energy_action(right)
+        assert xi@xi>0
+        projected=delta-xi*(xi@delta)/(xi@xi)
+        return projected[:3]@projected[:3]
+    assert projected_quadratic(same)<1e-25
+    # Form an independent nonlocal expected value from analytic common actions
+    # and energy flow, including its eta component before projection.
+    analytic_h=[];analytic_energy=[]
+    for state in (left,separated):
+        B,b,g,gradphi,_=_independent_mixed_dipole_data(state[:3],1.,1.)
+        u,mu=map(float,state[3:]);t=np.cross(b,g);s=b@g
+        analytic_h.append(np.r_[b/B+np.cross(b,gradphi)/B,-b@gradphi,0.])
+        analytic_energy.append(np.r_[u*b+(u*u/B**2+mu/B)*t,-mu*s,mu*u*s])
+    xi=analytic_energy[0]-analytic_energy[1];delta=analytic_h[0]-analytic_h[1]
+    projected=delta-xi*(xi@delta)/(xi@xi);expected=projected[:3]@projected[:3]
+    assert expected>.1
+    np.testing.assert_allclose(projected_quadratic(separated),expected,rtol=3e-14,atol=3e-14)
+    # A null moment does not certify its full marginal: this dipole h^2 is not
+    # a local null. This is a concrete counterexample, not a universal F(h) claim.
+    assert projected_quadratic(same,power=2)>1e-4
+    gradient=jax.grad(lambda w:_mixed_dipole_candidate(w,1.,1.,1.))(separated)
+    ideal=float(gradient@poisson_mu(separated,field)@jax.grad(lambda w:energy_mu(w,field))(separated))
+    _,b,_,gradphi,_=_independent_mixed_dipole_data(separated[:3],1.,1.)
+    np.testing.assert_allclose(ideal,float(separated[3])*b@gradphi,rtol=3e-14,atol=3e-14)
+    assert abs(ideal)>.01
+
+
+@pytest.mark.parametrize('charge',[.7,-1.3])
+def test_mixed_dipole_branch_has_periodic_integrability_obstruction(charge):
+    R,z,strength=1.,.3,1.3;angles,weights=np.polynomial.legendre.leggauss(20)
+    angles=np.pi*(angles+1);weights=np.pi*weights;angular_derivatives=[]
+    for theta in angles:
+        position=jnp.array([R*np.cos(theta),R*np.sin(theta),z])
+        _,_,b,g,_=field_data(position,Field('dipole',strength=strength))
+        t=np.cross(np.asarray(b),np.asarray(g));etheta=np.array([-np.sin(theta),np.cos(theta),0.])
+        angular=t@etheta
+        assert abs(angular)>1e-3
+        angular_derivatives.append(charge*R*float(b@g)/angular)
+    coefficient=_independent_mixed_dipole_data([R,0.,z],charge,strength)[4]
+    integral=weights@np.asarray(angular_derivatives)
+    np.testing.assert_allclose(integral,2*np.pi*charge*coefficient,rtol=3e-14,atol=3e-14)
+    # A periodic differentiable phi would have zero integral of dphi/dtheta.
+    assert abs(integral)>1.
