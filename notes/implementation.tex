@@ -1094,6 +1094,40 @@ squared polynomial exactly, since its degree in either coordinate is at
 most six. This is an overintegration diagnostic of the fixed interpolant;
 it does not modify or repair the production collision operator.
 
+The executed diagnostic \texttt{examples/21\_collocation\_nullspace.py}
+uses $3^5=243$ nodes and 972 unordered pairs, $m=q=1$, $D=0.1$,
+$x\in[0.8,1.2]$, $y\in[-0.2,0.2]$, $z\in[0.1,0.5]$,
+$u\in[-4,4]$, $\mu\in[0,20]$, and
+$f=\exp[-E-0.2\mu+0.1\sin(\pi y/0.4)u]$.
+It independently lifts tensor derivatives and assembles unordered pair
+projectors and measures, while using the production geometry's common-chart
+coefficients. Three deterministic probe actions agree with the unchanged
+production operator within $1.64\times10^{-14}$ relatively. The unweighted
+rectangular factors have respectively $12,12,4$ numerical null vectors in the
+mirror, dipole and perturbed dipole boxes for relative thresholds
+$10^{-10}$ through $10^{-14}$. Their candidate spans exhaust the measured
+nullspaces. These are finite-dimensional counts, not continuum coercivity.
+All singular values are saved before any threshold interpretation.
+
+Positive physical weights preserve the same counts here; entropy scaling
+reports six perturbed-field nulls at the loose $10^{-10}$ threshold but four
+at $10^{-12}$ through $10^{-14}$. This sensitivity is retained in the second
+figure. Squaring a factor to form a Gram matrix can further obscure small
+singular values. The maximum normalized axisymmetric alias-factor residual
+is $5.82\times10^{-17}$. For the fixed polynomial above, Gauss three gives
+$2.79\times10^{-37}$ for the angular squared integral, whereas orders four,
+five, seven and nine reproduce $2.590232380952381\times10^{-7}$ within
+$3.3\times10^{-15}$ relatively. Independent exact-rational integration gives
+$1328/5126953125$. No null shift or spectral projection is applied to the operator.
+
+The producing commit is \texttt{4094e89}; the full identifier, script and
+array hashes, inputs, units, versions and hardware are in
+\path{results/collocation_nullspace/summary.json}. The checks took
+$6.236$ seconds on the shared Apple M4, including setup, factor decompositions,
+compilation and probes, but excluding imports, metadata and figures; this is
+not an isolated runtime benchmark. Six regression cases also cover three
+translated/scaled planar boxes and all three physical field choices.
+
 \subsection*{A mixed local moment and its angular obstruction}
 The spatial classification above does not exhaust velocity-dependent local
 collision invariants. A further sufficient construction follows directly

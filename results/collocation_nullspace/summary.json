@@ -1,0 +1,346 @@
+{
+  "metadata": {
+    "model": "raw finite-dimensional local collision Gram diagnostic",
+    "boundary": "natural collision-only Cartesian weak no-flux; no streaming",
+    "units": "normalized",
+    "inputs": {
+      "fields": [
+        {
+          "kind": "mirror",
+          "strength": 1.0,
+          "amplitude": 0.15,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        },
+        {
+          "kind": "dipole",
+          "strength": 1.0,
+          "amplitude": 0.0,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        },
+        {
+          "kind": "nonaxisymmetric",
+          "strength": 1.0,
+          "amplitude": 0.03,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        }
+      ],
+      "bounds": [
+        [
+          0.8,
+          1.2
+        ],
+        [
+          -0.2,
+          0.2
+        ],
+        [
+          0.1,
+          0.5
+        ]
+      ],
+      "shape": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "u_domain": [
+        -4.0,
+        4.0
+      ],
+      "mu_domain": [
+        0.0,
+        20.0
+      ],
+      "mass": 1.0,
+      "charge": 1.0,
+      "collision_strength": 0.1,
+      "initial": "exp(-E-.2mu+.1sin(pi*y/.4)*u)",
+      "spatial_derivative": "global Lagrange polynomial",
+      "u_derivative": "local quadratic; three nodes coincide with full polynomial differentiation",
+      "projector": "original discrete-energy direction from the same tensor differentiation; no shifts or null removal",
+      "singular_relative_thresholds": [
+        1e-10,
+        1e-12,
+        1e-13,
+        1e-14
+      ],
+      "selected_numerical_rank_threshold": 1e-12,
+      "alias_parameters": {
+        "c": 1.0,
+        "a": 0.2,
+        "k": 0.024
+      },
+      "overintegration_orders": [
+        3,
+        4,
+        5,
+        7,
+        9
+      ],
+      "production_probes": [
+        "sin(.13*node_index)",
+        "cos(.07*node_index)",
+        "sin(.17*node_index)+cos(.11*node_index)"
+      ],
+      "independent_assembly": "tensor differentiation, unordered pair projector and measures; common chart coefficients from production geometry",
+      "factor_residual_target": 1e-13,
+      "production_probe_relative_target": 1e-11,
+      "seed": null
+    },
+    "commit": "4094e899dc2a921de7beee7793bdd337a7b8e614",
+    "working_tree": "M README.md\n M examples/README.md\n M notes/implementation.pdf\n M notes/implementation.tex\n?? results/collocation_nullspace/",
+    "source_sha256": "9e659bd65ec2984f57b31136fdb1cc57c3c2ec533b97d68ed87dc8f6ac9a6fee",
+    "versions": {
+      "sato-morrison": "0.1.0",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2"
+    },
+    "source_changes": "M examples/README.md",
+    "logical_cpus": 10,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "unset",
+      "OPENBLAS_NUM_THREADS": "unset",
+      "MKL_NUM_THREADS": "unset",
+      "XLA_FLAGS": "unset"
+    },
+    "python": "3.12.13",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "Apple M4",
+    "devices": [
+      "cpu:0"
+    ],
+    "x64": true,
+    "example_sha256": "6fcbbd665428f16717cde3d747a0ba4fca94ccaa6845d4957ebd3346cd7c2c23",
+    "limitations": "One 243-node tensor grid. Numerical singular-value counts depend on scaling and threshold; no continuum spectral gap or full nullspace classification. The displayed tensor-polynomial interpolant is not continuum-null; these nodal values may admit a different nonpolynomial radial extension. Angular overintegration diagnoses the fixed polynomial and does not repair the collision operator. All factors and production actions are unchanged."
+  },
+  "rows": [
+    {
+      "field": "mirror",
+      "nodes": 243,
+      "unordered_pairs": 972,
+      "factor_shape": [
+        2916,
+        243
+      ],
+      "singular_counts": {
+        "unweighted": {
+          "1e-10": 12,
+          "1e-12": 12,
+          "1e-13": 12,
+          "1e-14": 12
+        },
+        "physical": {
+          "1e-10": 12,
+          "1e-12": 12,
+          "1e-13": 12,
+          "1e-14": 12
+        },
+        "entropy_scaled": {
+          "1e-10": 12,
+          "1e-12": 12,
+          "1e-13": 12,
+          "1e-14": 12
+        }
+      },
+      "singular_maxima": {
+        "unweighted": 128.49596968578862,
+        "physical": 0.10262703064782686,
+        "entropy_scaled": 14.390886914290537
+      },
+      "baseline_candidate_span_rank": 9,
+      "expanded_span_rank": 12,
+      "used_candidate_span_rank": 12,
+      "candidate_null_overlap_singular_values": [
+        1.0000000000000004,
+        1.0000000000000002,
+        1.0000000000000002,
+        1.0000000000000002,
+        1.0000000000000002,
+        1.0,
+        0.9999999999999999,
+        0.9999999999999997,
+        0.9999999999999997,
+        0.9999999999999996,
+        0.9999999999999996,
+        0.9999999999999996
+      ],
+      "extra_factor_relative_residual": [
+        5.597170348806939e-17,
+        5.5032917774851036e-17,
+        5.810195386002966e-17
+      ],
+      "production_probe_relative_error": 1.3279001041272443e-15,
+      "pair_weight_relative_error": 4.440892098500626e-16,
+      "minimum_pair_energy_flow_squared": 1.1870256765036935,
+      "checks_wall_s": 4.026077832997544,
+      "status": "passed_finite_grid_checks"
+    },
+    {
+      "field": "dipole",
+      "nodes": 243,
+      "unordered_pairs": 972,
+      "factor_shape": [
+        2916,
+        243
+      ],
+      "singular_counts": {
+        "unweighted": {
+          "1e-10": 12,
+          "1e-12": 12,
+          "1e-13": 12,
+          "1e-14": 12
+        },
+        "physical": {
+          "1e-10": 12,
+          "1e-12": 12,
+          "1e-13": 12,
+          "1e-14": 12
+        },
+        "entropy_scaled": {
+          "1e-10": 12,
+          "1e-12": 12,
+          "1e-13": 12,
+          "1e-14": 12
+        }
+      },
+      "singular_maxima": {
+        "unweighted": 1146.0320659991971,
+        "physical": 0.2872413541800687,
+        "entropy_scaled": 14079.59293748312
+      },
+      "baseline_candidate_span_rank": 9,
+      "expanded_span_rank": 12,
+      "used_candidate_span_rank": 12,
+      "candidate_null_overlap_singular_values": [
+        1.0000000000000004,
+        1.0000000000000002,
+        1.0,
+        1.0,
+        0.9999999999999999,
+        0.9999999999999999,
+        0.9999999999999998,
+        0.9999999999999998,
+        0.9999999999999997,
+        0.9999999999999996,
+        0.9999999999999996,
+        0.9999999999999996
+      ],
+      "extra_factor_relative_residual": [
+        3.074780670559962e-17,
+        2.3746762600727207e-17,
+        2.6381297408810783e-17
+      ],
+      "production_probe_relative_error": 1.6375528975555718e-14,
+      "pair_weight_relative_error": 1.5543122344752192e-15,
+      "minimum_pair_energy_flow_squared": 108.39672298415181,
+      "checks_wall_s": 1.431786542001646,
+      "status": "passed_finite_grid_checks"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "nodes": 243,
+      "unordered_pairs": 972,
+      "factor_shape": [
+        2916,
+        243
+      ],
+      "singular_counts": {
+        "unweighted": {
+          "1e-10": 4,
+          "1e-12": 4,
+          "1e-13": 4,
+          "1e-14": 4
+        },
+        "physical": {
+          "1e-10": 4,
+          "1e-12": 4,
+          "1e-13": 4,
+          "1e-14": 4
+        },
+        "entropy_scaled": {
+          "1e-10": 6,
+          "1e-12": 4,
+          "1e-13": 4,
+          "1e-14": 4
+        }
+      },
+      "singular_maxima": {
+        "unweighted": 1148.5770049030682,
+        "physical": 0.283704198125756,
+        "entropy_scaled": 15046.595301814634
+      },
+      "baseline_candidate_span_rank": 9,
+      "expanded_span_rank": 12,
+      "used_candidate_span_rank": 4,
+      "candidate_null_overlap_singular_values": [
+        1.0000000000000009,
+        1.0000000000000004,
+        1.0000000000000002,
+        1.0000000000000002
+      ],
+      "extra_factor_relative_residual": [
+        0.00044918324254588976,
+        0.0028754263154718825,
+        0.004466491269736864
+      ],
+      "production_probe_relative_error": 7.0112859954794644e-15,
+      "pair_weight_relative_error": 1.1102230246251565e-15,
+      "minimum_pair_energy_flow_squared": 103.07721818956081,
+      "checks_wall_s": 0.7752478340116795,
+      "status": "passed_finite_grid_checks"
+    }
+  ],
+  "angular_overintegration": [
+    {
+      "order": 3,
+      "angular_residue_squared_integral": 2.788586065310684e-37
+    },
+    {
+      "order": 4,
+      "angular_residue_squared_integral": 2.590232380952381e-07
+    },
+    {
+      "order": 5,
+      "angular_residue_squared_integral": 2.5902323809523805e-07
+    },
+    {
+      "order": 7,
+      "angular_residue_squared_integral": 2.5902323809523884e-07
+    },
+    {
+      "order": 9,
+      "angular_residue_squared_integral": 2.590232380952373e-07
+    }
+  ],
+  "closed_angular_integral": 2.590232380952382e-07,
+  "identity": "Lphi=2y[(x-c)^3-k(x-c)]-(2x-3c)[y^3-k*y], L=-y*d_x+x*d_y",
+  "planar_completeness": "Odd C(x)y vanishes only for C=0; even A(x)+B(x)y\u00b2 has span{1,x\u00b2+y\u00b2,phi_alias} on these three nonzero x nodes.",
+  "checks_wall_s": 6.235976083000423,
+  "cost_scope": "Grid setup, independent factors/SVDs, selected production probes and angular quadrature; excludes imports, metadata and plots.",
+  "status": "passed_finite_grid_checks",
+  "singular_arrays_sha256": "76606057ab061b995e1260bc7414eb8ba5b1a74e84d52e576415abc157719eaf"
+}

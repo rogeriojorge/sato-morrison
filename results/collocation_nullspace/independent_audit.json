@@ -1,0 +1,404 @@
+{
+  "status": "passed_independent_finite_grid_and_exact_algebra_checks",
+  "units": "normalized",
+  "scope": "Exact rational alias algebra plus separately executed raw finite-grid assembly; no operator modification, continuum classification, spectral gap, or physical rate claim.",
+  "provenance_note": "Private checker sources and retained arrays are archived outside the public tree. Basenames and SHA256 identify them; checker execution and public example execution have separate provenance. Shared common-chart coefficients are not independently rederived geometry.",
+  "public_example": {
+    "path": "examples/21_collocation_nullspace.py",
+    "commit": "4094e899dc2a921de7beee7793bdd337a7b8e614",
+    "source_sha256": "6fcbbd665428f16717cde3d747a0ba4fca94ccaa6845d4957ebd3346cd7c2c23",
+    "summary_path": "results/collocation_nullspace/summary.json",
+    "summary_sha256": "97f240213c83473c4cf1425ed65edf000673292e91fc2a7223fed582e2e657bc",
+    "singular_arrays_sha256": "76606057ab061b995e1260bc7414eb8ba5b1a74e84d52e576415abc157719eaf",
+    "status": "passed_finite_grid_checks",
+    "checks_wall_s": 6.235976083000423,
+    "source_changes": "M examples/README.md",
+    "working_tree": "M README.md\n M examples/README.md\n M notes/implementation.pdf\n M notes/implementation.tex\n?? results/collocation_nullspace/"
+  },
+  "raw_pair_audit": {
+    "checker_basename": "raw_box_nullspace.py",
+    "checker_sha256": "99c82ee4d27d0b769e47f481cf1e0891111832f967a2d51c41872aef108b8087",
+    "receipt_basename": "raw_box_nullspace.json",
+    "receipt_sha256": "bc19ea7541a807c6a58865f674fdcc66def7926a390ef86a7532946029b98be7",
+    "arrays_basename": "raw_box_nullspace.npz",
+    "arrays_sha256": "5b02c8ddd999a2e4ad77b29bfbc30821aa9ab2dfd121b0a47f177667537cca61",
+    "metadata": {
+      "model": "raw local discrete collision Gram diagnostic",
+      "boundary": "Cartesian natural weak collision no-flux; no streaming",
+      "units": "normalized",
+      "inputs": {
+        "bounds": [
+          [
+            0.8,
+            1.2
+          ],
+          [
+            -0.2,
+            0.2
+          ],
+          [
+            0.1,
+            0.5
+          ]
+        ],
+        "shape": [
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "u_bounds": [
+          -4.0,
+          4.0
+        ],
+        "mu_bounds": [
+          0.0,
+          20.0
+        ],
+        "mass": 1.0,
+        "charge": 1.0,
+        "D": 0.1,
+        "spatial_derivative": "polynomial",
+        "u_derivative": "local_quadratic (3 nodes matches polynomial)",
+        "initial": "exp(-E-.2*mu+.1*sin(pi*y/.4)*u)",
+        "thresholds_relative_to_factor_smax": [
+          1e-10,
+          1e-12,
+          1e-13,
+          1e-14
+        ]
+      },
+      "commit": "9053e07ded104c7268451ff84819ff428f748033",
+      "working_tree": "",
+      "source_sha256": "a429f18a309d54c2268a1176bf73b636ca501c80a6ae0a8be8542691c1aa83e7",
+      "versions": {
+        "sato-morrison": "0.1.0",
+        "jax": "0.11.2",
+        "jaxlib": "0.11.2",
+        "solvax": "0.28.2",
+        "numpy": "2.5.3",
+        "scipy": "1.18.1",
+        "matplotlib": "3.11.2"
+      },
+      "source_changes": "",
+      "logical_cpus": 10,
+      "thread_environment": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "unset",
+        "XLA_FLAGS": "unset"
+      },
+      "python": "3.12.13",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "processor": "Apple M4",
+      "devices": [
+        "cpu:0"
+      ],
+      "x64": true
+    },
+    "production_sources": {
+      "src/sato_morrison/__init__.py": "cecda7c67a69ac4e7b47cac6fb2994d74d58c46b7af85d0817952981daafd713",
+      "src/sato_morrison/collisions.py": "cf13b3000c2df1ee39e63872b8c0094089adadde3941abf53b92d5e2c8ad6d52",
+      "src/sato_morrison/controls.py": "ea673df34611bd68c60756fec2f335c9ebd10a705149ee22b68917d3102ec077",
+      "src/sato_morrison/geometry.py": "3e96f695e3a031aacdea5257428e40e9a057f6bf2ea1ef052363c79c6345dda6",
+      "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+      "src/sato_morrison/solver.py": "b9eb5567ca9684068eb894790ab174f5d3aba1a499289300b5cd8f26fdf50055"
+    },
+    "assembly_scope": "Independent full polynomial differentiation, tensor lifting, unordered positive pair measure, projector and rectangular Gram assembly. Common-chart coefficients, nodal energy and magnetic field vector are supplied by production geometry. Full independently assembled K compared against both explicit and compact production actions on every coordinate basis vector.",
+    "factor_definition": "A=J_common D; xi=(A E)_i-(A E)_j; F_ij=I_X^(1/2) [I-xi xi^T/|xi|\u00b2](A_i-A_j). For i<j, L_ij=sqrt(D*wX*B\u00b2*wv_i*wv_j*f_i*f_j)*F_ij; K=L^T L. No extra factor 1/2 for unordered pairs.",
+    "rows": [
+      {
+        "field": "mirror",
+        "nodes": 243,
+        "pairs": 972,
+        "field_B_range": [
+          0.9016760204948202,
+          0.9791801828595709
+        ],
+        "mass_range": [
+          8.581135982996956e-14,
+          0.007991917396592474
+        ],
+        "minimum_pair_energy_norm_squared": 1.1870256765036935,
+        "pair_measure_max_relative_error": 3.8717136994271804e-16,
+        "production_matrix_relative_error": 4.984606787083855e-15,
+        "compact_matrix_relative_error": 4.9816856568463415e-15,
+        "K_symmetry_relative": 0.0,
+        "production_symmetry_relative": 1.2948401223104941e-16,
+        "factor_null_counts": {
+          "1e-10": 12,
+          "1e-12": 12,
+          "1e-13": 12,
+          "1e-14": 12
+        },
+        "weighted_factor_null_counts": {
+          "1e-10": 12,
+          "1e-12": 12,
+          "1e-13": 12,
+          "1e-14": 12
+        },
+        "entropy_scaled_factor_null_counts": {
+          "1e-10": 12,
+          "1e-12": 12,
+          "1e-13": 12,
+          "1e-14": 12
+        },
+        "checks_wall_s": 3.05007137497887
+      },
+      {
+        "field": "dipole",
+        "nodes": 243,
+        "pairs": 972,
+        "field_B_range": [
+          0.6037783634024092,
+          1.6530101171895388
+        ],
+        "mass_range": [
+          1.92959437880862e-18,
+          0.0075951930679032205
+        ],
+        "minimum_pair_energy_norm_squared": 108.39672298415181,
+        "pair_measure_max_relative_error": 4.0184279389064057e-16,
+        "production_matrix_relative_error": 1.0905953222962838e-14,
+        "compact_matrix_relative_error": 1.1087323702776158e-14,
+        "K_symmetry_relative": 0.0,
+        "production_symmetry_relative": 1.3462142914394308e-16,
+        "factor_null_counts": {
+          "1e-10": 12,
+          "1e-12": 12,
+          "1e-13": 12,
+          "1e-14": 12
+        },
+        "weighted_factor_null_counts": {
+          "1e-10": 12,
+          "1e-12": 12,
+          "1e-13": 12,
+          "1e-14": 12
+        },
+        "entropy_scaled_factor_null_counts": {
+          "1e-10": 12,
+          "1e-12": 12,
+          "1e-13": 12,
+          "1e-14": 12
+        },
+        "checks_wall_s": 1.0716913749929518
+      },
+      {
+        "field": "nonaxisymmetric",
+        "nodes": 243,
+        "pairs": 972,
+        "field_B_range": [
+          0.596828158159653,
+          1.6532045223534944
+        ],
+        "mass_range": [
+          1.923175078047249e-18,
+          0.007590893274736513
+        ],
+        "minimum_pair_energy_norm_squared": 103.07721818955866,
+        "pair_measure_max_relative_error": 3.0721111941967606e-16,
+        "production_matrix_relative_error": 1.395149796498817e-14,
+        "compact_matrix_relative_error": 1.4164560302299709e-14,
+        "K_symmetry_relative": 0.0,
+        "production_symmetry_relative": 1.192222798927642e-16,
+        "factor_null_counts": {
+          "1e-10": 4,
+          "1e-12": 4,
+          "1e-13": 4,
+          "1e-14": 4
+        },
+        "weighted_factor_null_counts": {
+          "1e-10": 4,
+          "1e-12": 4,
+          "1e-13": 4,
+          "1e-14": 4
+        },
+        "entropy_scaled_factor_null_counts": {
+          "1e-10": 6,
+          "1e-12": 4,
+          "1e-13": 4,
+          "1e-14": 4
+        },
+        "checks_wall_s": 0.651999749999959
+      }
+    ],
+    "total_checks_wall_s": 4.775598624983104,
+    "null_count_method": "Relative singular-value threshold applied directly to rectangular factors; raw K eigenvalues are not used to infer nullity.",
+    "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 .venv/bin/python <private-checker-archive>/raw_box_nullspace.py",
+    "cost_scope": "4.775598624983104s for original grid setup, independent full pair factors/matrices, explicit and compact full coordinate-basis action checks, and spectra; excludes imports/metadata and later spatial/exact-alias analyses."
+  },
+  "spatial_subspace_audit": {
+    "checker_basename": "raw_box_nullspace_spatial.py",
+    "checker_sha256": "5f6385ca86f0b772b355a4b4a352385e58fa4b24030731b450225e5d31866006",
+    "receipt_basename": "raw_box_nullspace_spatial.json",
+    "receipt_sha256": "ae79fb3f93eda5fabe02d0c231050fb64b3312d641fc611a55fc91c0fe16d2e7",
+    "parent_arrays_sha256": "5b02c8ddd999a2e4ad77b29bfbc30821aa9ab2dfd121b0a47f177667537cca61",
+    "execution_metadata": "Not recorded separately; consumes the retained raw-pair arrays. No separate wall/hardware claim.",
+    "planar_angular_derivative_nullity": 3,
+    "rows": [
+      {
+        "field": "mirror",
+        "spatial_only_nullity_1e-12": 9,
+        "expanded_basis_rank": 12,
+        "extra_mode_z_powers_factor_residual_relative": [
+          7.153482282413166e-17,
+          6.891991795697082e-17,
+          6.737443430922074e-17
+        ]
+      },
+      {
+        "field": "dipole",
+        "spatial_only_nullity_1e-12": 9,
+        "expanded_basis_rank": 12,
+        "extra_mode_z_powers_factor_residual_relative": [
+          6.348232993700143e-17,
+          4.799170763189988e-17,
+          4.075344051677263e-17
+        ]
+      },
+      {
+        "field": "nonaxisymmetric",
+        "spatial_only_nullity_1e-12": 1,
+        "expanded_basis_rank": 12,
+        "extra_mode_z_powers_factor_residual_relative": [
+          0.002650815701174369,
+          0.003571150642712331,
+          0.004264604507409835
+        ]
+      }
+    ]
+  },
+  "exact_rational_audit": {
+    "checker_basename": "collocation_alias_independent_check.py",
+    "checker_sha256": "20d35009bb4d7775e8e465dd2b894719f8196f730feb8dce5e632868c05e2aea",
+    "receipt_basename": "collocation_alias_independent_check.json",
+    "receipt_sha256": "c8e902b2363cb49a96e49bed6f3ecfcdf6d645b7eb9074374544d3dee0bb835e",
+    "parent_arrays_sha256": "5b02c8ddd999a2e4ad77b29bfbc30821aa9ab2dfd121b0a47f177667537cca61",
+    "inputs": {
+      "c": "1",
+      "a": "1/5",
+      "k": "3/125",
+      "z_powers": [
+        0,
+        1,
+        2
+      ]
+    },
+    "polynomial": "phi=(x\u00b2-3cx)y\u00b2-3c\u00b2x\u00b2+c(2c\u00b2+k)x",
+    "identity": "(-y*d_x+x*d_y)phi=2y[(x-c)^3-k(x-c)]-(2x-3c)[y\u00b3-ky]",
+    "integration_method": "Fractions rational arithmetic; multiply bivariate monomial coefficient dictionaries for (Lphi)\u00b2, integrate each monomial exactly over x in [c-a,c+a], y in [-a,a], and compare with 128a^10/525+16c\u00b2a^8/175.",
+    "exact_polynomial_identity": "All rational monomial coefficients match",
+    "angular_squared_integral_exact_fraction": "1328/5126953125",
+    "angular_squared_integral": 2.590232380952381e-07,
+    "closed_form_verified_by_exact_monomial_integration": true,
+    "offgrid_angular_derivative_at_1p2_0p2": 0.0032,
+    "rows": [
+      {
+        "field": "mirror",
+        "factor_null_counts": {
+          "1e-10": 12,
+          "1e-12": 12,
+          "1e-13": 12,
+          "1e-14": 12
+        },
+        "expanded_rank": 12,
+        "extra_factor_relative_residual": [
+          5.782037767758206e-17,
+          5.89949350735543e-17,
+          5.784239338949877e-17
+        ]
+      },
+      {
+        "field": "dipole",
+        "factor_null_counts": {
+          "1e-10": 12,
+          "1e-12": 12,
+          "1e-13": 12,
+          "1e-14": 12
+        },
+        "expanded_rank": 12,
+        "extra_factor_relative_residual": [
+          3.969963446276101e-17,
+          3.259906399108408e-17,
+          2.862287995876106e-17
+        ]
+      },
+      {
+        "field": "nonaxisymmetric",
+        "factor_null_counts": {
+          "1e-10": 4,
+          "1e-12": 4,
+          "1e-13": 4,
+          "1e-14": 4
+        },
+        "expanded_rank": 12,
+        "extra_factor_relative_residual": [
+          0.0004491832425458888,
+          0.002875426315471889,
+          0.004466491269736876
+        ]
+      }
+    ],
+    "wall_s": 0.0212208750017453,
+    "rerun_provenance": {
+      "repository_commit": "e6de6052f141f3c816fdf84c4497f07f66bb0075",
+      "python": "3.12.13",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "processor": "Apple M4",
+      "logical_cpus": 10,
+      "command": ".venv/bin/python <private-checker-archive>/collocation_alias_independent_check.py",
+      "note": "Exact checker rerun consumes immutable earlier raw-pair arrays; it does not rerun the raw collision producer."
+    }
+  },
+  "limitations": [
+    "One 243-node tensor grid; relative numerical counts depend on scaling and threshold. The perturbed entropy-scaled factor has six values below 1e-10 but four below the selected 1e-12 threshold.",
+    "Planar polynomial collocation kernel completeness is proved only in the stated tensor-quadratic space with c>a>0. Whole phase-space numerical nullity on this grid does not establish a continuum classification.",
+    "The fixed tensor-polynomial interpolant has nonzero off-grid angular derivative; the same even-y nodal values may admit another nonpolynomial radial extension.",
+    "Angular overintegration diagnoses the fixed polynomial without repairing or replacing the production operator.",
+    "All private checker source, receipt and parent-array hashes are verified at packaging; none is attributed to the later public producer."
+  ],
+  "cross_producer_spectra_comparison": {
+    "definition": "max absolute singular-value difference divided by original maximum singular value; no relative accuracy claim for roundoff-scale small singular values. Independent assembly routes and BLAS thread environment differ.",
+    "rows": [
+      {
+        "field": "mirror",
+        "unweighted_max_absolute_difference_over_original_smax": 4.810829332802459e-15,
+        "physical_max_absolute_difference_over_original_smax": 3.1101856651690242e-15,
+        "entropy_scaled_max_absolute_difference_over_original_smax": 9.628026006905104e-15
+      },
+      {
+        "field": "dipole",
+        "unweighted_max_absolute_difference_over_original_smax": 7.936031885634587e-15,
+        "physical_max_absolute_difference_over_original_smax": 1.0629086909976143e-14,
+        "entropy_scaled_max_absolute_difference_over_original_smax": 3.055422098129905e-14
+      },
+      {
+        "field": "nonaxisymmetric",
+        "unweighted_max_absolute_difference_over_original_smax": 1.306543881271572e-14,
+        "physical_max_absolute_difference_over_original_smax": 8.022289467400567e-15,
+        "entropy_scaled_max_absolute_difference_over_original_smax": 3.9772952070719685e-14
+      }
+    ]
+  },
+  "first_public_execution": {
+    "path": "examples/21_collocation_nullspace.py",
+    "commit": "e6de6052f141f3c816fdf84c4497f07f66bb0075",
+    "source_sha256": "406b4bda81d17a9e61dc23d272db8b739f2e1e9476817a7d5086c6066ac1d4eb",
+    "summary_path": "results/collocation_nullspace/summary.json",
+    "summary_sha256": "a0d597cfd511215a294810fe8b4632bab4f9d700a5fb3adce1b12e0c3ec8df31",
+    "singular_arrays_sha256": "76606057ab061b995e1260bc7414eb8ba5b1a74e84d52e576415abc157719eaf",
+    "status": "passed_finite_grid_checks",
+    "checks_wall_s": 6.163743582990719,
+    "archive_scope": "First scientific execution retained privately before plot-label revision; scientific arrays/metrics compare bitwise/equal to final execution."
+  },
+  "plot_label_rerun_check": {
+    "previous_producer": "e6de6052f141f3c816fdf84c4497f07f66bb0075",
+    "final_producer": "4094e899dc2a921de7beee7793bdd337a7b8e614",
+    "all_singular_arrays_bitwise_identical": true,
+    "all_scientific_rows_excluding_wall_time_exactly_equal": true,
+    "label_change": "Signed angular residue title corrected to positive squared-residue integral; mathtext labels. No numerical source change."
+  }
+}

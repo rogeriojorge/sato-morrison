@@ -7642,6 +7642,25 @@
       "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37717856432/job/113118404732",
       "log_sha256": "b732e7ac91bf23b1a191c35c343206505ec10d32df2b14188ec6b20daf90f2ac",
       "scope": "Includes mixed local dipole action, squared-moment, separated-pair, ideal-flow and angular obstruction tests. Nonuniform pilots are separate."
+    },
+    {
+      "source_commit": "e6de6052f141f3c816fdf84c4497f07f66bb0075",
+      "command": "python -m pytest -q",
+      "passed": 246,
+      "elapsed_s": 163.43,
+      "environment": "Shared Apple M4 local environment recorded in collocation_nullspace/summary.json; example21 overlapped",
+      "log_sha256": "c36c1424d8de9301151b955ec88949f16b15dc30178cce141dedda5e487d6fea",
+      "scope": "Adds three exact planar angular-alias and overintegration cases plus three independent unmodified pair-factor/nullspace checks. No core-source changes."
+    },
+    {
+      "source_commit": "e6de6052f141f3c816fdf84c4497f07f66bb0075",
+      "command": "python -m pytest -q",
+      "passed": 246,
+      "elapsed_s": 140.69,
+      "environment": "Fresh Ubuntu CI installation",
+      "log_sha256": "aa5a9c0d4fb0cf9be2b53c151e71173cc12b814ec76029f51161269ba5e118e2",
+      "scope": "Adds three exact planar angular-alias and overintegration cases plus three independent unmodified pair-factor/nullspace checks. No core-source changes.",
+      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37721600467/job/113130269753"
     }
   ],
   "additional_experiments": [
@@ -7729,6 +7748,17 @@
       "experiment_dependencies_unchanged": true,
       "checks_wall_s": 16.076350500021363,
       "timing_scope": "Shared local machine; includes check compilation, excludes imports/metadata/figure-only sampling/rendering; not an isolated benchmark. Working tree records only preexisting untracked output directory."
+    },
+    {
+      "command": "MPLBACKEND=Agg python examples/21_collocation_nullspace.py",
+      "cwd": "${REPOSITORY}",
+      "producer_commit": "4094e899dc2a921de7beee7793bdd337a7b8e614",
+      "evidence_path": "results/collocation_nullspace/summary.json",
+      "evidence_sha256": "97f240213c83473c4cf1425ed65edf000673292e91fc2a7223fed582e2e657bc",
+      "independent_evidence_sha256": "e93384f1c666b28992943d0fb298b70b7c3e948aadb89e342d30582b0fae862a",
+      "experiment_dependencies_unchanged": true,
+      "checks_wall_s": 6.235976083000423,
+      "timing_scope": "Shared M4; setup, factor decompositions, compilation and probes; excludes imports, metadata and rendering. Pending documentation/output edits disclosed. Scientific arrays and metrics identical to first e6de605 run; plot labels changed."
     }
   ]
 }

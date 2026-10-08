@@ -17,7 +17,7 @@ JAX experiments on **what relaxes—and what remains frozen—when collisions pr
 | Nonlinear mirror evolution | **15 runs**, eight refinement checks; largest final change **0.197%** |
 | Independent solver audit | All **20 saved steps** rechecked with a separate NumPy pair operator |
 | Conditional scattering table | Fresh **4,096-state** test: p95 error **2.54%**, 95% confidence interval **2.06–3.37%** |
-| Test suite | **240 passed** on fresh Linux CI |
+| Test suite | **246 passed** on fresh Linux CI |
 
 [Reproduction record](results/deep_reproduction.json) · [Mirror data](results/nonuniform_entropy/mirror_audit.json) · [Solver audit](results/solver_accuracy/audit.json) · [Scattering audit](results/scattering_table/refined8_validation4096/audit.json)
 
@@ -42,6 +42,15 @@ A mixed position–velocity moment is conserved by same-position collisions on a
 
 </details>
 
+<details>
+<summary>When a sampled zero hides variation between nodes</summary>
+
+![The unchanged pair factor has 12 null vectors in each axisymmetric box and four in the perturbed box. An extra polynomial mode has zero angular derivative at the nodes but nonzero values between them.](results/collocation_nullspace/collocation_nullspace.png)
+
+Three extra axisymmetric grid modes have an exact algebraic explanation. Their tensor-polynomial interpolants are not continuum nulls. Four-node quadrature detects the positive squared derivative that three nodes miss. No modes are removed. [Script](examples/21_collocation_nullspace.py) · [Data and thresholds](results/collocation_nullspace/summary.json) · [All factor scalings](results/collocation_nullspace/factor_scales.png)
+
+</details>
+
 ### Refinement matters
 
 ![Nonlinear relaxation, independent refinement checks, sampled continuum-constraint errors and discrete conservation. The title reports how many planned cases are complete.](results/nonuniform_entropy/evolution.png)
@@ -61,7 +70,7 @@ MPLBACKEND=Agg python examples/00_uniform_reference.py
 MPLBACKEND=Agg python examples/01_relaxation.py
 ```
 
-[Twenty-one editable examples](examples/README.md) cover geometry, nonlinear evolution, Lorentz/Dougherty controls, physical 3V Landau weak moments, encounters, convergence, derivatives and benchmarks. Scripts enable float64, print progress and reject failed solves. SOLVAX supplies linear algebra; no other UW Plasma physics code is required.
+[Twenty-two editable examples](examples/README.md) cover geometry, nonlinear evolution, Lorentz/Dougherty controls, physical 3V Landau weak moments, encounters, convergence, derivatives and benchmarks. Scripts enable float64, print progress and reject failed solves. SOLVAX supplies linear algebra; no other UW Plasma physics code is required.
 
 ## Cost and scope
 
