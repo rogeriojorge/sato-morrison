@@ -325,7 +325,7 @@ with progress('Evolve positive nonuniform boxes and compare independent refineme
         print(f'  {field.kind}: all selected solves completed; full checks remain explicit.', flush=True)
 
 
-def plot_evolution_evidence(rows,checks,output,final_time):
+def plot_evolution_evidence(rows,checks,output,final_time,planned_cases=None):
     fields=['mirror','dipole','nonaxisymmetric']
     colors={'mirror':'#2166ac','dipole':'#d95f02','nonaxisymmetric':'#27823b'}
     keys=['spatial','parallel_velocity','magnetic_moment','timestep','parallel_tail',
@@ -376,13 +376,14 @@ def plot_evolution_evidence(rows,checks,output,final_time):
     axes[1,1].annotate('1e-9 check',(2,1e-9),xytext=(-2,-13),textcoords='offset points',ha='right',fontsize=9)
     for axis in axes.ravel():
         axis.grid(alpha=.2)
-    fig.suptitle(f'Nonlinear collision-only field boxes: T={final_time:g} (normalized)',fontsize=14)
+    completion='' if planned_cases is None else f'; {len(rows)}/{planned_cases} cases complete'
+    fig.suptitle(f'Nonlinear collision-only boxes: T={final_time:g} (normalized){completion}',fontsize=13)
     fig.tight_layout(rect=(0,0,1,.96))
     output=Path(output);output.mkdir(parents=True,exist_ok=True)
     fig.savefig(output/'evolution.png',dpi=180);plt.close(fig)
 
 
-plot_evolution_evidence(rows, checks, OUTPUT, FINAL_TIME)
+plot_evolution_evidence(rows, checks, OUTPUT, FINAL_TIME, len(FIELDS)*len(CASES))
 print(f'Saved {OUTPUT/"summary.json"}; each independent convergence status is explicit.', flush=True)
 
 for check in checks:

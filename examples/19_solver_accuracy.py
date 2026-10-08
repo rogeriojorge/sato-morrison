@@ -230,7 +230,7 @@ for key, label, color in [('population_weighted_relative_L2','Population norm','
 axes[0].axhline(TARGETS['weighted_endpoint'], color='#444444',linestyle='--',linewidth=1,label='Last-pair norm target')
 axes[0].set(yscale='log',ylabel='Endpoint difference from tightest solved reference',title='Fixed-grid solver accuracy')
 axes[0].legend(frameon=False,fontsize=8)
-axes[0].text(.02,.02,'Zero differences displayed at $10^{-18}$',transform=axes[0].transAxes,fontsize=8)
+axes[0].text(.04,.87,'Zero differences displayed at $10^{-18}$',transform=axes[0].transAxes,fontsize=8)
 counts = [by_name[name]['total_recorded_pcg_iterations'] for name in order]
 axes[1].bar(range(5),counts,color='#6296b8')
 for i,name in enumerate(order):
