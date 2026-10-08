@@ -1,0 +1,202 @@
+{
+  "status": "passed_independent_error_decomposition",
+  "producer_commit": "60052b26aab31e0b28c9deb988d1fb66c1b32058",
+  "producer_combined_source_sha256": "5cadc018eec759c8d3a8826b5b338f6369ab58ea6c404143e4672cb7f2c50def",
+  "input_summary_sha256": "829517fc37437860a81d5997b29c0e36e1c117f6ec5deaf612ae14951f2983e9",
+  "input_arrays_sha256": "cfb42664c2479f707963532d7cbcce817af9b6e3041b7288a5ab71b008daffae",
+  "executed_utc": "2026-10-08T20:14:11.815928+00:00",
+  "units": "normalized",
+  "inputs": {
+    "density": 1.0,
+    "gamma": 1.0,
+    "covariance": [
+      1.15,
+      1.15,
+      0.7
+    ],
+    "orders": [
+      16,
+      20,
+      28
+    ],
+    "extent": 5.0,
+    "derivatives": [
+      "polynomial",
+      "local_quadratic"
+    ],
+    "core": "|v|<=3",
+    "scalar_orders": [
+      192,
+      256
+    ],
+    "pair_chunk": 64,
+    "kernel": "Unsoftened Coulomb, coincident quadrature termszero"
+  },
+  "formula": {
+    "exact_continuum_flux": "J=F(D score-divD), divD=\u22128/sqrtpi integral s\u00b2Z m ds. D is the Gaussian Laplace diffusion tensor.",
+    "discrete_flux": "w_i F_i sum_j w_jF_j U_ij(score_i-score_j); Gaussian scoreexact for bothD.",
+    "decomposition": "C_discrete-C_continuum=\u2212Dvector^T[weighted_pair_flux-wJ]/w +[\u2212Dvector^T(wJ)/w\u2212C_continuum].",
+    "quadratic_norm": "E\u00b2=sum w error\u00b2/F; Efull\u00b2=Epair\u00b2+Eadjoint\u00b2+2sum w pair_error*adjoint_error/F. Signed cross term retained, no component-as-percentage attribution.",
+    "vector_flux_L1": "sum w ||Jquad-J||_2 /sum w ||J||_2."
+  },
+  "rows": [
+    {
+      "order": 16,
+      "extent": 5.0,
+      "pair_convolution_relative_vector_L1_error": 0.028354082631867207,
+      "core_pair_convolution_vector_L1_error_over_full_reference": 0.02829996998605896,
+      "tail_pair_convolution_vector_L1_error_over_full_reference": 5.4112645808253025e-05,
+      "flux_scalar192_vs256_max_abs": 1.1904539853890839e-16,
+      "schemes": [
+        {
+          "derivative": "polynomial",
+          "full_RHS_relative_L1_error": 0.3772358820499218,
+          "pair_convolution_contribution_relative_L1": 0.06671324969010552,
+          "exact_flux_weak_adjoint_relative_L1_error": 0.4436459930376858,
+          "exact_flux_weak_adjoint_core_L1_over_full_reference": 0.2342829600196995,
+          "exact_flux_weak_adjoint_tail_L1_over_full_reference": 0.2093630330179863,
+          "pair_contribution_core_L1_over_full_reference": 0.04952447963418127,
+          "pair_contribution_tail_L1_over_full_reference": 0.017188770055924247,
+          "weighted_relative_rate_squared_error": 149.49702021044686,
+          "pair_contribution_weighted_squared_error": 1.2830787976018112,
+          "weak_adjoint_contribution_weighted_squared_error": 176.19352748844358,
+          "weighted_cross_inner_product": -13.98979303779926,
+          "squared_error_decomposition_abs_defect": 0.0,
+          "production_RHS_weighted_L1_difference": 1.7700139952520718e-14,
+          "raw_error_decomposition_max_abs_defect": 1.4094628242311558e-18
+        },
+        {
+          "derivative": "local_quadratic",
+          "full_RHS_relative_L1_error": 0.49310664419957473,
+          "pair_convolution_contribution_relative_L1": 0.020743684518272753,
+          "exact_flux_weak_adjoint_relative_L1_error": 0.4764752375935572,
+          "exact_flux_weak_adjoint_core_L1_over_full_reference": 0.42383548743685384,
+          "exact_flux_weak_adjoint_tail_L1_over_full_reference": 0.052639750156703524,
+          "pair_contribution_core_L1_over_full_reference": 0.02030926485772222,
+          "pair_contribution_tail_L1_over_full_reference": 0.0004344196605505276,
+          "weighted_relative_rate_squared_error": 0.011820823225932663,
+          "pair_contribution_weighted_squared_error": 1.4741962681151594e-05,
+          "weak_adjoint_contribution_weighted_squared_error": 0.011585108410933596,
+          "weighted_cross_inner_product": 0.00011048642615895827,
+          "squared_error_decomposition_abs_defect": 1.734723475976807e-18,
+          "production_RHS_weighted_L1_difference": 1.6338083683233922e-15,
+          "raw_error_decomposition_max_abs_defect": 7.047314121155779e-19
+        }
+      ]
+    },
+    {
+      "order": 20,
+      "extent": 5.0,
+      "pair_convolution_relative_vector_L1_error": 0.011604364117655084,
+      "core_pair_convolution_vector_L1_error_over_full_reference": 0.011588295099186638,
+      "tail_pair_convolution_vector_L1_error_over_full_reference": 1.606901846844236e-05,
+      "flux_scalar192_vs256_max_abs": 1.4181364416110398e-16,
+      "schemes": [
+        {
+          "derivative": "polynomial",
+          "full_RHS_relative_L1_error": 0.096730075705546,
+          "pair_convolution_contribution_relative_L1": 0.019775538695936467,
+          "exact_flux_weak_adjoint_relative_L1_error": 0.11382651675767211,
+          "exact_flux_weak_adjoint_core_L1_over_full_reference": 0.0610179580677858,
+          "exact_flux_weak_adjoint_tail_L1_over_full_reference": 0.052808558689886265,
+          "pair_contribution_core_L1_over_full_reference": 0.01680268422066532,
+          "pair_contribution_tail_L1_over_full_reference": 0.0029728544752711454,
+          "weighted_relative_rate_squared_error": 16.80724223035456,
+          "pair_contribution_weighted_squared_error": 0.07012554478605725,
+          "weak_adjoint_contribution_weighted_squared_error": 18.89830570284321,
+          "weighted_cross_inner_product": -1.0805945086373516,
+          "squared_error_decomposition_abs_defect": 3.552713678800501e-15,
+          "production_RHS_weighted_L1_difference": 2.3070173319410144e-14,
+          "raw_error_decomposition_max_abs_defect": 2.4936649967166602e-18
+        },
+        {
+          "derivative": "local_quadratic",
+          "full_RHS_relative_L1_error": 0.39392178118816834,
+          "pair_convolution_contribution_relative_L1": 0.008897767334882296,
+          "exact_flux_weak_adjoint_relative_L1_error": 0.3888847961590813,
+          "exact_flux_weak_adjoint_core_L1_over_full_reference": 0.3616179347467318,
+          "exact_flux_weak_adjoint_tail_L1_over_full_reference": 0.02726686141234954,
+          "pair_contribution_core_L1_over_full_reference": 0.008808109209254247,
+          "pair_contribution_tail_L1_over_full_reference": 8.965812562805006e-05,
+          "weighted_relative_rate_squared_error": 0.005973138486606274,
+          "pair_contribution_weighted_squared_error": 2.817268685731341e-06,
+          "weak_adjoint_contribution_weighted_squared_error": 0.005869491317632949,
+          "weighted_cross_inner_product": 5.0414950143797186e-05,
+          "squared_error_decomposition_abs_defect": 8.673617379884035e-19,
+          "production_RHS_weighted_L1_difference": 2.4585510420643578e-15,
+          "raw_error_decomposition_max_abs_defect": 5.963111948670274e-19
+        }
+      ]
+    },
+    {
+      "order": 28,
+      "extent": 5.0,
+      "pair_convolution_relative_vector_L1_error": 0.003090131275333423,
+      "core_pair_convolution_vector_L1_error_over_full_reference": 0.0030863026524137025,
+      "tail_pair_convolution_vector_L1_error_over_full_reference": 3.8286229197210375e-06,
+      "flux_scalar192_vs256_max_abs": 1.6393136847980827e-16,
+      "schemes": [
+        {
+          "derivative": "polynomial",
+          "full_RHS_relative_L1_error": 0.007254387711931889,
+          "pair_convolution_contribution_relative_L1": 0.004002962052037125,
+          "exact_flux_weak_adjoint_relative_L1_error": 0.004836048719521293,
+          "exact_flux_weak_adjoint_core_L1_over_full_reference": 0.002590899495507505,
+          "exact_flux_weak_adjoint_tail_L1_over_full_reference": 0.002245149224013789,
+          "pair_contribution_core_L1_over_full_reference": 0.003906435422632574,
+          "pair_contribution_tail_L1_over_full_reference": 9.652662940455162e-05,
+          "weighted_relative_rate_squared_error": 0.04410756667291028,
+          "pair_contribution_weighted_squared_error": 9.848782929787825e-05,
+          "weak_adjoint_contribution_weighted_squared_error": 0.04819907550383297,
+          "weighted_cross_inner_product": -0.0020949983301102827,
+          "squared_error_decomposition_abs_defect": 6.938893903907228e-18,
+          "production_RHS_weighted_L1_difference": 1.4224944607822747e-13,
+          "raw_error_decomposition_max_abs_defect": 3.06287113727155e-18
+        },
+        {
+          "derivative": "local_quadratic",
+          "full_RHS_relative_L1_error": 0.24591232572477711,
+          "pair_convolution_contribution_relative_L1": 0.0029053217686995534,
+          "exact_flux_weak_adjoint_relative_L1_error": 0.2437148234689289,
+          "exact_flux_weak_adjoint_core_L1_over_full_reference": 0.2297770819054295,
+          "exact_flux_weak_adjoint_tail_L1_over_full_reference": 0.013937741563499414,
+          "pair_contribution_core_L1_over_full_reference": 0.0028902239705062395,
+          "pair_contribution_tail_L1_over_full_reference": 1.5097798193314458e-05,
+          "weighted_relative_rate_squared_error": 0.0017961877388169793,
+          "pair_contribution_weighted_squared_error": 2.6276941085484994e-07,
+          "weak_adjoint_contribution_weighted_squared_error": 0.001771785102421975,
+          "weighted_cross_inner_product": 1.206993349207453e-05,
+          "squared_error_decomposition_abs_defect": 2.168404344971009e-19,
+          "production_RHS_weighted_L1_difference": 6.3761688007290446e-15,
+          "raw_error_decomposition_max_abs_defect": 1.0842021724855044e-18
+        }
+      ]
+    }
+  ],
+  "source_basename": "landau_flux_decomposition.py",
+  "source_sha256": "5e54b0f4f83b4856d3f41807d53fcc08efbe35d15d139e7d2410fcd5216d59a9",
+  "helper_source_basename": "landau_strong_consistency.py",
+  "helper_source_sha256": "f6cdcb919c3f936fe71cd22b8c24f85e58d7c017150f1fa45c408ba4b41e49e9",
+  "diagnostic_arrays_sha256": "35ec29880b541d34acd316341a931bc51960db0db36db4b46f02eaa50a5d00dc",
+  "checker_scope": "Private original source and diagnostic arrays archived outside public tree. No production collision imports or kinetic time evolution; fixed published finite schemes and raw pair terms preserved.",
+  "normalized_command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 .venv/bin/python landau_flux_decomposition.py",
+  "interpretation": [
+    "This is a decomposition of instantaneous sampled RHS error, not a convergence theorem or physical collision calibration.",
+    "Weak-adjoint applied to sampled exact continuum flux includes finite velocity-boundary/reconstruction effects; it is not automatically solely derivative truncation error.",
+    "Pair and adjoint errors may cancel or amplify. Signed weighted cross terms are recorded; component L1 values are triangle-bound contributions, not additive percentages."
+  ],
+  "environment": {
+    "python": "3.12.13",
+    "numpy": "2.5.3",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "Apple M4",
+    "logical_cpus": 10,
+    "threads": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    }
+  },
+  "wall_s": 38.3315289170132,
+  "wall_s_scope": "Scalar diffusion/flux integrals, independent NumPy pairs, adjoints and decomposition checks; excludes imports/final receipt writing."
+}

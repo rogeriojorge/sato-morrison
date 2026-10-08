@@ -1,0 +1,16 @@
+start 16 1
+Newton 16 1 {'iteration': 1, 'relative_residual': 1.2228332189528386, 'linear_iterations': 13, 'true_linear_relative_residual': 9.600776918055774e-08, 'linear_wall_s': 6.220471292035654, 'maximum_log_direction': 124.68204903220857, 'minimum_signed_log_direction': -42.71195730125459, 'maximum_signed_log_direction': 124.68204903220857, 'objective_descent': -0.0005195245577024604, 'mobility_curvature': 0.002087553489507776}
+Newton 16 1 {'iteration': 1, 'relative_residual': 1.2228332189528386, 'linear_iterations': 13, 'true_linear_relative_residual': 9.600776918055774e-08, 'linear_wall_s': 6.220471292035654, 'maximum_log_direction': 124.68204903220857, 'minimum_signed_log_direction': -42.71195730125459, 'maximum_signed_log_direction': 124.68204903220857, 'objective_descent': -0.0005195245577024604, 'mobility_curvature': 0.002087553489507776, 'fraction': 0.125, 'backtracks': 3, 'maximum_log_step': np.float64(15.585256129026071), 'objective_change': -8.379471772315104e-06}
+Newton 16 1 {'iteration': 2, 'relative_residual': 0.8878584744993749, 'linear_iterations': 1000, 'true_linear_relative_residual': 1.961380538689057e-06, 'linear_wall_s': 304.18755408300785, 'maximum_log_direction': 23.712126006796364, 'minimum_signed_log_direction': -23.712126006796364, 'maximum_signed_log_direction': 12.15084505038381, 'objective_descent': -0.000429272896008413, 'mobility_curvature': 0.0014417519332363582}
+{'order': 16, 'step': 1, 'wall_s': 311.55183554202085, 'status': 'failed', 'reason': 'SOLVAX PCG rejected lagged correction: status=2, iterations=1000, true residual=1.961e-06'}
+start 20 1
+Traceback (most recent call last):
+  File "<verification>/landau_tensor_step_feasibility.py", line 17, in <module>
+    a=landau_entropy_step(grid,f,.1,compiled=compiler,rtol=1e-10,linear_rtol=1e-7,iteration_callback=lambda r:print('Newton',order,step+1,r,flush=True))
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<verification>/landau_tensor_candidate.py", line 200, in landau_entropy_step
+    return lagged_entropy_step(grid,f,dt,collision_strength=gamma,compiled=compiled,chunk_size=chunk_size,linear_max_steps=linear_max_steps,**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repository>/src/sato_morrison/solver.py", line 526, in lagged_entropy_step
+    answer[0].block_until_ready()
+KeyboardInterrupt

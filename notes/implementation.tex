@@ -4064,13 +4064,47 @@ error $0.0053675$. The local quadratic values are respectively
 $0.2459123$, $0.0023141$ and $0.4930163$. The polynomial result passes
 this single initial weighted $L^1$ target; its tail-sensitive RMS error
 in $C/F$ is still $0.2100$, and no trajectory accuracy follows.
-The entire 18-action-case study takes 183.07 s, including compilation,
+The entire 18-case study takes 183.07 s, including compilation,
 three warm repeats per case, references and rendering, with peak process
 RSS 781156352 bytes. The polynomial $28^3$ warm median is 8.384 s.
 These are observed CPU costs on the recorded Apple M4 environment;
 the two derivatives have not reached matched accuracy. Example 30
 retains all measurements and exits with an accuracy failure because
 the local scheme has not met the declared 1\% full-term target.
+
+\subsection{Separating pair quadrature from the weak adjoint}
+The exact continuum Gaussian flux is
+$J=F(\mathcal D s-\nabla\cdot\mathcal D)$, with
+\begin{equation}
+ \nabla\cdot\mathcal D=-\frac8{\sqrt\pi}
+ \int_0^\infty z^2 Zm\,dz.
+\end{equation}
+An independent diagnostic samples this flux on the same cube. Write
+$\mathcal A_hJ=-W^{-1}D^TWJ$ for the finite weak divergence, with
+$W=\operatorname{diag}(w)$, and $J_h$ for the sampled pair convolution.
+The signed collision-term error decomposes exactly as
+\begin{equation}
+ \mathcal A_hJ_h-\nabla\cdot J
+ =\underbrace{\mathcal A_hJ-\nabla\cdot J}_{e_D}
+ +\underbrace{\mathcal A_h(J_h-J)}_{e_Q}.
+\end{equation}
+The first term includes finite derivative reconstruction and the weak
+cube boundary; the second propagates pair quadrature error through that
+same derivative. Their norm percentages are not additive. The audit
+retains the signed weighted $L^2$ cross term as well as separate norms.
+
+At $28^3$ the pair flux itself has vector $L^1$ error $0.309\%$.
+The local quadratic derivative applied to exact flux gives $24.371\%$
+collision-term error; the propagated pair-error norm is only $0.291\%$,
+compared with total $24.591\%$. Thus its failure is dominated by the
+finite weak derivative and boundary reconstruction. For the global
+polynomial derivative, the corresponding exact-flux and propagated-pair
+errors are $0.484\%$ and $0.400\%$, with total $0.725\%$.
+The independent $28^3$ action agrees with the public saved action within
+$1.43\times10^{-13}$ in weighted relative $L^1$. The diagnostic takes
+38.33 s on the recorded M4 and changes no production operator. Its
+inputs, formulas, signed error decomposition and source hashes are in
+\path{results/landau_consistency/independent_flux_audit.json}.
 
 \bibliographystyle{unsrt}
 \bibliography{references}

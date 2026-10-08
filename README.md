@@ -96,6 +96,8 @@ Matching a few moments can conceal distribution errors. Both derivatives conserv
 
 At **28³ nodes**, polynomial differentiation reaches **0.73% full-term error**, **0.23% pressure-rate error** and **0.54% fourth-cumulant-rate error**. Large relative errors remain at low-density tail nodes. The local quadratic option still has **24.59% full-term error**. It is retained as a diagnostic of the difference between conservation and accuracy. The polynomial action takes **8.38 s** on the recorded M4 run; the two methods have not reached matched accuracy, so their timings establish no speedup.
 
+An independent diagnostic supplies the exact velocity-space particle flux to each discrete derivative. The local method still has **24.37% error**, close to its **24.59%** total. The main defect is therefore in the finite derivative and boundary reconstruction; refining the collision integral alone will not resolve it. [Flux and derivative checks](results/landau_consistency/independent_flux_audit.json)
+
 These are initial collision terms. Full Landau trajectories still need velocity, tail, timestep and kernel convergence. Example 30 saves every refinement and exits with a visible failure because the declared 1% target is unresolved for the local option. [Inputs and measured errors](results/landau_consistency/summary.json) · [Independent array audit](results/landau_consistency/independent_audit.json) · [Independent continuum derivation and checks](results/landau_evolution/independent_strong_audit.json)
 
 
