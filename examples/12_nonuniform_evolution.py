@@ -39,10 +39,10 @@ D, FINAL_TIME, DT = .1, .02, .005
 DT_VALUES = [.005, .0025, .00125, .000625, .0003125]
 CHUNK, NEWTON_RTOL = 1048576, 1e-12
 LINEAR_RTOL, LINEAR_MAX_STEPS, MAX_NEWTON_STEPS = 1e-6, 3000, 80
-PRECONDITIONER_AXIS = 0
+PRECONDITIONER_AXIS = (0, 1, 2)
 RELATIVE_TARGET = .01
 RESIDUAL_METRIC = 'fixed_reference_population'
-OUTPUT = Path(__file__).resolve().parents[1] / 'results' / 'nonuniform_fixed_reference'
+OUTPUT = Path(__file__).resolve().parents[1] / 'results' / 'nonuniform_spatial_blocks'
 OUTPUT.mkdir(parents=True, exist_ok=True)
 print(f'Nonuniform positive nonlinear collision evolution; D={D}, T={FINAL_TIME}; '
       f'natural collision boundaries; fixed-initial-population Newton-PCG; output={OUTPUT}', flush=True)
@@ -141,8 +141,10 @@ def evaluate(field, nx=NX, nu=NU, nmu=NMU, umax=U_MAX, mumax=MU_MAX, dt=DT, *, c
     reproduction = float(np.max(np.abs(derivative_matrix(u)@(u*u/2)-u)))
     if minimum_grad_b <= 0 or reproduction > 1e-10:
         raise RuntimeError('discrete energy-flow injectivity check failed')
+    factor_bytes = int(np.prod(grid.velocity_shape)*np.prod(grid.spatial_shape)**2*grid.weights.dtype.itemsize)
     print(f'  Preparing/compiling {field.kind}: {grid.size} nodes, '
-          f'{grid.pair_count} local pairs, x-line Newton-PCG', flush=True)
+          f'{grid.pair_count} local pairs, full spatial-block Newton-PCG; '
+          f'one factor {factor_bytes/2**20:.1f} MiB before runtime workspace', flush=True)
     compiler = lagged_entropy_compiler(grid, collision_strength=D, chunk_size=CHUNK,
         linear_max_steps=LINEAR_MAX_STEPS, preconditioner_axis=PRECONDITIONER_AXIS,
         reference_population=reference_population)
@@ -223,6 +225,8 @@ def evaluate(field, nx=NX, nu=NU, nmu=NMU, umax=U_MAX, mumax=MU_MAX, dt=DT, *, c
         'residual_metric': RESIDUAL_METRIC, 'reference_population_total': number,
         'minimum_reference_population': float(jnp.min(reference_population)),
         'stored_grid_bytes': sum(array.nbytes for array in stored),
+        'auxiliary_spatial_factor_bytes': factor_bytes,
+        'auxiliary_spatial_factor_scope': 'One dense Cholesky factor per velocity node; excludes other blocks and runtime workspace',
         'process_peak_rss_bytes': resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024),
         'peak_rss_scope': 'Cumulative process high-water mark; includes setup and compiled runtime, not grid arrays alone',
         'pair_workspace_budget': CHUNK, 'minimum_discrete_grad_B': minimum_grad_b,
@@ -267,6 +271,7 @@ inputs = {'fields': [field.__dict__ for field in FIELDS], 'bounds': BOUNDS,
     'final_time': FINAL_TIME, 'dt_values': DT_VALUES, 'newton_rtol': NEWTON_RTOL,
     'pair_chunk': CHUNK, 'time_discretization': 'lagged-mobility backward Euler in entropy variables',
     'preconditioner_axis': PRECONDITIONER_AXIS,
+    'preconditioner': 'Dense three-axis spatial channel-Gram sum per velocity node, with remaining velocity-channel diagonal; exact Hessian unchanged',
     'residual_metric': RESIDUAL_METRIC, 'reference_population': 'positive quadrature weights times the fixed initial distribution; same total particle number',
     'linear_rtol': LINEAR_RTOL, 'linear_max_steps': LINEAR_MAX_STEPS, 'max_newton_steps': MAX_NEWTON_STEPS, 'relative_refinement_target': RELATIVE_TARGET,
     'spatial_discretization':'global Lagrange polynomial derivative on positive Gauss-Legendre quadrature',

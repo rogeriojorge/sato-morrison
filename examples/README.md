@@ -27,13 +27,13 @@ Prefix each command below with `MPLBACKEND=Agg python`.
 | `examples/18_near_uniform.py` | Analytic and direct near-uniform tensor-quadrature limit |
 | `examples/19_solver_accuracy.py` | Separate nonlinear/linear tolerance scans at fixed grid and timestep |
 
-Example 12 writes `results/nonuniform_fixed_reference/`. A single predefined case can be run with:
+Example 12 uses dense spatial blocks per velocity node and writes `results/nonuniform_spatial_blocks/`. A single predefined case can be run with:
 
 ```sh
 SM_EVOLUTION_FIELDS=dipole SM_EVOLUTION_CASES=mu13 MPLBACKEND=Agg python examples/12_nonuniform_evolution.py
 ```
 
-It saves the last accepted state and each Newton correction's diagnostics. The old-population-scaled campaign remains archived in `results/nonuniform_entropy/`; reproduce it at its recorded commit. Equal tolerances in the two residual metrics do not imply equal accuracy.
+It saves the last accepted state and each Newton correction's diagnostics. The earlier fixed-reference line-preconditioned pilot is in `results/nonuniform_fixed_reference/`. The old-population-scaled campaign remains archived in `results/nonuniform_entropy/`; reproduce it at its recorded commit. Equal tolerances in the two residual metrics do not imply equal accuracy.
 
 Example 13 preserves its original audit inputs and writes new runs in `results/encounter_validation/reproduction/`. MP4 export in example 09 uses `ffmpeg`; GIF export uses the Python dependencies.
 

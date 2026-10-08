@@ -76,7 +76,7 @@ def make_lagged_case(field):
 def lagged_case(request):return make_lagged_case(request.param)
 
 
-@pytest.mark.parametrize('axis',[None,0],ids=['diagonal','xline'])
+@pytest.mark.parametrize('axis',[None,0,(0,1,2)],ids=['diagonal','xline','spatial_block'])
 def test_lagged_endpoint_matches_explicit_gram_and_preserves_nulls(lagged_case,axis):
     _,explicit,grid,initial,matrix,_,nulls,compiler=lagged_case
     if axis is not None:
@@ -124,7 +124,7 @@ def test_lagged_failures_remain_visible(lagged_case):
 
 
 
-@pytest.mark.parametrize('mismatch',['strength','grid','chunk','budget','axis'])
+@pytest.mark.parametrize('mismatch',['strength','grid','chunk','budget','axis','spatial_axis'])
 def test_lagged_bound_compiler_rejects_configuration_mismatch(mismatch):
     from dataclasses import replace
     _,_,grid,initial,_,_,_,compiler=make_lagged_case(Field('dipole'))
@@ -134,7 +134,7 @@ def test_lagged_bound_compiler_rejects_configuration_mismatch(mismatch):
     elif mismatch=='grid':target=replace(grid)
     elif mismatch=='chunk':options['chunk_size']=32
     elif mismatch=='budget':options['linear_max_steps']=999
-    else:options['preconditioner_axis']=0
+    else:options['preconditioner_axis']=0 if mismatch=='axis' else (0,1,2)
     with pytest.raises(ValueError,match='configuration mismatch'):
         lagged_entropy_step(target,initial,.1,compiled=compiler,rtol=1e-12,**options)
 
@@ -162,7 +162,8 @@ def test_lagged_first_order_against_independent_pair_ODE():
     assert .8<np.log2(errors[-2]/errors[-1])<1.2
 
 
-@pytest.mark.parametrize('axis',[1,-1,.0,False,True,'0',np.int64(0)])
+@pytest.mark.parametrize('axis',[1,-1,.0,False,True,'0',np.int64(0),(),(0,),
+    (0,1),(0,1,2,3),(0.,1,2),(False,1,2),(0,np.int64(1),2),(2,1,0),[0,1,2]])
 def test_lagged_invalid_preconditioner_axis_rejected(axis):
     _,_,grid,initial,_,_,_,_=make_lagged_case(Field('dipole'))
     with pytest.raises(ValueError,match='preconditioner_axis'):
@@ -217,9 +218,13 @@ def test_xline_single_active_channel_uniform_corner():
     expected=convex_dense_endpoint(weights,initial,matrix,.1)
     error=np.linalg.norm(weights*(np.asarray(actual.f)-expected)/np.sqrt(old))/np.sqrt(old.sum())
     assert error<2e-10 and actual.minimum>0
+    # The tuple means actual spatial axes. It must not silently treat this
+    # reduced layout's u and mu axes as Cartesian y and z.
+    with pytest.raises(ValueError,match='five-axis Cartesian'):
+        lagged_entropy_compiler(grid,preconditioner_axis=(0,1,2))
 
 
-@pytest.mark.parametrize('axis',[None,0],ids=['diagonal','xline'])
+@pytest.mark.parametrize('axis',[None,0,(0,1,2)],ids=['diagonal','xline','spatial_block'])
 def test_fixed_reference_matches_independent_physical_root_and_budgets(axis):
     _,explicit,grid,initial,matrix,_,nulls,legacy=make_lagged_case(Field('dipole'))
     weights=np.asarray(grid.weights);old=weights*initial;gold=np.log(initial)
@@ -350,3 +355,91 @@ def test_default_reference_none_retains_legacy_metric_and_result():
     assert answers[0].relative_residual==answers[1].relative_residual
     assert answers[0].linear_iterations==answers[1].linear_iterations
     assert answers[0].residual_metric==answers[1].residual_metric=='entropy_population'
+
+
+@pytest.mark.parametrize('fixed_reference',[False,True],ids=['old_population','fixed_reference'])
+def test_spatial_block_matches_independent_noncubic_auxiliary(monkeypatch,fixed_reference):
+    # Noncubic space and distinct derivative matrices expose transpose/Kronecker
+    # mistakes that a cubic, equally spaced tensor could conceal.
+    from types import SimpleNamespace
+    import sato_morrison.solver as solver_module
+    spatial=[gauss_interval(n,a,b) for n,(a,b) in zip((3,4,3),((.8,1.2),(-.2,.2),(.1,.5)))]
+    u,wu=gauss_interval(3,-2,2);mu,wm=gauss_interval(2,.1,1.1)
+    options=dict(spatial_weights=[p[1] for p in spatial],velocity_weights=(wu,wm),
+        spatial_discretization='polynomial')
+    args=(*[p[0] for p in spatial],u,mu,Field('dipole'))
+    explicit=cartesian_grid(*args,**options);grid=cartesian_grid(*args,compact=True,**options)
+    old=np.exp(-np.asarray(grid.energy)+.05*np.cos(.31*np.arange(grid.size)))
+    gold=np.log(old);g=gold+.07*np.sin(.27*np.arange(grid.size))
+    weights=np.asarray(grid.weights);population=weights*old;metric=population.copy()
+    if fixed_reference:
+        metric*=np.exp(2*np.cos(.19*np.arange(grid.size)))
+        metric*=population.sum()/metric.sum()
+    root=np.sqrt(metric);dt=.1
+    # Direct unordered-pair self covariance, independent of both production
+    # covariance and channel diagonal helpers.
+    coefficients=np.asarray(explicit.coefficients).reshape(grid.size,5,-1)
+    q=np.zeros((grid.size,len(grid.derivatives)))
+    for i,j,w,direction in zip(np.asarray(explicit.left),np.asarray(explicit.right),
+            np.asarray(explicit.pair_weights),np.asarray(explicit.kernel_directions)):
+        projector=np.eye(5)-np.outer(direction,direction)
+        for node in (i,j):
+            channels=(projector@coefficients[node])[:3]
+            q[node]+=.1*w*old[i]*old[j]*np.sum(channels**2,axis=0)
+    auxiliary=np.zeros((grid.size,grid.size));expected_other=np.zeros(grid.size)
+    for component,(axis,matrix) in enumerate(grid.derivatives):
+        derivative=np.ones((1,1))
+        for d,n in enumerate(grid.shape):
+            derivative=np.kron(derivative,np.asarray(matrix) if d==axis else np.eye(n))
+        if axis<3:auxiliary+=derivative.T@(q[:,component,None]*derivative)
+        else:expected_other+=(derivative**2).T@q[:,component]
+    auxiliary+=np.diag(expected_other)
+    expected=np.diag(weights*np.exp(g)/metric)+dt*auxiliary/root[:,None]/root[None,:]
+    matrix=dense_mobility(explicit,old,collision_strength=.1)
+    scale=np.linalg.norm(24*auxiliary-matrix,2)
+    assert np.linalg.eigvalsh(auxiliary).min()>-1e-12*max(scale,1e-30)
+    assert np.linalg.eigvalsh(24*auxiliary-matrix).min()>-1e-11*max(scale,1e-30)
+    assert np.linalg.eigvalsh(expected).min()>0
+    compiler=lagged_entropy_compiler(grid,collision_strength=.1,chunk_size=64,
+        preconditioner_axis=(0,1,2),reference_population=metric if fixed_reference else None)
+    prepared=compiler.prepare_diagonal(jnp.asarray(gold))
+    nx=int(np.prod(grid.spatial_shape));nv=int(np.prod(grid.velocity_shape))
+    assert all(np.all(np.isfinite(a)) and np.all(np.asarray(a)>=0) for a in prepared)
+    np.testing.assert_allclose(np.asarray(prepared.line_q),q[:,:3].reshape(nx,nv,3).transpose(1,0,2),rtol=4e-12,atol=2e-16)
+    np.testing.assert_allclose(np.asarray(prepared.other_diagonal),expected_other.reshape(nx,nv).T,rtol=4e-12,atol=2e-16)
+    captured={}
+    def capture(operator,rhs,*,precond,**unused):
+        captured.update(operator=operator,inverse=precond)
+        return SimpleNamespace(x=jnp.zeros_like(rhs),iterations=0,converged=False,status=0)
+    monkeypatch.setattr(solver_module,'pcg',capture)
+    # Invoke the undecorated function so captured closures contain concrete
+    # arrays rather than leaking tracers from a JIT trace. No Krylov oracle.
+    compiler.correction.__wrapped__(jnp.asarray(g),jnp.asarray(gold),dt,prepared,1e-9)
+    actual_inverse=np.asarray(jax.vmap(captured['inverse'])(jnp.eye(grid.size))).T
+    np.testing.assert_allclose(actual_inverse,np.linalg.inv(expected),rtol=2e-11,atol=2e-13)
+    exact=np.diag(weights*np.exp(g)/metric)+dt*matrix/root[:,None]/root[None,:]
+    actual_hessian=np.asarray(jax.vmap(captured['operator'])(jnp.eye(grid.size))).T
+    np.testing.assert_allclose(actual_hessian,exact,rtol=4e-12,atol=2e-13)
+
+
+@pytest.mark.parametrize('bad',['spatial_shape','velocity_shape','quadrature','missing_channel','duplicate_channel','matrix_shape'])
+def test_spatial_block_rejects_unsupported_layout(bad):
+    from dataclasses import replace
+    _,_,grid,_,_,_,_,_=make_lagged_case(Field('dipole'))
+    if bad=='spatial_shape':grid=replace(grid,spatial_shape=(3,9))
+    elif bad=='velocity_shape':grid=replace(grid,velocity_shape=(6,))
+    elif bad=='quadrature':grid=replace(grid,local_quadrature=(grid.local_quadrature[0],grid.local_quadrature[1][:-1]))
+    elif bad=='missing_channel':grid=replace(grid,derivatives=grid.derivatives[1:])
+    elif bad=='duplicate_channel':grid=replace(grid,derivatives=grid.derivatives+(grid.derivatives[0],))
+    else:grid=replace(grid,derivatives=((0,jnp.eye(2)),)+grid.derivatives[1:])
+    with pytest.raises(ValueError,match='spatial block'):
+        lagged_entropy_compiler(grid,preconditioner_axis=(0,1,2))
+
+
+def test_spatial_block_true_residual_failure_remains_visible():
+    _,_,grid,initial,_,_,_,_=make_lagged_case(Field('dipole'))
+    compiler=lagged_entropy_compiler(grid,collision_strength=.1,chunk_size=64,
+        linear_max_steps=0,preconditioner_axis=(0,1,2))
+    with pytest.raises(StepFailure,match='PCG rejected'):
+        lagged_entropy_step(grid,initial,.1,collision_strength=.1,compiled=compiler,
+            chunk_size=64,linear_max_steps=0,preconditioner_axis=(0,1,2),rtol=1e-12)

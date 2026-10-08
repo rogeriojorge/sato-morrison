@@ -275,8 +275,10 @@ def _expm1_minus_x(value):
 
 
 def _check_preconditioner_axis(axis):
-    if axis is not None and (type(axis) is not int or axis != 0):
-        raise ValueError('preconditioner_axis must be None or Cartesian x axis0')
+    if (axis is not None and not (type(axis) is int and axis==0)
+        and not (type(axis) is tuple and len(axis)==3
+                 and all(type(value) is int for value in axis) and axis==(0,1,2))):
+        raise ValueError('preconditioner_axis must be None, Cartesian x axis0, or tuple(0,1,2)')
 
 
 class LinePreconditionerData(NamedTuple):
@@ -308,7 +310,11 @@ def lagged_entropy_compiler(grid, *, collision_strength=1.,chunk_size=65536,
     All old-state arguments are dynamic. Positive covariance is prepared once
     per step. None selects lumped Jacobi; axis0 retains D_x.T diag(q_x) D_x
     correlations in independent SPD spatial lines and lumps the other channels.
-    Both affect only preconditioning; all pair and derivative cross terms stay
+    Tuple(0,1,2) retains all three within-channel spatial Grams in a dense
+    spatial block per velocity node, and lumps the remaining velocity channel.
+    It requires a five-axis Cartesian layout. Its factor has Nv*NX**2 entries;
+    this option can be costly in memory. All options affect only preconditioning;
+    all pair and derivative cross terms stay
     in the exact Hessian. PCG's true original residual is independently checked.
     SOLVAX requires linear_rtol to be static when tracing its input validation.
     An optional reference_population is a copied, immutable nodal population
@@ -341,7 +347,30 @@ def lagged_entropy_compiler(grid, *, collision_strength=1.,chunk_size=65536,
         if (not np.all(np.isfinite(stored)) or np.any(stored<=0)
             or not np.isfinite(stored.sum()) or stored.sum()<=0):
             raise ValueError('reference population must be representable with positive finite total')
-    if preconditioner_axis is not None:
+    spatial_block=type(preconditioner_axis) is tuple
+    if spatial_block:
+        if (len(grid.shape)!=5 or len(grid.spatial_shape)!=3 or len(grid.velocity_shape)!=2
+            or tuple(grid.spatial_shape)+tuple(grid.velocity_shape)!=tuple(grid.shape)):
+            raise ValueError('spatial block requires coherent five-axis Cartesian spatial/velocity shapes')
+        length=int(np.prod(grid.spatial_shape));velocity_count=int(np.prod(grid.velocity_shape))
+        if grid.local_quadrature[1].shape!=(length,velocity_count):
+            raise ValueError('spatial block quadrature shape does not match Cartesian layout')
+        components=[];spatial_derivatives=[]
+        for selected_axis in preconditioner_axis:
+            matches=[(c,d) for c,(axis,d) in enumerate(grid.derivatives) if axis==selected_axis]
+            if len(matches)!=1 or matches[0][1].shape!=(grid.shape[selected_axis],)*2:
+                raise ValueError('one matching derivative channel required per spatial block axis')
+            components.append(matches[0][0])
+            derivative=jnp.ones((1,1),dtype=grid.weights.dtype)
+            for axis,n in enumerate(grid.spatial_shape):
+                derivative=jnp.kron(derivative,matches[0][1] if axis==selected_axis
+                    else jnp.eye(n,dtype=grid.weights.dtype))
+            spatial_derivatives.append(derivative)
+        def lines(value):
+            return value.reshape(length,velocity_count).T
+        def unlines(value):
+            return value.T.reshape(-1)
+    elif preconditioner_axis is not None:
         matches=[(component,matrix) for component,(axis,matrix) in enumerate(grid.derivatives) if axis==preconditioner_axis]
         if len(matches)!=1:raise ValueError('one derivative channel required on line axis')
         component,derivative=matches[0];length=grid.shape[preconditioner_axis]
@@ -361,9 +390,14 @@ def lagged_entropy_compiler(grid, *, collision_strength=1.,chunk_size=65536,
             collision_strength=collision_strength,chunk_size=chunk_size)
         diags=mobility_channel_diagonals(grid,q)
         if preconditioner_axis is None:return jnp.sum(diags,axis=-1).reshape(-1)
-        other_channels=[diags[...,d] for d in range(len(grid.derivatives)) if d!=component]
+        selected=components if spatial_block else [component]
+        other_channels=[diags[...,d] for d in range(len(grid.derivatives)) if d not in selected]
         other=(jnp.sum(jnp.stack(other_channels),axis=0) if other_channels
                else jnp.zeros(grid.shape,dtype=q.dtype))
+        if spatial_block:
+            # Retain positive q, not a Gram whose off-diagonals can be negative:
+            # the host's finite/nonnegative prepared-data guard remains valid.
+            return LinePreconditionerData(jnp.stack([lines(q[...,c]) for c in components],axis=-1),lines(other))
         return LinePreconditionerData(lines(q[...,component]),lines(other))
     def correction(new_log,old_log,dt,diagonal,linear_rtol):
         old_mass=grid.weights*jnp.exp(old_log)
@@ -381,7 +415,11 @@ def lagged_entropy_compiler(grid, *, collision_strength=1.,chunk_size=65536,
             inverse=lambda vector:vector/approximation
         else:
             masses=lines(metric_mass);mass_root=jnp.sqrt(masses)
-            local=jnp.einsum('ki,lk,kj->lij',derivative,diagonal.line_q,derivative)
+            if spatial_block:
+                local=sum(jnp.einsum('ki,lk,kj->lij',matrix,diagonal.line_q[...,d],matrix)
+                    for d,matrix in enumerate(spatial_derivatives))
+            else:
+                local=jnp.einsum('ki,lk,kj->lij',derivative,diagonal.line_q,derivative)
             block=dt*local/mass_root[:,:,None]/mass_root[:,None,:]
             diagonal_entries=lines(ratio)+dt*diagonal.other_diagonal/masses
             block=block+jnp.eye(length)[None,:,:]*diagonal_entries[:,:,None]
