@@ -297,7 +297,7 @@ for component,label in enumerate(['mean','second','cross']):
     axes[2].plot([r['phase_order'] for r in levels],changes,'o-',ms=3,label=label)
 axes[2].axhline(100*PHASE_TARGET,color='0.4',ls=':',label='1% target')
 axes[2].set(xlabel='phase nodes',ylabel='successive moment change (%)',title='All three angular convergence checks')
-axes[2].set_xscale('log',base=2);axes[2].set_yscale('symlog',linthresh=.01);axes[2].legend(fontsize=8)
+axes[2].set_xscale('log',base=2);axes[2].set_yscale('symlog',linthresh=.01);axes[2].set_ylim(bottom=0);axes[2].legend(fontsize=8)
 figure_status="refinement checks passed" if passed else "refinement checks unresolved"
 fig.suptitle(f'Sampled encounter moments: {figure_status}\nAll sample weights retained; missing weight = {levels[-1]["missing_phase_weight"]:.4g}; continuous coverage unresolved',fontsize=11)
 fig.savefig(OUTPUT/'phase_convergence.png',dpi=180);plt.close(fig)
