@@ -15,3 +15,5 @@ dist/
 literature/
 local_context/
 results/raw/
+results/**/last_state.npz
+results/**/last_state.npz.tmp

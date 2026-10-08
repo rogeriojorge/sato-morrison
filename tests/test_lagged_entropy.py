@@ -217,3 +217,136 @@ def test_xline_single_active_channel_uniform_corner():
     expected=convex_dense_endpoint(weights,initial,matrix,.1)
     error=np.linalg.norm(weights*(np.asarray(actual.f)-expected)/np.sqrt(old))/np.sqrt(old.sum())
     assert error<2e-10 and actual.minimum>0
+
+
+@pytest.mark.parametrize('axis',[None,0],ids=['diagonal','xline'])
+def test_fixed_reference_matches_independent_physical_root_and_budgets(axis):
+    _,explicit,grid,initial,matrix,_,nulls,legacy=make_lagged_case(Field('dipole'))
+    weights=np.asarray(grid.weights);old=weights*initial;gold=np.log(initial)
+    # Five decades of relative reference variation exercise a genuine change
+    # of congruence, rather than merely passing the old population twice.
+    reference=old*np.exp(6*np.cos(np.arange(grid.size)*.31))
+    reference*=old.sum()/reference.sum()
+    assert np.max(reference/old)/np.min(reference/old)>1e5
+    compiler=lagged_entropy_compiler(grid,collision_strength=.1,chunk_size=64,
+        preconditioner_axis=axis,reference_population=reference)
+    dt=.1
+    expected=convex_dense_endpoint(weights,initial,matrix,dt)
+    answer=lagged_entropy_step(grid,initial,dt,collision_strength=.1,compiled=compiler,
+        chunk_size=64,preconditioner_axis=axis,rtol=1e-12,linear_rtol=1e-8)
+    legacy_answer=lagged_entropy_step(grid,initial,dt,collision_strength=.1,
+        compiled=legacy,chunk_size=64,rtol=1e-12)
+    actual=np.asarray(answer.f);new=weights*actual;change=new-old;g=np.log(actual)
+    for target in (expected,np.asarray(legacy_answer.f)):
+        error=np.linalg.norm(weights*(actual-target)/np.sqrt(old))/np.sqrt(old.sum())
+        assert error<2e-10
+    assert answer.residual_metric=='fixed_reference_population'
+    assert answer.minimum>0 and np.all(np.isfinite(new))
+    # The expected residual and entropy budget use the independent explicit
+    # Gram matrix, not the compiled kernels or channel preconditioner.
+    residual=change+dt*(matrix@g)
+    root=np.sqrt(reference);scale=np.sqrt(reference.sum())
+    independent_norm=np.linalg.norm(residual/root)/scale
+    assert independent_norm<2e-11
+    assert abs(change.sum())/old.sum()<2e-10
+    energy=np.asarray(grid.energy)
+    assert abs(energy@change)/(np.abs(energy)@old)<2e-10
+    marginal=np.bincount(np.asarray(grid.mu_index),weights=change)
+    assert np.max(np.abs(marginal))/old.sum()<2e-10
+    assert np.linalg.norm(nulls.T@change)/np.linalg.norm(old)<2e-10
+    invariants=[np.ones(grid.size),energy]
+    invariants.extend((np.asarray(grid.mu_index)==i).astype(float)
+        for i in range(grid.shape[-1]))
+    for invariant in invariants:
+        contraction=invariant@residual
+        dual_bound=np.linalg.norm(root*invariant)*np.linalg.norm(residual/root)
+        assert abs(contraction)<=dual_bound*(1+1e-14)
+        np.testing.assert_allclose(invariant@change,contraction,rtol=0.,atol=2e-15)
+    entropy=-new@g+old@gold
+    physical=dt*(g@(matrix@g))
+    kl=np.sum(old*np.log(old/new)-old+new)
+    defect=(g+1)@residual
+    cauchy=np.linalg.norm(root*(g+1))*np.linalg.norm(residual/root)
+    assert abs(defect)<=cauchy*(1+1e-14)
+    np.testing.assert_allclose(entropy,physical+kl-defect,rtol=2e-12,atol=2e-15)
+    assert abs(answer.entropy_identity_error+answer.residual_entropy_defect)<=2*answer.entropy_defect_bound
+    # Independently verify the non-root scaled Hessian, where mass ratios
+    # differ from one and the reference cannot accidentally be used as K(old).
+    trial=gold+.03*np.cos(.4*np.arange(grid.size))
+    prepared=compiler.prepare_diagonal(jnp.asarray(gold))
+    direction,_,true,success,*_=compiler.correction(
+        jnp.asarray(trial),jnp.asarray(gold),dt,prepared,1e-9)
+    scaled=(np.diag(weights*np.exp(trial))+dt*matrix)/root[:,None]/root[None,:]
+    rhs=-(weights*np.exp(trial)-old+dt*(matrix@trial))/root
+    expected_direction=np.linalg.solve(scaled,rhs)/root
+    assert bool(success) and float(true)<5e-9
+    np.testing.assert_allclose(np.asarray(direction),expected_direction,rtol=2e-6,atol=2e-9)
+    # Reuse the fixed metric while updating the physical mobility. An oracle
+    # frozen at the initial distribution would give a different second root.
+    next_matrix=dense_mobility(explicit,actual,collision_strength=.1)
+    next_expected=convex_dense_endpoint(weights,actual,next_matrix,dt)
+    next_answer=lagged_entropy_step(grid,actual,dt,collision_strength=.1,
+        compiled=compiler,chunk_size=64,preconditioner_axis=axis,
+        rtol=1e-12,linear_rtol=1e-8)
+    error=np.linalg.norm(weights*(np.asarray(next_answer.f)-next_expected)/np.sqrt(old))/np.sqrt(old.sum())
+    assert error<2e-10 and next_answer.residual_metric=='fixed_reference_population'
+
+
+def test_fixed_references_are_copied_immutable_and_independent():
+    from dataclasses import FrozenInstanceError
+    _,_,grid,initial,_,_,_,_=make_lagged_case(Field('dipole'))
+    population=np.asarray(grid.weights)*initial
+    first=population.copy();second=population[::-1].copy()
+    a=lagged_entropy_compiler(grid,reference_population=first)
+    b=lagged_entropy_compiler(grid,reference_population=second)
+    first[:]=0.;second[:]=np.nan
+    np.testing.assert_array_equal(np.asarray(a.reference_population),population)
+    np.testing.assert_array_equal(np.asarray(b.reference_population),population[::-1])
+    assert a.reference_population is not b.reference_population
+    with pytest.raises(FrozenInstanceError):a.reference_population=None
+    with pytest.raises(TypeError):a.reference_population[0]=0.
+
+
+@pytest.mark.parametrize('bad',['shape','length','zero','negative','nan','inf','total'])
+def test_invalid_fixed_reference_rejected(bad):
+    _,_,grid,initial,_,_,_,_=make_lagged_case(Field('dipole'))
+    reference=(np.asarray(grid.weights)*initial).copy()
+    if bad=='shape':reference=reference.reshape(grid.shape)
+    elif bad=='length':reference=reference[:-1]
+    elif bad=='total':reference[:]=np.finfo(float).max
+    else:reference[0]={'zero':0.,'negative':-1.,'nan':np.nan,'inf':np.inf}[bad]
+    with np.errstate(over='ignore'),pytest.raises(ValueError,match='reference'):
+        lagged_entropy_compiler(grid,reference_population=reference)
+
+
+def test_reference_mass_mismatch_and_numerical_failure_remain_visible():
+    from dataclasses import replace
+    _,_,grid,initial,_,_,_,_=make_lagged_case(Field('dipole'))
+    population=np.asarray(grid.weights)*initial
+    compiler=lagged_entropy_compiler(grid,collision_strength=.1,chunk_size=64,
+        reference_population=population)
+    options=dict(collision_strength=.1,compiled=compiler,chunk_size=64,rtol=1e-12)
+    # Validation applies on every step, including a changed old state and dt=0.
+    for state in (initial*(1+2e-9),initial*2):
+        with pytest.raises(ValueError,match='reference total population'):
+            lagged_entropy_step(grid,state,0.,**options)
+    with pytest.raises(StepFailure,match='Newton rejected'):
+        lagged_entropy_step(grid,initial,.1,max_steps=0,**options)
+    def inaccurate(*args):
+        return (jnp.ones(grid.size),1,1e-2,True,-1.,1.,1)
+    options['compiled']=replace(compiler,correction=inaccurate)
+    with pytest.raises(StepFailure,match='PCG rejected'):
+        lagged_entropy_step(grid,initial,.1,**options)
+
+
+def test_default_reference_none_retains_legacy_metric_and_result():
+    _,_,grid,initial,_,_,_,default=make_lagged_case(Field('dipole'))
+    explicit_none=lagged_entropy_compiler(grid,collision_strength=.1,chunk_size=64,
+        reference_population=None)
+    assert default.reference_population is None and explicit_none.reference_population is None
+    answers=[lagged_entropy_step(grid,initial,.005,collision_strength=.1,
+        compiled=compiler,chunk_size=64,rtol=1e-12) for compiler in (default,explicit_none)]
+    np.testing.assert_array_equal(np.asarray(answers[0].f),np.asarray(answers[1].f))
+    assert answers[0].relative_residual==answers[1].relative_residual
+    assert answers[0].linear_iterations==answers[1].linear_iterations
+    assert answers[0].residual_metric==answers[1].residual_metric=='entropy_population'

@@ -2,7 +2,8 @@
 
 SM_EVOLUTION_FIELDS and SM_EVOLUTION_CASES select predefined independent jobs.
 They do not change scientific inputs. With both unset the complete campaign runs.
-Historical discrete-gradient results remain separate; they cannot resume this method.
+Historical discrete-gradient and old-population-scaled results remain separate.
+This campaign uses a fixed initial population to scale residuals and Newton systems.
 """
 import hashlib
 import json
@@ -40,10 +41,11 @@ CHUNK, NEWTON_RTOL = 1048576, 1e-12
 LINEAR_RTOL, LINEAR_MAX_STEPS, MAX_NEWTON_STEPS = 1e-6, 3000, 80
 PRECONDITIONER_AXIS = 0
 RELATIVE_TARGET = .01
-OUTPUT = Path(__file__).resolve().parents[1] / 'results' / 'nonuniform_entropy'
+RESIDUAL_METRIC = 'fixed_reference_population'
+OUTPUT = Path(__file__).resolve().parents[1] / 'results' / 'nonuniform_fixed_reference'
 OUTPUT.mkdir(parents=True, exist_ok=True)
 print(f'Nonuniform positive nonlinear collision evolution; D={D}, T={FINAL_TIME}; '
-      f'natural collision boundaries; lagged-mobility entropy Newton-PCG; output={OUTPUT}', flush=True)
+      f'natural collision boundaries; fixed-initial-population Newton-PCG; output={OUTPUT}', flush=True)
 
 
 def require_finite(value, path='result'):
@@ -56,6 +58,23 @@ def require_finite(value, path='result'):
             require_finite(item, f'{path}[{index}]')
     elif isinstance(value, (float, np.floating)) and not np.isfinite(value):
         raise ValueError(f'Nonfinite numerical evidence at {path}')
+
+
+def scaled_residual_norm(residual, population):
+    """Stable norm even when an obsolete tail scale makes components enormous."""
+    scaled = np.asarray(residual)/np.sqrt(np.asarray(population))
+    largest = float(np.max(np.abs(scaled)))
+    return 0. if largest == 0 else float(largest*np.linalg.norm(scaled/largest)/np.sqrt(np.sum(population)))
+
+
+def save_state(initial, previous, state, reference_population, time, field, case):
+    """Retain the last accepted state for independent audits after a failure."""
+    temporary = OUTPUT/'last_state.npz.tmp'
+    with temporary.open('wb') as stream:
+        np.savez_compressed(stream, initial=np.asarray(initial), previous=np.asarray(previous),
+            state=np.asarray(state), reference_population=np.asarray(reference_population),
+            time=time, field=field, case=case, provenance_id=provenance_id)
+    temporary.replace(OUTPUT/'last_state.npz')
 
 
 def continuum_moments(field, xx, yy, zz, strength):
@@ -89,7 +108,9 @@ def evaluate(field, nx=NX, nu=NU, nmu=NMU, umax=U_MAX, mumax=MU_MAX, dt=DT, *, c
     log_equilibrium=-grid.energy-.2*mm.ravel()
     observable=jnp.asarray(np.sin(np.pi*y.ravel()/.4)*uu.ravel())
     initial = jnp.exp(log_equilibrium+.1*observable)
-    number = float(jnp.sum(grid.weights*initial))
+    reference_population = grid.weights*initial
+    number = float(jnp.sum(reference_population))
+    save_state(initial, initial, initial, reference_population, 0., field.kind, case_name)
     initial_marginal = np.bincount(np.asarray(grid.mu_index),
         weights=np.asarray(grid.weights*initial), minlength=nmu)
     initial_entropy = float(entropy(initial, grid.weights))
@@ -123,7 +144,8 @@ def evaluate(field, nx=NX, nu=NU, nmu=NMU, umax=U_MAX, mumax=MU_MAX, dt=DT, *, c
     print(f'  Preparing/compiling {field.kind}: {grid.size} nodes, '
           f'{grid.pair_count} local pairs, x-line Newton-PCG', flush=True)
     compiler = lagged_entropy_compiler(grid, collision_strength=D, chunk_size=CHUNK,
-        linear_max_steps=LINEAR_MAX_STEPS, preconditioner_axis=PRECONDITIONER_AXIS)
+        linear_max_steps=LINEAR_MAX_STEPS, preconditioner_axis=PRECONDITIONER_AXIS,
+        reference_population=reference_population)
     apply = jax.jit(lambda f, h: mobility_action(grid, f, h, collision_strength=D, chunk_size=CHUNK))
     initial_flux = apply(initial, jnp.log(initial));initial_flux.block_until_ready()
     initial_production = float(jnp.vdot(jnp.log(initial), initial_flux))
@@ -134,11 +156,28 @@ def evaluate(field, nx=NX, nu=NU, nmu=NMU, umax=U_MAX, mumax=MU_MAX, dt=DT, *, c
     state = initial;history = [];load_start = os.getloadavg()
     for index in range(steps):
         start = perf_counter()
+        previous_state = state
+        def record_iteration(record):
+            save_evidence(OUTPUT/'last_correction.json', {'field': field.kind,
+                'case': case_name, 'step': index+1, 'provenance_id': provenance_id,
+                'residual_metric': RESIDUAL_METRIC, **record})
+            if 'fraction' not in record:
+                print(f"    step {index+1}, Newton {record['iteration']}: "
+                      f"PCG {record['linear_iterations']}, true residual "
+                      f"{record['true_linear_relative_residual']:.3e}, "
+                      f"{record['linear_wall_s']:.1f}s", flush=True)
         answer = lagged_entropy_step(grid, state, dt, collision_strength=D,
             compiled=compiler, chunk_size=CHUNK, rtol=NEWTON_RTOL,
             linear_rtol=LINEAR_RTOL, linear_max_steps=LINEAR_MAX_STEPS, max_steps=MAX_NEWTON_STEPS,
-            preconditioner_axis=PRECONDITIONER_AXIS)
+            preconditioner_axis=PRECONDITIONER_AXIS, iteration_callback=record_iteration)
         state = answer.f
+        if answer.residual_metric != RESIDUAL_METRIC:
+            raise RuntimeError('unexpected nonlinear residual metric')
+        residual = np.asarray(compiler.evaluate(jnp.log(state), jnp.log(previous_state), dt))
+        reference_residual = scaled_residual_norm(residual, reference_population)
+        old_residual = scaled_residual_norm(residual, grid.weights*previous_state)
+        if not np.isfinite(reference_residual) or reference_residual > 5*NEWTON_RTOL:
+            raise RuntimeError('represented-state reference residual failed')
         check = invariant_diagnostics(grid, state, initial)
         if max(check[k] for k in ('number_error', 'energy_error', 'marginal_error')) > 1e-9:
             raise RuntimeError(f'accumulated invariant error failed: {check}')
@@ -147,6 +186,10 @@ def evaluate(field, nx=NX, nu=NU, nmu=NMU, umax=U_MAX, mumax=MU_MAX, dt=DT, *, c
         history.append({'time': (index+1)*dt, 'wall_s': perf_counter()-start,
             'newton_iterations': answer.iterations, 'pcg_iterations': answer.linear_iterations,
             'nonlinear_relative_residual': float(answer.relative_residual),
+            'residual_metric': answer.residual_metric,
+            'recomputed_reference_relative_residual': reference_residual,
+            'old_population_relative_residual': old_residual,
+            'unscaled_population_residual_norm': float(np.linalg.norm(residual)),
             'maximum_linear_relative_residual': answer.linear_relative_residual,
             'entropy_change': answer.entropy_change, 'entropy_identity_error': answer.entropy_identity_error,
             'lagged_mobility_dissipation': answer.entropy_production, 'generalized_KL': answer.generalized_KL,
@@ -155,6 +198,7 @@ def evaluate(field, nx=NX, nu=NU, nmu=NMU, umax=U_MAX, mumax=MU_MAX, dt=DT, *, c
             'magnetic_moment_bin_populations': marginal.tolist(),
             'relative_marginal_bin_errors': ((marginal-initial_marginal)/initial_marginal).tolist(),
             **check})
+        save_state(initial, previous_state, state, reference_population, (index+1)*dt, field.kind, case_name)
         save_evidence(OUTPUT/'partial_case.json', {'status': 'incomplete',
             'provenance_id': provenance_id, 'field': field.kind, 'case': case_name,
             'parameters': {'field': field.kind, 'nx': nx,
@@ -176,6 +220,8 @@ def evaluate(field, nx=NX, nu=NU, nmu=NMU, umax=U_MAX, mumax=MU_MAX, dt=DT, *, c
               *grid.local_quadrature, *[matrix for _, matrix in grid.derivatives]]
     row = {'field': field.kind, 'nx': nx, 'nu': nu, 'nmu': nmu, 'umax': umax, 'mumax': mumax, 'dt': dt,
         'nodes': grid.size, 'conceptual_unordered_pairs': grid.pair_count,
+        'residual_metric': RESIDUAL_METRIC, 'reference_population_total': number,
+        'minimum_reference_population': float(jnp.min(reference_population)),
         'stored_grid_bytes': sum(array.nbytes for array in stored),
         'process_peak_rss_bytes': resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024),
         'peak_rss_scope': 'Cumulative process high-water mark; includes setup and compiled runtime, not grid arrays alone',
@@ -221,6 +267,7 @@ inputs = {'fields': [field.__dict__ for field in FIELDS], 'bounds': BOUNDS,
     'final_time': FINAL_TIME, 'dt_values': DT_VALUES, 'newton_rtol': NEWTON_RTOL,
     'pair_chunk': CHUNK, 'time_discretization': 'lagged-mobility backward Euler in entropy variables',
     'preconditioner_axis': PRECONDITIONER_AXIS,
+    'residual_metric': RESIDUAL_METRIC, 'reference_population': 'positive quadrature weights times the fixed initial distribution; same total particle number',
     'linear_rtol': LINEAR_RTOL, 'linear_max_steps': LINEAR_MAX_STEPS, 'max_newton_steps': MAX_NEWTON_STEPS, 'relative_refinement_target': RELATIVE_TARGET,
     'spatial_discretization':'global Lagrange polynomial derivative on positive Gauss-Legendre quadrature',
     'velocity_discretization':'local quadratic u derivative; positive Gauss-Legendre u/mu quadrature',
@@ -233,7 +280,8 @@ metadata['limitations'] = ('Independent finite-time refinement checks at fixed o
     'as scheme errors, never projected or interpreted as physical relaxation. Tail-domain and '
     'wider-domain quadrature checks are separate. A fine timestep-pair pass does not certify '
     'the coarse baseline or jointly refine space and time; all adjacent and coarsest/fine differences '
-    'are retained. Timings include concurrent unrelated machine load.')
+    'are retained. Fixed-reference and old-population residual norms are different; no equality '
+    'of their nominal tolerances is claimed. Timings include concurrent unrelated machine load.')
 metadata['relaxation_diagnostic']='Relative entropy to mass-normalized exp(-E-.2mu) decreases by the entropy gain because its logarithm is a discrete collision invariant. This stationary reference is not asserted reachable under the additional continuum constraints. Mean/variance of log(f/reference) and the sin(pi*y/.4)*u moment are measured separately.'
 # Fifteen distinct cases; the base case is reused in each independent scan.
 CASES = {'spatial3': {'nx': 3}, 'base': {}, 'spatial7': {'nx': 7},
@@ -310,6 +358,8 @@ with progress('Evolve positive nonuniform boxes and compare independent refineme
             continue
         for name in case_names:
             print(f'  Starting {field.kind}, {name}: {CASES[name]}', flush=True)
+            for stale in ('last_state.npz', 'last_state.npz.tmp', 'last_correction.json'):
+                (OUTPUT/stale).unlink(missing_ok=True)
             save_evidence(OUTPUT/'partial_case.json', {'status': 'incomplete',
                 'provenance_id': provenance_id, 'field': field.kind, 'case': name, 'history': []})
             try:

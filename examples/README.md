@@ -18,7 +18,7 @@ Prefix each command below with `MPLBACKEND=Agg python`.
 | `examples/09_visual_summary.py` | Operator animation and README panels; uses recorded results |
 | `examples/10_encounter_ensemble.py` | Bounded incoming flux and held-out scattering table |
 | `examples/11_field_velocity.py` | Nonuniform initial-production velocity/tail convergence |
-| `examples/12_nonuniform_evolution.py` | Positive lagged-mobility evolution; 45 independent refinement cases |
+| `examples/12_nonuniform_evolution.py` | Positive lagged-mobility evolution with fixed initial residual scale; 45 independent refinement cases |
 | `examples/13_encounter_validation.py` | Wider incoming-flux coverage and independent table validation |
 | `examples/14_geometry_sensitivity.py` | Local production derivative, independent pair form and finite-difference plateau |
 | `examples/15_dipole_obstruction.py` | Matched constraints, different flux populations and a positive distance floor |
@@ -26,6 +26,14 @@ Prefix each command below with `MPLBACKEND=Agg python`.
 | `examples/17_encounter_duration.py` | Original nonexit: flight budget, timestep, endpoint and independent pair audit |
 | `examples/18_near_uniform.py` | Analytic and direct near-uniform tensor-quadrature limit |
 | `examples/19_solver_accuracy.py` | Separate nonlinear/linear tolerance scans at fixed grid and timestep |
+
+Example 12 writes `results/nonuniform_fixed_reference/`. A single predefined case can be run with:
+
+```sh
+SM_EVOLUTION_FIELDS=dipole SM_EVOLUTION_CASES=mu13 MPLBACKEND=Agg python examples/12_nonuniform_evolution.py
+```
+
+It saves the last accepted state and each Newton correction's diagnostics. The old-population-scaled campaign remains archived in `results/nonuniform_entropy/`; reproduce it at its recorded commit. Equal tolerances in the two residual metrics do not imply equal accuracy.
 
 Example 13 preserves its original audit inputs and writes new runs in `results/encounter_validation/reproduction/`. MP4 export in example 09 uses `ffmpeg`; GIF export uses the Python dependencies.
 

@@ -297,10 +297,12 @@ class LaggedEntropyCompiler:
     chunk_size: int
     linear_max_steps: int
     preconditioner_axis: object
+    reference_population: object = None
 
 
 def lagged_entropy_compiler(grid, *, collision_strength=1.,chunk_size=65536,
-                            linear_max_steps=1000,preconditioner_axis=None):
+                            linear_max_steps=1000,preconditioner_axis=None,
+                            reference_population=None):
     """Reusable exact frozen-mobility residual and entropy-scaled SPD solve.
 
     All old-state arguments are dynamic. Positive covariance is prepared once
@@ -309,6 +311,13 @@ def lagged_entropy_compiler(grid, *, collision_strength=1.,chunk_size=65536,
     Both affect only preconditioning; all pair and derivative cross terms stay
     in the exact Hessian. PCG's true original residual is independently checked.
     SOLVAX requires linear_rtol to be static when tracing its input validation.
+    An optional reference_population is a copied, immutable nodal population
+    vector. It scales the Hessian by sqrt(reference_population) and measures
+    ||R/sqrt(reference_population)||/sqrt(sum(reference_population)). It does
+    not enter K(old), the root equation, or the physical entropy budget. Its
+    total must match each old state's total within relative 1e-9: multiplying
+    a reference by c otherwise loosens this normalized residual by a factor c.
+    Equal nominal tolerances in different metrics are not equivalent accuracy.
     """
     if grid.local_quadrature is None:
         raise ValueError('lagged entropy compiler requires a compact local grid')
@@ -319,6 +328,19 @@ def lagged_entropy_compiler(grid, *, collision_strength=1.,chunk_size=65536,
     if not isinstance(chunk_size,int) or chunk_size<1:
         raise ValueError('positive integer chunk size required')
     _check_preconditioner_axis(preconditioner_axis)
+    reference_mass=None
+    if reference_population is not None:
+        supplied=np.array(reference_population,dtype=float,copy=True)
+        if (supplied.shape!=(grid.size,) or not np.all(np.isfinite(supplied))
+            or np.any(supplied<=0)):
+            raise ValueError('positive finite reference population with exact grid shape required')
+        if not np.isfinite(supplied.sum()) or supplied.sum()<=0:
+            raise ValueError('positive finite reference total population required')
+        reference_mass=jnp.array(supplied,dtype=grid.weights.dtype,copy=True)
+        stored=np.asarray(reference_mass)
+        if (not np.all(np.isfinite(stored)) or np.any(stored<=0)
+            or not np.isfinite(stored.sum()) or stored.sum()<=0):
+            raise ValueError('reference population must be representable with positive finite total')
     if preconditioner_axis is not None:
         matches=[(component,matrix) for component,(axis,matrix) in enumerate(grid.derivatives) if axis==preconditioner_axis]
         if len(matches)!=1:raise ValueError('one derivative channel required on line axis')
@@ -344,15 +366,21 @@ def lagged_entropy_compiler(grid, *, collision_strength=1.,chunk_size=65536,
                else jnp.zeros(grid.shape,dtype=q.dtype))
         return LinePreconditionerData(lines(q[...,component]),lines(other))
     def correction(new_log,old_log,dt,diagonal,linear_rtol):
-        old_mass=grid.weights*jnp.exp(old_log);root=jnp.sqrt(old_mass)
-        ratio=jnp.exp(new_log-old_log);value=evaluate(new_log,old_log,dt)/root
+        old_mass=grid.weights*jnp.exp(old_log)
+        if reference_mass is None:
+            metric_mass=old_mass;root=jnp.sqrt(old_mass)
+            ratio=jnp.exp(new_log-old_log)
+        else:
+            metric_mass=reference_mass;root=jnp.sqrt(reference_mass)
+            ratio=grid.weights*jnp.exp(new_log)/reference_mass
+        value=evaluate(new_log,old_log,dt)/root
         def operator(vector):
             return ratio*vector+dt*apply(old_log,vector/root)/root
         if preconditioner_axis is None:
-            approximation=ratio+dt*diagonal/old_mass
+            approximation=ratio+dt*diagonal/metric_mass
             inverse=lambda vector:vector/approximation
         else:
-            masses=lines(old_mass);mass_root=jnp.sqrt(masses)
+            masses=lines(metric_mass);mass_root=jnp.sqrt(masses)
             local=jnp.einsum('ki,lk,kj->lij',derivative,diagonal.line_q,derivative)
             block=dt*local/mass_root[:,:,None]/mass_root[:,None,:]
             diagonal_entries=lines(ratio)+dt*diagonal.other_diagonal/masses
@@ -374,7 +402,8 @@ def lagged_entropy_compiler(grid, *, collision_strength=1.,chunk_size=65536,
         return fraction*descent+jnp.sum(new_mass*_expm1_minus_x(shift))+.5*dt*fraction**2*curvature
     return LaggedEntropyCompiler(jax.jit(evaluate),jax.jit(correction,static_argnums=(4,)),
         jax.jit(objective_difference),jax.jit(prepare),jax.jit(apply),
-        grid,float(collision_strength),chunk_size,linear_max_steps,preconditioner_axis)
+        grid,float(collision_strength),chunk_size,linear_max_steps,preconditioner_axis,
+        reference_mass)
 
 
 def lagged_entropy_step(grid,f,dt,*,collision_strength=1.,rtol=1e-11,
@@ -389,6 +418,10 @@ def lagged_entropy_step(grid,f,dt,*,collision_strength=1.,rtol=1e-11,
     for the original kinetic ODE; KL is numerical entropy dissipation. It does
     not assert a continuum convergence or positivity of polynomial density
     interpolation. Reuse a compiler built with matching grid/D/linear budget/axis.
+    A compiler's fixed reference, when supplied, changes the congruence and
+    residual metric only. Its total population must match the actual old state
+    within relative 1e-9; no population or reference is repaired. The entropy
+    defect bound uses the dual norm of that same metric.
     """
     from time import perf_counter
     _check_preconditioner_axis(preconditioner_axis)
@@ -425,7 +458,23 @@ def lagged_entropy_step(grid,f,dt,*,collision_strength=1.,rtol=1e-11,
     if not np.isfinite(total_mass) or total_mass<=0:
         raise ValueError('positive finite total mass required')
     old=jnp.log(jnp.asarray(f));new_log=np.asarray(old).copy()
-    root=np.sqrt(population);scale=np.sqrt(total_mass)
+    if compiled.reference_population is None:
+        root=np.sqrt(population);scale=np.sqrt(total_mass)
+        residual_metric='entropy_population'
+    else:
+        reference=np.asarray(compiled.reference_population)
+        if (reference.shape!=(grid.size,) or not np.all(np.isfinite(reference))
+            or np.any(reference<=0)):
+            raise ValueError('positive finite reference population with exact grid shape required')
+        reference_total=float(reference.sum())
+        if not np.isfinite(reference_total) or reference_total<=0:
+            raise ValueError('positive finite reference total population required')
+        if abs(reference_total/total_mass-1)>1e-9:
+            raise ValueError('reference total population must match old total within relative 1e-9')
+        root=np.sqrt(reference);scale=np.sqrt(reference_total)
+        residual_metric='fixed_reference_population'
+    if not np.all(np.isfinite(root)) or np.any(root<=0) or not np.isfinite(scale) or scale<=0:
+        raise ValueError('positive finite population metric root and scale required')
     diagonal=prepare(old);jax.tree.map(lambda value:value.block_until_ready(),diagonal)
     if any(not np.all(np.isfinite(value)) or np.any(np.asarray(value)<0) for value in jax.tree.leaves(diagonal)):
         raise StepFailure('lagged preconditioner is not finite nonnegative')
@@ -483,5 +532,5 @@ def lagged_entropy_step(grid,f,dt,*,collision_strength=1.,rtol=1e-11,
         or not np.all(np.isfinite(new)) or np.any(np.asarray(new)<=0)):
         raise StepFailure(f'lagged entropy/finite check rejected step: deltaS={change:.3e}, identity={identity_error:.3e}')
     return LaggedEntropyStep(new,iteration,norm,change,identity_error,float(new.min()),
-        linear_iterations,maximum_linear_residual,'entropy_population',
+        linear_iterations,maximum_linear_residual,residual_metric,
         divergence,production,bound,tuple(history),residual_defect)

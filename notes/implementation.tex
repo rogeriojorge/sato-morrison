@@ -1522,6 +1522,73 @@ Thus the step is first-order consistent with the same fixed spatial ODE.
 This local statement does not supply a mesh-uniform error bound or a
 convergence theorem near vanishing populations.
 
+\paragraph{Fixed-reference congruence and dual residual bounds.}
+A numerical population reference is distinct from the constant density scale
+$f_{\rm ref}$ in the logarithm. Choose finite $n_i^{\rm r}>0$, fixed throughout
+the Newton solve and, when reused, the trajectory, with the same declared
+total population $N_{\rm r}=\sum_i n_i^{\rm r}=N_-:=\sum_i n_{-,i}$.
+Set $A_{\rm r}=\diag(\sqrt{n^{\rm r}})$ and
+$M(g)=\diag(w f_{\rm ref}e^g)$. The Newton equation is transformed exactly by
+\begin{equation}
+ H_{\rm r}v=-A_{\rm r}^{-1}R,
+ \qquad v=A_{\rm r}\delta g,
+ \qquad H_{\rm r}=A_{\rm r}^{-1}
+       [M(g)+\Delta t K_-]A_{\rm r}^{-1}
+       =\diag\!\left(\frac{n(g)}{n^{\rm r}}\right)
+          +\Delta t A_{\rm r}^{-1}K_-A_{\rm r}^{-1}.
+ \label{eq:fixedreferencecongruence}
+\end{equation}
+This is an SPD congruence in exact arithmetic. It changes neither $R$, its
+unique root, $K(f_-)$, the old-state channel covariances, the objective nor
+the entropy/KL identity. The log direction is recovered as
+$\delta g=A_{\rm r}^{-1}v$, and its objective descent is still
+$R^T\delta g=(A_{\rm r}^{-1}R)^Tv$. A fixed-reference preconditioner uses the
+same congruence on its auxiliary matrix, rather than replacing the old density
+inside the physical mobility. No spectral or floating-point conditioning
+guarantee follows from positive definiteness alone.
+
+The reported nonlinear norm for this option is
+\begin{equation}
+ \rho_{\rm r}(R)=\frac{\|A_{\rm r}^{-1}R\|_2}{\sqrt{N_{\rm r}}}.
+ \label{eq:fixedreferenceresidual}
+\end{equation}
+At a nonzero Newton residual, the independently checked linear residual
+is $\|A_{\rm r}^{-1}[R+(M+\Delta t K_-)\delta g]\|_2/
+\|A_{\rm r}^{-1}R\|_2$. It uses the same original population equation in
+the chosen metric; native recursive PCG convergence does not replace this
+check. The dual Cauchy bounds are
+\begin{align}
+ |(g_++\bm1)^TR|&\le
+   \sqrt{N_{\rm r}}\,\|A_{\rm r}(g_++\bm1)\|_2\,\rho_{\rm r}(R),\label{eq:fixedreferenceentropybound}\\
+ |c^T(n_+-n_-)|=|c^TR|&\le
+   \sqrt{N_{\rm r}}\,\|A_{\rm r}c\|_2\,\rho_{\rm r}(R)
+   \quad (K_-c=0).\label{eq:fixedreferenceinvariantbound}
+\end{align}
+The numerical entropy guard additionally accounts for roundoff in the scalar
+budget. These bounds control solver defects, not discretization error or
+pointwise relative density accuracy.
+
+Let $\rho_-$ denote the old-population norm with $A_-=\diag(\sqrt{n_-})$.
+For equal totals,
+\[
+ \rho_{\rm r}(R)\le
+ \sqrt{\max_i\frac{n_{-,i}}{n_i^{\rm r}}}\,\rho_-(R),\qquad
+ \rho_-(R)\le
+ \sqrt{\max_i\frac{n_i^{\rm r}}{n_{-,i}}}\,\rho_{\rm r}(R).
+\]
+For a fixed finite positive grid these are norm-equivalence bounds, but
+their constants can become arbitrarily large as tail populations vanish.
+Equal nominal stopping tolerances therefore do not imply equivalent accuracy.
+Both the chosen norm and the unchanged population equation must be identified
+when comparing results. Rescaling $n^{\rm r}$ by a constant $c>0$ would divide
+$\rho_{\rm r}$ by $c$; the total-population condition prevents this arbitrary
+loosening of the normalized criterion. The compiler copies and binds an
+optional finite positive reference with the exact nodal shape. Each host step
+rejects $|N_{\rm r}/N_- -1|>10^{-9}$ without renormalizing either population.
+Omitting the option retains the legacy $n^{\rm m}=n_-$ congruence and
+old-population stopping norm. No improved conditioning, successful refinement
+or new-integrator claim is implied by making the option available.
+
 The positive Hessian permits PCG after entropy scaling, unlike the generally
 nonsymmetric finite-step discrete-gradient Jacobian. Candidate Newton
 directions must pass an objective-descent check, a true Hessian-residual
@@ -1566,12 +1633,13 @@ where $v_i$ includes the velocity Jacobian and $C_{i,d}$ is the corresponding
 common-chart action column. The diagonal approximation is
 $\sum_d(D_d\circ D_d)^Tq_d$. The optional Cartesian $x$-line inverse instead
 retains $L_x=D_x^T\operatorname{diag}(q_x)D_x$ on each fixed
-$(y,z,u,\mu)$ line. Its entropy-scaled block is
+$(y,z,u,\mu)$ line. With $n^{\rm m}=n_-$ for the legacy scaling or
+$n^{\rm m}=n^{\rm r}$ for the fixed-reference option, its scaled block is
 \[
- B_x=\operatorname{diag}\!\left(\frac{n_+}{n_-}
-       +\Delta t\frac{\sum_{d\ne x}(D_d\circ D_d)^Tq_d}{n_-}\right)
-       +\Delta t\operatorname{diag}(n_-^{-1/2})L_x
-                   \operatorname{diag}(n_-^{-1/2}).
+ B_x=\operatorname{diag}\!\left(\frac{n_+}{n^{\rm m}}
+       +\Delta t\frac{\sum_{d\ne x}(D_d\circ D_d)^Tq_d}{n^{\rm m}}\right)
+       +\Delta t\operatorname{diag}((n^{\rm m})^{-1/2})L_x
+                   \operatorname{diag}((n^{\rm m})^{-1/2}).
 \]
 It is SPD for strictly positive finite populations: the first mass term is
 positive diagonal and the remaining terms are PSD. Batched Cholesky factors
@@ -2240,8 +2308,15 @@ Its entropy increase $6.9723\times10^{-5}$ splits into frozen-mobility
 production $6.3797\times10^{-5}$ and numerical KL $5.9261\times10^{-6}$.
 The full correction fractions and large negative log increments are retained
 in the public aggregate's partial-case record. The extreme evolved tails
-make finite-precision conditioning a concern; a positive exact discrete root
-does not guarantee convergence in binary64. This failure is not a physical
+make finite-precision conditioning a concern. In particular, the next
+old-population norm divides each residual component by the square root of
+that evolved nodal population. A neighbouring weak-form flux can remain much
+larger than a tiny target population, so this scaling can strongly amplify
+small absolute equation errors. This is separate from the observed gap between
+native recursive and recomputed linear residuals; neither observation proves
+an unattainable precision floor or failure of the positive exact discrete root.
+A positive exact root does not guarantee convergence in binary64, and a
+different residual metric requires its own validation. This failure is not a physical
 decay measurement or a converged dipole refinement. No clipping, kernel
 change or relaxed tolerance is used to turn it into a passing result.
 

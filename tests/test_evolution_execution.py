@@ -116,7 +116,7 @@ def test_scientific_anchor_includes_base_dt_and_functions(execution):
 @pytest.fixture(scope='module')
 def current_execution():
     constants = {'FIELDS', 'DT_VALUES', 'RELATIVE_TARGET', 'CASES', 'SEQUENCES'}
-    functions = {'select_names', 'compare', 'refinement_checks', 'require_finite'}
+    functions = {'select_names', 'compare', 'refinement_checks', 'require_finite', 'scaled_residual_norm'}
     body = []
     for node in ast.parse(EXAMPLE.read_text()).body:
         if isinstance(node, ast.FunctionDef) and node.name in functions:
@@ -182,3 +182,11 @@ def test_comparison_rejects_nonfinite_anywhere(current_execution, observable, va
     rows[position][observable]=value
     with pytest.raises(ValueError,match='finite'):
         current_execution['compare'](rows)
+
+
+def test_tail_scaled_residual_diagnostic_avoids_squared_norm_overflow(current_execution):
+    norm=current_execution['scaled_residual_norm']
+    # Individual scaled components fit float64, but their squared sum does not.
+    assert np.isfinite(norm(np.array([1e-20, -1e-20]), np.array([1e-237, 1.])))
+    np.testing.assert_allclose(norm(np.array([3., 4.]), np.array([1., 1.])), 5/np.sqrt(2))
+    assert norm(np.zeros(2), np.ones(2))==0.
