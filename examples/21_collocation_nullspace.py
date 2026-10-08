@@ -160,21 +160,21 @@ fig,ax=plt.subplots(1,2,figsize=(10.5,4),constrained_layout=True)
 for row in rows:
     s=arrays[row['field']+'_unweighted'];ax[0].semilogy(np.arange(1,len(s)+1),s/s[0],'.',ms=3,label=row['field'])
 ax[0].axhline(1e-12,color='k',ls=':',lw=1,label='selected numerical threshold')
-ax[0].set(xlabel='singular-value index',ylabel='s / s_max',title='Original rectangular pair factor');ax[0].legend(fontsize=8)
+ax[0].set(xlabel='singular-value index',ylabel=r'$s/s_{\max}$',title='Original rectangular pair factor');ax[0].legend(fontsize=8)
 x,y=np.meshgrid(np.linspace(.8,1.2,121),np.linspace(-.2,.2,121),indexing='ij');residue=angular_residue(x,y);vmax=np.max(np.abs(residue))
 picture=ax[1].pcolormesh(x,y,residue,cmap='RdBu_r',vmin=-vmax,vmax=vmax,shading='auto')
 grid_x,grid_y=np.meshgrid(spatial[0][0],spatial[1][0],indexing='ij');ax[1].scatter(grid_x,grid_y,s=25,c='k',label='3x3 Gauss nodes')
-ax[1].set(xlabel='x',ylabel='y',title='L phi of the fixed tensor polynomial');ax[1].legend(fontsize=8)
+ax[1].set(xlabel='x',ylabel='y',title=r'$L\phi$ of the fixed tensor polynomial');ax[1].legend(fontsize=8)
 fig.colorbar(picture,ax=ax[1],label='angular derivative')
-fig.suptitle('Nodal cancellation; positive off-grid angular residue\n'
-    f'Integral of (L phi)^2 = {closed:.8g}; Gauss 3 samples zero, Gauss 4+ is exact',fontsize=11)
+fig.suptitle('Nodal cancellation; positive squared-residue integral\n'
+    rf'$\int (L\phi)^2 = {closed:.8g}$; Gauss 3 samples zero, Gauss 4+ is exact',fontsize=11)
 fig.savefig(OUTPUT/'collocation_nullspace.png',dpi=180);plt.close(fig)
 fig,axes=plt.subplots(1,3,figsize=(12,3.8),constrained_layout=True)
 for ax,name in zip(axes,('unweighted','physical','entropy_scaled')):
     for row in rows:
         s=arrays[row['field']+'_'+name];ax.semilogy(np.arange(1,len(s)+1),s/s[0],'.',ms=3,label=row['field'])
     for threshold in THRESHOLDS:ax.axhline(threshold,color='0.5',ls=':',lw=.7)
-    ax.set(xlabel='singular-value index',ylabel='s / s_max',title=name.replace('_',' '));ax.legend(fontsize=8)
+    ax.set(xlabel='singular-value index',ylabel=r'$s/s_{\max}$',title=name.replace('_',' '));ax.legend(fontsize=8)
 fig.savefig(OUTPUT/'factor_scales.png',dpi=180);plt.close(fig)
 print('Angular squared integral: Gauss3',overintegration[0]['angular_residue_squared_integral'],'closed form',closed,flush=True)
 if not passed:raise RuntimeError('Finite-grid factor checks unresolved; retain diagnostics')
