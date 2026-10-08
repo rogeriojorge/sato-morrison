@@ -1,6 +1,8 @@
 """Independent exact equations and physical 3V weak-moment checks."""
 import numpy as np
 import pytest
+import jax
+jax.config.update('jax_enable_x64',True)
 from sato_morrison.controls import (GaussianMixture, lorentz_evolve,
     dougherty_evolve, dougherty_rhs, mixture_diagnostics, landau_tensor,
     landau_gaussian_analytic, landau_gaussian_quadrature,
@@ -346,3 +348,131 @@ def test_encounter_explicit_flight_budget_and_failure_evidence():
     for factor in [0.,-1.,float('nan')]:
         with pytest.raises(ValueError):
             encounter_relative(1.4,.6,1.1,.4,flight_time_factor=factor,**inputs)
+
+
+@pytest.fixture(scope='module')
+def landau_dense_reference():
+    """Explicit unordered physical pair Gram; no production Landau tensor used."""
+    from sato_morrison.controls import landau_velocity_grid
+    grid=landau_velocity_grid(3,2.)
+    v,w,D=map(np.asarray,(grid.velocity,grid.weights,grid.derivative));n=len(v)
+    G=np.stack([np.kron(np.kron(D if d==0 else np.eye(3),D if d==1 else np.eye(3)),
+                        D if d==2 else np.eye(3)) for d in range(3)],axis=1)
+    i,j=np.triu_indices(n,1);r=v[i]-v[j];length=np.linalg.norm(r,axis=1)
+    U=(np.eye(3)-r[:,:,None]*r[:,None,:]/length[:,None,None]**2)/length[:,None,None]
+    delta=G[i]-G[j]
+    def matrix(f):
+        population=w*f
+        return np.einsum('p,pdi,pde,pej->ij',population[i]*population[j],delta,U,delta,optimize=True)
+    f=np.exp(-.5*np.sum(v*v/np.array([1.15,1.15,.7]),axis=1));f/=w@f
+    return grid,v,w,f,matrix
+
+
+def test_landau_nodal_pair_gram_raw_nullspace_and_maxwellians(landau_dense_reference):
+    from sato_morrison.controls import landau_entropy_compiler
+    grid,v,w,f,matrix=landau_dense_reference
+    c=landau_entropy_compiler(grid)
+    expected=matrix(f);eye=np.eye(grid.size)
+    actual=np.column_stack([np.asarray(c.apply(np.log(f),h)) for h in eye])
+    np.testing.assert_allclose(actual,expected,rtol=2e-14,atol=2e-16)
+    np.testing.assert_allclose(actual,actual.T,atol=2e-16)
+    nulls=np.column_stack((np.ones(grid.size),v,np.sum(v*v,axis=1)/2))
+    np.testing.assert_allclose(actual@nulls,0.,atol=2e-15)
+    eigen=np.linalg.eigvalsh(actual)
+    assert np.min(eigen)>-2e-15 and np.count_nonzero(abs(eigen)<1e-12*eigen[-1])==5
+    for density,temperature,drift in [(1.,.7,np.zeros(3)),(1.8,1.3,np.array([.2,-.4,.3]))]:
+        logf=np.log(density/(2*np.pi*temperature)**1.5)-np.sum((v-drift)**2,axis=1)/(2*temperature)
+        np.testing.assert_allclose(c.apply(logf,logf),0.,atol=2e-15)
+
+
+@pytest.mark.parametrize('fixed_reference',[False,True])
+def test_landau_full_density_step_independent_dense_root_budgets(landau_dense_reference,fixed_reference):
+    from scipy.linalg import cho_factor,cho_solve
+    from sato_morrison.controls import landau_entropy_compiler,landau_entropy_step
+    grid,v,w,f,matrix=landau_dense_reference
+    old=np.log(f);K=matrix(f);dt=.1;g=old.copy()
+    # Independent unscaled convex root; its Hessian is not the production PCG path.
+    for iteration in range(30):
+        n=w*np.exp(g);R=n-w*f+dt*K@g
+        if np.linalg.norm(R/np.sqrt(w*f))<1e-13:break
+        direction=cho_solve(cho_factor(np.diag(n)+dt*K),-R)
+        for backtrack in range(30):
+            shift=2.**(-backtrack)*direction
+            change=R@shift+np.sum(n*(np.expm1(shift)-shift))+.5*dt*shift@K@shift
+            if change<=1e-4*(R@shift):g+=shift;break
+        else:pytest.fail('Independent Landau dense objective search failed')
+    else:pytest.fail('Independent Landau dense root did not converge')
+    reference=w*f if fixed_reference else None
+    c=landau_entropy_compiler(grid,reference_population=reference)
+    a=landau_entropy_step(grid,f,dt,compiled=c,rtol=1e-12,linear_rtol=1e-9)
+    np.testing.assert_allclose(a.f,np.exp(g),rtol=1e-10,atol=1e-13)
+    new=np.asarray(a.f);ell=np.log(new);nnew=w*new;delta=ell-old
+    R=nnew-w*f+dt*K@ell
+    invariants=np.column_stack((np.ones(grid.size),v,np.sum(v*v,axis=1)/2))
+    np.testing.assert_allclose((nnew-w*f)@invariants,0.,atol=3e-13)
+    entropy=-(nnew@ell-w*f@old);production=dt*ell@K@ell
+    KL=np.sum(w*f*(np.expm1(delta)-delta));defect=(ell+1)@R
+    np.testing.assert_allclose(entropy,production+KL-defect,atol=4e-15)
+    assert entropy>0 and KL>0 and production>0 and new.min()>0
+    assert abs(defect)<=a.entropy_defect_bound
+    np.testing.assert_allclose(a.entropy_change,entropy,atol=2e-15)
+    # A full evolving density is not restricted to a quadratic Gaussian logarithm.
+    basis=np.column_stack((invariants,v*v,v[:,0]*v[:,1],v[:,0]*v[:,2],v[:,1]*v[:,2]))
+    scale=np.sqrt(w*f);coeff=np.linalg.lstsq(scale[:,None]*basis,scale*ell,rcond=None)[0]
+    assert np.linalg.norm(scale*(ell-basis@coeff))>1e-4
+
+
+def test_landau_full_nodal_first_order_against_independent_ode(landau_dense_reference):
+    from scipy.integrate import solve_ivp
+    from sato_morrison.controls import landau_entropy_compiler,landau_entropy_step
+    grid,v,w,f,matrix=landau_dense_reference
+    old=np.log(f)
+    def rhs(time,ell):return -(matrix(np.exp(ell))@ell)/(w*np.exp(ell))
+    reference=solve_ivp(rhs,[0,.08],old,method='DOP853',rtol=2e-12,atol=2e-13)
+    assert reference.success
+    c=landau_entropy_compiler(grid,reference_population=w*f);errors=[]
+    for dt in [.04,.02,.01]:
+        state=f.copy()
+        for step in range(round(.08/dt)):
+            state=np.asarray(landau_entropy_step(grid,state,dt,compiled=c,rtol=1e-12,linear_rtol=1e-9).f)
+        errors.append(np.linalg.norm(np.sqrt(w*f)*(np.log(state)-reference.y[:,-1])))
+    assert errors[1]<.65*errors[0] and errors[2]<.65*errors[1]
+
+
+def test_landau_initial_gaussian_covariance_and_fourth_cumulant_convergence():
+    from sato_morrison.controls import landau_velocity_grid,landau_entropy_compiler
+    covariance=np.array([1.15,1.15,.7]);rate=np.diag(landau_gaussian_analytic(np.diag(covariance)))
+    # Independent Laplace/COM fourth-cumulant oracle; a Gaussian closure predicts zero.
+    fourth=np.array([.1197406766201535,.1197406766201535,-.1166031877840004])
+    errors=[];fourth_errors=[]
+    for order in [12,16,20]:
+        grid=landau_velocity_grid(order,5.);v,w=map(np.asarray,(grid.velocity,grid.weights))
+        f=np.exp(-.5*np.sum(v*v/covariance,axis=1));f/=w@f
+        c=landau_entropy_compiler(grid);R=np.asarray(c.apply(np.log(f),np.log(f)))
+        measured=(w*f)@(v*v);dA=-R@(v*v);dC=-R@(v**4)-6*measured*dA
+        errors.append(np.linalg.norm(dA-rate)/np.linalg.norm(rate))
+        fourth_errors.append(np.linalg.norm(dC-fourth)/np.linalg.norm(fourth))
+    assert errors[2]<errors[1]<errors[0] and errors[-1]<.01
+    assert fourth_errors[2]<fourth_errors[1]<fourth_errors[0] and fourth_errors[-1]<.025
+    # The unresolved2.05% fourth-moment error is deliberately not relabeled1%.
+
+
+def test_landau_visible_failure_and_bound_kernel_reference_validation(landau_dense_reference):
+    from sato_morrison.controls import (landau_velocity_grid,landau_entropy_compiler,
+        landau_entropy_step,LandauVelocityGrid)
+    from sato_morrison.solver import StepFailure
+    grid,v,w,f,matrix=landau_dense_reference
+    for order,extent in [(2,3.),(True,3.),(4,np.nan),(4,0.)]:
+        with pytest.raises(ValueError):landau_velocity_grid(order,extent)
+    with pytest.raises(ValueError):LandauVelocityGrid(grid.shape,v,-w,np.asarray(grid.derivative))
+    with pytest.raises(ValueError):LandauVelocityGrid(grid.shape,v,w,np.zeros_like(grid.derivative))
+    for bad in [np.zeros(grid.size),np.full(grid.size,np.nan),np.ones(grid.size+1)]:
+        with pytest.raises(ValueError):landau_entropy_compiler(grid,reference_population=bad)
+    c=landau_entropy_compiler(grid,reference_population=w*f)
+    with pytest.raises(StepFailure):landau_entropy_step(grid,f,.1,compiled=c,max_steps=0)
+    with pytest.raises(ValueError):landau_entropy_step(grid,f,.1,compiled=c,softening=.1)
+    with pytest.raises(ValueError):landau_entropy_step(grid,f,.1,compiled=c,gamma=.7)
+    with pytest.raises(ValueError):landau_entropy_step(grid,2*f,.1,compiled=c)
+    zero=landau_entropy_compiler(grid,gamma=0.)
+    a=landau_entropy_step(grid,f,.1,compiled=zero,gamma=0.)
+    np.testing.assert_allclose(a.f,f,rtol=2e-15,atol=0.)

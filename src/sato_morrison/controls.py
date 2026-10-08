@@ -1,13 +1,14 @@
 """Independent homogeneous controls and full three-velocity Coulomb moments.
 
-The Landau routines evaluate weak instantaneous moments, not a kinetic time
-integrator. Gaussian relative velocities retain all three physical dimensions.
+The Gaussian Landau routines evaluate weak instantaneous moments. The nodal
+Landau evolution advances a full 3V density, with no Gaussian closure.
 The Dougherty solution is exact for any positive finite Gaussian mixture.
 """
 from dataclasses import dataclass
 import numpy as np
 from scipy.integrate import quad, solve_ivp
 from scipy.special import logsumexp
+from .solver import LaggedEntropyCompiler
 
 
 def lorentz_evolve(xi, population, nu, time, degree):
@@ -532,3 +533,156 @@ def encounter_reverse_incoming(result, *, field, mass=1., charge=1., start_dista
     parallel=rotated[2];perpendicular=np.linalg.norm(rotated[:2])
     phase=(np.arctan2(rotated[1],rotated[0])-omega*start_distance/parallel)%(2*np.pi)
     return np.array([impact,parallel,perpendicular,phase]),float(angle)
+
+
+@dataclass(frozen=True,eq=False)
+class LandauVelocityGrid:
+    shape:tuple
+    velocity:object
+    weights:object
+    derivative:object
+    def __post_init__(self):
+        import jax
+        import jax.numpy as jnp
+        if not jax.config.jax_enable_x64:
+            raise ValueError('Landau evolution requires JAX x64; enable jax_enable_x64 before constructing its grid')
+        if (type(self.shape) is not tuple or len(self.shape)!=3
+            or any(type(n) is not int or n<3 for n in self.shape)
+            or len(set(self.shape))!=1):
+            raise ValueError('Landau grid needs three equal integer axes of length>=3')
+        velocity,weights,derivative=map(np.asarray,(self.velocity,self.weights,self.derivative))
+        n=self.shape[0];size=int(np.prod(self.shape))
+        if (velocity.shape!=(size,3) or weights.shape!=(size,) or derivative.shape!=(n,n)
+            or not all(np.all(np.isfinite(a)) for a in (velocity,weights,derivative))
+            or np.any(weights<=0)):
+            raise ValueError('Finite physical 3V nodes/derivatives and positive quadrature weights required')
+        axes=[np.unique(velocity[:,d]) for d in range(3)]
+        if any(len(a)!=n for a in axes) or not all(np.array_equal(a,axes[0]) for a in axes):
+            raise ValueError('Three equal Cartesian velocity axes required')
+        expected=np.stack(np.meshgrid(*axes,indexing='ij'),axis=-1).reshape(-1,3)
+        if not np.array_equal(velocity,expected):raise ValueError('Velocity tensor ordering must be ij')
+        x=axes[0]
+        for h,dh in [(np.ones(n),np.zeros(n)),(x,np.ones(n)),(x*x,2*x)]:
+            if not np.allclose(derivative@h,dh,rtol=1e-11,atol=1e-11):
+                raise ValueError('Velocity derivative must reproduce quadratics without repairs')
+        for name,a in [('velocity',velocity),('weights',weights),('derivative',derivative)]:
+            object.__setattr__(self,name,jnp.array(a.copy()))
+    @property
+    def size(self):return int(np.prod(self.shape))
+
+def landau_velocity_grid(order=12,extent=5.):
+    """Positive 3V Gauss cube with quadratic-exact global polynomial gradients.
+
+    Density is represented at every node, with natural no-flux weak collision
+    boundary. Positivity concerns nodal/quadrature densities, not polynomial
+    interpolation between nodes. Grid and tail convergence must be demonstrated.
+    """
+    from .collisions import derivative_matrix
+    if type(order) is not int or order<3 or not np.isfinite(extent) or extent<=0:
+        raise ValueError('Need integer order>=3 and finite positive velocity extent')
+    x,w=np.polynomial.legendre.leggauss(order);x=extent*x;w=extent*w
+    v=np.stack(np.meshgrid(x,x,x,indexing='ij'),axis=-1).reshape(-1,3)
+    weights=np.prod(np.meshgrid(w,w,w,indexing='ij'),axis=0).ravel()
+    return LandauVelocityGrid((order,)*3,v,weights,derivative_matrix(x,method='polynomial'))
+
+@dataclass(frozen=True,eq=False)
+class LandauEntropyCompiler(LaggedEntropyCompiler):
+    """Physical Landau kernels bound to one grid, Gamma, softening and budgets."""
+    softening:float=0.
+
+
+def landau_entropy_compiler(grid,*,gamma=1.,softening=0.,chunk_size=128,
+                            linear_max_steps=1000,reference_population=None):
+    """Matrix-free Coulomb weak Gram, convex residual and SPD PCG correction.
+
+    h^T K(f)k=Gamma sum(i<j) w_i w_j f_i f_j Delta grad h^T U Delta grad k.
+    U=(I-rr^T/|r|^2)/|r| in physical 3V. Coincident samples contribute zero;
+    the smooth weak integrand tends to zero, but finite quadrature error remains.
+    Optional softening changes the denominator to sqrt(r^2+epsilon^2), not the
+    energy projector. It is a different finite-epsilon kernel; convergence to
+    zero must be checked. No Maxwellian/Gaussian closure is imposed.
+
+    Polynomial reproduction gives exact discrete constant/momentum/energy null
+    directions. All pair cross terms remain in K. The diagonal preconditioner
+    drops correlations only as an auxiliary SPD approximation. This compiler
+    reuses the distribution-independent convex entropy-variable host solver.
+    """
+    import jax
+    import jax.numpy as jnp
+    from solvax import pcg
+    from .solver import _population_difference,_expm1_minus_x
+    if not isinstance(grid,LandauVelocityGrid) or not np.isfinite(gamma) or gamma<0 or not np.isfinite(softening) or softening<0:
+        raise ValueError('Physical 3V grid, finite nonnegative gamma/softening required')
+    if type(chunk_size) is not int or chunk_size<1 or type(linear_max_steps) is not int or linear_max_steps<0:
+        raise ValueError('Positive integer chunk and nonnegative linear budget required')
+    N=grid.size;chunks=(N+chunk_size-1)//chunk_size;pad=chunks*chunk_size-N
+    v=jnp.pad(grid.velocity,((0,pad),(0,0)));D=grid.derivative
+    if reference_population is not None:
+        a=np.asarray(reference_population)
+        if a.shape!=(N,) or not np.all(np.isfinite(a)) or np.any(a<=0) or not np.isfinite(a.sum()):raise ValueError('Invalid fixed reference populations')
+        reference_population=jnp.array(a.copy())
+    def gradient(h):
+        h=h.reshape(grid.shape)
+        return jnp.stack([jnp.moveaxis(jnp.tensordot(D,h,axes=(1,d)),0,d).ravel() for d in range(3)],axis=-1)
+    def adjoint(g):
+        return sum(jnp.moveaxis(jnp.tensordot(D.T,g[:,d].reshape(grid.shape),axes=(1,d)),0,d).ravel() for d in range(3))
+    def geometry(start):
+        target=jax.lax.dynamic_slice(v,(start,0),(chunk_size,3))
+        w=target[:,None,:]-v[None,:,:];r2=jnp.sum(w*w,axis=-1)
+        safe=jnp.where(r2>0,r2,1.)
+        inv=jnp.where(r2>0,1/jnp.sqrt(safe+softening**2),0.)
+        return w,safe,inv
+    def apply(old_log,h):
+        n=jnp.pad(grid.weights*jnp.exp(old_log),(0,pad));g=jnp.pad(gradient(h),((0,pad),(0,0)))
+        def body(i,out):
+            start=i*chunk_size;w,r2,inv=geometry(start)
+            target_g=jax.lax.dynamic_slice(g,(start,0),(chunk_size,3))
+            delta=target_g[:,None,:]-g[None,:,:]
+            projected=(delta-w*jnp.sum(w*delta,axis=-1)[...,None]/r2[...,None])*inv[...,None]
+            ni=jax.lax.dynamic_slice(n,(start,),(chunk_size,))
+            flux=gamma*ni[:,None]*jnp.sum(n[None,:,None]*projected,axis=1)
+            return jax.lax.dynamic_update_slice(out,flux,(start,0))
+        return adjoint(jax.lax.fori_loop(0,chunks,body,jnp.zeros((N+pad,3)))[:N])
+    def prepare(old_log):
+        n=jnp.pad(grid.weights*jnp.exp(old_log),(0,pad))
+        def body(i,out):
+            start=i*chunk_size;w,r2,inv=geometry(start)
+            diag=(1-w*w/r2[...,None])*inv[...,None]
+            ni=jax.lax.dynamic_slice(n,(start,),(chunk_size,))
+            q=gamma*ni[:,None]*jnp.sum(n[None,:,None]*diag,axis=1)
+            return jax.lax.dynamic_update_slice(out,q,(start,0))
+        q=jax.lax.fori_loop(0,chunks,body,jnp.zeros((N+pad,3)))[:N]
+        return sum(jnp.moveaxis(jnp.tensordot((D*D).T,q[:,d].reshape(grid.shape),axes=(1,d)),0,d).ravel() for d in range(3))
+    def evaluate(new_log,old_log,dt):return _population_difference(new_log,old_log,grid.weights)+dt*apply(old_log,new_log)
+    def correction(new_log,old_log,dt,diagonal,linear_rtol):
+        oldmass=grid.weights*jnp.exp(old_log)
+        metric=oldmass if reference_population is None else reference_population
+        root=jnp.sqrt(metric);ratio=grid.weights*jnp.exp(new_log)/metric
+        value=evaluate(new_log,old_log,dt)/root
+        def operator(x):return ratio*x+dt*apply(old_log,x/root)/root
+        pre=ratio+dt*diagonal/metric
+        answer=pcg(operator,-value,precond=lambda x:x/pre,rtol=linear_rtol,atol=0.,max_steps=linear_max_steps)
+        d=answer.x/root
+        true=jnp.linalg.norm(operator(answer.x)+value)/jnp.maximum(jnp.linalg.norm(value),1e-300)
+        return d,answer.iterations,true,answer.converged,jnp.vdot(value,answer.x).real,jnp.vdot(d,apply(old_log,d)).real,answer.status
+    def objective(new_log,old_log,dt,direction,fraction,descent,curvature):
+        return fraction*descent+jnp.sum(grid.weights*jnp.exp(new_log)*_expm1_minus_x(fraction*direction))+.5*dt*fraction**2*curvature
+    compiled=LandauEntropyCompiler(jax.jit(evaluate),jax.jit(correction,static_argnums=(4,)),jax.jit(objective),jax.jit(prepare),jax.jit(apply),grid,float(gamma),chunk_size,linear_max_steps,None,reference_population,float(softening))
+    return compiled
+
+def landau_entropy_step(grid,f,dt,*,gamma=1.,softening=0.,compiled=None,chunk_size=128,linear_max_steps=1000,**kwargs):
+    """Advance the full 3V density using first-order lagged-mobility backward Euler.
+
+    Number, three momenta and energy are conserved by the unrepaired weak Gram.
+    Entropy increase splits into frozen Landau-Gram dissipation and positive
+    time-discretization KL. The reused host checks strict nodal positivity, true
+    PCG residuals, objective descent and entropy/finite budgets; failures raise
+    StepFailure and return no accepted step. Kernel/grid/tail/time convergence
+    and physical normalization are separate from these discrete guarantees.
+    """
+    from .solver import lagged_entropy_step
+    if compiled is not None and (not isinstance(compiled,LandauEntropyCompiler)
+        or compiled.softening!=float(softening)):
+        raise ValueError('Landau compiler kernel configuration mismatch')
+    if compiled is None:compiled=landau_entropy_compiler(grid,gamma=gamma,softening=softening,chunk_size=chunk_size,linear_max_steps=linear_max_steps)
+    return lagged_entropy_step(grid,f,dt,collision_strength=gamma,compiled=compiled,chunk_size=chunk_size,linear_max_steps=linear_max_steps,**kwargs)
