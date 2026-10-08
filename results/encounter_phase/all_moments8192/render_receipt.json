@@ -1,0 +1,14 @@
+{
+  "plot_producer_commit": "fc20e884a5051df195f27aa4a122abaaf9ffd556",
+  "scientific_producer_commit": "b7c68b9c392e4544f2601930705cc35aef07d431",
+  "status": "passed_saved_data_render",
+  "source_sha256": "71ba21af69c1c64f418eea4af2a4395a3390034316f26a8fc22415c7fb05e308",
+  "render_program": "from pathlib import Path\nfrom time import perf_counter\nimport json,hashlib,subprocess\nimport numpy as np\nimport matplotlib\nmatplotlib.use('Agg')\nimport matplotlib.pyplot as plt\nROOT=Path.cwd();OUTPUT=ROOT/'results/encounter_phase/all_moments8192'\nstarted=perf_counter()\ns=json.loads((OUTPUT/'summary.json').read_text());results=s['results'];levels=results['phase_levels'];final_order=levels[-1]['phase_order'];ORDERS=s['inputs']['phase_orders'];PHASE_TARGET=s['inputs']['phase_relative_target'];passed=results['status']=='passed_conditional_all_moment_checks'\nrows=json.loads((OUTPUT/'nodes.json').read_text());rows=sorted([r for r in rows if r['max_step']==s['inputs']['max_step']],key=lambda r:r['master_phase_index']);indices=[r['master_phase_index'] for r in rows]\nassert len(rows)==final_order and all(r['status']=='outgoing_event' for r in rows)\nsecond=np.array([r['moments'][1] for r in rows]);ranked=np.sort(second)[::-1];total=second.sum()\nsource=ROOT/'examples/24_encounter_phase.py';body=source.read_text();plot=body[body.index('fig,axes=plt.subplots(1,3,'):body.index(\"print(f'Finished:\")]\nexec(compile(plot,str(source),'exec'))\nsha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()\nreceipt={'plot_producer_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'scientific_producer_commit':s['commit'],'status':'passed_saved_data_render','source_sha256':sha(source),'render_program':Path(__file__).read_text(),'input_sha256':{p.name:sha(p) for p in [OUTPUT/'summary.json',OUTPUT/'nodes.json']},'output_sha256':sha(OUTPUT/'phase_convergence.png'),'wall_s':perf_counter()-started,'scope':'Execute the committed plotting section against recorded physical arrays. Lower error-axis limit changed to zero; no trajectories, moments, stopping criteria or controls changed. Study remains unresolved.'}\n(OUTPUT/'render_receipt.json').write_text(json.dumps(receipt,indent=2,allow_nan=False)+'\\n')\nprint('Rendered saved phase evidence in',receipt['wall_s'],'seconds')\n",
+  "input_sha256": {
+    "summary.json": "7b63e3ab2d94c16f4b29393f4e849df8786ba67ad5c11fee6b9bf18e44fc52e2",
+    "nodes.json": "b8cca80bd083af11807ed03397c9c5c06f95d676f7df57a649bda7d84a125df6"
+  },
+  "output_sha256": "7ccda4417d9cc572c36fbb78a8c49806bf030ae13348610a056902b0e827f023",
+  "wall_s": 0.3791904160170816,
+  "scope": "Execute the committed plotting section against recorded physical arrays. Lower error-axis limit changed to zero; no trajectories, moments, stopping criteria or controls changed. Study remains unresolved."
+}

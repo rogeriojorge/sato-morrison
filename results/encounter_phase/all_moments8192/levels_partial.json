@@ -1,0 +1,200 @@
+[
+  {
+    "phase_order": 32,
+    "complete": true,
+    "missing_count": 0,
+    "missing_phase_weight": 0.0,
+    "phase_averaged_moments": [
+      0.0066156314134243974,
+      0.0038766798438557375,
+      -0.00029010164435467326
+    ],
+    "known_positive_second_moment_contribution": 0.0038766798438557375,
+    "max_energy_error": 4.733417312530026e-11,
+    "reflected_count": 1,
+    "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+    "moment_relative_changes": [
+      null,
+      null,
+      null
+    ],
+    "second_moment_relative_change": null,
+    "successive_passes": 0
+  },
+  {
+    "phase_order": 64,
+    "complete": true,
+    "missing_count": 0,
+    "missing_phase_weight": 0.0,
+    "phase_averaged_moments": [
+      0.0029306643459688004,
+      0.002479662588478165,
+      0.00014424577590866838
+    ],
+    "known_positive_second_moment_contribution": 0.002479662588478165,
+    "max_energy_error": 4.733417312530026e-11,
+    "reflected_count": 1,
+    "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+    "moment_relative_changes": [
+      1.2573828430827836,
+      0.5633900603529124,
+      3.0111621468787826
+    ],
+    "second_moment_relative_change": 0.5633900603529124,
+    "successive_passes": 0
+  },
+  {
+    "phase_order": 128,
+    "complete": true,
+    "missing_count": 0,
+    "missing_phase_weight": 0.0,
+    "phase_averaged_moments": [
+      0.0010465978949588024,
+      0.002144580825193513,
+      0.00041354887805675195
+    ],
+    "known_positive_second_moment_contribution": 0.002144580825193513,
+    "max_energy_error": 4.733417312530026e-11,
+    "reflected_count": 1,
+    "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+    "moment_relative_changes": [
+      1.8001817699854643,
+      0.1562458077346731,
+      0.6512001759345281
+    ],
+    "second_moment_relative_change": 0.1562458077346731,
+    "successive_passes": 0
+  },
+  {
+    "phase_order": 256,
+    "complete": true,
+    "missing_count": 0,
+    "missing_phase_weight": 0.0,
+    "phase_averaged_moments": [
+      0.000758705889342269,
+      0.002107877610200845,
+      0.0001551015713481328
+    ],
+    "known_positive_second_moment_contribution": 0.002107877610200845,
+    "max_energy_error": 4.8894286401396453e-11,
+    "reflected_count": 1,
+    "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+    "moment_relative_changes": [
+      0.3794513917192739,
+      0.01741240327002236,
+      1.666310047423839
+    ],
+    "second_moment_relative_change": 0.01741240327002236,
+    "successive_passes": 0
+  },
+  {
+    "phase_order": 512,
+    "complete": true,
+    "missing_count": 0,
+    "missing_phase_weight": 0.0,
+    "phase_averaged_moments": [
+      0.000872824033803527,
+      0.0021944134238406562,
+      0.00013702404832167595
+    ],
+    "known_positive_second_moment_contribution": 0.0021944134238406562,
+    "max_energy_error": 5.1297220855086337e-11,
+    "reflected_count": 1,
+    "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+    "moment_relative_changes": [
+      0.13074587779619512,
+      0.039434599105011216,
+      0.13192956453905297
+    ],
+    "second_moment_relative_change": 0.039434599105011216,
+    "successive_passes": 0
+  },
+  {
+    "phase_order": 1024,
+    "complete": true,
+    "missing_count": 0,
+    "missing_phase_weight": 0.0,
+    "phase_averaged_moments": [
+      0.0008698157402705624,
+      0.002189089732466879,
+      0.00013717336525140132
+    ],
+    "known_positive_second_moment_contribution": 0.002189089732466879,
+    "max_energy_error": 5.546454939548305e-11,
+    "reflected_count": 2,
+    "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+    "moment_relative_changes": [
+      0.003458541152668582,
+      0.0024319201240680854,
+      0.0010885271309901468
+    ],
+    "second_moment_relative_change": 0.0024319201240680854,
+    "successive_passes": 1
+  },
+  {
+    "phase_order": 2048,
+    "complete": true,
+    "missing_count": 0,
+    "missing_phase_weight": 0.0,
+    "phase_averaged_moments": [
+      0.000855420361264134,
+      0.002183537910193605,
+      0.0001308897735471688
+    ],
+    "known_positive_second_moment_contribution": 0.002183537910193605,
+    "max_energy_error": 5.546454939548305e-11,
+    "reflected_count": 5,
+    "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+    "moment_relative_changes": [
+      0.016828426886115983,
+      0.002542581123669092,
+      0.04800674287948161
+    ],
+    "second_moment_relative_change": 0.002542581123669092,
+    "successive_passes": 0
+  },
+  {
+    "phase_order": 4096,
+    "complete": true,
+    "missing_count": 0,
+    "missing_phase_weight": 0.0,
+    "phase_averaged_moments": [
+      0.0008019386219616489,
+      0.0021851530596205906,
+      0.00011033232844589808
+    ],
+    "known_positive_second_moment_contribution": 0.0021851530596205906,
+    "max_energy_error": 5.546454939548305e-11,
+    "reflected_count": 10,
+    "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+    "moment_relative_changes": [
+      0.06669056438716171,
+      0.0007391470450431198,
+      0.1863229516755024
+    ],
+    "second_moment_relative_change": 0.0007391470450431198,
+    "successive_passes": 0
+  },
+  {
+    "phase_order": 8192,
+    "complete": true,
+    "missing_count": 0,
+    "missing_phase_weight": 0.0,
+    "phase_averaged_moments": [
+      0.000822975984981859,
+      0.0021829725865004763,
+      0.00011881218819111327
+    ],
+    "known_positive_second_moment_contribution": 0.0021829725865004763,
+    "max_energy_error": 5.546454939548305e-11,
+    "reflected_count": 19,
+    "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+    "moment_relative_changes": [
+      0.025562547880025648,
+      0.0009988550170526179,
+      0.0713719684345436
+    ],
+    "second_moment_relative_change": 0.0009988550170526179,
+    "successive_passes": 0
+  }
+]

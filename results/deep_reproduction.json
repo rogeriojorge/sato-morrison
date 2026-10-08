@@ -7692,6 +7692,16 @@
       "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37813334304/job/113435502998",
       "log_sha256": "39e8ea7f2687b9b09a3a85b98e187be9d69782d08e9bdc61b6d09abc8b46760a",
       "scope": "Full suite at diagnostic-only source change; successful-state arithmetic unchanged, explicit underflow failure reporting test included."
+    },
+    {
+      "source_commit": "b7c68b9c392e4544f2601930705cc35aef07d431",
+      "command": "python -m pytest -q",
+      "passed": 247,
+      "elapsed_s": 138.26,
+      "environment": "Fresh Ubuntu CI installation",
+      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37819967504",
+      "log_sha256": "4b916f4bedce8853f1f635b1063b9a89f8d2120c6b426de6e1c4acf10845f14b",
+      "scope": "Full suite on main, including all-three-moment experiment source. Physics source and diagnostic-only solver unchanged."
     }
   ],
   "additional_experiments": [
@@ -7977,6 +7987,21 @@
       "status": "passed",
       "checks_wall_s": 1.1220145410043187,
       "scope": "Equations and saved three-field relaxation added; exact orbit, magnetic-moment populations and uniform modes checked. No new collision solve. All visible figure layout inspected."
+    },
+    {
+      "command": "MPLBACKEND=Agg python examples/24_encounter_phase.py",
+      "cwd": "${REPOSITORY}",
+      "producer_commit": "b7c68b9c392e4544f2601930705cc35aef07d431",
+      "evidence_path": "results/encounter_phase/all_moments8192/summary.json",
+      "evidence_sha256": "7b63e3ab2d94c16f4b29393f4e849df8786ba67ad5c11fee6b9bf18e44fc52e2",
+      "exit_code": 1,
+      "status": "unresolved",
+      "checks_wall_s": 477.4366595839965,
+      "independent_evidence_path": "results/encounter_phase/all_moments8192/independent_audit.json",
+      "independent_evidence_sha256": "dfd389bff8282be2331ffa797f759f149b4631c67f8caa653f673c5ead671fec",
+      "render_receipt_path": "results/encounter_phase/all_moments8192/render_receipt.json",
+      "render_receipt_sha256": "09401f98f49f569191d7b93c61449c5ed783faadb5f315b32f1317543fe6a1e0",
+      "scope": "8192 phases; all three whole-grid half-step checks pass, but mean/cross angular changes2.56%/7.14% fail1% and twoCartesian controls at onephase fail. Exact4096row cache retained;12288newrelative solves. No post-outcome extension or replacement. Continuous coverage/rates unresolved."
     }
   ]
 }

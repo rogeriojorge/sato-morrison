@@ -1,0 +1,967 @@
+{
+  "model": "fixed-triple screened encounter gyrophase convergence",
+  "boundary": "first outgoing relative z=+/-24 plane; transmitted and reflected exits; fixed finite flight budget",
+  "units": "normalized",
+  "inputs": {
+    "mass": 1.0,
+    "charge": 1.0,
+    "field": 2.0,
+    "strength": 0.03,
+    "screening": 3.0,
+    "theta": 0.5,
+    "theta_definition": "single-particle velocity variance k_B*T/m",
+    "fixed_incoming_triple": [
+      0.9938225266093732,
+      1.9056642462041216,
+      1.9668376625283577
+    ],
+    "start_distance": 24.0,
+    "flight_time_factor": 12.0,
+    "max_step": 0.05,
+    "rtol": 1e-10,
+    "phase_orders": [
+      32,
+      64,
+      128,
+      256,
+      512,
+      1024,
+      2048,
+      4096,
+      8192
+    ],
+    "master_phase_count": 8192,
+    "phase_measure": "dphi/(2pi)",
+    "baseline_actual_final_phase_order": 2048,
+    "phase_relative_target": 0.01,
+    "required_successive_checks": 2,
+    "convergence_components": [
+      "mean",
+      "second",
+      "cross"
+    ],
+    "zero_denominator_rule": "Both current and previous exactly zero:change 0; current zero with previous nonzero:undefined and fails. Otherwise abs(current-previous)/abs(current).",
+    "refined_max_step": 0.025,
+    "timestep_relative_target": 0.001,
+    "energy_target": 1e-08,
+    "anchor_master_indices": [
+      0,
+      2048,
+      4096
+    ],
+    "new_control_count": 3,
+    "new_control_selection": "Union of largest three known absolute mean, second moment and absolute cross contributors among phases outside baseline actual 2048-node lattice; ties by index, no replacement for failed/unknown Cartesian controls.",
+    "runtime_budget_s": 1200.0,
+    "checkpoint_interval": 128,
+    "runtime_cap_scope": "Checked between work items; may overshoot by one operation, not a hard process kill. Incomplete declared checks remain unresolved.",
+    "baseline_summary_sha256": "e2c15cbca067ccfce4839366c1d7768d126907557569ce3af33f868d209ab887",
+    "baseline_nodes_sha256": "c89dfb3e4797ef03d64b062021c3a8d67860e787de5280b3a6973b9aec93da5e",
+    "independent_pair_max_steps": [
+      0.05,
+      0.025
+    ],
+    "pair_position_absolute_target": 1e-08,
+    "pair_velocity_absolute_target": 1e-08,
+    "pair_mu_absolute_target": 1e-10,
+    "anchor_absolute_moment_target": 1e-08,
+    "prior_metadata_sha256": "d2b411a3213d5becb1504ba7d654802240505159d52a7b7dcba936cce852f5ab",
+    "seed": null,
+    "moment_definition": "analytic independent Maxwellian COM average of individual delta_mu_1, its square, and delta_mu_1*delta_mu_2",
+    "stop_rule": "Stop after two successive complete 1% checks for all three moments or retain all levels through8192; final whole-grid timestep 0.1% checks apply to all three; no post-outcome extension."
+  },
+  "commit": "b7c68b9c392e4544f2601930705cc35aef07d431",
+  "working_tree": "",
+  "source_sha256": "2681005b1a59c13f7f670644e5362aeeedaec296469ee54182d9acda0025dd7d",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "unset",
+    "OPENBLAS_NUM_THREADS": "unset",
+    "MKL_NUM_THREADS": "unset",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": true,
+  "experiment_dependency_sha256": {
+    "examples/24_encounter_phase.py": "3bb3312775ccbbbbdd888b9e18764d376755fb8d435bcef5d2bd6a7c1d938ad2",
+    "src/sato_morrison/controls.py": "ea673df34611bd68c60756fec2f335c9ebd10a705149ee22b68917d3102ec077",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "reused_phase_evidence": {
+    "summary_path": "results/encounter_phase/refined8192/summary.json",
+    "summary_sha256": "e2c15cbca067ccfce4839366c1d7768d126907557569ce3af33f868d209ab887",
+    "nodes_path": "results/encounter_phase/refined8192/nodes.json",
+    "nodes_sha256": "c89dfb3e4797ef03d64b062021c3a8d67860e787de5280b3a6973b9aec93da5e",
+    "producer_commit": "3adea8c5eb1e0d136f3a34af6123f38274722782",
+    "baseline_phase_status": "passed",
+    "baseline_criterion": "Second moment only; mean and cross angular convergence not validated by its pass.",
+    "actual_final_phase_order": 2048
+  },
+  "prior_evidence": {
+    "path": "results/encounter_duration/metadata.json",
+    "sha256": "d2b411a3213d5becb1504ba7d654802240505159d52a7b7dcba936cce852f5ab",
+    "producer_commit": "176098fa4cc5e7ab5654ee7bd05bd00cee94b7b0"
+  },
+  "experiment_dependency_sha256_end": {
+    "examples/24_encounter_phase.py": "3bb3312775ccbbbbdd888b9e18764d376755fb8d435bcef5d2bd6a7c1d938ad2",
+    "src/sato_morrison/controls.py": "ea673df34611bd68c60756fec2f335c9ebd10a705149ee22b68917d3102ec077",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "experiment_dependencies_unchanged": true,
+  "results": {
+    "phase_levels": [
+      {
+        "phase_order": 32,
+        "complete": true,
+        "missing_count": 0,
+        "missing_phase_weight": 0.0,
+        "phase_averaged_moments": [
+          0.0066156314134243974,
+          0.0038766798438557375,
+          -0.00029010164435467326
+        ],
+        "known_positive_second_moment_contribution": 0.0038766798438557375,
+        "max_energy_error": 4.733417312530026e-11,
+        "reflected_count": 1,
+        "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+        "moment_relative_changes": [
+          null,
+          null,
+          null
+        ],
+        "second_moment_relative_change": null,
+        "successive_passes": 0
+      },
+      {
+        "phase_order": 64,
+        "complete": true,
+        "missing_count": 0,
+        "missing_phase_weight": 0.0,
+        "phase_averaged_moments": [
+          0.0029306643459688004,
+          0.002479662588478165,
+          0.00014424577590866838
+        ],
+        "known_positive_second_moment_contribution": 0.002479662588478165,
+        "max_energy_error": 4.733417312530026e-11,
+        "reflected_count": 1,
+        "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+        "moment_relative_changes": [
+          1.2573828430827836,
+          0.5633900603529124,
+          3.0111621468787826
+        ],
+        "second_moment_relative_change": 0.5633900603529124,
+        "successive_passes": 0
+      },
+      {
+        "phase_order": 128,
+        "complete": true,
+        "missing_count": 0,
+        "missing_phase_weight": 0.0,
+        "phase_averaged_moments": [
+          0.0010465978949588024,
+          0.002144580825193513,
+          0.00041354887805675195
+        ],
+        "known_positive_second_moment_contribution": 0.002144580825193513,
+        "max_energy_error": 4.733417312530026e-11,
+        "reflected_count": 1,
+        "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+        "moment_relative_changes": [
+          1.8001817699854643,
+          0.1562458077346731,
+          0.6512001759345281
+        ],
+        "second_moment_relative_change": 0.1562458077346731,
+        "successive_passes": 0
+      },
+      {
+        "phase_order": 256,
+        "complete": true,
+        "missing_count": 0,
+        "missing_phase_weight": 0.0,
+        "phase_averaged_moments": [
+          0.000758705889342269,
+          0.002107877610200845,
+          0.0001551015713481328
+        ],
+        "known_positive_second_moment_contribution": 0.002107877610200845,
+        "max_energy_error": 4.8894286401396453e-11,
+        "reflected_count": 1,
+        "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+        "moment_relative_changes": [
+          0.3794513917192739,
+          0.01741240327002236,
+          1.666310047423839
+        ],
+        "second_moment_relative_change": 0.01741240327002236,
+        "successive_passes": 0
+      },
+      {
+        "phase_order": 512,
+        "complete": true,
+        "missing_count": 0,
+        "missing_phase_weight": 0.0,
+        "phase_averaged_moments": [
+          0.000872824033803527,
+          0.0021944134238406562,
+          0.00013702404832167595
+        ],
+        "known_positive_second_moment_contribution": 0.0021944134238406562,
+        "max_energy_error": 5.1297220855086337e-11,
+        "reflected_count": 1,
+        "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+        "moment_relative_changes": [
+          0.13074587779619512,
+          0.039434599105011216,
+          0.13192956453905297
+        ],
+        "second_moment_relative_change": 0.039434599105011216,
+        "successive_passes": 0
+      },
+      {
+        "phase_order": 1024,
+        "complete": true,
+        "missing_count": 0,
+        "missing_phase_weight": 0.0,
+        "phase_averaged_moments": [
+          0.0008698157402705624,
+          0.002189089732466879,
+          0.00013717336525140132
+        ],
+        "known_positive_second_moment_contribution": 0.002189089732466879,
+        "max_energy_error": 5.546454939548305e-11,
+        "reflected_count": 2,
+        "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+        "moment_relative_changes": [
+          0.003458541152668582,
+          0.0024319201240680854,
+          0.0010885271309901468
+        ],
+        "second_moment_relative_change": 0.0024319201240680854,
+        "successive_passes": 1
+      },
+      {
+        "phase_order": 2048,
+        "complete": true,
+        "missing_count": 0,
+        "missing_phase_weight": 0.0,
+        "phase_averaged_moments": [
+          0.000855420361264134,
+          0.002183537910193605,
+          0.0001308897735471688
+        ],
+        "known_positive_second_moment_contribution": 0.002183537910193605,
+        "max_energy_error": 5.546454939548305e-11,
+        "reflected_count": 5,
+        "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+        "moment_relative_changes": [
+          0.016828426886115983,
+          0.002542581123669092,
+          0.04800674287948161
+        ],
+        "second_moment_relative_change": 0.002542581123669092,
+        "successive_passes": 0
+      },
+      {
+        "phase_order": 4096,
+        "complete": true,
+        "missing_count": 0,
+        "missing_phase_weight": 0.0,
+        "phase_averaged_moments": [
+          0.0008019386219616489,
+          0.0021851530596205906,
+          0.00011033232844589808
+        ],
+        "known_positive_second_moment_contribution": 0.0021851530596205906,
+        "max_energy_error": 5.546454939548305e-11,
+        "reflected_count": 10,
+        "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+        "moment_relative_changes": [
+          0.06669056438716171,
+          0.0007391470450431198,
+          0.1863229516755024
+        ],
+        "second_moment_relative_change": 0.0007391470450431198,
+        "successive_passes": 0
+      },
+      {
+        "phase_order": 8192,
+        "complete": true,
+        "missing_count": 0,
+        "missing_phase_weight": 0.0,
+        "phase_averaged_moments": [
+          0.000822975984981859,
+          0.0021829725865004763,
+          0.00011881218819111327
+        ],
+        "known_positive_second_moment_contribution": 0.0021829725865004763,
+        "max_energy_error": 5.546454939548305e-11,
+        "reflected_count": 19,
+        "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+        "moment_relative_changes": [
+          0.025562547880025648,
+          0.0009988550170526179,
+          0.0713719684345436
+        ],
+        "second_moment_relative_change": 0.0009988550170526179,
+        "successive_passes": 0
+      }
+    ],
+    "timestep_check": {
+      "phase_order": 8192,
+      "complete": true,
+      "missing_count": 0,
+      "missing_phase_weight": 0.0,
+      "phase_averaged_moments": [
+        0.0008229759854674942,
+        0.002182972585931137,
+        0.00011881218876398507
+      ],
+      "known_positive_second_moment_contribution": 0.002182972585931137,
+      "max_energy_error": 6.649938431496004e-11,
+      "reflected_count": 19,
+      "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+      "moment_relative_changes_from_primary_step": [
+        5.900964246271864e-10,
+        2.608091756401155e-10,
+        4.8216585095742355e-09
+      ],
+      "second_moment_relative_change_from_primary_step": 2.608091756401155e-10
+    },
+    "controls": [
+      {
+        "master_phase_index": 0,
+        "phase": 0.0,
+        "relative_status": "outgoing_event",
+        "pair_refinements": [
+          {
+            "max_step": 0.05,
+            "position_max_absolute_error": 7.815970093361102e-14,
+            "velocity_max_absolute_error": 6.417089082333405e-14,
+            "mu_absolute_error": 1.0269562977782698e-15,
+            "independent_COM_moments": [
+              0.004834872812399749,
+              3.7755346624506096e-05,
+              8.99664359965842e-06
+            ],
+            "COM_moments_max_absolute_error": 1.0269562977782698e-15,
+            "energy_error": 3.315862446880748e-15,
+            "evaluations": 6098,
+            "status": "passed",
+            "wall_s": 0.08486216596793383
+          },
+          {
+            "max_step": 0.025,
+            "position_max_absolute_error": 5.684341886080802e-14,
+            "velocity_max_absolute_error": 3.1086244689504383e-15,
+            "mu_absolute_error": 3.885780586188048e-16,
+            "independent_COM_moments": [
+              0.004834872812400387,
+              3.775534662446394e-05,
+              8.996643599712912e-06
+            ],
+            "COM_moments_max_absolute_error": 3.885780586188048e-16,
+            "energy_error": 2.6053204939777303e-15,
+            "evaluations": 12170,
+            "status": "passed",
+            "wall_s": 0.16756004199851304
+          }
+        ],
+        "selection": "original_anchor",
+        "selected_components": [],
+        "relative_reason": null,
+        "status": "passed"
+      },
+      {
+        "master_phase_index": 2048,
+        "phase": 1.5707963267948966,
+        "relative_status": "outgoing_event",
+        "pair_refinements": [
+          {
+            "max_step": 0.05,
+            "position_max_absolute_error": 4.265704234285295e-09,
+            "velocity_max_absolute_error": 4.6260495434324866e-11,
+            "mu_absolute_error": 1.0890510715455548e-11,
+            "independent_COM_moments": [
+              0.22057113559277042,
+              0.11272980819151758,
+              -0.015426556478148959
+            ],
+            "COM_moments_max_absolute_error": 1.0890510715455548e-11,
+            "energy_error": 5.240175831721286e-11,
+            "evaluations": 22442,
+            "status": "passed",
+            "wall_s": 0.30875937500968575
+          },
+          {
+            "max_step": 0.025,
+            "position_max_absolute_error": 6.792788553866558e-12,
+            "velocity_max_absolute_error": 9.454659277707833e-13,
+            "mu_absolute_error": 1.0152989560197057e-13,
+            "independent_COM_moments": [
+              0.2205711356035594,
+              0.11272980819678977,
+              -0.015426556473902182
+            ],
+            "COM_moments_max_absolute_error": 1.0735856648125264e-13,
+            "energy_error": 2.2137171319279434e-11,
+            "evaluations": 44006,
+            "status": "passed",
+            "wall_s": 0.6131123749655671
+          }
+        ],
+        "selection": "original_anchor",
+        "selected_components": [],
+        "relative_reason": null,
+        "status": "passed"
+      },
+      {
+        "master_phase_index": 4096,
+        "phase": 3.141592653589793,
+        "relative_status": "outgoing_event",
+        "pair_refinements": [
+          {
+            "max_step": 0.05,
+            "position_max_absolute_error": 1.0658141036401503e-13,
+            "velocity_max_absolute_error": 6.245004513516506e-14,
+            "mu_absolute_error": 1.3322676295501878e-15,
+            "independent_COM_moments": [
+              -0.004920519229327652,
+              3.90393537303814e-05,
+              9.383665241984991e-06
+            ],
+            "COM_moments_max_absolute_error": 1.3322676295501878e-15,
+            "energy_error": 4.5000990367233014e-15,
+            "evaluations": 6038,
+            "status": "passed",
+            "wall_s": 0.0878282500198111
+          },
+          {
+            "max_step": 0.025,
+            "position_max_absolute_error": 1.0658141036401503e-14,
+            "velocity_max_absolute_error": 3.3306690738754696e-15,
+            "mu_absolute_error": 3.608224830031759e-16,
+            "independent_COM_moments": [
+              -0.004920519229325959,
+              3.903935373031322e-05,
+              9.383665242019841e-06
+            ],
+            "COM_moments_max_absolute_error": 3.608224830031759e-16,
+            "energy_error": 1.7763548829170925e-15,
+            "evaluations": 12050,
+            "status": "passed",
+            "wall_s": 0.18413229199359193
+          }
+        ],
+        "selection": "original_anchor",
+        "selected_components": [],
+        "relative_reason": null,
+        "status": "passed"
+      },
+      {
+        "master_phase_index": 2041,
+        "phase": 1.565427394037297,
+        "relative_status": "outgoing_event",
+        "pair_refinements": [
+          {
+            "max_step": 0.05,
+            "position_max_absolute_error": 5.11878539555255e-10,
+            "velocity_max_absolute_error": 4.879607828911503e-11,
+            "mu_absolute_error": 9.98279237052202e-12,
+            "independent_COM_moments": [
+              0.22093335192227265,
+              0.08622699377698592,
+              0.01139609820623564
+            ],
+            "COM_moments_max_absolute_error": 9.98279237052202e-12,
+            "energy_error": 4.896403793634605e-11,
+            "evaluations": 23210,
+            "status": "passed",
+            "wall_s": 0.3449918340193108
+          },
+          {
+            "max_step": 0.025,
+            "position_max_absolute_error": 4.659028718378977e-11,
+            "velocity_max_absolute_error": 6.08235684040892e-12,
+            "mu_absolute_error": 8.756884106730922e-13,
+            "independent_COM_moments": [
+              0.22093335193313113,
+              0.08622699378098306,
+              0.011396098211834488
+            ],
+            "COM_moments_max_absolute_error": 8.756884106730922e-13,
+            "energy_error": 2.2895674851557777e-11,
+            "evaluations": 45470,
+            "status": "passed",
+            "wall_s": 0.6655384590267204
+          }
+        ],
+        "selection": "largest_new_component_contributor",
+        "selected_components": [
+          "mean"
+        ],
+        "relative_reason": null,
+        "status": "passed"
+      },
+      {
+        "master_phase_index": 2042,
+        "phase": 1.5661943844312396,
+        "relative_status": "outgoing_event",
+        "pair_refinements": [
+          {
+            "max_step": 0.05,
+            "position_max_absolute_error": 1.6967049987215432e-09,
+            "velocity_max_absolute_error": 5.0239812310337584e-11,
+            "mu_absolute_error": 8.328865375162309e-12,
+            "independent_COM_moments": [
+              0.2208653302480791,
+              0.08919812602639102,
+              0.008364862184795083
+            ],
+            "COM_moments_max_absolute_error": 8.328865375162309e-12,
+            "energy_error": 4.783617101338243e-11,
+            "evaluations": 23054,
+            "status": "passed",
+            "wall_s": 0.33539037499576807
+          },
+          {
+            "max_step": 0.025,
+            "position_max_absolute_error": 3.015188099197985e-11,
+            "velocity_max_absolute_error": 3.1299407510232413e-12,
+            "mu_absolute_error": 9.410527912478983e-13,
+            "independent_COM_moments": [
+              0.22086533025734903,
+              0.08919812602923102,
+              0.0083648621901447
+            ],
+            "COM_moments_max_absolute_error": 9.410527912478983e-13,
+            "energy_error": 2.471537278712969e-11,
+            "evaluations": 45098,
+            "status": "passed",
+            "wall_s": 0.6405019999947399
+          }
+        ],
+        "selection": "largest_new_component_contributor",
+        "selected_components": [
+          "mean"
+        ],
+        "relative_reason": null,
+        "status": "passed"
+      },
+      {
+        "master_phase_index": 2051,
+        "phase": 1.573097297976725,
+        "relative_status": "outgoing_event",
+        "pair_refinements": [
+          {
+            "max_step": 0.05,
+            "position_max_absolute_error": 3.164650763665122e-10,
+            "velocity_max_absolute_error": 3.069455800641663e-11,
+            "mu_absolute_error": 1.1133344246516685e-11,
+            "independent_COM_moments": [
+              0.220892780006102,
+              0.12811485778422893,
+              -0.030527617266580577
+            ],
+            "COM_moments_max_absolute_error": 1.1133344246516685e-11,
+            "energy_error": 4.854410764359089e-11,
+            "evaluations": 23222,
+            "status": "passed",
+            "wall_s": 0.3609945419593714
+          },
+          {
+            "max_step": 0.025,
+            "position_max_absolute_error": 1.667643800828955e-11,
+            "velocity_max_absolute_error": 5.508482558980177e-12,
+            "mu_absolute_error": 1.412064909445121e-12,
+            "independent_COM_moments": [
+              0.2208927800186474,
+              0.12811485779222834,
+              -0.030527617263495233
+            ],
+            "COM_moments_max_absolute_error": 1.412064909445121e-12,
+            "energy_error": 2.3745483024547142e-11,
+            "evaluations": 45422,
+            "status": "passed",
+            "wall_s": 0.6634593329508789
+          }
+        ],
+        "selection": "largest_new_component_contributor",
+        "selected_components": [
+          "mean"
+        ],
+        "relative_reason": null,
+        "status": "passed"
+      },
+      {
+        "master_phase_index": 2054,
+        "phase": 1.5753982691585535,
+        "relative_status": "outgoing_event",
+        "pair_refinements": [
+          {
+            "max_step": 0.05,
+            "position_max_absolute_error": 8.991915478873125e-08,
+            "velocity_max_absolute_error": 7.47500048525751e-08,
+            "mu_absolute_error": 1.8910722987541817e-09,
+            "independent_COM_moments": [
+              -0.02168182948195463,
+              0.1421762670674409,
+              -0.14123606360807178
+            ],
+            "COM_moments_max_absolute_error": 5.096402466708838e-09,
+            "energy_error": 6.293838490320252e-11,
+            "evaluations": 8234,
+            "status": "unresolved",
+            "wall_s": 0.11454662500182167
+          },
+          {
+            "max_step": 0.025,
+            "position_max_absolute_error": 1.9100205861377617e-09,
+            "velocity_max_absolute_error": 1.5537178210678348e-09,
+            "mu_absolute_error": 3.975406115408475e-11,
+            "independent_COM_moments": [
+              -0.02168182763063639,
+              0.1421762620767474,
+              -0.14123605877793818
+            ],
+            "COM_moments_max_absolute_error": 1.0570896935568896e-10,
+            "energy_error": 3.263602075819969e-11,
+            "evaluations": 14642,
+            "status": "unresolved",
+            "wall_s": 0.20112766698002815
+          }
+        ],
+        "selection": "largest_new_component_contributor",
+        "selected_components": [
+          "cross"
+        ],
+        "relative_reason": null,
+        "status": "unresolved"
+      },
+      {
+        "master_phase_index": 2061,
+        "phase": 1.5807672019161532,
+        "relative_status": "outgoing_event",
+        "pair_refinements": [
+          {
+            "max_step": 0.05,
+            "position_max_absolute_error": 5.721254581203539e-09,
+            "velocity_max_absolute_error": 1.3498535622602503e-10,
+            "mu_absolute_error": 1.933295190603701e-11,
+            "independent_COM_moments": [
+              0.2059846274059877,
+              0.18088608959810062,
+              -0.09602675614293346
+            ],
+            "COM_moments_max_absolute_error": 1.933295190603701e-11,
+            "energy_error": 4.844486861789708e-11,
+            "evaluations": 13766,
+            "status": "passed",
+            "wall_s": 0.19047945801867172
+          },
+          {
+            "max_step": 0.025,
+            "position_max_absolute_error": 1.717097575237858e-10,
+            "velocity_max_absolute_error": 4.825286004095375e-12,
+            "mu_absolute_error": 7.626399511906357e-13,
+            "independent_COM_moments": [
+              0.205984627424558,
+              0.18088608961488695,
+              -0.09602675614441898
+            ],
+            "COM_moments_max_absolute_error": 7.644163080300359e-13,
+            "energy_error": 2.4345535701895914e-11,
+            "evaluations": 26690,
+            "status": "passed",
+            "wall_s": 0.3702221669955179
+          }
+        ],
+        "selection": "largest_new_component_contributor",
+        "selected_components": [
+          "second"
+        ],
+        "relative_reason": null,
+        "status": "passed"
+      },
+      {
+        "master_phase_index": 2062,
+        "phase": 1.581534192310096,
+        "relative_status": "outgoing_event",
+        "pair_refinements": [
+          {
+            "max_step": 0.05,
+            "position_max_absolute_error": 4.705896117229713e-09,
+            "velocity_max_absolute_error": 1.2962686479767171e-10,
+            "mu_absolute_error": 1.9794693661978613e-11,
+            "independent_COM_moments": [
+              0.1987640245664257,
+              0.18176575060775305,
+              -0.1027514756840677
+            ],
+            "COM_moments_max_absolute_error": 1.9794693661978613e-11,
+            "energy_error": 4.8212284552731114e-11,
+            "evaluations": 12374,
+            "status": "passed",
+            "wall_s": 0.1708640829892829
+          },
+          {
+            "max_step": 0.025,
+            "position_max_absolute_error": 1.1434764246587292e-10,
+            "velocity_max_absolute_error": 4.614975068761851e-12,
+            "mu_absolute_error": 9.917344723220367e-13,
+            "independent_COM_moments": [
+              0.19876402458522865,
+              0.1817657506253313,
+              -0.10275147568669651
+            ],
+            "COM_moments_max_absolute_error": 9.917344723220367e-13,
+            "energy_error": 2.444655108254861e-11,
+            "evaluations": 23906,
+            "status": "passed",
+            "wall_s": 0.329186666989699
+          }
+        ],
+        "selection": "largest_new_component_contributor",
+        "selected_components": [
+          "second"
+        ],
+        "relative_reason": null,
+        "status": "passed"
+      },
+      {
+        "master_phase_index": 2063,
+        "phase": 1.582301182704039,
+        "relative_status": "outgoing_event",
+        "pair_refinements": [
+          {
+            "max_step": 0.05,
+            "position_max_absolute_error": 3.93174204305069e-09,
+            "velocity_max_absolute_error": 1.2463674536888902e-10,
+            "mu_absolute_error": 2.078662242332996e-11,
+            "independent_COM_moments": [
+              0.18994719984434785,
+              0.18134631249233485,
+              -0.1091864350349176
+            ],
+            "COM_moments_max_absolute_error": 2.078662242332996e-11,
+            "energy_error": 4.7902843533238205e-11,
+            "evaluations": 11270,
+            "status": "passed",
+            "wall_s": 0.15492254198761657
+          },
+          {
+            "max_step": 0.025,
+            "position_max_absolute_error": 1.5154455468291417e-10,
+            "velocity_max_absolute_error": 5.828448834677147e-12,
+            "mu_absolute_error": 1.0704492847679603e-12,
+            "independent_COM_moments": [
+              0.18994719986406403,
+              0.1813463125105658,
+              -0.10918643503816841
+            ],
+            "COM_moments_max_absolute_error": 1.088129586435116e-12,
+            "energy_error": 2.6978922594613967e-11,
+            "evaluations": 21698,
+            "status": "passed",
+            "wall_s": 0.2988011250272393
+          }
+        ],
+        "selection": "largest_new_component_contributor",
+        "selected_components": [
+          "second"
+        ],
+        "relative_reason": null,
+        "status": "passed"
+      },
+      {
+        "master_phase_index": 2070,
+        "phase": 1.5876701154616386,
+        "relative_status": "outgoing_event",
+        "pair_refinements": [
+          {
+            "max_step": 0.05,
+            "position_max_absolute_error": 6.943068342479819e-10,
+            "velocity_max_absolute_error": 1.1575806979635672e-10,
+            "mu_absolute_error": 1.5125872776522442e-11,
+            "independent_COM_moments": [
+              0.0896744840706222,
+              0.15209128770805275,
+              -0.13600826152138817
+            ],
+            "COM_moments_max_absolute_error": 1.519814829542554e-11,
+            "energy_error": 4.643202169548407e-11,
+            "evaluations": 7658,
+            "status": "passed",
+            "wall_s": 0.10648666601628065
+          },
+          {
+            "max_step": 0.025,
+            "position_max_absolute_error": 9.346479146188358e-11,
+            "velocity_max_absolute_error": 5.7476245984844354e-12,
+            "mu_absolute_error": 3.0600522116230877e-13,
+            "independent_COM_moments": [
+              0.08967448408544207,
+              0.152091287722892,
+              -0.13600826153091156
+            ],
+            "COM_moments_max_absolute_error": 3.589073482856975e-13,
+            "energy_error": 2.9475411738205575e-11,
+            "evaluations": 14462,
+            "status": "passed",
+            "wall_s": 0.19996549998177215
+          }
+        ],
+        "selection": "largest_new_component_contributor",
+        "selected_components": [
+          "cross"
+        ],
+        "relative_reason": null,
+        "status": "passed"
+      },
+      {
+        "master_phase_index": 2071,
+        "phase": 1.5884371058555815,
+        "relative_status": "outgoing_event",
+        "pair_refinements": [
+          {
+            "max_step": 0.05,
+            "position_max_absolute_error": 5.542482028886297e-10,
+            "velocity_max_absolute_error": 1.357292056525239e-10,
+            "mu_absolute_error": 1.4531015279928283e-11,
+            "independent_COM_moments": [
+              0.07189568377853287,
+              0.14634428883591372,
+              -0.13600631014394815
+            ],
+            "COM_moments_max_absolute_error": 1.4531015279928283e-11,
+            "energy_error": 4.677095020594601e-11,
+            "evaluations": 7430,
+            "status": "passed",
+            "wall_s": 0.10257437499240041
+          },
+          {
+            "max_step": 0.025,
+            "position_max_absolute_error": 3.7754688264612923e-11,
+            "velocity_max_absolute_error": 4.888534022029489e-12,
+            "mu_absolute_error": 7.117362255115722e-13,
+            "independent_COM_moments": [
+              0.07189568379377562,
+              0.146344288850514,
+              -0.1360063101541649
+            ],
+            "COM_moments_max_absolute_error": 7.117362255115722e-13,
+            "energy_error": 2.4287034414670974e-11,
+            "evaluations": 14018,
+            "status": "passed",
+            "wall_s": 0.1946832500398159
+          }
+        ],
+        "selection": "largest_new_component_contributor",
+        "selected_components": [
+          "cross"
+        ],
+        "relative_reason": null,
+        "status": "passed"
+      }
+    ],
+    "phase_status": "unresolved",
+    "timestep_status": "passed",
+    "status": "unresolved",
+    "anchor_absolute_moment_difference_from_prior": 8.920197913653283e-12,
+    "prior_anchor_max_step": 0.05,
+    "mean_initial_mu": 0.36677814942125087,
+    "aggregate_jump_proxy": 0.1273857023573143,
+    "finite_sum_concentration": [
+      {
+        "requested_largest_node_fraction": 0.01,
+        "actual_node_fraction": 0.010009765625,
+        "node_count": 82,
+        "known_second_moment_contribution_fraction": 0.49877846399072373
+      },
+      {
+        "requested_largest_node_fraction": 0.05,
+        "actual_node_fraction": 0.050048828125,
+        "node_count": 410,
+        "known_second_moment_contribution_fraction": 0.8811729809066698
+      },
+      {
+        "requested_largest_node_fraction": 0.1,
+        "actual_node_fraction": 0.10009765625,
+        "node_count": 820,
+        "known_second_moment_contribution_fraction": 0.9472105179131219
+      },
+      {
+        "requested_largest_node_fraction": 0.25,
+        "actual_node_fraction": 0.25,
+        "node_count": 2048,
+        "known_second_moment_contribution_fraction": 0.9858013469563712
+      }
+    ],
+    "unique_relative_solves": 16384,
+    "reused_relative_solves": 4096,
+    "new_relative_solves": 12288,
+    "new_control_indices": [
+      2041,
+      2042,
+      2051,
+      2054,
+      2061,
+      2062,
+      2063,
+      2070,
+      2071
+    ],
+    "component_control_indices": {
+      "mean": [
+        2041,
+        2051,
+        2042
+      ],
+      "second": [
+        2062,
+        2063,
+        2061
+      ],
+      "cross": [
+        2054,
+        2070,
+        2071
+      ]
+    },
+    "runtime_cap_reached": false,
+    "unattempted_relative_nodes": [],
+    "continuous_phase_coverage_status": "unresolved",
+    "wall_s": 477.4366595839965,
+    "process_peak_RSS_bytes": 475955200,
+    "memory_scope": "Process peak resident set including imports/cache/checkpoint work, before final plotting; not just selected array storage.",
+    "wall_s_scope": "Numerical solves/checks and intermediate checkpoint/path writes; excludes imports, initial metadata, plots and final output writing.",
+    "limits": [
+      "Fixed incoming triple, not an annular or speed-integrated rate.",
+      "Finite phase differences are convergence diagnostics, not rigorous quadrature error bounds.",
+      "All phases retain weight1/N, including unknown nonexits. Partial positive sums are not continuous-integral bounds.",
+      "Closest separations are sampled. Jump normalized by mean initial moment is not a pointwise relative jump or an asymptotic ordering proof.",
+      "Independent12D controls use separate individual equations/coordinates but the same DOP853 integrator; COM=0 checks the mean, with full COM second moment supplied analytically.",
+      "All sampled exits do not certify continuous phase coverage; opposite exact exit basins imply finite-budget censoring intervals. An outgoing integral needs almost-everywhere finite exits or an explicit extension convention.",
+      "Small energy defects do not certify trajectory accuracy near the unresolved exit boundary. New Cartesian/timestep controls retain all failures.",
+      "No sourceD calibration, independent-encounter plasma closure or lifetime."
+    ]
+  },
+  "independent_pair_paths_sha256": "c6abd348a55cafbf8bba699ccf39cb62d4d7516c426b5b28d7250e6b307952bb",
+  "nodes_sha256": "b8cca80bd083af11807ed03397c9c5c06f95d676f7df57a649bda7d84a125df6"
+}

@@ -1,6 +1,6 @@
 # Sato–Morrison collision prototype
 
-Conserving magnetic moment restricts how a plasma can relax. This fixed-field JAX prototype follows [Sato & Morrison (2025)](https://doi.org/10.1063/5.0289410), reproduces their local linear Eq. (181), and studies explicit nonlinear and finite-range extensions. The calculations below separate conservation laws, numerical convergence and physical encounter dynamics.
+Conserving magnetic moment restricts how a plasma can relax. This fixed-field JAX prototype follows [Sato & Morrison (2025)](https://doi.org/10.1063/5.0289410), reproduces their local linear Eq. (181), and studies explicit nonlinear and finite-range extensions. Numerical values below use normalized units.
 
 ## Magnetic coordinates
 
@@ -46,7 +46,7 @@ The nonlinear kernel acts on differences of guiding-center derivatives. **Aᵢh*
 
 The positive weights ωᵢⱼ contain quadrature and, for nonlocal interactions, the spatial range kernel. The diagonal matrix selects the three spatial components before energy projection. Local pairs share one position. Each unordered pair enters once. The uniform zero-direction limit is derived analytically; an unresolved zero direction in a nonuniform field causes an error.
 
-The full source Eq. (119) requires additional collision physics. The kernel above defines the project's nonlinear surrogate; Eq. (181) supplies the uniform linear reference.
+Source Eq. (119) closes a pair distribution into two species distributions and retains a full interaction tensor. The displayed Q defines the project's simpler nonlinear kernel. Eq. (181) supplies the uniform linear reference.
 
 ## Implicit time integration
 
@@ -100,9 +100,19 @@ Two repelling particles in a uniform field provide a physical check on magnetic-
 
 One path transmits at **t = 25.35**; the other reflects at **t = 90.35**. Their final magnetic moments are **1.020** and **1.912** times their initial values. Each curve stops at its outgoing event. These zero-center-of-mass paths lie outside a verified adiabatic/grazing regime. [Trajectory inputs and checks](results/encounter_movie/summary.json)
 
-![Incoming-phase dependence, concentration of squared magnetic-moment change and nested angular/timestep refinement.](results/encounter_phase/refined8192/phase_convergence.png)
+![Incoming-phase dependence, concentration of squared magnetic-moment change and convergence of all three sampled moments.](results/encounter_phase/all_moments8192/phase_convergence.png)
 
-The squared μ change, averaged over center-of-mass motion and sampled incoming phases, passes its declared refinement criterion at **2,048 angles**: the last two changes are **0.243%** and **0.254%**. Halving the integration step changes this average by **4.10×10⁻¹¹**; twelve Cartesian trajectory controls pass. The mean change and cross moment converge more slowly: their last angular changes are **1.68%** and **4.80%**. Continuous angular coverage remains unresolved.
+The extended calculation averages over Gaussian center-of-mass velocities and **8,192 incoming angles**. Subscripts label the two particles. The angular target requires two successive changes below 1%; the whole-grid half-step target is 0.1%.
+
+| Averaged quantity | Angular change, 4,096 → 8,192 | Step change, 0.05 → 0.025 |
+|---|---:|---:|
+| Mean change, ⟨Δμ₁⟩ | **2.56%** | 5.90×10⁻⁸% |
+| Squared change, ⟨(Δμ₁)²⟩ | 0.100% | 2.61×10⁻⁸% |
+| Cross moment, ⟨Δμ₁Δμ₂⟩ | **7.14%** | 4.82×10⁻⁷% |
+
+The mean and cross moment remain angularly under-resolved. **22 of 24** independent Cartesian trajectory checks pass; both checks at one newly selected angle fail and remain in the data. The run takes **477.4 s**, with **476.0 MB** peak process memory on the recorded M4. It exits nonzero. [Inputs, every trajectory and checks](results/encounter_phase/all_moments8192/summary.json)
+
+The earlier 2,048-angle study passed its narrower second-moment criterion. That result is preserved in the [refinement history](results/encounter_phase/refined8192/summary.json). Continuous angular coverage and a physical collision rate remain unresolved.
 
 ![A finer search near the transmission/reflection boundary, where low energy errors coexist with large trajectory disagreements.](results/encounter_censoring/precision_checked/finite_budget_censoring.png)
 
@@ -137,6 +147,8 @@ MPLBACKEND=Agg python examples/22_first_principles.py
 MPLBACKEND=Agg python examples/24_encounter_phase.py
 MPLBACKEND=Agg python examples/27_encounter_movie.py
 ```
+
+Example 24 exits nonzero because the declared angular and Cartesian checks remain unresolved. It saves the results before raising the error.
 
 **247 tests pass locally and on fresh Linux CI.** Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
 

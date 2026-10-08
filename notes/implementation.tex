@@ -3529,7 +3529,58 @@ $4.801\%$; their phase convergence remains unresolved. The original failed
 512-node study is preserved. Neither the passing sampled second-moment
 checks nor all sampled exits certify a continuous outgoing integral,
 almost-everywhere exits, an impact/speed-integrated rate or a source
-coefficient. No results from an all-three-moment extension are included.
+coefficient.
+
+\paragraph{All three sampled moments remain unresolved.}
+A subsequent source-frozen extension (producer \texttt{b7c68b9}) requires
+both successive angular changes below $1\%$ for each of the mean increment,
+second moment and cross moment. Its final whole-grid maximum-step halving
+must change each by less than $0.1\%$. Both exact-zero successive values
+have zero relative change; a zero current denominator with nonzero previous
+value fails. The 8192-node and 1200-second caps are fixed before execution.
+The audited 4096 relative-solver rows from the earlier 2048-phase study are
+reused by exact phase mapping. The independent-control set is the three
+original anchors plus the union of the three largest new absolute
+contributors to each component, excluding the actual old 2048-node lattice.
+No failed control is replaced.
+
+All 8192 sampled phases exit at both maximum steps, with 19 reflected
+outcomes. At step $0.025$, the sampled moment vector is
+\[
+ (\langle\Delta\mu_1\rangle,
+   \langle(\Delta\mu_1)^2\rangle,
+   \langle\Delta\mu_1\Delta\mu_2\rangle)
+ = (0.000822975985467,\;0.002182972585931,\;0.000118812188764).
+\]
+The last angular relative changes are $2.5563\%$, $0.09989\%$ and
+$7.1372\%$. The whole-grid half-step relative changes are
+$5.90\times10^{-10}$, $2.61\times10^{-10}$ and $4.82\times10^{-9}$.
+The mean and cross moment therefore fail the angular criterion even though
+the sampled timestep comparisons pass.
+
+Of 24 Cartesian checks at 12 selected phases, 22 pass. At master index
+2054, the step-$0.05$ position, velocity and moment discrepancies are
+$8.99\times10^{-8}$, $7.48\times10^{-8}$ and $1.89\times10^{-9}$;
+the maximum thermal-center-moment discrepancy is $5.10\times10^{-9}$.
+At step $0.025$, position and velocity pass but the center-moment discrepancy
+$1.05709\times10^{-10}$ exceeds the unchanged $10^{-10}$ target. Both
+failures are retained. Thus the whole experiment is unresolved and exits
+nonzero, independently of the angular failure.
+
+There are 12288 new and 4096 reused relative solves. The measured total is
+$477.437$ seconds: $448.766$ for new relative solves, $6.891$ for Cartesian
+controls and $21.779$ for checkpointing and other overhead. Imports and final
+plots/output are excluded. Peak process memory is $475955200$ bytes on the
+recorded shared Apple M4. The numerical budget is not exhausted.
+The independent saved-array audit recomputes all 16384 row moments, cached
+payloads, sums, control selection and stopping rules; the maximum independent
+moment discrepancy is $8.33\times10^{-17}$. Inputs, versions, hardware,
+arrays, failed controls and audit are in
+\path{results/encounter_phase/all_moments8192/}.
+A separate plotting receipt records the nonnegative error-axis correction
+at \texttt{fc20e88}; it leaves the numerical evidence unchanged.
+These are finite sampled sums, with neither continuous-coverage certification
+nor an impact/speed-integrated physical rate.
 
 \paragraph{A continuity obstruction to finite-budget phase coverage.}
 For the exact repulsive screened relative equations,

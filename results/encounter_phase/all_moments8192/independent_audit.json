@@ -1,0 +1,575 @@
+{
+  "status": "passed_independent_saved_data_checks",
+  "producer_commit": "b7c68b9c392e4544f2601930705cc35aef07d431",
+  "producer_status_unchanged": "unresolved",
+  "continuous_phase_coverage_status": "unresolved",
+  "source_sha256": "0b691f5e95575dc0a4ad237a9474c4073f6ddbceee78d6f27d2a4e6d2b5f7d1b",
+  "normalized_command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 .venv/bin/python -u audit_all_moments_phase24.py",
+  "command_scope": "Auditor source retained privately with the stated SHA; private invocation path omitted. No production numerical kernels or ODEs imported.",
+  "executed_at_UTC": "2026-10-08T18:02:03.840590+00:00",
+  "inputs": {
+    "mass": 1.0,
+    "charge": 1.0,
+    "field": 2.0,
+    "strength": 0.03,
+    "screening": 3.0,
+    "theta": 0.5,
+    "theta_definition": "single-particle velocity variance k_B*T/m",
+    "fixed_incoming_triple": [
+      0.9938225266093732,
+      1.9056642462041216,
+      1.9668376625283577
+    ],
+    "start_distance": 24.0,
+    "flight_time_factor": 12.0,
+    "max_step": 0.05,
+    "rtol": 1e-10,
+    "phase_orders": [
+      32,
+      64,
+      128,
+      256,
+      512,
+      1024,
+      2048,
+      4096,
+      8192
+    ],
+    "master_phase_count": 8192,
+    "phase_measure": "dphi/(2pi)",
+    "baseline_actual_final_phase_order": 2048,
+    "phase_relative_target": 0.01,
+    "required_successive_checks": 2,
+    "convergence_components": [
+      "mean",
+      "second",
+      "cross"
+    ],
+    "zero_denominator_rule": "Both current and previous exactly zero:change 0; current zero with previous nonzero:undefined and fails. Otherwise abs(current-previous)/abs(current).",
+    "refined_max_step": 0.025,
+    "timestep_relative_target": 0.001,
+    "energy_target": 1e-08,
+    "anchor_master_indices": [
+      0,
+      2048,
+      4096
+    ],
+    "new_control_count": 3,
+    "new_control_selection": "Union of largest three known absolute mean, second moment and absolute cross contributors among phases outside baseline actual 2048-node lattice; ties by index, no replacement for failed/unknown Cartesian controls.",
+    "runtime_budget_s": 1200.0,
+    "checkpoint_interval": 128,
+    "runtime_cap_scope": "Checked between work items; may overshoot by one operation, not a hard process kill. Incomplete declared checks remain unresolved.",
+    "baseline_summary_sha256": "e2c15cbca067ccfce4839366c1d7768d126907557569ce3af33f868d209ab887",
+    "baseline_nodes_sha256": "c89dfb3e4797ef03d64b062021c3a8d67860e787de5280b3a6973b9aec93da5e",
+    "independent_pair_max_steps": [
+      0.05,
+      0.025
+    ],
+    "pair_position_absolute_target": 1e-08,
+    "pair_velocity_absolute_target": 1e-08,
+    "pair_mu_absolute_target": 1e-10,
+    "anchor_absolute_moment_target": 1e-08,
+    "prior_metadata_sha256": "d2b411a3213d5becb1504ba7d654802240505159d52a7b7dcba936cce852f5ab",
+    "seed": null,
+    "moment_definition": "analytic independent Maxwellian COM average of individual delta_mu_1, its square, and delta_mu_1*delta_mu_2",
+    "stop_rule": "Stop after two successive complete 1% checks for all three moments or retain all levels through8192; final whole-grid timestep 0.1% checks apply to all three; no post-outcome extension."
+  },
+  "input_sha256": {
+    "results/encounter_phase/all_moments8192/summary.json": "7b63e3ab2d94c16f4b29393f4e849df8786ba67ad5c11fee6b9bf18e44fc52e2",
+    "results/encounter_phase/all_moments8192/nodes.json": "b8cca80bd083af11807ed03397c9c5c06f95d676f7df57a649bda7d84a125df6",
+    "results/encounter_phase/all_moments8192/independent_pair_paths.npz": "c6abd348a55cafbf8bba699ccf39cb62d4d7516c426b5b28d7250e6b307952bb",
+    "results/encounter_phase/refined8192/summary.json": "e2c15cbca067ccfce4839366c1d7768d126907557569ce3af33f868d209ab887",
+    "results/encounter_phase/refined8192/nodes.json": "c89dfb3e4797ef03d64b062021c3a8d67860e787de5280b3a6973b9aec93da5e"
+  },
+  "producer_dependency_sha256": {
+    "examples/24_encounter_phase.py": "3bb3312775ccbbbbdd888b9e18764d376755fb8d435bcef5d2bd6a7c1d938ad2",
+    "src/sato_morrison/controls.py": "ea673df34611bd68c60756fec2f335c9ebd10a705149ee22b68917d3102ec077",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "producer_environment": {
+    "versions": {
+      "sato-morrison": "0.1.0",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2"
+    },
+    "python": "3.12.13",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "Apple M4",
+    "logical_cpus": 10,
+    "devices": [
+      "cpu:0"
+    ],
+    "x64": true,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "unset",
+      "OPENBLAS_NUM_THREADS": "unset",
+      "MKL_NUM_THREADS": "unset",
+      "XLA_FLAGS": "unset"
+    }
+  },
+  "auditor_environment": {
+    "python": "3.12.13",
+    "numpy": "2.5.3",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "logical_cpus": 10,
+    "thread_environment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    }
+  },
+  "reused_rows_exactly_verified": 4096,
+  "all_relative_rows": 16384,
+  "new_relative_solves": 12288,
+  "final_primary_and_halfstep_phases": 8192,
+  "phase_checks": [
+    {
+      "phase_order": 32,
+      "complete": true,
+      "moments": [
+        0.006615631413424393,
+        0.0038766798438557375,
+        -0.00029010164435467326
+      ],
+      "relative_changes_all_moments": [
+        null,
+        null,
+        null
+      ],
+      "successive_passes": 0,
+      "missing_phase_weight": 0.0
+    },
+    {
+      "phase_order": 64,
+      "complete": true,
+      "moments": [
+        0.0029306643459688026,
+        0.002479662588478165,
+        0.00014424577590866814
+      ],
+      "relative_changes_all_moments": [
+        1.2573828430827805,
+        0.5633900603529124,
+        3.0111621468787857
+      ],
+      "successive_passes": 0,
+      "missing_phase_weight": 0.0
+    },
+    {
+      "phase_order": 128,
+      "complete": true,
+      "moments": [
+        0.0010465978949588007,
+        0.0021445808251935126,
+        0.000413548878056752
+      ],
+      "relative_changes_all_moments": [
+        1.800181769985471,
+        0.1562458077346733,
+        0.6512001759345287
+      ],
+      "successive_passes": 0,
+      "missing_phase_weight": 0.0
+    },
+    {
+      "phase_order": 256,
+      "complete": true,
+      "moments": [
+        0.0007587058893422682,
+        0.002107877610200845,
+        0.000155101571348133
+      ],
+      "relative_changes_all_moments": [
+        0.37945139171927317,
+        0.017412403270022154,
+        1.6663100474238361
+      ],
+      "successive_passes": 0,
+      "missing_phase_weight": 0.0
+    },
+    {
+      "phase_order": 512,
+      "complete": true,
+      "moments": [
+        0.0008728240338035279,
+        0.002194413423840656,
+        0.000137024048321676
+      ],
+      "relative_changes_all_moments": [
+        0.13074587779619698,
+        0.03943459910501103,
+        0.13192956453905388
+      ],
+      "successive_passes": 0,
+      "missing_phase_weight": 0.0
+    },
+    {
+      "phase_order": 1024,
+      "complete": true,
+      "moments": [
+        0.0008698157402705623,
+        0.002189089732466879,
+        0.00013717336525140162
+      ],
+      "relative_changes_all_moments": [
+        0.003458541152669704,
+        0.0024319201240678876,
+        0.0010885271309919228
+      ],
+      "successive_passes": 1,
+      "missing_phase_weight": 0.0
+    },
+    {
+      "phase_order": 2048,
+      "complete": true,
+      "moments": [
+        0.0008554203612641378,
+        0.0021835379101936047,
+        0.00013088977354716884
+      ],
+      "relative_changes_all_moments": [
+        0.016828426886111348,
+        0.002542581123669291,
+        0.04800674287948367
+      ],
+      "successive_passes": 0,
+      "missing_phase_weight": 0.0
+    },
+    {
+      "phase_order": 4096,
+      "complete": true,
+      "moments": [
+        0.0008019386219616508,
+        0.00218515305962059,
+        0.00011033232844589803
+      ],
+      "relative_changes_all_moments": [
+        0.066690564387164,
+        0.0007391470450431201,
+        0.18632295167550322
+      ],
+      "successive_passes": 0,
+      "missing_phase_weight": 0.0
+    },
+    {
+      "phase_order": 8192,
+      "complete": true,
+      "moments": [
+        0.0008229759849818614,
+        0.002182972586500476,
+        0.00011881218819111331
+      ],
+      "relative_changes_all_moments": [
+        0.025562547880026234,
+        0.000998855017052618,
+        0.07137196843454437
+      ],
+      "successive_passes": 0,
+      "missing_phase_weight": 0.0
+    }
+  ],
+  "whole_halfstep_relative_changes_all_moments": [
+    5.90096029402224e-10,
+    2.608093743053997e-10,
+    4.821658167373811e-09
+  ],
+  "all_moment_criterion_scope": "All three predeclared relative moment checks and entire-grid timestep checks; no retroactive change to the prior second-only criterion.",
+  "component_control_indices": {
+    "mean": [
+      2041,
+      2051,
+      2042
+    ],
+    "second": [
+      2062,
+      2063,
+      2061
+    ],
+    "cross": [
+      2054,
+      2070,
+      2071
+    ]
+  },
+  "new_contributor_union_indices": [
+    2041,
+    2042,
+    2051,
+    2054,
+    2061,
+    2062,
+    2063,
+    2070,
+    2071
+  ],
+  "node_moment_max_absolute_difference": 8.326672684688674e-17,
+  "initial_helix_max_absolute_difference": 0.0,
+  "kick_max_absolute_difference": 4.440892098500626e-16,
+  "relative_endpoint_energy_max_error": 6.142196995920155e-11,
+  "Cartesian_control_checks": [
+    {
+      "master_phase_index": 0,
+      "max_step": 0.05,
+      "status": "passed",
+      "independent_energy_error": 3.315862446880748e-15,
+      "position_max_absolute_error": 7.815970093361102e-14,
+      "velocity_max_absolute_error": 6.417089082333405e-14,
+      "mu_absolute_error": 9.992007221626409e-16,
+      "COM_moments_max_absolute_error": 9.992007221626409e-16
+    },
+    {
+      "master_phase_index": 0,
+      "max_step": 0.025,
+      "status": "passed",
+      "independent_energy_error": 2.6053204939777303e-15,
+      "position_max_absolute_error": 5.684341886080802e-14,
+      "velocity_max_absolute_error": 3.1086244689504383e-15,
+      "mu_absolute_error": 3.608224830031759e-16,
+      "COM_moments_max_absolute_error": 3.608224830031759e-16
+    },
+    {
+      "master_phase_index": 2048,
+      "max_step": 0.05,
+      "status": "passed",
+      "independent_energy_error": 5.240175831721286e-11,
+      "position_max_absolute_error": 4.265704234285295e-09,
+      "velocity_max_absolute_error": 4.6260495434324866e-11,
+      "mu_absolute_error": 1.0890510715455548e-11,
+      "COM_moments_max_absolute_error": 1.0890510715455548e-11
+    },
+    {
+      "master_phase_index": 2048,
+      "max_step": 0.025,
+      "status": "passed",
+      "independent_energy_error": 2.2137171319279434e-11,
+      "position_max_absolute_error": 6.792788553866558e-12,
+      "velocity_max_absolute_error": 9.454659277707833e-13,
+      "mu_absolute_error": 1.0152989560197057e-13,
+      "COM_moments_max_absolute_error": 1.0737244426906045e-13
+    },
+    {
+      "master_phase_index": 4096,
+      "max_step": 0.05,
+      "status": "passed",
+      "independent_energy_error": 4.5000990367233014e-15,
+      "position_max_absolute_error": 1.0658141036401503e-13,
+      "velocity_max_absolute_error": 6.245004513516506e-14,
+      "mu_absolute_error": 1.3322676295501878e-15,
+      "COM_moments_max_absolute_error": 1.3322676295501878e-15
+    },
+    {
+      "master_phase_index": 4096,
+      "max_step": 0.025,
+      "status": "passed",
+      "independent_energy_error": 1.7763548829170925e-15,
+      "position_max_absolute_error": 1.0658141036401503e-14,
+      "velocity_max_absolute_error": 3.3306690738754696e-15,
+      "mu_absolute_error": 3.608224830031759e-16,
+      "COM_moments_max_absolute_error": 3.608224830031759e-16
+    },
+    {
+      "master_phase_index": 2041,
+      "max_step": 0.05,
+      "status": "passed",
+      "independent_energy_error": 4.896403793634605e-11,
+      "position_max_absolute_error": 5.11878539555255e-10,
+      "velocity_max_absolute_error": 4.879607828911503e-11,
+      "mu_absolute_error": 9.98279237052202e-12,
+      "COM_moments_max_absolute_error": 9.98279237052202e-12
+    },
+    {
+      "master_phase_index": 2041,
+      "max_step": 0.025,
+      "status": "passed",
+      "independent_energy_error": 2.2895674851557777e-11,
+      "position_max_absolute_error": 4.659028718378977e-11,
+      "velocity_max_absolute_error": 6.08235684040892e-12,
+      "mu_absolute_error": 8.756884106730922e-13,
+      "COM_moments_max_absolute_error": 8.756884106730922e-13
+    },
+    {
+      "master_phase_index": 2042,
+      "max_step": 0.05,
+      "status": "passed",
+      "independent_energy_error": 4.783617101338243e-11,
+      "position_max_absolute_error": 1.6967049987215432e-09,
+      "velocity_max_absolute_error": 5.0239812310337584e-11,
+      "mu_absolute_error": 8.328837619586693e-12,
+      "COM_moments_max_absolute_error": 8.328837619586693e-12
+    },
+    {
+      "master_phase_index": 2042,
+      "max_step": 0.025,
+      "status": "passed",
+      "independent_energy_error": 2.471537278712969e-11,
+      "position_max_absolute_error": 3.015188099197985e-11,
+      "velocity_max_absolute_error": 3.1299407510232413e-12,
+      "mu_absolute_error": 9.41080546823514e-13,
+      "COM_moments_max_absolute_error": 9.41080546823514e-13
+    },
+    {
+      "master_phase_index": 2051,
+      "max_step": 0.05,
+      "status": "passed",
+      "independent_energy_error": 4.854410764359089e-11,
+      "position_max_absolute_error": 3.164650763665122e-10,
+      "velocity_max_absolute_error": 3.069455800641663e-11,
+      "mu_absolute_error": 1.113331649094107e-11,
+      "COM_moments_max_absolute_error": 1.113331649094107e-11
+    },
+    {
+      "master_phase_index": 2051,
+      "max_step": 0.025,
+      "status": "passed",
+      "independent_energy_error": 2.3745483024547142e-11,
+      "position_max_absolute_error": 1.667643800828955e-11,
+      "velocity_max_absolute_error": 5.508482558980177e-12,
+      "mu_absolute_error": 1.4120926650207366e-12,
+      "COM_moments_max_absolute_error": 1.4120926650207366e-12
+    },
+    {
+      "master_phase_index": 2054,
+      "max_step": 0.05,
+      "status": "unresolved",
+      "independent_energy_error": 6.293838490320252e-11,
+      "position_max_absolute_error": 8.991915478873125e-08,
+      "velocity_max_absolute_error": 7.47500048525751e-08,
+      "mu_absolute_error": 1.8910722987541817e-09,
+      "COM_moments_max_absolute_error": 5.096402522219989e-09
+    },
+    {
+      "master_phase_index": 2054,
+      "max_step": 0.025,
+      "status": "unresolved",
+      "independent_energy_error": 3.263602075819969e-11,
+      "position_max_absolute_error": 1.9100205861377617e-09,
+      "velocity_max_absolute_error": 1.5537178210678348e-09,
+      "mu_absolute_error": 3.975406115408475e-11,
+      "COM_moments_max_absolute_error": 1.0570896935568896e-10
+    },
+    {
+      "master_phase_index": 2061,
+      "max_step": 0.05,
+      "status": "passed",
+      "independent_energy_error": 4.844486861789708e-11,
+      "position_max_absolute_error": 5.721254581203539e-09,
+      "velocity_max_absolute_error": 1.3498535622602503e-10,
+      "mu_absolute_error": 1.9332979661612626e-11,
+      "COM_moments_max_absolute_error": 1.9332979661612626e-11
+    },
+    {
+      "master_phase_index": 2061,
+      "max_step": 0.025,
+      "status": "passed",
+      "independent_energy_error": 2.4345535701895914e-11,
+      "position_max_absolute_error": 1.717097575237858e-10,
+      "velocity_max_absolute_error": 4.825286004095375e-12,
+      "mu_absolute_error": 7.626677067662513e-13,
+      "COM_moments_max_absolute_error": 7.644440636056515e-13
+    },
+    {
+      "master_phase_index": 2062,
+      "max_step": 0.05,
+      "status": "passed",
+      "independent_energy_error": 4.8212284552731114e-11,
+      "position_max_absolute_error": 4.705896117229713e-09,
+      "velocity_max_absolute_error": 1.2962686479767171e-10,
+      "mu_absolute_error": 1.9794665906402997e-11,
+      "COM_moments_max_absolute_error": 1.9794665906402997e-11
+    },
+    {
+      "master_phase_index": 2062,
+      "max_step": 0.025,
+      "status": "passed",
+      "independent_energy_error": 2.444655108254861e-11,
+      "position_max_absolute_error": 1.1434764246587292e-10,
+      "velocity_max_absolute_error": 4.614975068761851e-12,
+      "mu_absolute_error": 9.91706716746421e-13,
+      "COM_moments_max_absolute_error": 9.91706716746421e-13
+    },
+    {
+      "master_phase_index": 2063,
+      "max_step": 0.05,
+      "status": "passed",
+      "independent_energy_error": 4.7902843533238205e-11,
+      "position_max_absolute_error": 3.93174204305069e-09,
+      "velocity_max_absolute_error": 1.2463674536888902e-10,
+      "mu_absolute_error": 2.0786594667754343e-11,
+      "COM_moments_max_absolute_error": 2.0786594667754343e-11
+    },
+    {
+      "master_phase_index": 2063,
+      "max_step": 0.025,
+      "status": "passed",
+      "independent_energy_error": 2.6978922594613967e-11,
+      "position_max_absolute_error": 1.5154455468291417e-10,
+      "velocity_max_absolute_error": 5.828448834677147e-12,
+      "mu_absolute_error": 1.0704215291923447e-12,
+      "COM_moments_max_absolute_error": 1.088129586435116e-12
+    },
+    {
+      "master_phase_index": 2070,
+      "max_step": 0.05,
+      "status": "passed",
+      "independent_energy_error": 4.643202169548407e-11,
+      "position_max_absolute_error": 6.943068342479819e-10,
+      "velocity_max_absolute_error": 1.1575806979635672e-10,
+      "mu_absolute_error": 1.5125900532098058e-11,
+      "COM_moments_max_absolute_error": 1.519814829542554e-11
+    },
+    {
+      "master_phase_index": 2070,
+      "max_step": 0.025,
+      "status": "passed",
+      "independent_energy_error": 2.9475411738205575e-11,
+      "position_max_absolute_error": 9.346479146188358e-11,
+      "velocity_max_absolute_error": 5.7476245984844354e-12,
+      "mu_absolute_error": 3.060329767379244e-13,
+      "COM_moments_max_absolute_error": 3.589073482856975e-13
+    },
+    {
+      "master_phase_index": 2071,
+      "max_step": 0.05,
+      "status": "passed",
+      "independent_energy_error": 4.677095020594601e-11,
+      "position_max_absolute_error": 5.542482028886297e-10,
+      "velocity_max_absolute_error": 1.357292056525239e-10,
+      "mu_absolute_error": 1.4530987524352668e-11,
+      "COM_moments_max_absolute_error": 1.4530987524352668e-11
+    },
+    {
+      "master_phase_index": 2071,
+      "max_step": 0.025,
+      "status": "passed",
+      "independent_energy_error": 2.4287034414670974e-11,
+      "position_max_absolute_error": 3.7754688264612923e-11,
+      "velocity_max_absolute_error": 4.888534022029489e-12,
+      "mu_absolute_error": 7.117639810871879e-13,
+      "COM_moments_max_absolute_error": 7.117639810871879e-13
+    }
+  ],
+  "prior_anchor_max_step": 0.05,
+  "anchor_max_absolute_moment_difference": 8.920197913653283e-12,
+  "cost": {
+    "producer_reported_wall_s": 477.4366595839965,
+    "new_relative_wall_s_sum": 448.76623808877775,
+    "Cartesian_wall_s_sum": 6.890991167922039,
+    "producer_remaining_checkpoints_overhead_s": 21.779430327296723,
+    "producer_reported_process_peak_RSS_bytes": 475955200,
+    "RSS_scope": "Historical producer peak echoed from its receipt, not independently remeasured. Auditor peak is separate.",
+    "auditor_wall_s": 1.6439981250441633,
+    "auditor_process_peak_RSS_bytes": 155140096
+  },
+  "scope": [
+    "No production numerical functions or trajectories invoked; all analytic COM formulas and Cartesian energy/moment checks are independent NumPy implementations.",
+    "Relative-node energy is independently checked at endpoints only; entire relative trajectory energy maxima remain reported producer diagnostics. All saved Cartesian trajectory samples were checked.",
+    "Nested finite sums and timestep/selected controls remain conditional sampled evidence, not rigorous continuous-phase error bounds or a coverage certificate.",
+    "Neither sampled exits nor energy agreement establishes almost-everywhere exits or the treatment of unsampled censoring intervals.",
+    "No outgoing boundary convention, plasma closure, annular/speed rate, source D calibration or full-trajectory speedup claim."
+  ]
+}

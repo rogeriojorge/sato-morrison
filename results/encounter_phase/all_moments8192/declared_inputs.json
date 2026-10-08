@@ -1,0 +1,67 @@
+{
+  "mass": 1.0,
+  "charge": 1.0,
+  "field": 2.0,
+  "strength": 0.03,
+  "screening": 3.0,
+  "theta": 0.5,
+  "theta_definition": "single-particle velocity variance k_B*T/m",
+  "fixed_incoming_triple": [
+    0.9938225266093732,
+    1.9056642462041216,
+    1.9668376625283577
+  ],
+  "start_distance": 24.0,
+  "flight_time_factor": 12.0,
+  "max_step": 0.05,
+  "rtol": 1e-10,
+  "phase_orders": [
+    32,
+    64,
+    128,
+    256,
+    512,
+    1024,
+    2048,
+    4096,
+    8192
+  ],
+  "master_phase_count": 8192,
+  "phase_measure": "dphi/(2pi)",
+  "baseline_actual_final_phase_order": 2048,
+  "phase_relative_target": 0.01,
+  "required_successive_checks": 2,
+  "convergence_components": [
+    "mean",
+    "second",
+    "cross"
+  ],
+  "zero_denominator_rule": "Both current and previous exactly zero:change 0; current zero with previous nonzero:undefined and fails. Otherwise abs(current-previous)/abs(current).",
+  "refined_max_step": 0.025,
+  "timestep_relative_target": 0.001,
+  "energy_target": 1e-08,
+  "anchor_master_indices": [
+    0,
+    2048,
+    4096
+  ],
+  "new_control_count": 3,
+  "new_control_selection": "Union of largest three known absolute mean, second moment and absolute cross contributors among phases outside baseline actual 2048-node lattice; ties by index, no replacement for failed/unknown Cartesian controls.",
+  "runtime_budget_s": 1200.0,
+  "checkpoint_interval": 128,
+  "runtime_cap_scope": "Checked between work items; may overshoot by one operation, not a hard process kill. Incomplete declared checks remain unresolved.",
+  "baseline_summary_sha256": "e2c15cbca067ccfce4839366c1d7768d126907557569ce3af33f868d209ab887",
+  "baseline_nodes_sha256": "c89dfb3e4797ef03d64b062021c3a8d67860e787de5280b3a6973b9aec93da5e",
+  "independent_pair_max_steps": [
+    0.05,
+    0.025
+  ],
+  "pair_position_absolute_target": 1e-08,
+  "pair_velocity_absolute_target": 1e-08,
+  "pair_mu_absolute_target": 1e-10,
+  "anchor_absolute_moment_target": 1e-08,
+  "prior_metadata_sha256": "d2b411a3213d5becb1504ba7d654802240505159d52a7b7dcba936cce852f5ab",
+  "seed": null,
+  "moment_definition": "analytic independent Maxwellian COM average of individual delta_mu_1, its square, and delta_mu_1*delta_mu_2",
+  "stop_rule": "Stop after two successive complete 1% checks for all three moments or retain all levels through8192; final whole-grid timestep 0.1% checks apply to all three; no post-outcome extension."
+}
