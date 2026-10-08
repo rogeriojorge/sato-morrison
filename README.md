@@ -79,9 +79,18 @@ A **null mode** is a change the operator leaves untouched. Some sampled nulls ar
 
 Real encounters can exchange parallel and perpendicular energy, changing μ. To test the model's exact constraint, we integrate two repelling particles in a uniform field. We fix the separation of their spiral centers and their incoming relative speeds, then vary the **incoming phase**, the angle around the spiral as they approach.
 
+![Two independently checked encounters on one clock: one passes through, one reflects. Their individual magnetic moments change by different amounts. Curves stop at their outgoing events.](results/encounter_movie/encounter.gif)
+
+The incoming speeds and orbit-center separation are identical; only the phase changes. One encounter passes through in **25.35** normalized time units, while the other reflects after **90.35**. Their final magnetic moments are **1.020** and **1.912** times their initial values. Each line stops at its exit. These are two individual paths with a stationary center of mass, outside a verified adiabatic/grazing regime. They demonstrate why exact μ conservation needs a physical justification. [MP4](results/encounter_movie/encounter.mp4) · [Static figure](results/encounter_movie/poster.svg) · [Inputs and checks](results/encounter_movie/summary.json)
+
+<details>
+<summary>Do two accurate trajectories determine the average collision effect?</summary>
+
 ![A narrow band of incoming phases dominates magnetic-moment change. Resolving each trajectory accurately does not resolve the average over phases.](results/encounter_phase/phase_convergence.png)
 
 The left panel measures squared change in μ, averaged over motion of the pair's center of mass (COM). A few phases dominate the sampled average. Halving the integration timestep changes the 512-phase average by only **3.13×10⁻¹¹**, but doubling the phase count still changes it by **3.94%**. Agreement at sampled angles does not resolve the angles between them. This conditional study remains **unresolved**. [Inputs and controls](results/encounter_phase/summary.json) · [Script](examples/24_encounter_phase.py)
+
+</details>
 
 <details>
 <summary>Why can a finite phase grid miss slow encounters?</summary>
@@ -139,6 +148,18 @@ An implicit timestep repeatedly solves a linear system. A **preconditioner** sup
 ![Three paired timings, correction errors below the same target, and the larger temporary-memory requirement of full spatial blocks.](results/difficult_correction/difficult_correction.png)
 
 For one frozen dipole correction, median times were **210.1 s** and **51.7 s**, both below **10⁻⁷** relative correction error. Full spatial blocks used more temporary memory. The spread reflects a shared M4 under varying load; this is not a full-trajectory or general speedup result. [Inputs, all repeats and memory accounting](results/difficult_correction/summary.json) · [Script](examples/23_difficult_correction.py)
+
+</details>
+
+
+<details>
+<summary>Why can a solver fail even when its linear solve passes?</summary>
+
+The nonlinear solver uses the logarithm of density, **g = log f**, to preserve positivity. Extremely small populations can still exceed floating-point range: evaluating **f = exp g** may return zero.
+
+![All thirty trials on one failed dipole Newton ray. The last trials approach the smallest normal density, but the actual exponential still returns zero and the positivity check rejects them.](results/nonuniform_spatial_blocks_full/dipole_dt16_replay/tail_guard.svg)
+
+In this recorded replay, the linear residual passes but all 30 trial updates fail before the objective is evaluated. Four exceed the log range; 26 lose positive population. The failed step is rejected visibly. A separate 300-second trial with 60 backtracks permits tiny updates but leaves the residual near **2.887**, far above **10⁻¹²**. No second timestep is accepted, and no density floor or relaxed conservation criterion is applied. [Recorded ray and diagnostics](results/nonuniform_spatial_blocks_full/dipole_dt16_replay/summary.json) · [Plot script](examples/26_tail_guard.py)
 
 </details>
 

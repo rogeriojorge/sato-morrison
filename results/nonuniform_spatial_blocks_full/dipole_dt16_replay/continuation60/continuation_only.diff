@@ -1,0 +1,29 @@
+--- original_logging_overlay.py
++++ continuation60_logging_overlay.py
+@@ -495,7 +495,7 @@
+     total_mass=float(population.sum())
+     if not np.isfinite(total_mass) or total_mass<=0:
+         raise ValueError('positive finite total mass required')
+-    old=jnp.log(jnp.asarray(f));new_log=np.asarray(old).copy()
++    old=jnp.log(jnp.asarray(f));new_log=np.asarray(_replay_initial_g).copy()
+     if compiled.reference_population is None:
+         root=np.sqrt(population);scale=np.sqrt(total_mass)
+         residual_metric='entropy_population'
+@@ -517,7 +517,7 @@
+     if any(not np.all(np.isfinite(value)) or np.any(np.asarray(value)<0) for value in jax.tree.leaves(diagonal)):
+         raise StepFailure('lagged preconditioner is not finite nonnegative')
+     history=[];linear_iterations=0;maximum_linear_residual=0.
+-    for iteration in range(max_steps+1):
++    for iteration in range(18,max_steps+1):
+         value=np.asarray(evaluate(new_log,old,dt));norm=float(np.linalg.norm(value/root)/scale)
+         if np.isfinite(norm) and norm<=rtol:break
+         if iteration==max_steps or not np.isfinite(norm):
+@@ -542,7 +542,7 @@
+         if not np.all(np.isfinite(direction)) or not np.isfinite(descent) or not np.isfinite(curvature) or descent>=0:
+             raise StepFailure('lagged Newton direction is nonfinite or lacks objective descent')
+         alpha0=1.
+-        for backtrack in range(30):
++        for backtrack in range(60):
+             fraction=alpha0*2.**(-backtrack);candidate=new_log+fraction*direction
+             trial=_replay_trial_start(iteration+1,backtrack,fraction,candidate,weights)
+             if not np.all(np.isfinite(candidate)) or np.any(candidate>np.log(np.finfo(float).max)) or np.any(candidate<np.log(np.nextafter(0.,1.))):

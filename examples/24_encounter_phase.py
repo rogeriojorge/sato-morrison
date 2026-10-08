@@ -1,7 +1,7 @@
-"""Resolve a fixed close encounter's positive gyrophase second-moment integral."""
+"""Refine sampled gyrophase second moments for a fixed close encounter."""
 from pathlib import Path
 from time import perf_counter
-import hashlib,json,csv
+import hashlib,json,csv,resource,sys
 import numpy as np
 import jax
 jax.config.update('jax_enable_x64',True)
@@ -12,17 +12,23 @@ from sato_morrison.controls import encounter_relative,encounter_thermal_moments,
 from sato_morrison.reference import run_metadata,progress
 
 ROOT=Path(__file__).resolve().parents[1]
-OUTPUT=ROOT/'results'/'encounter_phase'
+OUTPUT=ROOT/'results'/'encounter_phase'/'refined8192'
+BASELINE=ROOT/'results'/'encounter_phase'
+BASELINE_SHA='33f5e206d6a748518abe6808945b96d003b4e2fef283d318bd63f04973d2812e'
+BASELINE_NODES_SHA='385a209f056534c54a75a29305d752ef8137c045ba728f8680e2563531bd182d'
 PRIOR=ROOT/'results'/'encounter_duration'/'metadata.json'
 PRIOR_SHA='d2b411a3213d5becb1504ba7d654802240505159d52a7b7dcba936cce852f5ab'
 MASS,CHARGE,FIELD,STRENGTH,SCREENING,THETA=1.,1.,2.,.03,3.,.5
 IMPACT,PARALLEL,PERPENDICULAR=.9938225266093732,1.9056642462041216,1.9668376625283577
 DISTANCE,FLIGHT_FACTOR,MAX_STEP,RTOL=24.,12.,.05,1e-10
-ORDERS=(32,64,128,256,512)
+ORDERS=(32,64,128,256,512,1024,2048,4096,8192)
+RUNTIME_BUDGET=1200.
+CHECKPOINT_INTERVAL=128
+NEW_CONTROL_COUNT=3
 PHASE_TARGET,TIMESTEP_TARGET,ENERGY_TARGET=.01,.001,1e-8
 SUCCESSIVE_CHECKS=2
 REFINED_STEP=.025
-CONTROL_INDICES=(0,128,256)
+ANCHOR_INDICES=(0,ORDERS[-1]//4,ORDERS[-1]//2)
 PAIR_STEPS=(.05,.025)
 PAIR_POSITION_TARGET,PAIR_VELOCITY_TARGET,PAIR_MU_TARGET=1e-8,1e-8,1e-10
 ANCHOR_TARGET=1e-8
@@ -80,38 +86,76 @@ inputs={'mass':MASS,'charge':CHARGE,'field':FIELD,'strength':STRENGTH,'screening
     'phase_orders':ORDERS,'master_phase_count':ORDERS[-1],'phase_measure':'dphi/(2pi)',
     'phase_relative_target':PHASE_TARGET,'required_successive_checks':SUCCESSIVE_CHECKS,
     'refined_max_step':REFINED_STEP,'timestep_relative_target':TIMESTEP_TARGET,
-    'energy_target':ENERGY_TARGET,'control_master_indices':CONTROL_INDICES,
+    'energy_target':ENERGY_TARGET,'anchor_master_indices':ANCHOR_INDICES,'new_control_count':NEW_CONTROL_COUNT,
+    'new_control_selection':'Largest3 known primary second-moment contributors among new phases outside original512 lattice, ties by index; unknown outcomes are excluded from ranking but prevent overallpass; no replacement for failed Cartesian controls.',
+    'runtime_budget_s':RUNTIME_BUDGET,'checkpoint_interval':CHECKPOINT_INTERVAL,
+    'runtime_cap_scope':'Checked between work items; may overshoot by one operation, not a hard process kill. Incomplete declared checks remain unresolved.',
+    'baseline_summary_sha256':BASELINE_SHA,'baseline_nodes_sha256':BASELINE_NODES_SHA,
     'independent_pair_max_steps':PAIR_STEPS,'pair_position_absolute_target':PAIR_POSITION_TARGET,
     'pair_velocity_absolute_target':PAIR_VELOCITY_TARGET,'pair_mu_absolute_target':PAIR_MU_TARGET,
     'anchor_absolute_moment_target':ANCHOR_TARGET,
     'prior_metadata_sha256':PRIOR_SHA,'seed':None,
     'moment_definition':'analytic independent Maxwellian COM average of individual delta_mu_1, its square, and delta_mu_1*delta_mu_2',
-    'stop_rule':'Stop after two successive complete 1% second-moment phase checks; otherwise retain all declared levels through512.'}
-print('Fixed-triple gyrophase integral; no impact/speed integral, density rate or source D.',flush=True)
+    'stop_rule':'Stop after two successive complete 1% checks or retain all levels through8192; declared runtime cap leaves unattempted work explicitly unresolved.'}
+print('Refine sampled fixed-triple phase moments; continuous coverage remains unresolved, no rate or source D.',flush=True)
 if hashlib.sha256(PRIOR.read_bytes()).hexdigest()!=PRIOR_SHA:
     raise ValueError('Saved original duration receipt changed')
 prior=json.loads(PRIOR.read_text());original=prior['results']['failure_audits'][0]
 if original['original_failure']['node'][:3]!=inputs['fixed_incoming_triple']:
     raise ValueError('The fixed triple differs from the predeclared saved encounter')
+if hashlib.sha256((BASELINE/'summary.json').read_bytes()).hexdigest()!=BASELINE_SHA or hashlib.sha256((BASELINE/'nodes.json').read_bytes()).hexdigest()!=BASELINE_NODES_SHA:
+    raise ValueError('Original phase evidence changed')
+baseline=json.loads((BASELINE/'summary.json').read_text())
+if hashlib.sha256((ROOT/'src/sato_morrison/controls.py').read_bytes()).hexdigest()!=baseline['experiment_dependency_sha256']['src/sato_morrison/controls.py']:
+    raise ValueError('Physical encounter code differs from original cache producer')
+for key in ['mass','charge','field','strength','screening','theta','fixed_incoming_triple','start_distance','flight_time_factor','max_step','rtol','refined_max_step']:
+    if baseline['inputs'][key]!=inputs[key]:raise ValueError('Physical inputs differ from original cache')
+if baseline['nodes_sha256']!=BASELINE_NODES_SHA:raise ValueError('Original cache hash association changed')
 OUTPUT.mkdir(parents=True,exist_ok=True)
 metadata=run_metadata(inputs,model='fixed-triple screened encounter gyrophase convergence',
     boundary='first outgoing relative z=+/-24 plane; transmitted and reflected exits; fixed finite flight budget',units='normalized')
 dependencies=[Path(__file__).resolve(),ROOT/'src/sato_morrison/controls.py',ROOT/'src/sato_morrison/reference.py']
 metadata['experiment_dependency_sha256']={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in dependencies}
+metadata['reused_phase_evidence']={'summary_path':str((BASELINE/'summary.json').relative_to(ROOT)),
+    'summary_sha256':BASELINE_SHA,'nodes_path':str((BASELINE/'nodes.json').relative_to(ROOT)),
+    'nodes_sha256':BASELINE_NODES_SHA,'producer_commit':baseline['commit'],
+    'original_phase_status':baseline['results']['phase_status']}
 metadata['prior_evidence']={'path':str(PRIOR.relative_to(ROOT)),'sha256':PRIOR_SHA,'producer_commit':prior['commit']}
 (OUTPUT/'declared_inputs.json').write_text(json.dumps(inputs,indent=2)+'\n')
-started=perf_counter();cache={};levels=[];consecutive=0
+started=perf_counter();cache={};levels=[];consecutive=0;new_solves=0;unattempted=set()
+for row in json.loads((BASELINE/'nodes.json').read_text()):
+    index=int(row['master_phase_index'])*ORDERS[-1]//baseline['inputs']['master_phase_count']
+    if index*baseline['inputs']['master_phase_count']!=row['master_phase_index']*ORDERS[-1] or 2*np.pi*index/ORDERS[-1]!=row['phase']:
+        raise ValueError('Cache phase mapping is not exact')
+    key=(index,float(row['max_step']))
+    if key in cache:raise ValueError('Duplicate original phase cache key')
+    cache[key]={**row,'master_phase_index':index,'reused_from_original_phase_index':row['master_phase_index'],
+        'reused_from_producer_commit':baseline['commit'],'historical_wall_s':row['wall_s'],'wall_s':0.}
+reused_solves=len(cache)
+
+
+def checkpoint():
+    (OUTPUT/'nodes_partial.json').write_text(json.dumps(list(cache.values()),indent=2,allow_nan=False)+'\n')
+
+
+def budget_available():
+    return perf_counter()-started<RUNTIME_BUDGET
 
 
 def evaluate(index,step):
     key=(int(index),float(step))
+    global new_solves
     if key not in cache:
-        cache[key]=phase_attempt(*key)
-        (OUTPUT/'nodes_partial.json').write_text(json.dumps(list(cache.values()),indent=2,allow_nan=False)+'\n')
+        if not budget_available():
+            unattempted.add(key)
+            return {'master_phase_index':key[0],'phase':2*np.pi*key[0]/ORDERS[-1],'max_step':key[1],
+                'status':'unresolved','reason':'Declared runtime cap exhausted; not attempted','wall_s':0.}
+        cache[key]=phase_attempt(*key);new_solves+=1
+        if new_solves%CHECKPOINT_INTERVAL==0 or cache[key]['status']!='outgoing_event':checkpoint()
     return cache[key]
 
 
-with progress('Integrate nested phases, retaining every numerical nonexit and its measure'):
+with progress('Refine sampled nested phases, retaining every numerical nonexit and its weight'):
     for order in ORDERS:
         records=[evaluate(index,MAX_STEP) for index in range(0,ORDERS[-1],ORDERS[-1]//order)]
         summary=phase_summary(records,order)
@@ -121,23 +165,31 @@ with progress('Integrate nested phases, retaining every numerical nonexit and it
         consecutive=consecutive+1 if check else 0
         summary['successive_passes']=consecutive;levels.append(summary)
         print(f'  N={order}: complete={summary["complete"]}, second={summary["known_positive_second_moment_contribution"]:.9g}, change={change}, consecutive={consecutive}',flush=True)
-        (OUTPUT/'levels_partial.json').write_text(json.dumps(levels,indent=2,allow_nan=False)+'\n')
-        if consecutive>=SUCCESSIVE_CHECKS:break
+        (OUTPUT/'levels_partial.json').write_text(json.dumps(levels,indent=2,allow_nan=False)+'\n');checkpoint()
+        if consecutive>=SUCCESSIVE_CHECKS or not budget_available():break
 final_order=levels[-1]['phase_order'];indices=list(range(0,ORDERS[-1],ORDERS[-1]//final_order))
 with progress('Timestep refinement of the entire final gyrophase integral'):
     fine_records=[evaluate(index,REFINED_STEP) for index in indices]
+checkpoint()
 fine=phase_summary(fine_records,final_order)
 step_change=second_change(fine,levels[-1]);fine['second_moment_relative_change_from_primary_step']=step_change
 
+new_candidates=sorted([r for r in records if r['status']=='outgoing_event' and r['master_phase_index']%(ORDERS[-1]//baseline['inputs']['master_phase_count'])!=0],
+    key=lambda r:(-r['moments'][1],r['master_phase_index']))
+new_control_indices=[r['master_phase_index'] for r in new_candidates[:NEW_CONTROL_COUNT]]
+control_indices=list(ANCHOR_INDICES)+new_control_indices
 controls=[];paths={}
-with progress('Independent individual-particle Cartesian equations at three fixed phases'):
-    for index in CONTROL_INDICES:
+with progress('Cartesian equations at anchors and largest new contributors'):
+    for index in control_indices:
         row=evaluate(index,REFINED_STEP);control={'master_phase_index':index,'phase':2*np.pi*index/ORDERS[-1],
-            'relative_status':row['status'],'pair_refinements':[]}
+            'relative_status':row['status'],'pair_refinements':[],
+            'selection':'original_anchor' if index in ANCHOR_INDICES else 'largest_new_contributor',
+            'relative_reason':row.get('reason')}
         if row['status']=='outgoing_event':
             for step in PAIR_STEPS:
                 begin=perf_counter()
                 try:
+                    if not budget_available():raise RuntimeError('Declared runtime cap exhausted; Cartesian control not attempted')
                     pair=binary_encounter(row['initial_relative_position'],row['initial_relative_velocity'],
                         field=FIELD,strength=STRENGTH,mass=MASS,charge=CHARGE,screening=SCREENING,
                         duration=row['time'],max_step=step,rtol=RTOL)
@@ -169,7 +221,7 @@ phase_passed=consecutive>=SUCCESSIVE_CHECKS
 step_passed=step_change is not None and step_change<=TIMESTEP_TARGET and fine['max_energy_error']<=ENERGY_TARGET
 metadata['experiment_dependency_sha256_end']={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in dependencies}
 metadata['experiment_dependencies_unchanged']=metadata['experiment_dependency_sha256']==metadata['experiment_dependency_sha256_end']
-passed=phase_passed and step_passed and all(c['status']=='passed' for c in controls) and anchor_error is not None and anchor_error<ANCHOR_TARGET and metadata['experiment_dependencies_unchanged']
+passed=phase_passed and step_passed and len(new_control_indices)==NEW_CONTROL_COUNT and len(controls)==len(ANCHOR_INDICES)+NEW_CONTROL_COUNT and all(c['status']=='passed' for c in controls) and anchor_error is not None and anchor_error<ANCHOR_TARGET and metadata['experiment_dependencies_unchanged']
 records=[evaluate(index,MAX_STEP) for index in indices]
 second=np.array([r['moments'][1] if r['status']=='outgoing_event' else np.nan for r in records])
 known=np.where(np.isfinite(second),second,0.);total=known.sum()
@@ -186,12 +238,19 @@ results={'phase_levels':levels,'timestep_check':fine,'controls':controls,
         'actual_node_fraction':max(1,int(np.ceil(final_order*fraction)))/final_order,
         'node_count':max(1,int(np.ceil(final_order*fraction))),
         'known_second_moment_contribution_fraction':float(ranked[:max(1,int(np.ceil(final_order*fraction)))].sum()/total)} for fraction in (.01,.05,.1,.25)] if total>0 else [],
-    'unique_relative_solves':len(cache),'wall_s':perf_counter()-started,
+    'unique_relative_solves':len(cache),'reused_relative_solves':reused_solves,'new_relative_solves':new_solves,
+    'new_control_indices':new_control_indices,'runtime_cap_reached':not budget_available(),
+    'unattempted_relative_nodes':[{'master_phase_index':i,'max_step':step} for i,step in sorted(unattempted)],
+    'continuous_phase_coverage_status':'unresolved','wall_s':perf_counter()-started,
+    'process_peak_RSS_bytes':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024),
+    'memory_scope':'Process peak resident set including imports/cache/checkpoint work, before final plotting; not just selected array storage.',
     'wall_s_scope':'Numerical solves/checks and intermediate checkpoint/path writes; excludes imports, initial metadata, plots and final output writing.',
     'limits':['Fixed incoming triple, not an annular or speed-integrated rate.','Finite phase differences are convergence diagnostics, not rigorous quadrature error bounds.',
         'All phases retain weight1/N, including unknown nonexits. Partial positive sums are not continuous-integral bounds.',
         'Closest separations are sampled. Jump normalized by mean initial moment is not a pointwise relative jump or an asymptotic ordering proof.',
         'Independent12D controls use separate individual equations/coordinates but the same DOP853 integrator; COM=0 checks the mean, with full COM second moment supplied analytically.',
+        'All sampled exits do not certify continuous phase coverage; opposite exact exit basins imply finite-budget censoring intervals. An outgoing integral needs almost-everywhere finite exits or an explicit extension convention.',
+        'Small energy defects do not certify trajectory accuracy near the unresolved exit boundary. New Cartesian/timestep controls retain all failures.',
         'No sourceD calibration, independent-encounter plasma closure or lifetime.']}
 metadata['results']=results
 metadata['independent_pair_paths_sha256']=hashlib.sha256((OUTPUT/'independent_pair_paths.npz').read_bytes()).hexdigest()
@@ -212,7 +271,7 @@ axes[1].set(xlabel='fraction of largest contributing phase nodes',ylabel='fracti
 axes[2].plot([r['phase_order'] for r in levels],[r['known_positive_second_moment_contribution'] for r in levels],'o-',label='step .05')
 axes[2].plot(final_order,fine['known_positive_second_moment_contribution'],'x',ms=8,label='step .025')
 axes[2].set(xlabel='phase nodes',ylabel='second-moment integral / (2π)',title='Nested phase and timestep checks');axes[2].set_xscale('log',base=2);axes[2].legend(fontsize=9)
-fig.suptitle(f'Conditional gyrophase convergence: {results["status"]}\nAll phases retain their weight; missing final weight = {levels[-1]["missing_phase_weight"]:.4g}',fontsize=11)
+fig.suptitle(f'Conditional gyrophase convergence: {results["status"]}\nSample weights retained; missing = {levels[-1]["missing_phase_weight"]:.4g}; continuous coverage unresolved',fontsize=11)
 fig.savefig(OUTPUT/'phase_convergence.png',dpi=180);plt.close(fig)
 print(f'Finished: {results["status"]}, phase checks={consecutive}, timestep change={step_change}, elapsed={results["wall_s"]:.1f}s',flush=True)
 if not passed:raise RuntimeError('Conditional phase checks unresolved; all measurements and failures retained')

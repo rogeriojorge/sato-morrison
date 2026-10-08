@@ -1,0 +1,48 @@
+{
+  "kind": "saved-array arithmetic, encoded-frame count and visual QA",
+  "producer_commit": "685918fd05fd1ff08bc91579600bc9ee307cf97b",
+  "source_changes": "M examples/README.md",
+  "sha256": {
+    "results/encounter_movie/summary.json": "7102b3c40b03268938f052560c0f3b5260882164a21b32b578ab1e41f0ce0ab6",
+    "examples/27_encounter_movie.py": "063adae624df29bed26388c103bf71b233ccd98611db801203117d48f5a3c916",
+    "results/encounter_phase/independent_pair_paths.npz": "31960cced83d49aaa1cd3e35792a75ab8b62a12b29da65cbd2f5eac28f411960"
+  },
+  "checks": [
+    {
+      "index": 0,
+      "reported_exit_time_exact": true,
+      "reported_initial_mu_exact": true,
+      "reported_final_mu_ratio_exact": true
+    },
+    {
+      "index": 128,
+      "reported_exit_time_exact": true,
+      "reported_initial_mu_exact": true,
+      "reported_final_mu_ratio_exact": true
+    }
+  ],
+  "scientific_arithmetic_identical_to_first_render3b45354": true,
+  "declared_inputs_identical_to_first_render": true,
+  "gif": {
+    "frames": 120,
+    "frame_duration_ms": [
+      100
+    ],
+    "total_duration_ms": 12000
+  },
+  "mp4": {
+    "r_frame_rate": "10/1",
+    "duration": "12.000000",
+    "nb_frames": "120"
+  },
+  "visual_QA_frames": [
+    0,
+    5,
+    34,
+    60,
+    119
+  ],
+  "visual_QA_status": "Clean labels/legend/status gap; each curve stops at its own exit and endpoint marker stays at actual exit time, with no extrapolated line.",
+  "formula": "mu1=m(v1x\u00b2+v1y\u00b2)/(2B),m1,B2; ratios normalized by own initial moment.",
+  "scope": "Encoding and arithmetic checks only. No new ODE, COM average, phase convergence, kinetic coefficient or lifetime. Earlier physical producer58cc3e1 and renderer685918f are distinct."
+}

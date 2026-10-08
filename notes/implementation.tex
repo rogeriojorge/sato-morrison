@@ -2841,10 +2841,29 @@ $\Delta\Phi=-5.63\times10^{-17}$, satisfying the Armijo right-hand side
 $-5.63\times10^{-21}$. This replay localizes exhaustion to tail
 representability on the selected Newton ray, not PCG or non-descent.
 
-The next untried fraction $2^{-30}$ has a minimum log value above the normal
-threshold in independent NumPy arithmetic. This does not establish its
-actual JAX acceptance, subsequent progress, or representability of the
-desired root. Nor is the M4 replay bitwise identical to the Linux producer.
+The next previously untried fraction $2^{-30}$ has a minimum log value
+above the normal threshold. A subsequent direct check with the actual JAX
+population guard and objective accepts this trial, but its residual reduction
+is negligible. A separate continuation from the saved failed iterate permits
+60 backtracks, retaining the same old state, reference population, mobility,
+PCG and nonlinear tolerances. Its declared 300-second bound expires during
+correction 40 after 21 accepted scalar updates. The reference residual changes
+from $2.887412924305$ to $2.887412921250$, a relative reduction of only
+$1.06\times10^{-9}$, while the required residual is $10^{-12}$. Late fractions
+are $2^{-54}$; from correction 30 through 40 only two represented log-density
+entries change, by at most $7.11\times10^{-14}$, with bitwise-flat recorded
+residual. These are recorded Armijo acceptances, not an independent proof
+of descent for the rounded represented update: at correction 39 the ideal
+ray's first-order decrement is about $-1.68\times10^{-24}$, whereas direct
+contraction with the actual rounded update gives about
+$-3.73\times10^{-32}$. The latter check does not assemble the quadratic
+term. No physical second step is accepted. Thus increasing the trial
+budget alone has not resolved this case; the bounded experiment does not
+prove that every possible continuation fails or that the desired root is
+unrepresentable. All inputs, final arrays, trials and the explicit
+continuation-only diff are retained in
+\path{results/nonuniform_spatial_blocks_full/dipole_dt16_replay/continuation60/}.
+The M4 replay is not bitwise identical to the Linux producer.
 The public solver now records counts of log-range, positive-population and
 Armijo rejections, together with the last trial values, on exhaustion.
 Its 30 trial fractions and successful-step arithmetic are unchanged. A
@@ -3601,6 +3620,22 @@ The guide states the collision-only, uniform-field, homogeneous-reference and
 closed-boundary assumptions before interpreting these equations.
 All input arrays, source hashes, normalized units, versions, hardware and
 figure digests are recorded in \path{results/first_principles/summary.json}.
+
+Examples 26 and 27 render existing checked arrays without solving new
+trajectories. Example 26 reconstructs each of the 30 final Newton-ray trials
+from saved $g$, direction and fractions, checks them against the rejection
+ledger, and plots the smallest trial log density relative to the binary64
+normal/subnormal bounds. Example 27 animates the independently checked
+individual-particle paths at phases $0$ and $\pi/2$ from example 24.
+With $m=1$, $B=2$ and stationary center of mass, it recomputes
+$\mu_1=m(v_{1x}^2+v_{1y}^2)/(2B)$ along each path, checking final increments
+and path energies against the earlier independent evidence. The final
+ratios $\mu_1/\mu_1(0)$ are $1.0199971$ and $1.9122873$, with exit times
+$25.34561$ and $90.35033$. Both panels share actual normalized time; each
+curve stops at its own outgoing event. No extrapolated segment, thermal
+center average, phase integral or calibrated physical timescale is implied.
+Movie frame count, playback speed, source hashes, rendering versions and
+hardware are saved in \path{results/encounter_movie/summary.json}.
 
 \bibliographystyle{unsrt}
 \bibliography{references}

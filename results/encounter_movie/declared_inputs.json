@@ -1,0 +1,25 @@
+{
+  "saved_paths_sha256": "31960cced83d49aaa1cd3e35792a75ab8b62a12b29da65cbd2f5eac28f411960",
+  "saved_summary_sha256": "33f5e206d6a748518abe6808945b96d003b4e2fef283d318bd63f04973d2812e",
+  "master_phase_indices": [
+    0,
+    128
+  ],
+  "saved_individual_path_step": 0.025,
+  "mass": 1.0,
+  "field": 2.0,
+  "relative_outgoing_planes": [
+    -24.0,
+    24.0
+  ],
+  "frames": 120,
+  "fps": 10,
+  "dpi": 110,
+  "moment_definition": "mu_1=m*(v_1x^2+v_1y^2)/(2B); normalize by that path initial mu_1",
+  "time_definition": "shared normalized time, revealing original samples up to each frame time",
+  "exit_rule": "Each curve and its endpoint marker stop at its own actual exit time. No hold or extrapolated trajectory beyond exit.",
+  "position_target": 1e-08,
+  "mu_increment_target": 1e-10,
+  "energy_target": 1e-08,
+  "scope": "Two individual12D zero-COM paths, not a COM-averaged ensemble, phase-converged integral, collision rate or lifetime."
+}

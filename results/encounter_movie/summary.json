@@ -1,0 +1,122 @@
+{
+  "model": "animation of two verified individual Cartesian encounter paths",
+  "boundary": "each saved trajectory ends at its first outgoing relative z=+/-24 plane",
+  "units": "normalized",
+  "inputs": {
+    "saved_paths_sha256": "31960cced83d49aaa1cd3e35792a75ab8b62a12b29da65cbd2f5eac28f411960",
+    "saved_summary_sha256": "33f5e206d6a748518abe6808945b96d003b4e2fef283d318bd63f04973d2812e",
+    "master_phase_indices": [
+      0,
+      128
+    ],
+    "saved_individual_path_step": 0.025,
+    "mass": 1.0,
+    "field": 2.0,
+    "relative_outgoing_planes": [
+      -24.0,
+      24.0
+    ],
+    "frames": 120,
+    "fps": 10,
+    "dpi": 110,
+    "moment_definition": "mu_1=m*(v_1x^2+v_1y^2)/(2B); normalize by that path initial mu_1",
+    "time_definition": "shared normalized time, revealing original samples up to each frame time",
+    "exit_rule": "Each curve and its endpoint marker stop at its own actual exit time. No hold or extrapolated trajectory beyond exit.",
+    "position_target": 1e-08,
+    "mu_increment_target": 1e-10,
+    "energy_target": 1e-08,
+    "scope": "Two individual12D zero-COM paths, not a COM-averaged ensemble, phase-converged integral, collision rate or lifetime."
+  },
+  "commit": "685918fd05fd1ff08bc91579600bc9ee307cf97b",
+  "working_tree": "M README.md\n M examples/README.md\n M notes/implementation.tex\n?? results/encounter_movie/\n?? results/nonuniform_spatial_blocks_full/dipole_dt16_replay/tail_guard.png\n?? results/nonuniform_spatial_blocks_full/dipole_dt16_replay/tail_guard.svg\n?? results/nonuniform_spatial_blocks_full/dipole_dt16_replay/tail_guard_metadata.json",
+  "source_sha256": "25987e4e4d372304468fcd7dd61312ef535f13372defca6c37041365a692bf2d",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "M examples/README.md",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "unset",
+    "OPENBLAS_NUM_THREADS": "unset",
+    "MKL_NUM_THREADS": "unset",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": false,
+  "trajectory_producer_commit": "58cc3e139c1c0082f49da0dc10e841b55632669d",
+  "trajectory_phase_convergence_status": "unresolved",
+  "pillow_version": "12.3.0",
+  "ffmpeg_version": "ffmpeg version 8.1.2 Copyright (c) 2000-2026 the FFmpeg developers",
+  "experiment_dependency_sha256": {
+    "examples/27_encounter_movie.py": "063adae624df29bed26388c103bf71b233ccd98611db801203117d48f5a3c916",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "input_sha256": {
+    "results/encounter_phase/independent_pair_paths.npz": "31960cced83d49aaa1cd3e35792a75ab8b62a12b29da65cbd2f5eac28f411960",
+    "results/encounter_phase/summary.json": "33f5e206d6a748518abe6808945b96d003b4e2fef283d318bd63f04973d2812e",
+    "results/encounter_phase/nodes.json": "385a209f056534c54a75a29305d752ef8137c045ba728f8680e2563531bd182d",
+    "results/encounter_phase/independent_audit.json": "a4ce88b4d75dc7f9f3c6da52b0f23ba6b3ccb2fe4de580804f150e9f14d72fb0"
+  },
+  "experiment_dependency_sha256_end": {
+    "examples/27_encounter_movie.py": "063adae624df29bed26388c103bf71b233ccd98611db801203117d48f5a3c916",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "results": {
+    "status": "verified_saved_path_render",
+    "paths": [
+      {
+        "phase": 0.0,
+        "exit": "transmitted",
+        "exit_time": 25.345613585461344,
+        "initial_mu": 0.2417781494212509,
+        "final_mu_ratio": 1.0199971454160508,
+        "arithmetic_checks": {
+          "position_error": 5.684341886080802e-14,
+          "mu_increment_error": 3.885780586188048e-16,
+          "relative_energy_error": 2.6053204939777303e-15,
+          "COM_position_max": 0.0,
+          "COM_velocity_max": 0.0
+        }
+      },
+      {
+        "phase": 1.5707963267948966,
+        "exit": "reflected",
+        "exit_time": 90.35033089541928,
+        "initial_mu": 0.24177814942125087,
+        "final_mu_ratio": 1.912287301940001,
+        "arithmetic_checks": {
+          "position_error": 6.792788553866558e-12,
+          "mu_increment_error": 1.0152989560197057e-13,
+          "relative_energy_error": 2.2137171319279434e-11,
+          "COM_position_max": 0.0,
+          "COM_velocity_max": 0.0
+        }
+      }
+    ],
+    "frames": 120,
+    "fps": 10,
+    "display_duration_s": 12.0,
+    "mp4_status": "rendered",
+    "dependencies_unchanged": true,
+    "wall_s": 22.0410617919988,
+    "wall_s_scope": "Input arithmetic validation and movie/poster rendering; no new ODE solve.",
+    "scope": "Two individual12D zero-COM paths, not a COM-averaged ensemble, phase-converged integral, collision rate or lifetime."
+  },
+  "output_sha256": {
+    "encounter.gif": "377edc61c97fc4b669c3a8728f20a6ab0eb2d4d98385930bf208e30bc0d85787",
+    "poster.svg": "fa1e1fcc48f8a89ee62b3d7dd2a4846b4d588058413a5b0d362aaf0f113c3ec1",
+    "poster.png": "c46780e088c084e319e602a41f967efae268da709d64589bcbd62db8bccddecd",
+    "encounter.mp4": "2c72165e530888a0c2d44c33dda708213d29a7396b97b5f4c8638d4e0db520fb"
+  }
+}

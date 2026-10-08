@@ -32,6 +32,8 @@ Prefix each command below with `MPLBACKEND=Agg python`.
 | `examples/23_difficult_correction.py` | Two auxiliaries on one frozen dipole correction: tightened reference, independent residual, matched-error timings and memory |
 | `examples/24_encounter_phase.py` | Fixed close encounter: nested incoming phases, timestep refinement and independent Cartesian trajectories |
 | `examples/25_encounter_censoring.py` | Full-trajectory phase search and timestep/individual-particle checks near the reflection boundary |
+| `examples/26_tail_guard.py` | Recorded failed Newton-ray trials and floating-point positivity guards; no new solve |
+| `examples/27_encounter_movie.py` | Movie of two independently checked Cartesian encounter paths; no new solve |
 
 Example 12 uses dense spatial blocks per velocity node and writes `results/nonuniform_spatial_blocks/`. A single predefined case can be run with:
 
@@ -43,7 +45,7 @@ It saves the last accepted state and each Newton correction's diagnostics. The e
 
 Example 13 preserves its original audit inputs and writes new runs in `results/encounter_validation/reproduction/`. MP4 export in example 09 uses `ffmpeg`; GIF export uses the Python dependencies.
 
-Example 23 verifies the frozen input and exact reconstructed grid before timing. It measures one linear correction, not a complete trajectory. Run without other computational work for interpretable timing comparisons. Example 24 deliberately exits with an error if its declared phase convergence checks fail; the original 512-phase run does fail those checks, despite passing its trajectory controls. Its saved outputs distinguish these outcomes.
+Example 23 verifies the frozen input and exact reconstructed grid before timing. It measures one linear correction, not a complete trajectory. Run without other computational work for interpretable timing comparisons. Example 24 now continues the immutable original phase data into `results/encounter_phase/refined8192/`, with up to 8,192 nodes and a 1,200-second budget checked between work items. It requires two successive 1% phase changes, a full final-grid half-step check, and independent Cartesian controls at the three anchors plus the three strongest new sampled contributions. It exits nonzero if any declared criterion remains unresolved. The original 512-phase run is preserved and does fail phase convergence despite passing its trajectory controls. Sampled convergence does not certify continuous angular coverage or a physical rate.
 
 Example 25 writes `results/encounter_censoring/precision_checked/`. It preserves the original width-limited search from commit `687be127` and the full-trajectory search from `661e3c7` in `results/encounter_censoring/refined/`. The current search also records six failed trajectory-precision checks at its final phase bracket. Its deliberate nonzero exit reports unresolved coverage; small energy errors do not certify trajectory accuracy. No monotonicity of exit time with phase is assumed.
 

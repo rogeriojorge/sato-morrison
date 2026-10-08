@@ -1,0 +1,150 @@
+{
+  "status": "deadline_expired_not_converged",
+  "physical_second_step_accepted": false,
+  "scope": "Private continuation from the original M4 saved failed Newton19 iterate. Increasing backtrack budget30->60 permitted tiny objective-descent trials but did not reach the unchanged root tolerance. This is not a completed timestep or convergence datum.",
+  "changes": {
+    "original_producer": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+    "original_solver_sha256": "b9eb5567ca9684068eb894790ab174f5d3aba1a499289300b5cd8f26fdf50055",
+    "instrumented_solver_sha256": "d5a1682ac532508afc7f46491c5d849b3e45eb00ac7367845b611801c05101e7",
+    "physics_sha256": {
+      "collisions.py": "cf13b3000c2df1ee39e63872b8c0094089adadde3941abf53b92d5e2c8ad6d52",
+      "geometry.py": "3e96f695e3a031aacdea5257428e40e9a057f6bf2ea1ef052363c79c6345dda6"
+    },
+    "modifications": "Only durable input/direction checkpoints and trial guard diagnostics; original equation, q, populations, tolerances, preconditioner, PCG and line-search inequalities unchanged",
+    "original_logging_overlay_sha256": "c77c7b12f0004e3a0b300b3fc49c7390360fd3b392c1e380c0cf23a09d3c5aa5",
+    "continuation_changes": "Initialize from the saved failed Newton19 g, retain original OLD/ref/Kold, continue iteration indices18..80, increase scalar backtrack budget30->60 only; all equations/tolerances/positivity/objective/PCG guards unchanged.",
+    "initial_g_sha256": "906d04d35871da083e707e419d6ec33fd7d65db67944fd082bb0d0e1f16458e2"
+  },
+  "inputs": {
+    "field": "dipole",
+    "nx": 5,
+    "nu": 25,
+    "nmu": 21,
+    "u_bounds": [
+      -4.0,
+      4.0
+    ],
+    "mu_bounds": [
+      0.0,
+      20.0
+    ],
+    "spatial_bounds": [
+      [
+        0.8,
+        1.2
+      ],
+      [
+        -0.2,
+        0.2
+      ],
+      [
+        0.1,
+        0.5
+      ]
+    ],
+    "D": 0.1,
+    "dt": 0.0003125,
+    "step": 2,
+    "rtol": 1e-12,
+    "linear_rtol": 1e-06,
+    "linear_max_steps": 3000,
+    "max_newton_steps": 80,
+    "chunk": 1048576,
+    "preconditioner_axis": [
+      0,
+      1,
+      2
+    ],
+    "wall_deadline_s": 300
+  },
+  "backtrack_budget": 60,
+  "starting_newton_index": 19,
+  "remaining_original_newton_index_budget": "Correction labels19..80; original terminal residual check at loopindex80. The300sdeadline arrived during correction40.",
+  "last_current_newton_index": 40,
+  "completed_corrections": 21,
+  "accepted_line_search_trials": 21,
+  "total_trials": 1026,
+  "wall": {
+    "status": "deadline_expired",
+    "exit_code": -9,
+    "wall_s": 300.019426749961,
+    "deadline_s": 300
+  },
+  "reference_residual_start": 2.8874129243052495,
+  "reference_residual_end": 2.887412921249725,
+  "relative_residual_reduction": 1.0582222917991083e-09,
+  "unchanged_root_tolerance": 1e-12,
+  "last_accepted_fraction": 5.551115123125783e-17,
+  "last_accepted_backtrack": 54,
+  "last_completed_correction": {
+    "iteration": 39,
+    "relative_residual": 2.887412921249725,
+    "linear_iterations": 33,
+    "true_linear_relative_residual": 8.183725734028751e-07,
+    "linear_wall_s": 12.213703999994323,
+    "maximum_log_direction": 571.5944949872019,
+    "minimum_signed_log_direction": -571.5944949872019,
+    "maximum_signed_log_direction": 141.9510281495297,
+    "objective_descent": -3.0201073613693086e-08,
+    "mobility_curvature": 3.838108101172204e-06
+  },
+  "late_saved_iterate_changes": {
+    "first_iteration": 30,
+    "last_iteration": 40,
+    "reference_norm_start": 2.887412921249725,
+    "reference_norm_end": 2.887412921249725,
+    "max_actual_log_change_from_iteration30": 7.105427357601002e-14,
+    "changed_nodes_from_iteration30": 2
+  },
+  "environment": {
+    "versions": {
+      "sato-morrison": "0.1.0",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2"
+    },
+    "python": "3.12.13",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "Apple M4",
+    "logical_cpus": 10,
+    "devices": [
+      "cpu:0"
+    ],
+    "x64": true,
+    "thread_environment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    }
+  },
+  "units": "normalized",
+  "model": "Private diagnostic replay; original lagged entropy root and scalar line-search guards unchanged",
+  "boundary": "Natural weak collision boundary; no streaming",
+  "public_source_context": {
+    "commit": "17ec229101d612280cebe997e4e46dded61a9bcf",
+    "source_sha256": "a0a5a10caf3e400135fe990403e3b5d480f1e3391f9a4142c8e0f38fcef2271a",
+    "source_changes": "M examples/README.md\n?? examples/26_tail_guard.py\n?? examples/27_encounter_movie.py",
+    "working_tree": "M README.md\n M examples/README.md\n M notes/implementation.pdf\n M notes/implementation.tex\n M results/deep_reproduction.json\n M results/nonuniform_spatial_blocks_full/dipole_dt_sixteenth_line_search_review.md\n M results/nonuniform_spatial_blocks_full/full_campaign_dt_sixteenth_failure_review.json\n M results/nonuniform_spatial_blocks_full/independent_audit.json\n M results/nonuniform_spatial_blocks_full/publication_receipt.json\n M results/nonuniform_spatial_blocks_full/summary.json\n M results/validation.csv\n?? examples/26_tail_guard.py\n?? examples/27_encounter_movie.py\n?? results/encounter_censoring/precision_checked/\n?? results/encounter_censoring/refined/\n?? results/nonuniform_spatial_blocks_full/dipole_dt16_replay/\n?? results/nonuniform_spatial_blocks_full/dipole_dt_eighth_commit.txt\n?? results/nonuniform_spatial_blocks_full/dipole_dt_eighth_cpu.txt\n?? results/nonuniform_spatial_blocks_full/dipole_dt_eighth_download_receipt.json\n?? results/nonuniform_spatial_blocks_full/dipole_dt_eighth_environment.txt\n?? results/nonuniform_spatial_blocks_full/dipole_dt_eighth_last_correction.json\n?? results/nonuniform_spatial_blocks_full/dipole_dt_eighth_partial_case.json\n?? results/nonuniform_spatial_blocks_full/dipole_dt_eighth_producer_summary.json\n?? results/nonuniform_spatial_blocks_full/dipole_mu_tail_commit.txt\n?? results/nonuniform_spatial_blocks_full/dipole_mu_tail_cpu.txt\n?? results/nonuniform_spatial_blocks_full/dipole_mu_tail_download_receipt.json\n?? results/nonuniform_spatial_blocks_full/dipole_mu_tail_environment.txt\n?? results/nonuniform_spatial_blocks_full/dipole_mu_tail_last_correction.json\n?? results/nonuniform_spatial_blocks_full/dipole_mu_tail_partial_case.json\n?? results/nonuniform_spatial_blocks_full/dipole_mu_tail_producer_summary.json\n?? results/nonuniform_spatial_blocks_full/state_dipole_dt_eighth.npz\n?? results/nonuniform_spatial_blocks_full/state_dipole_mu_tail.npz"
+  },
+  "logging_driver_sha256": "574370b2f282582dbbaf088f3db1d8792802dedbcba1b2b04bb4f59c8aa192d6",
+  "original_accepted_checkpoint_sha256": "5f1955b9e09b44707c86c6639c34a47560f6095088cc7377a1e690cad502cd94",
+  "direct_check_scope": "The next previously untriedfraction2^-30 was evaluated directly with the unchanged actual JAX population guard, objective and residual. It passed those two guards with negligible residual reduction; it did not return an accepted second timestep. Original direct calculation was repeated only to correct a metadata key label; both private originals retained.",
+  "rounding_scope": "Late positive trial fractions have little effect on represented log variables. No clipping, population/null repair, root-tolerance relaxation, modified K or SOLVAX change was made.",
+  "array_scope": "current_g/current_R are the last unaccepted Newton input. last_direction_g/direction and curvature belong to the last completed correction, not a physical endpoint. Original OLD, fixed reference and weights are retained.",
+  "files_sha256": {
+    "run.log": "13e563784d7ebc8f50a025e5c298c6079d716b06a6a776365311b23aaefdd4ce",
+    "final_iterate.npz": "b517d5f1e2bbfc189dbb02b29ce4a022ea2909374c74e9fa9ca9480e25997c2b",
+    "direct_next_trial.json": "dc2ba4f5221fb1e7f3a76dba536d80ef4543a9d39263b7c467df9cd017461315",
+    "continuation_only.diff": "4521c865a8ee60483bc0f33f63a818dec36879792e39563ea459a6b5fb52a6fc",
+    "trial_ledger.jsonl": "e7e2a2875a8072df4762e32bf1a3e7ea5aedbd8e3321a9bd6fa3cdaf442833ad"
+  },
+  "saved_array_sources_sha256": {
+    "newton40_input.npz": "2a04bff4042f3a43ba90f0456cac418ed4eb518877943e38e546577b7ebfa760",
+    "newton39_direction.npz": "e160adc22ad9ac3aa1e08126248e24a2fa62081e5be54124ed4297d17bb24da5",
+    "newton39_correction.json": "d1b40dcdd16ef42deea0b7d47f6bb2b0cd9f075c3bcf7c75272098976768f3cb",
+    "replay_inputs.npz": "b5970dbc2d3a564be1b9bb03152a861a237686e186c97df2db39231bc1fa9b56"
+  }
+}

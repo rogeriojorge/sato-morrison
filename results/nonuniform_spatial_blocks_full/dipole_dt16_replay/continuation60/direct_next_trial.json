@@ -1,0 +1,64 @@
+{
+  "model": "Direct one untried saved-ray evaluation; no correction or accepted timestep",
+  "boundary": "Natural weak collision boundary; no streaming",
+  "units": "normalized",
+  "inputs": {
+    "D": 0.1,
+    "dt": 0.0003125,
+    "alpha": 9.313225746154785e-10,
+    "backtrack": 30,
+    "shape": [
+      5,
+      5,
+      5,
+      25,
+      21
+    ]
+  },
+  "commit": "17ec229101d612280cebe997e4e46dded61a9bcf",
+  "working_tree": "M README.md\n M examples/README.md\n M notes/implementation.pdf\n M notes/implementation.tex\n M results/deep_reproduction.json\n M results/nonuniform_spatial_blocks_full/dipole_dt_sixteenth_line_search_review.md\n M results/nonuniform_spatial_blocks_full/full_campaign_dt_sixteenth_failure_review.json\n M results/nonuniform_spatial_blocks_full/independent_audit.json\n M results/nonuniform_spatial_blocks_full/publication_receipt.json\n M results/nonuniform_spatial_blocks_full/summary.json\n M results/validation.csv\n?? examples/26_tail_guard.py\n?? results/encounter_censoring/precision_checked/\n?? results/encounter_censoring/refined/\n?? results/nonuniform_spatial_blocks_full/dipole_dt16_replay/\n?? results/nonuniform_spatial_blocks_full/dipole_dt_eighth_commit.txt\n?? results/nonuniform_spatial_blocks_full/dipole_dt_eighth_cpu.txt\n?? results/nonuniform_spatial_blocks_full/dipole_dt_eighth_download_receipt.json\n?? results/nonuniform_spatial_blocks_full/dipole_dt_eighth_environment.txt\n?? results/nonuniform_spatial_blocks_full/dipole_dt_eighth_last_correction.json\n?? results/nonuniform_spatial_blocks_full/dipole_dt_eighth_partial_case.json\n?? results/nonuniform_spatial_blocks_full/dipole_dt_eighth_producer_summary.json\n?? results/nonuniform_spatial_blocks_full/dipole_mu_tail_commit.txt\n?? results/nonuniform_spatial_blocks_full/dipole_mu_tail_cpu.txt\n?? results/nonuniform_spatial_blocks_full/dipole_mu_tail_download_receipt.json\n?? results/nonuniform_spatial_blocks_full/dipole_mu_tail_environment.txt\n?? results/nonuniform_spatial_blocks_full/dipole_mu_tail_last_correction.json\n?? results/nonuniform_spatial_blocks_full/dipole_mu_tail_partial_case.json\n?? results/nonuniform_spatial_blocks_full/dipole_mu_tail_producer_summary.json\n?? results/nonuniform_spatial_blocks_full/state_dipole_dt_eighth.npz\n?? results/nonuniform_spatial_blocks_full/state_dipole_mu_tail.npz",
+  "source_sha256": "cf108cefe0a43de413feb10503b43dcd2a02359138e5e5ba9264604c02b28b5a",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "M examples/README.md\n?? examples/26_tail_guard.py",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "unset",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": true,
+  "script_source_sha256": "69ab570a5a7b682398f43e41cf8ea4adf63ef905e0900eada37031587c5954bf",
+  "inputs_sha256": {
+    "replay_inputs.npz": "b5970dbc2d3a564be1b9bb03152a861a237686e186c97df2db39231bc1fa9b56",
+    "newton19_input.npz": "906d04d35871da083e707e419d6ec33fd7d65db67944fd082bb0d0e1f16458e2",
+    "newton19_direction.npz": "e497c2cc04c0e6467aa871099a2731874f77458288e9a4eda28047e53d17ac58",
+    "newton19_correction.json": "b445707b06afb70b94592a838135e2fa646133278eb74447343efa1408aa3c73"
+  },
+  "minimum_candidate_log": -708.3964184608172,
+  "minimum_candidate_density": 2.225074017481751e-308,
+  "minimum_original_guard_population": 7.550772345e-314,
+  "pure_jax_population_zero_count": 4,
+  "objective_change": -2.812694168049071e-17,
+  "armijo_rhs": -2.8126941693588343e-21,
+  "armijo_pass": true,
+  "original_population_guard_pass": true,
+  "reference_residual_before": 2.8874129243052495,
+  "reference_residual_after": 2.8874129216161357,
+  "wall_s": 3.733022875036113,
+  "scope": "Only direct untried fraction evaluation; no accepted second step, convergence, tolerance change or root claim."
+}

@@ -1,0 +1,86 @@
+Continuing exact step2 equation from failed Newton19 g,60backtracks,300s harddeadline
+Newton19: outerR=2.887412924305e+00, g=[-708.396418,-0.047167], elapsed=3.6s
+  PCG33 true=8.184e-07, p=[-571.594,141.951], 14.69s
+  trial29 alpha=1.863e-09: population_guard, gmin=-708.396419, nmin(np)=7.551e-314
+  trial30 alpha=9.313e-10: accepted, gmin=-708.396418, nmin(np)=7.551e-314
+Newton20: outerR=2.887412921616e+00, g=[-708.396418,-0.047167], elapsed=18.8s
+  PCG33 true=8.184e-07, p=[-571.594,141.951], 15.55s
+  trial29 alpha=1.863e-09: population_guard, gmin=-708.396420, nmin(np)=7.551e-314
+  trial33 alpha=1.164e-10: accepted, gmin=-708.396419, nmin(np)=7.551e-314
+Newton21: outerR=2.887412921280e+00, g=[-708.396419,-0.047167], elapsed=34.8s
+  PCG33 true=8.184e-07, p=[-571.594,141.951], 13.61s
+  trial29 alpha=1.863e-09: population_guard, gmin=-708.396420, nmin(np)=7.551e-314
+  trial37 alpha=7.276e-12: accepted, gmin=-708.396419, nmin(np)=7.551e-314
+Newton22: outerR=2.887412921259e+00, g=[-708.396419,-0.047167], elapsed=48.9s
+  PCG33 true=8.184e-07, p=[-571.594,141.951], 14.24s
+  trial29 alpha=1.863e-09: population_guard, gmin=-708.396420, nmin(np)=7.551e-314
+  trial39 alpha=1.819e-12: accepted, gmin=-708.396419, nmin(np)=7.551e-314
+Newton23: outerR=2.887412921254e+00, g=[-708.396419,-0.047167], elapsed=63.6s
+  PCG33 true=8.184e-07, p=[-571.594,141.951], 13.22s
+  trial29 alpha=1.863e-09: population_guard, gmin=-708.396420, nmin(np)=7.551e-314
+  trial40 alpha=9.095e-13: accepted, gmin=-708.396419, nmin(np)=7.551e-314
+Newton24: outerR=2.887412921251e+00, g=[-708.396419,-0.047167], elapsed=77.3s
+  PCG33 true=8.184e-07, p=[-571.594,141.951], 13.13s
+  trial29 alpha=1.863e-09: population_guard, gmin=-708.396420, nmin(np)=7.551e-314
+  trial41 alpha=4.547e-13: accepted, gmin=-708.396419, nmin(np)=7.551e-314
+Newton25: outerR=2.887412921250e+00, g=[-708.396419,-0.047167], elapsed=90.9s
+  PCG33 true=8.184e-07, p=[-571.594,141.951], 14.17s
+  trial29 alpha=1.863e-09: population_guard, gmin=-708.396420, nmin(np)=7.551e-314
+  trial46 alpha=1.421e-14: accepted, gmin=-708.396419, nmin(np)=7.551e-314
+Newton26: outerR=2.887412921250e+00, g=[-708.396419,-0.047167], elapsed=105.5s
+  PCG33 true=8.184e-07, p=[-571.594,141.951], 13.17s
+  trial29 alpha=1.863e-09: population_guard, gmin=-708.396420, nmin(np)=7.551e-314
+  trial47 alpha=7.105e-15: accepted, gmin=-708.396419, nmin(np)=7.551e-314
+Newton27: outerR=2.887412921250e+00, g=[-708.396419,-0.047167], elapsed=119.1s
+  PCG33 true=8.184e-07, p=[-571.594,141.951], 14.77s
+  trial29 alpha=1.863e-09: population_guard, gmin=-708.396420, nmin(np)=7.551e-314
+  trial48 alpha=3.553e-15: accepted, gmin=-708.396419, nmin(np)=7.551e-314
+Newton28: outerR=2.887412921250e+00, g=[-708.396419,-0.047167], elapsed=134.3s
+  PCG33 true=8.184e-07, p=[-571.594,141.951], 13.95s
+  trial29 alpha=1.863e-09: population_guard, gmin=-708.396420, nmin(np)=7.551e-314
+  trial50 alpha=8.882e-16: accepted, gmin=-708.396419, nmin(np)=7.551e-314
+Newton29: outerR=2.887412921250e+00, g=[-708.396419,-0.047167], elapsed=148.7s
+  PCG33 true=8.184e-07, p=[-571.594,141.951], 14.84s
+  trial29 alpha=1.863e-09: population_guard, gmin=-708.396420, nmin(np)=7.551e-314
+  trial54 alpha=5.551e-17: accepted, gmin=-708.396419, nmin(np)=7.551e-314
+Newton30: outerR=2.887412921250e+00, g=[-708.396419,-0.047167], elapsed=164.2s
+  PCG33 true=8.184e-07, p=[-571.594,141.951], 13.22s
+  trial29 alpha=1.863e-09: population_guard, gmin=-708.396420, nmin(np)=7.551e-314
+  trial54 alpha=5.551e-17: accepted, gmin=-708.396419, nmin(np)=7.551e-314
+Newton31: outerR=2.887412921250e+00, g=[-708.396419,-0.047167], elapsed=177.9s
+  PCG33 true=8.184e-07, p=[-571.594,141.951], 15.26s
+  trial29 alpha=1.863e-09: population_guard, gmin=-708.396420, nmin(np)=7.551e-314
+  trial54 alpha=5.551e-17: accepted, gmin=-708.396419, nmin(np)=7.551e-314
+Newton32: outerR=2.887412921250e+00, g=[-708.396419,-0.047167], elapsed=193.6s
+  PCG33 true=8.184e-07, p=[-571.594,141.951], 13.26s
+  trial29 alpha=1.863e-09: population_guard, gmin=-708.396420, nmin(np)=7.551e-314
+  trial54 alpha=5.551e-17: accepted, gmin=-708.396419, nmin(np)=7.551e-314
+Newton33: outerR=2.887412921250e+00, g=[-708.396419,-0.047167], elapsed=207.3s
+  PCG33 true=8.184e-07, p=[-571.594,141.951], 12.05s
+  trial29 alpha=1.863e-09: population_guard, gmin=-708.396420, nmin(np)=7.551e-314
+  trial54 alpha=5.551e-17: accepted, gmin=-708.396419, nmin(np)=7.551e-314
+Newton34: outerR=2.887412921250e+00, g=[-708.396419,-0.047167], elapsed=219.8s
+  PCG33 true=8.184e-07, p=[-571.594,141.951], 15.20s
+  trial29 alpha=1.863e-09: population_guard, gmin=-708.396420, nmin(np)=7.551e-314
+  trial54 alpha=5.551e-17: accepted, gmin=-708.396419, nmin(np)=7.551e-314
+Newton35: outerR=2.887412921250e+00, g=[-708.396419,-0.047167], elapsed=235.4s
+  PCG33 true=8.184e-07, p=[-571.594,141.951], 11.92s
+  trial29 alpha=1.863e-09: population_guard, gmin=-708.396420, nmin(np)=7.551e-314
+  trial54 alpha=5.551e-17: accepted, gmin=-708.396419, nmin(np)=7.551e-314
+Newton36: outerR=2.887412921250e+00, g=[-708.396419,-0.047167], elapsed=247.8s
+  PCG33 true=8.184e-07, p=[-571.594,141.951], 11.91s
+  trial29 alpha=1.863e-09: population_guard, gmin=-708.396420, nmin(np)=7.551e-314
+  trial54 alpha=5.551e-17: accepted, gmin=-708.396419, nmin(np)=7.551e-314
+Newton37: outerR=2.887412921250e+00, g=[-708.396419,-0.047167], elapsed=260.1s
+  PCG33 true=8.184e-07, p=[-571.594,141.951], 11.77s
+  trial29 alpha=1.863e-09: population_guard, gmin=-708.396420, nmin(np)=7.551e-314
+  trial54 alpha=5.551e-17: accepted, gmin=-708.396419, nmin(np)=7.551e-314
+Newton38: outerR=2.887412921250e+00, g=[-708.396419,-0.047167], elapsed=272.3s
+  PCG33 true=8.184e-07, p=[-571.594,141.951], 12.07s
+  trial29 alpha=1.863e-09: population_guard, gmin=-708.396420, nmin(np)=7.551e-314
+  trial54 alpha=5.551e-17: accepted, gmin=-708.396419, nmin(np)=7.551e-314
+Newton39: outerR=2.887412921250e+00, g=[-708.396419,-0.047167], elapsed=284.8s
+  PCG33 true=8.184e-07, p=[-571.594,141.951], 12.21s
+  trial29 alpha=1.863e-09: population_guard, gmin=-708.396420, nmin(np)=7.551e-314
+  trial54 alpha=5.551e-17: accepted, gmin=-708.396419, nmin(np)=7.551e-314
+Newton40: outerR=2.887412921250e+00, g=[-708.396419,-0.047167], elapsed=297.4s

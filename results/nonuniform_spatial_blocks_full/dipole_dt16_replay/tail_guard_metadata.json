@@ -1,0 +1,154 @@
+{
+  "model": "Plot of saved failed ray only; no new correction, trial acceptance or evolution",
+  "boundary": "Natural weak collision boundary; no streaming",
+  "units": "normalized",
+  "inputs": {
+    "summary": "results/nonuniform_spatial_blocks_full/dipole_dt16_replay/summary.json",
+    "ledger": "results/nonuniform_spatial_blocks_full/dipole_dt16_replay/trial_ledger.jsonl",
+    "ray": "results/nonuniform_spatial_blocks_full/dipole_dt16_replay/final_ray.npz",
+    "input_sha256": {
+      "summary.json": "10a3631e74e51008a14a2962e9abb90ad66d615c7b1e108a71f5124c8512bef1",
+      "trial_ledger.jsonl": "84c967a92ff9e1805d8a329f2f1bbd16037d748e580c90e7b5836519acc8a408",
+      "final_ray.npz": "fcc00234eb276d0dae89de0f6adc8d0418b98a4f49811d5dcbaff25aaa9e09f4"
+    },
+    "final_newton_iteration": 19,
+    "backtracks": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ],
+    "zoom_backtracks": [
+      25,
+      26,
+      27,
+      28,
+      29
+    ],
+    "full_panel_scale": "symlog",
+    "symlog_linear_threshold": 1e-06,
+    "case_inputs": {
+      "field": "dipole",
+      "nx": 5,
+      "nu": 25,
+      "nmu": 21,
+      "u_bounds": [
+        -4.0,
+        4.0
+      ],
+      "mu_bounds": [
+        0.0,
+        20.0
+      ],
+      "spatial_bounds": [
+        [
+          0.8,
+          1.2
+        ],
+        [
+          -0.2,
+          0.2
+        ],
+        [
+          0.1,
+          0.5
+        ]
+      ],
+      "D": 0.1,
+      "dt": 0.0003125,
+      "step": 2,
+      "rtol": 1e-12,
+      "linear_rtol": 1e-06,
+      "linear_max_steps": 3000,
+      "max_newton_steps": 80,
+      "chunk": 1048576,
+      "preconditioner_axis": [
+        0,
+        1,
+        2
+      ],
+      "wall_deadline_s": 900
+    }
+  },
+  "commit": "685918fd05fd1ff08bc91579600bc9ee307cf97b",
+  "working_tree": "M README.md\n M examples/README.md\n M notes/implementation.tex\n?? results/encounter_movie/\n?? results/nonuniform_spatial_blocks_full/dipole_dt16_replay/tail_guard.png\n?? results/nonuniform_spatial_blocks_full/dipole_dt16_replay/tail_guard.svg\n?? results/nonuniform_spatial_blocks_full/dipole_dt16_replay/tail_guard_metadata.json",
+  "source_sha256": "25987e4e4d372304468fcd7dd61312ef535f13372defca6c37041365a692bf2d",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "M examples/README.md",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "unset",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": false,
+  "replay_original_producer": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+  "replay_source_contract": {
+    "original_producer": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+    "original_solver_sha256": "b9eb5567ca9684068eb894790ab174f5d3aba1a499289300b5cd8f26fdf50055",
+    "instrumented_solver_sha256": "c77c7b12f0004e3a0b300b3fc49c7390360fd3b392c1e380c0cf23a09d3c5aa5",
+    "physics_sha256": {
+      "collisions.py": "cf13b3000c2df1ee39e63872b8c0094089adadde3941abf53b92d5e2c8ad6d52",
+      "geometry.py": "3e96f695e3a031aacdea5257428e40e9a057f6bf2ea1ef052363c79c6345dda6"
+    },
+    "modifications": "Only durable input/direction checkpoints and trial guard diagnostics; original equation, q, populations, tolerances, preconditioner, PCG and line-search inequalities unchanged"
+  },
+  "plot_source_sha256": "310eff5e9628f078f5a076d4048d6ce9192a64e115edbd36fa1f810b8b9c75eb",
+  "scope": "This M4 logging-only replay fails at Newton19; the separate original Linux failure was at Newton18. No untried fraction is plotted. Bounds describe binary64 normal/subnormal ranges, not a theorem about all backends or root existence.",
+  "saved_rejection_counts": {
+    "log_range_guard": 4,
+    "population_guard": 26,
+    "armijo_guard": 0,
+    "accepted": 0
+  },
+  "normal_log_bound": -708.3964185322641,
+  "subnormal_log_bound": -744.4400719213812,
+  "current_minimum_above_normal": 5.95797018831945e-07,
+  "last_trial_minimum_above_normal": -4.529032366917818e-07,
+  "checks_and_plot_wall_s": 0.6622310840175487,
+  "output_sha256": {
+    "tail_guard.png": "3a85947868e316a192c4d2faac7587629a9377daef210f2defd74c7312dc4f84",
+    "tail_guard.svg": "cf541b46d6bb627e837adf98db093cb35c8569a5875a6ec4f135ff5aee8f460d"
+  }
+}

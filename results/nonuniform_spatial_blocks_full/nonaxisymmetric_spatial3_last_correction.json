@@ -1,0 +1,21 @@
+{
+  "field": "nonaxisymmetric",
+  "case": "spatial3",
+  "step": 4,
+  "provenance_id": "5def7bb6968999fdc8d67df5cdfa6646f9b2cbeb684a65b94d38cdd90cd9fe0b",
+  "residual_metric": "fixed_reference_population",
+  "iteration": 3,
+  "relative_residual": 3.727318289576663e-09,
+  "linear_iterations": 203,
+  "true_linear_relative_residual": 8.852031120951294e-07,
+  "linear_wall_s": 59.02623360999996,
+  "maximum_log_direction": 5.5266263546066354e-05,
+  "minimum_signed_log_direction": -5.5266263546066354e-05,
+  "maximum_signed_log_direction": 1.7365343201947312e-06,
+  "objective_descent": -1.3822880527477222e-18,
+  "mobility_curvature": 3.5827598679093505e-17,
+  "fraction": 1.0,
+  "backtracks": 0,
+  "maximum_log_step": 5.5266263546066354e-05,
+  "objective_change": -6.911441038530137e-19
+}

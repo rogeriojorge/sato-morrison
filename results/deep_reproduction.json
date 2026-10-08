@@ -7832,10 +7832,10 @@
       "producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
       "workflow_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37803682825",
       "evidence_path": "results/nonuniform_spatial_blocks_full/summary.json",
-      "evidence_sha256": "b2fdb2a9d89124bcf13e9ae7465d66eebfbd85708f5d060527c79c05ec8ded7d",
+      "evidence_sha256": "a9b8299a8412543c13de3de370915178c96fc1bf8d1a3026aa5dd085df7cbdb1",
       "independent_evidence_path": "results/nonuniform_spatial_blocks_full/independent_audit.json",
-      "independent_evidence_sha256": "dd92e2b5d3926870e8f44ccf57ff063a164ab5c63a8359fb55993fcd11b6eccc",
-      "scope": "Separate full-campaign snapshot: one of45 completed; three failed partials (two accepted first steps and one initial state only). Completed final step independently pair-audited. No refinement pass or pilot timing pooling.",
+      "independent_evidence_sha256": "702f30411831d8ac26602b576e118e1b85c240c57b218a05bb9b78df93795ee3",
+      "scope": "Separate full-campaign snapshot: two of45 completed (dipole/nonaxisymmetric spatial3); three failed dipole partials. Both completed final steps independently pair-audited. No refinement pass or pilot timing pooling.",
       "snapshot_history": [
         {
           "publication_commit": "f53daaa",
@@ -7846,6 +7846,11 @@
           "publication_commit": "661e3c79a2fe4b927c40a751705f31054c0c0fb2",
           "evidence_sha256": "838763d4dc1586769f14a2d4159220b80137b029feed0d8c9eb8e951dd0ce156",
           "scope": "Separate full-campaign snapshot: one of45 completed, one failed partial. Completed final step independently pair-audited; partial failure retained without promoting it. No refinement pass or pilot timing pooling."
+        },
+        {
+          "publication_commit": "3b453546f9738d1494a581718cc95f34a9c10b3f",
+          "evidence_sha256": "b2fdb2a9d89124bcf13e9ae7465d66eebfbd85708f5d060527c79c05ec8ded7d",
+          "scope": "Separate full-campaign snapshot: one of45 completed; three failed partials (two accepted first steps and one initial state only). Completed final step independently pair-audited. No refinement pass or pilot timing pooling."
         }
       ]
     },
@@ -7884,7 +7889,9 @@
       "status": "unresolved",
       "checks_wall_s": 21.494722999981605,
       "timing_scope": "Numerical solves/checks and intermediate checkpoint writes; excludes imports, metadata initialization, plots and final output.",
-      "scope": "Finite-budget nonexit is censoring, not trapping. Last search bracket is not a censor-interval width or coverage bound. Original diagnostics and phase integral remain unresolved. Classifications are floating-point ODE evidence, not interval certification. Eventual outgoing-moment bounds do not define a scattering integral on non-exiting phases."
+      "scope": "Finite-budget nonexit is censoring, not trapping. Last search bracket is not a censor-interval width or coverage bound. Original diagnostics and phase integral remain unresolved. Classifications are floating-point ODE evidence, not interval certification. Eventual outgoing-moment bounds do not define a scattering integral on non-exiting phases.",
+      "independent_evidence_path": "results/encounter_censoring/refined/independent_audit.json",
+      "independent_evidence_sha256": "91279677ebabae2d6785959f2b96300417512cc4e160c90d9035b22e47204be2"
     },
     {
       "command": "MPLBACKEND=Agg python examples/25_encounter_censoring.py",
@@ -7906,6 +7913,36 @@
       "evidence_sha256": "10a3631e74e51008a14a2962e9abb90ad66d615c7b1e108a71f5124c8512bef1",
       "producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
       "scope": "Original Linux first-step checkpoint replayed with logging-only frozen solver on M4. Failed Newton ray recorded; no accepted second step. Replay provenance and private instrumentation hashes retained in evidence. Not a bitwise reproduction of Linux iteration count or proof of root unrepresentability."
+    },
+    {
+      "command": "MPLBACKEND=Agg python examples/26_tail_guard.py",
+      "cwd": "${REPOSITORY}",
+      "producer_commit": "685918fd05fd1ff08bc91579600bc9ee307cf97b",
+      "evidence_path": "results/nonuniform_spatial_blocks_full/dipole_dt16_replay/tail_guard_metadata.json",
+      "evidence_sha256": "4d25c1e271a4320cb23facf2a2dcf6221915317e40dee79268adc4626d1ea90e",
+      "exit_code": 0,
+      "status": "passed_saved_data_rendering_checks",
+      "checks_wall_s": 0.6622310840175487,
+      "scope": "Rendering of recorded audited data with repeated arithmetic/hash checks; no new physical solve. Layout revision leaves scientific inputs and arithmetic unchanged."
+    },
+    {
+      "command": "MPLBACKEND=Agg python examples/27_encounter_movie.py",
+      "cwd": "${REPOSITORY}",
+      "producer_commit": "685918fd05fd1ff08bc91579600bc9ee307cf97b",
+      "evidence_path": "results/encounter_movie/summary.json",
+      "evidence_sha256": "7102b3c40b03268938f052560c0f3b5260882164a21b32b578ab1e41f0ce0ab6",
+      "exit_code": 0,
+      "status": "passed_saved_data_rendering_checks",
+      "checks_wall_s": 22.0410617919988,
+      "scope": "Rendering of recorded audited data with repeated arithmetic/hash checks; no new physical solve. Layout revision leaves scientific inputs and arithmetic unchanged."
+    },
+    {
+      "evidence_path": "results/nonuniform_spatial_blocks_full/dipole_dt16_replay/continuation60/summary.json",
+      "evidence_sha256": "cd29f7b9f8a649f93704853f86c307e67cca895f33e7a3f8127d2a3d4e219deb",
+      "original_producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+      "status": "deadline_expired_not_converged",
+      "wall_s": 300.019426749961,
+      "scope": "Private continuation from the original M4 saved failed Newton19 iterate. Increasing backtrack budget30->60 permitted tiny objective-descent trials but did not reach the unchanged root tolerance. This is not a completed timestep or convergence datum."
     }
   ]
 }

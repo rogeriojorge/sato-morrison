@@ -1,0 +1,1032 @@
+{
+  "metadata": {
+    "model": "sm_local_nonlinear discrete-energy projector",
+    "boundary": "natural no-flux collision-only Cartesian boxes",
+    "units": "normalized",
+    "inputs": {
+      "fields": [
+        {
+          "kind": "mirror",
+          "strength": 1.0,
+          "amplitude": 0.15,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        },
+        {
+          "kind": "dipole",
+          "strength": 1.0,
+          "amplitude": 0.0,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        },
+        {
+          "kind": "nonaxisymmetric",
+          "strength": 1.0,
+          "amplitude": 0.03,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        }
+      ],
+      "bounds": [
+        [
+          0.8,
+          1.2
+        ],
+        [
+          -0.2,
+          0.2
+        ],
+        [
+          0.1,
+          0.5
+        ]
+      ],
+      "nx": 5,
+      "nu": 25,
+      "nmu": 21,
+      "x_orders": [
+        3,
+        5,
+        7
+      ],
+      "u_orders": [
+        17,
+        21,
+        25
+      ],
+      "mu_orders": [
+        13,
+        17,
+        21
+      ],
+      "u_domain": [
+        -4.0,
+        4.0
+      ],
+      "mu_domain": [
+        0,
+        20.0
+      ],
+      "collision_strength": 0.1,
+      "final_time": 0.02,
+      "dt_values": [
+        0.005,
+        0.0025,
+        0.00125,
+        0.000625,
+        0.0003125
+      ],
+      "newton_rtol": 1e-12,
+      "pair_chunk": 1048576,
+      "time_discretization": "lagged-mobility backward Euler in entropy variables",
+      "preconditioner_axis": [
+        0,
+        1,
+        2
+      ],
+      "preconditioner": "Dense three-axis spatial channel-Gram sum per velocity node, with remaining velocity-channel diagonal; exact Hessian unchanged",
+      "residual_metric": "fixed_reference_population",
+      "reference_population": "positive quadrature weights times the fixed initial distribution; same total particle number",
+      "linear_rtol": 1e-06,
+      "linear_max_steps": 3000,
+      "max_newton_steps": 80,
+      "relative_refinement_target": 0.01,
+      "spatial_discretization": "global Lagrange polynomial derivative on positive Gauss-Legendre quadrature",
+      "velocity_discretization": "local quadratic u derivative; positive Gauss-Legendre u/mu quadrature",
+      "initial": "exp(-E-.2mu+.1sin(pi*y/.4)*u)",
+      "seed": null
+    },
+    "commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+    "working_tree": "?? results/nonuniform_spatial_blocks/",
+    "source_sha256": "b981adcaa6de59acc94174069759446322978e5b10b13161d6fb86175ddae282",
+    "versions": {
+      "sato-morrison": "0.1.0",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2"
+    },
+    "source_changes": "",
+    "logical_cpus": 4,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "unset",
+      "OPENBLAS_NUM_THREADS": "unset",
+      "MKL_NUM_THREADS": "unset",
+      "XLA_FLAGS": "unset"
+    },
+    "python": "3.12.15",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "processor": "x86_64",
+    "devices": [
+      "cpu:0"
+    ],
+    "x64": true,
+    "limitations": "Independent finite-time refinement checks at fixed other parameters; no combined-streaming box claim and no E/Gmu-only equilibrium reachability claim. Finite spatial polynomial spaces may lift continuum invariants: flux/potential moments are measured as scheme errors, never projected or interpreted as physical relaxation. Tail-domain and wider-domain quadrature checks are separate. A fine timestep-pair pass does not certify the coarse baseline or jointly refine space and time; all adjacent and coarsest/fine differences are retained. Fixed-reference and old-population residual norms are different; no equality of their nominal tolerances is claimed. Timings include concurrent unrelated machine load.",
+    "relaxation_diagnostic": "Relative entropy to mass-normalized exp(-E-.2mu) decreases by the entropy gain because its logarithm is a discrete collision invariant. This stationary reference is not asserted reachable under the additional continuum constraints. Mean/variance of log(f/reference) and the sin(pi*y/.4)*u moment are measured separately.",
+    "execution": {
+      "selected_fields": [
+        "nonaxisymmetric"
+      ],
+      "selected_cases": [
+        "spatial3"
+      ],
+      "description": "Independent predefined cases; each completed row retains its producing run."
+    }
+  },
+  "provenance_runs": {
+    "5def7bb6968999fdc8d67df5cdfa6646f9b2cbeb684a65b94d38cdd90cd9fe0b": {
+      "model": "sm_local_nonlinear discrete-energy projector",
+      "boundary": "natural no-flux collision-only Cartesian boxes",
+      "units": "normalized",
+      "inputs": {
+        "fields": [
+          {
+            "kind": "mirror",
+            "strength": 1.0,
+            "amplitude": 0.15,
+            "length": 1.0,
+            "direction": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "base": "dipole"
+          },
+          {
+            "kind": "dipole",
+            "strength": 1.0,
+            "amplitude": 0.0,
+            "length": 1.0,
+            "direction": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "base": "dipole"
+          },
+          {
+            "kind": "nonaxisymmetric",
+            "strength": 1.0,
+            "amplitude": 0.03,
+            "length": 1.0,
+            "direction": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "base": "dipole"
+          }
+        ],
+        "bounds": [
+          [
+            0.8,
+            1.2
+          ],
+          [
+            -0.2,
+            0.2
+          ],
+          [
+            0.1,
+            0.5
+          ]
+        ],
+        "nx": 5,
+        "nu": 25,
+        "nmu": 21,
+        "x_orders": [
+          3,
+          5,
+          7
+        ],
+        "u_orders": [
+          17,
+          21,
+          25
+        ],
+        "mu_orders": [
+          13,
+          17,
+          21
+        ],
+        "u_domain": [
+          -4.0,
+          4.0
+        ],
+        "mu_domain": [
+          0,
+          20.0
+        ],
+        "collision_strength": 0.1,
+        "final_time": 0.02,
+        "dt_values": [
+          0.005,
+          0.0025,
+          0.00125,
+          0.000625,
+          0.0003125
+        ],
+        "newton_rtol": 1e-12,
+        "pair_chunk": 1048576,
+        "time_discretization": "lagged-mobility backward Euler in entropy variables",
+        "preconditioner_axis": [
+          0,
+          1,
+          2
+        ],
+        "preconditioner": "Dense three-axis spatial channel-Gram sum per velocity node, with remaining velocity-channel diagonal; exact Hessian unchanged",
+        "residual_metric": "fixed_reference_population",
+        "reference_population": "positive quadrature weights times the fixed initial distribution; same total particle number",
+        "linear_rtol": 1e-06,
+        "linear_max_steps": 3000,
+        "max_newton_steps": 80,
+        "relative_refinement_target": 0.01,
+        "spatial_discretization": "global Lagrange polynomial derivative on positive Gauss-Legendre quadrature",
+        "velocity_discretization": "local quadratic u derivative; positive Gauss-Legendre u/mu quadrature",
+        "initial": "exp(-E-.2mu+.1sin(pi*y/.4)*u)",
+        "seed": null
+      },
+      "commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+      "working_tree": "?? results/nonuniform_spatial_blocks/",
+      "source_sha256": "b981adcaa6de59acc94174069759446322978e5b10b13161d6fb86175ddae282",
+      "versions": {
+        "sato-morrison": "0.1.0",
+        "jax": "0.11.2",
+        "jaxlib": "0.11.2",
+        "solvax": "0.28.2",
+        "numpy": "2.5.3",
+        "scipy": "1.18.1",
+        "matplotlib": "3.11.2"
+      },
+      "source_changes": "",
+      "logical_cpus": 4,
+      "thread_environment": {
+        "OMP_NUM_THREADS": "unset",
+        "OPENBLAS_NUM_THREADS": "unset",
+        "MKL_NUM_THREADS": "unset",
+        "XLA_FLAGS": "unset"
+      },
+      "python": "3.12.15",
+      "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+      "processor": "x86_64",
+      "devices": [
+        "cpu:0"
+      ],
+      "x64": true,
+      "limitations": "Independent finite-time refinement checks at fixed other parameters; no combined-streaming box claim and no E/Gmu-only equilibrium reachability claim. Finite spatial polynomial spaces may lift continuum invariants: flux/potential moments are measured as scheme errors, never projected or interpreted as physical relaxation. Tail-domain and wider-domain quadrature checks are separate. A fine timestep-pair pass does not certify the coarse baseline or jointly refine space and time; all adjacent and coarsest/fine differences are retained. Fixed-reference and old-population residual norms are different; no equality of their nominal tolerances is claimed. Timings include concurrent unrelated machine load.",
+      "relaxation_diagnostic": "Relative entropy to mass-normalized exp(-E-.2mu) decreases by the entropy gain because its logarithm is a discrete collision invariant. This stationary reference is not asserted reachable under the additional continuum constraints. Mean/variance of log(f/reference) and the sin(pi*y/.4)*u moment are measured separately.",
+      "execution": {
+        "selected_fields": [
+          "nonaxisymmetric"
+        ],
+        "selected_cases": [
+          "spatial3"
+        ],
+        "description": "Independent predefined cases; each completed row retains its producing run."
+      }
+    }
+  },
+  "rows": [
+    {
+      "field": "nonaxisymmetric",
+      "nx": 3,
+      "nu": 25,
+      "nmu": 21,
+      "umax": 4.0,
+      "mumax": 20.0,
+      "dt": 0.005,
+      "nodes": 14175,
+      "conceptual_unordered_pairs": 3713850,
+      "residual_metric": "fixed_reference_population",
+      "reference_population_total": 0.13247851774439273,
+      "minimum_reference_population": 8.571141761584039e-25,
+      "stored_grid_bytes": 3294032,
+      "auxiliary_spatial_factor_bytes": 3061800,
+      "auxiliary_spatial_factor_scope": "One dense Cholesky factor per velocity node; excludes other blocks and runtime workspace",
+      "process_peak_rss_bytes": 811053056,
+      "peak_rss_scope": "Cumulative process high-water mark; includes setup and compiled runtime, not grid arrays alone",
+      "pair_workspace_budget": 1048576,
+      "minimum_discrete_grad_B": 1.248087640370512,
+      "minimum_B": 0.596828158159653,
+      "maximum_B": 1.6532045223534944,
+      "u_quadratic_derivative_error": 2.4868995751603507e-14,
+      "number": 0.13247851774439273,
+      "initial_magnetic_moment_bin_populations": [
+        0.02429920636973532,
+        0.03951354990950507,
+        0.03353777621589401,
+        0.019980839061822454,
+        0.009410961596121646,
+        0.0037669409385617395,
+        0.0013413222199018375,
+        0.00043803660813077354,
+        0.00013434972536935163,
+        3.9519825206357544e-05,
+        1.1370682902790965e-05,
+        3.262375232726659e-06,
+        9.516624955686684e-07,
+        2.8773442654400814e-07,
+        9.182301227927385e-08,
+        3.141658232242838e-08,
+        1.1652024531066935e-08,
+        4.697633841026704e-09,
+        2.030630357305536e-09,
+        8.895462892287213e-10,
+        3.096568968691385e-10
+      ],
+      "entropy_gain_per_particle": 0.0015421657489140892,
+      "initial_relative_entropy_per_particle": 0.002441932057642685,
+      "relative_entropy_decrease_fraction": 0.6315350765339542,
+      "initial_perturbation": {
+        "mean": 0.002441932057642493,
+        "variance": 0.004898017467315519
+      },
+      "final_perturbation": {
+        "mean": 0.000899766308728632,
+        "variance": 0.0018075778581788382
+      },
+      "entropy_telescoping_error": -1.2197274440461925e-18,
+      "initial_production_per_particle": 0.1635087664410396,
+      "final_production_per_particle": 0.04222762324746179,
+      "relaxation_moment_change_per_particle": -0.020250922939639357,
+      "relaxation_moment_decrease_fraction": 0.4150506470857558,
+      "continuum_invariant_errors": {
+        "B": {
+          "relative_signed_drift": -2.3680108194349324e-06,
+          "initial_relative_rate": -0.00043352964186103675,
+          "final_relative_rate": -6.039432826360652e-05
+        },
+        "chi": {
+          "relative_signed_drift": 1.515778734379898e-06,
+          "initial_relative_rate": 0.0002793807899508497,
+          "final_relative_rate": 3.8866661037285386e-05
+        },
+        "B_squared": {
+          "relative_signed_drift": -1.1803725859142872e-05,
+          "initial_relative_rate": -0.0020809561485237603,
+          "final_relative_rate": -0.00031015261360294646
+        },
+        "chi_squared": {
+          "relative_signed_drift": -5.7209933962961855e-06,
+          "initial_relative_rate": -0.0010208688143783064,
+          "final_relative_rate": -0.00015111159309089288
+        }
+      },
+      "setup_s": 4.053938061000004,
+      "history": [
+        {
+          "time": 0.005,
+          "wall_s": 288.91545759,
+          "newton_iterations": 5,
+          "pcg_iterations": 968,
+          "nonlinear_relative_residual": 2.5853303382035895e-15,
+          "residual_metric": "fixed_reference_population",
+          "recomputed_reference_relative_residual": 2.5862528358863295e-15,
+          "old_population_relative_residual": 2.5862528358863295e-15,
+          "unscaled_population_residual_norm": 5.56683535827733e-19,
+          "maximum_linear_relative_residual": 9.96618899833796e-07,
+          "entropy_change": 7.8703027019583e-05,
+          "entropy_identity_error": -2.515687853345272e-19,
+          "lagged_mobility_dissipation": 7.1157928154616e-05,
+          "generalized_KL": 7.545098864967256e-06,
+          "entropy_defect_bound": 9.262695347219843e-15,
+          "residual_entropy_defect": 2.4051600021501273e-19,
+          "newton_history": [
+            {
+              "iteration": 1,
+              "relative_residual": 0.09490157806506527,
+              "linear_iterations": 165,
+              "true_linear_relative_residual": 8.79650366336294e-07,
+              "linear_wall_s": 49.43633671399999,
+              "maximum_log_direction": 22.28584046914032,
+              "minimum_signed_log_direction": -22.28584046914032,
+              "maximum_signed_log_direction": 8.662373754075672,
+              "objective_descent": -2.2087216076922143e-05,
+              "mobility_curvature": 0.0013944944962318013,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 22.28584046914032,
+              "objective_change": -1.1026579984956836e-05
+            },
+            {
+              "iteration": 2,
+              "relative_residual": 0.000256392900876077,
+              "linear_iterations": 228,
+              "true_linear_relative_residual": 8.81549304673563e-07,
+              "linear_wall_s": 66.98710490599998,
+              "maximum_log_direction": 1.7603557216673935,
+              "minimum_signed_log_direction": -1.7603557216673935,
+              "maximum_signed_log_direction": 0.2320785301607253,
+              "objective_descent": -5.69724533290606e-09,
+              "mobility_curvature": 1.3652394038365638e-07,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 1.7603557216673935,
+              "objective_change": -2.8543449197147553e-09
+            },
+            {
+              "iteration": 3,
+              "relative_residual": 1.930180315462459e-06,
+              "linear_iterations": 228,
+              "true_linear_relative_residual": 9.96618899833796e-07,
+              "linear_wall_s": 66.138609922,
+              "maximum_log_direction": 0.2155240115000029,
+              "minimum_signed_log_direction": -0.2155240115000029,
+              "maximum_signed_log_direction": 0.003940416329107573,
+              "objective_descent": -5.353643894943607e-13,
+              "mobility_curvature": 3.17173853639221e-11,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.2155240115000029,
+              "objective_change": -2.6863918963929726e-13
+            },
+            {
+              "iteration": 4,
+              "relative_residual": 1.4407395335972396e-08,
+              "linear_iterations": 184,
+              "true_linear_relative_residual": 9.136267628304232e-07,
+              "linear_wall_s": 53.67301715099998,
+              "maximum_log_direction": 0.005485584291534978,
+              "minimum_signed_log_direction": -0.005485584291534978,
+              "maximum_signed_log_direction": 0.00014019505150359682,
+              "objective_descent": -3.317120581527439e-17,
+              "mobility_curvature": 3.164275935961134e-15,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.005485584291534978,
+              "objective_change": -1.658847062009484e-17
+            },
+            {
+              "iteration": 5,
+              "relative_residual": 4.6364141632711185e-12,
+              "linear_iterations": 163,
+              "true_linear_relative_residual": 9.196728728389194e-07,
+              "linear_wall_s": 47.881841321000024,
+              "maximum_log_direction": 2.8645260814403465e-06,
+              "minimum_signed_log_direction": -2.8645260814403465e-06,
+              "maximum_signed_log_direction": 1.9621934286518355e-07,
+              "objective_descent": -3.1861037917365922e-24,
+              "mobility_curvature": 3.692059223752529e-22,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 2.8645260814403465e-06,
+              "objective_change": -1.593052114472556e-24
+            }
+          ],
+          "magnetic_moment_bin_populations": [
+            0.024299206369735347,
+            0.039513549909505036,
+            0.03353777621589402,
+            0.019980839061822464,
+            0.009410961596121635,
+            0.003766940938561741,
+            0.0013413222199018388,
+            0.00043803660813077403,
+            0.00013434972536935166,
+            3.951982520635748e-05,
+            1.1370682902790965e-05,
+            3.262375232726657e-06,
+            9.516624955686681e-07,
+            2.877344265440081e-07,
+            9.18230122792739e-08,
+            3.141658232242838e-08,
+            1.1652024531066939e-08,
+            4.697633841026706e-09,
+            2.0306303573055377e-09,
+            8.895462892287206e-10,
+            3.0965689686913843e-10
+          ],
+          "relative_marginal_bin_errors": [
+            1.142242063106987e-15,
+            -8.780398015109827e-16,
+            4.137957066228376e-16,
+            5.209161048570848e-16,
+            -1.105980589714682e-15,
+            3.453843923232197e-16,
+            9.699702186979502e-16,
+            1.1138132488525244e-15,
+            2.0174997929933185e-16,
+            -1.5431842596434045e-15,
+            0.0,
+            -5.192737725306719e-16,
+            -3.337710130423471e-16,
+            -1.8398757437284557e-16,
+            5.765391255340379e-16,
+            0.0,
+            2.8396116412133425e-16,
+            3.521690453303789e-16,
+            8.147032861762413e-16,
+            -8.136541568977297e-16,
+            -1.669550680358727e-16
+          ],
+          "number_error": 1.4609691574376003e-18,
+          "energy_error": 1.1948279375301132e-18,
+          "marginal_error": 2.1275854280632963e-18,
+          "min_f": 4.346414379879227e-30
+        },
+        {
+          "time": 0.01,
+          "wall_s": 234.68019940299996,
+          "newton_iterations": 4,
+          "pcg_iterations": 784,
+          "nonlinear_relative_residual": 1.7990410605811888e-13,
+          "residual_metric": "fixed_reference_population",
+          "recomputed_reference_relative_residual": 1.7990412317377815e-13,
+          "old_population_relative_residual": 7.849543523881557e-11,
+          "unscaled_population_residual_norm": 5.614814336111724e-19,
+          "maximum_linear_relative_residual": 9.802065400281035e-07,
+          "entropy_change": 5.5229152577702543e-05,
+          "entropy_identity_error": 1.9566461081574338e-19,
+          "lagged_mobility_dissipation": 5.067160343653727e-05,
+          "generalized_KL": 4.557549141165081e-06,
+          "entropy_defect_bound": 4.026192859148825e-14,
+          "residual_entropy_defect": -2.0093644595107853e-19,
+          "newton_history": [
+            {
+              "iteration": 1,
+              "relative_residual": 0.010758514499688177,
+              "linear_iterations": 188,
+              "true_linear_relative_residual": 9.802065400281035e-07,
+              "linear_wall_s": 55.515022682999984,
+              "maximum_log_direction": 20.976001709096433,
+              "minimum_signed_log_direction": -9.214500341130053,
+              "maximum_signed_log_direction": 20.976001709096433,
+              "objective_descent": -1.1515257774379742e-05,
+              "mobility_curvature": 0.0004778721685455017,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 20.976001709096433,
+              "objective_change": -5.752734158201192e-06
+            },
+            {
+              "iteration": 2,
+              "relative_residual": 0.00010314718666674915,
+              "linear_iterations": 200,
+              "true_linear_relative_residual": 9.61894282737594e-07,
+              "linear_wall_s": 58.21716090000001,
+              "maximum_log_direction": 1.2001234769579705,
+              "minimum_signed_log_direction": -1.2001234769579705,
+              "maximum_signed_log_direction": 0.17397209385497103,
+              "objective_descent": -1.0633175889015542e-09,
+              "mobility_curvature": 2.4078921385451377e-08,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 1.2001234769579705,
+              "objective_change": -5.317373629003007e-10
+            },
+            {
+              "iteration": 3,
+              "relative_residual": 7.239818787378979e-08,
+              "linear_iterations": 207,
+              "true_linear_relative_residual": 8.702959861961021e-07,
+              "linear_wall_s": 60.96645701099999,
+              "maximum_log_direction": 0.21604431242584884,
+              "minimum_signed_log_direction": -0.21604431242584884,
+              "maximum_signed_log_direction": 0.003502685602418603,
+              "objective_descent": -3.458616528946756e-16,
+              "mobility_curvature": 1.6884895948134884e-14,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.21604431242584884,
+              "objective_change": -1.7296320984432453e-16
+            },
+            {
+              "iteration": 4,
+              "relative_residual": 6.413243954623649e-10,
+              "linear_iterations": 189,
+              "true_linear_relative_residual": 7.575800783752757e-07,
+              "linear_wall_s": 57.179063548000045,
+              "maximum_log_direction": 0.004640473884211245,
+              "minimum_signed_log_direction": -0.004640473884211245,
+              "maximum_signed_log_direction": 0.00015464737046795083,
+              "objective_descent": -6.878490851784782e-23,
+              "mobility_curvature": 4.3570190882946086e-21,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.004640473884211245,
+              "objective_change": -3.439295221609544e-23
+            }
+          ],
+          "magnetic_moment_bin_populations": [
+            0.02429920636973533,
+            0.039513549909505064,
+            0.03353777621589401,
+            0.01998083906182246,
+            0.009410961596121648,
+            0.003766940938561741,
+            0.0013413222199018368,
+            0.00043803660813077354,
+            0.00013434972536935166,
+            3.95198252063575e-05,
+            1.1370682902790966e-05,
+            3.262375232726658e-06,
+            9.516624955686679e-07,
+            2.877344265440082e-07,
+            9.182301227927398e-08,
+            3.1416582322428374e-08,
+            1.1652024531066944e-08,
+            4.697633841026706e-09,
+            2.030630357305537e-09,
+            8.895462892287214e-10,
+            3.0965689686913905e-10
+          ],
+          "relative_marginal_bin_errors": [
+            4.283407736651202e-16,
+            -1.7560796030219654e-16,
+            0.0,
+            3.472774032380566e-16,
+            1.8433009828578034e-16,
+            3.453843923232197e-16,
+            -4.849851093489751e-16,
+            0.0,
+            2.0174997929933185e-16,
+            -1.0287895064289363e-15,
+            1.4898541354035893e-16,
+            -2.5963688626533593e-16,
+            -5.562850217372452e-16,
+            1.8398757437284557e-16,
+            1.4413478138350949e-15,
+            -2.1063541643420616e-16,
+            7.099029103033356e-16,
+            3.521690453303789e-16,
+            4.0735164308812066e-16,
+            1.162363081282471e-16,
+            1.8365057483945997e-15
+          ],
+          "number_error": 4.314174787663111e-18,
+          "energy_error": 3.2054598444916632e-18,
+          "marginal_error": 2.41737349071038e-18,
+          "min_f": 6.389552611794257e-29
+        },
+        {
+          "time": 0.015,
+          "wall_s": 164.80270226599998,
+          "newton_iterations": 3,
+          "pcg_iterations": 565,
+          "nonlinear_relative_residual": 5.79160557921079e-14,
+          "residual_metric": "fixed_reference_population",
+          "recomputed_reference_relative_residual": 5.7916084450832e-14,
+          "old_population_relative_residual": 9.567018151107722e-13,
+          "unscaled_population_residual_norm": 5.337358010419616e-19,
+          "maximum_linear_relative_residual": 9.62814421225517e-07,
+          "entropy_change": 4.029535120528221e-05,
+          "entropy_identity_error": 2.508572776588336e-17,
+          "lagged_mobility_dissipation": 3.7247133659108715e-05,
+          "generalized_KL": 3.0482175461484084e-06,
+          "entropy_defect_bound": 1.8939056913995593e-14,
+          "residual_entropy_defect": -2.5094428463041195e-17,
+          "newton_history": [
+            {
+              "iteration": 1,
+              "relative_residual": 0.0083452017910691,
+              "linear_iterations": 181,
+              "true_linear_relative_residual": 9.375518765899036e-07,
+              "linear_wall_s": 51.727191175999906,
+              "maximum_log_direction": 8.029557188557195,
+              "minimum_signed_log_direction": -8.029557188557195,
+              "maximum_signed_log_direction": 4.228507561482407,
+              "objective_descent": -7.409380681716591e-06,
+              "mobility_curvature": 0.00026139733181299035,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 8.029557188557195,
+              "objective_change": -3.702361526334672e-06
+            },
+            {
+              "iteration": 2,
+              "relative_residual": 6.236513818904913e-05,
+              "linear_iterations": 185,
+              "true_linear_relative_residual": 6.830607077643397e-07,
+              "linear_wall_s": 53.19347073600011,
+              "maximum_log_direction": 0.8238287779153396,
+              "minimum_signed_log_direction": -0.8238287779153396,
+              "maximum_signed_log_direction": 0.022145609863419572,
+              "objective_descent": -4.0919995803011995e-10,
+              "mobility_curvature": 8.73121250427229e-09,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.8238287779153396,
+              "objective_change": -2.0461398264695384e-10
+            },
+            {
+              "iteration": 3,
+              "relative_residual": 8.696405625993382e-09,
+              "linear_iterations": 199,
+              "true_linear_relative_residual": 9.62814421225517e-07,
+              "linear_wall_s": 57.47404877099996,
+              "maximum_log_direction": 0.00552842205570034,
+              "minimum_signed_log_direction": -0.00552842205570034,
+              "maximum_signed_log_direction": 0.0001228575128303416,
+              "objective_descent": -8.05310034378484e-18,
+              "mobility_curvature": 2.1728551979392063e-16,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.00552842205570034,
+              "objective_change": -4.026558386449705e-18
+            }
+          ],
+          "magnetic_moment_bin_populations": [
+            0.024299206369735336,
+            0.039513549909505126,
+            0.03353777621589399,
+            0.01998083906182245,
+            0.00941096159612165,
+            0.0037669409385617377,
+            0.0013413222199018372,
+            0.0004380366081307739,
+            0.00013434972536935206,
+            3.9519825206357584e-05,
+            1.1370682902790982e-05,
+            3.262375232726657e-06,
+            9.516624955686681e-07,
+            2.87734426544008e-07,
+            9.182301227927393e-08,
+            3.141658232242837e-08,
+            1.1652024531066947e-08,
+            4.697633841026713e-09,
+            2.0306303573055415e-09,
+            8.895462892287239e-10,
+            3.0965689686913977e-10
+          ],
+          "relative_marginal_bin_errors": [
+            7.13901289441867e-16,
+            1.4048636824175724e-15,
+            -6.206935599342563e-16,
+            -1.736387016190283e-16,
+            3.686601965715607e-16,
+            -4.605125230976263e-16,
+            -1.6166170311632503e-16,
+            8.662991935519634e-16,
+            3.2279996687893096e-15,
+            1.0287895064289363e-15,
+            1.4898541354035891e-15,
+            -5.192737725306719e-16,
+            -3.337710130423471e-16,
+            -5.519627231185368e-16,
+            8.648086883010569e-16,
+            -4.2127083286841233e-16,
+            9.9386407442467e-16,
+            1.936929749317084e-15,
+            2.6477856800727842e-15,
+            2.9059077032061776e-15,
+            4.173876700896817e-15
+          ],
+          "number_error": 2.7445120824073957e-17,
+          "energy_error": 1.4816829025927305e-16,
+          "marginal_error": 7.130741301471071e-18,
+          "min_f": 8.485134202246385e-28
+        },
+        {
+          "time": 0.02,
+          "wall_s": 166.10923267099997,
+          "newton_iterations": 3,
+          "pcg_iterations": 566,
+          "nonlinear_relative_residual": 5.222581125388244e-15,
+          "residual_metric": "fixed_reference_population",
+          "recomputed_reference_relative_residual": 5.2230925341428014e-15,
+          "old_population_relative_residual": 6.788150792446418e-13,
+          "unscaled_population_residual_norm": 5.375840669335144e-19,
+          "maximum_linear_relative_residual": 9.805759538889017e-07,
+          "entropy_change": 3.007630172974335e-05,
+          "entropy_identity_error": 2.7278696066324742e-18,
+          "lagged_mobility_dissipation": 2.7942501350078736e-05,
+          "generalized_KL": 2.1338003796618876e-06,
+          "entropy_defect_bound": 9.729262209440565e-15,
+          "residual_entropy_defect": -2.7276093268146956e-18,
+          "newton_history": [
+            {
+              "iteration": 1,
+              "relative_residual": 0.0068293773564773825,
+              "linear_iterations": 180,
+              "true_linear_relative_residual": 9.492290764350025e-07,
+              "linear_wall_s": 51.850652319999995,
+              "maximum_log_direction": 2.505799933978501,
+              "minimum_signed_log_direction": -1.7722705057881667,
+              "maximum_signed_log_direction": 2.505799933978501,
+              "objective_descent": -5.086199020548615e-06,
+              "mobility_curvature": 0.00016302885686055965,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 2.505799933978501,
+              "objective_change": -2.5418164280206234e-06
+            },
+            {
+              "iteration": 2,
+              "relative_residual": 4.230528737197726e-05,
+              "linear_iterations": 183,
+              "true_linear_relative_residual": 9.805759538889017e-07,
+              "linear_wall_s": 52.71688410500008,
+              "maximum_log_direction": 0.027765534025407997,
+              "minimum_signed_log_direction": -0.027765534025407997,
+              "maximum_signed_log_direction": 0.009132786041013186,
+              "objective_descent": -1.9118630968147093e-10,
+              "mobility_curvature": 3.95344953177865e-09,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.027765534025407997,
+              "objective_change": -9.559746091118842e-11
+            },
+            {
+              "iteration": 3,
+              "relative_residual": 3.727318289576663e-09,
+              "linear_iterations": 203,
+              "true_linear_relative_residual": 8.852031120951294e-07,
+              "linear_wall_s": 59.02623360999996,
+              "maximum_log_direction": 5.5266263546066354e-05,
+              "minimum_signed_log_direction": -5.5266263546066354e-05,
+              "maximum_signed_log_direction": 1.7365343201947312e-06,
+              "objective_descent": -1.3822880527477222e-18,
+              "mobility_curvature": 3.5827598679093505e-17,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 5.5266263546066354e-05,
+              "objective_change": -6.911441038530137e-19
+            }
+          ],
+          "magnetic_moment_bin_populations": [
+            0.024299206369735347,
+            0.039513549909505126,
+            0.033537776215893995,
+            0.019980839061822474,
+            0.009410961596121644,
+            0.003766940938561738,
+            0.001341322219901838,
+            0.0004380366081307738,
+            0.00013434972536935242,
+            3.9519825206357645e-05,
+            1.1370682902790961e-05,
+            3.262375232726658e-06,
+            9.516624955686683e-07,
+            2.877344265440077e-07,
+            9.182301227927393e-08,
+            3.1416582322428374e-08,
+            1.1652024531066942e-08,
+            4.697633841026715e-09,
+            2.0306303573055423e-09,
+            8.895462892287232e-10,
+            3.096568968691401e-10
+          ],
+          "relative_marginal_bin_errors": [
+            1.142242063106987e-15,
+            1.4048636824175724e-15,
+            -4.137957066228376e-16,
+            1.0418322097141697e-15,
+            -1.8433009828578034e-16,
+            -3.453843923232197e-16,
+            4.849851093489751e-16,
+            6.187851382514025e-16,
+            5.850749399680623e-15,
+            2.571973766072341e-15,
+            -2.9797082708071785e-16,
+            -2.5963688626533593e-16,
+            -1.1125700434744904e-16,
+            -1.4719005949827646e-15,
+            8.648086883010569e-16,
+            -2.1063541643420616e-16,
+            5.679223282426685e-16,
+            2.2890987946474627e-15,
+            3.055137323160905e-15,
+            2.092253546308448e-15,
+            5.175607109112054e-15
+          ],
+          "number_error": 3.343605343028416e-17,
+          "energy_error": 1.6702563511020147e-16,
+          "marginal_error": 7.980637056387455e-18,
+          "min_f": 7.460024572281432e-27
+        }
+      ],
+      "load_average_start": [
+        0.61767578125,
+        0.1826171875,
+        0.06396484375
+      ],
+      "load_average_end": [
+        2.8056640625,
+        2.97802734375,
+        1.96826171875
+      ],
+      "status": "passed",
+      "case": "spatial3",
+      "provenance_id": "5def7bb6968999fdc8d67df5cdfa6646f9b2cbeb684a65b94d38cdd90cd9fe0b"
+    }
+  ],
+  "checks": [
+    {
+      "field": "mirror",
+      "spatial": {
+        "status": "not_run"
+      },
+      "parallel_velocity": {
+        "status": "not_run"
+      },
+      "magnetic_moment": {
+        "status": "not_run"
+      },
+      "timestep": {
+        "status": "not_run"
+      },
+      "parallel_tail": {
+        "status": "not_run"
+      },
+      "moment_tail": {
+        "status": "not_run"
+      },
+      "wider_parallel_quadrature": {
+        "status": "not_run"
+      },
+      "wider_moment_quadrature": {
+        "status": "not_run"
+      },
+      "appreciable_relaxation": {
+        "status": "not_run"
+      },
+      "status": "unresolved"
+    },
+    {
+      "field": "dipole",
+      "spatial": {
+        "status": "not_run"
+      },
+      "parallel_velocity": {
+        "status": "not_run"
+      },
+      "magnetic_moment": {
+        "status": "not_run"
+      },
+      "timestep": {
+        "status": "not_run"
+      },
+      "parallel_tail": {
+        "status": "not_run"
+      },
+      "moment_tail": {
+        "status": "not_run"
+      },
+      "wider_parallel_quadrature": {
+        "status": "not_run"
+      },
+      "wider_moment_quadrature": {
+        "status": "not_run"
+      },
+      "appreciable_relaxation": {
+        "status": "not_run"
+      },
+      "status": "unresolved"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "spatial": {
+        "status": "not_run"
+      },
+      "parallel_velocity": {
+        "status": "not_run"
+      },
+      "magnetic_moment": {
+        "status": "not_run"
+      },
+      "timestep": {
+        "status": "not_run"
+      },
+      "parallel_tail": {
+        "status": "not_run"
+      },
+      "moment_tail": {
+        "status": "not_run"
+      },
+      "wider_parallel_quadrature": {
+        "status": "not_run"
+      },
+      "wider_moment_quadrature": {
+        "status": "not_run"
+      },
+      "appreciable_relaxation": {
+        "status": "not_run"
+      },
+      "status": "unresolved"
+    }
+  ],
+  "completed_cases_by_field": {
+    "mirror": 0,
+    "dipole": 0,
+    "nonaxisymmetric": 1
+  },
+  "status": "unresolved",
+  "selected_execution_complete": true
+}

@@ -1,5 +1,5 @@
 {
-  "prepared_utc": "2026-10-08T17:03:19.686472+00:00",
+  "prepared_utc": "2026-10-08T17:15:42.599188+00:00",
   "status": "reviewed_hashes_and_scientific_scope",
   "producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
   "producer_source_sha256": "b981adcaa6de59acc94174069759446322978e5b10b13161d6fb86175ddae282",
@@ -9,16 +9,16 @@
   "strict_collector_source_sha256": "0c89760ce5a1fcfb19cbd01b0ed2bef380f5725605b531ab7f6b0725abf084e1",
   "independent_audit_source_sha256": "2b4dc65f9a1260b0395c12c6dbe072ce31f00fac7a563e943af8281a6a9c162a",
   "original_input_hashes": {
-    "strict_ledger": "9f1a7f020ca508e1823c326cd4a68767df6e7905f7b92384be08d7b259f922ac",
-    "aggregate_pair_audit": "10c542557fa5b7c7d95578cffbeb1274b627738f9c459be8bb19a278c0c75788"
+    "strict_ledger": "19909acf3ad432f7d0880a7b73721ada34a9dda682643428adcdbb0e142b6355",
+    "aggregate_pair_audit": "58b4490ebc4e10053d556f9fe9838e415bf3d977675a7eaca83ce81790752fc2"
   },
   "public_layout": "results/nonuniform_spatial_blocks_full",
   "pilot_rows_pooled": false,
-  "complete_case_count": 1,
+  "complete_case_count": 2,
   "expected_case_count": 45,
   "failed_partial_case_count": 3,
-  "missing_final_case_count": 44,
-  "pair_audit_original_ledger_sha256": "756a2208889e4460a03d5858092646d0cd08d0c737d0c2e09febd7e8f04145fb",
+  "missing_final_case_count": 43,
+  "pair_audit_original_ledger_sha256": "19909acf3ad432f7d0880a7b73721ada34a9dda682643428adcdbb0e142b6355",
   "pair_audit_association": "Every completed row exact canonical SHA matched; additional partial failures were not pair reevaluated",
   "campaign_status": "unresolved",
   "selected_snapshot_pair_audits_status": "passed",
@@ -214,19 +214,74 @@
       "output_sha256": "ae21daa49d1d8d3b469d6bee14a66145609c12dd92aee08b2048d504c8402af9",
       "mode": "byte-for-byte independent audit output"
     },
+    "state_nonaxisymmetric_spatial3.npz": {
+      "original_sha256": "1040b22116ac80dd7da73a6c97c9601f875f0b99a670396c373db0465b8f3f5f",
+      "output_sha256": "1040b22116ac80dd7da73a6c97c9601f875f0b99a670396c373db0465b8f3f5f",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "nonaxisymmetric_spatial3_producer_summary.json": {
+      "original_sha256": "34102e9de1cfbb7976dfb4b41f5cd9c7ca0af8d509fb8709b60332ed6b85d904",
+      "output_sha256": "34102e9de1cfbb7976dfb4b41f5cd9c7ca0af8d509fb8709b60332ed6b85d904",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "nonaxisymmetric_spatial3_run.log": {
+      "original_sha256": "18c97dab810896ca14bfccc23c58363f651d5ff3476cd5152aada7bd533dfc25",
+      "output_sha256": "18c97dab810896ca14bfccc23c58363f651d5ff3476cd5152aada7bd533dfc25",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "nonaxisymmetric_spatial3_cpu.txt": {
+      "original_sha256": "d893a2e1fe38c883e9c6304826742490a3e71cb4324cac80c4809870147219b4",
+      "output_sha256": "d893a2e1fe38c883e9c6304826742490a3e71cb4324cac80c4809870147219b4",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "nonaxisymmetric_spatial3_environment.txt": {
+      "original_sha256": "3efa0f0f01834039f33414c49e047a10c967bc5991daffaf02ed69302fab1694",
+      "output_sha256": "3efa0f0f01834039f33414c49e047a10c967bc5991daffaf02ed69302fab1694",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "nonaxisymmetric_spatial3_commit.txt": {
+      "original_sha256": "abe9dcfb69d229fc649bde6c646b767be5d1ee6987a6d8c0f68ae34568e0cc56",
+      "output_sha256": "abe9dcfb69d229fc649bde6c646b767be5d1ee6987a6d8c0f68ae34568e0cc56",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "nonaxisymmetric_spatial3_last_correction.json": {
+      "original_sha256": "934add8e6221af2ca1acb569ba43708a4c5f111a436a5870ad656dcdfb77aa15",
+      "output_sha256": "934add8e6221af2ca1acb569ba43708a4c5f111a436a5870ad656dcdfb77aa15",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "nonaxisymmetric_spatial3_producer_evolution.png": {
+      "original_sha256": "adc8aac1ae5a914b4dee3b19c6749452ddbfa13501d89299f3bd16aa04ffefb2",
+      "output_sha256": "adc8aac1ae5a914b4dee3b19c6749452ddbfa13501d89299f3bd16aa04ffefb2",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "nonaxisymmetric_spatial3_download_receipt.json": {
+      "original_sha256": "563a7f1af60771aec00b91531771d2382f262f9f003504b7da6ad509595e3434",
+      "output_sha256": "563a7f1af60771aec00b91531771d2382f262f9f003504b7da6ad509595e3434",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "nonaxisymmetric_spatial3_pair_residual_arrays.npz": {
+      "original_sha256": "3c3a145aacbbad1956670200c761e52b953f646237885a3a5efedb511f87fc61",
+      "output_sha256": "3c3a145aacbbad1956670200c761e52b953f646237885a3a5efedb511f87fc61",
+      "mode": "byte-for-byte independent audit output"
+    },
     "dipole_spatial3_pair_audit.json": {
       "original_sha256": "233bd762aed64b8205b9bc7585bd81fda305a092e20adef803577f28624f5277",
       "output_sha256": "44f2c4d1d91cd1e83210600c05f5007209145d3f8a1101f2f7579116748e2ab7",
       "mode": "Private paths sanitized; numerical values unchanged"
     },
+    "nonaxisymmetric_spatial3_pair_audit.json": {
+      "original_sha256": "5c0805f894d856bceb21aa667f4acd7c88f8ef5c9fdbf4e7e0b5617364dd4229",
+      "output_sha256": "93c53446443fa8b15ea0b228d7ad9d9684a49eabf477f1fa24edecfda2985f26",
+      "mode": "Private paths sanitized; numerical values unchanged"
+    },
     "summary.json": {
-      "original_sha256": "9f1a7f020ca508e1823c326cd4a68767df6e7905f7b92384be08d7b259f922ac",
-      "output_sha256": "b2fdb2a9d89124bcf13e9ae7465d66eebfbd85708f5d060527c79c05ec8ded7d",
+      "original_sha256": "19909acf3ad432f7d0880a7b73721ada34a9dda682643428adcdbb0e142b6355",
+      "output_sha256": "a9b8299a8412543c13de3de370915178c96fc1bf8d1a3026aa5dd085df7cbdb1",
       "mode": "Private paths sanitized; numerical values unchanged"
     },
     "independent_audit.json": {
-      "original_sha256": "10c542557fa5b7c7d95578cffbeb1274b627738f9c459be8bb19a278c0c75788",
-      "output_sha256": "dd92e2b5d3926870e8f44ccf57ff063a164ab5c63a8359fb55993fcd11b6eccc",
+      "original_sha256": "58b4490ebc4e10053d556f9fe9838e415bf3d977675a7eaca83ce81790752fc2",
+      "output_sha256": "702f30411831d8ac26602b576e118e1b85c240c57b218a05bb9b78df93795ee3",
       "mode": "Private paths sanitized; numerical values unchanged"
     },
     "full_campaign_dt_sixteenth_failure_review.json": {
@@ -253,15 +308,15 @@
     "Original extracted artifact digests and source identities retained; GitHub ZIP digests only reported, not ZIP-verified."
   ],
   "publication_validation": {
-    "utc": "2026-10-08T17:03:19.917180+00:00",
-    "validation_source_sha256": "b786e5d7003e720ba3a85695c89831f6f4d0d7ea6cbd3b37a06b1b28bf1af428",
-    "prepared_receipt_sha256": "eb5e6966b4691d0ad9b80f96f8216ba2fbd41b2486bf826ce72ef71c5997c2f3",
+    "utc": "2026-10-08T17:15:42.728607+00:00",
+    "validation_source_sha256": "1709f1d273812c4607110374d69a796502db2cb7b7cb36d2a51999e8bfe8355e",
+    "prepared_receipt_sha256": "a6326a443ae7a16117c76d62367d33ac39bdc2fe4dca98d339123979d99dc878",
     "original_file_hashes_verified": true,
     "copied_output_hashes_verified": true,
     "finite_json_diagnostics_verified": true,
     "private_paths_absent": true,
     "root_owned_replay_folder_preserved": true,
-    "scope": "Data-only publication of1completed case and3explicit failed partials; unchanged completed row association; no new numerical actions or promotions",
+    "scope": "Data-only publication of 2 completed cases and 3 explicit failed partials; completed row associations verified; no new numerical actions or promotions",
     "context": {
       "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
       "platform": "macOS-26.6.2-arm64-arm-64bit"
