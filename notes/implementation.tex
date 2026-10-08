@@ -18,7 +18,7 @@
 \newcommand{\norm}[1]{\left\lVert #1\right\rVert}
 \title{Magnetic-moment-constrained collisions\\\large Equations, numerical design and verification notes}
 \author{Project: \texttt{sato-morrison}}
-\date{7 October 2026}
+\date{8 October 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -2767,6 +2767,11 @@ comparison in \path{results/nonuniform_spatial_blocks/preconditioner_comparison.
 A separate bounded full-refinement attempt uses immutable producer
 \texttt{93bf752d} and workflow run \texttt{37803682825}. It retains its own
 artifacts and case ledger; pilot and full-campaign timings are not pooled.
+The current saved snapshot has three completed cases, three explicit failed
+partials and 42 missing final cases out of 45; a partial case also counts
+among the missing final cases. It does not establish full refinement
+convergence. The independent last-step pair checks and publication receipt
+are in \path{results/nonuniform_spatial_blocks_full/}.
 The 330-minute per-case execution bound is a feasibility limit, not a promise
 that every case will converge or finish. All partial/failure evidence must
 remain visible when interpreting final refinement coverage.
@@ -3492,6 +3497,39 @@ The frozen producer is \texttt{58cc3e1}; inputs, every phase result,
 failed criterion and independent paths remain under
 \path{results/encounter_phase/}. No coefficient calibration or lifetime
 follows from this conditional study.
+
+\paragraph{A separately declared second-moment extension.}
+Producer \texttt{3adea8c} extends the nested hierarchy through a declared
+8192-node cap, reusing the original 1024 relative-solver rows after exact
+phase mapping and physical-source hash checks. Its unchanged second-moment
+criterion stops at $N=2048$: the $512\to1024$ and $1024\to2048$ changes
+are $0.243192\%$ and $0.254258\%$, respectively. All 2048 sampled phases
+exit within the fixed budget. Repeating the whole final sum at maximum step
+$0.025$ gives
+\[
+ I_{2,2048}^{\rm fine}=0.00218353791028,
+ \qquad
+ \frac{|I_{2,2048}^{\rm fine}-I_{2,2048}|}{I_{2,2048}^{\rm fine}}
+ =4.10\times10^{-11},
+\]
+passing the declared $0.1\%$ timestep check. The three original anchors and
+three largest new second-moment contributors also pass Cartesian checks at
+both steps, with maximum position and velocity differences
+$6.66\times10^{-9}$ and $1.33\times10^{-10}$. This run performs 3072 new
+relative solves in $142.44$ seconds on the recorded shared Apple M4;
+imports and final plots/output are excluded. Its outputs are in
+\path{results/encounter_phase/refined8192/}; 4096 and 8192 phases were not
+run after the predeclared early stop. Independent saved-array receipt
+\texttt{32ac054c} checks the reused rows, moment algebra, phase sums and
+Cartesian controls without importing production ODE kernels.
+
+Only the second-moment angular criterion passes. The same last angular
+comparison changes the mean increment by $1.683\%$ and the cross moment by
+$4.801\%$; their phase convergence remains unresolved. The original failed
+512-node study is preserved. Neither the passing sampled second-moment
+checks nor all sampled exits certify a continuous outgoing integral,
+almost-everywhere exits, an impact/speed-integrated rate or a source
+coefficient. No results from an all-three-moment extension are included.
 
 \paragraph{A continuity obstruction to finite-budget phase coverage.}
 For the exact repulsive screened relative equations,

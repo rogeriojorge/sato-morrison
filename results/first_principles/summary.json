@@ -1,6 +1,6 @@
 {
-  "model": "Analytical educational illustrations and previously checked uniform-mode data",
-  "boundary": "Uniform unbounded orbit; schematic magnetic-moment bins; periodic uniform Fourier mode",
+  "model": "Analytical illustrations and previously checked uniform/nonuniform collision data",
+  "boundary": "Uniform unbounded orbit; schematic magnetic-moment bins; periodic uniform mode; natural no-flux collision-only Cartesian pilot boxes",
   "units": "normalized",
   "inputs": {
     "orbit": {
@@ -433,11 +433,47 @@
       ],
       "same_parallel_velocity_distribution": true
     },
-    "uniform_mode_source": "results/visual_summary/evolution.npz"
+    "uniform_mode_source": "results/visual_summary/evolution.npz",
+    "nonuniform_source": "results/nonuniform_spatial_blocks/summary.json",
+    "nonuniform_source_sha256": "8826a377f7d6a8d363f6a49236e205de9c42f24c9e21a6b45ea78a2b92b773f4",
+    "nonuniform_producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+    "nonuniform_selection": {
+      "fields": [
+        "mirror",
+        "dipole",
+        "nonaxisymmetric"
+      ],
+      "case": "mu13",
+      "nx": 5,
+      "nu": 25,
+      "nmu": 13,
+      "nodes": 40625,
+      "dt": 0.005,
+      "final_time": 0.02,
+      "collision_strength": 0.1
+    },
+    "equation_figures": {
+      "pair_mobility": [
+        "$\\Delta_{ij}h=A_i h-A_j h,\\qquad\\xi_{ij}=\\Delta_{ij}E\\ne0$",
+        "$P_{ij}=I-\\dfrac{\\xi_{ij}\\xi_{ij}^{T}}{|\\xi_{ij}|^2}$",
+        "$Q_{ij}=P_{ij}\\,\\mathrm{diag}(1,1,1,0,0)\\,P_{ij}$",
+        "$h^{T}K(f)k=D\\sum_{i<j}\\omega_{ij}f_i f_j(\\Delta_{ij}h)^{T}Q_{ij}\\Delta_{ij}k$"
+      ],
+      "entropy_step": [
+        "$n=w\\odot f,\\quad\\ell=\\log f,\\quad\\dfrac{dn}{dt}=-K(f)\\ell$",
+        "$K(f)\\mathbf{1}=K(f)E=K(f)\\chi_a=0$",
+        "$S=-\\sum_i n_i\\log f_i,\\qquad\\dfrac{dS}{dt}=\\ell^{T}K(f)\\ell\\geq0$",
+        "$R(\\ell)=w\\odot(\\exp\\ell-f_{\\rm old})+\\Delta t\\,K_{\\rm old}\\ell=0$",
+        "$H(\\ell)=\\mathrm{diag}(w\\odot\\exp\\ell)+\\Delta t\\,K_{\\rm old}$"
+      ]
+    },
+    "equation_normalization": "Common normalized eta chart; constant density scale f_ref=1.",
+    "equation_pair_domain": "Nonzero xi for each displayed projected pair; positive pair weights and densities; unordered pairs counted once.",
+    "equation_constraints": "E is the same discrete energy used in xi; chi_a is a resolved magnetic-moment-bin indicator."
   },
-  "commit": "9727a57e33210c92f7e39d25a1ccaf3f8de05c19",
-  "working_tree": "M README.md\n?? results/first_principles/",
-  "source_sha256": "e6daad6775cbf4f05bc79819328c1f2e39cb9b56a3f85ae2e6f19ecfddfde4a2",
+  "commit": "c0770dda4f4177125ab0699cb4eebed67dd760b4",
+  "working_tree": "M README.md\n M notes/implementation.tex\n M results/first_principles/full_marginal.svg\n M results/first_principles/mode_decomposition.svg\n M results/first_principles/orbit_and_state.svg\n M results/first_principles/summary.json\n M results/nonuniform_spatial_blocks_full/dipole_dt16_replay/continuation60/independent_audit.json\n M results/nonuniform_spatial_blocks_full/independent_audit.json\n M results/nonuniform_spatial_blocks_full/publication_receipt.json\n M results/nonuniform_spatial_blocks_full/summary.json\n?? results/encounter_phase/refined8192/\n?? results/first_principles/entropy_step.png\n?? results/first_principles/entropy_step.svg\n?? results/first_principles/nonuniform_relaxation.png\n?? results/first_principles/nonuniform_relaxation.svg\n?? results/first_principles/pair_mobility.png\n?? results/first_principles/pair_mobility.svg\n?? results/nonuniform_spatial_blocks_full/dipole_mu13_commit.txt\n?? results/nonuniform_spatial_blocks_full/dipole_mu13_cpu.txt\n?? results/nonuniform_spatial_blocks_full/dipole_mu13_download_receipt.json\n?? results/nonuniform_spatial_blocks_full/dipole_mu13_environment.txt\n?? results/nonuniform_spatial_blocks_full/dipole_mu13_last_correction.json\n?? results/nonuniform_spatial_blocks_full/dipole_mu13_pair_audit.json\n?? results/nonuniform_spatial_blocks_full/dipole_mu13_pair_residual_arrays.npz\n?? results/nonuniform_spatial_blocks_full/dipole_mu13_producer_evolution.png\n?? results/nonuniform_spatial_blocks_full/dipole_mu13_producer_summary.json\n?? results/nonuniform_spatial_blocks_full/state_dipole_mu13.npz",
+  "source_sha256": "481b89e7bd2ba1d78756a1fc7a90584843864646b1ff6cbd6e8a2b5199955072",
   "versions": {
     "sato-morrison": "0.1.0",
     "jax": "0.11.2",
@@ -462,9 +498,137 @@
     "cpu:0"
   ],
   "x64": true,
-  "example_sha256": "4da4d3b1d713dc14614b9f4a72e310371a60fc79af4f38568e3cea6f32ceb208",
+  "example_sha256": "be1a8c401c39debf6f953a6555c91d22e4e59b7946c26c807efe9a27dee61a19",
+  "equation_scope": "Displayed definitions of the implemented discrete pair mobility and nodal entropy ODE/lagged root; no new solve, convergence, rate or conditioning claim.",
+  "equation_reference": {
+    "path": "notes/implementation.tex",
+    "sections": [
+      "Linear weak discretization and SOLVAX",
+      "Lagged mobility and an implicit entropy-variable step"
+    ],
+    "pair_convention": "The ordered weak-form factor 1/2 cancels the two orientations; the displayed unordered sum has no extra 1/2."
+  },
+  "nonuniform_saved_data": {
+    "path": "results/nonuniform_spatial_blocks/summary.json",
+    "sha256": "8826a377f7d6a8d363f6a49236e205de9c42f24c9e21a6b45ea78a2b92b773f4",
+    "producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+    "inputs": {
+      "fields": [
+        "mirror",
+        "dipole",
+        "nonaxisymmetric"
+      ],
+      "case": "mu13",
+      "nx": 5,
+      "nu": 25,
+      "nmu": 13,
+      "nodes": 40625,
+      "dt": 0.005,
+      "final_time": 0.02,
+      "collision_strength": 0.1
+    },
+    "curves": {
+      "dipole": {
+        "times": [
+          0.0,
+          0.005,
+          0.01,
+          0.015,
+          0.02
+        ],
+        "relative_entropy_ratio": [
+          1.0,
+          0.7892098432865259,
+          0.6352665364099959,
+          0.518860801105655,
+          0.42891017758379546
+        ],
+        "accepted_times": [
+          0.005,
+          0.01,
+          0.015,
+          0.02
+        ],
+        "maximum_relative_mu_bin_error": [
+          3.3598686946620943e-15,
+          2.8889913566654855e-15,
+          2.484760035729001e-15,
+          1.834439326409667e-15
+        ],
+        "reported_endpoint_identity_error": 3.219646771412954e-15,
+        "provenance_id": "61f2d95af789341d11694660ab9c22d63465dfb7e1c42481762f458dd405a9eb"
+      },
+      "mirror": {
+        "times": [
+          0.0,
+          0.005,
+          0.01,
+          0.015,
+          0.02
+        ],
+        "relative_entropy_ratio": [
+          1.0,
+          0.8703098231289284,
+          0.7575463541529595,
+          0.659471673901789,
+          0.5741613915611256
+        ],
+        "accepted_times": [
+          0.005,
+          0.01,
+          0.015,
+          0.02
+        ],
+        "maximum_relative_mu_bin_error": [
+          5.3682182646345056e-15,
+          1.008574340628301e-14,
+          3.2371982868553535e-14,
+          3.790287441393454e-14
+        ],
+        "reported_endpoint_identity_error": 3.852473895449293e-14,
+        "provenance_id": "0625162b8b905ca245a2098f2829bdea18774769bfa0905d456029d6eab0f19b"
+      },
+      "nonaxisymmetric": {
+        "times": [
+          0.0,
+          0.005,
+          0.01,
+          0.015,
+          0.02
+        ],
+        "relative_entropy_ratio": [
+          1.0,
+          0.7907737720224773,
+          0.6379339995034963,
+          0.5222663291757134,
+          0.4327844128046404
+        ],
+        "accepted_times": [
+          0.005,
+          0.01,
+          0.015,
+          0.02
+        ],
+        "maximum_relative_mu_bin_error": [
+          4.362355381456817e-15,
+          3.007086208648314e-15,
+          4.7647444437722865e-15,
+          4.159100341738243e-15
+        ],
+        "reported_endpoint_identity_error": 5.639932965095795e-14,
+        "provenance_id": "77f02cbb3f17c90085431c9361d2cc381903320f1d33fdb3cd199b4affbb0d65"
+      }
+    },
+    "assertions": [
+      "exact three-field selection and original producer",
+      "four accepted times, 13 finite bin errors per time",
+      "reconstructed final entropy ratio agrees with reported fraction within 1e-12"
+    ],
+    "relative_entropy_definition": "Generalized KL to the mass-normalized stationary exp(-E-.2mu) reference; its logarithm is a discrete invariant, so H(t)=H(0)-[S(t)-S(0)]. The reference is not asserted reachable.",
+    "scope": "Saved collision-only pilot histories, nodal/quadrature populations; no new solve, full refinement or original timing claim."
+  },
   "status": "passed",
-  "checks_wall_s": 0.5939672499662265,
+  "checks_wall_s": 1.1220145410043187,
   "cost_scope": "Analytic checks, saved-data comparisons and figure rendering; excludes imports and initial metadata.",
   "lorentz_force_max_error": 0.0,
   "mu_orbit_range": 2.220446049250313e-16,
@@ -481,17 +645,23 @@
       "producer_commit": "660efb5f8e59653a9afb782ef26c1b152ee79a45"
     }
   },
-  "limitations": "Orbit is exact in a uniform field; adiabatic magnetic-moment conservation in varying fields requires scale separation. Histogram is a constraints illustration, not dynamics. Mode curves reuse the checked uniform linear surrogate; D is prescribed, not a physical rate.",
+  "limitations": "Orbit is exact in a uniform field; adiabatic magnetic-moment conservation in varying fields requires scale separation. Histogram is a constraints illustration, not dynamics. Mode curves reuse the checked uniform linear surrogate. Nonuniform curves reuse completed collision-only pilots; full refinement is unfinished and the stationary reference is not asserted reachable. D is prescribed, not a physical rate.",
   "figures": {
-    "full_marginal.png": "f09eb86527a5c07b1772b35f0e83cff2538d8f11a8eaf345c928c7da12e49b3e",
-    "full_marginal.svg": "bc8ba222c91434f0fd895497a4e92615113aa5e63395670ab64996537a1e4fb3",
+    "entropy_step.png": "da3eb921c48f021ea4c773b412f2d42b414bc42998c6b1f9d98aa41548b28961",
+    "entropy_step.svg": "5e49209c629de3aab0ac43c24e85bd2950b36512af9c848d18635cab80286ba1",
+    "full_marginal.png": "216d4fb40e87ef69fc5972d2e18fde6cc3e358fbfe39e176d8a482ed8834c5d8",
+    "full_marginal.svg": "e80a941374d2eaadfeba6b93abad5c1eee5b34a383fa71512a3364d7dae68c44",
     "kinetic_equation.png": "f007fee6579ab73a4518165567fd9b5ba4ab4b09a847a52bbeaea2f9bb872c47",
     "kinetic_equation.svg": "92b526392cedfb4879c43289526f2d95170d8e033eeaa7d753f63574eaca5a81",
-    "mode_decomposition.png": "99329de9f663d8235931176cbaee2e5c68c57e2ca5981ba21d053bf652b28134",
-    "mode_decomposition.svg": "1e05dba1a1df9cc6f81ccfb9104f0487d49ee110baeee074c3fd03b5551a2077",
+    "mode_decomposition.png": "49816aa5fda0559fce19f76d3ac31a9987eae3022f3f0f4cf482b39255565164",
+    "mode_decomposition.svg": "e6da1e4c6a0954f045034077b730fed92e75b70a014ab00ea7f9bba013230e51",
+    "nonuniform_relaxation.png": "7ef73e8ef07c861af064c9faaf9eb251ff7438641aba3bcbcc019c1fd0dcb73b",
+    "nonuniform_relaxation.svg": "955f2070723a49fc2dda7aebe8c7c2f4f9b2b318725a9269e8e441d78915c742",
     "oracle_decomposition.png": "955b5f2fb49479544d8ec152ef4b851c15f49b8735f408ae7e2a1f88236bd511",
     "oracle_decomposition.svg": "e747a2af371bb532ada6632cde7152884b88f6b7ae6fd4f48128fba0479da9c4",
     "orbit_and_state.png": "5ee73b26f74397da533b81a2f7c36c2aea682332b226764f50f5d6ddd6bf10da",
-    "orbit_and_state.svg": "39b8b6d9549294dca3a95cef3c1ba2e9f626f0028c34301a27f02817c6adcf87"
+    "orbit_and_state.svg": "762c49cbb2482f908565a0015ac0ffc1d7aa0dc0a0fbac4f85e29842778a0645",
+    "pair_mobility.png": "8ceb40ec048abce48a9b2da6063136dd497d1f1dec5efba969b6f031d195cd89",
+    "pair_mobility.svg": "96150a922efddf0ff80c449ca7b6bce2c021d95197d2a11bf04528e181d280e4"
   }
 }

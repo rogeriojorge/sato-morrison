@@ -1,0 +1,21 @@
+{
+  "field": "dipole",
+  "case": "mu13",
+  "step": 4,
+  "provenance_id": "61f2d95af789341d11694660ab9c22d63465dfb7e1c42481762f458dd405a9eb",
+  "residual_metric": "fixed_reference_population",
+  "iteration": 13,
+  "relative_residual": 2.211953393370028e-12,
+  "linear_iterations": 609,
+  "true_linear_relative_residual": 9.395748893565893e-07,
+  "linear_wall_s": 222.4138612630004,
+  "maximum_log_direction": 0.0073157209821902115,
+  "minimum_signed_log_direction": -0.0073157209821902115,
+  "maximum_signed_log_direction": 0.003118172906230154,
+  "objective_descent": -1.0051441032920128e-26,
+  "mobility_curvature": 2.1001700706378984e-25,
+  "fraction": 1.0,
+  "backtracks": 0,
+  "maximum_log_step": 0.0073157209821902115,
+  "objective_change": -5.035433235940584e-27
+}

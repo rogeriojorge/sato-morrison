@@ -125,23 +125,23 @@ L 142.599769 44.563658
 L 151.651389 41.044683 
 L 161.720171 37.259943 
 L 161.720171 37.259943 
-" clip-path="url(#p38d75b3c5e)" style="fill: none; stroke: #147d92; stroke-width: 2; stroke-linecap: square"/>
+" clip-path="url(#p0c78a181bb)" style="fill: none; stroke: #147d92; stroke-width: 2; stroke-linecap: square"/>
    </g>
    <g id="line2d_2">
     <path d="M 137.383314 226.117617 
 L 137.14033 43.782786 
-" clip-path="url(#p38d75b3c5e)" style="fill: none; stroke-dasharray: 7.4,3.2; stroke-dashoffset: 0; stroke: #253447; stroke-width: 2"/>
+" clip-path="url(#p0c78a181bb)" style="fill: none; stroke-dasharray: 7.4,3.2; stroke-dashoffset: 0; stroke: #253447; stroke-width: 2"/>
    </g>
    <g id="Line3DCollection_1">
     <path d="M 179.145113 188.851066 
 L 178.78957 235.603596 
-" clip-path="url(#p38d75b3c5e)" style="fill: none; stroke: #c66b28; stroke-width: 1.5"/>
+" clip-path="url(#p0c78a181bb)" style="fill: none; stroke: #c66b28; stroke-width: 1.5"/>
     <path d="M 179.145113 188.851066 
 L 176.58199 197.434306 
-" clip-path="url(#p38d75b3c5e)" style="fill: none; stroke: #c66b28; stroke-width: 1.5"/>
+" clip-path="url(#p0c78a181bb)" style="fill: none; stroke: #c66b28; stroke-width: 1.5"/>
     <path d="M 179.145113 188.851066 
 L 181.576282 198.479816 
-" clip-path="url(#p38d75b3c5e)" style="fill: none; stroke: #c66b28; stroke-width: 1.5"/>
+" clip-path="url(#p0c78a181bb)" style="fill: none; stroke: #c66b28; stroke-width: 1.5"/>
    </g>
    <g id="text_1">
     <!-- B -->
@@ -1868,7 +1868,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="p38d75b3c5e">
+  <clipPath id="p0c78a181bb">
    <rect x="23.184" y="23.801016" width="234.432" height="234.432"/>
   </clipPath>
  </defs>

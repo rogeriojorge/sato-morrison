@@ -15,17 +15,22 @@
     "continuation_changes": "Initialize from the saved failed Newton19 g, retain original OLD/ref/Kold, continue iteration indices18..80, increase scalar backtrack budget30->60 only; all equations/tolerances/positivity/objective/PCG guards unchanged.",
     "initial_g_sha256": "906d04d35871da083e707e419d6ec33fd7d65db67944fd082bb0d0e1f16458e2"
   },
-  "audit_source_sha256": "e06058d63b0501d5bbeb7505b894ac53b13ecb76f3299067616367395bae3631",
+  "audit_source_sha256": "b2a572efba8bd9a9cbb59a0ac8077675c0a5ad61cce110acb91ecd66f97a9bcb",
   "units": "normalized",
   "model": "Saved-array audit of a failed diagnostic continuation; original lagged root unchanged",
   "metadata": {
-    "utc": "2026-10-08T17:24:39.546622+00:00",
+    "utc": "2026-10-08T17:25:53.601652+00:00",
     "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
     "numpy": "2.5.3",
     "platform": "macOS-26.6.2-arm64-arm-64bit",
     "processor": "arm",
     "logical_cpus": 10,
-    "wall_s": 0.37910912500228733,
+    "thread_environment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "wall_s": 0.3668987910496071,
     "scope": "NumPy/JSON/source-text checks only; no JAX, mobility, correction, integration or new physical step"
   },
   "input_sha256": {
@@ -367,6 +372,7 @@
     "Root acceptance remains false by many orders; not an endpoint or convergence datum.",
     "Saved R norms are independently contracted but no PDE/pair residual was reevaluated.",
     "Actual rounded updates can differ from alpha times direction. Late recorded ideal-ray objective changes do not independently certify actual rounded-objective descent; only its linear contraction was assembled.",
+    "Fixed-reference weighted residuals do not certify uniform relative-tail accuracy.",
     "A deadline-limited nonconverged path proves neither no representable root nor failure of every alternative path.",
     "Original Linux failure, M4 logging replay, direct trial and60-trial continuation retain separate identities.",
     "Private saved-array names in digest manifest are aliases, not published-file availability claims."

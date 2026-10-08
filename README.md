@@ -1,122 +1,126 @@
-# What can magnetic-moment-preserving collisions relax?
+# Sato–Morrison collision prototype
 
-A JAX research prototype based on [Sato & Morrison (2025)](https://doi.org/10.1063/5.0289410). It tests how conservation laws, magnetic geometry and interaction range determine **which parts of a particle distribution can change**.
+Conserving magnetic moment restricts how a plasma can relax. This fixed-field JAX prototype follows [Sato & Morrison (2025)](https://doi.org/10.1063/5.0289410), reproduces their local linear Eq. (181), and studies explicit nonlinear and finite-range extensions. The calculations below separate conservation laws, numerical convergence and physical encounter dynamics.
 
-[Run it](#run-the-experiments) · [Examples](examples/README.md) · [Full derivations](notes/implementation.pdf) · [Validation ledger](results/validation.csv)
+## Magnetic coordinates
 
-## From particle orbits to a distribution
+A charged particle spirals around a magnetic field. Averaging over that rapid orbit gives a guiding center. Its state consists of position **X**, signed parallel velocity **u**, and magnetic moment **μ**. The distribution **f(X,u,μ,t)** counts guiding centers in phase space.
 
-A charged particle spirals around a magnetic field. When that orbit is much smaller and faster than the variations we study, we can average over the spiral's phase and track its **guiding center**. Instead of following every particle, we evolve **f**, a distribution of centers with different positions, parallel velocities and magnetic moments.
+![Helical orbit, guiding-center position, parallel velocity, magnetic moment and particle energy.](results/first_principles/orbit_and_state.svg)
 
-![An exact helical orbit and its guiding center, followed by definitions of position X, parallel velocity u, magnetic moment mu = m v_perp squared divided by 2B, and energy E = m u squared divided by 2 plus mu B.](results/first_principles/orbit_and_state.svg)
+Here **m** is mass, **q** is charge and **B** is field strength. Magnetic moment measures perpendicular kinetic energy divided by B. Ideal motion approximately preserves μ when the gyroradius and gyroperiod are small compared with the field's spatial and temporal scales. The constrained collision operator preserves μ exactly.
 
-Here **m** is particle mass and **B** is field strength. The magnetic moment **μ** measures perpendicular orbit energy divided by B; it is not a temperature. In a slowly varying field it is approximately conserved by ideal particle motion. **The constrained collision model studied here preserves it exactly by construction.** Whether real encounters justify that constraint is a separate physical question.
+![Kinetic equation and invariant volume element in a fixed vacuum field.](results/first_principles/kinetic_equation.svg)
 
-## The equation separates motion from collisions
+The transport terms move particles through the prescribed field; **C[f]** redistributes their population through collisions. For the vacuum fields used here, the volume element is **B d³X du dμ**. Most nonuniform runs isolate C[f]. The toroidal calculation also includes compatible ideal motion.
 
-![The kinetic equation: time derivative of f plus guiding-center transport equals C[f]. The phase-space measure is B dX du dmu.](results/first_principles/kinetic_equation.svg)
+## Conservation constraints
 
-The left side transports particles through the prescribed field. **C[f]** is the chosen collision operator: it describes how interactions redistribute the population. Most nonuniform examples isolate collisions; the toroidal example also includes compatible ideal motion. The factor **B** in the volume element tells us how to count particles in these coordinates.
+The operator conserves number, total energy and the entire magnetic-moment distribution **G(μ)**. Each μ bin retains its population after integrating over position and parallel velocity.
 
-The operator preserves particle number, total energy and the complete magnetic-moment distribution. It also makes entropy—a measure of how the population is spread through phase space—nondecreasing. These properties still do **not** guarantee complete mixing or a unique final state.
+![Definition of the full magnetic-moment marginal and two populations with equal number and mean moment but different bin populations.](results/first_principles/full_marginal.svg)
 
-## Preserving a whole distribution is stronger than preserving its mean
+Both populations above have N = 1 and mean μ = 1.5. Their bin populations differ, so magnetic-moment-preserving collisions cannot connect them. Entropy can increase within the permitted states; the constraints and the operator's nullspace determine which states are accessible.
 
-Imagine sorting particles into bins according to μ. **G(μ)** counts each bin after summing over position and parallel velocity. With closed boundaries, the constrained model keeps every bin's population fixed.
+## Uniform field: exact solution
 
-![Two schematic populations have the same particle count and mean magnetic moment, but different populations in each moment bin. The equation defining G(mu) shows why the model cannot transform one into the other.](results/first_principles/full_marginal.svg)
+Write a small perturbation as a density modulation of the homogeneous reference **f₀**, plus a remainder **g** whose velocity integral vanishes. In the local linear model, the density modulation survives and the remainder diffuses across the field.
 
-The bars are an illustration, not a simulation. Position and parallel velocity may change while G stays fixed—but additional properties of the operator can forbid some of those changes too. We test those restrictions rather than assuming them away.
+![Uniform-field decomposition, Eq. (181), exact Fourier decay and the undamped density branch.](results/first_principles/oracle_decomposition.svg)
 
-## An exact example: one part freezes, another decays
+Here n₀ and δn are velocity integrals with measure B du dμ; k⊥ is the perpendicular wavenumber. The calculation assumes constant electric potential and collision-only evolution. **D is a prescribed coefficient**, so the time axis is normalized model time.
 
-Start with a uniform magnetic field and a spatially uniform reference distribution **f₀**, then add a small perturbation **δf**. Split that perturbation into two pieces:
+![Independently assembled local and finite-range operators reproduce the surviving density mode and decaying shape perturbation.](results/first_principles/mode_decomposition.svg)
 
-- **A density pattern:** all velocities receive the same fractional modulation, f₀ δn/n₀.
-- **A change of shape:** the remainder **g**, whose velocity integral is zero, redistributes population without changing local density.
+In the finite-range extension, a Gaussian interaction range **a** changes the density-branch rate to **λρ = λ[1 − exp(−a²k⊥²/2)]**. Since λ scales as k⊥², the long-wave density rate scales as k⊥⁴. The shape branch retains rate λ. The plotted range gives λρ/λ = 0.165.
 
-Here n₀ and δn are the velocity integrals of f₀ and δf with measure B du dμ. With constant electric potential and collision-only evolution, the local linear model from Eq. (181) gives:
+![Local and finite-range evolution with identical initial data and a shared color scale.](results/visual_summary/range_evolution.gif)
 
-![The perturbation is f0 times delta n divided by n0 plus a zero-density remainder g. The collision operator diffuses g across the field, with Fourier decay rate lambda = D n0 k_perp squared divided by (qB) squared; the density component is annihilated.](results/first_principles/oracle_decomposition.svg)
+Rows represent velocity-quadrature nodes. The animation uses saved operator evolution checked against the exact modes; maximum discrepancy is **3.08×10⁻¹⁵**. [Inputs and arrays](results/visual_summary/metadata.json)
 
-**q** is particle charge, **k⊥** is the perpendicular spatial wavenumber, and **D** is a prescribed model coefficient. A sinusoidal shape change decays exponentially; its common density pattern survives. Spatially homogeneous perturbations are also undamped by this particular local model. This differs from ordinary homogeneous Landau thermalization.
+## Discrete nonlinear model
 
-![Saved operator evolution separates the initial perturbation into a surviving density component and a decaying zero-density component. A finite interaction range also damps the density component.](results/first_principles/mode_decomposition.svg)
+The nonlinear kernel acts on differences of guiding-center derivatives. **Aᵢh** is the discrete action of J∇h, expressed in a common Cartesian η = μB chart. Here **J** is the guiding-center Poisson matrix. The energy direction ξ uses the same derivative as every test function. Projecting perpendicular to ξ enforces discrete energy conservation.
 
-The curves come from independently assembled operators, checked against the exact solution. With a Gaussian interaction range, particles at separated positions can interact and the density pattern also decays. For the illustrated range, its rate is **0.165 λ**, while the shape-change rate remains **λ**. The time axis is normalized model time, not a calibrated physical clock.
+![Pair differences, the discrete energy projector and the positive pair mobility.](results/first_principles/pair_mobility.svg)
 
-<details>
-<summary>Watch the same local and finite-range operators evolve</summary>
+The positive weights ωᵢⱼ contain quadrature and, for nonlocal interactions, the spatial range kernel. The diagonal matrix selects the three spatial components before energy projection. Local pairs share one position. Each unordered pair enters once. The uniform zero-direction limit is derived analytically; an unresolved zero direction in a nonuniform field causes an error.
 
-![Local collisions retain a density pattern; finite interaction range damps it. The shared color scale shows the relative distribution perturbation.](results/visual_summary/range_evolution.gif)
+The full source Eq. (119) requires additional collision physics. The kernel above defines the project's nonlinear surrogate; Eq. (181) supplies the uniform linear reference.
 
-Each row is an illustrative velocity-quadrature node, not a resolved physical 3V velocity grid. Both panels start identically and use the same colors. [MP4](results/visual_summary/range_evolution.mp4) · [Saved evolution](results/visual_summary/metadata.json) · [Script](examples/09_visual_summary.py)
+## Implicit time integration
 
-</details>
+Let **nᵢ = wᵢfᵢ** be a node's population, with positive quadrature weight wᵢ. The matrix K is symmetric and positive semidefinite. Its null vectors include the constant, discrete energy and every μ-bin indicator χₐ.
 
-## A dipole can remember where its particles started
+![Collision ODE, entropy production, conserved null vectors, lagged implicit residual and Newton Hessian.](results/first_principles/entropy_step.svg)
 
-In the local dipole model, magnetic **flux surfaces**—surfaces containing field lines—supply another population constraint. The collision-only dynamics preserve the full distribution of particles over these surfaces. Conserving only the *mean* flux misses this memory.
+Small nonlinear reference problems use a second-order discrete-gradient step. The large nonuniform runs use the displayed first-order step, freezing K at the old density. Newton corrections use matrix-free Hessian products and SOLVAX PCG. Acceptance checks include the true linear residual, nonlinear residual, positive population and objective decrease. Failed steps raise an error and retain their last accepted state.
 
-![Dipole flux surfaces, two populations with matching stated constraints but different flux distributions, and the measured positive distance from the stationary candidate.](results/dipole_obstruction/obstruction.png)
+## Fields, boundaries and simulations
 
-The construction above matches number, energy, G(μ) and mean flux, yet the two populations cannot both reach the same proposed stationary distribution. Relative entropy measures their difference from that candidate: it is zero only when the distributions coincide. Here it stays above **1.5141e−5 per particle**. Joint quadrature refinement changes that bound by **1.1e−10** relatively. This is a checked obstruction for the specified local model; it is not a physical dipole lifetime or a claim of publication priority. [Construction and inputs](examples/15_dipole_obstruction.py) · [Evidence](results/dipole_obstruction/summary.json)
-
-<details>
-<summary>Two more checks: angular boundaries and numerical null modes</summary>
-
-![A local mixed dipole moment passes its collision check but fails separated-pair and ideal-motion checks; its angle branch cannot be periodic.](results/local_mixed_null/local_mixed_null.png)
-
-Local conservation can depend on the domain: this mixed position–velocity moment is valid on an angular patch and cannot extend periodically. [Script](examples/20_local_mixed_null.py) · [Independent audit](results/local_mixed_null/independent_audit.json)
-
-![Unmodified pair-factor spectra and a polynomial whose angular derivative vanishes at grid nodes but is nonzero between them.](results/collocation_nullspace/collocation_nullspace.png)
-
-A **null mode** is a change the operator leaves untouched. Some sampled nulls arise from the grid: three extra axisymmetric polynomial modes cancel at the nodes but vary between them. Four-node quadrature detects what three nodes miss. We retain these modes and explain them; removing them would manufacture decay. [Script](examples/21_collocation_nullspace.py) · [Raw spectra and thresholds](results/collocation_nullspace/summary.json)
-
-</details>
-
-## Do real encounters preserve magnetic moment?
-
-Real encounters can exchange parallel and perpendicular energy, changing μ. To test the model's exact constraint, we integrate two repelling particles in a uniform field. We fix the separation of their spiral centers and their incoming relative speeds, then vary the **incoming phase**, the angle around the spiral as they approach.
-
-![Two independently checked encounters on one clock: one passes through, one reflects. Their individual magnetic moments change by different amounts. Curves stop at their outgoing events.](results/encounter_movie/encounter.gif)
-
-The incoming speeds and orbit-center separation are identical; only the phase changes. One encounter passes through in **25.35** normalized time units, while the other reflects after **90.35**. Their final magnetic moments are **1.020** and **1.912** times their initial values. Each line stops at its exit. These are two individual paths with a stationary center of mass, outside a verified adiabatic/grazing regime. They demonstrate why exact μ conservation needs a physical justification. [MP4](results/encounter_movie/encounter.mp4) · [Static figure](results/encounter_movie/poster.svg) · [Inputs and checks](results/encounter_movie/summary.json)
-
-<details>
-<summary>Do two accurate trajectories determine the average collision effect?</summary>
-
-![A narrow band of incoming phases dominates magnetic-moment change. Resolving each trajectory accurately does not resolve the average over phases.](results/encounter_phase/phase_convergence.png)
-
-The left panel measures squared change in μ, averaged over motion of the pair's center of mass (COM). A few phases dominate the sampled average. Halving the integration timestep changes the 512-phase average by only **3.13×10⁻¹¹**, but doubling the phase count still changes it by **3.94%**. Agreement at sampled angles does not resolve the angles between them. This conditional study remains **unresolved**. [Inputs and controls](results/encounter_phase/summary.json) · [Script](examples/24_encounter_phase.py)
-
-</details>
-
-<details>
-<summary>Why can a finite phase grid miss slow encounters?</summary>
-
-Some incoming phases pass through; others reflect. If two exact trajectories have opposite exits before a fixed time, continuity implies an interval of intermediate angles that have not yet exited. A finite phase grid can miss that interval. This is a conditional mathematical statement; the computed trajectories are not certified exact solutions.
-
-![A phase search reaches floating-point resolution without locating a verified slow trajectory. Refined trajectories conserve energy closely but disagree strongly on final position.](results/encounter_censoring/precision_checked/finite_budget_censoring.png)
-
-The finer search remains unresolved. Its right panel compares trajectories from smaller integration steps and separate individual-particle equations. Their energy errors are near **10⁻¹²**, yet their final positions disagree by tens to hundreds of normalized length units; one predicted reflection becomes transmission. **Energy conservation alone is not an accuracy test.** Neither these disagreements nor a timeout proves chaotic motion or trapping. [Derivation and antecedents](notes/implementation.pdf) · [All six failed trajectory checks](results/encounter_censoring/precision_checked/summary.json)
-
-</details>
-
-## What has actually been checked?
-
-| Question | Evidence |
+| Field | Domain and boundary treatment |
 |---|---|
-| Does the uniform implementation reproduce Eq. (181)? | Independent pair calculation agrees to **2.36e−16** |
-| Does toroidal decay survive refinement? | Eight final refinement changes below **0.71%**; all **39** finite-grid collision nulls explained |
-| Does nonlinear mirror relaxation survive refinement? | **15 runs**, eight checks; largest final change **0.197%**; coarse timesteps still have **2–3% bias** |
-| Are difficult-field solves reproducible? | Both three-field pilots completed; two preconditioners agree within **1.50e−12** in the weighted log norm; full refinement remains open |
-| Is the encounter table accurate everywhere? | **No.** Fresh 4,096-state p95 error **2.54%**, but **8 states exceed 100%** relative error |
-| Do the regression tests pass? | **247 passed** locally and on fresh Linux CI, including underflow failure handling |
+| Uniform | Periodic perpendicular coordinate; exact Fourier controls |
+| Harmonic mirror | Cartesian box; natural zero collision flux |
+| Vacuum toroidal | Cylindrical coordinates with the R Jacobian; periodic angle and tangent ideal motion |
+| Dipole | Cartesian box excluding the field singularity; natural zero collision flux |
+| Controlled nonaxisymmetric | Vacuum perturbation of the dipole; the same collision-only box treatment |
 
-[Reproduction record](results/deep_reproduction.json) · [Mirror refinements](results/nonuniform_entropy/mirror_audit.json) · [Independent solver audit](results/solver_accuracy/audit.json) · [Scattering validation](results/scattering_table/refined8_validation4096/audit.json) · [Completed pilot comparison](results/nonuniform_spatial_blocks/preconditioner_comparison.json) · [Full refinement attempt](https://github.com/rogeriojorge/sato-morrison/actions/runs/37803682825)
+The three-field pilot starts from **f = exp[−E − 0.2μ + 0.1u sin(πy/0.4)]** on x ∈ [0.8,1.2], y ∈ [−0.2,0.2], z ∈ [0.1,0.5], u ∈ [−4,4], μ ∈ [0,20]. It uses **5³ × 25 × 13 = 40,625 nodes**, D = 0.1 and four steps of Δt = 0.005.
 
-## Run the experiments
+![Recorded entropy relaxation and conservation of every magnetic-moment bin in the mirror, dipole and nonaxisymmetric pilots.](results/first_principles/nonuniform_relaxation.svg)
+
+Here **H = Σᵢ wᵢ[fᵢ log(fᵢ/f*ᵢ) − fᵢ + f*ᵢ]**, with f* proportional to exp(−E − 0.2μ) and normalized to the same particle number. It measures departure from this stationary reference, which need not be reachable. The curves use the accepted steps' entropy changes and the conserved moments. Independent pair calculations check the final residual and entropy identity. Two preconditioners agree within **1.50×10⁻¹²** in the weighted log-density norm. [Pilot comparison](results/nonuniform_spatial_blocks/preconditioner_comparison.json)
+
+The mirror has a separate **15-run refinement study**: eight final observable changes are below 1%, with a maximum of **0.197%**. Coarse timesteps retain **2–3% bias**. Dipole and nonaxisymmetric grid/tail/timestep refinement is unfinished; the current campaign includes rejected steps in extreme tails. [Refinement ledger](results/nonuniform_spatial_blocks_full/summary.json)
+
+## Geometry-dependent constraints
+
+In the local dipole model, collisions preserve the population on each magnetic flux surface. Two distributions can therefore agree in number, energy, G(μ) and mean flux while retaining different flux distributions.
+
+![Dipole flux surfaces and two matched-constraint populations with a positive relative-entropy distance from the stationary candidate.](results/dipole_obstruction/obstruction.png)
+
+This construction gives a relative-entropy floor of **1.5141×10⁻⁵ per particle**. Joint quadrature refinement changes the bound by **1.1×10⁻¹⁰** relatively. The result applies to the specified local collision model and domain. A physical confinement lifetime still requires compatible ideal boundaries and calibrated collision physics.
+
+![A mixed position–velocity dipole moment, its local collision check and its angular and ideal-motion restrictions.](results/local_mixed_null/local_mixed_null.png)
+
+The mixed moment is conserved on an angular patch. Its angle dependence prevents a periodic extension; separated-pair interactions and ideal motion also change it.
+
+![Raw pair-factor spectra and an angular polynomial that cancels at three quadrature nodes but varies between them.](results/collocation_nullspace/collocation_nullspace.png)
+
+The finite-grid spectra retain every null mode. Three extra axisymmetric polynomial modes vanish at the sampled angular nodes; four-node quadrature detects their nonzero variation between nodes. They cannot be discarded to infer a continuum spectral gap.
+
+## Direct particle encounters
+
+Two repelling particles in a uniform field provide a physical check on magnetic-moment conservation. The incoming speeds and orbit-center separation are fixed while the phase around the spiral varies.
+
+![Two independently checked encounters on one clock, with transmission, reflection and individual magnetic-moment changes.](results/encounter_movie/encounter.gif)
+
+One path transmits at **t = 25.35**; the other reflects at **t = 90.35**. Their final magnetic moments are **1.020** and **1.912** times their initial values. Each curve stops at its outgoing event. These zero-center-of-mass paths lie outside a verified adiabatic/grazing regime. [Trajectory inputs and checks](results/encounter_movie/summary.json)
+
+![Incoming-phase dependence, concentration of squared magnetic-moment change and nested angular/timestep refinement.](results/encounter_phase/refined8192/phase_convergence.png)
+
+The squared μ change, averaged over center-of-mass motion and sampled incoming phases, passes its declared refinement criterion at **2,048 angles**: the last two changes are **0.243%** and **0.254%**. Halving the integration step changes this average by **4.10×10⁻¹¹**; twelve Cartesian trajectory controls pass. The mean change and cross moment converge more slowly: their last angular changes are **1.68%** and **4.80%**. Continuous angular coverage remains unresolved.
+
+![A finer search near the transmission/reflection boundary, where low energy errors coexist with large trajectory disagreements.](results/encounter_censoring/precision_checked/finite_budget_censoring.png)
+
+Near the boundary between transmission and reflection, refined trajectories disagree by tens to hundreds of length units despite energy errors near **10⁻¹²**. One predicted reflection becomes transmission. The exact flow's continuity implies slow intermediate trajectories between true opposite exits, but the finest computed bracket fails its trajectory checks. No trapping classification or collision rate follows from these data.
+
+Lorentz and Dougherty operators supply separate relaxation controls. The physical 3V Landau reference evaluates Gaussian weak moments: independent spherical and Laplace calculations agree to **4.14×10⁻¹⁴**. Full Landau time evolution and plasma-rate calibration remain open.
+
+## Runtime, memory and failure diagnostics
+
+A preconditioner approximates the linear system used in each Newton correction. `xline` couples one spatial direction; `xyz` couples all three.
+
+![Paired warm timings, matched correction errors and temporary-memory costs for a frozen dipole correction.](results/difficult_correction/difficult_correction.png)
+
+For the same frozen correction and **10⁻⁷** error target, three-repeat medians are **210.1 s** (`xline`) and **51.7 s** (`xyz`). Temporary buffers occupy **163.8 MB** and **241.8 MB**. These measurements used a shared M4 under varying load; complete-trajectory speedup has not been established. [All repeats, reference checks and memory accounting](results/difficult_correction/summary.json)
+
+![Thirty rejected updates on a recorded dipole Newton ray, approaching the floating-point density limit.](results/nonuniform_spatial_blocks_full/dipole_dt16_replay/tail_guard.svg)
+
+On this ray, exponentiation returns zero for trial tail populations and the positivity guard rejects them. A separate **300-second** continuation with 60 backtracks admits tiny updates but leaves the residual near **2.887**, against a **10⁻¹²** target. It accepts no second timestep. The recorded failures, rounded-update audit and partial states remain in the repository.
+
+## Reproduce
 
 ```sh
 git clone https://github.com/rogeriojorge/sato-morrison.git
@@ -128,39 +132,19 @@ python -m pytest -q
 MPLBACKEND=Agg python examples/00_uniform_reference.py
 MPLBACKEND=Agg python examples/01_relaxation.py
 MPLBACKEND=Agg python examples/22_first_principles.py
+MPLBACKEND=Agg python examples/24_encounter_phase.py
+MPLBACKEND=Agg python examples/27_encounter_movie.py
 ```
 
-The [editable examples](examples/README.md) expose inputs at the top, print progress and reject failed solves. Results record inputs, units, source commit, versions and hardware. The [figure-generation record](results/first_principles/summary.json) distinguishes illustrations from measured evolution. SOLVAX supplies linear algebra; no other UW Plasma physics code is required.
+**247 tests pass locally and on fresh Linux CI.** Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
 
-## Prototype, numerical verification, physical validation
+| Capability | Current evidence |
+|---|---|
+| Uniform Eq. (181) | Independent pair agreement **2.36×10⁻¹⁶**; exact limits and timestep convergence |
+| Nonlinear constrained evolution | Number, energy, full μ marginal, entropy, positivity and solver-failure tests |
+| Toroidal decay | Eight final refinement changes below **0.71%**; all **39** sampled collision nulls explained |
+| Nonuniform evolution | Completed three-field pilots and mirror refinement; dipole/nonaxisymmetric refinements remain open |
+| Physical controls | Lorentz, Dougherty, 3V Landau weak moments and independently checked binary trajectories |
+| Physical rates and lifetimes | Uncalibrated; no metastable regime or dipole lifetime established |
 
-The nonlinear local kernel and finite-range kernel are **specified surrogate models** extending the source's simplified linear setting. They are not an evaluation of the full source Eq. (119). Lorentz, Dougherty, physical 3V Landau weak moments and direct magnetized encounters provide separate controls.
-
-Remaining work includes dipole/nonaxisymmetric refinement, complete-trajectory cost comparisons, wider encounter coverage, and physical calibration. Several full-campaign dipole cases fail visibly in extreme tails; their accepted partial states and diagnostics are retained. Confined dipole dynamics also need compatible ideal boundaries. No physical collision rate, spectral gap or metastable lifetime is claimed.
-
-At matched error on an Apple M4, the small implicit benchmark takes **43.8 μs** with diagonal-PCG versus **550 μs** dense, using **16.8 kB** versus **263 kB** of temporary buffers. These synchronized warm measurements do not establish a general nonuniform speedup. [Benchmark](results/benchmarks/summary.json)
-
-<details>
-<summary>What does a difficult dipole solve cost?</summary>
-
-An implicit timestep repeatedly solves a linear system. A **preconditioner** supplies a cheaper approximation that helps the iterative solver reach the same answer. Here `xline` couples grid points along one direction; `xyz` uses all three spatial directions.
-
-![Three paired timings, correction errors below the same target, and the larger temporary-memory requirement of full spatial blocks.](results/difficult_correction/difficult_correction.png)
-
-For one frozen dipole correction, median times were **210.1 s** and **51.7 s**, both below **10⁻⁷** relative correction error. Full spatial blocks used more temporary memory. The spread reflects a shared M4 under varying load; this is not a full-trajectory or general speedup result. [Inputs, all repeats and memory accounting](results/difficult_correction/summary.json) · [Script](examples/23_difficult_correction.py)
-
-</details>
-
-
-<details>
-<summary>Why can a solver fail even when its linear solve passes?</summary>
-
-The nonlinear solver uses the logarithm of density, **g = log f**, to preserve positivity. Extremely small populations can still exceed floating-point range: evaluating **f = exp g** may return zero.
-
-![All thirty trials on one failed dipole Newton ray. The last trials approach the smallest normal density, but the actual exponential still returns zero and the positivity check rejects them.](results/nonuniform_spatial_blocks_full/dipole_dt16_replay/tail_guard.svg)
-
-In this recorded replay, the linear residual passes but all 30 trial updates fail before the objective is evaluated. Four exceed the log range; 26 lose positive population. The failed step is rejected visibly. A separate 300-second trial with 60 backtracks permits tiny updates but leaves the residual near **2.887**, far above **10⁻¹²**. No second timestep is accepted, and no density floor or relaxed conservation criterion is applied. [Recorded ray and diagnostics](results/nonuniform_spatial_blocks_full/dipole_dt16_replay/summary.json) · [Plot script](examples/26_tail_guard.py)
-
-</details>
-
-The [technical notes](notes/implementation.pdf), [LaTeX source](notes/implementation.tex) and [bibliography](notes/references.bib) contain full derivations, literature comparisons and limitations. Original code, notes, figures and data are [MIT](LICENSE); third-party papers remain outside the repository.
+The [example catalogue](examples/README.md), [validation ledger](results/validation.csv), [reproduction record](results/deep_reproduction.json) and [technical notes](notes/implementation.pdf) contain the complete commands and derivations. [LaTeX source](notes/implementation.tex) · [Bibliography](notes/references.bib). Original project material is [MIT](LICENSE); third-party papers are stored outside the public repository.

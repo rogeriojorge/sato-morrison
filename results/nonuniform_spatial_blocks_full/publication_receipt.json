@@ -1,5 +1,5 @@
 {
-  "prepared_utc": "2026-10-08T17:15:42.599188+00:00",
+  "prepared_utc": "2026-10-08T17:31:30.758989+00:00",
   "status": "reviewed_hashes_and_scientific_scope",
   "producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
   "producer_source_sha256": "b981adcaa6de59acc94174069759446322978e5b10b13161d6fb86175ddae282",
@@ -9,16 +9,16 @@
   "strict_collector_source_sha256": "0c89760ce5a1fcfb19cbd01b0ed2bef380f5725605b531ab7f6b0725abf084e1",
   "independent_audit_source_sha256": "2b4dc65f9a1260b0395c12c6dbe072ce31f00fac7a563e943af8281a6a9c162a",
   "original_input_hashes": {
-    "strict_ledger": "19909acf3ad432f7d0880a7b73721ada34a9dda682643428adcdbb0e142b6355",
-    "aggregate_pair_audit": "58b4490ebc4e10053d556f9fe9838e415bf3d977675a7eaca83ce81790752fc2"
+    "strict_ledger": "afe19ae0eec69ebd621749dc88f0800e693e2a72a8d68805d1d1b47afe1b4ec0",
+    "aggregate_pair_audit": "7ef07ec0e65fdf6a23652f376735a0a79b95f4bceecb5f347dc5af1f484a1377"
   },
   "public_layout": "results/nonuniform_spatial_blocks_full",
   "pilot_rows_pooled": false,
-  "complete_case_count": 2,
+  "complete_case_count": 3,
   "expected_case_count": 45,
   "failed_partial_case_count": 3,
-  "missing_final_case_count": 43,
-  "pair_audit_original_ledger_sha256": "19909acf3ad432f7d0880a7b73721ada34a9dda682643428adcdbb0e142b6355",
+  "missing_final_case_count": 42,
+  "pair_audit_original_ledger_sha256": "afe19ae0eec69ebd621749dc88f0800e693e2a72a8d68805d1d1b47afe1b4ec0",
   "pair_audit_association": "Every completed row exact canonical SHA matched; additional partial failures were not pair reevaluated",
   "campaign_status": "unresolved",
   "selected_snapshot_pair_audits_status": "passed",
@@ -118,6 +118,56 @@
       "original_sha256": "d6f8c7a18fbbfd2713dd7b280494e740b14c2db3e2e9720b852a882dbc1df778",
       "output_sha256": "d6f8c7a18fbbfd2713dd7b280494e740b14c2db3e2e9720b852a882dbc1df778",
       "mode": "byte-for-byte artifact copy"
+    },
+    "state_dipole_mu13.npz": {
+      "original_sha256": "23e61a2e7479a9d36b77fa4acf9808617208ee23953d869d88dbed992dd31b2a",
+      "output_sha256": "23e61a2e7479a9d36b77fa4acf9808617208ee23953d869d88dbed992dd31b2a",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_mu13_producer_summary.json": {
+      "original_sha256": "91677f9870bc7d9a41d13f28cc5e4aac8d6ccf743f20bfb02d4a9e05c057365b",
+      "output_sha256": "91677f9870bc7d9a41d13f28cc5e4aac8d6ccf743f20bfb02d4a9e05c057365b",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_mu13_run.log": {
+      "original_sha256": "8b65d9b855e576a14d0a23c30450507d1540767e22561ce1e3b2224e62c5e73d",
+      "output_sha256": "8b65d9b855e576a14d0a23c30450507d1540767e22561ce1e3b2224e62c5e73d",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_mu13_cpu.txt": {
+      "original_sha256": "054ac26e3c43c7cb95d2ed81dc61e0458712a29867a92dde06103a60338e2352",
+      "output_sha256": "054ac26e3c43c7cb95d2ed81dc61e0458712a29867a92dde06103a60338e2352",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_mu13_environment.txt": {
+      "original_sha256": "3efa0f0f01834039f33414c49e047a10c967bc5991daffaf02ed69302fab1694",
+      "output_sha256": "3efa0f0f01834039f33414c49e047a10c967bc5991daffaf02ed69302fab1694",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_mu13_commit.txt": {
+      "original_sha256": "abe9dcfb69d229fc649bde6c646b767be5d1ee6987a6d8c0f68ae34568e0cc56",
+      "output_sha256": "abe9dcfb69d229fc649bde6c646b767be5d1ee6987a6d8c0f68ae34568e0cc56",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_mu13_last_correction.json": {
+      "original_sha256": "e22bd72aa36ae18954b8dcb319dfda0adde161bbe5ac1242a5d684d74e879d92",
+      "output_sha256": "e22bd72aa36ae18954b8dcb319dfda0adde161bbe5ac1242a5d684d74e879d92",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_mu13_producer_evolution.png": {
+      "original_sha256": "58a2a2ca5064147eaef8988c48dd9a4aee46ffd16046b56ecd7bb4a0cda5d3bc",
+      "output_sha256": "58a2a2ca5064147eaef8988c48dd9a4aee46ffd16046b56ecd7bb4a0cda5d3bc",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_mu13_download_receipt.json": {
+      "original_sha256": "8bceb356481375e1be01eba3d6abdc83ae559d46244140fbe64ba6759188d3f8",
+      "output_sha256": "8bceb356481375e1be01eba3d6abdc83ae559d46244140fbe64ba6759188d3f8",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_mu13_pair_residual_arrays.npz": {
+      "original_sha256": "4d25da9ae0b994c7f4bacf7df696c3bec76cb98338b24240aa1047e4a807bbea",
+      "output_sha256": "4d25da9ae0b994c7f4bacf7df696c3bec76cb98338b24240aa1047e4a807bbea",
+      "mode": "byte-for-byte independent audit output"
     },
     "state_dipole_mu_tail.npz": {
       "original_sha256": "edbebee34d16035e7c50e231f0dd45728e815aac479391c800d8ca24454a909e",
@@ -264,6 +314,11 @@
       "output_sha256": "3c3a145aacbbad1956670200c761e52b953f646237885a3a5efedb511f87fc61",
       "mode": "byte-for-byte independent audit output"
     },
+    "dipole_mu13_pair_audit.json": {
+      "original_sha256": "5663b502bb887e28ccee3db628f61bedd8ec9a7d72708af2548a4ae5420482c0",
+      "output_sha256": "9d16c38631f065e3a58a7b8c6e9bb5a7702d39eecfe6ed0a7e5364e9fa35c995",
+      "mode": "Private paths sanitized; numerical values unchanged"
+    },
     "dipole_spatial3_pair_audit.json": {
       "original_sha256": "233bd762aed64b8205b9bc7585bd81fda305a092e20adef803577f28624f5277",
       "output_sha256": "44f2c4d1d91cd1e83210600c05f5007209145d3f8a1101f2f7579116748e2ab7",
@@ -275,13 +330,13 @@
       "mode": "Private paths sanitized; numerical values unchanged"
     },
     "summary.json": {
-      "original_sha256": "19909acf3ad432f7d0880a7b73721ada34a9dda682643428adcdbb0e142b6355",
-      "output_sha256": "a9b8299a8412543c13de3de370915178c96fc1bf8d1a3026aa5dd085df7cbdb1",
+      "original_sha256": "afe19ae0eec69ebd621749dc88f0800e693e2a72a8d68805d1d1b47afe1b4ec0",
+      "output_sha256": "eaba355193e674ba133658e121f319f27ebfe17374da6b7a903d2034bd0b295d",
       "mode": "Private paths sanitized; numerical values unchanged"
     },
     "independent_audit.json": {
-      "original_sha256": "58b4490ebc4e10053d556f9fe9838e415bf3d977675a7eaca83ce81790752fc2",
-      "output_sha256": "702f30411831d8ac26602b576e118e1b85c240c57b218a05bb9b78df93795ee3",
+      "original_sha256": "7ef07ec0e65fdf6a23652f376735a0a79b95f4bceecb5f347dc5af1f484a1377",
+      "output_sha256": "49acc15f1cb9e36148885514476871f554a7bb3cc246eb596511e0d2bf952402",
       "mode": "Private paths sanitized; numerical values unchanged"
     },
     "full_campaign_dt_sixteenth_failure_review.json": {
@@ -308,15 +363,15 @@
     "Original extracted artifact digests and source identities retained; GitHub ZIP digests only reported, not ZIP-verified."
   ],
   "publication_validation": {
-    "utc": "2026-10-08T17:15:42.728607+00:00",
+    "utc": "2026-10-08T17:31:31.030782+00:00",
     "validation_source_sha256": "1709f1d273812c4607110374d69a796502db2cb7b7cb36d2a51999e8bfe8355e",
-    "prepared_receipt_sha256": "a6326a443ae7a16117c76d62367d33ac39bdc2fe4dca98d339123979d99dc878",
+    "prepared_receipt_sha256": "69a82db895edc74ba6ec93e4c882223544b0cf60fed7ae4a54588e22d72c37be",
     "original_file_hashes_verified": true,
     "copied_output_hashes_verified": true,
     "finite_json_diagnostics_verified": true,
     "private_paths_absent": true,
     "root_owned_replay_folder_preserved": true,
-    "scope": "Data-only publication of 2 completed cases and 3 explicit failed partials; completed row associations verified; no new numerical actions or promotions",
+    "scope": "Data-only publication of 3 completed cases and 3 explicit failed partials; completed row associations verified; no new numerical actions or promotions",
     "context": {
       "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
       "platform": "macOS-26.6.2-arm64-arm-64bit"

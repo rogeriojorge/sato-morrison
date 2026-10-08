@@ -1,0 +1,464 @@
+Nonuniform positive nonlinear collision evolution; D=0.1, T=0.02; natural collision boundaries; fixed-initial-population Newton-PCG; output=/home/runner/work/sato-morrison/sato-morrison/results/nonuniform_spatial_blocks
+Execution fields=['dipole'], cases=['mu13']; no historical method mixing.
+Evolve positive nonuniform boxes and compare independent refinements
+  Starting dipole, mu13: {'nmu': 13}
+  Preparing/compiling dipole: 40625 nodes, 6581250 local pairs, full spatial-block Newton-PCG; one factor 38.7 MiB before runtime workspace
+  Evolve positive nonuniform boxes and compare independent refinements: 15.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 30.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 45.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 60.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 75.0 s elapsed
+    step 1, Newton 1: PCG 211, true residual 9.492e-07, 75.3s
+  Evolve positive nonuniform boxes and compare independent refinements: 90.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 105.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 120.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 135.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 150.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 165.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 180.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 195.0 s elapsed
+    step 1, Newton 2: PCG 337, true residual 9.189e-07, 116.8s
+  Evolve positive nonuniform boxes and compare independent refinements: 210.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 225.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 240.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 255.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 270.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 285.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 300.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 315.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 330.0 s elapsed
+    step 1, Newton 3: PCG 394, true residual 9.558e-07, 135.7s
+  Evolve positive nonuniform boxes and compare independent refinements: 345.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 360.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 375.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 390.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 405.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 420.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 435.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 450.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 465.0 s elapsed
+    step 1, Newton 4: PCG 377, true residual 9.716e-07, 129.7s
+  Evolve positive nonuniform boxes and compare independent refinements: 480.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 495.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 510.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 525.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 540.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 555.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 570.0 s elapsed
+    step 1, Newton 5: PCG 315, true residual 9.756e-07, 110.2s
+  Evolve positive nonuniform boxes and compare independent refinements: 585.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 600.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 615.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 630.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 645.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 660.0 s elapsed
+    step 1, Newton 6: PCG 263, true residual 9.514e-07, 97.6s
+  Evolve positive nonuniform boxes and compare independent refinements: 675.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 690.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 705.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 720.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 735.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 750.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 765.0 s elapsed
+    step 1, Newton 7: PCG 294, true residual 9.677e-07, 101.9s
+  dipole 5^3 x 25 x 13, U=4, M=20, dt=0.005: t=0.005000, Newton=7, PCG=2191, dS=6.972e-05, 772.89s
+  Evolve positive nonuniform boxes and compare independent refinements: 780.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 795.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 810.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 825.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 840.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 855.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 870.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 885.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 900.0 s elapsed
+    step 2, Newton 1: PCG 366, true residual 8.910e-07, 124.7s
+  Evolve positive nonuniform boxes and compare independent refinements: 915.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 930.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 945.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 960.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 975.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 990.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1005.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1020.0 s elapsed
+    step 2, Newton 2: PCG 365, true residual 9.302e-07, 126.2s
+  Evolve positive nonuniform boxes and compare independent refinements: 1035.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1050.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1065.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1080.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1095.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1110.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1125.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1140.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1155.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1170.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1185.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1200.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1215.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1230.0 s elapsed
+    step 2, Newton 3: PCG 594, true residual 9.583e-07, 204.0s
+  Evolve positive nonuniform boxes and compare independent refinements: 1245.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1260.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1275.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1290.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1305.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1320.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1335.0 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1350.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1365.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1380.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1395.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1410.1 s elapsed
+    step 2, Newton 4: PCG 551, true residual 8.172e-07, 189.3s
+  Evolve positive nonuniform boxes and compare independent refinements: 1425.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1440.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1455.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1470.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1485.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1500.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1515.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1530.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1545.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1560.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1575.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1590.1 s elapsed
+    step 2, Newton 5: PCG 498, true residual 9.465e-07, 171.5s
+  dipole 5^3 x 25 x 13, U=4, M=20, dt=0.005: t=0.010000, Newton=5, PCG=2374, dS=5.092e-05, 818.89s
+  Evolve positive nonuniform boxes and compare independent refinements: 1605.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1620.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1635.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1650.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1665.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1680.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1695.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1710.1 s elapsed
+    step 3, Newton 1: PCG 335, true residual 8.398e-07, 117.7s
+    step 3, Newton 2: PCG 5, true residual 7.871e-07, 3.0s
+    step 3, Newton 3: PCG 1, true residual 2.363e-07, 1.5s
+    step 3, Newton 4: PCG 2, true residual 1.552e-07, 1.9s
+    step 3, Newton 5: PCG 1, true residual 1.945e-07, 1.5s
+  Evolve positive nonuniform boxes and compare independent refinements: 1725.1 s elapsed
+    step 3, Newton 6: PCG 2, true residual 8.868e-07, 1.8s
+    step 3, Newton 7: PCG 1, true residual 2.841e-07, 1.5s
+    step 3, Newton 8: PCG 4, true residual 1.079e-07, 2.5s
+    step 3, Newton 9: PCG 4, true residual 3.432e-07, 2.6s
+    step 3, Newton 10: PCG 5, true residual 6.498e-07, 2.9s
+  Evolve positive nonuniform boxes and compare independent refinements: 1740.1 s elapsed
+    step 3, Newton 11: PCG 7, true residual 9.356e-07, 3.5s
+    step 3, Newton 12: PCG 8, true residual 9.231e-07, 3.9s
+    step 3, Newton 13: PCG 12, true residual 8.637e-07, 5.3s
+  Evolve positive nonuniform boxes and compare independent refinements: 1755.1 s elapsed
+    step 3, Newton 14: PCG 23, true residual 7.773e-07, 9.0s
+  Evolve positive nonuniform boxes and compare independent refinements: 1770.1 s elapsed
+    step 3, Newton 15: PCG 32, true residual 8.352e-07, 12.2s
+  Evolve positive nonuniform boxes and compare independent refinements: 1785.1 s elapsed
+    step 3, Newton 16: PCG 39, true residual 9.626e-07, 14.6s
+    step 3, Newton 17: PCG 20, true residual 8.609e-07, 8.0s
+  Evolve positive nonuniform boxes and compare independent refinements: 1800.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1815.1 s elapsed
+    step 3, Newton 18: PCG 58, true residual 9.789e-07, 21.3s
+  Evolve positive nonuniform boxes and compare independent refinements: 1830.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1845.1 s elapsed
+    step 3, Newton 19: PCG 79, true residual 9.960e-07, 28.5s
+  Evolve positive nonuniform boxes and compare independent refinements: 1860.1 s elapsed
+    step 3, Newton 20: PCG 58, true residual 9.558e-07, 21.1s
+  Evolve positive nonuniform boxes and compare independent refinements: 1875.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1890.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1905.1 s elapsed
+    step 3, Newton 21: PCG 126, true residual 9.846e-07, 44.5s
+  Evolve positive nonuniform boxes and compare independent refinements: 1920.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1935.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1950.1 s elapsed
+    step 3, Newton 22: PCG 113, true residual 9.492e-07, 39.9s
+  Evolve positive nonuniform boxes and compare independent refinements: 1965.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1980.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 1995.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2010.1 s elapsed
+    step 3, Newton 23: PCG 169, true residual 9.905e-07, 59.2s
+  Evolve positive nonuniform boxes and compare independent refinements: 2025.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2040.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2055.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2070.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2085.1 s elapsed
+    step 3, Newton 24: PCG 210, true residual 9.120e-07, 73.9s
+  Evolve positive nonuniform boxes and compare independent refinements: 2100.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2115.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2130.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2145.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2160.1 s elapsed
+    step 3, Newton 25: PCG 242, true residual 9.978e-07, 84.7s
+  Evolve positive nonuniform boxes and compare independent refinements: 2175.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2190.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2205.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2220.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2235.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2250.1 s elapsed
+    step 3, Newton 26: PCG 268, true residual 1.000e-06, 91.3s
+  Evolve positive nonuniform boxes and compare independent refinements: 2265.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2280.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2295.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2310.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2325.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2340.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2355.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2370.1 s elapsed
+    step 3, Newton 27: PCG 306, true residual 9.759e-07, 107.7s
+  Evolve positive nonuniform boxes and compare independent refinements: 2385.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2400.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2415.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2430.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2445.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2460.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2475.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2490.1 s elapsed
+    step 3, Newton 28: PCG 343, true residual 9.747e-07, 122.7s
+  Evolve positive nonuniform boxes and compare independent refinements: 2505.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2520.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2535.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2550.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2565.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2580.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2595.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2610.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2625.1 s elapsed
+    step 3, Newton 29: PCG 394, true residual 9.789e-07, 137.0s
+  Evolve positive nonuniform boxes and compare independent refinements: 2640.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2655.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2670.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2685.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2700.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2715.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2730.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2745.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2760.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2775.1 s elapsed
+    step 3, Newton 30: PCG 429, true residual 9.191e-07, 150.7s
+  Evolve positive nonuniform boxes and compare independent refinements: 2790.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2805.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2820.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2835.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2850.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2865.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2880.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2895.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2910.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2925.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2940.1 s elapsed
+    step 3, Newton 31: PCG 470, true residual 9.804e-07, 169.3s
+  Evolve positive nonuniform boxes and compare independent refinements: 2955.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2970.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 2985.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3000.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3015.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3030.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3045.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3060.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3075.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3090.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3105.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3120.1 s elapsed
+    step 3, Newton 32: PCG 511, true residual 9.704e-07, 175.9s
+  Evolve positive nonuniform boxes and compare independent refinements: 3135.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3150.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3165.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3180.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3195.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3210.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3225.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3240.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3255.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3270.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3285.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3300.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3315.1 s elapsed
+    step 3, Newton 33: PCG 554, true residual 9.876e-07, 189.0s
+  Evolve positive nonuniform boxes and compare independent refinements: 3330.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3345.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3360.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3375.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3390.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3405.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3420.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3435.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3450.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3465.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3480.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3495.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3510.1 s elapsed
+    step 3, Newton 34: PCG 567, true residual 8.735e-07, 194.6s
+  Evolve positive nonuniform boxes and compare independent refinements: 3525.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3540.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3555.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3570.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3585.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3600.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3615.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3630.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3645.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3660.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3675.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3690.1 s elapsed
+    step 3, Newton 35: PCG 565, true residual 9.722e-07, 190.4s
+  Evolve positive nonuniform boxes and compare independent refinements: 3705.1 s elapsed
+  dipole 5^3 x 25 x 13, U=4, M=20, dt=0.005: t=0.015000, Newton=35, PCG=5963, dS=3.850e-05, 2108.63s
+  Evolve positive nonuniform boxes and compare independent refinements: 3720.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3735.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3750.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3765.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3780.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3795.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3810.1 s elapsed
+    step 4, Newton 1: PCG 323, true residual 9.719e-07, 109.9s
+  Evolve positive nonuniform boxes and compare independent refinements: 3825.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3840.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3855.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3870.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3885.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3900.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3915.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3930.1 s elapsed
+    step 4, Newton 2: PCG 365, true residual 9.741e-07, 123.7s
+  Evolve positive nonuniform boxes and compare independent refinements: 3945.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3960.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3975.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 3990.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4005.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4020.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4035.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4050.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4065.1 s elapsed
+    step 4, Newton 3: PCG 371, true residual 9.802e-07, 130.6s
+  Evolve positive nonuniform boxes and compare independent refinements: 4080.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4095.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4110.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4125.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4140.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4155.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4170.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4185.1 s elapsed
+    step 4, Newton 4: PCG 348, true residual 9.990e-07, 125.9s
+  Evolve positive nonuniform boxes and compare independent refinements: 4200.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4215.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4230.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4245.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4260.1 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4275.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4290.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4305.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4320.2 s elapsed
+    step 4, Newton 5: PCG 382, true residual 9.887e-07, 135.5s
+  Evolve positive nonuniform boxes and compare independent refinements: 4335.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4350.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4365.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4380.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4395.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4410.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4425.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4440.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4455.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4470.2 s elapsed
+    step 4, Newton 6: PCG 412, true residual 9.910e-07, 144.5s
+  Evolve positive nonuniform boxes and compare independent refinements: 4485.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4500.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4515.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4530.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4545.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4560.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4575.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4590.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4605.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4620.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4635.2 s elapsed
+    step 4, Newton 7: PCG 470, true residual 9.248e-07, 165.0s
+  Evolve positive nonuniform boxes and compare independent refinements: 4650.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4665.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4680.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4695.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4710.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4725.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4740.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4755.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4770.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4785.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4800.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4815.2 s elapsed
+    step 4, Newton 8: PCG 504, true residual 9.736e-07, 177.8s
+  Evolve positive nonuniform boxes and compare independent refinements: 4830.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4845.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4860.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4875.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4890.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4905.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4920.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4935.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4950.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4965.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4980.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 4995.2 s elapsed
+    step 4, Newton 9: PCG 529, true residual 9.945e-07, 184.5s
+  Evolve positive nonuniform boxes and compare independent refinements: 5010.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5025.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5040.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5055.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5070.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5085.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5100.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5115.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5130.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5145.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5160.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5175.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5190.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5205.2 s elapsed
+    step 4, Newton 10: PCG 586, true residual 8.919e-07, 203.4s
+  Evolve positive nonuniform boxes and compare independent refinements: 5220.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5235.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5250.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5265.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5280.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5295.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5310.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5325.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5340.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5355.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5370.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5385.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5400.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5415.2 s elapsed
+    step 4, Newton 11: PCG 603, true residual 9.825e-07, 212.7s
+  Evolve positive nonuniform boxes and compare independent refinements: 5430.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5445.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5460.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5475.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5490.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5505.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5520.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5535.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5550.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5565.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5580.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5595.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5610.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5625.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5640.2 s elapsed
+    step 4, Newton 12: PCG 608, true residual 9.922e-07, 221.3s
+  Evolve positive nonuniform boxes and compare independent refinements: 5655.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5670.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5685.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5700.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5715.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5730.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5745.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5760.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5775.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5790.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5805.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5820.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5835.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5850.2 s elapsed
+  Evolve positive nonuniform boxes and compare independent refinements: 5865.2 s elapsed
+    step 4, Newton 13: PCG 609, true residual 9.396e-07, 222.4s
+  dipole 5^3 x 25 x 13, U=4, M=20, dt=0.005: t=0.020000, Newton=13, PCG=6110, dS=2.975e-05, 2163.17s
+  dipole: all selected solves completed; full checks remain explicit.
+  Evolve positive nonuniform boxes and compare independent refinements: returned after 5869.087 s
+Saved /home/runner/work/sato-morrison/sato-morrison/results/nonuniform_spatial_blocks/summary.json; each independent convergence status is explicit.
+dipole refinement status: {"spatial": "not_run", "parallel_velocity": "not_run", "magnetic_moment": "not_run", "timestep": "not_run", "parallel_tail": "not_run", "moment_tail": "not_run", "wider_parallel_quadrature": "not_run", "wider_moment_quadrature": "not_run", "appreciable_relaxation": "not_run"}

@@ -1,0 +1,569 @@
+{
+  "model": "fixed-triple screened encounter gyrophase convergence",
+  "boundary": "first outgoing relative z=+/-24 plane; transmitted and reflected exits; fixed finite flight budget",
+  "units": "normalized",
+  "inputs": {
+    "mass": 1.0,
+    "charge": 1.0,
+    "field": 2.0,
+    "strength": 0.03,
+    "screening": 3.0,
+    "theta": 0.5,
+    "theta_definition": "single-particle velocity variance k_B*T/m",
+    "fixed_incoming_triple": [
+      0.9938225266093732,
+      1.9056642462041216,
+      1.9668376625283577
+    ],
+    "start_distance": 24.0,
+    "flight_time_factor": 12.0,
+    "max_step": 0.05,
+    "rtol": 1e-10,
+    "phase_orders": [
+      32,
+      64,
+      128,
+      256,
+      512,
+      1024,
+      2048,
+      4096,
+      8192
+    ],
+    "master_phase_count": 8192,
+    "phase_measure": "dphi/(2pi)",
+    "phase_relative_target": 0.01,
+    "required_successive_checks": 2,
+    "refined_max_step": 0.025,
+    "timestep_relative_target": 0.001,
+    "energy_target": 1e-08,
+    "anchor_master_indices": [
+      0,
+      2048,
+      4096
+    ],
+    "new_control_count": 3,
+    "new_control_selection": "Largest3 known primary second-moment contributors among new phases outside original512 lattice, ties by index; unknown outcomes are excluded from ranking but prevent overallpass; no replacement for failed Cartesian controls.",
+    "runtime_budget_s": 1200.0,
+    "checkpoint_interval": 128,
+    "runtime_cap_scope": "Checked between work items; may overshoot by one operation, not a hard process kill. Incomplete declared checks remain unresolved.",
+    "baseline_summary_sha256": "33f5e206d6a748518abe6808945b96d003b4e2fef283d318bd63f04973d2812e",
+    "baseline_nodes_sha256": "385a209f056534c54a75a29305d752ef8137c045ba728f8680e2563531bd182d",
+    "independent_pair_max_steps": [
+      0.05,
+      0.025
+    ],
+    "pair_position_absolute_target": 1e-08,
+    "pair_velocity_absolute_target": 1e-08,
+    "pair_mu_absolute_target": 1e-10,
+    "anchor_absolute_moment_target": 1e-08,
+    "prior_metadata_sha256": "d2b411a3213d5becb1504ba7d654802240505159d52a7b7dcba936cce852f5ab",
+    "seed": null,
+    "moment_definition": "analytic independent Maxwellian COM average of individual delta_mu_1, its square, and delta_mu_1*delta_mu_2",
+    "stop_rule": "Stop after two successive complete 1% checks or retain all levels through8192; declared runtime cap leaves unattempted work explicitly unresolved."
+  },
+  "commit": "3adea8c5eb1e0d136f3a34af6123f38274722782",
+  "working_tree": "M results/nonuniform_spatial_blocks_full/dipole_dt16_replay/continuation60/independent_audit.json",
+  "source_sha256": "4ac36dbf99a4d68b5a5648d28b13d2154038361c2e49fb41d8a534a9a590d820",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "unset",
+    "OPENBLAS_NUM_THREADS": "unset",
+    "MKL_NUM_THREADS": "unset",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": true,
+  "experiment_dependency_sha256": {
+    "examples/24_encounter_phase.py": "f856a1a20a720a1754bdb98287f4670ece0299372649cb5df7d612d651e2cb6e",
+    "src/sato_morrison/controls.py": "ea673df34611bd68c60756fec2f335c9ebd10a705149ee22b68917d3102ec077",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "reused_phase_evidence": {
+    "summary_path": "results/encounter_phase/summary.json",
+    "summary_sha256": "33f5e206d6a748518abe6808945b96d003b4e2fef283d318bd63f04973d2812e",
+    "nodes_path": "results/encounter_phase/nodes.json",
+    "nodes_sha256": "385a209f056534c54a75a29305d752ef8137c045ba728f8680e2563531bd182d",
+    "producer_commit": "58cc3e139c1c0082f49da0dc10e841b55632669d",
+    "original_phase_status": "unresolved"
+  },
+  "prior_evidence": {
+    "path": "results/encounter_duration/metadata.json",
+    "sha256": "d2b411a3213d5becb1504ba7d654802240505159d52a7b7dcba936cce852f5ab",
+    "producer_commit": "176098fa4cc5e7ab5654ee7bd05bd00cee94b7b0"
+  },
+  "experiment_dependency_sha256_end": {
+    "examples/24_encounter_phase.py": "f856a1a20a720a1754bdb98287f4670ece0299372649cb5df7d612d651e2cb6e",
+    "src/sato_morrison/controls.py": "ea673df34611bd68c60756fec2f335c9ebd10a705149ee22b68917d3102ec077",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "experiment_dependencies_unchanged": true,
+  "results": {
+    "phase_levels": [
+      {
+        "phase_order": 32,
+        "complete": true,
+        "missing_count": 0,
+        "missing_phase_weight": 0.0,
+        "phase_averaged_moments": [
+          0.0066156314134243974,
+          0.0038766798438557375,
+          -0.00029010164435467326
+        ],
+        "known_positive_second_moment_contribution": 0.0038766798438557375,
+        "max_energy_error": 4.733417312530026e-11,
+        "reflected_count": 1,
+        "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+        "second_moment_relative_change": null,
+        "successive_passes": 0
+      },
+      {
+        "phase_order": 64,
+        "complete": true,
+        "missing_count": 0,
+        "missing_phase_weight": 0.0,
+        "phase_averaged_moments": [
+          0.0029306643459688004,
+          0.002479662588478165,
+          0.00014424577590866838
+        ],
+        "known_positive_second_moment_contribution": 0.002479662588478165,
+        "max_energy_error": 4.733417312530026e-11,
+        "reflected_count": 1,
+        "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+        "second_moment_relative_change": 0.5633900603529124,
+        "successive_passes": 0
+      },
+      {
+        "phase_order": 128,
+        "complete": true,
+        "missing_count": 0,
+        "missing_phase_weight": 0.0,
+        "phase_averaged_moments": [
+          0.0010465978949588024,
+          0.002144580825193513,
+          0.00041354887805675195
+        ],
+        "known_positive_second_moment_contribution": 0.002144580825193513,
+        "max_energy_error": 4.733417312530026e-11,
+        "reflected_count": 1,
+        "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+        "second_moment_relative_change": 0.1562458077346731,
+        "successive_passes": 0
+      },
+      {
+        "phase_order": 256,
+        "complete": true,
+        "missing_count": 0,
+        "missing_phase_weight": 0.0,
+        "phase_averaged_moments": [
+          0.000758705889342269,
+          0.002107877610200845,
+          0.0001551015713481328
+        ],
+        "known_positive_second_moment_contribution": 0.002107877610200845,
+        "max_energy_error": 4.8894286401396453e-11,
+        "reflected_count": 1,
+        "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+        "second_moment_relative_change": 0.01741240327002236,
+        "successive_passes": 0
+      },
+      {
+        "phase_order": 512,
+        "complete": true,
+        "missing_count": 0,
+        "missing_phase_weight": 0.0,
+        "phase_averaged_moments": [
+          0.000872824033803527,
+          0.0021944134238406562,
+          0.00013702404832167595
+        ],
+        "known_positive_second_moment_contribution": 0.0021944134238406562,
+        "max_energy_error": 5.1297220855086337e-11,
+        "reflected_count": 1,
+        "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+        "second_moment_relative_change": 0.039434599105011216,
+        "successive_passes": 0
+      },
+      {
+        "phase_order": 1024,
+        "complete": true,
+        "missing_count": 0,
+        "missing_phase_weight": 0.0,
+        "phase_averaged_moments": [
+          0.0008698157402705624,
+          0.002189089732466879,
+          0.00013717336525140132
+        ],
+        "known_positive_second_moment_contribution": 0.002189089732466879,
+        "max_energy_error": 5.546454939548305e-11,
+        "reflected_count": 2,
+        "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+        "second_moment_relative_change": 0.0024319201240680854,
+        "successive_passes": 1
+      },
+      {
+        "phase_order": 2048,
+        "complete": true,
+        "missing_count": 0,
+        "missing_phase_weight": 0.0,
+        "phase_averaged_moments": [
+          0.000855420361264134,
+          0.002183537910193605,
+          0.0001308897735471688
+        ],
+        "known_positive_second_moment_contribution": 0.002183537910193605,
+        "max_energy_error": 5.546454939548305e-11,
+        "reflected_count": 5,
+        "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+        "second_moment_relative_change": 0.002542581123669092,
+        "successive_passes": 2
+      }
+    ],
+    "timestep_check": {
+      "phase_order": 2048,
+      "complete": true,
+      "missing_count": 0,
+      "missing_phase_weight": 0.0,
+      "phase_averaged_moments": [
+        0.00085542036168453,
+        0.0021835379102831624,
+        0.00013088977358170358
+      ],
+      "known_positive_second_moment_contribution": 0.0021835379102831624,
+      "max_energy_error": 6.582602739302373e-11,
+      "reflected_count": 5,
+      "scope": "Each phase has weight 1/N. Unknown phases are never renormalized; partial positive sum is not a rigorous continuous-integral bound.",
+      "second_moment_relative_change_from_primary_step": 4.101475290622905e-11
+    },
+    "controls": [
+      {
+        "master_phase_index": 0,
+        "phase": 0.0,
+        "relative_status": "outgoing_event",
+        "pair_refinements": [
+          {
+            "max_step": 0.05,
+            "position_max_absolute_error": 7.815970093361102e-14,
+            "velocity_max_absolute_error": 6.417089082333405e-14,
+            "mu_absolute_error": 1.0269562977782698e-15,
+            "independent_COM_moments": [
+              0.004834872812399749,
+              3.7755346624506096e-05,
+              8.99664359965842e-06
+            ],
+            "COM_moments_max_absolute_error": 1.0269562977782698e-15,
+            "energy_error": 3.315862446880748e-15,
+            "evaluations": 6098,
+            "status": "passed",
+            "wall_s": 0.10207437502685934
+          },
+          {
+            "max_step": 0.025,
+            "position_max_absolute_error": 5.684341886080802e-14,
+            "velocity_max_absolute_error": 3.1086244689504383e-15,
+            "mu_absolute_error": 3.885780586188048e-16,
+            "independent_COM_moments": [
+              0.004834872812400387,
+              3.775534662446394e-05,
+              8.996643599712912e-06
+            ],
+            "COM_moments_max_absolute_error": 3.885780586188048e-16,
+            "energy_error": 2.6053204939777303e-15,
+            "evaluations": 12170,
+            "status": "passed",
+            "wall_s": 0.23900479200528935
+          }
+        ],
+        "selection": "original_anchor",
+        "relative_reason": null,
+        "status": "passed"
+      },
+      {
+        "master_phase_index": 2048,
+        "phase": 1.5707963267948966,
+        "relative_status": "outgoing_event",
+        "pair_refinements": [
+          {
+            "max_step": 0.05,
+            "position_max_absolute_error": 4.265704234285295e-09,
+            "velocity_max_absolute_error": 4.6260495434324866e-11,
+            "mu_absolute_error": 1.0890510715455548e-11,
+            "independent_COM_moments": [
+              0.22057113559277042,
+              0.11272980819151758,
+              -0.015426556478148959
+            ],
+            "COM_moments_max_absolute_error": 1.0890510715455548e-11,
+            "energy_error": 5.240175831721286e-11,
+            "evaluations": 22442,
+            "status": "passed",
+            "wall_s": 0.471862250007689
+          },
+          {
+            "max_step": 0.025,
+            "position_max_absolute_error": 6.792788553866558e-12,
+            "velocity_max_absolute_error": 9.454659277707833e-13,
+            "mu_absolute_error": 1.0152989560197057e-13,
+            "independent_COM_moments": [
+              0.2205711356035594,
+              0.11272980819678977,
+              -0.015426556473902182
+            ],
+            "COM_moments_max_absolute_error": 1.0735856648125264e-13,
+            "energy_error": 2.2137171319279434e-11,
+            "evaluations": 44006,
+            "status": "passed",
+            "wall_s": 0.7772521669976413
+          }
+        ],
+        "selection": "original_anchor",
+        "relative_reason": null,
+        "status": "passed"
+      },
+      {
+        "master_phase_index": 4096,
+        "phase": 3.141592653589793,
+        "relative_status": "outgoing_event",
+        "pair_refinements": [
+          {
+            "max_step": 0.05,
+            "position_max_absolute_error": 1.0658141036401503e-13,
+            "velocity_max_absolute_error": 6.245004513516506e-14,
+            "mu_absolute_error": 1.3322676295501878e-15,
+            "independent_COM_moments": [
+              -0.004920519229327652,
+              3.90393537303814e-05,
+              9.383665241984991e-06
+            ],
+            "COM_moments_max_absolute_error": 1.3322676295501878e-15,
+            "energy_error": 4.5000990367233014e-15,
+            "evaluations": 6038,
+            "status": "passed",
+            "wall_s": 0.10053370799869299
+          },
+          {
+            "max_step": 0.025,
+            "position_max_absolute_error": 1.0658141036401503e-14,
+            "velocity_max_absolute_error": 3.3306690738754696e-15,
+            "mu_absolute_error": 3.608224830031759e-16,
+            "independent_COM_moments": [
+              -0.004920519229325959,
+              3.903935373031322e-05,
+              9.383665242019841e-06
+            ],
+            "COM_moments_max_absolute_error": 3.608224830031759e-16,
+            "energy_error": 1.7763548829170925e-15,
+            "evaluations": 12050,
+            "status": "passed",
+            "wall_s": 0.18509858299512416
+          }
+        ],
+        "selection": "original_anchor",
+        "relative_reason": null,
+        "status": "passed"
+      },
+      {
+        "master_phase_index": 2060,
+        "phase": 1.5800002115222105,
+        "relative_status": "outgoing_event",
+        "pair_refinements": [
+          {
+            "max_step": 0.05,
+            "position_max_absolute_error": 6.6587517721927725e-09,
+            "velocity_max_absolute_error": 1.3266732157291017e-10,
+            "mu_absolute_error": 1.815989025821807e-11,
+            "independent_COM_moments": [
+              0.21165787865670607,
+              0.1786965500322992,
+              -0.08909843483738536
+            ],
+            "COM_moments_max_absolute_error": 1.815989025821807e-11,
+            "energy_error": 4.8584253263871567e-11,
+            "evaluations": 15506,
+            "status": "passed",
+            "wall_s": 0.2567141249892302
+          },
+          {
+            "max_step": 0.025,
+            "position_max_absolute_error": 2.927436071331613e-11,
+            "velocity_max_absolute_error": 4.435118938772575e-12,
+            "mu_absolute_error": 1.2231604618051506e-12,
+            "independent_COM_moments": [
+              0.2116578786736428,
+              0.1786965500477791,
+              -0.08909843483852611
+            ],
+            "COM_moments_max_absolute_error": 1.2231604618051506e-12,
+            "energy_error": 2.4451998570828445e-11,
+            "evaluations": 30182,
+            "status": "passed",
+            "wall_s": 0.49704245902830735
+          }
+        ],
+        "selection": "largest_new_contributor",
+        "relative_reason": null,
+        "status": "passed"
+      },
+      {
+        "master_phase_index": 2068,
+        "phase": 1.586136134673753,
+        "relative_status": "outgoing_event",
+        "pair_refinements": [
+          {
+            "max_step": 0.05,
+            "position_max_absolute_error": 1.3334897630556952e-09,
+            "velocity_max_absolute_error": 1.179848441168474e-10,
+            "mu_absolute_error": 1.8878593133209165e-11,
+            "independent_COM_moments": [
+              0.12370692834420441,
+              0.16338270208018507,
+              -0.1327758938394688
+            ],
+            "COM_moments_max_absolute_error": 1.8878593133209165e-11,
+            "energy_error": 4.61826214707938e-11,
+            "evaluations": 8270,
+            "status": "passed",
+            "wall_s": 0.14750608400208876
+          },
+          {
+            "max_step": 0.025,
+            "position_max_absolute_error": 3.129230208287481e-11,
+            "velocity_max_absolute_error": 3.748001908832066e-12,
+            "mu_absolute_error": 6.370737271055305e-13,
+            "independent_COM_moments": [
+              0.12370692836244593,
+              0.16338270209758302,
+              -0.13277589384784036
+            ],
+            "COM_moments_max_absolute_error": 6.370737271055305e-13,
+            "energy_error": 2.7050568907993943e-11,
+            "evaluations": 15662,
+            "status": "passed",
+            "wall_s": 0.2704300840268843
+          }
+        ],
+        "selection": "largest_new_contributor",
+        "relative_reason": null,
+        "status": "passed"
+      },
+      {
+        "master_phase_index": 2056,
+        "phase": 1.576932249946439,
+        "relative_status": "outgoing_event",
+        "pair_refinements": [
+          {
+            "max_step": 0.05,
+            "position_max_absolute_error": 1.64757807397109e-09,
+            "velocity_max_absolute_error": 3.0638824810580445e-11,
+            "mu_absolute_error": 9.049233584690342e-12,
+            "independent_COM_moments": [
+              0.22071167408430534,
+              0.15800964794882572,
+              -0.06058236179463247
+            ],
+            "COM_moments_max_absolute_error": 9.049233584690342e-12,
+            "energy_error": 4.83314187530724e-11,
+            "evaluations": 23006,
+            "status": "passed",
+            "wall_s": 0.44559375004610047
+          },
+          {
+            "max_step": 0.025,
+            "position_max_absolute_error": 9.446665671930532e-12,
+            "velocity_max_absolute_error": 6.689648834878881e-12,
+            "mu_absolute_error": 9.346690088563037e-13,
+            "independent_COM_moments": [
+              0.2207116740924199,
+              0.15800964795406444,
+              -0.06058236179270729
+            ],
+            "COM_moments_max_absolute_error": 9.346690088563037e-13,
+            "energy_error": 2.6897210270259394e-11,
+            "evaluations": 44894,
+            "status": "passed",
+            "wall_s": 0.7449812500271946
+          }
+        ],
+        "selection": "largest_new_contributor",
+        "relative_reason": null,
+        "status": "passed"
+      }
+    ],
+    "phase_status": "passed",
+    "timestep_status": "passed",
+    "status": "passed_conditional_phase_checks",
+    "anchor_absolute_moment_difference_from_prior": 8.920197913653283e-12,
+    "prior_anchor_max_step": 0.05,
+    "mean_initial_mu": 0.36677814942125087,
+    "aggregate_jump_proxy": 0.1274021958255165,
+    "finite_sum_concentration": [
+      {
+        "requested_largest_node_fraction": 0.01,
+        "actual_node_fraction": 0.01025390625,
+        "node_count": 21,
+        "known_second_moment_contribution_fraction": 0.504811307892563
+      },
+      {
+        "requested_largest_node_fraction": 0.05,
+        "actual_node_fraction": 0.05029296875,
+        "node_count": 103,
+        "known_second_moment_contribution_fraction": 0.8818402295005145
+      },
+      {
+        "requested_largest_node_fraction": 0.1,
+        "actual_node_fraction": 0.10009765625,
+        "node_count": 205,
+        "known_second_moment_contribution_fraction": 0.9472247556085879
+      },
+      {
+        "requested_largest_node_fraction": 0.25,
+        "actual_node_fraction": 0.25,
+        "node_count": 512,
+        "known_second_moment_contribution_fraction": 0.9858050563541736
+      }
+    ],
+    "unique_relative_solves": 4096,
+    "reused_relative_solves": 1024,
+    "new_relative_solves": 3072,
+    "new_control_indices": [
+      2060,
+      2068,
+      2056
+    ],
+    "runtime_cap_reached": false,
+    "unattempted_relative_nodes": [],
+    "continuous_phase_coverage_status": "unresolved",
+    "wall_s": 142.4369270829484,
+    "process_peak_RSS_bytes": 206012416,
+    "memory_scope": "Process peak resident set including imports/cache/checkpoint work, before final plotting; not just selected array storage.",
+    "wall_s_scope": "Numerical solves/checks and intermediate checkpoint/path writes; excludes imports, initial metadata, plots and final output writing.",
+    "limits": [
+      "Fixed incoming triple, not an annular or speed-integrated rate.",
+      "Finite phase differences are convergence diagnostics, not rigorous quadrature error bounds.",
+      "All phases retain weight1/N, including unknown nonexits. Partial positive sums are not continuous-integral bounds.",
+      "Closest separations are sampled. Jump normalized by mean initial moment is not a pointwise relative jump or an asymptotic ordering proof.",
+      "Independent12D controls use separate individual equations/coordinates but the same DOP853 integrator; COM=0 checks the mean, with full COM second moment supplied analytically.",
+      "All sampled exits do not certify continuous phase coverage; opposite exact exit basins imply finite-budget censoring intervals. An outgoing integral needs almost-everywhere finite exits or an explicit extension convention.",
+      "Small energy defects do not certify trajectory accuracy near the unresolved exit boundary. New Cartesian/timestep controls retain all failures.",
+      "No sourceD calibration, independent-encounter plasma closure or lifetime."
+    ]
+  },
+  "independent_pair_paths_sha256": "1dce1dbeccb6e0ed6c9c93db52c9beafe5812b3b9b69767e10009b2965f4c24e",
+  "nodes_sha256": "c89dfb3e4797ef03d64b062021c3a8d67860e787de5280b3a6973b9aec93da5e"
+}

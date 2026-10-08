@@ -7799,7 +7799,8 @@
       "evidence_sha256": "400109235c8d3a407dd6e5f54b64936bd388813a53d94adc39ff280b4aac2418",
       "checks_wall_s": 0.5939672499662265,
       "timing_scope": "Analytic checks, saved-data comparisons and figure rendering; excludes imports and initial metadata.",
-      "scope": "Exact analytical orbit and schematic constraints; reused checked uniform operator data. No new physical calibration."
+      "scope": "Exact analytical orbit and schematic constraints; reused checked uniform operator data. No new physical calibration. Original rendering receipt; retrieve its evidence from the historical commit.",
+      "historical_evidence_commit": "3adea8c5eb1e0d136f3a34af6123f38274722782"
     },
     {
       "producer_commit": "3eb6a270eedd5d8151967a5554bdc01621a383cc",
@@ -7832,10 +7833,10 @@
       "producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
       "workflow_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37803682825",
       "evidence_path": "results/nonuniform_spatial_blocks_full/summary.json",
-      "evidence_sha256": "a9b8299a8412543c13de3de370915178c96fc1bf8d1a3026aa5dd085df7cbdb1",
+      "evidence_sha256": "eaba355193e674ba133658e121f319f27ebfe17374da6b7a903d2034bd0b295d",
       "independent_evidence_path": "results/nonuniform_spatial_blocks_full/independent_audit.json",
-      "independent_evidence_sha256": "702f30411831d8ac26602b576e118e1b85c240c57b218a05bb9b78df93795ee3",
-      "scope": "Separate full-campaign snapshot: two of45 completed (dipole/nonaxisymmetric spatial3); three failed dipole partials. Both completed final steps independently pair-audited. No refinement pass or pilot timing pooling.",
+      "independent_evidence_sha256": "49acc15f1cb9e36148885514476871f554a7bb3cc246eb596511e0d2bf952402",
+      "scope": "Separate full-campaign snapshot: three of45 completed (dipole/nonaxisymmetric spatial3 and dipole mu13); three failed dipole partials. All completed final steps independently pair-audited. No refinement pass or pilot timing pooling.",
       "snapshot_history": [
         {
           "publication_commit": "f53daaa",
@@ -7851,8 +7852,15 @@
           "publication_commit": "3b453546f9738d1494a581718cc95f34a9c10b3f",
           "evidence_sha256": "b2fdb2a9d89124bcf13e9ae7465d66eebfbd85708f5d060527c79c05ec8ded7d",
           "scope": "Separate full-campaign snapshot: one of45 completed; three failed partials (two accepted first steps and one initial state only). Completed final step independently pair-audited. No refinement pass or pilot timing pooling."
+        },
+        {
+          "publication_commit": "3adea8c5eb1e0d136f3a34af6123f38274722782",
+          "evidence_sha256": "a9b8299a8412543c13de3de370915178c96fc1bf8d1a3026aa5dd085df7cbdb1",
+          "scope": "Separate full-campaign snapshot: two of45 completed (dipole/nonaxisymmetric spatial3); three failed dipole partials. Both completed final steps independently pair-audited. No refinement pass or pilot timing pooling."
         }
-      ]
+      ],
+      "publication_receipt_path": "results/nonuniform_spatial_blocks_full/publication_receipt.json",
+      "publication_receipt_sha256": "908dcdc40676ffd5acfb973f3db2861a898c50c68ba117ba4fbe645dc842fe58"
     },
     {
       "command": "MPLBACKEND=Agg python examples/23_difficult_correction.py",
@@ -7942,7 +7950,33 @@
       "original_producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
       "status": "deadline_expired_not_converged",
       "wall_s": 300.019426749961,
-      "scope": "Private continuation from the original M4 saved failed Newton19 iterate. Increasing backtrack budget30->60 permitted tiny objective-descent trials but did not reach the unchanged root tolerance. This is not a completed timestep or convergence datum."
+      "scope": "Private continuation from the original M4 saved failed Newton19 iterate. Increasing backtrack budget30->60 permitted 21 recorded Armijo acceptances but did not reach the unchanged root tolerance. Rounded updates were independently audited; ideal-ray objective estimates do not establish actual rounded objective descent. No completed timestep or convergence datum.",
+      "independent_evidence_path": "results/nonuniform_spatial_blocks_full/dipole_dt16_replay/continuation60/independent_audit.json",
+      "independent_evidence_sha256": "4f737c7586ccae856869ffa65af03e98e45fb008bfc1bf048d4b3a2fc5b3febe"
+    },
+    {
+      "command": "MPLBACKEND=Agg python examples/24_encounter_phase.py",
+      "cwd": "${REPOSITORY}",
+      "producer_commit": "3adea8c5eb1e0d136f3a34af6123f38274722782",
+      "evidence_path": "results/encounter_phase/refined8192/summary.json",
+      "evidence_sha256": "e2c15cbca067ccfce4839366c1d7768d126907557569ce3af33f868d209ab887",
+      "exit_code": 0,
+      "status": "passed_conditional_phase_checks",
+      "checks_wall_s": 142.4369270829484,
+      "scope": "Sampled second moment meets two successive 1% checks at2048; mean and cross changes1.68%/4.80% remain unresolved. Full final-grid halfstep and12Cartesian controls pass. Continuous coverage and physical rates unresolved.",
+      "independent_evidence_path": "results/encounter_phase/refined8192/independent_audit.json",
+      "independent_evidence_sha256": "32ac054c67e00eaab1153250b9481a832b217fc8ae99f6edf80233af3dc2b262"
+    },
+    {
+      "command": "MPLBACKEND=Agg python examples/22_first_principles.py",
+      "cwd": "${REPOSITORY}",
+      "producer_commit": "c0770dda4f4177125ab0699cb4eebed67dd760b4",
+      "evidence_path": "results/first_principles/summary.json",
+      "evidence_sha256": "8a791fda9702044af07d206bd7007d6f3f657e2ed8eef8561a6b2c9563d14e2e",
+      "exit_code": 0,
+      "status": "passed",
+      "checks_wall_s": 1.1220145410043187,
+      "scope": "Equations and saved three-field relaxation added; exact orbit, magnetic-moment populations and uniform modes checked. No new collision solve. All visible figure layout inspected."
     }
   ]
 }
