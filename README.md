@@ -17,7 +17,7 @@ JAX experiments on **what relaxes—and what remains frozen—when collisions pr
 | Nonlinear mirror evolution | **15 runs**, eight refinement checks; largest final change **0.197%** |
 | Independent solver audit | All **20 saved steps** rechecked with a separate NumPy pair operator |
 | Conditional scattering table | Fresh **4,096-state** test: p95 error **2.54%**, 95% confidence interval **2.06–3.37%** |
-| Test suite | **199 passed** on fresh Linux CI |
+| Test suite | **212 passed** on fresh Linux CI |
 
 [Reproduction record](results/deep_reproduction.json) · [Mirror data](results/nonuniform_entropy/mirror_audit.json) · [Solver audit](results/solver_accuracy/audit.json) · [Scattering audit](results/scattering_table/refined8_validation4096/audit.json)
 
@@ -37,7 +37,7 @@ The full flux distribution supplies additional constraints. Two populations can 
 
 ![Nonlinear relaxation, independent refinement checks, sampled continuum-constraint errors and discrete conservation. The title reports how many planned cases are complete.](results/nonuniform_entropy/evolution.png)
 
-The mirror campaign passes, but its coarse timestep retains **2–3% bias**. Finest-pair agreement does not certify a coarse run. **One dipole solve was rejected. The remaining campaign was stopped after diagnosing extreme tail amplification in its residual scale; a fixed-reference formulation is being validated.** [Complete histories and pending cases](results/nonuniform_entropy/summary.json) · [Script](examples/12_nonuniform_evolution.py)
+The mirror campaign passes, but its coarse timestep retains **2–3% bias**. Finest-pair agreement does not certify a coarse run. **One dipole solve was rejected. The remaining campaign was stopped after diagnosing extreme tail amplification in its residual scale; a separate [fixed-reference pilot is running](https://github.com/rogeriojorge/sato-morrison/actions/runs/37712765957).** [Complete histories and pending cases](results/nonuniform_entropy/summary.json) · [Script](examples/12_nonuniform_evolution.py)
 
 ## Run
 

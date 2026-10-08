@@ -7603,6 +7603,16 @@
       "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37708042539/job/113087037533",
       "log_sha256": "04d231375ce8624a15bcdaf7090cc31b0c8f87841d784d35543d601706a13c98",
       "scope": "Adds actual mapped (u,mu) Lorentz modal evolution and independent analytic 3V moments; uniform parallel distribution phase and exactly zero collision strength at both charge signs."
+    },
+    {
+      "source_commit": "3eb6a270eedd5d8151967a5554bdc01621a383cc",
+      "command": "python -m pytest -q",
+      "passed": 212,
+      "elapsed_s": 130.04,
+      "environment": "Fresh Ubuntu CI installation",
+      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37712734136/job/113102146787",
+      "log_sha256": "35e13253c5f569437a8d90a9a0789179b22a14a43f3e99dcbcbfd1098f3c9708",
+      "scope": "Adds independent fixed-reference dense roots/Hessians and physical budgets; immutable-reference and total-match validation; unchanged defaults; true-residual failure guards; stable extreme-tail norm diagnostics. Three-field thermal pilot runs separately at the same source."
     }
   ],
   "additional_experiments": [
