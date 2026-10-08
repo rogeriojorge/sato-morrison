@@ -175,8 +175,8 @@ for i,ax in enumerate(map_axes):
 cax=fig.add_axes([.925,.59,.013,.26]);fig.colorbar(mesh,cax=cax,label='mean parallel velocity ⟨u⟩')
 ax=fig.add_subplot(gs[1,0]);delta=parallel_mean[-1,:,:,2]-parallel_mean[0,:,:,2];limit=float(np.max(abs(delta)))
 mesh=ax.pcolormesh(edges(axes[0],BOUNDS[0]),edges(axes[1],BOUNDS[1]),delta.T,cmap='RdBu_r',vmin=-limit,vmax=limit)
-ax.set(xlabel='x',ylabel='y',title='Change from t = 0 to 0.02',aspect='equal',xticks=[.8,1.,1.2],yticks=[-.2,0,.2])
-bar=fig.colorbar(mesh,ax=ax,fraction=.05,pad=.02);bar.ax.set_title('Δ⟨u⟩',fontsize=9,pad=7)
+ax.set(xlabel='x',ylabel='y',title='Final − initial: Δ⟨u⟩',aspect='equal',xticks=[.8,1.,1.2],yticks=[-.2,0,.2])
+fig.colorbar(mesh,ax=ax,fraction=.05,pad=.02)
 ax=fig.add_subplot(gs[1,1])
 for iy,color in [(1,TEAL),(3,ORANGE)]:
     for it,style in [(0,'--'),(2,'-')]:
