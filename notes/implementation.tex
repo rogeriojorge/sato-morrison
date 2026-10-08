@@ -1031,9 +1031,99 @@ Ideal flow generally changes these populations. They are not interior
 Casimirs of the Poisson tensor and are not claimed to be invariants of the
 full combined dynamics.
 
+\subsection*{A mixed local moment and its angular obstruction}
+The spatial classification above does not exhaust velocity-dependent local
+collision invariants. A further sufficient construction follows directly
+from the common-chart action. Assume a smooth nonvanishing vacuum field,
+$m>0$, $q\ne0$, and the same zero-potential convention. On a spatial patch
+where a smooth $\phi$ solves
+\begin{equation}
+ \mathbf t\cdot\nabla\phi=q s,\qquad
+ h_C(\X,u,\mu)=\frac{m u}{B}+\phi(\X),
+ \label{eq:mixednullpde}
+\end{equation}
+the common-chart vector $A h_C$ is independent of velocity. Indeed,
+$\nabla h_C=-m u\nabla B/B^2+\nabla\phi$ and $(h_C)_u=m/B$ give
+\begin{align}
+ (A h_C)_X&=\frac{\mathbf b}{B}
+       +\frac{\mathbf b\times\nabla\phi}{qB},\\
+ (A h_C)_u&=\frac{u s}{B^2}
+       -\frac{\mathbf b\cdot\nabla\phi}{m}
+       -\frac{u\,\mathbf t\cdot\nabla\phi}{qB^2},\\
+ (A h_C)_\eta&=\mu\left(\frac{s}{B}
+       -\frac{\mathbf t\cdot\nabla\phi}{qB}\right).
+\end{align}
+The terms proportional to $m u\mathbf t/(qB^3)$ cancel in the spatial
+component. Substitution of \eqref{eq:mixednullpde} yields
+\begin{equation}
+ A h_C=\left(\frac{\mathbf b}{B}
+       +\frac{\mathbf b\times\nabla\phi}{qB},
+       -\frac{\mathbf b\cdot\nabla\phi}{m},0\right)=:a(\X).
+ \label{eq:mixednullaction}
+\end{equation}
+Thus every same-position pair satisfies $\Delta A h_C=0$, before applying
+any energy projector. Under natural zero collision flux, or other boundaries
+that admit this test function and remove the weak boundary term,
+$\int h_C f\,\dd\Gamma$ is conserved by the local surrogate with symmetric
+mobility. This is a sufficient statement, not a full nullspace classification.
+Preservation of the full $h_C$ marginal does not follow from this moment
+identity: $A F(h_C)=F'(h_C)a(\X)$ generally has a nonzero local pair
+difference, whose projection must be checked separately.
+
+Where $\mathbf t\ne0$, the flow-box construction supplies a local smooth
+solution of the first-order equation in \eqref{eq:mixednullpde}. At
+$\mathbf t=0$, its necessary compatibility condition is $s=0$; no extension
+across such points is presumed. Global single-valuedness imposes further
+conditions. For an axisymmetric poloidal field,
+$\mathbf t=t_\theta\mathbf e_\theta$, choose a smooth angular branch and
+$t_\theta\ne0$. Then
+\begin{equation}
+ \phi=q\theta\frac{R s}{t_\theta},\qquad
+ \frac{t_\theta}{R}\partial_\theta\phi=q s.
+ \label{eq:mixednullangle}
+\end{equation}
+Since $R s/t_\theta$ is independent of azimuth, integrating the equation
+around a complete periodic circle requires $0=2\pi qR s/t_\theta$.
+Where $s\ne0$ the proposed moment is therefore inadmissible on the full
+periodic azimuth, even though it is smooth on the executed $x>0$ boxes.
+For the positive-strength dipole this gives the explicit expression
+\begin{equation}
+ h_C=\frac{m u}{B}
+   -q\theta\frac{z(3R^2+8z^2)}{R^2+2z^2}.
+ \label{eq:dipolemixednull}
+\end{equation}
+It has dimensions of charge times length before normalization. This moment
+is distinct from canonical toroidal momentum, and the construction does not
+assume that it is a physical collision invariant. With common-chart energy
+$E=m u^2/2+\eta$, antisymmetry gives the ideal derivative
+\begin{equation}
+ \mathcal T h_C=-(A h_C)\cdot\nabla_{X,u,\eta}E
+       =u\,\mathbf b\cdot\nabla\phi.
+ \label{eq:mixednullideal}
+\end{equation}
+It is an ideal constant for all velocities only if the additional condition
+$\mathbf b\cdot\nabla\phi=0$ holds. The dipole branch expression generally
+does not satisfy this condition. The toroidal limit $s=0$, $\phi=0$ does:
+$h_C=mRu/C$ reduces to the already classified momentum mode. In a uniform
+field the same choice gives a constant multiple of parallel momentum.
+For separated positions, $\Delta A h_C=a(\X)-a(\X')$ need not vanish;
+projected pair values must be checked before drawing a conclusion about a
+particular nonlocal kernel. No finite-range decay rate follows from the
+local cancellation alone.
+
+This is an elementary sufficient consequence of the common-chart tensor
+and local pairing, following the weak-moment criterion of SM25,
+Eqs.~(45)--(47), the tensor in Eq.~(93), and the same-position approximation
+in Eq.~(172)~\cite{SM25}. It is not a claim for the full source Eq.~(119).
+The angular admissibility distinction is essential when comparing a
+Cartesian-box prototype with a closed dipole geometry. Canonical-momentum
+and constrained-equilibrium antecedents remain relevant~\cite{TB15,DT15};
+no publication-priority claim is made for this construction.
+
 \subsection*{Poloidal flux memory and inaccessible dipole candidates}
 In an axisymmetric purely poloidal field, $\mathbf t$ is azimuthal. Therefore
-all $\phi(R,z)$ satisfy the preceding sufficient condition: local
+all $\phi(R,z)$ satisfy $\mathbf t\cdot\nabla\phi=0$ in
+\eqref{eq:vacuumspatialaction}: local
 collisions preserve every meridional spatial population. With
 $\mathbf B=\nabla\psi\times\mathbf e_\theta/R$, the poloidal fluxes are
 \begin{equation}
