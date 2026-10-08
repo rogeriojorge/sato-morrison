@@ -96,7 +96,7 @@ handles = [Line2D([], [], marker='o', linestyle='', color=COLORS['log_range_guar
 fig.legend(handles=handles, loc='lower center', ncol=3, frameon=False, fontsize=8.5)
 fig.suptitle(r'Saved dipole ray: $f=\exp(g)$; finite positive weighted population required'+'\n'
     +'Final trial has positive NumPy density but JAX exp returns zero; no accepted second step', fontsize=11.5)
-fig.tight_layout(rect=(0, .13, 1, .85))
+fig.tight_layout(rect=(0, .13, 1, .98))
 fig.savefig(OUTPUT/'tail_guard.png', dpi=180)
 fig.savefig(OUTPUT/'tail_guard.svg')
 plt.close(fig)
