@@ -1,5 +1,5 @@
 {
-  "audit_time_utc": "2026-10-07T23:59:34.123523+00:00",
+  "audit_time_utc": "2026-10-08T00:24:07.203658+00:00",
   "collector_sha256": "6a8480619e7eb34d7c8faa4037c5c21f4c8c5d652d1e3b8b91991961a5c24138",
   "expected_commit": "3d842bee57516f330139a08517844d2e98da6543",
   "expected_source_sha256": "cb8439c877591f7306415bb0715c1a62eda5c766b69d77621436c2ccd443c8e8",
@@ -106,6 +106,150 @@
     "seed": null
   },
   "provenance_runs": {
+    "030019fc2b6a555f9bf4c59f29410cc9295a00e71f6fe3460f61f5dfcec6d255": {
+      "model": "sm_local_nonlinear discrete-energy projector",
+      "boundary": "natural no-flux collision-only Cartesian boxes",
+      "units": "normalized",
+      "inputs": {
+        "fields": [
+          {
+            "kind": "mirror",
+            "strength": 1.0,
+            "amplitude": 0.15,
+            "length": 1.0,
+            "direction": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "base": "dipole"
+          },
+          {
+            "kind": "dipole",
+            "strength": 1.0,
+            "amplitude": 0.0,
+            "length": 1.0,
+            "direction": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "base": "dipole"
+          },
+          {
+            "kind": "nonaxisymmetric",
+            "strength": 1.0,
+            "amplitude": 0.03,
+            "length": 1.0,
+            "direction": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "base": "dipole"
+          }
+        ],
+        "bounds": [
+          [
+            0.8,
+            1.2
+          ],
+          [
+            -0.2,
+            0.2
+          ],
+          [
+            0.1,
+            0.5
+          ]
+        ],
+        "nx": 5,
+        "nu": 25,
+        "nmu": 21,
+        "x_orders": [
+          3,
+          5,
+          7
+        ],
+        "u_orders": [
+          17,
+          21,
+          25
+        ],
+        "mu_orders": [
+          13,
+          17,
+          21
+        ],
+        "u_domain": [
+          -4.0,
+          4.0
+        ],
+        "mu_domain": [
+          0,
+          20.0
+        ],
+        "collision_strength": 0.1,
+        "final_time": 0.02,
+        "dt_values": [
+          0.005,
+          0.0025,
+          0.00125,
+          0.000625,
+          0.0003125
+        ],
+        "newton_rtol": 1e-12,
+        "pair_chunk": 1048576,
+        "time_discretization": "lagged-mobility backward Euler in entropy variables",
+        "preconditioner_axis": 0,
+        "linear_rtol": 1e-06,
+        "linear_max_steps": 3000,
+        "max_newton_steps": 80,
+        "relative_refinement_target": 0.01,
+        "spatial_discretization": "global Lagrange polynomial derivative on positive Gauss-Legendre quadrature",
+        "velocity_discretization": "local quadratic u derivative; positive Gauss-Legendre u/mu quadrature",
+        "initial": "exp(-E-.2mu+.1sin(pi*y/.4)*u)",
+        "seed": null
+      },
+      "commit": "3d842bee57516f330139a08517844d2e98da6543",
+      "working_tree": "?? results/nonuniform_entropy/",
+      "source_sha256": "cb8439c877591f7306415bb0715c1a62eda5c766b69d77621436c2ccd443c8e8",
+      "versions": {
+        "sato-morrison": "0.1.0",
+        "jax": "0.11.2",
+        "jaxlib": "0.11.2",
+        "solvax": "0.28.2",
+        "numpy": "2.5.3",
+        "scipy": "1.18.1",
+        "matplotlib": "3.11.2"
+      },
+      "source_changes": "",
+      "logical_cpus": 4,
+      "thread_environment": {
+        "OMP_NUM_THREADS": "unset",
+        "OPENBLAS_NUM_THREADS": "unset",
+        "MKL_NUM_THREADS": "unset",
+        "XLA_FLAGS": "unset"
+      },
+      "python": "3.12.15",
+      "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+      "processor": "x86_64",
+      "devices": [
+        "cpu:0"
+      ],
+      "x64": true,
+      "limitations": "Independent finite-time refinement checks at fixed other parameters; no combined-streaming box claim and no E/Gmu-only equilibrium reachability claim. Finite spatial polynomial spaces may lift continuum invariants: flux/potential moments are measured as scheme errors, never projected or interpreted as physical relaxation. Tail-domain and wider-domain quadrature checks are separate. A fine timestep-pair pass does not certify the coarse baseline or jointly refine space and time; all adjacent and coarsest/fine differences are retained. Timings include concurrent unrelated machine load.",
+      "relaxation_diagnostic": "Relative entropy to mass-normalized exp(-E-.2mu) decreases by the entropy gain because its logarithm is a discrete collision invariant. This stationary reference is not asserted reachable under the additional continuum constraints. Mean/variance of log(f/reference) and the sin(pi*y/.4)*u moment are measured separately.",
+      "execution": {
+        "selected_fields": [
+          "dipole"
+        ],
+        "selected_cases": [
+          "mu13"
+        ],
+        "description": "Independent predefined cases; each completed row retains its producing run."
+      }
+    },
     "7ae517bcacb3f71f992f1d94f09c683789dd9d12b1e14f6a75e9e749b52309ed": {
       "model": "sm_local_nonlinear discrete-energy projector",
       "boundary": "natural no-flux collision-only Cartesian boxes",
@@ -2412,6 +2556,37 @@
     }
   },
   "artifact_receipts": [
+    {
+      "summary_path": "${ARTIFACTS}/dipole-mu13/summary.json",
+      "sha256": "2dcc8458a4ac0ef4e55871c8bf25598cf0dc9e77f0ea788932b5f14a8f38ad11",
+      "provenance_id": "030019fc2b6a555f9bf4c59f29410cc9295a00e71f6fe3460f61f5dfcec6d255",
+      "completed_cases": 0,
+      "selected_execution_complete": false,
+      "auxiliary_files": [
+        {
+          "path": "${ARTIFACTS}/dipole-mu13/commit.txt",
+          "sha256": "3808b23d5b1b82c36edb45311cdbb16371e4584f2d532e993897eff3e86b51d4",
+          "bytes": 41
+        },
+        {
+          "path": "${ARTIFACTS}/dipole-mu13/cpu.txt",
+          "sha256": "0535bb1480e83c69fe356e41634e13a277dab7414cf5d563975b02388982cb37",
+          "bytes": 3362,
+          "contents": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           48 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  4\nOn-line CPU(s) list:                     0-3\nVendor ID:                               AuthenticAMD\nModel name:                              AMD EPYC 9V45 96-Core Processor\nCPU family:                              26\nModel:                                   2\nThread(s) per core:                      2\nCore(s) per socket:                      2\nSocket(s):                               1\nStepping:                                1\nBogoMIPS:                                5192.24\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid extd_apicid aperfmperf tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves user_shstk avx_vnni avx512_bf16 clzero xsaveerptr rdpru arat npt nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload avx512vbmi umip avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid fsrm avx512_vp2intersect\nVirtualization:                          AMD-V\nHypervisor vendor:                       Microsoft\nVirtualization type:                     full\nL1d cache:                               96 KiB (2 instances)\nL1i cache:                               64 KiB (2 instances)\nL2 cache:                                2 MiB (2 instances)\nL3 cache:                                32 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-3\nVulnerability Gather data sampling:      Not affected\nVulnerability Ghostwrite:                Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Old microcode:             Not affected\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Vulnerable: Safe RET, no microcode\nVulnerability Spec store bypass:         Vulnerable\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Retpolines; STIBP disabled; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Not affected\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Not affected\n"
+        },
+        {
+          "path": "${ARTIFACTS}/dipole-mu13/environment.txt",
+          "sha256": "c067e9eb3f74369567fbe1008d728d3839dde746e7a1face0ad2caf7ca3049dc",
+          "bytes": 549,
+          "contents": "contourpy==1.4.0\ncycler==0.12.1\nequinox==0.13.8\nfonttools==4.66.1\niniconfig==2.3.1\njax==0.11.2\njaxlib==0.11.2\njaxtyping==0.3.11\nkiwisolver==1.5.1\nmatplotlib==3.11.2\nml_dtypes==0.6.0\nnumpy==2.5.3\nopt_einsum==3.4.0\npackaging==26.3\npillow==12.3.0\npluggy==1.6.0\npsutil==7.2.2\nPygments==2.21.0\npyparsing==3.3.3\npytest==9.1.1\npython-dateutil==2.9.0.post0\n-e git+https://github.com/rogeriojorge/sato-morrison@3d842bee57516f330139a08517844d2e98da6543#egg=sato_morrison\nscipy==1.18.1\nsix==1.17.0\nsolvax==0.28.2\ntyping_extensions==4.16.0\nwadler_lindig==0.1.7\n"
+        },
+        {
+          "path": "${ARTIFACTS}/dipole-mu13/run.log",
+          "sha256": "f8f440603287d0912c4eafd17fad7a73751f87160cc7c769d643e5f84f23da5b",
+          "bytes": 17072
+        }
+      ]
+    },
     {
       "summary_path": "${ARTIFACTS}/dipole-spatial3/summary.json",
       "sha256": "d696f9c78840233cfbe93272ee7ba200d63db3e26ebabe3c9efbe5a89e7b887e",
@@ -22296,7 +22471,207 @@
       "provenance_id": "e217d5994131625460905296890b636bfc94ba02c011a51cd67e260e3d241d2c"
     }
   ],
-  "partials": [],
+  "partials": [
+    {
+      "path": "${ARTIFACTS}/dipole-mu13/partial_case.json",
+      "sha256": "ade3de388298f716719f9d8030680944a392942f2f25085ff9fa49a5ccd0fa16",
+      "superseded_checkpoint": false,
+      "status": "failed",
+      "provenance_id": "030019fc2b6a555f9bf4c59f29410cc9295a00e71f6fe3460f61f5dfcec6d255",
+      "field": "dipole",
+      "case": "mu13",
+      "parameters": {
+        "field": "dipole",
+        "nx": 5,
+        "nu": 25,
+        "nmu": 13,
+        "umax": 4.0,
+        "mumax": 20.0,
+        "dt": 0.005
+      },
+      "initial_magnetic_moment_bin_populations": [
+        0.05405641120849997,
+        0.05241592378832839,
+        0.020176013060868327,
+        0.0048036792411287775,
+        0.0008645231305901849,
+        0.00013090223887564397,
+        1.8151415351201125e-05,
+        2.508415608900928e-06,
+        3.7516327726743637e-07,
+        6.527445343707334e-08,
+        1.3877157730501959e-08,
+        3.5897611618814426e-09,
+        9.204765663839859e-10
+      ],
+      "history": [
+        {
+          "time": 0.005,
+          "wall_s": 1849.7137952570001,
+          "newton_iterations": 7,
+          "pcg_iterations": 7104,
+          "nonlinear_relative_residual": 8.133019102062693e-15,
+          "maximum_linear_relative_residual": 9.970595771734124e-07,
+          "entropy_change": 6.972268253766013e-05,
+          "entropy_identity_error": -8.470329472543003e-21,
+          "lagged_mobility_dissipation": 6.379661405854573e-05,
+          "generalized_KL": 5.926068479114407e-06,
+          "entropy_defect_bound": 1.0231075884216496e-14,
+          "residual_entropy_defect": 9.033879352530354e-21,
+          "newton_history": [
+            {
+              "iteration": 1,
+              "relative_residual": 0.1052054809004494,
+              "linear_iterations": 272,
+              "true_linear_relative_residual": 9.732380001441494e-07,
+              "linear_wall_s": 68.809457307,
+              "maximum_log_direction": 291.56466138893245,
+              "minimum_signed_log_direction": -291.56466138893245,
+              "maximum_signed_log_direction": 7.46432462884976,
+              "objective_descent": -1.615084757534876e-05,
+              "mobility_curvature": 0.000856078711889241,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 291.56466138893245,
+              "objective_change": -8.06477920328055e-06
+            },
+            {
+              "iteration": 2,
+              "relative_residual": 0.00019486680956769085,
+              "linear_iterations": 843,
+              "true_linear_relative_residual": 7.964621843798138e-07,
+              "linear_wall_s": 207.55929534,
+              "maximum_log_direction": 190.05521660142966,
+              "minimum_signed_log_direction": -190.05521660142966,
+              "maximum_signed_log_direction": 0.5964931474474966,
+              "objective_descent": -3.671689718641994e-09,
+              "mobility_curvature": 6.432295160844398e-08,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 190.05521660142966,
+              "objective_change": -1.8383075637668789e-09
+            },
+            {
+              "iteration": 3,
+              "relative_residual": 2.500285767871331e-06,
+              "linear_iterations": 1302,
+              "true_linear_relative_residual": 7.598295047476997e-07,
+              "linear_wall_s": 322.970199312,
+              "maximum_log_direction": 73.59688016793491,
+              "minimum_signed_log_direction": -73.59688016793491,
+              "maximum_signed_log_direction": 2.075101451227655,
+              "objective_descent": -5.857548258491037e-13,
+              "mobility_curvature": 2.4650960587421225e-11,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 73.59688016793491,
+              "objective_change": -3.102507848014521e-13
+            },
+            {
+              "iteration": 4,
+              "relative_residual": 3.481745491124231e-07,
+              "linear_iterations": 1294,
+              "true_linear_relative_residual": 9.970595771734124e-07,
+              "linear_wall_s": 348.46253598399994,
+              "maximum_log_direction": 24.57464342280249,
+              "minimum_signed_log_direction": -24.57464342280249,
+              "maximum_signed_log_direction": 2.5597600441203867,
+              "objective_descent": -1.3400690257033962e-14,
+              "mobility_curvature": 6.947997589063733e-13,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 24.57464342280249,
+              "objective_change": -6.891071876561511e-15
+            },
+            {
+              "iteration": 5,
+              "relative_residual": 8.016176678327701e-08,
+              "linear_iterations": 1142,
+              "true_linear_relative_residual": 9.876170936533628e-07,
+              "linear_wall_s": 316.69564644000013,
+              "maximum_log_direction": 7.143815398131054,
+              "minimum_signed_log_direction": -7.143815398131054,
+              "maximum_signed_log_direction": 0.6028677453751025,
+              "objective_descent": -9.830406559969831e-17,
+              "mobility_curvature": 7.061454424003013e-15,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 7.143815398131054,
+              "objective_change": -5.254439368088034e-17
+            },
+            {
+              "iteration": 6,
+              "relative_residual": 4.6064041146537715e-09,
+              "linear_iterations": 1100,
+              "true_linear_relative_residual": 8.693515789742531e-07,
+              "linear_wall_s": 291.89119732999984,
+              "maximum_log_direction": 1.4543679787932007,
+              "minimum_signed_log_direction": -1.4543679787932007,
+              "maximum_signed_log_direction": 0.0850085315812568,
+              "objective_descent": -1.5896802376388685e-18,
+              "mobility_curvature": 1.5995704215147386e-16,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 1.4543679787932007,
+              "objective_change": -7.999772148436429e-19
+            },
+            {
+              "iteration": 7,
+              "relative_residual": 2.1543409904022655e-11,
+              "linear_iterations": 1151,
+              "true_linear_relative_residual": 9.564345839004609e-07,
+              "linear_wall_s": 289.30004869100003,
+              "maximum_log_direction": 0.013990469641024846,
+              "minimum_signed_log_direction": -0.013990469641024846,
+              "maximum_signed_log_direction": 0.0006973588332686616,
+              "objective_descent": -1.6698142480331086e-22,
+              "mobility_curvature": 1.2658204444131057e-20,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.013990469641024846,
+              "objective_change": -8.349973249425768e-23
+            }
+          ],
+          "magnetic_moment_bin_populations": [
+            0.0540564112084999,
+            0.052415923788328364,
+            0.020176013060868282,
+            0.004803679241128779,
+            0.0008645231305901836,
+            0.00013090223887564362,
+            1.8151415351201183e-05,
+            2.5084156089009282e-06,
+            3.751632772674363e-07,
+            6.527445343707344e-08,
+            1.3877157730501999e-08,
+            3.5897611618814434e-09,
+            9.204765663839847e-10
+          ],
+          "relative_marginal_bin_errors": [
+            -1.412003335711223e-15,
+            -5.295256404850262e-16,
+            -2.235466949755031e-15,
+            3.611239195831857e-16,
+            -1.504925155784347e-15,
+            -2.691823372039751e-15,
+            3.1732093227364223e-15,
+            1.6883823881669895e-16,
+            -1.4111071741612822e-16,
+            1.6220605892756865e-15,
+            2.86115285086618e-15,
+            2.304277569595998e-16,
+            -1.2356353043603138e-15
+          ],
+          "number_error": 1.06144021814734e-18,
+          "energy_error": 1.6028991527139447e-18,
+          "marginal_error": 1.2546229591633484e-18,
+          "min_f": 5.43488229830079e-232
+        }
+      ],
+      "error_type": "StepFailure",
+      "error": "SOLVAX PCG rejected lagged correction: status=1, iterations=1460, true residual=3.118e-04"
+    }
+  ],
   "missing_cases": [
     {
       "field": "dipole",
@@ -23548,7 +23923,7 @@
   "reproduce": "MPLBACKEND=Agg python examples/12_nonuniform_evolution.py",
   "collection_note": "Each case was run independently at the frozen producing commit. Stored checks recomputed after strict artifact validation. Missing or failed cases remain explicit.",
   "figure_provenance": {
-    "source_commit": "719b4c1919d1947ad6fadb20f34f14e4d0ad4a54",
+    "source_commit": "20dda8d76adda9c89079490895d8f882a6c59433",
     "script_sha256": "4f900aa3c18c293aec8f9da98124b1ed17989dda87caf604c1c6beddc83b4f80",
     "function": "plot_evolution_evidence",
     "scope": "Plot-only execution on the audited saved rows; no solver rerun"

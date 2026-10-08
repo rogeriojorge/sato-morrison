@@ -37,7 +37,7 @@ The full flux distribution supplies additional constraints. Two populations can 
 
 ![Nonlinear relaxation, independent refinement checks, sampled continuum-constraint errors and discrete conservation. The title reports how many planned cases are complete.](results/nonuniform_entropy/evolution.png)
 
-The mirror campaign passes, but its coarse timestep retains **2–3% bias**. Finest-pair agreement does not certify a coarse run. **Dipole and nonaxisymmetric refinements are still running.** [Complete histories and pending cases](results/nonuniform_entropy/summary.json) · [Script](examples/12_nonuniform_evolution.py)
+The mirror campaign passes, but its coarse timestep retains **2–3% bias**. Finest-pair agreement does not certify a coarse run. **One dipole solve was rejected; remaining dipole and nonaxisymmetric cases are running.** [Complete histories and pending cases](results/nonuniform_entropy/summary.json) · [Script](examples/12_nonuniform_evolution.py)
 
 ## Run
 
