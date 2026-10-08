@@ -167,7 +167,7 @@ axes[0,0].plot(uplot,raw[:,3],color='#b75b28',label=r'$h_0=m\,u/B$')
 axes[0,0].plot(uplot,mixed[:,3],color='#2166ac',label=r'$h=m\,u/B+\phi$')
 axes[0,0].set(xlabel=r'Parallel velocity $u$',ylabel=r'Common action component $A_u$',title='Local cancellation of velocity dependence')
 axes[0,0].legend(frameon=False)
-axes[0,0].text(.04,.05,f'Full-action local pair error < {maximum_identity:.1e}\n'+r'$A_\eta h=0$; both charge signs checked',transform=axes[0,0].transAxes,fontsize=9)
+axes[0,0].text(.04,.05,f'Max identity/pair error: {maximum_identity:.1e}\n'+r'$A_\eta h=0$; both charge signs checked',transform=axes[0,0].transAxes,fontsize=9)
 axes[0,1].loglog([row['separation'] for row in pairs[1:]],
     [row['projected_spatial_quadratic'] for row in pairs[1:]],color='#b75b28',label='Spatially separated pair')
 axes[0,1].set(xlabel=r'Spatial separation $\delta x$',ylabel=r'$\|I_xP_\xi\Delta A h\|^2$',title='A separated pair breaks the cancellation')
