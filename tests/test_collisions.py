@@ -280,3 +280,77 @@ def test_nonuniform_constructor_rejects_invalid_physical_parameters(parameters):
     with pytest.raises(ValueError):
         toroidal_grid(np.linspace(1,1.5,3),np.arange(3)*2*np.pi/3,np.arange(3)*2*np.pi/3,
             np.linspace(-2,2,3),np.array([.1,1.1]),**parameters)
+
+
+def collocation_example_functions():
+    # Load only reusable definitions; the top-level scientific experiment stays
+    # unexecuted during unit tests, including metadata and output creation.
+    import ast
+    from pathlib import Path
+    from sato_morrison.collisions import cartesian_grid
+    source=Path(__file__).resolve().parents[1]/'examples/21_collocation_nullspace.py'
+    tree=ast.parse(source.read_text())
+    definitions=ast.Module(body=[node for node in tree.body if isinstance(node,ast.FunctionDef)],type_ignores=[])
+    namespace={'np':np,'cartesian_grid':cartesian_grid}
+    exec(compile(definitions,str(source),'exec'),namespace)
+    return namespace
+
+
+@pytest.mark.parametrize('c,a',[(1.,.2),(1.4,.15),(.4,.1)])
+def test_collocation_angular_alias_and_exact_overintegration(c,a):
+    from sato_morrison.reference import gauss_interval
+    helpers=collocation_example_functions();phi=helpers['alias_polynomial'];residue=helpers['angular_residue']
+    k=3*a*a/5;x,wx=gauss_interval(3,c-a,c+a);y,wy=gauss_interval(3,-a,a)
+    xx,yy=np.meshgrid(x,y,indexing='ij');nodal=phi(xx,yy,c,k)
+    dx=helpers['polynomial_derivative'](x);dy=helpers['polynomial_derivative'](y)
+    angle=-yy.ravel()[:,None]*np.kron(dx,np.eye(3))+xx.ravel()[:,None]*np.kron(np.eye(3),dy)
+    # Cancellation is scale-sensitive: bound the normalized matrix-vector
+    # residue against its absolute accumulation, rather than an absolute zero.
+    accumulation=np.max(np.abs(angle)@np.abs(nodal.ravel()))
+    assert np.max(np.abs(angle@nodal.ravel()))<50*np.finfo(float).eps*accumulation
+    singular=np.linalg.svd(angle,compute_uv=False)
+    assert np.sum(singular<singular[0]*1e-12)==3
+    basis=np.column_stack((np.ones(9),(xx*xx+yy*yy).ravel(),nodal.ravel()))
+    assert np.linalg.matrix_rank(basis)==3
+    # Independent AD of the explicit polynomial verifies the raised-degree
+    # angular residue away from nodes, without invoking its factor identity.
+    point=jnp.array([c+.9*a,.9*a]);gradient=jax.grad(lambda v:phi(v[0],v[1],c,k))(point)
+    actual=-point[1]*gradient[0]+point[0]*gradient[1]
+    np.testing.assert_allclose(actual,residue(*point,c,k),rtol=2e-11,atol=3e-15)
+    assert abs(float(actual))>1e-7
+    assert np.einsum('i,j,ij->',wx,wy,residue(xx,yy,c,k)**2)<1e-28
+    closed=helpers['angular_integral'](a,c)
+    for order in (4,7):
+        qx,qwx=gauss_interval(order,c-a,c+a);qy,qwy=gauss_interval(order,-a,a)
+        qxx,qyy=np.meshgrid(qx,qy,indexing='ij')
+        integral=np.einsum('i,j,ij->',qwx,qwy,residue(qxx,qyy,c,k)**2)
+        np.testing.assert_allclose(integral,closed,rtol=2e-13,atol=0.)
+
+
+@pytest.mark.parametrize('kind',['mirror','dipole','nonaxisymmetric'])
+def test_collocation_pair_factor_alias_nulls_are_unmodified(kind):
+    from sato_morrison.geometry import Field
+    from sato_morrison.reference import gauss_interval
+    helpers=collocation_example_functions()
+    field=Field(kind,amplitude=.15 if kind=='mirror' else .03 if kind=='nonaxisymmetric' else 0.)
+    spatial=[gauss_interval(3,a,b) for a,b in ((.8,1.2),(-.2,.2),(.1,.5))]
+    data=helpers['pair_factors'](field,spatial,gauss_interval(3,-4.,4.),gauss_interval(3,0.,20.))
+    F,L=data['F'],data['L'];singular=np.linalg.svd(F,compute_uv=False)
+    expected=4 if kind=='nonaxisymmetric' else 12
+    assert np.sum(singular<singular[0]*1e-12)==expected
+    assert data['pair_weight_error']<1e-12
+    extra=data['extra'];relative=np.linalg.norm(F@extra,axis=0)/(singular[0]*np.linalg.norm(extra,axis=0))
+    if kind=='nonaxisymmetric':
+        assert np.min(relative)>1e-5
+        candidates=data['known'][:,:4]
+    else:
+        assert np.max(relative)<1e-13
+        candidates=np.column_stack((data['known'],extra))
+    assert np.linalg.matrix_rank(candidates)==expected
+    np.testing.assert_allclose(F@candidates,0.,atol=2e-11)
+    # Original production action is an oracle for the independently lifted,
+    # unordered positive rectangular factor. No spectral repair is performed.
+    probe=np.sin(.13*np.arange(data['grid'].size))
+    actual=np.asarray(mobility_action(data['grid'],jnp.asarray(data['f']),jnp.asarray(probe),collision_strength=.1))
+    reference=L.T@(L@probe)
+    assert np.linalg.norm(actual-reference)/np.linalg.norm(reference)<1e-11
