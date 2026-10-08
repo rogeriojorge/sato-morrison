@@ -1031,6 +1031,69 @@ Ideal flow generally changes these populations. They are not interior
 Casimirs of the Poisson tensor and are not claimed to be invariants of the
 full combined dynamics.
 
+\subsection*{Angular collocation nulls and polynomial reconstruction}
+An observed discrete null need not have a null tensor-polynomial interpolant.
+This matters when interpreting a small Cartesian-box spectrum. In an
+axisymmetric poloidal field, the spatial sufficient condition becomes
+$\mathbf t\cdot\nabla\phi=(t_\theta/R)L\phi=0$, where
+$L=x\partial_y-y\partial_x$. Consider three Gauss nodes on
+$x\in[c-a,c+a]$, $y\in[-a,a]$, with $c>a>0$ and
+$k=3a^2/5$. Their monic node polynomials are
+\[
+ p_x=(x-c)^3-k(x-c),\qquad p_y=y^3-ky.
+\]
+The tensor-quadratic polynomial
+\begin{equation}
+ \phi_{\rm a}=(x^2-3cx)y^2-3c^2x^2+c(2c^2+k)x
+ \label{eq:angularalias}
+\end{equation}
+satisfies the exact identity
+\begin{equation}
+ L\phi_{\rm a}=2y p_x-(2x-3c)p_y.
+ \label{eq:angularaliasidentity}
+\end{equation}
+The tensor derivative differentiates $\phi_{\rm a}$ exactly, but its angular
+derivative vanishes at every collocation node. It is not identically zero
+between them: with $c=1$, $a=0.2$, at $(x,y)=(1.18,0.18)$ the value is
+$0.001512$. Thus the sampled local pair form vanishes for this interpolant,
+while its continuum form is positive on off-grid neighborhoods where
+$L\phi_{\rm a}\ne0$, $s\ne0$, $t_\theta\ne0$, and the velocity-pair
+measure is positive.
+
+There is a complete elementary classification of this planar collocation
+kernel within the tensor-quadratic space. Split a polynomial into the
+$y$-even part $A(x)+B(x)y^2$ and the odd part $C(x)y$, with all three
+coefficient polynomials of degree at most two. The angular derivative flips
+parity, so the two equations separate on the symmetric node set. At $y=0$
+the odd part gives $xC(x)=0$ at three nonzero $x$ nodes, hence $C=0$.
+At the two nonzero $y$ nodes, $y^2=k$, so the even equation is
+\[
+ 2x B-k B'-A'=\lambda p_x.
+\]
+Equating polynomial coefficients leaves exactly three free coefficients.
+The kernel is therefore $\operatorname{span}\{1,R^2,\phi_{\rm a}\}$.
+With three independent $z$ nodes, multiplication by $1,z,z^2$ gives nine
+spatial collocation nulls. Adding three moment-bin indicators and energy,
+and accounting for the shared constant, gives twelve independent known
+null vectors for the specified mirror and dipole grids. This is a statement
+about the sampled operator and the stated reconstruction, not a continuum
+nullspace classification. The same nodal values could also be interpolated
+by a different, nonpolynomial function of $R^2$.
+
+The missed angular derivative has a positive exact squared integral:
+\begin{equation}
+ \int_{c-a}^{c+a}\int_{-a}^{a}(L\phi_{\rm a})^2\,\dd y\dd x
+ =\frac{128a^{10}}{525}+\frac{16c^2a^8}{175}.
+ \label{eq:angularaliasintegral}
+\end{equation}
+To obtain it, use $\int p_y^2\dd y=8a^7/175$ and the orthogonality of
+$p_y$ to constants and linear polynomials; the cross term in
+\eqref{eq:angularaliasidentity} integrates to zero. The three-node tensor
+rule returns zero, whereas four or more Gauss nodes integrate the fixed
+squared polynomial exactly, since its degree in either coordinate is at
+most six. This is an overintegration diagnostic of the fixed interpolant;
+it does not modify or repair the production collision operator.
+
 \subsection*{A mixed local moment and its angular obstruction}
 The spatial classification above does not exhaust velocity-dependent local
 collision invariants. A further sufficient construction follows directly
