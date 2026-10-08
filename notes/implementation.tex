@@ -2245,6 +2245,43 @@ does not guarantee convergence in binary64. This failure is not a physical
 decay measurement or a converged dipole refinement. No clipping, kernel
 change or relaxed tolerance is used to turn it into a passing result.
 
+\paragraph{An elementary obstruction to a relative maximum principle.}
+Let the finite collision matrix $K$ be symmetric with $K\bm1=0$ and
+$KE=0$. If all off-diagonal entries satisfy $K_{ij}\le0$, then
+\[
+ E^TKE=\sum_{i<j}(-K_{ij})(E_i-E_j)^2=0.
+\]
+Every nonzero off-diagonal edge must therefore join equal discrete energies.
+Applying the same identity to each null moment-bin indicator forces every
+edge to stay within its moment-bin partition as well. Thus conservative
+coupling between unequal energies cannot have this graph-Laplacian sign
+pattern. Positive semidefiniteness of a weak Gram matrix does not impose it.
+
+This sign condition would imply a relative maximum principle for the
+lagged entropy equation. Write $f=f_\star e^s$, where the positive stationary
+reference's log is a linear combination of represented invariants, so
+$K\ln f_\star=0$ for every frozen mobility, and $n_{\star i}=w_i f_{\star i}$.
+The equation is
+$n_{\star i}(e^{s_{\rm new,i}}-e^{s_{\rm old,i}})
++\Delta t(Ks_{\rm new})_i=0$.
+At a maximum of $s_{\rm new}$ the graph sign gives
+$(Ks_{\rm new})_i\ge0$, and at a minimum it gives the opposite inequality,
+bounding the new ratios by their initial envelope. Conversely, if the matrix
+frozen at the stationary population has $K_{ij}>0$, its linearized resolvent satisfies
+$[(M_\star+\Delta tK)^{-1}M_\star]_{ij}
+=-\Delta t K_{ij}/n_{\star i}+O(\Delta t^2)<0$
+for sufficiently small positive $\Delta t$, with
+$M_\star=\diag(n_\star)$. It is not order preserving.
+Conservation, entropy increase and positive nodal populations consequently
+do not by themselves imply initial bounds on $f/f_\star$.
+For a rare node, a large negative log change $\delta_i$ contributes only
+$n_{{\rm old},i}(e^{\delta_i}-1-\delta_i)
+\sim n_{{\rm old},i}|\delta_i|$ to the numerical KL budget;
+weighted control supplies no useful mass-independent pointwise bound.
+This is a finite-dimensional structural statement, not an attribution to
+spatial discretization, a physical positivity failure, or a diagnosis of the
+particular dipole tail magnitude above.
+
 \paragraph{Solver-tolerance audit on one fixed mirror grid.}
 Example 19 at source revision \texttt{e1bc1ab} retains every state in five
 four-step runs on $3^3\times25\times21$ nodes, with $D=0.1$, $T=0.02$
