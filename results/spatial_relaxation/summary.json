@@ -1,0 +1,138 @@
+{
+  "model": "Prescribed dipole geometry and accepted collision-only pilot snapshots",
+  "boundary": "Natural no-flux collision box; field-line drawing extends outside the box without evolving a distribution",
+  "units": "normalized",
+  "inputs": {
+    "input_sha256": {
+      "summary.json": "8826a377f7d6a8d363f6a49236e205de9c42f24c9e21a6b45ea78a2b92b773f4",
+      "state_dipole_mu13.npz": "fcec71607fa066fc095b94de5ab92cf6fd4bfe7724620fd56d249cdf5f27c7a7",
+      "dipole_mu13_pair_audit.json": "338882dc755486cd284baf0c13e98c47189f57b740ccea14a5521a46dc4202de"
+    },
+    "simulation_producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+    "bounds": [
+      [
+        0.8,
+        1.2
+      ],
+      [
+        -0.2,
+        0.2
+      ],
+      [
+        0.1,
+        0.5
+      ]
+    ],
+    "nx": 5,
+    "nu": 25,
+    "nmu": 13,
+    "mass": 1.0,
+    "field_strength": 1.0,
+    "times": [
+      0.0,
+      0.015,
+      0.02
+    ],
+    "u_bounds": [
+      -4,
+      4
+    ],
+    "mu_bounds": [
+      0,
+      20
+    ],
+    "z_slice_index": 2,
+    "local_velocity_points": [
+      [
+        2,
+        1,
+        2
+      ],
+      [
+        2,
+        3,
+        2
+      ]
+    ],
+    "L_shells": [
+      0.7,
+      1.05,
+      1.4,
+      1.8,
+      2.2
+    ],
+    "azimuths": [
+      0.0,
+      0.7853981633974483,
+      1.5707963267948966,
+      2.356194490192345,
+      3.141592653589793,
+      3.9269908169872414,
+      4.71238898038469,
+      5.497787143782138
+    ],
+    "field_line_source_cutoff": 0.25
+  },
+  "commit": "1f0438e37d101f112428a4e45da8f9446a79b644",
+  "working_tree": "M results/encounter_movie/declared_inputs.json\n M results/encounter_movie/poster.svg\n M results/encounter_movie/summary.json\n?? results/encounter_movie/encounter_spatial.gif\n?? results/encounter_movie/encounter_spatial.mp4\n?? results/encounter_movie/spatial_poster.png\n?? results/encounter_movie/spatial_poster.svg\n?? results/spatial_relaxation/",
+  "source_sha256": "c8448735381a849ca8889312d54e0d1e732f74899327712bae67cd9c6bf97cfe",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "unset",
+    "OPENBLAS_NUM_THREADS": "unset",
+    "MKL_NUM_THREADS": "unset",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": true,
+  "example_sha256": "f3b4334d64a17d50fca19961587819b13aa93205a24f007c4191076738ba6cbd",
+  "status": "passed_saved_state_and_geometry_checks",
+  "checks": {
+    "initial_formula_max_relative_error": 2.1316282072803006e-14,
+    "weights_max_relative_error": 1.6431300764452317e-14,
+    "number_max_relative_error": 4.440892098500626e-16,
+    "energy_max_relative_error": 1.3322676295501878e-15,
+    "mu_bin_max_relative_error": 2.220446049250313e-15,
+    "field_max_relative_error": 8.37574097649317e-16,
+    "field_tangent_max_relative_cross": 3.7798066333905214e-16,
+    "flux_max_relative_error": 5.551115123125783e-16
+  },
+  "observable_definitions": {
+    "density": "B sum(wu wmu f)",
+    "mean_parallel_velocity": "B sum(wu wmu u f)/density",
+    "conditional_velocity": "sum(wmu f)/sum(wu wmu f)",
+    "thermal_reference": "exp(-u\u00b2/2) normalized by the same wu quadrature",
+    "mu_bin_population": "wmu sum(wX B wu f)"
+  },
+  "display": {
+    "geometry": "Equal physical unit lengths on 3D axes; static field lines, prescribed source cutoff. The right panel has a logarithmic field-strength scale.",
+    "maps": "Piecewise-constant display tiles associated with quadrature nodes, with midpoint display edges clipped at the box bounds. Tiles are not finite-volume cell averages.",
+    "time": "Only t=0,.015,.02 accepted snapshots. No interpolation of simulation states.",
+    "velocity": "Both local curves use x=1,z=.3, and the stated opposite-y quadrature nodes. Lines connect discrete velocity samples."
+  },
+  "scope": "Saved finite-grid collision-only pilot; the full nonuniform refinement and physical collision-rate calibration remain unresolved.",
+  "wall_s": 0.9549059999990277,
+  "wall_s_scope": "Input verification, analytic geometry evaluation and figure rendering; excludes imports and final metadata write.",
+  "outputs": {
+    "dipole_relaxation.svg": "4172681ec10f905fd6495208e2a166b463db70124cb48d8622e4ee63b5887979",
+    "dipole_relaxation.png": "e14501399944ae93b21199e77605fb03309414e57730eca98c4de0ba6a285ae4",
+    "plotted_arrays.npz": "4b42129d57bb93d7372bc2ca7445e2f1a75ba996a8bb9f7739fca29b28a2d8ff",
+    "dipole_geometry.svg": "beddd73406bd68a84ba34b82b4fe2bd246567b299df4438307f88a6bd8e7198f",
+    "dipole_geometry.png": "609a0fa8d6aaeca671fef4595347f58dc95fdcb02e0c596f56123b942908f2be"
+  }
+}

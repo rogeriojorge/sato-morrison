@@ -25,11 +25,32 @@
     "position_target": 1e-08,
     "mu_increment_target": 1e-10,
     "energy_target": 1e-08,
+    "spatial_view": {
+      "video_dpi": 120,
+      "particle_colors": {
+        "particle_1": "#147D92",
+        "particle_2": "#C66B28"
+      },
+      "camera": {
+        "elevation": 20.0,
+        "azimuth": -55.0
+      },
+      "box_aspect": [
+        1.0,
+        1.0,
+        1.4
+      ],
+      "axis_scaling": "3D box is anisotropic: z visually compressed; x-z close projection has equal physical length aspect.",
+      "coordinate_units": "normalized length, same physical coordinates as saved trajectories",
+      "close_projection_half_width": 1.5,
+      "head_rule": "Last original saved sample at or before the common clock; no interpolation. Head disappears at exit; square marks the actual outgoing endpoint.",
+      "closest_rule": "Star marks the closest saved trajectory sample only after its physical time; not a certified continuous minimum."
+    },
     "scope": "Two individual12D zero-COM paths, not a COM-averaged ensemble, phase-converged integral, collision rate or lifetime."
   },
-  "commit": "685918fd05fd1ff08bc91579600bc9ee307cf97b",
-  "working_tree": "M README.md\n M examples/README.md\n M notes/implementation.tex\n?? results/encounter_movie/\n?? results/nonuniform_spatial_blocks_full/dipole_dt16_replay/tail_guard.png\n?? results/nonuniform_spatial_blocks_full/dipole_dt16_replay/tail_guard.svg\n?? results/nonuniform_spatial_blocks_full/dipole_dt16_replay/tail_guard_metadata.json",
-  "source_sha256": "25987e4e4d372304468fcd7dd61312ef535f13372defca6c37041365a692bf2d",
+  "commit": "1086714f8fdc180d154d3a8b08fe56e99abdb0fc",
+  "working_tree": "M results/encounter_movie/declared_inputs.json\n M results/encounter_movie/poster.svg\n M results/encounter_movie/summary.json\n?? results/encounter_movie/encounter_spatial.gif\n?? results/encounter_movie/encounter_spatial.mp4\n?? results/encounter_movie/spatial_poster.png\n?? results/encounter_movie/spatial_poster.svg\n?? results/spatial_relaxation/",
+  "source_sha256": "08bc176ffb373f34e8fc4f09a29d0136a6d443503c65429028b5ffd9aedf457d",
   "versions": {
     "sato-morrison": "0.1.0",
     "jax": "0.11.2",
@@ -39,7 +60,7 @@
     "scipy": "1.18.1",
     "matplotlib": "3.11.2"
   },
-  "source_changes": "M examples/README.md",
+  "source_changes": "",
   "logical_cpus": 10,
   "thread_environment": {
     "OMP_NUM_THREADS": "unset",
@@ -59,7 +80,7 @@
   "pillow_version": "12.3.0",
   "ffmpeg_version": "ffmpeg version 8.1.2 Copyright (c) 2000-2026 the FFmpeg developers",
   "experiment_dependency_sha256": {
-    "examples/27_encounter_movie.py": "063adae624df29bed26388c103bf71b233ccd98611db801203117d48f5a3c916",
+    "examples/27_encounter_movie.py": "23c9f2cf1ada5479c2067baa294ee5ec8cfc86d4fee5721f7f590737c7d18039",
     "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
   },
   "input_sha256": {
@@ -69,7 +90,7 @@
     "results/encounter_phase/independent_audit.json": "a4ce88b4d75dc7f9f3c6da52b0f23ba6b3ccb2fe4de580804f150e9f14d72fb0"
   },
   "experiment_dependency_sha256_end": {
-    "examples/27_encounter_movie.py": "063adae624df29bed26388c103bf71b233ccd98611db801203117d48f5a3c916",
+    "examples/27_encounter_movie.py": "23c9f2cf1ada5479c2067baa294ee5ec8cfc86d4fee5721f7f590737c7d18039",
     "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
   },
   "results": {
@@ -108,15 +129,204 @@
     "fps": 10,
     "display_duration_s": 12.0,
     "mp4_status": "rendered",
+    "spatial_mp4_status": "rendered",
+    "spatial_view": {
+      "xy_limits": [
+        -1.3493745459550792,
+        1.3493745459550792
+      ],
+      "z_limits": [
+        -12.72,
+        12.72
+      ],
+      "box_aspect": [
+        1.0,
+        1.0,
+        1.4
+      ],
+      "camera": {
+        "elevation": 20.0,
+        "azimuth": -55.0
+      },
+      "z_unit_visual_size_relative_to_x": 0.14851606637870365,
+      "close_projection_limits": [
+        -1.5,
+        1.5
+      ],
+      "close_projection_equal_aspect": true,
+      "sample_reveal_rule": "searchsorted(time,current,side=right); original saved points only",
+      "frame_times": [
+        0.0,
+        0.759246478112767,
+        1.518492956225534,
+        2.277739434338301,
+        3.036985912451068,
+        3.7962323905638353,
+        4.555478868676602,
+        5.314725346789369,
+        6.073971824902136,
+        6.833218303014903,
+        7.592464781127671,
+        8.351711259240437,
+        9.110957737353203,
+        9.870204215465971,
+        10.629450693578738,
+        11.388697171691506,
+        12.147943649804272,
+        12.907190127917039,
+        13.666436606029807,
+        14.425683084142573,
+        15.184929562255341,
+        15.944176040368108,
+        16.703422518480874,
+        17.462668996593642,
+        18.221915474706407,
+        18.981161952819175,
+        19.740408430931943,
+        20.49965490904471,
+        21.258901387157476,
+        22.018147865270244,
+        22.777394343383012,
+        23.536640821495777,
+        24.295887299608545,
+        25.055133777721313,
+        25.814380255834077,
+        26.573626733946845,
+        27.332873212059614,
+        28.092119690172378,
+        28.851366168285146,
+        29.610612646397914,
+        30.369859124510683,
+        31.129105602623447,
+        31.888352080736215,
+        32.64759855884898,
+        33.40684503696175,
+        34.16609151507451,
+        34.925337993187284,
+        35.68458447130005,
+        36.44383094941281,
+        37.203077427525585,
+        37.96232390563835,
+        38.72157038375112,
+        39.480816861863886,
+        40.24006333997665,
+        40.99930981808942,
+        41.75855629620219,
+        42.51780277431495,
+        43.27704925242772,
+        44.03629573054049,
+        44.79554220865325,
+        45.554788686766024,
+        46.31403516487879,
+        47.07328164299155,
+        47.832528121104325,
+        48.59177459921709,
+        49.351021077329854,
+        50.110267555442626,
+        50.86951403355539,
+        51.628760511668155,
+        52.388006989780926,
+        53.14725346789369,
+        53.906499946006456,
+        54.66574642411923,
+        55.42499290223199,
+        56.184239380344756,
+        56.94348585845753,
+        57.70273233657029,
+        58.46197881468306,
+        59.22122529279583,
+        59.98047177090859,
+        60.739718249021365,
+        61.49896472713413,
+        62.258211205246894,
+        63.017457683359666,
+        63.77670416147243,
+        64.5359506395852,
+        65.29519711769797,
+        66.05444359581072,
+        66.8136900739235,
+        67.57293655203627,
+        68.33218303014903,
+        69.0914295082618,
+        69.85067598637457,
+        70.60992246448733,
+        71.3691689426001,
+        72.12841542071287,
+        72.88766189882563,
+        73.6469083769384,
+        74.40615485505117,
+        75.16540133316394,
+        75.9246478112767,
+        76.68389428938947,
+        77.44314076750224,
+        78.202387245615,
+        78.96163372372777,
+        79.72088020184054,
+        80.4801266799533,
+        81.23937315806607,
+        81.99861963617884,
+        82.7578661142916,
+        83.51711259240437,
+        84.27635907051715,
+        85.0356055486299,
+        85.79485202674267,
+        86.55409850485545,
+        87.3133449829682,
+        88.07259146108098,
+        88.83183793919375,
+        89.5910844173065,
+        90.35033089541928
+      ],
+      "paths": [
+        {
+          "phase": 0.0,
+          "sample_count": 1015,
+          "position_min": [
+            -0.9987866236052638,
+            -0.5025660319217095,
+            -12.000000000000028
+          ],
+          "position_max": [
+            0.9987866236052638,
+            0.5025660319217095,
+            12.000000000000028
+          ],
+          "closest_saved_sample_index": 488,
+          "closest_saved_sample_time": 12.198065808262319,
+          "sampled_minimum_separation": 1.0734211680599004
+        },
+        {
+          "phase": 1.5707963267948966,
+          "sample_count": 3651,
+          "position_min": [
+            -1.1044093208499077,
+            -1.2267041326864356,
+            -12.000000000003395
+          ],
+          "position_max": [
+            1.1044093208499077,
+            1.2267041326864356,
+            12.000000000003395
+          ],
+          "closest_saved_sample_index": 521,
+          "closest_saved_sample_time": 12.608049116501315,
+          "sampled_minimum_separation": 0.02251235812880642
+        }
+      ]
+    },
     "dependencies_unchanged": true,
-    "wall_s": 22.0410617919988,
+    "wall_s": 95.97994370799279,
     "wall_s_scope": "Input arithmetic validation and movie/poster rendering; no new ODE solve.",
     "scope": "Two individual12D zero-COM paths, not a COM-averaged ensemble, phase-converged integral, collision rate or lifetime."
   },
   "output_sha256": {
     "encounter.gif": "377edc61c97fc4b669c3a8728f20a6ab0eb2d4d98385930bf208e30bc0d85787",
-    "poster.svg": "fa1e1fcc48f8a89ee62b3d7dd2a4846b4d588058413a5b0d362aaf0f113c3ec1",
+    "poster.svg": "c1811895f93fea8476a421645ab6c30c2f2684b042a155689cf61f11507beaff",
+    "encounter_spatial.mp4": "657f929ce472eccf456bc8e1d0a546d879e7a5402767f04fc826a619a54f74cc",
     "poster.png": "c46780e088c084e319e602a41f967efae268da709d64589bcbd62db8bccddecd",
-    "encounter.mp4": "2c72165e530888a0c2d44c33dda708213d29a7396b97b5f4c8638d4e0db520fb"
+    "encounter.mp4": "2c72165e530888a0c2d44c33dda708213d29a7396b97b5f4c8638d4e0db520fb",
+    "encounter_spatial.gif": "0bf2ec8be2da65de371d6bcd16c463e67967a14d3f28c7c663caea409fd8ac5c",
+    "spatial_poster.png": "f623b2602f986d6a68bece0c988d27546145a831d38ed2b229fd616d5309e3ca",
+    "spatial_poster.svg": "5c9b011980f8fb73f8adf6f83c0e0341049a4ee6a64bcdee5176717fafbaf367"
   }
 }

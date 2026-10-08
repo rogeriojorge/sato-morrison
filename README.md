@@ -66,7 +66,15 @@ Small nonlinear reference problems use a second-order discrete-gradient step. Th
 | Dipole | Cartesian box excluding the field singularity; natural zero collision flux |
 | Controlled nonaxisymmetric | Vacuum perturbation of the dipole; the same collision-only box treatment |
 
+For fixed μ, perpendicular energy is **E⊥ = μB**: the same moment represents different energies where the field is stronger or weaker. The orange box marks the dipole domain used below.
+
+![Three-dimensional dipole field lines, the simulation box, and a meridional map of magnetic-field strength.](results/spatial_relaxation/dipole_geometry.png)
+
 The three-field pilot starts from **f = exp[−E − 0.2μ + 0.1u sin(πy/0.4)]** on x ∈ [0.8,1.2], y ∈ [−0.2,0.2], z ∈ [0.1,0.5], u ∈ [−4,4], μ ∈ [0,20]. It uses **5³ × 25 × 13 = 40,625 nodes**, D = 0.1 and four steps of Δt = 0.005.
+
+![Three accepted dipole snapshots of parallel flow, the spatial change, local velocity asymmetry and conserved magnetic-moment populations.](results/spatial_relaxation/dipole_relaxation.png)
+
+Red and blue regions flow along and against the local field. Their speeds weaken unevenly across the box. The lower curves show the local velocity density **p(u|X)** relative to the normalized Gaussian **pM ∝ exp(−u²/2)**. Every global μ-bin population is retained to **2.22×10⁻¹⁵** relatively. Dots mark the spatial quadrature nodes; the three maps are the archived states at **t = 0, 0.015, 0.02**. [Plotted arrays and checks](results/spatial_relaxation/summary.json)
 
 ![Recorded entropy relaxation and conservation of every magnetic-moment bin in the mirror, dipole and nonaxisymmetric pilots.](results/first_principles/nonuniform_relaxation.svg)
 
@@ -94,9 +102,13 @@ The finite-grid spectra retain every null mode. Three extra axisymmetric polynom
 
 Two repelling particles in a uniform field provide a physical check on magnetic-moment conservation. The incoming speeds and orbit-center separation are fixed while the phase around the spiral varies.
 
-![Complete transmitted and reflected trajectories, with their magnetic-moment histories.](results/encounter_movie/poster.svg)
+![Three-dimensional paths of both particles for transmitted and reflected encounters, with equal-scale close-approach projections.](results/encounter_movie/spatial_poster.png)
 
-![Two independently checked encounters on one clock, with transmission, reflection and individual magnetic-moment changes.](results/encounter_movie/encounter.gif)
+![Movie of two recorded particle encounters, with a fixed camera, shared clock and close-approach projections.](results/encounter_movie/encounter_spatial.gif)
+
+The left pair transmits; the right pair reflects. The lower projections resolve the close approach on equal spatial scales. The upper views compress the long z direction. Both encounters use the same clock, and each path stops at its outgoing event.
+
+![Separation and magnetic-moment histories for the two recorded encounters.](results/encounter_movie/poster.svg)
 
 One path transmits at **t = 25.35**; the other reflects at **t = 90.35**. Their final magnetic moments are **1.020** and **1.912** times their initial values. Each curve stops at its outgoing event. These zero-center-of-mass paths lie outside a verified adiabatic/grazing regime. [Trajectory inputs and checks](results/encounter_movie/summary.json)
 
@@ -146,6 +158,7 @@ MPLBACKEND=Agg python examples/01_relaxation.py
 MPLBACKEND=Agg python examples/22_first_principles.py
 MPLBACKEND=Agg python examples/24_encounter_phase.py
 MPLBACKEND=Agg python examples/27_encounter_movie.py
+MPLBACKEND=Agg python examples/28_spatial_relaxation.py
 ```
 
 Example 24 exits nonzero because the declared angular and Cartesian checks remain unresolved. It saves the results before raising the error.

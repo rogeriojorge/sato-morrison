@@ -3726,6 +3726,63 @@ center average, phase integral or calibrated physical timescale is implied.
 Movie frame count, playback speed, source hashes, rendering versions and
 hardware are saved in \path{results/encounter_movie/summary.json}.
 
+\subsection*{Spatial views of the recorded calculations}
+Example 27 also renders both individual-particle trajectories in three
+spatial dimensions, with identical coordinate bounds, camera and physical
+clock in the transmitted and reflected columns. The long $z$ axis is
+visually compressed; the stored box aspect and limits give its relative
+scale. The lower $x$--$z$ projections use equal physical length scales and
+show $|x|,|z|\le1.5$. Each frame reveals only original saved points with
+time at or before the displayed clock. The moving marker uses the last
+such point and disappears at exit; the outgoing endpoint remains marked.
+The starred close approach is the minimum sampled separation, not a
+continuous-time minimization. These values are approximately $1.0734$ and
+$0.02251$. The animation does not introduce new trajectories or a physical
+collision rate. The GIF and MP4 encodings use the same 120 frames at
+10 frames per second. The static poster shows the final frame.
+
+Example 28 shows the dipole field and the archived dipole pilot states.
+For unit strength, a field line at fixed azimuth has
+\[
+ r=L\sin^2\theta,\qquad R=L\sin^3\theta,\qquad
+ z=L\sin^2\theta\cos\theta,\qquad \psi=R^2/r^3=1/L.
+\]
+Differentiation gives
+$R'=3L\sin^2\theta\cos\theta$ and
+$z'=L(2\sin\theta\cos^2\theta-\sin^3\theta)$.
+Thus its tangent is parallel to the prescribed dipole vector, in the
+increasing-$\theta$ direction. The renderer checks this identity against
+the implemented field and verifies constant flux. It clips these drawing
+curves at $r=0.25$, outside the source; this drawing cutoff does not change
+the collision box or simulation data. The 3D field axes have equal physical
+length scales. The meridional panel uses a logarithmic $|B|$ color scale.
+
+The recorded pilot has $5^3\times25\times13$ nodes, with spatial box
+$[0.8,1.2]\times[-0.2,0.2]\times[0.1,0.5]$, $u\in[-4,4]$,
+$\mu\in[0,20]$, $D=0.1$ and $\Delta t=0.005$. Only initial, previous and
+final spatial states are archived: $t=0,0.015,0.02$. No intervening spatial
+states are reconstructed. Using the same positive quadrature, the plotted
+quantities are
+\begin{align*}
+ n(\X)&=B(\X)\sum_{a,b}w^u_a w^\mu_b f_{\X ab},\\
+ \overline u(\X)&=\frac{B(\X)}{n(\X)}
+        \sum_{a,b}w^u_a w^\mu_b u_a f_{\X ab},\\
+ p(u_a\mid\X)&=\frac{B(\X)}{n(\X)}
+        \sum_b w^\mu_b f_{\X ab},\\
+ N_b&=w^\mu_b\sum_{\X,a}w^X_{\X}B(\X)w^u_a f_{\X ab}.
+\end{align*}
+The conditional velocity density obeys $\sum_a w^u_a p(u_a\mid\X)=1$.
+Its plotted reference $p_M\propto e^{-u^2/2}$ is normalized on the same
+finite $u$ quadrature. The maps use the central $z=0.3$ node; local velocity
+curves use $x=1,z=0.3$ and the two opposite interior $y$ nodes. Display tiles
+are associated with the quadrature nodes and are bounded by node midpoints
+and the box edges. They do not represent finite-volume cell averages.
+These views reveal the spatially varying reduction of the parallel shear,
+while the global moment-bin populations remain fixed. They retain the
+pilot's unresolved grid/tail/timestep scope. Inputs, plotted arrays, tests
+of number, energy and all moment bins, field-line checks, source commits,
+versions and hardware are in \path{results/spatial_relaxation/}.
+
 \bibliographystyle{unsrt}
 \bibliography{references}
 \end{document}

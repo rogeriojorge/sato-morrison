@@ -1,0 +1,158 @@
+{
+  "status": "passed_independent_saved_array_checks",
+  "executed_utc": "2026-10-08T19:11:31.209372+00:00",
+  "units": "normalized",
+  "renderer_producer_commit": "1f0438e37d101f112428a4e45da8f9446a79b644",
+  "simulation_producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+  "input_summary_sha256": "c1a6e757aa465dda765d2acc2b517ce02e88455e3a576fe1766efe6ec16d5055",
+  "input_sha256": {
+    "results/nonuniform_spatial_blocks/summary.json": "8826a377f7d6a8d363f6a49236e205de9c42f24c9e21a6b45ea78a2b92b773f4",
+    "results/nonuniform_spatial_blocks/state_dipole_mu13.npz": "fcec71607fa066fc095b94de5ab92cf6fd4bfe7724620fd56d249cdf5f27c7a7",
+    "results/nonuniform_spatial_blocks/dipole_mu13_pair_audit.json": "338882dc755486cd284baf0c13e98c47189f57b740ccea14a5521a46dc4202de"
+  },
+  "rendered_output_sha256": {
+    "results/spatial_relaxation/dipole_relaxation.svg": "4172681ec10f905fd6495208e2a166b463db70124cb48d8622e4ee63b5887979",
+    "results/spatial_relaxation/dipole_relaxation.png": "e14501399944ae93b21199e77605fb03309414e57730eca98c4de0ba6a285ae4",
+    "results/spatial_relaxation/plotted_arrays.npz": "4b42129d57bb93d7372bc2ca7445e2f1a75ba996a8bb9f7739fca29b28a2d8ff",
+    "results/spatial_relaxation/dipole_geometry.svg": "beddd73406bd68a84ba34b82b4fe2bd246567b299df4438307f88a6bd8e7198f",
+    "results/spatial_relaxation/dipole_geometry.png": "609a0fa8d6aaeca671fef4595347f58dc95fdcb02e0c596f56123b942908f2be"
+  },
+  "renderer_source_sha256": "f3b4334d64a17d50fca19961587819b13aa93205a24f007c4191076738ba6cbd",
+  "renderer_combined_source_sha256": "c8448735381a849ca8889312d54e0d1e732f74899327712bae67cd9c6bf97cfe",
+  "auditor_source_basename": "audit_spatial_relaxation28.py",
+  "auditor_source_sha256": "696a2db4603fa8dfb2e16dc2000f7593e5cb343e5cbba040b3d2fe77bbde1a45",
+  "normalized_command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 .venv/bin/python audit_spatial_relaxation28.py",
+  "auditor_source_scope": "Checker source archived outside the public tree; command omits its private directory. No production package imports or ODE/evolution calls.",
+  "previous_renderer_array_comparison": {
+    "producer_commit": "1086714f8fdc180d154d3a8b08fe56e99abdb0fc",
+    "plotted_arrays_sha256": "4b42129d57bb93d7372bc2ca7445e2f1a75ba996a8bb9f7739fca29b28a2d8ff",
+    "status": "byte_identical"
+  },
+  "snapshot_keys": [
+    "initial",
+    "previous",
+    "state"
+  ],
+  "snapshot_times": [
+    0.0,
+    0.015,
+    0.02
+  ],
+  "snapshot_field": "dipole",
+  "snapshot_case": "mu13",
+  "grid_shape": [
+    5,
+    5,
+    5,
+    25,
+    13
+  ],
+  "provenance_id": "61f2d95af789341d11694660ab9c22d63465dfb7e1c42481762f458dd405a9eb",
+  "formulas": {
+    "B": "C*r^(-3)*sqrt(1+3*(z/r)^2)",
+    "weights": "wX*B*wu*wmu",
+    "density": "B*sum_u,mu(wu*wmu*f)",
+    "mean_u": "sum_u,mu(wu*wmu*u*f)/sum_u,mu(wu*wmu*f)",
+    "conditional_u": "sum_mu(wmu*f)/sum_u,mu(wu*wmu*f)",
+    "mu_bin_population": "sum_X,u(wX*B*wu*wmu*f)",
+    "energy": "m*u^2/2+mu*B",
+    "field_line": "r=L*sin(theta)^2; fixed azimuth; spherical dipole field C/r^3*(2cos(theta)e_r+sin(theta)e_theta)"
+  },
+  "checks": {
+    "initial_formula_max_relative_error": 2.1316282072803006e-14,
+    "weights_max_relative_error": 1.6431300764452317e-14,
+    "number_max_relative_error": 0.0,
+    "energy_max_relative_error": 0.0,
+    "mu_bin_max_relative_error": 2.220446049250313e-15,
+    "mu_bin_history_max_relative_error": 3.3306690738754696e-15,
+    "conditional_u_normalization_max_error": 3.3306690738754696e-16,
+    "array_comparisons": {
+      "x": {
+        "maximum_absolute_difference": 0.0,
+        "maximum_difference_over_global_scale": 0.0
+      },
+      "y": {
+        "maximum_absolute_difference": 2.7755575615628914e-17,
+        "maximum_difference_over_global_scale": 1.5314606554109782e-16
+      },
+      "z": {
+        "maximum_absolute_difference": 5.551115123125783e-17,
+        "maximum_difference_over_global_scale": 1.1535120977127673e-16
+      },
+      "u": {
+        "maximum_absolute_difference": 4.440892098500626e-16,
+        "maximum_difference_over_global_scale": 1.1151777932495298e-16
+      },
+      "mu": {
+        "maximum_absolute_difference": 3.552713678800501e-15,
+        "maximum_difference_over_global_scale": 1.7905170948576483e-16
+      },
+      "wu": {
+        "maximum_absolute_difference": 0.0,
+        "maximum_difference_over_global_scale": 0.0
+      },
+      "wm": {
+        "maximum_absolute_difference": 0.0,
+        "maximum_difference_over_global_scale": 0.0
+      },
+      "times": {
+        "maximum_absolute_difference": 0.0,
+        "maximum_difference_over_global_scale": 0.0
+      },
+      "density": {
+        "maximum_absolute_difference": 3.1086244689504383e-15,
+        "maximum_difference_over_global_scale": 1.3762491532009974e-15
+      },
+      "mean_parallel_velocity": {
+        "maximum_absolute_difference": 4.688739503987681e-16,
+        "maximum_difference_over_global_scale": 4.745309865816505e-15
+      },
+      "conditional_velocity": {
+        "maximum_absolute_difference": 2.7755575615628914e-16,
+        "maximum_difference_over_global_scale": 6.940416361844236e-16
+      },
+      "relative_velocity_shape": {
+        "maximum_absolute_difference": 3.774758283725532e-15,
+        "maximum_difference_over_global_scale": 7.937952113392645e-15
+      },
+      "mu_bin_populations": {
+        "maximum_absolute_difference": 2.0816681711721685e-17,
+        "maximum_difference_over_global_scale": 3.8509181883033264e-16
+      },
+      "numbers": {
+        "maximum_absolute_difference": 3.885780586188048e-16,
+        "maximum_difference_over_global_scale": 2.9333603792501695e-15
+      },
+      "energies": {
+        "maximum_absolute_difference": 3.885780586188048e-16,
+        "maximum_difference_over_global_scale": 2.208207784101584e-15
+      }
+    },
+    "field_line_tangent_formula_relative_error": 6.701163529166285e-16,
+    "field_line_normalized_cross_error": 5.27848623070533e-16,
+    "flux_max_relative_error": 8.881784197001252e-16,
+    "radius_curve_max_relative_error": 8.881784197001252e-16,
+    "minimum_field_line_radius": 0.24999999999999994
+  },
+  "limits": [
+    "Checks the three saved states and displayed arrays, not missing intermediate spatial states or continuous-time evolution.",
+    "No new collision solve, independent temporal integrator, physical-rate calibration, full45 convergence, or pointwise-tail certificate.",
+    "Hashes verify every listed rendered output and historical producer source; pixels are not independently regenerated by this arithmetic audit.",
+    "Display tiles are quadrature-node values, not finite-volume cell averages; curves connect discrete velocity samples."
+  ],
+  "environment": {
+    "python": "3.12.13",
+    "numpy": "2.5.3",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "logical_cpus": 10,
+    "processor": "Apple M4",
+    "thread_environment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    }
+  },
+  "wall_s": 1.038832416990772,
+  "wall_s_scope": "Hash verification including historical source bytes, independent NumPy reconstruction and checks; excludes imports and final receipt write."
+}

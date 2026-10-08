@@ -21,5 +21,26 @@
   "position_target": 1e-08,
   "mu_increment_target": 1e-10,
   "energy_target": 1e-08,
+  "spatial_view": {
+    "video_dpi": 120,
+    "particle_colors": {
+      "particle_1": "#147D92",
+      "particle_2": "#C66B28"
+    },
+    "camera": {
+      "elevation": 20.0,
+      "azimuth": -55.0
+    },
+    "box_aspect": [
+      1.0,
+      1.0,
+      1.4
+    ],
+    "axis_scaling": "3D box is anisotropic: z visually compressed; x-z close projection has equal physical length aspect.",
+    "coordinate_units": "normalized length, same physical coordinates as saved trajectories",
+    "close_projection_half_width": 1.5,
+    "head_rule": "Last original saved sample at or before the common clock; no interpolation. Head disappears at exit; square marks the actual outgoing endpoint.",
+    "closest_rule": "Star marks the closest saved trajectory sample only after its physical time; not a certified continuous minimum."
+  },
   "scope": "Two individual12D zero-COM paths, not a COM-averaged ensemble, phase-converged integral, collision rate or lifetime."
 }

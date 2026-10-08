@@ -7702,6 +7702,16 @@
       "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37819967504",
       "log_sha256": "4b916f4bedce8853f1f635b1063b9a89f8d2120c6b426de6e1c4acf10845f14b",
       "scope": "Full suite on main, including all-three-moment experiment source. Physics source and diagnostic-only solver unchanged."
+    },
+    {
+      "source_commit": "1f0438e37d101f112428a4e45da8f9446a79b644",
+      "command": "python -m pytest -q",
+      "passed": 247,
+      "elapsed_s": 135.51,
+      "environment": "Fresh Ubuntu CI installation",
+      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37829869940",
+      "log_sha256": "3255daf5564580ba13caf2a41660eb7fd1cd6d9c7c589ad57400c6ecdd947f31",
+      "scope": "Full suite at the final spatial rendering source revision. New rendering examples were separately executed and independently audited against saved simulation data."
     }
   ],
   "additional_experiments": [
@@ -7952,7 +7962,8 @@
       "exit_code": 0,
       "status": "passed_saved_data_rendering_checks",
       "checks_wall_s": 22.0410617919988,
-      "scope": "Rendering of recorded audited data with repeated arithmetic/hash checks; no new physical solve. Layout revision leaves scientific inputs and arithmetic unchanged."
+      "scope": "Rendering of recorded audited data with repeated arithmetic/hash checks; no new physical solve. Layout revision leaves scientific inputs and arithmetic unchanged. Historical two-panel rendering receipt; retrieve its evidence at that commit.",
+      "historical_evidence_commit": "12b63dcd3cc54142aaadd37ceec4a2f8a36fcc10"
     },
     {
       "evidence_path": "results/nonuniform_spatial_blocks_full/dipole_dt16_replay/continuation60/summary.json",
@@ -8002,6 +8013,32 @@
       "render_receipt_path": "results/encounter_phase/all_moments8192/render_receipt.json",
       "render_receipt_sha256": "09401f98f49f569191d7b93c61449c5ed783faadb5f315b32f1317543fe6a1e0",
       "scope": "8192 phases; all three whole-grid half-step checks pass, but mean/cross angular changes2.56%/7.14% fail1% and twoCartesian controls at onephase fail. Exact4096row cache retained;12288newrelative solves. No post-outcome extension or replacement. Continuous coverage/rates unresolved."
+    },
+    {
+      "command": "MPLBACKEND=Agg python examples/27_encounter_movie.py",
+      "cwd": "${REPOSITORY}",
+      "producer_commit": "1086714f8fdc180d154d3a8b08fe56e99abdb0fc",
+      "evidence_path": "results/encounter_movie/summary.json",
+      "evidence_sha256": "ba49036c59e062507bae38b8893759f030fb499f3c128119c19a92d8ffae5153",
+      "exit_code": 0,
+      "status": "verified_saved_path_render",
+      "checks_wall_s": 95.97994370799279,
+      "independent_evidence_path": "results/encounter_movie/independent_audit.json",
+      "independent_evidence_sha256": "f28bbf626bd63e7c396460ec082c00d757f6eabdef01059a7c9f86bf4bcb1ba0",
+      "scope": "Saved individual-particle paths rendered in fixed 3D views with disclosed axial compression and equal-scale close projections. 120frames at10fps; decoded GIF/MP4 and all frame-reveal/exit rules independently checked. No new trajectories."
+    },
+    {
+      "command": "MPLBACKEND=Agg python examples/28_spatial_relaxation.py",
+      "cwd": "${REPOSITORY}",
+      "producer_commit": "1f0438e37d101f112428a4e45da8f9446a79b644",
+      "evidence_path": "results/spatial_relaxation/summary.json",
+      "evidence_sha256": "c1a6e757aa465dda765d2acc2b517ce02e88455e3a576fe1766efe6ec16d5055",
+      "exit_code": 0,
+      "status": "passed_saved_state_and_geometry_checks",
+      "checks_wall_s": 0.9549059999990277,
+      "independent_evidence_path": "results/spatial_relaxation/independent_audit.json",
+      "independent_evidence_sha256": "e8eb16129fff95c72bf86d4c51671810d611df717ea0fbfcf8112819b640e0f9",
+      "scope": "Prescribed analytic dipole lines and three accepted collision-pilot states. B-weighted flow/conditionalvelocity/full\u03bc populations independently reconstructed; no interpolated states or new solves. Full nonuniform refinement and rates unresolved."
     }
   ]
 }
