@@ -1,0 +1,803 @@
+{
+  "schema": "independent_continuous_mixed_null_audit_v1",
+  "status": "passed",
+  "packaged_utc": "2026-10-08T02:22:39.825535+00:00",
+  "evidence_origin": {
+    "kind": "private_independent_checker_execution",
+    "public_example": null,
+    "public_example_producer_commit": null,
+    "association": "Checks concern frozen public geometry source, not execution metadata for a future public example."
+  },
+  "units": "normalized Cartesian mu and common eta charts; Euclidean projector in the stated fixed normalized five-component chart",
+  "scope": "Continuous local sufficient collision-null construction and explicit scalar-kernel nonlocal/ideal counterexamples; no discrete evolution, full classification, spectral gap, physical rate, full source Eq119 preservation, or priority claim.",
+  "provenance": {
+    "checked_public_commit": "f13e72bf3a515c1e2e0c37d3afd44b0e67370cb3",
+    "public_geometry_file": "src/sato_morrison/geometry.py",
+    "public_geometry_sha256": "3e96f695e3a031aacdea5257428e40e9a057f6bf2ea1ef052363c79c6345dda6",
+    "checker_sources": [
+      {
+        "file": "local_mixed_null_audit.py",
+        "sha256": "4842747c650f76c0f76208ee072dad8e3aaaba2f87dd34404493bd522793cd46",
+        "receipt_file": "local_mixed_null_audit.json",
+        "receipt_sha256": "81b9afea67828471380a5dffc237db54b7cc0437caaa06879d6ad80b5edb8dc5"
+      },
+      {
+        "file": "local_mixed_nonlocal_audit.py",
+        "sha256": "1565e139bea99ffb30fdbb4ac0ec9adf8d4c9a7c49d12803432f66e7cf8bac41",
+        "receipt_file": "local_mixed_nonlocal_audit.json",
+        "receipt_sha256": "f4f345977372a7034c562b1aa85cbb68a2274c5d3f4b6420156957a800af8b4d"
+      }
+    ],
+    "checker_source_archive": "Private checker sources and raw receipts are archived outside the public repository. File names and content hashes are retained here; no private filesystem paths are published.",
+    "packaging_source_sha256": "f1ec2089224178ee838eadbbc0f4554e38accebd5775be30222f93f4756e30bf"
+  },
+  "environment": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "processor": "Apple M4",
+    "logical_cpus": 10,
+    "python": "3.12.13",
+    "versions": {
+      "numpy": "2.5.3",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "sato-morrison": "0.1.0"
+    },
+    "inventory_scope": "Hardware and versions captured during receipt packaging on the checker host. Original checker receipts recorded source/geometry hashes and wall times; this inventory is not a timing benchmark."
+  },
+  "formulas": {
+    "definitions": "B=|Bvector|, b=Bvector/B, t=b cross grad B, s=b dot grad B, eta=mu*B; vacuum curl Bvector=0.",
+    "observable": "h=m*u/B+phi(X), where t dot grad phi=q*s.",
+    "local_action": [
+      "b/B+(b cross grad phi)/(q*B)",
+      "-(b dot grad phi)/m",
+      "0"
+    ],
+    "poloidal_phi": "q*theta*R*s/t_theta on a smooth angle branch with t_theta != 0.",
+    "dipole_phi": "-q*atan2(y,x)*z*(3*(x*x+y*y)+8*z*z)/((x*x+y*y)+2*z*z)",
+    "energy_flow": [
+      "u*b+(m*u*u+mu*B)*t/(q*B*B)",
+      "-mu*s/m",
+      "mu*u*s"
+    ],
+    "energy": "m*u*u/2+eta, zero electrostatic potential",
+    "projector": "P=I5-xi*xi.T/(xi dot xi), xi=V(left)-V(right)",
+    "positive_nonlocal_form": "|(P*(A_h(left)-A_h(right)))[:3]|^2",
+    "ideal_derivative": "T h=-(A_h) dot grad_eta E=u*(b dot grad phi)",
+    "small_separation": "Delta A_h=-epsilon*DA_h(base)*displacement+O(epsilon^2); spatial quadratic=epsilon^2*|Ix P(xi0) DA_h(base) displacement|^2+O(epsilon^3), provided xi0 != 0."
+  },
+  "local_inputs": {
+    "fields": [
+      {
+        "kind": "mirror",
+        "strength": 1.0,
+        "amplitude": 0.15
+      },
+      {
+        "kind": "dipole",
+        "strength": 1.0
+      }
+    ],
+    "mass": 1.7,
+    "charges": [
+      0.7,
+      -1.3
+    ],
+    "positions": [
+      [
+        0.9,
+        0.1,
+        0.2
+      ],
+      [
+        1.1,
+        -0.15,
+        0.4
+      ],
+      [
+        1.0,
+        0.0,
+        0.3
+      ]
+    ],
+    "velocity_states_u_mu": [
+      [
+        -0.8,
+        0.2
+      ],
+      [
+        0.1,
+        1.4
+      ],
+      [
+        1.7,
+        2.3
+      ]
+    ],
+    "angle_branch": "atan2(y,x), x>0",
+    "calculation": "Independent explicit analytic B/grad and AD of h versus public common_chart_action; full action, pair action, eta, and PDE residual compared.",
+    "predeclared_maximum_absolute_comparison": 2e-13
+  },
+  "local_comparisons": [
+    {
+      "field": "mirror",
+      "mass": 1.7,
+      "charge": 0.7,
+      "position": [
+        0.9,
+        0.1,
+        0.2
+      ],
+      "action_error": 1.1102230246251565e-16,
+      "pair_action_difference": 1.6653345369377348e-16,
+      "eta_component": 5.898059818321144e-17,
+      "pde_error": 1.6420962117135675e-17,
+      "t_magnitude": 0.13301973992316732,
+      "s": 0.06773280564101372,
+      "action": [
+        0.5076628768179291,
+        0.03335614251270952,
+        1.073379530017599,
+        0.10884150248660726,
+        1.5178830414797062e-18
+      ]
+    },
+    {
+      "field": "mirror",
+      "mass": 1.7,
+      "charge": 0.7,
+      "position": [
+        1.1,
+        -0.15,
+        0.4
+      ],
+      "action_error": 2.220446049250313e-16,
+      "pair_action_difference": 2.220446049250313e-16,
+      "eta_component": 1.1102230246251565e-16,
+      "pde_error": 2.854507953617141e-17,
+      "t_magnitude": 0.15202750386609745,
+      "s": 0.14277804781181364,
+      "action": [
+        0.9295571336411773,
+        -0.04164135608708802,
+        1.1397255074405652,
+        -0.16715183184122767,
+        -1.1492543028346347e-17
+      ]
+    },
+    {
+      "field": "mirror",
+      "mass": 1.7,
+      "charge": 0.7,
+      "position": [
+        1.0,
+        0.0,
+        0.3
+      ],
+      "action_error": 1.1102230246251565e-16,
+      "pair_action_difference": 1.6653345369377348e-16,
+      "eta_component": 7.859438887946493e-17,
+      "pde_error": 1.8448351739942376e-18,
+      "t_magnitude": 0.14285360705861894,
+      "s": 0.10404199501080216,
+      "action": [
+        0.7232845037989979,
+        5.551115123125783e-17,
+        1.1002107647000052,
+        -1.3877787807814457e-17,
+        3.9247666310344905e-18
+      ]
+    },
+    {
+      "field": "mirror",
+      "mass": 1.7,
+      "charge": -1.3,
+      "position": [
+        0.9,
+        0.1,
+        0.2
+      ],
+      "action_error": 2.220446049250313e-16,
+      "pair_action_difference": 2.220446049250313e-16,
+      "eta_component": 7.806255641895632e-17,
+      "pde_error": 1.1334613498493239e-17,
+      "t_magnitude": 0.13301973992316732,
+      "s": 0.06773280564101372,
+      "action": [
+        0.5076628768179292,
+        0.033356142512709575,
+        1.0733795300175988,
+        -0.20213421890369926,
+        3.0357660829594124e-18
+      ]
+    },
+    {
+      "field": "mirror",
+      "mass": 1.7,
+      "charge": -1.3,
+      "position": [
+        1.1,
+        -0.15,
+        0.4
+      ],
+      "action_error": 2.220446049250313e-16,
+      "pair_action_difference": 2.220446049250313e-16,
+      "eta_component": 1.5265566588595902e-16,
+      "pde_error": 5.472164731071533e-17,
+      "t_magnitude": 0.15202750386609745,
+      "s": 0.14277804781181364,
+      "action": [
+        0.9295571336411773,
+        -0.04164135608708813,
+        1.1397255074405652,
+        0.3104248305622802,
+        -1.474514954580286e-17
+      ]
+    },
+    {
+      "field": "mirror",
+      "mass": 1.7,
+      "charge": -1.3,
+      "position": [
+        1.0,
+        0.0,
+        0.3
+      ],
+      "action_error": 3.358899572317009e-17,
+      "pair_action_difference": 4.163336342344337e-17,
+      "eta_component": 3.358899572317009e-17,
+      "pde_error": 1.8448351739942376e-18,
+      "t_magnitude": 0.14285360705861894,
+      "s": 0.10404199501080216,
+      "action": [
+        0.7232845037989979,
+        0.0,
+        1.1002107647000052,
+        -1.3877787807814457e-17,
+        3.9247666310344905e-18
+      ]
+    },
+    {
+      "field": "dipole",
+      "mass": 1.7,
+      "charge": 0.7,
+      "position": [
+        0.9,
+        0.1,
+        0.2
+      ],
+      "action_error": 1.8318679906315083e-15,
+      "pair_action_difference": 2.220446049250313e-15,
+      "eta_component": 1.0547118733938987e-15,
+      "pde_error": 2.43429926976144e-16,
+      "t_magnitude": 3.6374621803988196,
+      "s": -2.481554642102946,
+      "action": [
+        0.013821303532658428,
+        0.15917491375722959,
+        -0.9038686826943148,
+        -0.12036274010270187,
+        2.220446049250313e-16
+      ]
+    },
+    {
+      "field": "dipole",
+      "mass": 1.7,
+      "charge": 0.7,
+      "position": [
+        1.1,
+        -0.15,
+        0.4
+      ],
+      "action_error": 1.7763568394002505e-15,
+      "pair_action_difference": 1.609823385706477e-15,
+      "eta_component": 1.7763568394002505e-15,
+      "pde_error": 3.970441276213323e-17,
+      "t_magnitude": 1.2068033068787343,
+      "s": -1.394063892602538,
+      "action": [
+        0.16791523541604716,
+        -0.5750048804371266,
+        -2.1512542988464665,
+        0.11685653606424867,
+        -1.6653345369377348e-16
+      ]
+    },
+    {
+      "field": "dipole",
+      "mass": 1.7,
+      "charge": 0.7,
+      "position": [
+        1.0,
+        0.0,
+        0.3
+      ],
+      "action_error": 3.552713678800501e-15,
+      "pair_action_difference": 4.440892098500626e-15,
+      "eta_component": 1.5895401357679117e-15,
+      "pde_error": 8.950025606592249e-17,
+      "t_magnitude": 2.0984475024896874,
+      "s": -1.9846334006597375,
+      "action": [
+        0.10415532900245354,
+        8.881784197001252e-16,
+        -1.3983817319773835,
+        6.661338147750939e-16,
+        -1.2062871158513886e-16
+      ]
+    },
+    {
+      "field": "dipole",
+      "mass": 1.7,
+      "charge": -1.3,
+      "position": [
+        0.9,
+        0.1,
+        0.2
+      ],
+      "action_error": 2.6645352591003757e-15,
+      "pair_action_difference": 2.55351295663786e-15,
+      "eta_component": 2.6645352591003757e-15,
+      "pde_error": 8.667930976490125e-16,
+      "t_magnitude": 3.6374621803988196,
+      "s": -2.481554642102946,
+      "action": [
+        0.013821303532658568,
+        0.15917491375722892,
+        -0.9038686826943148,
+        0.2235308030478741,
+        1.1102230246251565e-16
+      ]
+    },
+    {
+      "field": "dipole",
+      "mass": 1.7,
+      "charge": -1.3,
+      "position": [
+        1.1,
+        -0.15,
+        0.4
+      ],
+      "action_error": 1.5543122344752192e-15,
+      "pair_action_difference": 1.3322676295501878e-15,
+      "eta_component": 2.498001805406602e-16,
+      "pde_error": 1.8234019216289808e-16,
+      "t_magnitude": 1.2068033068787343,
+      "s": -1.394063892602538,
+      "action": [
+        0.1679152354160467,
+        -0.5750048804371262,
+        -2.151254298846467,
+        -0.21701928126217496,
+        -2.7755575615628914e-17
+      ]
+    },
+    {
+      "field": "dipole",
+      "mass": 1.7,
+      "charge": -1.3,
+      "position": [
+        1.0,
+        0.0,
+        0.3
+      ],
+      "action_error": 1.7763568394002505e-15,
+      "pair_action_difference": 2.220446049250313e-15,
+      "eta_component": 1.0704560476357095e-15,
+      "pde_error": 1.3254434885910882e-16,
+      "t_magnitude": 2.0984475024896874,
+      "s": -1.9846334006597375,
+      "action": [
+        0.10415532900245343,
+        -4.440892098500626e-16,
+        -1.3983817319773835,
+        4.440892098500626e-16,
+        -6.511756035388104e-17
+      ]
+    }
+  ],
+  "local_maximum_error": 4.440892098500626e-15,
+  "nonlocal_inputs": {
+    "mass": 1.0,
+    "charge": 1.0,
+    "strength": 1.0,
+    "left": [
+      1.0,
+      0.0,
+      0.3,
+      0.4,
+      0.2
+    ],
+    "right_at_epsilon1": [
+      1.1,
+      0.05,
+      0.35,
+      -0.6,
+      0.7
+    ]
+  },
+  "nonlocal_comparisons": [
+    {
+      "separation_fraction": 1.0,
+      "right": [
+        1.1,
+        0.05,
+        0.35,
+        -0.6,
+        0.7
+      ],
+      "Delta_Ah": [
+        -0.053216270735184645,
+        -0.1678317442945361,
+        0.5330359539712153,
+        0.10360100496656965,
+        0.0
+      ],
+      "Delta_energy_flow": [
+        0.8568605073121112,
+        -1.436241862174945,
+        -0.6544467992650386,
+        -0.5711370709193154,
+        -0.7396089226835368
+      ],
+      "projected_action": [
+        -0.0087759855324715,
+        -0.2423211126695001,
+        0.4990936702959247,
+        0.07397950402808448,
+        -0.03835913918548177
+      ],
+      "spatial_projected_quadratic": 0.3078910312969079,
+      "quadratic_divided_by_separation_fraction_squared": 0.3078910312969079,
+      "common_chart_action_error": 6.661338147750939e-16,
+      "energy_flow_error": 1.3322676295501878e-15,
+      "common_chart_quadratic": 0.3078910312969073
+    },
+    {
+      "separation_fraction": 0.5,
+      "right": [
+        1.05,
+        0.025,
+        0.32499999999999996,
+        -0.6,
+        0.7
+      ],
+      "Delta_Ah": [
+        -0.026295348361243365,
+        -0.07442743846332033,
+        0.250942217385123,
+        0.05513236663286823,
+        0.0
+      ],
+      "Delta_energy_flow": [
+        0.8015757688306141,
+        -1.4630975413608365,
+        -0.6634566752808062,
+        -0.7600359656276566,
+        -0.8529482595085416
+      ],
+      "projected_action": [
+        -0.004952877217203241,
+        -0.11338335289042957,
+        0.23327725607003916,
+        0.034895919505099945,
+        -0.022710296797615773
+      ],
+      "spatial_projected_quadratic": 0.06729859390497099,
+      "quadratic_divided_by_separation_fraction_squared": 0.26919437561988396,
+      "common_chart_action_error": 8.747462167019841e-16,
+      "energy_flow_error": 8.881784197001252e-16,
+      "common_chart_quadratic": 0.06729859390497116
+    },
+    {
+      "separation_fraction": 0.25,
+      "right": [
+        1.025,
+        0.0125,
+        0.3125,
+        -0.6,
+        0.7
+      ],
+      "Delta_Ah": [
+        -0.013042659005347623,
+        -0.03494579024850141,
+        0.12169876318819206,
+        0.02847269849185947,
+        0.0
+      ],
+      "Delta_energy_flow": [
+        0.7714066714718812,
+        -1.4819035863389698,
+        -0.6683368560759703,
+        -0.8701532385590851,
+        -0.9190186232673987
+      ],
+      "projected_action": [
+        -0.0027797039784526055,
+        -0.05466134421405415,
+        0.1128070704528459,
+        0.016895998569366688,
+        -0.012226815178401126
+      ],
+      "spatial_projected_quadratic": 0.015721024449648475,
+      "quadratic_divided_by_separation_fraction_squared": 0.2515363911943756,
+      "common_chart_action_error": 9.709995617373386e-16,
+      "energy_flow_error": 6.661338147750939e-16,
+      "common_chart_quadratic": 0.015721024449648506
+    },
+    {
+      "separation_fraction": 0.125,
+      "right": [
+        1.0125,
+        0.00625,
+        0.30624999999999997,
+        -0.6,
+        0.7
+      ],
+      "Delta_Ah": [
+        -0.006491731173577708,
+        -0.016918907394249044,
+        0.059921476270471175,
+        0.014473002528597545,
+        0.0
+      ],
+      "Delta_energy_flow": [
+        0.7555753745648035,
+        -1.4927320191205449,
+        -0.6708781837559081,
+        -0.9296479674129955,
+        -0.9547154605797449
+      ],
+      "projected_action": [
+        -0.0014839198642549614,
+        -0.02681245413860354,
+        0.055475021993522534,
+        0.00831147085138906,
+        -0.00632767430176017
+      ],
+      "spatial_projected_quadratic": 0.0037985877802800576,
+      "quadratic_divided_by_separation_fraction_squared": 0.24310961793792368,
+      "common_chart_action_error": 8.708311849403572e-16,
+      "energy_flow_error": 7.771561172376096e-16,
+      "common_chart_quadratic": 0.003798587780280012
+    },
+    {
+      "separation_fraction": 0.0625,
+      "right": [
+        1.00625,
+        0.003125,
+        0.303125,
+        -0.6,
+        0.7
+      ],
+      "Delta_Ah": [
+        -0.003238048392702031,
+        -0.008322579142950573,
+        0.02973065817515108,
+        0.007296973669947143,
+        0.0
+      ],
+      "Delta_energy_flow": [
+        0.7474568010142666,
+        -1.4985132173925098,
+        -0.6721751358217966,
+        -0.9605750443334267,
+        -0.9732717067320036
+      ],
+      "projected_action": [
+        -0.0007675831786617003,
+        -0.01327540688005105,
+        0.027509010999639077,
+        0.004122118308030803,
+        -0.0032168198777887415
+      ],
+      "spatial_projected_quadratic": 0.0009335712979453349,
+      "quadratic_divided_by_separation_fraction_squared": 0.23899425227400573,
+      "common_chart_action_error": 3.694961003830599e-16,
+      "energy_flow_error": 4.440892098500626e-16,
+      "common_chart_quadratic": 0.0009335712979453253
+    },
+    {
+      "separation_fraction": 0.03125,
+      "right": [
+        1.003125,
+        0.0015625,
+        0.3015625,
+        -0.6,
+        0.7
+      ],
+      "Delta_Ah": [
+        -0.001617017723492653,
+        -0.004127273602665427,
+        0.0148080460609612,
+        0.0036637722079967037,
+        0.0
+      ],
+      "Delta_energy_flow": [
+        0.7433446242044819,
+        -1.5014969212762321,
+        -0.6728303093244089,
+        -0.9763427087916541,
+        -0.98273230540694
+      ],
+      "projected_action": [
+        -0.0003904483079990558,
+        -0.006604846105548834,
+        0.013697830082581571,
+        0.0020527400344263094,
+        -0.0016215754445250187
+      ],
+      "spatial_projected_quadratic": 0.00023140699093047957,
+      "quadratic_divided_by_separation_fraction_squared": 0.23696075871281108,
+      "common_chart_action_error": 6.886852199627924e-16,
+      "energy_flow_error": 8.881784197001252e-16,
+      "common_chart_quadratic": 0.00023140699093047702
+    },
+    {
+      "separation_fraction": 0.015625,
+      "right": [
+        1.0015625,
+        0.00078125,
+        0.30078125,
+        -0.6,
+        0.7
+      ],
+      "Delta_Ah": [
+        -0.0008080007233883801,
+        -0.0020551581346605766,
+        0.007389731888931994,
+        0.0018357285877547303,
+        0.0
+      ],
+      "Delta_energy_flow": [
+        0.741275034936304,
+        -1.5030122211345027,
+        -0.6731595863047168,
+        -0.9843037445608025,
+        -0.9875089268684291
+      ],
+      "projected_action": [
+        -0.0001969188825266926,
+        -0.0032941901155600912,
+        0.0068348020993052256,
+        0.001024302172665826,
+        -0.0008140686579981237
+      ],
+      "spatial_projected_quadratic": 5.7604985300416485e-05,
+      "quadratic_divided_by_separation_fraction_squared": 0.23595001979050592,
+      "common_chart_action_error": 4.0332320816460765e-16,
+      "energy_flow_error": 2.220446049250313e-16,
+      "common_chart_quadratic": 5.760498530041084e-05
+    },
+    {
+      "separation_fraction": 0.0078125,
+      "right": [
+        1.00078125,
+        0.000390625,
+        0.30039062499999997,
+        -0.6,
+        0.7
+      ],
+      "Delta_Ah": [
+        -0.00040387251218865217,
+        -0.001025462565835055,
+        0.0036912968606297447,
+        0.0009188275719866951,
+        0.0
+      ],
+      "Delta_energy_flow": [
+        0.740236829745619,
+        -1.5037757546191566,
+        -0.6733246493461584,
+        -0.988303711214652,
+        -0.9899089068607387
+      ],
+      "projected_action": [
+        -9.88868898891977e-05,
+        -0.0016450345269856,
+        0.0034138797841773753,
+        0.0005116356973413294,
+        -0.00040785323270451865
+      ],
+      "spatial_projected_quadratic": 1.4370492392781657e-05,
+      "quadratic_divided_by_separation_fraction_squared": 0.23544614736333466,
+      "common_chart_action_error": 9.207044848746904e-16,
+      "energy_flow_error": 1.3322676295501878e-15,
+      "common_chart_quadratic": 1.4370492392783222e-05
+    },
+    {
+      "separation_fraction": 0.0,
+      "right": [
+        1.0,
+        0.0,
+        0.3,
+        -0.6,
+        0.7
+      ],
+      "Delta_Ah": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Delta_energy_flow": [
+        0.7391963372747967,
+        -1.5045432187157406,
+        -0.6734899961837038,
+        -0.9923167003298686,
+        -0.9923167003298687
+      ],
+      "projected_action": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "spatial_projected_quadratic": 0.0,
+      "quadratic_divided_by_separation_fraction_squared": null,
+      "common_chart_action_error": 1.3322676295501878e-15,
+      "energy_flow_error": 6.661338147750939e-16,
+      "common_chart_quadratic": 8.188094502666443e-31
+    }
+  ],
+  "dipole_phi_identity_max_error": 6.938893903907228e-18,
+  "dipole_phi_gradient_identity_max_error": 8.881784197001252e-16,
+  "xi_zero_separation_squared": 5.233035164490637,
+  "analytic_epsilon_squared_coefficient": 0.2349432710809844,
+  "last_positive_fraction_relative_coefficient_difference": 0.0021404157694600023,
+  "ideal_comparisons": [
+    {
+      "state": [
+        1.0,
+        0.0,
+        0.3,
+        0.4,
+        0.2
+      ],
+      "analytic_T_h": 1.3778037729414613e-17,
+      "u_b_dot_grad_phi": 0.0,
+      "public_T_h": -3.2450340541662163e-16
+    },
+    {
+      "state": [
+        1.1,
+        0.05,
+        0.35,
+        -0.6,
+        0.7
+      ],
+      "analytic_T_h": -0.062160602979941346,
+      "u_b_dot_grad_phi": -0.06216060297994179,
+      "public_T_h": -0.062160602979941124
+    },
+    {
+      "state": [
+        0.9,
+        -0.1,
+        0.4,
+        1.2,
+        0.5
+      ],
+      "analytic_T_h": -0.22603138539927128,
+      "u_b_dot_grad_phi": -0.2260313853992728,
+      "public_T_h": -0.2260313853992734
+    }
+  ],
+  "checker_wall_seconds": {
+    "local": 0.6368099160026759,
+    "nonlocal_and_ideal": 2.27422583301086,
+    "scope": "Verification execution only, including compilation; no comparative speedup or solver timing inference."
+  },
+  "assumptions_and_limits": [
+    "Smooth nonvanishing vacuum field; m>0 and q!=0.",
+    "A smooth phi must solve t dot grad phi=q s; at t=0 compatibility requires s=0 and no smooth extension is assumed.",
+    "Moment conservation requires admissible tests and removal of weak boundary terms; natural zero collision flux admits the local angular branch.",
+    "For poloidal full angular periodicity and s!=0, integrating the phi equation around the circle obstructs a single-valued phi.",
+    "The construction preserves a linear moment, without asserting a general full h marginal. Uniform phi=0 is a special case where projected F(h) differences also vanish.",
+    "The positive nonlocal form concerns this scalar spatial-projector kernel with positive pair weight near the specified pair, not the full source interaction tensor.",
+    "Ideal stationarity needs the additional b dot grad phi=0 condition at zero electrostatic potential."
+  ],
+  "literature_scope": "Elementary sufficient consequence of the already established weak-moment and same-position pair criteria; mixed guiding-center forms and pair-generator conservation have antecedents. No priority claim."
+}

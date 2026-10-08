@@ -1,0 +1,513 @@
+{
+  "metadata": {
+    "model": "sufficient local same-position weak collision null test",
+    "boundary": "natural collision-only box on smooth x>0 angle branch",
+    "units": "normalized",
+    "inputs": {
+      "field": {
+        "kind": "dipole",
+        "strength": 1.3,
+        "amplitude": 0.0,
+        "length": 1.0,
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "base": "dipole"
+      },
+      "mass": 1.7,
+      "charge": 0.7,
+      "bounds": [
+        [
+          0.8,
+          1.2
+        ],
+        [
+          -0.2,
+          0.2
+        ],
+        [
+          0.1,
+          0.5
+        ]
+      ],
+      "candidate": "m*u/B-q*theta*z*(3R^2+8z^2)/(R^2+2z^2), theta=atan2(y,x), x>0",
+      "position": [
+        1.0,
+        0.1,
+        0.3
+      ],
+      "velocity_samples": [
+        [
+          -0.8,
+          0.15
+        ],
+        [
+          0.2,
+          0.6
+        ],
+        [
+          1.1,
+          1.0
+        ]
+      ],
+      "charges_checked": [
+        0.7,
+        -1.3
+      ],
+      "unit_control": {
+        "mass": 1.0,
+        "charge": 1.0,
+        "strength": 1.0,
+        "left": [
+          1.0,
+          0.0,
+          0.3,
+          0.4,
+          0.2
+        ],
+        "separated_right": [
+          1.1,
+          0.05,
+          0.35,
+          -0.6,
+          0.7
+        ],
+        "same_position_right": [
+          1.0,
+          0.0,
+          0.3,
+          -0.6,
+          0.7
+        ],
+        "squared_observable": "h^2"
+      },
+      "spatial_orders": [
+        3,
+        5,
+        7,
+        9
+      ],
+      "u_order": 3,
+      "mu_order": 2,
+      "u_domain": [
+        -1.5,
+        1.5
+      ],
+      "mu_domain": [
+        0.1,
+        1.1
+      ],
+      "spatial_derivative": "global Lagrange polynomial",
+      "separations_x": [
+        0.0,
+        0.0001,
+        0.00012883513984014396,
+        0.00016598493257629447,
+        0.00021384691999823765,
+        0.00027550997842357025,
+        0.0003549536659755572,
+        0.00045730505192732656,
+        0.0005891696031466134,
+        0.0007590574821095614,
+        0.0009779327685429282,
+        0.001259921049894874,
+        0.0016232210465074693,
+        0.002091279105182546,
+        0.0026943023596096446,
+        0.0034712082127193837,
+        0.00447213595499958,
+        0.005761682611465066,
+        0.007423071849626275,
+        0.009563524997900372,
+        0.01232118080469207,
+        0.015874010519682003,
+        0.020451303651271468,
+        0.02634846565824806,
+        0.033946082576536196,
+        0.04373448295773111,
+        0.0563453822769568,
+        0.07259265204998099,
+        0.09352484478226213,
+        0.12049286456050498,
+        0.15523715055392184,
+        0.2
+      ],
+      "pair_left_velocity": [
+        0.4,
+        0.3
+      ],
+      "pair_right_velocity": [
+        -0.6,
+        0.8
+      ],
+      "local_action_target": 1e-12,
+      "spatial_residual_reduction_target": 0.01,
+      "seed": null
+    },
+    "commit": "1129b1975c94272a09390714f30cb4b56e64ef31",
+    "working_tree": "?? results/local_mixed_null/",
+    "source_sha256": "a429f18a309d54c2268a1176bf73b636ca501c80a6ae0a8be8542691c1aa83e7",
+    "versions": {
+      "sato-morrison": "0.1.0",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2"
+    },
+    "source_changes": "",
+    "logical_cpus": 10,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "unset",
+      "OPENBLAS_NUM_THREADS": "unset",
+      "MKL_NUM_THREADS": "unset",
+      "XLA_FLAGS": "unset"
+    },
+    "python": "3.12.13",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "Apple M4",
+    "devices": [
+      "cpu:0"
+    ],
+    "x64": true,
+    "example_sha256": "70458f96afbcb33b68b788601ad9317e59a25e2fbe0b5fdce958140d766021cb",
+    "limitations": "A sufficient local collision moment; the squared-moment check is a concrete dipole counterexample, not a universal statement about all functions of h or fields; no ideal-flow conservation, full nullspace classification, stationary density, marginal, global periodic angle extension, or novelty claim. Separated-pair quadratics diagnose one interaction, not a calibrated finite-range rate. Spatial refinement only measures sampled tensor differentiation and its unmodified discrete-energy projector."
+  },
+  "identity_checks": [
+    {
+      "charge": 0.7,
+      "position": [
+        1.0,
+        0.1,
+        0.3
+      ],
+      "gradient_error": 2.7755575615628914e-16,
+      "pde_error": 6.661338147750939e-16,
+      "action_error": 1.3322676295501878e-15,
+      "local_pair_action_norm": 1.5748079214264333e-15
+    },
+    {
+      "charge": 0.7,
+      "position": [
+        0.85,
+        -0.15,
+        0.4
+      ],
+      "gradient_error": 8.881784197001252e-16,
+      "pde_error": 4.440892098500626e-16,
+      "action_error": 1.9984014443252818e-15,
+      "local_pair_action_norm": 2.034504518667149e-15
+    },
+    {
+      "charge": 0.7,
+      "position": [
+        1.15,
+        0.18,
+        0.15
+      ],
+      "gradient_error": 2.220446049250313e-16,
+      "pde_error": 1.1102230246251565e-16,
+      "action_error": 4.385380947269368e-15,
+      "local_pair_action_norm": 8.14778915689942e-15
+    },
+    {
+      "charge": -1.3,
+      "position": [
+        1.0,
+        0.1,
+        0.3
+      ],
+      "gradient_error": 4.440892098500626e-16,
+      "pde_error": 1.3322676295501878e-15,
+      "action_error": 1.4432899320127035e-15,
+      "local_pair_action_norm": 1.8441277330486033e-15
+    },
+    {
+      "charge": -1.3,
+      "position": [
+        0.85,
+        -0.15,
+        0.4
+      ],
+      "gradient_error": 8.881784197001252e-16,
+      "pde_error": 1.7763568394002505e-15,
+      "action_error": 8.326672684688674e-16,
+      "local_pair_action_norm": 7.02852068884574e-16
+    },
+    {
+      "charge": -1.3,
+      "position": [
+        1.15,
+        0.18,
+        0.15
+      ],
+      "gradient_error": 8.881784197001252e-16,
+      "pde_error": 2.220446049250313e-16,
+      "action_error": 2.1649348980190553e-15,
+      "local_pair_action_norm": 4.067517816464797e-15
+    }
+  ],
+  "separated_pairs": [
+    {
+      "separation": 0.0,
+      "action_difference_norm": 1.3552176737396387e-15,
+      "projected_spatial_quadratic": 2.9976538047300603e-31,
+      "energy_direction_squared": 9.355498732475121
+    },
+    {
+      "separation": 0.0001,
+      "action_difference_norm": 0.0002639942921123051,
+      "projected_spatial_quadratic": 6.730562749272218e-08,
+      "energy_direction_squared": 9.354306742575341
+    },
+    {
+      "separation": 0.00012883513984014396,
+      "action_difference_norm": 0.0003401259766009617,
+      "projected_spatial_quadratic": 1.1172273697425275e-07,
+      "energy_direction_squared": 9.353963531515477
+    },
+    {
+      "separation": 0.00016598493257629447,
+      "action_difference_norm": 0.00043821598818000163,
+      "projected_spatial_quadratic": 1.8545475020333098e-07,
+      "energy_direction_squared": 9.35352168542004
+    },
+    {
+      "separation": 0.00021384691999823765,
+      "action_difference_norm": 0.0005645997692797089,
+      "projected_spatial_quadratic": 3.0785226496872654e-07,
+      "energy_direction_squared": 9.35295298053837
+    },
+    {
+      "separation": 0.00027550997842357025,
+      "action_difference_norm": 0.0007274420564125023,
+      "projected_spatial_quadratic": 5.110425327264992e-07,
+      "energy_direction_squared": 9.352221198267884
+    },
+    {
+      "separation": 0.0003549536659755572,
+      "action_difference_norm": 0.0009372659836176817,
+      "projected_spatial_quadratic": 8.483694359350937e-07,
+      "energy_direction_squared": 9.351279914282204
+    },
+    {
+      "separation": 0.00045730505192732656,
+      "action_difference_norm": 0.0012076358257203977,
+      "projected_spatial_quadratic": 1.4084131866841819e-06,
+      "energy_direction_squared": 9.350069712207178
+    },
+    {
+      "separation": 0.0005891696031466134,
+      "action_difference_norm": 0.001556038391645593,
+      "projected_spatial_quadratic": 2.3382836120357706e-06,
+      "energy_direction_squared": 9.348514696554474
+    },
+    {
+      "separation": 0.0007590574821095614,
+      "action_difference_norm": 0.002005021524680235,
+      "projected_spatial_quadratic": 3.8823320738104215e-06,
+      "energy_direction_squared": 9.346518169963975
+    },
+    {
+      "separation": 0.0009779327685429282,
+      "action_difference_norm": 0.002583665800017389,
+      "projected_spatial_quadratic": 6.4465114015303665e-06,
+      "energy_direction_squared": 9.343957344441417
+    },
+    {
+      "separation": 0.001259921049894874,
+      "action_difference_norm": 0.00332948874260312,
+      "projected_spatial_quadratic": 1.0705426318523623e-05,
+      "energy_direction_squared": 9.340676990148113
+    },
+    {
+      "separation": 0.0016232210465074693,
+      "action_difference_norm": 0.004290911676114847,
+      "projected_spatial_quadratic": 1.7780497885575574e-05,
+      "energy_direction_squared": 9.336482014324025
+    },
+    {
+      "separation": 0.002091279105182546,
+      "action_difference_norm": 0.00553046040425546,
+      "projected_spatial_quadratic": 2.9536711513487732e-05,
+      "energy_direction_squared": 9.33112915098508
+    },
+    {
+      "separation": 0.0026943023596096446,
+      "action_difference_norm": 0.007128926237923677,
+      "projected_spatial_quadratic": 4.907736504863159e-05,
+      "energy_direction_squared": 9.324318301981192
+    },
+    {
+      "separation": 0.0034712082127193837,
+      "action_difference_norm": 0.00919078910167983,
+      "projected_spatial_quadratic": 8.156997772780756e-05,
+      "energy_direction_squared": 9.315684720418364
+    },
+    {
+      "separation": 0.00447213595499958,
+      "action_difference_norm": 0.011851307971563564,
+      "projected_spatial_quadratic": 0.0001356272733315414,
+      "energy_direction_squared": 9.304794357405056
+    },
+    {
+      "separation": 0.005761682611465066,
+      "action_difference_norm": 0.015285828318722182,
+      "projected_spatial_quadratic": 0.00022562112218541027,
+      "energy_direction_squared": 9.291146596792059
+    },
+    {
+      "separation": 0.007423071849626275,
+      "action_difference_norm": 0.01972206082730098,
+      "projected_spatial_quadratic": 0.00037557011652309763,
+      "energy_direction_squared": 9.274191724091235
+    },
+    {
+      "separation": 0.009563524997900372,
+      "action_difference_norm": 0.0254563803807045,
+      "projected_spatial_quadratic": 0.0006256933268661753,
+      "energy_direction_squared": 9.253375458492085
+    },
+    {
+      "separation": 0.01232118080469207,
+      "action_difference_norm": 0.03287562652375665,
+      "projected_spatial_quadratic": 0.0010435070253973489,
+      "energy_direction_squared": 9.228230600281288
+    },
+    {
+      "separation": 0.015874010519682003,
+      "action_difference_norm": 0.042486532356394366,
+      "projected_spatial_quadratic": 0.0017427178338530974,
+      "energy_direction_squared": 9.19854740816774
+    },
+    {
+      "separation": 0.020451303651271468,
+      "action_difference_norm": 0.05495589209534756,
+      "projected_spatial_quadratic": 0.002915616130337818,
+      "energy_direction_squared": 9.164670890101258
+    },
+    {
+      "separation": 0.02634846565824806,
+      "action_difference_norm": 0.07116610358713335,
+      "projected_spatial_quadratic": 0.004889108120082054,
+      "energy_direction_squared": 9.127995612535441
+    },
+    {
+      "separation": 0.033946082576536196,
+      "action_difference_norm": 0.0922931356640677,
+      "projected_spatial_quadratic": 0.008222709063478611,
+      "energy_direction_squared": 9.091756712367882
+    },
+    {
+      "separation": 0.04373448295773111,
+      "action_difference_norm": 0.1199178595253508,
+      "projected_spatial_quadratic": 0.013882269028117828,
+      "energy_direction_squared": 9.062247465456696
+    },
+    {
+      "separation": 0.0563453822769568,
+      "action_difference_norm": 0.1561880673026721,
+      "projected_spatial_quadratic": 0.023553116804978926,
+      "energy_direction_squared": 9.050625322722468
+    },
+    {
+      "separation": 0.07259265204998099,
+      "action_difference_norm": 0.2040591742498153,
+      "projected_spatial_quadratic": 0.040215877204207315,
+      "energy_direction_squared": 9.075499347105133
+    },
+    {
+      "separation": 0.09352484478226213,
+      "action_difference_norm": 0.2676597782531371,
+      "projected_spatial_quadratic": 0.06923047832368051,
+      "energy_direction_squared": 9.1665431300917
+    },
+    {
+      "separation": 0.12049286456050498,
+      "action_difference_norm": 0.35285979154211516,
+      "projected_spatial_quadratic": 0.12043302868364987,
+      "energy_direction_squared": 9.36953524148217
+    },
+    {
+      "separation": 0.15523715055392184,
+      "action_difference_norm": 0.46817463710413576,
+      "projected_spatial_quadratic": 0.21231897670108896,
+      "energy_direction_squared": 9.75373601322763
+    },
+    {
+      "separation": 0.2,
+      "action_difference_norm": 0.6262395446150976,
+      "projected_spatial_quadratic": 0.38068163833761304,
+      "energy_direction_squared": 10.423904020296453
+    }
+  ],
+  "independent_reference_pair": {
+    "action_difference_norm": 0.5708414511228084,
+    "projected_spatial_quadratic": 0.3078910312969078,
+    "energy_direction_squared": 4.098520141014573,
+    "same_position_candidate": {
+      "action_difference_norm": 8.339212391166404e-16,
+      "projected_spatial_quadratic": 1.0084780203826873e-31,
+      "energy_direction_squared": 5.233035164490636
+    },
+    "same_position_squared_candidate": {
+      "action_difference_norm": 2.8571998171347808,
+      "projected_spatial_quadratic": 7.030237538148078,
+      "energy_direction_squared": 5.233035164490636
+    },
+    "ideal_derivative": -0.062160602979941394,
+    "analytic_ideal_derivative": -0.06216060297994176
+  },
+  "spatial_refinement": [
+    {
+      "spatial_order": 3,
+      "nodes": 162,
+      "unordered_pairs": 405,
+      "pair_weight_sum": 0.02911505106265135,
+      "action_pair_rms": 0.08093569601974854,
+      "projected_spatial_pair_rms": 0.036977825429669646,
+      "maximum_pair_action_norm": 0.3844036236594318
+    },
+    {
+      "spatial_order": 5,
+      "nodes": 750,
+      "unordered_pairs": 1875,
+      "pair_weight_sum": 0.029118998863996895,
+      "action_pair_rms": 0.0008162088847086493,
+      "projected_spatial_pair_rms": 0.0003067231575251067,
+      "maximum_pair_action_norm": 0.005076243515112244
+    },
+    {
+      "spatial_order": 7,
+      "nodes": 2058,
+      "unordered_pairs": 5145,
+      "pair_weight_sum": 0.029118994782885634,
+      "action_pair_rms": 6.503269722698511e-05,
+      "projected_spatial_pair_rms": 3.5595526682086135e-05,
+      "maximum_pair_action_norm": 0.00044912163350011627
+    },
+    {
+      "spatial_order": 9,
+      "nodes": 4374,
+      "unordered_pairs": 10935,
+      "pair_weight_sum": 0.02911899478654669,
+      "action_pair_rms": 2.7010606036871154e-06,
+      "projected_spatial_pair_rms": 1.2187598873818792e-06,
+      "maximum_pair_action_norm": 2.3334753618631737e-05
+    }
+  ],
+  "maximum_identity_error": 8.14778915689942e-15,
+  "refinement_reduction": 3.295920928881857e-05,
+  "angular_obstruction": {
+    "R": 1.004987562112089,
+    "z": 0.3,
+    "phi_increment": -4.15799027681002,
+    "scope": "Nonzero integral of dphi/dtheta on this circular continuation rules out periodic phi there"
+  },
+  "checks_wall_s": 16.076350500021363,
+  "cost_scope": "Exact identity and pair checks plus grid refinement including compilation; excludes imports, metadata collection, figure-only action sampling and rendering",
+  "status": "passed_sampled_checks"
+}

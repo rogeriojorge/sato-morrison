@@ -1,0 +1,29 @@
+{
+  "utc": "2026-10-08T02:24:55.516102+00:00",
+  "scope": "Private primary-source literature comparison; no new scientific computation or priority determination",
+  "sha256": {
+    "verification/local_mixed_null_review.md": "a391c59053f17f00357cc676b6a0770f76fd670991fb965838feb6e1d48bafd8",
+    "verification/local_mixed_null_audit.py": "4842747c650f76c0f76208ee072dad8e3aaaba2f87dd34404493bd522793cd46",
+    "verification/local_mixed_null_audit.json": "81b9afea67828471380a5dffc237db54b7cc0437caaa06879d6ad80b5edb8dc5",
+    "verification/local_mixed_nonlocal_audit.py": "1565e139bea99ffb30fdbb4ac0ec9adf8d4c9a7c49d12803432f66e7cf8bac41",
+    "verification/local_mixed_nonlocal_audit.json": "f4f345977372a7034c562b1aa85cbb68a2274c5d3f4b6420156957a800af8b4d",
+    "verification/local_mixed_null_literature_review.md": "e42979e60a5bb9e16a450be2a28da425bc8212e68b4502834d4204bb80ba3c09",
+    "verification/local_mixed_null_literature_refs.bib": "c4fb9eadc27d9a5c11bfb02603487bbeea8b63435c32b7027a0d6544508f4da7",
+    "literature/sources.json": "0a00f6be7f0db2a39adae26db92c5aab1a774d18b47aedbbeae216b64388710b",
+    "literature/fetch.py": "79ef41a72b4b3193c816954f1da7bb9967ff25f9c7de90566b0d43e9be726424",
+    "literature/download_report.json": "8e474113f8be530ecd48ab8e8c836edb7fec780ed1fd383708f7dbf3b9c18d69",
+    "literature/local_pdfs/burby_kallinikos_mackay_2020.pdf": "0f3dce715e7d05d592901102d37ddee69980b0c19fc40841238e3e1a5fba3092",
+    "literature/local_pdfs/burby_kallinikos_mackay_2020.txt": "79b21673c9ff480d7f1c0f4d0aed2ad48a2d65986312c398f968596cd9fbb2c8",
+    "literature/local_pdfs/burby_kallinikos_mackay_2021.pdf": "e99dd951f1116700aec56bbb57245145b263e54c2d018e79da5e08cff26b3273",
+    "literature/local_pdfs/burby_kallinikos_mackay_2021.txt": "f52361985ddf075308c9cabf3ef94a3b9bcca304bafd57a56694925120ce0589",
+    "literature/local_pdfs/burby_kallinikos_mackay_2020_published.pdf": "929b9c296d4df66c1e75847840a813962159435c4f8f3c8306f9be0f81697dd2",
+    "literature/local_pdfs/burby_kallinikos_mackay_2020_published.txt": "18175a2d6017dc121ca2217d5db669c8596c59c2e404ef09cac07170ee2f071f"
+  },
+  "retrieval_command": "python3 literature/fetch.py",
+  "retrieval_success": true,
+  "available_pdfs": 21,
+  "failed_pdfs": 0,
+  "published_sign_resolved": true,
+  "published_citation_equation": "BKM20 SecVI Eq41",
+  "independent_theory_review": "Published sign, flux convention, action=(xi/c,0,0), and scope independently confirmed"
+}

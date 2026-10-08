@@ -7623,6 +7623,25 @@
       "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37714642617/job/113108227194",
       "log_sha256": "8d2cd99ee6c1a698cc557fdfede84a32e7a04b885e4ea5c8c4400ec756ad8e76",
       "scope": "Adds optional spatial channel blocks; noncubic independent covariance, dense auxiliary inverse and exact Hessian tests; three-field dense roots and fixed-reference budgets; strict layout validation and failure checks. Existing diagonal and line routes remain unchanged."
+    },
+    {
+      "source_commit": "63cd5b7b3bec1c819f39465f8ed7e0d01dfd30dd",
+      "command": "python -m pytest -q",
+      "passed": 240,
+      "elapsed_s": 123.0,
+      "environment": "Shared Apple M4 local environment recorded in local_mixed_null/summary.json; example20 overlapped",
+      "log_sha256": "66e0793010a609feb45f67e6ee665d9b2b9a96710615be8e789c788678491cd1",
+      "scope": "Includes five new mixed-moment geometry and boundary tests; no core-source changes after previous235-test suite."
+    },
+    {
+      "source_commit": "63cd5b7b3bec1c819f39465f8ed7e0d01dfd30dd",
+      "command": "python -m pytest -q",
+      "passed": 240,
+      "elapsed_s": 215.37,
+      "environment": "Fresh Ubuntu CI installation",
+      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37717856432/job/113118404732",
+      "log_sha256": "b732e7ac91bf23b1a191c35c343206505ec10d32df2b14188ec6b20daf90f2ac",
+      "scope": "Includes mixed local dipole action, squared-moment, separated-pair, ideal-flow and angular obstruction tests. Nonuniform pilots are separate."
     }
   ],
   "additional_experiments": [
@@ -7698,6 +7717,18 @@
       "evidence_sha256": "ced42b6e200c4dc2995581c089c45c301d865a5a0650f542ab252dd645ac5088",
       "experiment_dependencies_unchanged": true,
       "timing_scope": "Shared local M4; measured durations include setup and concurrent work, not an isolated benchmark."
+    },
+    {
+      "command": "MPLBACKEND=Agg python examples/20_local_mixed_null.py",
+      "cwd": "${REPOSITORY}",
+      "producer_commit": "1129b1975c94272a09390714f30cb4b56e64ef31",
+      "evidence_path": "results/local_mixed_null/summary.json",
+      "evidence_sha256": "4d5a1e6d85dd5c22daf3eb0a0423702875b4a105a771dfb1256b333fff0ae927",
+      "independent_evidence_sha256": "ed5114e2d5a9089402be80f7131df349d4c23eba9ee89923fb4d1c7ca2bd5eb6",
+      "literature_receipt_sha256": "28d88ab574d113fff58b16f58fda586cc7dc50415c04cad14c754739e62589e6",
+      "experiment_dependencies_unchanged": true,
+      "checks_wall_s": 16.076350500021363,
+      "timing_scope": "Shared local machine; includes check compilation, excludes imports/metadata/figure-only sampling/rendering; not an isolated benchmark. Working tree records only preexisting untracked output directory."
     }
   ]
 }

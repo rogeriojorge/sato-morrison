@@ -17,7 +17,7 @@ JAX experiments on **what relaxes—and what remains frozen—when collisions pr
 | Nonlinear mirror evolution | **15 runs**, eight refinement checks; largest final change **0.197%** |
 | Independent solver audit | All **20 saved steps** rechecked with a separate NumPy pair operator |
 | Conditional scattering table | Fresh **4,096-state** test: p95 error **2.54%**, 95% confidence interval **2.06–3.37%** |
-| Test suite | **235 passed** on fresh Linux CI |
+| Test suite | **240 passed** on fresh Linux CI |
 
 [Reproduction record](results/deep_reproduction.json) · [Mirror data](results/nonuniform_entropy/mirror_audit.json) · [Solver audit](results/solver_accuracy/audit.json) · [Scattering audit](results/scattering_table/refined8_validation4096/audit.json)
 
@@ -32,6 +32,15 @@ Density-like and spatially homogeneous modes are undamped. A perpendicular, dens
 ![Two positive dipole populations match number, energy, magnetic-moment marginal and mean flux, yet have different flux distributions and a positive distance from the stationary candidate.](results/dipole_obstruction/obstruction.png)
 
 The full flux distribution supplies additional constraints. Two populations can match the usual invariants and still be unable to reach the same stationary state. The constructed relative-entropy floor is **1.5141e−5 per particle**; joint quadrature refinement changes it by **1.1e−10** relatively. This is a negative result for the local surrogate; publication priority remains unresolved. [Construction](examples/15_dipole_obstruction.py) · [Evidence](results/dipole_obstruction/summary.json)
+
+<details>
+<summary>Another nullspace check: locality and angular boundaries</summary>
+
+![A dipole mixed moment has velocity-independent local action. Separation breaks the cancellation, spatial refinement reduces its numerical residual, and its angle branch cannot be periodic.](results/local_mixed_null/local_mixed_null.png)
+
+A mixed position–velocity moment is conserved by same-position collisions on an angular patch. The dipole check fails for separated pairs and ideal streaming; its angular branch cannot extend periodically. This is a property of the specified local closure. [Script](examples/20_local_mixed_null.py) · [Data](results/local_mixed_null/summary.json) · [Independent check](results/local_mixed_null/independent_audit.json)
+
+</details>
 
 ### Refinement matters
 
@@ -52,7 +61,7 @@ MPLBACKEND=Agg python examples/00_uniform_reference.py
 MPLBACKEND=Agg python examples/01_relaxation.py
 ```
 
-[Twenty editable examples](examples/README.md) cover geometry, nonlinear evolution, Lorentz/Dougherty controls, physical 3V Landau weak moments, encounters, convergence, derivatives and benchmarks. Scripts enable float64, print progress and reject failed solves. SOLVAX supplies linear algebra; no other UW Plasma physics code is required.
+[Twenty-one editable examples](examples/README.md) cover geometry, nonlinear evolution, Lorentz/Dougherty controls, physical 3V Landau weak moments, encounters, convergence, derivatives and benchmarks. Scripts enable float64, print progress and reject failed solves. SOLVAX supplies linear algebra; no other UW Plasma physics code is required.
 
 ## Cost and scope
 

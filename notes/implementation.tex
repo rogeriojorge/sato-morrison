@@ -1154,6 +1154,60 @@ Here the contribution is the explicit sufficient branch test, its angular
 obstruction and the checked limits of its use in this prototype;
 publication priority for that restricted calculation is unresolved.
 
+\paragraph{Continuous and discrete checks.}
+Example~20 checks the explicit dipole formula with $m=1.7$, $C=1.3$,
+$q=0.7,-1.3$, three spatial points and three velocity states against
+independently differentiated closed field and observable formulas.
+The largest sampled gradient, PDE, action or local pair discrepancy is
+$8.15\times10^{-15}$. With $m=q=C=1$, choose
+\[
+ z_1=(1,0,0.3,0.4,0.2),\qquad
+ z_2=(1.1,0.05,0.35,-0.6,0.7).
+\]
+In the stated normalized common-coordinate metric,
+$|I_XP\Delta A h_C|^2=0.3078910313>0$ for this separated pair.
+At the same spatial position as $z_1$, changing only the second velocity
+still gives zero for $h_C$, but gives $7.0302375381$ for $h_C^2$.
+This explicitly distinguishes the conserved dipole moment from its marginal.
+At $z_2$, $\mathcal T h_C=-0.062160603\ne0$ checks the ideal limitation.
+These are pair/observable tests, not an evolved population or physical rate.
+
+A separate analytic-field check puts
+$\X_2=\X_1+\epsilon d$, $d=(0.1,0.05,0.05)$, keeping the two velocities
+fixed. Since $|\xi(0)|^2=5.2330351645>0$, the projector is smooth there,
+so Taylor expansion of \eqref{eq:mixednullaction} gives
+\begin{equation}
+ |I_XP\Delta A h_C|^2
+ =\epsilon^2|I_XP_{\xi(0)}(\nabla a)d|^2+O(\epsilon^3).
+\end{equation}
+The independently evaluated coefficient is $0.2349432711$; the ratio at
+$\epsilon=1/128$ differs by $0.214\%$ and approaches that coefficient.
+Continuity supplies positive projected values on an open neighborhood.
+A positive scalar nonlocal extension whose support includes that neighborhood
+therefore does not retain this null moment. This statement gives neither a
+coercivity bound nor a finite-range decay rate and does not cover the full
+source interaction tensor.
+
+On the finite box used above, example~20 applies the existing polynomial
+spatial derivatives and unmodified discrete-energy projector, with
+$n=3,5,7,9$ nodes per spatial axis, three parallel Gauss nodes on
+$[-1.5,1.5]$ and two moment nodes on $[0.1,1.1]$. The positive pair weight
+is the implemented measure times $e^{-E_i-E_j}$. Its normalized RMS projected
+local residual decreases from $0.036978$ to $1.2188\times10^{-6}$.
+The finite grid thus does not preserve this continuum moment exactly; no
+additional null mode is removed or imposed. This is sampled spatial
+differentiation refinement, with fixed velocity quadrature and finite tails,
+not a joint continuum convergence certificate.
+
+The public calculation was executed at \texttt{1129b19} on an Apple M4,
+with 16.08 seconds for its checks including compilation on the shared machine;
+imports, metadata collection and figure rendering are excluded. Exact inputs,
+versions, hashes, raw pair values, four refinement rows and plotting data are
+in \path{results/local_mixed_null/}. The independent receipt identifies its
+separate earlier checker and frozen geometry explicitly. Both literal source
+comparisons and the additional local construction remain distinct.
+
+\clearpage
 \subsection*{Poloidal flux memory and inaccessible dipole candidates}
 In an axisymmetric purely poloidal field, $\mathbf t$ is azimuthal. Therefore
 all $\phi(R,z)$ satisfy $\mathbf t\cdot\nabla\phi=0$ in
