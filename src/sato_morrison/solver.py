@@ -540,12 +540,19 @@ def lagged_entropy_step(grid,f,dt,*,collision_strength=1.,rtol=1e-11,
         if not np.all(np.isfinite(direction)) or not np.isfinite(descent) or not np.isfinite(curvature) or descent>=0:
             raise StepFailure('lagged Newton direction is nonfinite or lacks objective descent')
         alpha0=1.
+        rejections={'log_range':0,'population':0,'armijo':0}
         for backtrack in range(30):
             fraction=alpha0*2.**(-backtrack);candidate=new_log+fraction*direction
-            if not np.all(np.isfinite(candidate)) or np.any(candidate>np.log(np.finfo(float).max)) or np.any(candidate<np.log(np.nextafter(0.,1.))):continue
+            candidate_population=None;trial_change=None
+            if not np.all(np.isfinite(candidate)) or np.any(candidate>np.log(np.finfo(float).max)) or np.any(candidate<np.log(np.nextafter(0.,1.))):
+                rejections['log_range']+=1
+                continue
             candidate_population=weights*np.asarray(jnp.exp(jnp.asarray(candidate)))
-            if not np.all(np.isfinite(candidate_population)) or np.any(candidate_population<=0):continue
+            if not np.all(np.isfinite(candidate_population)) or np.any(candidate_population<=0):
+                rejections['population']+=1
+                continue
             change=float(objective_difference(new_log,old,dt,direction,fraction,descent,curvature))
+            trial_change=change
             if np.isfinite(change) and change<=1e-4*fraction*descent:
                 new_log=candidate
                 record.update({'fraction':fraction,'backtracks':backtrack,
@@ -553,7 +560,23 @@ def lagged_entropy_step(grid,f,dt,*,collision_strength=1.,rtol=1e-11,
                     'objective_change':change})
                 if iteration_callback is not None:iteration_callback(dict(record))
                 break
-        else:raise StepFailure(f'lagged convex objective line search rejected step: residual={norm:.3e}')
+            rejections['armijo']+=1
+        else:
+            def finite_scalar(value):
+                return float(value) if value is not None and np.isfinite(value) else None
+            diagnostics={'rejection_counts':rejections,
+                'last_fraction':fraction,'last_backtrack':backtrack,
+                'last_minimum_log':finite_scalar(np.min(candidate)),
+                'last_maximum_log':finite_scalar(np.max(candidate)),
+                'last_minimum_population':finite_scalar(np.min(candidate_population))
+                    if candidate_population is not None else None,
+                'last_objective_change':finite_scalar(trial_change),
+                'last_armijo_rhs':finite_scalar(1e-4*fraction*descent)}
+            failure=StepFailure('lagged convex objective line search rejected step: '
+                f'residual={norm:.3e}; rejections={rejections}; '
+                f'last_trial={diagnostics}')
+            failure.line_search_diagnostics=diagnostics
+            raise failure
     new=jnp.exp(jnp.asarray(new_log));delta=jnp.asarray(new_log)-old
     production=float(dt*jnp.vdot(jnp.asarray(new_log),apply(old,jnp.asarray(new_log))).real)
     divergence=float(jnp.sum(jnp.asarray(population)*_expm1_minus_x(delta)))

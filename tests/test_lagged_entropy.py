@@ -443,3 +443,55 @@ def test_spatial_block_true_residual_failure_remains_visible():
     with pytest.raises(StepFailure,match='PCG rejected'):
         lagged_entropy_step(grid,initial,.1,collision_strength=.1,compiled=compiler,
             chunk_size=64,linear_max_steps=0,preconditioner_axis=(0,1,2),rtol=1e-12)
+
+
+def test_line_search_reports_population_underflow_without_accepting_state():
+    # Isolate globalization with an exact one-coordinate strictly convex
+    # Newton direction. This is a guard test, not a collision endpoint oracle.
+    # Every declared trial has a positive NumPy density but crosses the normal
+    # boundary where this JAX CPU backend flushes exp's subnormal output.
+    from dataclasses import replace
+    x=2*np.pi*np.arange(4)/4
+    grid=uniform_grid(x,np.array([-1.,0.,1.]),np.array([.1,.8]),compact=True)
+    initial=np.ones(grid.size)
+    boundary=np.log(np.finfo(float).tiny)
+    initial[0]=np.exp(boundary+2.**-35)
+    old=initial.copy();weights=np.asarray(grid.weights)
+    reference=np.full(grid.size,(weights*initial).sum()/grid.size)
+    compiler=lagged_entropy_compiler(grid,collision_strength=0.,chunk_size=64,
+        reference_population=reference)
+    target=np.log(initial[0])-1.
+    def residual(g,gold,dt):
+        result=np.zeros(grid.size)
+        result[0]=float(np.asarray(g)[0])-target
+        return jnp.asarray(result)
+    def exact_convex_direction(g,gold,dt,prepared,linear_rtol):
+        # Hessian = I at this coordinate; slope and curvature are exact.
+        direction=np.zeros(grid.size)
+        direction[0]=target-float(np.asarray(g)[0])
+        slope=-direction[0]**2
+        return (jnp.asarray(direction),1,0.,True,slope,direction[0]**2,1)
+    def unexpected_objective(*args):
+        raise AssertionError('Population-rejected trials must not evaluate Armijo')
+    compiler=replace(compiler,evaluate=residual,correction=exact_convex_direction,
+        prepare_diagonal=lambda old:jnp.zeros(grid.size),
+        objective_difference=unexpected_objective)
+    smallest_trial=np.log(initial[0])-2.**-29
+    assert smallest_trial>np.log(np.nextafter(0.,1.))
+    assert np.exp(smallest_trial)>0
+    # Explicitly verify the backend mechanism rather than assuming that all
+    # floating implementations treat subnormals identically.
+    if float(jnp.exp(jnp.asarray(smallest_trial)))>0:
+        pytest.skip('Backend retains subnormal exponentials; CPU flush barrier absent')
+    with pytest.raises(StepFailure,match='population') as captured:
+        lagged_entropy_step(grid,initial,.1,compiled=compiler,
+            collision_strength=0.,chunk_size=64,rtol=1e-12)
+    diagnostic=captured.value.line_search_diagnostics
+    assert diagnostic['rejection_counts']=={'log_range':0,'population':30,'armijo':0}
+    assert diagnostic['last_fraction']==2.**-29
+    assert diagnostic['last_backtrack']==29
+    assert diagnostic['last_minimum_population']==0.
+    assert diagnostic['last_minimum_log']<boundary
+    assert diagnostic['last_objective_change'] is None
+    assert diagnostic['last_armijo_rhs']<0
+    np.testing.assert_array_equal(initial,old)
