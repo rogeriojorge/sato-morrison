@@ -1,4 +1,4 @@
-"""Refine sampled gyrophase second moments for a fixed close encounter."""
+"""Refine three sampled gyrophase moments for a fixed close encounter."""
 from pathlib import Path
 from time import perf_counter
 import hashlib,json,csv,resource,sys
@@ -12,10 +12,10 @@ from sato_morrison.controls import encounter_relative,encounter_thermal_moments,
 from sato_morrison.reference import run_metadata,progress
 
 ROOT=Path(__file__).resolve().parents[1]
-OUTPUT=ROOT/'results'/'encounter_phase'/'refined8192'
-BASELINE=ROOT/'results'/'encounter_phase'
-BASELINE_SHA='33f5e206d6a748518abe6808945b96d003b4e2fef283d318bd63f04973d2812e'
-BASELINE_NODES_SHA='385a209f056534c54a75a29305d752ef8137c045ba728f8680e2563531bd182d'
+OUTPUT=ROOT/'results'/'encounter_phase'/'all_moments8192'
+BASELINE=ROOT/'results'/'encounter_phase'/'refined8192'
+BASELINE_SHA='e2c15cbca067ccfce4839366c1d7768d126907557569ce3af33f868d209ab887'
+BASELINE_NODES_SHA='c89dfb3e4797ef03d64b062021c3a8d67860e787de5280b3a6973b9aec93da5e'
 PRIOR=ROOT/'results'/'encounter_duration'/'metadata.json'
 PRIOR_SHA='d2b411a3213d5becb1504ba7d654802240505159d52a7b7dcba936cce852f5ab'
 MASS,CHARGE,FIELD,STRENGTH,SCREENING,THETA=1.,1.,2.,.03,3.,.5
@@ -79,15 +79,27 @@ def second_change(current,previous):
     return float(abs(a-b)/a) if a>0 else None
 
 
+def moment_changes(current,previous):
+    """Predeclared relative rule for all three moments, including exact zero values."""
+    if not current['complete'] or not previous['complete']:return [None]*3
+    changes=[]
+    for a,b in zip(current['phase_averaged_moments'],previous['phase_averaged_moments']):
+        changes.append((0. if b==0 else None) if a==0 else float(abs(a-b)/abs(a)))
+    return changes
+
+
 inputs={'mass':MASS,'charge':CHARGE,'field':FIELD,'strength':STRENGTH,'screening':SCREENING,
     'theta':THETA,'theta_definition':'single-particle velocity variance k_B*T/m',
     'fixed_incoming_triple':[IMPACT,PARALLEL,PERPENDICULAR],
     'start_distance':DISTANCE,'flight_time_factor':FLIGHT_FACTOR,'max_step':MAX_STEP,'rtol':RTOL,
     'phase_orders':ORDERS,'master_phase_count':ORDERS[-1],'phase_measure':'dphi/(2pi)',
+    'baseline_actual_final_phase_order':2048,
     'phase_relative_target':PHASE_TARGET,'required_successive_checks':SUCCESSIVE_CHECKS,
+    'convergence_components':['mean','second','cross'],
+    'zero_denominator_rule':'Both current and previous exactly zero:change 0; current zero with previous nonzero:undefined and fails. Otherwise abs(current-previous)/abs(current).',
     'refined_max_step':REFINED_STEP,'timestep_relative_target':TIMESTEP_TARGET,
     'energy_target':ENERGY_TARGET,'anchor_master_indices':ANCHOR_INDICES,'new_control_count':NEW_CONTROL_COUNT,
-    'new_control_selection':'Largest3 known primary second-moment contributors among new phases outside original512 lattice, ties by index; unknown outcomes are excluded from ranking but prevent overallpass; no replacement for failed Cartesian controls.',
+    'new_control_selection':'Union of largest three known absolute mean, second moment and absolute cross contributors among phases outside baseline actual 2048-node lattice; ties by index, no replacement for failed/unknown Cartesian controls.',
     'runtime_budget_s':RUNTIME_BUDGET,'checkpoint_interval':CHECKPOINT_INTERVAL,
     'runtime_cap_scope':'Checked between work items; may overshoot by one operation, not a hard process kill. Incomplete declared checks remain unresolved.',
     'baseline_summary_sha256':BASELINE_SHA,'baseline_nodes_sha256':BASELINE_NODES_SHA,
@@ -96,21 +108,21 @@ inputs={'mass':MASS,'charge':CHARGE,'field':FIELD,'strength':STRENGTH,'screening
     'anchor_absolute_moment_target':ANCHOR_TARGET,
     'prior_metadata_sha256':PRIOR_SHA,'seed':None,
     'moment_definition':'analytic independent Maxwellian COM average of individual delta_mu_1, its square, and delta_mu_1*delta_mu_2',
-    'stop_rule':'Stop after two successive complete 1% checks or retain all levels through8192; declared runtime cap leaves unattempted work explicitly unresolved.'}
-print('Refine sampled fixed-triple phase moments; continuous coverage remains unresolved, no rate or source D.',flush=True)
+    'stop_rule':'Stop after two successive complete 1% checks for all three moments or retain all levels through8192; final whole-grid timestep 0.1% checks apply to all three; no post-outcome extension.'}
+print('Refine all three sampled fixed-triple phase moments; continuous coverage remains unresolved, no rate or source D.',flush=True)
 if hashlib.sha256(PRIOR.read_bytes()).hexdigest()!=PRIOR_SHA:
     raise ValueError('Saved original duration receipt changed')
 prior=json.loads(PRIOR.read_text());original=prior['results']['failure_audits'][0]
 if original['original_failure']['node'][:3]!=inputs['fixed_incoming_triple']:
     raise ValueError('The fixed triple differs from the predeclared saved encounter')
 if hashlib.sha256((BASELINE/'summary.json').read_bytes()).hexdigest()!=BASELINE_SHA or hashlib.sha256((BASELINE/'nodes.json').read_bytes()).hexdigest()!=BASELINE_NODES_SHA:
-    raise ValueError('Original phase evidence changed')
+    raise ValueError('Audited second-moment phase evidence changed')
 baseline=json.loads((BASELINE/'summary.json').read_text())
 if hashlib.sha256((ROOT/'src/sato_morrison/controls.py').read_bytes()).hexdigest()!=baseline['experiment_dependency_sha256']['src/sato_morrison/controls.py']:
     raise ValueError('Physical encounter code differs from original cache producer')
 for key in ['mass','charge','field','strength','screening','theta','fixed_incoming_triple','start_distance','flight_time_factor','max_step','rtol','refined_max_step']:
     if baseline['inputs'][key]!=inputs[key]:raise ValueError('Physical inputs differ from original cache')
-if baseline['nodes_sha256']!=BASELINE_NODES_SHA:raise ValueError('Original cache hash association changed')
+if baseline['nodes_sha256']!=BASELINE_NODES_SHA:raise ValueError('Audited cache hash association changed')
 OUTPUT.mkdir(parents=True,exist_ok=True)
 metadata=run_metadata(inputs,model='fixed-triple screened encounter gyrophase convergence',
     boundary='first outgoing relative z=+/-24 plane; transmitted and reflected exits; fixed finite flight budget',units='normalized')
@@ -119,7 +131,8 @@ metadata['experiment_dependency_sha256']={str(p.relative_to(ROOT)):hashlib.sha25
 metadata['reused_phase_evidence']={'summary_path':str((BASELINE/'summary.json').relative_to(ROOT)),
     'summary_sha256':BASELINE_SHA,'nodes_path':str((BASELINE/'nodes.json').relative_to(ROOT)),
     'nodes_sha256':BASELINE_NODES_SHA,'producer_commit':baseline['commit'],
-    'original_phase_status':baseline['results']['phase_status']}
+    'baseline_phase_status':baseline['results']['phase_status'],
+    'baseline_criterion':'Second moment only; mean and cross angular convergence not validated by its pass.'}
 metadata['prior_evidence']={'path':str(PRIOR.relative_to(ROOT)),'sha256':PRIOR_SHA,'producer_commit':prior['commit']}
 (OUTPUT/'declared_inputs.json').write_text(json.dumps(inputs,indent=2)+'\n')
 started=perf_counter();cache={};levels=[];consecutive=0;new_solves=0;unattempted=set()
@@ -129,9 +142,13 @@ for row in json.loads((BASELINE/'nodes.json').read_text()):
         raise ValueError('Cache phase mapping is not exact')
     key=(index,float(row['max_step']))
     if key in cache:raise ValueError('Duplicate original phase cache key')
-    cache[key]={**row,'master_phase_index':index,'reused_from_original_phase_index':row['master_phase_index'],
-        'reused_from_producer_commit':baseline['commit'],'historical_wall_s':row['wall_s'],'wall_s':0.}
+    cache[key]={**row,'master_phase_index':index,'reused_from_baseline_master_index':row['master_phase_index'],
+        'reused_from_producer_commit':baseline['commit'],'baseline_wall_s':row['wall_s'],'wall_s':0.}
 reused_solves=len(cache)
+baseline_final_order=baseline['results']['phase_levels'][-1]['phase_order']
+if baseline_final_order!=2048:raise ValueError('Expected audited actual 2048-node baseline lattice')
+baseline_lattice_stride=ORDERS[-1]//baseline_final_order
+metadata['reused_phase_evidence']['actual_final_phase_order']=baseline_final_order
 
 
 def checkpoint():
@@ -159,12 +176,13 @@ with progress('Refine sampled nested phases, retaining every numerical nonexit a
     for order in ORDERS:
         records=[evaluate(index,MAX_STEP) for index in range(0,ORDERS[-1],ORDERS[-1]//order)]
         summary=phase_summary(records,order)
-        change=second_change(summary,levels[-1]) if levels else None
-        summary['second_moment_relative_change']=change
-        check=change is not None and change<=PHASE_TARGET and summary['max_energy_error']<=ENERGY_TARGET
+        changes=moment_changes(summary,levels[-1]) if levels else [None]*3
+        summary['moment_relative_changes']=changes
+        summary['second_moment_relative_change']=changes[1]
+        check=all(c is not None and c<=PHASE_TARGET for c in changes) and summary['max_energy_error']<=ENERGY_TARGET
         consecutive=consecutive+1 if check else 0
         summary['successive_passes']=consecutive;levels.append(summary)
-        print(f'  N={order}: complete={summary["complete"]}, second={summary["known_positive_second_moment_contribution"]:.9g}, change={change}, consecutive={consecutive}',flush=True)
+        print(f'  N={order}: complete={summary["complete"]}, second={summary["known_positive_second_moment_contribution"]:.9g}, all threechanges={changes}, consecutive={consecutive}',flush=True)
         (OUTPUT/'levels_partial.json').write_text(json.dumps(levels,indent=2,allow_nan=False)+'\n');checkpoint()
         if consecutive>=SUCCESSIVE_CHECKS or not budget_available():break
 final_order=levels[-1]['phase_order'];indices=list(range(0,ORDERS[-1],ORDERS[-1]//final_order))
@@ -172,18 +190,24 @@ with progress('Timestep refinement of the entire final gyrophase integral'):
     fine_records=[evaluate(index,REFINED_STEP) for index in indices]
 checkpoint()
 fine=phase_summary(fine_records,final_order)
-step_change=second_change(fine,levels[-1]);fine['second_moment_relative_change_from_primary_step']=step_change
+step_changes=moment_changes(fine,levels[-1]);step_change=step_changes[1]
+fine['moment_relative_changes_from_primary_step']=step_changes
+fine['second_moment_relative_change_from_primary_step']=step_change
 
-new_candidates=sorted([r for r in records if r['status']=='outgoing_event' and r['master_phase_index']%(ORDERS[-1]//baseline['inputs']['master_phase_count'])!=0],
-    key=lambda r:(-r['moments'][1],r['master_phase_index']))
-new_control_indices=[r['master_phase_index'] for r in new_candidates[:NEW_CONTROL_COUNT]]
+new_candidates=[r for r in records if r['status']=='outgoing_event' and r['master_phase_index']%baseline_lattice_stride!=0]
+component_controls={}
+for component,name in enumerate(['mean','second','cross']):
+    ranking=sorted(new_candidates,key=lambda r:(-abs(r['moments'][component]),r['master_phase_index']))
+    component_controls[name]=[r['master_phase_index'] for r in ranking[:NEW_CONTROL_COUNT]]
+new_control_indices=sorted(set(i for selected in component_controls.values() for i in selected))
 control_indices=list(ANCHOR_INDICES)+new_control_indices
 controls=[];paths={}
 with progress('Cartesian equations at anchors and largest new contributors'):
     for index in control_indices:
         row=evaluate(index,REFINED_STEP);control={'master_phase_index':index,'phase':2*np.pi*index/ORDERS[-1],
             'relative_status':row['status'],'pair_refinements':[],
-            'selection':'original_anchor' if index in ANCHOR_INDICES else 'largest_new_contributor',
+            'selection':'original_anchor' if index in ANCHOR_INDICES else 'largest_new_component_contributor',
+            'selected_components':[name for name,selected in component_controls.items() if index in selected],
             'relative_reason':row.get('reason')}
         if row['status']=='outgoing_event':
             for step in PAIR_STEPS:
@@ -218,10 +242,10 @@ anchor=evaluate(ORDERS[-1]//4,REFINED_STEP)
 prior_fine=next(r for r in original['timestep_audit'] if r['max_step']==REFINED_STEP) if any(r['max_step']==REFINED_STEP for r in original['timestep_audit']) else original['timestep_audit'][-1]
 anchor_error=float(np.max(abs(np.asarray(anchor['moments'])-prior_fine['moments']))) if anchor['status']=='outgoing_event' else None
 phase_passed=consecutive>=SUCCESSIVE_CHECKS
-step_passed=step_change is not None and step_change<=TIMESTEP_TARGET and fine['max_energy_error']<=ENERGY_TARGET
+step_passed=all(c is not None and c<=TIMESTEP_TARGET for c in step_changes) and fine['max_energy_error']<=ENERGY_TARGET
 metadata['experiment_dependency_sha256_end']={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in dependencies}
 metadata['experiment_dependencies_unchanged']=metadata['experiment_dependency_sha256']==metadata['experiment_dependency_sha256_end']
-passed=phase_passed and step_passed and len(new_control_indices)==NEW_CONTROL_COUNT and len(controls)==len(ANCHOR_INDICES)+NEW_CONTROL_COUNT and all(c['status']=='passed' for c in controls) and anchor_error is not None and anchor_error<ANCHOR_TARGET and metadata['experiment_dependencies_unchanged']
+passed=phase_passed and step_passed and all(len(selected)==NEW_CONTROL_COUNT for selected in component_controls.values()) and len(controls)==len(ANCHOR_INDICES)+len(new_control_indices) and all(c['status']=='passed' for c in controls) and anchor_error is not None and anchor_error<ANCHOR_TARGET and metadata['experiment_dependencies_unchanged']
 records=[evaluate(index,MAX_STEP) for index in indices]
 second=np.array([r['moments'][1] if r['status']=='outgoing_event' else np.nan for r in records])
 known=np.where(np.isfinite(second),second,0.);total=known.sum()
@@ -229,7 +253,7 @@ ranked=np.sort(known)[::-1]
 mu_initial=MASS/(2*FIELD)*(THETA+PERPENDICULAR**2/4)
 results={'phase_levels':levels,'timestep_check':fine,'controls':controls,
     'phase_status':'passed' if phase_passed else 'unresolved','timestep_status':'passed' if step_passed else 'unresolved',
-    'status':'passed_conditional_phase_checks' if passed else 'unresolved',
+    'status':'passed_conditional_all_moment_checks' if passed else 'unresolved',
     'anchor_absolute_moment_difference_from_prior':anchor_error,
     'prior_anchor_max_step':prior_fine['max_step'],
     'mean_initial_mu':mu_initial,
@@ -239,7 +263,7 @@ results={'phase_levels':levels,'timestep_check':fine,'controls':controls,
         'node_count':max(1,int(np.ceil(final_order*fraction))),
         'known_second_moment_contribution_fraction':float(ranked[:max(1,int(np.ceil(final_order*fraction)))].sum()/total)} for fraction in (.01,.05,.1,.25)] if total>0 else [],
     'unique_relative_solves':len(cache),'reused_relative_solves':reused_solves,'new_relative_solves':new_solves,
-    'new_control_indices':new_control_indices,'runtime_cap_reached':not budget_available(),
+    'new_control_indices':new_control_indices,'component_control_indices':component_controls,'runtime_cap_reached':not budget_available(),
     'unattempted_relative_nodes':[{'master_phase_index':i,'max_step':step} for i,step in sorted(unattempted)],
     'continuous_phase_coverage_status':'unresolved','wall_s':perf_counter()-started,
     'process_peak_RSS_bytes':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024),
@@ -268,10 +292,14 @@ axes[0].set(xlabel='incoming gyrophase φ',ylabel='individual COM-averaged secon
 axes[0].axvline(np.pi/2,color='0.5',ls=':',lw=1)
 axes[1].plot(np.arange(1,final_order+1)/final_order,np.cumsum(ranked)/total if total>0 else np.zeros(final_order),color='#C66B28')
 axes[1].set(xlabel='fraction of largest contributing phase nodes',ylabel='fraction of known positive finite sum',title='Contribution concentration',ylim=(0,1.03))
-axes[2].plot([r['phase_order'] for r in levels],[r['known_positive_second_moment_contribution'] for r in levels],'o-',label='step .05')
-axes[2].plot(final_order,fine['known_positive_second_moment_contribution'],'x',ms=8,label='step .025')
-axes[2].set(xlabel='phase nodes',ylabel='second-moment integral / (2π)',title='Nested phase and timestep checks');axes[2].set_xscale('log',base=2);axes[2].legend(fontsize=9)
-fig.suptitle(f'Conditional gyrophase convergence: {results["status"]}\nSample weights retained; missing = {levels[-1]["missing_phase_weight"]:.4g}; continuous coverage unresolved',fontsize=11)
+for component,label in enumerate(['mean','second','cross']):
+    changes=[100*r['moment_relative_changes'][component] if r['moment_relative_changes'][component] is not None else np.nan for r in levels]
+    axes[2].plot([r['phase_order'] for r in levels],changes,'o-',ms=3,label=label)
+axes[2].axhline(100*PHASE_TARGET,color='0.4',ls=':',label='1% target')
+axes[2].set(xlabel='phase nodes',ylabel='successive moment change (%)',title='All three angular convergence checks')
+axes[2].set_xscale('log',base=2);axes[2].set_yscale('symlog',linthresh=.01);axes[2].legend(fontsize=8)
+figure_status="refinement checks passed" if passed else "refinement checks unresolved"
+fig.suptitle(f'Sampled encounter moments: {figure_status}\nAll sample weights retained; missing weight = {levels[-1]["missing_phase_weight"]:.4g}; continuous coverage unresolved',fontsize=11)
 fig.savefig(OUTPUT/'phase_convergence.png',dpi=180);plt.close(fig)
-print(f'Finished: {results["status"]}, phase checks={consecutive}, timestep change={step_change}, elapsed={results["wall_s"]:.1f}s',flush=True)
+print(f'Finished: {results["status"]}, phase checks={consecutive}, all three timestep changes={step_changes}, elapsed={results["wall_s"]:.1f}s',flush=True)
 if not passed:raise RuntimeError('Conditional phase checks unresolved; all measurements and failures retained')
