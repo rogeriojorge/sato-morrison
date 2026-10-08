@@ -1,0 +1,1482 @@
+{
+  "audit_time_utc": "2026-10-08T15:56:38.737007+00:00",
+  "collector_sha256": "0c89760ce5a1fcfb19cbd01b0ed2bef380f5725605b531ab7f6b0725abf084e1",
+  "expected_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+  "expected_source_sha256": "b981adcaa6de59acc94174069759446322978e5b10b13161d6fb86175ddae282",
+  "expected_example_sha256": "3ab2b1d606c43ce679bf7fbd720ee2d7def1fb79d1f972189728fe9d8f3a83db",
+  "canonical_inputs": {
+    "fields": [
+      {
+        "kind": "mirror",
+        "strength": 1.0,
+        "amplitude": 0.15,
+        "length": 1.0,
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "base": "dipole"
+      },
+      {
+        "kind": "dipole",
+        "strength": 1.0,
+        "amplitude": 0.0,
+        "length": 1.0,
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "base": "dipole"
+      },
+      {
+        "kind": "nonaxisymmetric",
+        "strength": 1.0,
+        "amplitude": 0.03,
+        "length": 1.0,
+        "direction": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "base": "dipole"
+      }
+    ],
+    "bounds": [
+      [
+        0.8,
+        1.2
+      ],
+      [
+        -0.2,
+        0.2
+      ],
+      [
+        0.1,
+        0.5
+      ]
+    ],
+    "nx": 5,
+    "nu": 25,
+    "nmu": 21,
+    "x_orders": [
+      3,
+      5,
+      7
+    ],
+    "u_orders": [
+      17,
+      21,
+      25
+    ],
+    "mu_orders": [
+      13,
+      17,
+      21
+    ],
+    "u_domain": [
+      -4.0,
+      4.0
+    ],
+    "mu_domain": [
+      0,
+      20.0
+    ],
+    "collision_strength": 0.1,
+    "final_time": 0.02,
+    "dt_values": [
+      0.005,
+      0.0025,
+      0.00125,
+      0.000625,
+      0.0003125
+    ],
+    "newton_rtol": 1e-12,
+    "pair_chunk": 1048576,
+    "time_discretization": "lagged-mobility backward Euler in entropy variables",
+    "preconditioner_axis": [
+      0,
+      1,
+      2
+    ],
+    "preconditioner": "Dense three-axis spatial channel-Gram sum per velocity node, with remaining velocity-channel diagonal; exact Hessian unchanged",
+    "linear_rtol": 1e-06,
+    "linear_max_steps": 3000,
+    "max_newton_steps": 80,
+    "relative_refinement_target": 0.01,
+    "spatial_discretization": "global Lagrange polynomial derivative on positive Gauss-Legendre quadrature",
+    "velocity_discretization": "local quadratic u derivative; positive Gauss-Legendre u/mu quadrature",
+    "initial": "exp(-E-.2mu+.1sin(pi*y/.4)*u)",
+    "seed": null,
+    "residual_metric": "fixed_reference_population",
+    "reference_population": "positive quadrature weights times the fixed initial distribution; same total particle number"
+  },
+  "provenance_runs": {
+    "0896f1e661e98e3e95d27e152dccca27e81aca37f7c97a2c1b1915a04ac4b198": {
+      "model": "sm_local_nonlinear discrete-energy projector",
+      "boundary": "natural no-flux collision-only Cartesian boxes",
+      "units": "normalized",
+      "inputs": {
+        "fields": [
+          {
+            "kind": "mirror",
+            "strength": 1.0,
+            "amplitude": 0.15,
+            "length": 1.0,
+            "direction": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "base": "dipole"
+          },
+          {
+            "kind": "dipole",
+            "strength": 1.0,
+            "amplitude": 0.0,
+            "length": 1.0,
+            "direction": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "base": "dipole"
+          },
+          {
+            "kind": "nonaxisymmetric",
+            "strength": 1.0,
+            "amplitude": 0.03,
+            "length": 1.0,
+            "direction": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "base": "dipole"
+          }
+        ],
+        "bounds": [
+          [
+            0.8,
+            1.2
+          ],
+          [
+            -0.2,
+            0.2
+          ],
+          [
+            0.1,
+            0.5
+          ]
+        ],
+        "nx": 5,
+        "nu": 25,
+        "nmu": 21,
+        "x_orders": [
+          3,
+          5,
+          7
+        ],
+        "u_orders": [
+          17,
+          21,
+          25
+        ],
+        "mu_orders": [
+          13,
+          17,
+          21
+        ],
+        "u_domain": [
+          -4.0,
+          4.0
+        ],
+        "mu_domain": [
+          0,
+          20.0
+        ],
+        "collision_strength": 0.1,
+        "final_time": 0.02,
+        "dt_values": [
+          0.005,
+          0.0025,
+          0.00125,
+          0.000625,
+          0.0003125
+        ],
+        "newton_rtol": 1e-12,
+        "pair_chunk": 1048576,
+        "time_discretization": "lagged-mobility backward Euler in entropy variables",
+        "preconditioner_axis": [
+          0,
+          1,
+          2
+        ],
+        "preconditioner": "Dense three-axis spatial channel-Gram sum per velocity node, with remaining velocity-channel diagonal; exact Hessian unchanged",
+        "residual_metric": "fixed_reference_population",
+        "reference_population": "positive quadrature weights times the fixed initial distribution; same total particle number",
+        "linear_rtol": 1e-06,
+        "linear_max_steps": 3000,
+        "max_newton_steps": 80,
+        "relative_refinement_target": 0.01,
+        "spatial_discretization": "global Lagrange polynomial derivative on positive Gauss-Legendre quadrature",
+        "velocity_discretization": "local quadratic u derivative; positive Gauss-Legendre u/mu quadrature",
+        "initial": "exp(-E-.2mu+.1sin(pi*y/.4)*u)",
+        "seed": null
+      },
+      "commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+      "working_tree": "?? results/nonuniform_spatial_blocks/",
+      "source_sha256": "b981adcaa6de59acc94174069759446322978e5b10b13161d6fb86175ddae282",
+      "versions": {
+        "sato-morrison": "0.1.0",
+        "jax": "0.11.2",
+        "jaxlib": "0.11.2",
+        "solvax": "0.28.2",
+        "numpy": "2.5.3",
+        "scipy": "1.18.1",
+        "matplotlib": "3.11.2"
+      },
+      "source_changes": "",
+      "logical_cpus": 4,
+      "thread_environment": {
+        "OMP_NUM_THREADS": "unset",
+        "OPENBLAS_NUM_THREADS": "unset",
+        "MKL_NUM_THREADS": "unset",
+        "XLA_FLAGS": "unset"
+      },
+      "python": "3.12.15",
+      "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+      "processor": "x86_64",
+      "devices": [
+        "cpu:0"
+      ],
+      "x64": true,
+      "limitations": "Independent finite-time refinement checks at fixed other parameters; no combined-streaming box claim and no E/Gmu-only equilibrium reachability claim. Finite spatial polynomial spaces may lift continuum invariants: flux/potential moments are measured as scheme errors, never projected or interpreted as physical relaxation. Tail-domain and wider-domain quadrature checks are separate. A fine timestep-pair pass does not certify the coarse baseline or jointly refine space and time; all adjacent and coarsest/fine differences are retained. Fixed-reference and old-population residual norms are different; no equality of their nominal tolerances is claimed. Timings include concurrent unrelated machine load.",
+      "relaxation_diagnostic": "Relative entropy to mass-normalized exp(-E-.2mu) decreases by the entropy gain because its logarithm is a discrete collision invariant. This stationary reference is not asserted reachable under the additional continuum constraints. Mean/variance of log(f/reference) and the sin(pi*y/.4)*u moment are measured separately.",
+      "execution": {
+        "selected_fields": [
+          "dipole"
+        ],
+        "selected_cases": [
+          "spatial3"
+        ],
+        "description": "Independent predefined cases; each completed row retains its producing run."
+      }
+    }
+  },
+  "artifact_receipts": [
+    {
+      "state_audit": {
+        "status": "passed",
+        "sha256": "b129e40eb6234774e6c24747f56e6b19db9d8c793447f213057c88da33a5e499",
+        "field": "dipole",
+        "case": "spatial3",
+        "time": 0.02,
+        "accepted_steps": 4,
+        "number": 0.13246118136077567,
+        "number_error": 4.009398470348478e-17,
+        "energy_error": 1.808132907542576e-16,
+        "marginal_error": 6.809966499174347e-16,
+        "full_mu_populations": [
+          0.02428720472178079,
+          0.03949760025967763,
+          0.03353047289844969,
+          0.01998289355520769,
+          0.009416617874826606,
+          0.003771842378378299,
+          0.0013442685014796987,
+          0.0004394620342371176,
+          0.0001349439409692952,
+          3.974279859416889e-05,
+          1.1448593836864467e-05,
+          3.2884857362367413e-06,
+          9.60286916409875e-07,
+          2.9061394959158984e-07,
+          9.281725486081605e-08,
+          3.177849025193924e-08,
+          1.1792836764403903e-08,
+          4.756487927624262e-09,
+          2.056739612842474e-09,
+          9.011814466067293e-10,
+          3.137447208853664e-10
+        ],
+        "entropy_gain_per_particle": 0.0015499264858925231,
+        "scope": "Independent NumPy analytic-field/quadrature endpoint invariant and entropy audit; no full pair residual reevaluation",
+        "public_state_file": "state_dipole_spatial3.npz",
+        "public_producer_summary_file": "dipole_spatial3_producer_summary.json",
+        "public_run_log_file": "dipole_spatial3_run.log",
+        "independent_pair_audit_file": "dipole_spatial3_pair_audit.json",
+        "independent_pair_audit_source_sha256": "2b4dc65f9a1260b0395c12c6dbe072ce31f00fac7a563e943af8281a6a9c162a"
+      },
+      "last_correction_audit": {
+        "status": "retained_diagnostic",
+        "sha256": "f488b046083519a7eadb13a2454f6d0cf59b51a005d010987b43d5c6ed25f7bc",
+        "checkpoint": {
+          "field": "dipole",
+          "case": "spatial3",
+          "step": 4,
+          "provenance_id": "0896f1e661e98e3e95d27e152dccca27e81aca37f7c97a2c1b1915a04ac4b198",
+          "residual_metric": "fixed_reference_population",
+          "iteration": 3,
+          "relative_residual": 3.6762546752775863e-09,
+          "linear_iterations": 187,
+          "true_linear_relative_residual": 9.534770285526157e-07,
+          "linear_wall_s": 29.866207313000018,
+          "maximum_log_direction": 4.190870215404469e-05,
+          "minimum_signed_log_direction": -4.190870215404469e-05,
+          "maximum_signed_log_direction": 1.1078154055081985e-06,
+          "objective_descent": -1.3436966615078983e-18,
+          "mobility_curvature": 3.5086793651982127e-17,
+          "fraction": 1.0,
+          "backtracks": 0,
+          "maximum_log_step": 4.190870215404469e-05,
+          "objective_change": -6.718483905782671e-19
+        },
+        "scope": "May include a rejected Newton correction; not an accepted step or a successful solve"
+      },
+      "summary_path": "dipole_spatial3_producer_summary.json",
+      "sha256": "c32dd5052a23074d6be679421adb5ef07f0e8af26bf97bb5926be6b4c0f352b6",
+      "provenance_id": "0896f1e661e98e3e95d27e152dccca27e81aca37f7c97a2c1b1915a04ac4b198",
+      "completed_cases": 1,
+      "selected_execution_complete": true,
+      "auxiliary_files": [
+        {
+          "path": "dipole_spatial3_download_receipt.json",
+          "sha256": "287abb1bd5ea76e16ba5c5b441eecb96fdd0a3e6fed048e353944458567e790e",
+          "bytes": 2124
+        },
+        {
+          "path": "dipole_spatial3_commit.txt",
+          "sha256": "abe9dcfb69d229fc649bde6c646b767be5d1ee6987a6d8c0f68ae34568e0cc56",
+          "bytes": 41
+        },
+        {
+          "path": "dipole_spatial3_cpu.txt",
+          "sha256": "fcadccdcc8aed598fa1d501729ffa0efa2502c5e6ab8afb3aadf261efdcc233d",
+          "bytes": 3362,
+          "contents": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           48 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  4\nOn-line CPU(s) list:                     0-3\nVendor ID:                               AuthenticAMD\nModel name:                              AMD EPYC 9V45 96-Core Processor\nCPU family:                              26\nModel:                                   2\nThread(s) per core:                      2\nCore(s) per socket:                      2\nSocket(s):                               1\nStepping:                                1\nBogoMIPS:                                5192.23\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology tsc_reliable nonstop_tsc cpuid extd_apicid aperfmperf tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves user_shstk avx_vnni avx512_bf16 clzero xsaveerptr rdpru arat npt nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload avx512vbmi umip avx512_vbmi2 gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq rdpid fsrm avx512_vp2intersect\nVirtualization:                          AMD-V\nHypervisor vendor:                       Microsoft\nVirtualization type:                     full\nL1d cache:                               96 KiB (2 instances)\nL1i cache:                               64 KiB (2 instances)\nL2 cache:                                2 MiB (2 instances)\nL3 cache:                                32 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-3\nVulnerability Gather data sampling:      Not affected\nVulnerability Ghostwrite:                Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Not affected\nVulnerability Mds:                       Not affected\nVulnerability Meltdown:                  Not affected\nVulnerability Mmio stale data:           Not affected\nVulnerability Old microcode:             Not affected\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Vulnerable: Safe RET, no microcode\nVulnerability Spec store bypass:         Vulnerable\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Retpolines; STIBP disabled; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Not affected\nVulnerability Tsx async abort:           Not affected\nVulnerability Vmscape:                   Not affected\n"
+        },
+        {
+          "path": "dipole_spatial3_environment.txt",
+          "sha256": "3efa0f0f01834039f33414c49e047a10c967bc5991daffaf02ed69302fab1694",
+          "bytes": 549,
+          "contents": "contourpy==1.4.0\ncycler==0.12.1\nequinox==0.13.8\nfonttools==4.66.1\niniconfig==2.3.1\njax==0.11.2\njaxlib==0.11.2\njaxtyping==0.3.11\nkiwisolver==1.5.1\nmatplotlib==3.11.2\nml_dtypes==0.6.0\nnumpy==2.5.3\nopt_einsum==3.4.0\npackaging==26.3\npillow==12.3.0\npluggy==1.6.0\npsutil==7.2.2\nPygments==2.21.0\npyparsing==3.3.3\npytest==9.1.1\npython-dateutil==2.9.0.post0\n-e git+https://github.com/rogeriojorge/sato-morrison@93bf752da33a31ec158a229f87eaa285aeb5c58b#egg=sato_morrison\nscipy==1.18.1\nsix==1.17.0\nsolvax==0.28.2\ntyping_extensions==4.16.0\nwadler_lindig==0.1.7\n"
+        },
+        {
+          "path": "dipole_spatial3_producer_evolution.png",
+          "sha256": "9d477a2971beb1d6469dde03d5a18ea4022e0f06b4e04f7b07176ef7f11e752a",
+          "bytes": 206545
+        },
+        {
+          "path": "dipole_spatial3_last_correction.json",
+          "sha256": "f488b046083519a7eadb13a2454f6d0cf59b51a005d010987b43d5c6ed25f7bc",
+          "bytes": 778
+        },
+        {
+          "path": "state_dipole_spatial3.npz",
+          "sha256": "b129e40eb6234774e6c24747f56e6b19db9d8c793447f213057c88da33a5e499",
+          "bytes": 275028
+        },
+        {
+          "path": "dipole_spatial3_run.log",
+          "sha256": "b3e4880ba8b56dcbbdb28d620f1eba404445d57f099b0f0f3efc671d8b62272c",
+          "bytes": 5030
+        }
+      ]
+    }
+  ],
+  "exact_duplicate_artifacts": [],
+  "rows": [
+    {
+      "field": "dipole",
+      "nx": 3,
+      "nu": 25,
+      "nmu": 21,
+      "umax": 4.0,
+      "mumax": 20.0,
+      "dt": 0.005,
+      "nodes": 14175,
+      "conceptual_unordered_pairs": 3713850,
+      "residual_metric": "fixed_reference_population",
+      "reference_population_total": 0.1324611813607746,
+      "minimum_reference_population": 8.603415785729921e-25,
+      "stored_grid_bytes": 3294032,
+      "auxiliary_spatial_factor_bytes": 3061800,
+      "auxiliary_spatial_factor_scope": "One dense Cholesky factor per velocity node; excludes other blocks and runtime workspace",
+      "process_peak_rss_bytes": 808407040,
+      "peak_rss_scope": "Cumulative process high-water mark; includes setup and compiled runtime, not grid arrays alone",
+      "pair_workspace_budget": 1048576,
+      "minimum_discrete_grad_B": 1.256887587696359,
+      "minimum_B": 0.6037783634024092,
+      "maximum_B": 1.6530101171895388,
+      "u_quadratic_derivative_error": 2.4868995751603507e-14,
+      "number": 0.1324611813607746,
+      "initial_magnetic_moment_bin_populations": [
+        0.024287204721780337,
+        0.039497600259676795,
+        0.03353047289844977,
+        0.019982893555207815,
+        0.009416617874826635,
+        0.0037718423783783084,
+        0.0013442685014797005,
+        0.00043946203423711905,
+        0.00013494394096929527,
+        3.974279859416895e-05,
+        1.1448593836864506e-05,
+        3.2884857362367553e-06,
+        9.602869164098779e-07,
+        2.9061394959159053e-07,
+        9.281725486081636e-08,
+        3.1778490251939355e-08,
+        1.1792836764403928e-08,
+        4.75648792762428e-09,
+        2.0567396128424806e-09,
+        9.011814466067106e-10,
+        3.1374472088536e-10
+      ],
+      "entropy_gain_per_particle": 0.0015499264858925632,
+      "initial_relative_entropy_per_particle": 0.0024419322811396974,
+      "relative_entropy_decrease_fraction": 0.6347131318355734,
+      "initial_perturbation": {
+        "mean": 0.0024419322811396107,
+        "variance": 0.004898017913969777
+      },
+      "final_perturbation": {
+        "mean": 0.0008920057952473443,
+        "variance": 0.0017921179664300393
+      },
+      "entropy_telescoping_error": 5.692061405548898e-18,
+      "initial_production_per_particle": 0.16461468318109693,
+      "final_production_per_particle": 0.04234354831690578,
+      "relaxation_moment_change_per_particle": -0.020367411187159474,
+      "relaxation_moment_decrease_fraction": 0.4174380813774142,
+      "continuum_invariant_errors": {
+        "psi": {
+          "relative_signed_drift": -1.2995506687492762e-07,
+          "initial_relative_rate": -2.612423520122126e-05,
+          "final_relative_rate": -3.0805095911898596e-06
+        },
+        "psi_squared": {
+          "relative_signed_drift": -6.432008835970686e-07,
+          "initial_relative_rate": -0.00012352675776340454,
+          "final_relative_rate": -1.5597801902803048e-05
+        },
+        "radius_squared": {
+          "relative_signed_drift": -2.067583587561034e-16,
+          "initial_relative_rate": -1.4133872180593006e-18,
+          "final_relative_rate": -1.4133872180593006e-18
+        },
+        "z": {
+          "relative_signed_drift": 1.749290852848386e-16,
+          "initial_relative_rate": -3.5874128818179795e-18,
+          "final_relative_rate": -2.4770231803028904e-18
+        },
+        "z_squared": {
+          "relative_signed_drift": -1.2715899178570887e-16,
+          "initial_relative_rate": 5.960577739955104e-18,
+          "final_relative_rate": -0.0
+        },
+        "radius_squared_z": {
+          "relative_signed_drift": 0.0,
+          "initial_relative_rate": 1.0787703443212787e-17,
+          "final_relative_rate": 1.0113471978011987e-18
+        }
+      },
+      "setup_s": 2.7841105949999942,
+      "history": [
+        {
+          "time": 0.005,
+          "wall_s": 140.32072229599999,
+          "newton_iterations": 5,
+          "pcg_iterations": 828,
+          "nonlinear_relative_residual": 2.6683543461139107e-15,
+          "residual_metric": "fixed_reference_population",
+          "recomputed_reference_relative_residual": 2.669308901541762e-15,
+          "old_population_relative_residual": 2.669308901541762e-15,
+          "unscaled_population_residual_norm": 5.217063757123275e-19,
+          "maximum_linear_relative_residual": 9.9420350843621e-07,
+          "entropy_change": 7.917814443539803e-05,
+          "entropy_identity_error": 1.2112571145736495e-18,
+          "lagged_mobility_dissipation": 7.156952892713399e-05,
+          "generalized_KL": 7.608615508262828e-06,
+          "entropy_defect_bound": 9.276016757437291e-15,
+          "residual_entropy_defect": -1.2127116541849544e-18,
+          "newton_history": [
+            {
+              "iteration": 1,
+              "relative_residual": 0.09423813025113123,
+              "linear_iterations": 139,
+              "true_linear_relative_residual": 9.489589187707583e-07,
+              "linear_wall_s": 24.039890036999992,
+              "maximum_log_direction": 28.216677995558708,
+              "minimum_signed_log_direction": -28.216677995558708,
+              "maximum_signed_log_direction": 4.110106600628587,
+              "objective_descent": -2.226718775705759e-05,
+              "mobility_curvature": 0.0014050992355831488,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 28.216677995558708,
+              "objective_change": -1.1116388757984707e-05
+            },
+            {
+              "iteration": 2,
+              "relative_residual": 0.0002570959093014769,
+              "linear_iterations": 201,
+              "true_linear_relative_residual": 9.810602203077253e-07,
+              "linear_wall_s": 32.871683644,
+              "maximum_log_direction": 1.906293739321038,
+              "minimum_signed_log_direction": -1.906293739321038,
+              "maximum_signed_log_direction": 0.022869729917267555,
+              "objective_descent": -5.728265456210632e-09,
+              "mobility_curvature": 1.3614990047322767e-07,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 1.906293739321038,
+              "objective_change": -2.869529464154727e-09
+            },
+            {
+              "iteration": 3,
+              "relative_residual": 1.8781751741959228e-06,
+              "linear_iterations": 198,
+              "true_linear_relative_residual": 9.9420350843621e-07,
+              "linear_wall_s": 32.244684324999994,
+              "maximum_log_direction": 0.16632867770016335,
+              "minimum_signed_log_direction": -0.16632867770016335,
+              "maximum_signed_log_direction": 0.0026250073929257184,
+              "objective_descent": -4.969345342873149e-13,
+              "mobility_curvature": 2.8125624234932504e-11,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.16632867770016335,
+              "objective_change": -2.494470583954506e-13
+            },
+            {
+              "iteration": 4,
+              "relative_residual": 1.5559540585882493e-08,
+              "linear_iterations": 146,
+              "true_linear_relative_residual": 9.253352021593707e-07,
+              "linear_wall_s": 24.075756952999996,
+              "maximum_log_direction": 0.004443217777518776,
+              "minimum_signed_log_direction": -0.004443217777518776,
+              "maximum_signed_log_direction": 9.487584984833987e-05,
+              "objective_descent": -3.712291607370759e-17,
+              "mobility_curvature": 2.9619088661507274e-15,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.004443217777518776,
+              "objective_change": -1.8565864041155033e-17
+            },
+            {
+              "iteration": 5,
+              "relative_residual": 7.422728655971406e-12,
+              "linear_iterations": 144,
+              "true_linear_relative_residual": 9.835437599758677e-07,
+              "linear_wall_s": 24.138528941999994,
+              "maximum_log_direction": 3.0636479148181976e-06,
+              "minimum_signed_log_direction": -3.0636479148181976e-06,
+              "maximum_signed_log_direction": 1.5317033373728734e-07,
+              "objective_descent": -7.143087278871191e-24,
+              "mobility_curvature": 7.115258764810137e-22,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 3.0636479148181976e-06,
+              "objective_change": -3.5715446034453794e-24
+            }
+          ],
+          "magnetic_moment_bin_populations": [
+            0.02428720472178028,
+            0.03949760025967679,
+            0.033530472898449806,
+            0.019982893555207777,
+            0.009416617874826632,
+            0.003771842378378304,
+            0.001344268501479701,
+            0.0004394620342371184,
+            0.0001349439409692953,
+            3.9742798594168916e-05,
+            1.1448593836864503e-05,
+            3.2884857362367536e-06,
+            9.602869164098777e-07,
+            2.9061394959159027e-07,
+            9.281725486081636e-08,
+            3.1778490251939335e-08,
+            1.1792836764403933e-08,
+            4.756487927624283e-09,
+            2.0567396128424806e-09,
+            9.011814466067114e-10,
+            3.1374472088535956e-10
+          ],
+          "relative_marginal_bin_errors": [
+            -2.285613015872362e-15,
+            -1.7567887310336582e-16,
+            1.0347145900569802e-15,
+            -1.9098293430854873e-15,
+            -3.684387534964605e-16,
+            -1.1497852388536488e-15,
+            4.839221500580002e-16,
+            -1.4802673560198902e-15,
+            2.0086158828209273e-16,
+            -8.525146463928957e-16,
+            -2.959430509367366e-16,
+            -5.151507503411704e-16,
+            -2.2051559090823916e-16,
+            -9.10822747459155e-16,
+            0.0,
+            -6.247098129547274e-16,
+            4.20855793603366e-16,
+            5.217172576528617e-16,
+            0.0,
+            9.17884645392641e-16,
+            -1.3182382961198468e-15
+          ],
+          "number_error": 1.2325543144492432e-17,
+          "energy_error": 1.653965025849155e-17,
+          "marginal_error": 6.072201535870899e-18,
+          "min_f": 8.89375290111073e-33
+        },
+        {
+          "time": 0.01,
+          "wall_s": 124.03395899099999,
+          "newton_iterations": 4,
+          "pcg_iterations": 727,
+          "nonlinear_relative_residual": 2.9336730150650854e-15,
+          "residual_metric": "fixed_reference_population",
+          "recomputed_reference_relative_residual": 2.934636043320193e-15,
+          "old_population_relative_residual": 7.108176454805836e-13,
+          "unscaled_population_residual_norm": 5.517467080929072e-19,
+          "maximum_linear_relative_residual": 9.990954830195945e-07,
+          "entropy_change": 5.550759380510045e-05,
+          "entropy_identity_error": 3.5151867311053464e-19,
+          "lagged_mobility_dissipation": 5.091281529684114e-05,
+          "generalized_KL": 4.594778508258962e-06,
+          "entropy_defect_bound": 9.324813558238266e-15,
+          "residual_entropy_defect": -3.46871063717093e-19,
+          "newton_history": [
+            {
+              "iteration": 1,
+              "relative_residual": 0.010795140689441355,
+              "linear_iterations": 164,
+              "true_linear_relative_residual": 9.990954830195945e-07,
+              "linear_wall_s": 27.62820856900001,
+              "maximum_log_direction": 10.866004110465145,
+              "minimum_signed_log_direction": -7.1087974189611565,
+              "maximum_signed_log_direction": 10.866004110465145,
+              "objective_descent": -1.1611584910431343e-05,
+              "mobility_curvature": 0.00048225454149276544,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 10.866004110465145,
+              "objective_change": -5.800901361590302e-06
+            },
+            {
+              "iteration": 2,
+              "relative_residual": 0.00010366964914934204,
+              "linear_iterations": 193,
+              "true_linear_relative_residual": 9.182430123920987e-07,
+              "linear_wall_s": 32.71426388400002,
+              "maximum_log_direction": 0.5019659028599455,
+              "minimum_signed_log_direction": -0.5019659028599455,
+              "maximum_signed_log_direction": 0.23921867956662068,
+              "objective_descent": -1.0741218608007166e-09,
+              "mobility_curvature": 2.431664564286137e-08,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.5019659028599455,
+              "objective_change": -5.37139680665364e-10
+            },
+            {
+              "iteration": 3,
+              "relative_residual": 4.5264044213169845e-08,
+              "linear_iterations": 203,
+              "true_linear_relative_residual": 9.409816179870339e-07,
+              "linear_wall_s": 34.35761742400001,
+              "maximum_log_direction": 0.004530897437921016,
+              "minimum_signed_log_direction": -0.004530897437921016,
+              "maximum_signed_log_direction": 0.00027335943634661453,
+              "objective_descent": -3.03330182208092e-16,
+              "mobility_curvature": 1.608198999395091e-14,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.004530897437921016,
+              "objective_change": -1.5168002712182792e-16
+            },
+            {
+              "iteration": 4,
+              "relative_residual": 7.652878237901619e-12,
+              "linear_iterations": 167,
+              "true_linear_relative_residual": 9.140911131724971e-07,
+              "linear_wall_s": 27.697209149999992,
+              "maximum_log_direction": 2.4656727505345007e-06,
+              "minimum_signed_log_direction": -2.4656727505345007e-06,
+              "maximum_signed_log_direction": 2.0201122576301717e-07,
+              "objective_descent": -1.3907441557698706e-23,
+              "mobility_curvature": 1.0574776451411381e-21,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 2.4656727505345007e-06,
+              "objective_change": -6.953721518160753e-24
+            }
+          ],
+          "magnetic_moment_bin_populations": [
+            0.024287204721780278,
+            0.03949760025967686,
+            0.03353047289844982,
+            0.01998289355520779,
+            0.009416617874826637,
+            0.0037718423783783157,
+            0.0013442685014797015,
+            0.0004394620342371184,
+            0.00013494394096929524,
+            3.9742798594168936e-05,
+            1.1448593836864503e-05,
+            3.288485736236749e-06,
+            9.602869164098777e-07,
+            2.9061394959159043e-07,
+            9.281725486081621e-08,
+            3.177849025193934e-08,
+            1.1792836764403918e-08,
+            4.756487927624283e-09,
+            2.056739612842481e-09,
+            9.011814466067112e-10,
+            3.137447208853596e-10
+          ],
+          "relative_marginal_bin_errors": [
+            -2.4284638293643845e-15,
+            1.5811098579302923e-15,
+            1.4486004260797723e-15,
+            -1.2153459455998554e-15,
+            1.8421937674823025e-16,
+            1.9546349060512028e-15,
+            8.065369167633336e-16,
+            -1.4802673560198902e-15,
+            -2.0086158828209273e-16,
+            -3.4100585855715827e-16,
+            -2.959430509367366e-16,
+            -1.931815313779389e-15,
+            -2.2051559090823916e-16,
+            -3.64329098983662e-16,
+            -1.5684991764477661e-15,
+            -4.16473208636485e-16,
+            -8.41711587206732e-16,
+            5.217172576528617e-16,
+            2.0109026135054533e-16,
+            6.884134840444806e-16,
+            -1.153458509104866e-15
+          ],
+          "number_error": 8.52077107135469e-18,
+          "energy_error": 1.4133861066413793e-17,
+          "marginal_error": 5.25438520601806e-18,
+          "min_f": 3.219528064577078e-28
+        },
+        {
+          "time": 0.015,
+          "wall_s": 90.89103286099999,
+          "newton_iterations": 3,
+          "pcg_iterations": 539,
+          "nonlinear_relative_residual": 9.399128531158798e-14,
+          "residual_metric": "fixed_reference_population",
+          "recomputed_reference_relative_residual": 9.399130496968565e-14,
+          "old_population_relative_residual": 4.247570313584147e-12,
+          "unscaled_population_residual_norm": 5.50889983557847e-19,
+          "maximum_linear_relative_residual": 9.788410027519774e-07,
+          "entropy_change": 4.045576331239404e-05,
+          "entropy_identity_error": 2.4885404473857717e-17,
+          "lagged_mobility_dissipation": 3.738465727084621e-05,
+          "generalized_KL": 3.071106041522943e-06,
+          "entropy_defect_bound": 2.5241959222772738e-14,
+          "residual_entropy_defect": -2.4871432552545642e-17,
+          "newton_history": [
+            {
+              "iteration": 1,
+              "relative_residual": 0.008379764188647259,
+              "linear_iterations": 158,
+              "true_linear_relative_residual": 9.457439298405421e-07,
+              "linear_wall_s": 26.46902894799996,
+              "maximum_log_direction": 6.590032920761138,
+              "minimum_signed_log_direction": -0.8483812982100934,
+              "maximum_signed_log_direction": 6.590032920761138,
+              "objective_descent": -7.467657291432371e-06,
+              "mobility_curvature": 0.000263902032006766,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 6.590032920761138,
+              "objective_change": -3.731504727139972e-06
+            },
+            {
+              "iteration": 2,
+              "relative_residual": 6.263954461775929e-05,
+              "linear_iterations": 187,
+              "true_linear_relative_residual": 9.739523331703262e-07,
+              "linear_wall_s": 31.225952087999985,
+              "maximum_log_direction": 0.03273434798884736,
+              "minimum_signed_log_direction": -0.03273434798884736,
+              "maximum_signed_log_direction": 0.002434402571990216,
+              "objective_descent": -4.128195149764942e-10,
+              "mobility_curvature": 8.792560805183897e-09,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.03273434798884736,
+              "objective_change": -2.0642372109485654e-10
+            },
+            {
+              "iteration": 3,
+              "relative_residual": 8.592539948357897e-09,
+              "linear_iterations": 194,
+              "true_linear_relative_residual": 9.788410027519774e-07,
+              "linear_wall_s": 31.81213602500003,
+              "maximum_log_direction": 0.0002456081040424451,
+              "minimum_signed_log_direction": -0.0002456081040424451,
+              "maximum_signed_log_direction": 2.5901378426622635e-06,
+              "objective_descent": -8.041258004522337e-18,
+              "mobility_curvature": 2.2678711065075573e-16,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.0002456081040424451,
+              "objective_change": -4.020642434662e-18
+            }
+          ],
+          "magnetic_moment_bin_populations": [
+            0.024287204721780267,
+            0.03949760025967688,
+            0.03353047289844978,
+            0.019982893555207763,
+            0.009416617874826639,
+            0.003771842378378311,
+            0.0013442685014797009,
+            0.00043946203423711943,
+            0.00013494394096929583,
+            3.974279859416895e-05,
+            1.144859383686451e-05,
+            3.2884857362367502e-06,
+            9.602869164098779e-07,
+            2.9061394959159064e-07,
+            9.281725486081625e-08,
+            3.177849025193933e-08,
+            1.1792836764403923e-08,
+            4.7564879276242836e-09,
+            2.0567396128424827e-09,
+            9.011814466067114e-10,
+            3.1374472088535993e-10
+          ],
+          "relative_marginal_bin_errors": [
+            -2.8570162698404524e-15,
+            2.10814647724039e-15,
+            2.0694291801139605e-16,
+            -2.604312740571119e-15,
+            3.684387534964605e-16,
+            6.898711433121892e-16,
+            3.226147667053335e-16,
+            8.634892910116026e-16,
+            4.218093353923947e-15,
+            0.0,
+            2.959430509367366e-16,
+            -1.5454522510235112e-15,
+            0.0,
+            3.64329098983662e-16,
+            -1.1407266737801936e-15,
+            -8.3294641727297e-16,
+            -4.20855793603366e-16,
+            6.956230102038156e-16,
+            1.0054513067527266e-15,
+            9.17884645392641e-16,
+            -1.6477978701498085e-16
+          ],
+          "number_error": 3.399036294918263e-17,
+          "energy_error": 1.6106150875306756e-16,
+          "marginal_error": 5.856876402850152e-18,
+          "min_f": 1.3161595424908276e-25
+        },
+        {
+          "time": 0.02,
+          "wall_s": 85.47918824999999,
+          "newton_iterations": 3,
+          "pcg_iterations": 516,
+          "nonlinear_relative_residual": 4.88989185238978e-15,
+          "residual_metric": "fixed_reference_population",
+          "recomputed_reference_relative_residual": 4.890472398998498e-15,
+          "old_population_relative_residual": 4.04831501089381e-14,
+          "unscaled_population_residual_norm": 6.042606389818205e-19,
+          "maximum_linear_relative_residual": 9.789213936604475e-07,
+          "entropy_change": 3.0163591790784636e-05,
+          "entropy_identity_error": 2.4864652166649986e-18,
+          "lagged_mobility_dissipation": 2.8015514356911323e-05,
+          "generalized_KL": 2.148077433870826e-06,
+          "entropy_defect_bound": 9.669884109370514e-15,
+          "residual_entropy_defect": -2.480991044388385e-18,
+          "newton_history": [
+            {
+              "iteration": 1,
+              "relative_residual": 0.006855302657971523,
+              "linear_iterations": 157,
+              "true_linear_relative_residual": 9.789213936604475e-07,
+              "linear_wall_s": 26.295870053999977,
+              "maximum_log_direction": 4.178014948566186,
+              "minimum_signed_log_direction": -0.4792186686624662,
+              "maximum_signed_log_direction": 4.178014948566186,
+              "objective_descent": -5.12237807477008e-06,
+              "mobility_curvature": 0.0001645570637040936,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 4.178014948566186,
+              "objective_change": -2.559909449447123e-06
+            },
+            {
+              "iteration": 2,
+              "relative_residual": 4.246892445066276e-05,
+              "linear_iterations": 172,
+              "true_linear_relative_residual": 9.682871778359278e-07,
+              "linear_wall_s": 27.96168819600001,
+              "maximum_log_direction": 0.02461732109748062,
+              "minimum_signed_log_direction": -0.02461732109748062,
+              "maximum_signed_log_direction": 0.0007186567373525032,
+              "objective_descent": -1.926762922005975e-10,
+              "mobility_curvature": 3.976144408653177e-09,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 0.02461732109748062,
+              "objective_change": -9.634243139713655e-11
+            },
+            {
+              "iteration": 3,
+              "relative_residual": 3.6762546752775863e-09,
+              "linear_iterations": 187,
+              "true_linear_relative_residual": 9.534770285526157e-07,
+              "linear_wall_s": 29.866207313000018,
+              "maximum_log_direction": 4.190870215404469e-05,
+              "minimum_signed_log_direction": -4.190870215404469e-05,
+              "maximum_signed_log_direction": 1.1078154055081985e-06,
+              "objective_descent": -1.3436966615078983e-18,
+              "mobility_curvature": 3.5086793651982127e-17,
+              "fraction": 1.0,
+              "backtracks": 0,
+              "maximum_log_step": 4.190870215404469e-05,
+              "objective_change": -6.718483905782671e-19
+            }
+          ],
+          "magnetic_moment_bin_populations": [
+            0.024287204721780278,
+            0.039497600259676795,
+            0.03353047289844977,
+            0.019982893555207763,
+            0.009416617874826623,
+            0.0037718423783783075,
+            0.001344268501479701,
+            0.0004394620342371188,
+            0.00013494394096929578,
+            3.9742798594169024e-05,
+            1.1448593836864513e-05,
+            3.2884857362367528e-06,
+            9.602869164098785e-07,
+            2.906139495915906e-07,
+            9.281725486081624e-08,
+            3.1778490251939335e-08,
+            1.1792836764403934e-08,
+            4.7564879276242836e-09,
+            2.0567396128424815e-09,
+            9.01181446606711e-10,
+            3.137447208853598e-10
+          ],
+          "relative_marginal_bin_errors": [
+            -2.4284638293643845e-15,
+            0.0,
+            0.0,
+            -2.604312740571119e-15,
+            -1.2895356372376117e-15,
+            -2.2995704777072975e-16,
+            4.839221500580002e-16,
+            -6.167780650082876e-16,
+            3.8163701773597615e-15,
+            1.8755322220643704e-15,
+            5.918861018734732e-16,
+            -7.727261255117556e-16,
+            6.615467727247174e-16,
+            1.82164549491831e-16,
+            -1.2833175080027178e-15,
+            -6.247098129547274e-16,
+            5.611410581378213e-16,
+            6.956230102038156e-16,
+            4.0218052270109067e-16,
+            4.589423226963205e-16,
+            -4.943393610449425e-16
+          ],
+          "number_error": 3.97774532452997e-17,
+          "energy_error": 1.7698135839429044e-16,
+          "marginal_error": 7.883226800665684e-18,
+          "min_f": 2.1094803581312785e-24
+        }
+      ],
+      "load_average_start": [
+        0.66064453125,
+        0.17333984375,
+        0.05859375
+      ],
+      "load_average_end": [
+        2.5595703125,
+        2.2958984375,
+        1.18115234375
+      ],
+      "status": "passed",
+      "case": "spatial3",
+      "provenance_id": "0896f1e661e98e3e95d27e152dccca27e81aca37f7c97a2c1b1915a04ac4b198"
+    }
+  ],
+  "partials": [],
+  "missing_cases": [
+    {
+      "field": "mirror",
+      "case": "spatial3"
+    },
+    {
+      "field": "mirror",
+      "case": "base"
+    },
+    {
+      "field": "mirror",
+      "case": "spatial7"
+    },
+    {
+      "field": "mirror",
+      "case": "u17"
+    },
+    {
+      "field": "mirror",
+      "case": "u21"
+    },
+    {
+      "field": "mirror",
+      "case": "mu13"
+    },
+    {
+      "field": "mirror",
+      "case": "mu17"
+    },
+    {
+      "field": "mirror",
+      "case": "dt_half"
+    },
+    {
+      "field": "mirror",
+      "case": "dt_quarter"
+    },
+    {
+      "field": "mirror",
+      "case": "dt_eighth"
+    },
+    {
+      "field": "mirror",
+      "case": "dt_sixteenth"
+    },
+    {
+      "field": "mirror",
+      "case": "u_tail"
+    },
+    {
+      "field": "mirror",
+      "case": "mu_tail"
+    },
+    {
+      "field": "mirror",
+      "case": "u_wide"
+    },
+    {
+      "field": "mirror",
+      "case": "mu_wide"
+    },
+    {
+      "field": "dipole",
+      "case": "base"
+    },
+    {
+      "field": "dipole",
+      "case": "spatial7"
+    },
+    {
+      "field": "dipole",
+      "case": "u17"
+    },
+    {
+      "field": "dipole",
+      "case": "u21"
+    },
+    {
+      "field": "dipole",
+      "case": "mu13"
+    },
+    {
+      "field": "dipole",
+      "case": "mu17"
+    },
+    {
+      "field": "dipole",
+      "case": "dt_half"
+    },
+    {
+      "field": "dipole",
+      "case": "dt_quarter"
+    },
+    {
+      "field": "dipole",
+      "case": "dt_eighth"
+    },
+    {
+      "field": "dipole",
+      "case": "dt_sixteenth"
+    },
+    {
+      "field": "dipole",
+      "case": "u_tail"
+    },
+    {
+      "field": "dipole",
+      "case": "mu_tail"
+    },
+    {
+      "field": "dipole",
+      "case": "u_wide"
+    },
+    {
+      "field": "dipole",
+      "case": "mu_wide"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "spatial3"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "base"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "spatial7"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "u17"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "u21"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "mu13"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "mu17"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "dt_half"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "dt_quarter"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "dt_eighth"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "dt_sixteenth"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "u_tail"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "mu_tail"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "u_wide"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "case": "mu_wide"
+    }
+  ],
+  "checks": [
+    {
+      "field": "mirror",
+      "spatial": {
+        "status": "not_run"
+      },
+      "parallel_velocity": {
+        "status": "not_run"
+      },
+      "magnetic_moment": {
+        "status": "not_run"
+      },
+      "timestep": {
+        "status": "not_run"
+      },
+      "parallel_tail": {
+        "status": "not_run"
+      },
+      "moment_tail": {
+        "status": "not_run"
+      },
+      "wider_parallel_quadrature": {
+        "status": "not_run"
+      },
+      "wider_moment_quadrature": {
+        "status": "not_run"
+      },
+      "appreciable_relaxation": {
+        "status": "not_run"
+      },
+      "status": "unresolved"
+    },
+    {
+      "field": "dipole",
+      "spatial": {
+        "status": "not_run"
+      },
+      "parallel_velocity": {
+        "status": "not_run"
+      },
+      "magnetic_moment": {
+        "status": "not_run"
+      },
+      "timestep": {
+        "status": "not_run"
+      },
+      "parallel_tail": {
+        "status": "not_run"
+      },
+      "moment_tail": {
+        "status": "not_run"
+      },
+      "wider_parallel_quadrature": {
+        "status": "not_run"
+      },
+      "wider_moment_quadrature": {
+        "status": "not_run"
+      },
+      "appreciable_relaxation": {
+        "status": "not_run"
+      },
+      "status": "unresolved"
+    },
+    {
+      "field": "nonaxisymmetric",
+      "spatial": {
+        "status": "not_run"
+      },
+      "parallel_velocity": {
+        "status": "not_run"
+      },
+      "magnetic_moment": {
+        "status": "not_run"
+      },
+      "timestep": {
+        "status": "not_run"
+      },
+      "parallel_tail": {
+        "status": "not_run"
+      },
+      "moment_tail": {
+        "status": "not_run"
+      },
+      "wider_parallel_quadrature": {
+        "status": "not_run"
+      },
+      "wider_moment_quadrature": {
+        "status": "not_run"
+      },
+      "appreciable_relaxation": {
+        "status": "not_run"
+      },
+      "status": "unresolved"
+    }
+  ],
+  "time_refinement_progress": [
+    {
+      "field": "mirror",
+      "adjacent_comparisons": [
+        {
+          "previous_case": "base",
+          "last_case": "dt_half",
+          "status": "not_run",
+          "missing_cases": [
+            "base",
+            "dt_half"
+          ]
+        },
+        {
+          "previous_case": "dt_half",
+          "last_case": "dt_quarter",
+          "status": "not_run",
+          "missing_cases": [
+            "dt_half",
+            "dt_quarter"
+          ]
+        },
+        {
+          "previous_case": "dt_quarter",
+          "last_case": "dt_eighth",
+          "status": "not_run",
+          "missing_cases": [
+            "dt_quarter",
+            "dt_eighth"
+          ]
+        },
+        {
+          "previous_case": "dt_eighth",
+          "last_case": "dt_sixteenth",
+          "status": "not_run",
+          "missing_cases": [
+            "dt_eighth",
+            "dt_sixteenth"
+          ]
+        }
+      ],
+      "finest_pair": {
+        "previous_case": "dt_eighth",
+        "last_case": "dt_sixteenth",
+        "status": "not_run",
+        "missing_cases": [
+          "dt_eighth",
+          "dt_sixteenth"
+        ]
+      },
+      "coarsest_to_finest": {
+        "status": "not_run"
+      },
+      "all_adjacent_pairs_passed": false,
+      "fine_pair_does_not_certify_baseline": true
+    },
+    {
+      "field": "dipole",
+      "adjacent_comparisons": [
+        {
+          "previous_case": "base",
+          "last_case": "dt_half",
+          "status": "not_run",
+          "missing_cases": [
+            "base",
+            "dt_half"
+          ]
+        },
+        {
+          "previous_case": "dt_half",
+          "last_case": "dt_quarter",
+          "status": "not_run",
+          "missing_cases": [
+            "dt_half",
+            "dt_quarter"
+          ]
+        },
+        {
+          "previous_case": "dt_quarter",
+          "last_case": "dt_eighth",
+          "status": "not_run",
+          "missing_cases": [
+            "dt_quarter",
+            "dt_eighth"
+          ]
+        },
+        {
+          "previous_case": "dt_eighth",
+          "last_case": "dt_sixteenth",
+          "status": "not_run",
+          "missing_cases": [
+            "dt_eighth",
+            "dt_sixteenth"
+          ]
+        }
+      ],
+      "finest_pair": {
+        "previous_case": "dt_eighth",
+        "last_case": "dt_sixteenth",
+        "status": "not_run",
+        "missing_cases": [
+          "dt_eighth",
+          "dt_sixteenth"
+        ]
+      },
+      "coarsest_to_finest": {
+        "status": "not_run"
+      },
+      "all_adjacent_pairs_passed": false,
+      "fine_pair_does_not_certify_baseline": true
+    },
+    {
+      "field": "nonaxisymmetric",
+      "adjacent_comparisons": [
+        {
+          "previous_case": "base",
+          "last_case": "dt_half",
+          "status": "not_run",
+          "missing_cases": [
+            "base",
+            "dt_half"
+          ]
+        },
+        {
+          "previous_case": "dt_half",
+          "last_case": "dt_quarter",
+          "status": "not_run",
+          "missing_cases": [
+            "dt_half",
+            "dt_quarter"
+          ]
+        },
+        {
+          "previous_case": "dt_quarter",
+          "last_case": "dt_eighth",
+          "status": "not_run",
+          "missing_cases": [
+            "dt_quarter",
+            "dt_eighth"
+          ]
+        },
+        {
+          "previous_case": "dt_eighth",
+          "last_case": "dt_sixteenth",
+          "status": "not_run",
+          "missing_cases": [
+            "dt_eighth",
+            "dt_sixteenth"
+          ]
+        }
+      ],
+      "finest_pair": {
+        "previous_case": "dt_eighth",
+        "last_case": "dt_sixteenth",
+        "status": "not_run",
+        "missing_cases": [
+          "dt_eighth",
+          "dt_sixteenth"
+        ]
+      },
+      "coarsest_to_finest": {
+        "status": "not_run"
+      },
+      "all_adjacent_pairs_passed": false,
+      "fine_pair_does_not_certify_baseline": true
+    }
+  ],
+  "complete_case_count": 1,
+  "expected_case_count": 45,
+  "all_expected_cases_complete": false,
+  "status": "unresolved",
+  "limitations": [
+    "Audits source provenance, finite saved diagnostics, complete accepted histories and internal numerical consistency; no independent trajectory/kernel rerun.",
+    "The exact scalar entropy guard is recomputed from saved identity error, residual contraction and defect budget; this is not independent PDE residual evaluation from full state vectors.",
+    "Finest adjacent time-pair status is distinct from coarsest-to-finest and every intervening pair; no fine-pair certification of the baseline.",
+    "Grid-array bytes, workspace index count and cumulative process high-water RSS are separate measurements; timings retain each producing hardware/load record.",
+    "Only frozen-source fixed-reference artifacts are eligible; old-population and historical discrete-gradient evidence are excluded.",
+    "Fixed-reference native and represented-state residuals are acceptance diagnostics; the old-population norm is only a finite nonnegative diagnostic with no acceptance threshold.",
+    "Saved endpoint invariants, full mu populations and entropy are independently checked using NumPy quadrature and analytic field formulas; the full pair residual is not independently recomputed here."
+  ],
+  "workflow_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37803682825",
+  "execution_scope": "Separate full45 bounded feasibility/convergence attempt; this is a partial snapshot of completed cases, no pilot rows pooled",
+  "independent_pair_scope": "Only each completed case last accepted step; all accepted histories are separately checked by the strict collector",
+  "original_strict_ledger_sha256": "31c34303962733c14bc7f035ddb0b00314558c7363af7326e1048002ac38b090"
+}

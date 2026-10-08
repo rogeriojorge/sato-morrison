@@ -7783,6 +7783,28 @@
       "evidence_sha256": "8826a377f7d6a8d363f6a49236e205de9c42f24c9e21a6b45ea78a2b92b773f4",
       "scope": "Completed three-field mu13 pilot with independent final pair audits. Full refinement attempt separate.",
       "workflow_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37714657167"
+    },
+    {
+      "command": "MPLBACKEND=Agg python examples/24_encounter_phase.py",
+      "cwd": "${REPOSITORY}",
+      "producer_commit": "58cc3e139c1c0082f49da0dc10e841b55632669d",
+      "evidence_path": "results/encounter_phase/summary.json",
+      "evidence_sha256": "33f5e206d6a748518abe6808945b96d003b4e2fef283d318bd63f04973d2812e",
+      "independent_evidence_sha256": "a4ce88b4d75dc7f9f3c6da52b0f23ba6b3ccb2fe4de580804f150e9f14d72fb0",
+      "experiment_dependencies_unchanged": true,
+      "exit_code": 1,
+      "scope": "Original 512-phase conditional integral fails declared convergence despite all trajectory/timestep controls passing. No physical rate.",
+      "checks_wall_s": 59.194155999983195,
+      "timing_scope": "Numerical solves/checks and intermediate checkpoint/path writes; excludes imports, initial metadata, plots and final output writing."
+    },
+    {
+      "producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+      "workflow_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37803682825",
+      "evidence_path": "results/nonuniform_spatial_blocks_full/summary.json",
+      "evidence_sha256": "399e3dcffe0720273f2735fc53401e2e974c75879d3122cb2caa37a37f04036f",
+      "independent_evidence_path": "results/nonuniform_spatial_blocks_full/independent_audit.json",
+      "independent_evidence_sha256": "f6e56aa85f92f4af75d708d50491dbd60fd2a9ba3cc6d06a8231697f6fbf53ba",
+      "scope": "Separate full-campaign snapshot: one of45 cases complete; independently audited final step. No refinement pass or pilot timing pooling."
     }
   ]
 }

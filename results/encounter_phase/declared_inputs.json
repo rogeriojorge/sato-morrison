@@ -1,0 +1,49 @@
+{
+  "mass": 1.0,
+  "charge": 1.0,
+  "field": 2.0,
+  "strength": 0.03,
+  "screening": 3.0,
+  "theta": 0.5,
+  "theta_definition": "single-particle velocity variance k_B*T/m",
+  "fixed_incoming_triple": [
+    0.9938225266093732,
+    1.9056642462041216,
+    1.9668376625283577
+  ],
+  "start_distance": 24.0,
+  "flight_time_factor": 12.0,
+  "max_step": 0.05,
+  "rtol": 1e-10,
+  "phase_orders": [
+    32,
+    64,
+    128,
+    256,
+    512
+  ],
+  "master_phase_count": 512,
+  "phase_measure": "dphi/(2pi)",
+  "phase_relative_target": 0.01,
+  "required_successive_checks": 2,
+  "refined_max_step": 0.025,
+  "timestep_relative_target": 0.001,
+  "energy_target": 1e-08,
+  "control_master_indices": [
+    0,
+    128,
+    256
+  ],
+  "independent_pair_max_steps": [
+    0.05,
+    0.025
+  ],
+  "pair_position_absolute_target": 1e-08,
+  "pair_velocity_absolute_target": 1e-08,
+  "pair_mu_absolute_target": 1e-10,
+  "anchor_absolute_moment_target": 1e-08,
+  "prior_metadata_sha256": "d2b411a3213d5becb1504ba7d654802240505159d52a7b7dcba936cce852f5ab",
+  "seed": null,
+  "moment_definition": "analytic independent Maxwellian COM average of individual delta_mu_1, its square, and delta_mu_1*delta_mu_2",
+  "stop_rule": "Stop after two successive complete 1% second-moment phase checks; otherwise retain all declared levels through512."
+}

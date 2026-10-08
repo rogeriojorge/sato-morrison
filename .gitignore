@@ -17,3 +17,5 @@ local_context/
 results/raw/
 results/**/last_state.npz
 results/**/last_state.npz.tmp
+results/encounter_phase/nodes_partial.json
+results/encounter_phase/levels_partial.json

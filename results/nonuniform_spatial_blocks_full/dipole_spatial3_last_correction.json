@@ -1,0 +1,21 @@
+{
+  "field": "dipole",
+  "case": "spatial3",
+  "step": 4,
+  "provenance_id": "0896f1e661e98e3e95d27e152dccca27e81aca37f7c97a2c1b1915a04ac4b198",
+  "residual_metric": "fixed_reference_population",
+  "iteration": 3,
+  "relative_residual": 3.6762546752775863e-09,
+  "linear_iterations": 187,
+  "true_linear_relative_residual": 9.534770285526157e-07,
+  "linear_wall_s": 29.866207313000018,
+  "maximum_log_direction": 4.190870215404469e-05,
+  "minimum_signed_log_direction": -4.190870215404469e-05,
+  "maximum_signed_log_direction": 1.1078154055081985e-06,
+  "objective_descent": -1.3436966615078983e-18,
+  "mobility_curvature": 3.5086793651982127e-17,
+  "fraction": 1.0,
+  "backtracks": 0,
+  "maximum_log_step": 4.190870215404469e-05,
+  "objective_change": -6.718483905782671e-19
+}

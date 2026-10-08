@@ -1,0 +1,41 @@
+{
+  "scope": "Independent Decimal80 Legendre recurrence/Newton roots; no trajectory or public edits. Saved quadrature marginals recovered by separability and exact interval normalization.",
+  "original_preflight": {
+    "weight_relative_difference": 3.4861002973229915e-14,
+    "threshold": 2e-14,
+    "initial_relative_difference": 2.842170943040401e-14,
+    "thresholds_changed": false
+  },
+  "checks": [
+    {
+      "order": 3,
+      "numpy_node_absolute_error_to_decimal80": 0.0,
+      "numpy_weight_relative_error_to_decimal80": 2.220446049250313e-16
+    },
+    {
+      "order": 13,
+      "numpy_node_absolute_error_to_decimal80": 2.7755575615628914e-17,
+      "numpy_weight_relative_error_to_decimal80": 5.10702591327572e-15
+    },
+    {
+      "order": 21,
+      "numpy_node_absolute_error_to_decimal80": 0.0,
+      "numpy_weight_relative_error_to_decimal80": 2.4202861936828413e-14
+    },
+    {
+      "order": 25,
+      "numpy_node_absolute_error_to_decimal80": 0.0,
+      "numpy_weight_relative_error_to_decimal80": 7.37188088351104e-14
+    },
+    {
+      "recovered_producer_order": 25,
+      "saved_weight_relative_error_to_decimal80": 8.537615059367454e-14,
+      "saved_weight_relative_difference_local_numpy": 1.176836406102666e-14
+    },
+    {
+      "recovered_producer_order": 21,
+      "saved_weight_relative_error_to_decimal80": 1.709743457922741e-14,
+      "saved_weight_relative_difference_local_numpy": 2.5424107263916085e-14
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "scope": "Independent arithmetic audit of saved relative endpoints, phase sums and individual Cartesian paths; no new ODE solves and no phase convergence certification.",
+  "status": "passed_saved_array_checks",
+  "producer_commit": "58cc3e139c1c0082f49da0dc10e841b55632669d",
+  "audit_commit": "58cc3e139c1c0082f49da0dc10e841b55632669d",
+  "inputs": {
+    "mass": 1.0,
+    "charge": 1.0,
+    "field": 2.0,
+    "strength": 0.03,
+    "screening": 3.0,
+    "theta": 0.5,
+    "theta_definition": "single-particle velocity variance k_B*T/m",
+    "fixed_incoming_triple": [
+      0.9938225266093732,
+      1.9056642462041216,
+      1.9668376625283577
+    ],
+    "start_distance": 24.0,
+    "flight_time_factor": 12.0,
+    "max_step": 0.05,
+    "rtol": 1e-10,
+    "phase_orders": [
+      32,
+      64,
+      128,
+      256,
+      512
+    ],
+    "master_phase_count": 512,
+    "phase_measure": "dphi/(2pi)",
+    "phase_relative_target": 0.01,
+    "required_successive_checks": 2,
+    "refined_max_step": 0.025,
+    "timestep_relative_target": 0.001,
+    "energy_target": 1e-08,
+    "control_master_indices": [
+      0,
+      128,
+      256
+    ],
+    "independent_pair_max_steps": [
+      0.05,
+      0.025
+    ],
+    "pair_position_absolute_target": 1e-08,
+    "pair_velocity_absolute_target": 1e-08,
+    "pair_mu_absolute_target": 1e-10,
+    "anchor_absolute_moment_target": 1e-08,
+    "prior_metadata_sha256": "d2b411a3213d5becb1504ba7d654802240505159d52a7b7dcba936cce852f5ab",
+    "seed": null,
+    "moment_definition": "analytic independent Maxwellian COM average of individual delta_mu_1, its square, and delta_mu_1*delta_mu_2",
+    "stop_rule": "Stop after two successive complete 1% second-moment phase checks; otherwise retain all declared levels through512."
+  },
+  "units": "normalized",
+  "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "numpy": "2.5.3",
+  "source_sha256": "25b202102e032bb9e5538889e5efe9be2c0fd41fc367dc2493bf54e56d64a78f",
+  "input_sha256": {
+    "summary.json": "33f5e206d6a748518abe6808945b96d003b4e2fef283d318bd63f04973d2812e",
+    "nodes.json": "385a209f056534c54a75a29305d752ef8137c045ba728f8680e2563531bd182d",
+    "independent_pair_paths.npz": "31960cced83d49aaa1cd3e35792a75ab8b62a12b29da65cbd2f5eac28f411960"
+  },
+  "node_count": 1024,
+  "max_independent_COM_moment_error": 5.551115123125783e-17,
+  "max_free_rotation_kick_error": 0.0,
+  "max_phase_average_error": 5.204170427930421e-18,
+  "max_individual_path_mu_error": 1.0890510715455548e-11,
+  "max_individual_path_relative_energy_drift": 5.240175831721286e-11,
+  "phase_convergence_status": "unresolved"
+}

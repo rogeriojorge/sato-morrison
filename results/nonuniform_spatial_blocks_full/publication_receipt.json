@@ -1,0 +1,106 @@
+{
+  "prepared_utc": "2026-10-08T16:14:25.429168+00:00",
+  "status": "reviewed_snapshot",
+  "producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+  "producer_source_sha256": "b981adcaa6de59acc94174069759446322978e5b10b13161d6fb86175ddae282",
+  "workflow_run_id": 37803682825,
+  "workflow_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37803682825",
+  "publication_source_sha256": "5fc906e1e5777f85dc372b2f1a838827536dcc034653424da1a149dd30478327",
+  "strict_collector_source_sha256": "0c89760ce5a1fcfb19cbd01b0ed2bef380f5725605b531ab7f6b0725abf084e1",
+  "independent_audit_source_sha256": "2b4dc65f9a1260b0395c12c6dbe072ce31f00fac7a563e943af8281a6a9c162a",
+  "original_input_hashes": {
+    "strict_ledger": "31c34303962733c14bc7f035ddb0b00314558c7363af7326e1048002ac38b090",
+    "aggregate_pair_audit": "007daecd599f45e9b2c4d03143eb29f2a3549adda7f2802545f22d0dadaa669d"
+  },
+  "public_layout": "results/nonuniform_spatial_blocks_full",
+  "pilot_rows_pooled": false,
+  "complete_case_count": 1,
+  "expected_case_count": 45,
+  "campaign_status": "unresolved",
+  "selected_snapshot_pair_audits_status": "passed",
+  "units": "normalized",
+  "postprocess_metadata": {
+    "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "scope": "JSON sanitation and byte-for-byte copies only; no numerical solves or new pair actions"
+  },
+  "output_hashes": {
+    "state_dipole_spatial3.npz": {
+      "original_sha256": "b129e40eb6234774e6c24747f56e6b19db9d8c793447f213057c88da33a5e499",
+      "output_sha256": "b129e40eb6234774e6c24747f56e6b19db9d8c793447f213057c88da33a5e499",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_spatial3_producer_summary.json": {
+      "original_sha256": "c32dd5052a23074d6be679421adb5ef07f0e8af26bf97bb5926be6b4c0f352b6",
+      "output_sha256": "c32dd5052a23074d6be679421adb5ef07f0e8af26bf97bb5926be6b4c0f352b6",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_spatial3_run.log": {
+      "original_sha256": "b3e4880ba8b56dcbbdb28d620f1eba404445d57f099b0f0f3efc671d8b62272c",
+      "output_sha256": "b3e4880ba8b56dcbbdb28d620f1eba404445d57f099b0f0f3efc671d8b62272c",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_spatial3_cpu.txt": {
+      "original_sha256": "fcadccdcc8aed598fa1d501729ffa0efa2502c5e6ab8afb3aadf261efdcc233d",
+      "output_sha256": "fcadccdcc8aed598fa1d501729ffa0efa2502c5e6ab8afb3aadf261efdcc233d",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_spatial3_environment.txt": {
+      "original_sha256": "3efa0f0f01834039f33414c49e047a10c967bc5991daffaf02ed69302fab1694",
+      "output_sha256": "3efa0f0f01834039f33414c49e047a10c967bc5991daffaf02ed69302fab1694",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_spatial3_commit.txt": {
+      "original_sha256": "abe9dcfb69d229fc649bde6c646b767be5d1ee6987a6d8c0f68ae34568e0cc56",
+      "output_sha256": "abe9dcfb69d229fc649bde6c646b767be5d1ee6987a6d8c0f68ae34568e0cc56",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_spatial3_last_correction.json": {
+      "original_sha256": "f488b046083519a7eadb13a2454f6d0cf59b51a005d010987b43d5c6ed25f7bc",
+      "output_sha256": "f488b046083519a7eadb13a2454f6d0cf59b51a005d010987b43d5c6ed25f7bc",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_spatial3_producer_evolution.png": {
+      "original_sha256": "9d477a2971beb1d6469dde03d5a18ea4022e0f06b4e04f7b07176ef7f11e752a",
+      "output_sha256": "9d477a2971beb1d6469dde03d5a18ea4022e0f06b4e04f7b07176ef7f11e752a",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_spatial3_download_receipt.json": {
+      "original_sha256": "287abb1bd5ea76e16ba5c5b441eecb96fdd0a3e6fed048e353944458567e790e",
+      "output_sha256": "287abb1bd5ea76e16ba5c5b441eecb96fdd0a3e6fed048e353944458567e790e",
+      "mode": "byte-for-byte artifact copy"
+    },
+    "dipole_spatial3_pair_residual_arrays.npz": {
+      "original_sha256": "ae21daa49d1d8d3b469d6bee14a66145609c12dd92aee08b2048d504c8402af9",
+      "output_sha256": "ae21daa49d1d8d3b469d6bee14a66145609c12dd92aee08b2048d504c8402af9",
+      "mode": "byte-for-byte independent audit output"
+    },
+    "dipole_spatial3_pair_audit.json": {
+      "original_sha256": "233bd762aed64b8205b9bc7585bd81fda305a092e20adef803577f28624f5277",
+      "output_sha256": "44f2c4d1d91cd1e83210600c05f5007209145d3f8a1101f2f7579116748e2ab7",
+      "mode": "Private paths sanitized; numerical values unchanged"
+    },
+    "summary.json": {
+      "original_sha256": "31c34303962733c14bc7f035ddb0b00314558c7363af7326e1048002ac38b090",
+      "output_sha256": "399e3dcffe0720273f2735fc53401e2e974c75879d3122cb2caa37a37f04036f",
+      "mode": "Private paths sanitized; numerical values unchanged"
+    },
+    "independent_audit.json": {
+      "original_sha256": "007daecd599f45e9b2c4d03143eb29f2a3549adda7f2802545f22d0dadaa669d",
+      "output_sha256": "f6e56aa85f92f4af75d708d50491dbd60fd2a9ba3cc6d06a8231697f6fbf53ba",
+      "mode": "Private paths sanitized; numerical values unchanged"
+    },
+    "full_campaign_quadrature_preflight_diagnostic.json": {
+      "original_sha256": "9ae26117e584e7f6ea48fb6b320334672b16f8465869d918d817bdda118fa1ce",
+      "output_sha256": "9ae26117e584e7f6ea48fb6b320334672b16f8465869d918d817bdda118fa1ce",
+      "mode": "Retained independent Decimal80 preflight diagnosis"
+    }
+  },
+  "limits": [
+    "An accepted partial campaign snapshot does not certify convergence or all45 completion.",
+    "Pair audits assemble only the last saved step; no intermediate-state pair reevaluation.",
+    "Fixed-reference acceptance does not imply uniform tail accuracy; old-population norms remain diagnostics.",
+    "Perproducer grid-array/factor storage does not equal process peak RSS.",
+    "Original extracted artifact digests and source identities retained; GitHub ZIP digests only reported, not ZIP-verified."
+  ]
+}

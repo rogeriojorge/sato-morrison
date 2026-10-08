@@ -1,0 +1,382 @@
+{
+  "status": "passed",
+  "cache_key": "27031970a1e4c45586fd1e812079aac60fb18f3b395586ae02ab2515e5f71ac3",
+  "frozen_input_hashes": {
+    "row_sha256": "d7c825478024aa5908f1ebbb01bd66425b2dcad75da5f409b25d78764defccb4",
+    "metadata_sha256": "0896f1e661e98e3e95d27e152dccca27e81aca37f7c97a2c1b1915a04ac4b198",
+    "manifest_sha256": "287abb1bd5ea76e16ba5c5b441eecb96fdd0a3e6fed048e353944458567e790e",
+    "original_file_sha256": {
+      "summary.json": "c32dd5052a23074d6be679421adb5ef07f0e8af26bf97bb5926be6b4c0f352b6",
+      "evolution.png": "9d477a2971beb1d6469dde03d5a18ea4022e0f06b4e04f7b07176ef7f11e752a",
+      "commit.txt": "abe9dcfb69d229fc649bde6c646b767be5d1ee6987a6d8c0f68ae34568e0cc56",
+      "run.log": "b3e4880ba8b56dcbbdb28d620f1eba404445d57f099b0f0f3efc671d8b62272c",
+      "cpu.txt": "fcadccdcc8aed598fa1d501729ffa0efa2502c5e6ab8afb3aadf261efdcc233d",
+      "last_correction.json": "f488b046083519a7eadb13a2454f6d0cf59b51a005d010987b43d5c6ed25f7bc",
+      "last_state.npz": "b129e40eb6234774e6c24747f56e6b19db9d8c793447f213057c88da33a5e499",
+      "environment.txt": "3efa0f0f01834039f33414c49e047a10c967bc5991daffaf02ed69302fab1694"
+    },
+    "audit_source_sha256": "2b4dc65f9a1260b0395c12c6dbe072ce31f00fac7a563e943af8281a6a9c162a",
+    "pair_oracle_source_sha256": "942f64c1aacde0b695b9804a6cdd9521469ff1da679b8097b584703e502cf33d",
+    "strict_collector_source_sha256": "0c89760ce5a1fcfb19cbd01b0ed2bef380f5725605b531ab7f6b0725abf084e1",
+    "contract_sha256": "e73fe6432c8f401417933a5ea7b54b1904a510929d480a674606ca3cfe6e6931"
+  },
+  "audit_context": {
+    "utc": "2026-10-08T16:10:13.357114+00:00",
+    "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "arm",
+    "logical_cpus": 10,
+    "load_start": [
+      8.59033203125,
+      7.43408203125,
+      7.49365234375
+    ],
+    "versions": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "matplotlib": "3.11.2"
+    },
+    "thread_environment": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "arithmetic": "NumPy binary64; no JAX import or computation in endpoint audits",
+    "checkout_commit": "58cc3e139c1c0082f49da0dc10e841b55632669d",
+    "command": [
+      "audit_full_campaign_endpoints.py"
+    ],
+    "units": "normalized"
+  },
+  "audit_source_sha256": "2b4dc65f9a1260b0395c12c6dbe072ce31f00fac7a563e943af8281a6a9c162a",
+  "pair_oracle_source_sha256": "942f64c1aacde0b695b9804a6cdd9521469ff1da679b8097b584703e502cf33d",
+  "scope": "Completed case final saved step only; independent analytic vacuum geometry and unordered pairs; no solver execution or intermediate-state pair audits",
+  "producer_commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+  "producer_source_sha256": "b981adcaa6de59acc94174069759446322978e5b10b13161d6fb86175ddae282",
+  "producer_metadata": {
+    "model": "sm_local_nonlinear discrete-energy projector",
+    "boundary": "natural no-flux collision-only Cartesian boxes",
+    "units": "normalized",
+    "inputs": {
+      "fields": [
+        {
+          "kind": "mirror",
+          "strength": 1.0,
+          "amplitude": 0.15,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        },
+        {
+          "kind": "dipole",
+          "strength": 1.0,
+          "amplitude": 0.0,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        },
+        {
+          "kind": "nonaxisymmetric",
+          "strength": 1.0,
+          "amplitude": 0.03,
+          "length": 1.0,
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "base": "dipole"
+        }
+      ],
+      "bounds": [
+        [
+          0.8,
+          1.2
+        ],
+        [
+          -0.2,
+          0.2
+        ],
+        [
+          0.1,
+          0.5
+        ]
+      ],
+      "nx": 5,
+      "nu": 25,
+      "nmu": 21,
+      "x_orders": [
+        3,
+        5,
+        7
+      ],
+      "u_orders": [
+        17,
+        21,
+        25
+      ],
+      "mu_orders": [
+        13,
+        17,
+        21
+      ],
+      "u_domain": [
+        -4.0,
+        4.0
+      ],
+      "mu_domain": [
+        0,
+        20.0
+      ],
+      "collision_strength": 0.1,
+      "final_time": 0.02,
+      "dt_values": [
+        0.005,
+        0.0025,
+        0.00125,
+        0.000625,
+        0.0003125
+      ],
+      "newton_rtol": 1e-12,
+      "pair_chunk": 1048576,
+      "time_discretization": "lagged-mobility backward Euler in entropy variables",
+      "preconditioner_axis": [
+        0,
+        1,
+        2
+      ],
+      "preconditioner": "Dense three-axis spatial channel-Gram sum per velocity node, with remaining velocity-channel diagonal; exact Hessian unchanged",
+      "residual_metric": "fixed_reference_population",
+      "reference_population": "positive quadrature weights times the fixed initial distribution; same total particle number",
+      "linear_rtol": 1e-06,
+      "linear_max_steps": 3000,
+      "max_newton_steps": 80,
+      "relative_refinement_target": 0.01,
+      "spatial_discretization": "global Lagrange polynomial derivative on positive Gauss-Legendre quadrature",
+      "velocity_discretization": "local quadratic u derivative; positive Gauss-Legendre u/mu quadrature",
+      "initial": "exp(-E-.2mu+.1sin(pi*y/.4)*u)",
+      "seed": null
+    },
+    "commit": "93bf752da33a31ec158a229f87eaa285aeb5c58b",
+    "working_tree": "?? results/nonuniform_spatial_blocks/",
+    "source_sha256": "b981adcaa6de59acc94174069759446322978e5b10b13161d6fb86175ddae282",
+    "versions": {
+      "sato-morrison": "0.1.0",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2"
+    },
+    "source_changes": "",
+    "logical_cpus": 4,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "unset",
+      "OPENBLAS_NUM_THREADS": "unset",
+      "MKL_NUM_THREADS": "unset",
+      "XLA_FLAGS": "unset"
+    },
+    "python": "3.12.15",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "processor": "x86_64",
+    "devices": [
+      "cpu:0"
+    ],
+    "x64": true,
+    "limitations": "Independent finite-time refinement checks at fixed other parameters; no combined-streaming box claim and no E/Gmu-only equilibrium reachability claim. Finite spatial polynomial spaces may lift continuum invariants: flux/potential moments are measured as scheme errors, never projected or interpreted as physical relaxation. Tail-domain and wider-domain quadrature checks are separate. A fine timestep-pair pass does not certify the coarse baseline or jointly refine space and time; all adjacent and coarsest/fine differences are retained. Fixed-reference and old-population residual norms are different; no equality of their nominal tolerances is claimed. Timings include concurrent unrelated machine load.",
+    "relaxation_diagnostic": "Relative entropy to mass-normalized exp(-E-.2mu) decreases by the entropy gain because its logarithm is a discrete collision invariant. This stationary reference is not asserted reachable under the additional continuum constraints. Mean/variance of log(f/reference) and the sin(pi*y/.4)*u moment are measured separately.",
+    "execution": {
+      "selected_fields": [
+        "dipole"
+      ],
+      "selected_cases": [
+        "spatial3"
+      ],
+      "description": "Independent predefined cases; each completed row retains its producing run."
+    }
+  },
+  "artifact_name": "nonuniform-spatial-blocks-dipole-spatial3-93bf752da33a31ec158a229f87eaa285aeb5c58b",
+  "artifact_id": 11563210032,
+  "workflow_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37803682825",
+  "artifact_reported_zip_digest": "sha256:78418049290bfc9945dd5340ff28b875bc5f9d47545bced883d9f45a196ff2bb",
+  "measure_preflight_review": {
+    "diagnosis": "full_campaign_quadrature_preflight_diagnostic.json",
+    "diagnosis_sha256": "9ae26117e584e7f6ea48fb6b320334672b16f8465869d918d817bdda118fa1ce",
+    "previous_pilot_threshold": 2e-14,
+    "approved_generalized_threshold": 1e-12,
+    "scope": "Input measure reconstruction only: independent Decimal80 check identified cross-platform Gauss weight rounding; root/entropy targets unchanged"
+  },
+  "parameters": {
+    "field": "dipole",
+    "case": "spatial3",
+    "nx": 3,
+    "nu": 25,
+    "nmu": 21,
+    "umax": 4.0,
+    "mumax": 20.0,
+    "dt": 0.005,
+    "residual_metric": "fixed_reference_population"
+  },
+  "predeclared_checks": {
+    "reference_normalized_residual_max": 2e-12,
+    "entropy_identity_absolute_max": 3e-15,
+    "global_invariants_max": 1e-09,
+    "weights_relative_max": 1e-12,
+    "initial_relative_max": 3e-14
+  },
+  "accepted_steps": 4,
+  "last_time": 0.02,
+  "weights_relative_error": 3.4861002973229915e-14,
+  "initial_analytic_relative_error": 2.842170943040401e-14,
+  "field_B_range": [
+    0.6037783634024091,
+    1.6530101171895384
+  ],
+  "reference_total": 0.13246118136077456,
+  "reference_normalized_residual": 5.2064483558572515e-15,
+  "old_population_normalized_residual": 4.0465773831283637e-14,
+  "raw_R_l2": 7.737080015660545e-19,
+  "reported_reference_normalized_residual": 4.890472398998498e-15,
+  "reported_old_population_normalized_residual": 4.04831501089381e-14,
+  "entropy_change": 3.016359179078428e-05,
+  "dt_frozen_mobility_quadratic": 2.8015514356911754e-05,
+  "generalized_KL": 2.1480774338708265e-06,
+  "residual_entropy_defect": -1.7152189822204737e-18,
+  "entropy_identity_with_residual": -1.5223857081092928e-20,
+  "reference_cauchy_bound": 9.100278305885817e-16,
+  "numerical_roundoff_allowance": 3.2460460731011743e-17,
+  "reference_cauchy_plus_roundoff_bound": 9.424882913195935e-16,
+  "last_step_invariants": {
+    "number_relative": 8.215430119266747e-18,
+    "energy_relative": 1.7364045254276074e-17,
+    "full_mu_marginal_global_relative": 4.816276423949693e-18,
+    "mu_population_difference": [
+      1.9538171504625024e-19,
+      2.2014667540547534e-19,
+      6.37969664876423e-19,
+      -1.1549426584710394e-19,
+      3.772191747425572e-20,
+      5.391149642314358e-20,
+      1.8053837254429244e-20,
+      1.0049443111300876e-20,
+      1.4713953359578612e-20,
+      2.2778796310908707e-20,
+      3.461488330625163e-21,
+      -2.344911633745783e-22,
+      -8.823761372405108e-23,
+      -3.6973241673661196e-23,
+      -5.56684625773812e-24,
+      -2.6411378651161564e-25,
+      -2.747602532884784e-26,
+      -3.7526586577906664e-25,
+      1.7223495966529809e-25,
+      -5.097609308776863e-26,
+      5.168981499176734e-26
+    ]
+  },
+  "cumulative_invariants": {
+    "number_relative": 3.7267582592011365e-17,
+    "energy_relative": 1.7583562987460155e-16,
+    "full_mu_marginal_global_relative": 7.256730969102204e-18,
+    "mu_population_difference": [
+      5.747991222666671e-19,
+      6.869445474038501e-19,
+      9.612351569845964e-19,
+      1.9709811481729778e-19,
+      8.065978773708707e-19,
+      5.901385663410036e-19,
+      2.49837186119724e-19,
+      1.0804333308195597e-19,
+      6.704979350043085e-19,
+      7.220026912740922e-20,
+      6.632019919752634e-21,
+      4.983092721971426e-22,
+      -2.0257443175096242e-23,
+      2.5485281191981063e-23,
+      4.821795531749462e-24,
+      3.2337301771181804e-25,
+      -5.921821043313091e-26,
+      1.664389224933225e-24,
+      2.51118289174231e-25,
+      9.6046280400987e-26,
+      1.9095522059187161e-25
+    ]
+  },
+  "full_mu_bin_population": [
+    0.024287204721780278,
+    0.039497600259676795,
+    0.03353047289844977,
+    0.019982893555207763,
+    0.009416617874826623,
+    0.0037718423783783075,
+    0.001344268501479701,
+    0.0004394620342371188,
+    0.00013494394096929578,
+    3.9742798594169024e-05,
+    1.1448593836864513e-05,
+    3.288485736236753e-06,
+    9.602869164098785e-07,
+    2.906139495915906e-07,
+    9.281725486081624e-08,
+    3.1778490251939335e-08,
+    1.1792836764403934e-08,
+    4.7564879276242836e-09,
+    2.0567396128424815e-09,
+    9.01181446606711e-10,
+    3.137447208853598e-10
+  ],
+  "relative_mu_bin_cumulative_errors": [
+    -2.4284638293643845e-15,
+    0.0,
+    0.0,
+    -2.604312740571119e-15,
+    -1.2895356372376117e-15,
+    -2.2995704777072975e-16,
+    4.839221500580002e-16,
+    -6.167780650082876e-16,
+    3.8163701773597615e-15,
+    1.8755322220643704e-15,
+    5.918861018734732e-16,
+    -6.43938437926463e-16,
+    6.615467727247174e-16,
+    1.82164549491831e-16,
+    -1.2833175080027178e-15,
+    -6.247098129547274e-16,
+    5.611410581378213e-16,
+    6.956230102038156e-16,
+    4.0218052270109067e-16,
+    4.589423226963205e-16,
+    -4.943393610449425e-16
+  ],
+  "minimum_f": 2.1094803581312785e-24,
+  "reported_entropy_difference": -3.5575383784680614e-19,
+  "reported_quadratic_difference": 4.3029273720518457e-19,
+  "reported_KL_difference": 4.235164736271502e-22,
+  "pair_wall_s": 0.42923616600455716,
+  "minimum_pair_flow_squared": 0.18828947916366784,
+  "limits": [
+    "No intermediate saved states; only final accepted step is independently assembled.",
+    "Analytic geometry/cardinal derivatives are independent binary64 reconstructions, not bitwise producer arrays.",
+    "Exact saved weights recovered from nref/initial after independent measure agreement.",
+    "Saved densities undergo exp/log roundtrip; final internal log iterate is not stored.",
+    "Old-population norm is a diagnostic, never an acceptance criterion or closeness test.",
+    "Weighted root acceptance does not imply uniform tail accuracy or continuum convergence.",
+    "Extracted files individually hashed; GitHub-reported ZIP digest not independently verified."
+  ],
+  "residual_arrays_sha256": "ae21daa49d1d8d3b469d6bee14a66145609c12dd92aee08b2048d504c8402af9",
+  "checks_wall_s": 0.47421508305706084,
+  "public_residual_arrays_file": "dipole_spatial3_pair_residual_arrays.npz",
+  "original_private_audit_sha256": "233bd762aed64b8205b9bc7585bd81fda305a092e20adef803577f28624f5277"
+}
