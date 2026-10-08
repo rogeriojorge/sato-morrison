@@ -70,7 +70,7 @@ The three-field pilot starts from **f = exp[−E − 0.2μ + 0.1u sin(πy/0.4)]*
 
 ![Recorded entropy relaxation and conservation of every magnetic-moment bin in the mirror, dipole and nonaxisymmetric pilots.](results/first_principles/nonuniform_relaxation.svg)
 
-Here **H = Σᵢ wᵢ[fᵢ log(fᵢ/f*ᵢ) − fᵢ + f*ᵢ]**, with f* proportional to exp(−E − 0.2μ) and normalized to the same particle number. It measures departure from this stationary reference, which need not be reachable. The curves use the accepted steps' entropy changes and the conserved moments. Independent pair calculations check the final residual and entropy identity. Two preconditioners agree within **1.50×10⁻¹²** in the weighted log-density norm. [Pilot comparison](results/nonuniform_spatial_blocks/preconditioner_comparison.json)
+Here **H = Σᵢ wᵢ[fᵢ log(fᵢ/f⋆ᵢ) − fᵢ + f⋆ᵢ]**, with f⋆ proportional to exp(−E − 0.2μ) and normalized to the same particle number. It measures departure from this stationary reference, which need not be reachable. The curves use the accepted steps' entropy changes and the conserved moments. Independent pair calculations check the final residual and entropy identity. Two preconditioners agree within **1.50×10⁻¹²** in the weighted log-density norm. [Pilot comparison](results/nonuniform_spatial_blocks/preconditioner_comparison.json)
 
 The mirror has a separate **15-run refinement study**: eight final observable changes are below 1%, with a maximum of **0.197%**. Coarse timesteps retain **2–3% bias**. Dipole and nonaxisymmetric grid/tail/timestep refinement is unfinished; the current campaign includes rejected steps in extreme tails. [Refinement ledger](results/nonuniform_spatial_blocks_full/summary.json)
 
@@ -93,6 +93,8 @@ The finite-grid spectra retain every null mode. Three extra axisymmetric polynom
 ## Direct particle encounters
 
 Two repelling particles in a uniform field provide a physical check on magnetic-moment conservation. The incoming speeds and orbit-center separation are fixed while the phase around the spiral varies.
+
+![Complete transmitted and reflected trajectories, with their magnetic-moment histories.](results/encounter_movie/poster.svg)
 
 ![Two independently checked encounters on one clock, with transmission, reflection and individual magnetic-moment changes.](results/encounter_movie/encounter.gif)
 
