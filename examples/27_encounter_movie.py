@@ -20,6 +20,7 @@ SUMMARY_SHA='33f5e206d6a748518abe6808945b96d003b4e2fef283d318bd63f04973d2812e'
 INDICES=(0,128)
 STEP,MASS,FIELD,DISTANCE=.025,1.,2.,24.
 FRAMES,FPS,DPI=120,10,110
+SPATIAL_VIDEO_DPI=120
 POSITION_TARGET,MU_TARGET,ENERGY_TARGET=1e-8,1e-10,1e-8
 COLORS=('#147D92','#C66B28')
 SPATIAL_BOX_ASPECT=(1.,1.,1.4)
@@ -79,7 +80,7 @@ inputs={'saved_paths_sha256':PATHS_SHA,'saved_summary_sha256':SUMMARY_SHA,
     'time_definition':'shared normalized time, revealing original samples up to each frame time',
     'exit_rule':'Each curve and its endpoint marker stop at its own actual exit time. No hold or extrapolated trajectory beyond exit.',
     'position_target':POSITION_TARGET,'mu_increment_target':MU_TARGET,'energy_target':ENERGY_TARGET,
-    'spatial_view':{'particle_colors':{'particle_1':COLORS[0],'particle_2':COLORS[1]},
+    'spatial_view':{'video_dpi':SPATIAL_VIDEO_DPI,'particle_colors':{'particle_1':COLORS[0],'particle_2':COLORS[1]},
         'camera':SPATIAL_CAMERA,'box_aspect':SPATIAL_BOX_ASPECT,
         'axis_scaling':'3D box is anisotropic: z visually compressed; x-z close projection has equal physical length aspect.',
         'coordinate_units':'normalized length, same physical coordinates as saved trajectories',
@@ -244,7 +245,7 @@ with progress('Render individual spatial paths with a shared clock and fixed vie
     if shutil.which('ffmpeg') and FFMpegWriter.isAvailable():
         try:
             spatial_movie.save(OUTPUT/'encounter_spatial.mp4',writer=FFMpegWriter(fps=FPS,
-                codec='libx264',extra_args=['-pix_fmt','yuv420p']),dpi=DPI)
+                codec='libx264',extra_args=['-pix_fmt','yuv420p']),dpi=SPATIAL_VIDEO_DPI)
             spatial_mp4_status='rendered'
         except (RuntimeError,OSError,subprocess.CalledProcessError) as error:
             spatial_mp4_status='unresolved: '+str(error)
@@ -254,7 +255,8 @@ spatial_fig.savefig(OUTPUT/'spatial_poster.svg',metadata={'Creator':None,'Date':
 plt.close(spatial_fig)
 metadata['experiment_dependency_sha256_end']={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in dependencies}
 unchanged=metadata['experiment_dependency_sha256']==metadata['experiment_dependency_sha256_end']
-metadata['results']={'status':'verified_saved_path_render' if unchanged else 'unresolved_source_change',
+rendered=unchanged and not any(s.startswith('unresolved:') for s in [mp4_status,spatial_mp4_status])
+metadata['results']={'status':'verified_saved_path_render' if rendered else 'unresolved_render',
     'paths':[{'phase':r['phase'],'exit':r['exit'],'exit_time':float(r['time'][-1]),'initial_mu':r['initial_mu'],
         'final_mu_ratio':float(r['mu_ratio'][-1]),'arithmetic_checks':r['check']} for r in records],
     'frames':FRAMES,'fps':FPS,'display_duration_s':FRAMES/FPS,'mp4_status':mp4_status,
@@ -277,4 +279,4 @@ metadata['results']={'status':'verified_saved_path_render' if unchanged else 'un
 metadata['output_sha256']={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in OUTPUT.iterdir() if p.suffix in ('.gif','.mp4','.png','.svg')}
 (OUTPUT/'summary.json').write_text(json.dumps(metadata,indent=2)+'\n')
 print(f'Finished rendering: {metadata["results"]["status"]}; {metadata["results"]["wall_s"]:.1f}s',flush=True)
-if not unchanged:raise RuntimeError('Movie source dependencies changed')
+if not rendered:raise RuntimeError('Movie rendering or source-dependency check failed; inspect recorded status')
