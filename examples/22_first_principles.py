@@ -65,14 +65,14 @@ ax.set_title('1  Average the rapid orbit',pad=-5,fontsize=13,fontweight='bold')
 fig.text(.015,.015,'Solid: particle orbit     Dashed: guiding center',fontsize=10)
 fig.text(.49,.83,'2  Track a distribution of orbit centers',fontsize=13,fontweight='bold')
 fig.text(.49,.66,r'$f(\mathbf{X},u,\mu,t)$',fontsize=24)
-fig.text(.49,.52,'X: position     u: speed along the field',fontsize=12)
+fig.text(.49,.52,'X: position     u: signed velocity along the field',fontsize=12)
 fig.text(.49,.35,r'$\mu=\dfrac{m v_\perp^2}{2B}$',fontsize=21)
 fig.text(.49,.20,'μ labels the perpendicular orbit energy per field strength.',fontsize=10)
 fig.text(.49,.055,r'$E=\frac{1}{2}mu^2+\mu B$'+'   (zero electric potential)',fontsize=14)
 save(fig,'orbit_and_state')
 
 fig = plt.figure(figsize=(9,3.2))
-fig.text(.04,.87,'Motion transports the distribution; collisions change its shape.',fontsize=13,fontweight='bold')
+fig.text(.04,.87,'Fixed vacuum field: motion transports f; collisions change its shape.',fontsize=13,fontweight='bold')
 fig.text(.5,.59,r'$\frac{\partial f}{\partial t}+\dot{\mathbf{X}}\cdot\nabla_{\mathbf{X}} f'
     r'+\dot u\,\frac{\partial f}{\partial u}=C[f]$',ha='center',fontsize=26)
 fig.text(.04,.32,'Left: guiding-center motion in the prescribed field.',fontsize=12)
@@ -91,7 +91,7 @@ ax.set(xlabel=r'magnetic-moment bin $\mu$',ylabel='fraction of particles',xticks
 ax.legend(frameon=False,ncol=2,loc='upper right')
 ax.text(.04,.89,r'$N_A=N_B=1$'+'\n'+r'$\langle\mu\rangle_A=\langle\mu\rangle_B=1.5$',transform=ax.transAxes,fontsize=10)
 ax=axes[1];ax.axis('off')
-ax.text(.02,.87,'The constrained model preserves every bin.',fontsize=12,fontweight='bold')
+ax.text(.02,.87,'Closed constrained dynamics preserve every bin.',fontsize=12,fontweight='bold')
 ax.text(.02,.62,r'$G(\mu,t)=\int B f\,d^3\!X\,du$',fontsize=23)
 ax.text(.02,.42,r'$G(\mu,t)=G(\mu,0)$',fontsize=22,color=TEAL)
 ax.text(.02,.22,'A cannot evolve into B under this constraint,\neven though their particle counts and means agree.',fontsize=11)
@@ -105,30 +105,35 @@ local=data['local'][:,:,0];finite=data['finite_range'][:,:,0]
 density_local=local@weights/weights.sum();density_finite=finite@weights/weights.sum()
 neutral_local=local-density_local[:,None]
 neutral_amplitude=np.linalg.norm(neutral_local,axis=1)/np.linalg.norm(neutral_local[0])
+neutral_finite=finite-density_finite[:,None]
+neutral_finite_amplitude=np.linalg.norm(neutral_finite,axis=1)/np.linalg.norm(neutral_finite[0])
 source_meta_path=ROOT/'results/visual_summary/metadata.json'
 source_meta=json.loads(source_meta_path.read_text());source_inputs=source_meta['inputs']
 range_rate=1-np.exp(-source_inputs['width']**2*source_inputs['mode']**2/2)
 mode_error=float(max(np.max(abs(density_local/density_local[0]-1)),
     np.max(abs(density_finite/density_finite[0]-np.exp(-range_rate*tau))),
-    np.max(abs(neutral_amplitude-np.exp(-tau)))))
+    np.max(abs(neutral_amplitude-np.exp(-tau))),
+    np.max(abs(neutral_finite_amplitude-np.exp(-tau)))))
 if mode_error>1e-11:raise RuntimeError('Saved uniform modes do not match the exact solution')
-fig,axes=plt.subplots(1,2,figsize=(9,3.7),layout='constrained')
+fig,axes=plt.subplots(1,2,figsize=(9,4.7),layout='constrained')
 ax=axes[0]
 ax.plot(x,local[0,4]*np.cos(x),color=INK,lw=2,label='initial, selected velocity node')
 ax.plot(x,density_local[-1]*np.cos(x),color=TEAL,lw=2,label='local density part: survives')
 ax.plot(x,(local[0,4]-density_local[0])*np.cos(x),color=ORANGE,lw=2,label='remaining part: decays')
 ax.axhline(0,color='0.7',lw=.7);ax.set(xlabel='perpendicular position x',ylabel=r'relative perturbation $\delta f/f_0$',title='Split a perturbation into two parts',xticks=[0,np.pi,2*np.pi],xticklabels=['0','π','2π'])
-ax.legend(frameon=False,fontsize=9,loc='lower left')
+ax.legend(frameon=False,fontsize=9,loc='lower center',bbox_to_anchor=(.5,1.02))
+ax.set_title('Split a perturbation into two parts',pad=66)
 ax=axes[1]
 ax.plot(tau,density_local/density_local[0],color=TEAL,lw=2,label='local density pattern')
 ax.plot(tau,density_finite/density_finite[0],color=TEAL,lw=2,ls='--',label='density with finite range')
 ax.plot(tau,neutral_amplitude,color=ORANGE,lw=2,label='zero-density part, both models')
 ax.set(xlabel=r'model time $\tau=\lambda t$',ylabel='amplitude / initial',ylim=(0,1.15),title='Only permitted parts can relax')
-ax.legend(frameon=False,fontsize=9,loc='upper right')
+ax.legend(frameon=False,fontsize=9,loc='lower center',bbox_to_anchor=(.5,1.02))
+ax.set_title('Only permitted parts can relax',pad=66)
 save(fig,'mode_decomposition')
 
 fig=plt.figure(figsize=(9,3.25))
-fig.text(.04,.86,'Uniform field + small perturbation: an exact test of Eq. (181)',fontsize=13,fontweight='bold')
+fig.text(.04,.86,'Collision-only, uniform B and homogeneous f₀: Eq. (181)',fontsize=13,fontweight='bold')
 fig.text(.5,.60,r'$\delta f=f_0\frac{\delta n}{n_0}+g,\qquad\int B g\,du\,d\mu=0$',ha='center',fontsize=23)
 fig.text(.5,.34,r'$C_L[\delta f]=\frac{D n_0}{(qB)^2}\nabla_\perp^2g,\qquad'
     r'g_k(t)=g_k(0)e^{-\lambda t}$',ha='center',fontsize=22)
