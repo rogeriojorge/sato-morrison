@@ -2227,6 +2227,24 @@ The \href{https://github.com/rogeriojorge/sato-morrison/blob/main/results/nonuni
 retains the original per-case provenance and recomputes all eight comparisons,
 including every adjacent timestep difference and the coarse-to-finest bias.
 
+\paragraph{A retained dipole solver failure.}
+At the same frozen campaign revision \texttt{3d842bee}, the dipole
+$5^3\times25\times13$ case with $U=4$, $M=20$ and $\Delta t=0.005$
+accepts one step, then rejects a PCG correction. The native convergence
+status accompanies a recomputed relative residual $3.118\times10^{-4}$,
+above both the requested $10^{-6}$ and the unchanged $5\times10^{-6}$
+acceptance guard. The accepted first step uses seven Newton corrections
+and 7104 total PCG iterations, preserves every recorded moment-bin population,
+and has minimum nodal density $5.435\times10^{-232}$.
+Its entropy increase $6.9723\times10^{-5}$ splits into frozen-mobility
+production $6.3797\times10^{-5}$ and numerical KL $5.9261\times10^{-6}$.
+The full correction fractions and large negative log increments are retained
+in the public aggregate's partial-case record. The extreme evolved tails
+make finite-precision conditioning a concern; a positive exact discrete root
+does not guarantee convergence in binary64. This failure is not a physical
+decay measurement or a converged dipole refinement. No clipping, kernel
+change or relaxed tolerance is used to turn it into a passing result.
+
 \paragraph{Solver-tolerance audit on one fixed mirror grid.}
 Example 19 at source revision \texttt{e1bc1ab} retains every state in five
 four-step runs on $3^3\times25\times21$ nodes, with $D=0.1$, $T=0.02$

@@ -7593,6 +7593,16 @@
       "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37705184513/job/113077746242",
       "log_sha256": "7d1ce726141183e53925b42589a59396767292788b9257c0aba24e9b69c9453c",
       "scope": "Includes explicit gamma=0 stationary-density and controlled weak-field limits."
+    },
+    {
+      "source_commit": "7eca1d4060832b48a4473c69f32a5055ee7105ac",
+      "command": "python -m pytest -q",
+      "passed": 199,
+      "elapsed_s": 101.09,
+      "environment": "Fresh Ubuntu CI installation",
+      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37708042539/job/113087037533",
+      "log_sha256": "04d231375ce8624a15bcdaf7090cc31b0c8f87841d784d35543d601706a13c98",
+      "scope": "Adds actual mapped (u,mu) Lorentz modal evolution and independent analytic 3V moments; uniform parallel distribution phase and exactly zero collision strength at both charge signs."
     }
   ],
   "additional_experiments": [

@@ -17,7 +17,7 @@ JAX experiments on **what relaxes—and what remains frozen—when collisions pr
 | Nonlinear mirror evolution | **15 runs**, eight refinement checks; largest final change **0.197%** |
 | Independent solver audit | All **20 saved steps** rechecked with a separate NumPy pair operator |
 | Conditional scattering table | Fresh **4,096-state** test: p95 error **2.54%**, 95% confidence interval **2.06–3.37%** |
-| Test suite | **193 passed** on fresh Linux CI |
+| Test suite | **199 passed** on fresh Linux CI |
 
 [Reproduction record](results/deep_reproduction.json) · [Mirror data](results/nonuniform_entropy/mirror_audit.json) · [Solver audit](results/solver_accuracy/audit.json) · [Scattering audit](results/scattering_table/refined8_validation4096/audit.json)
 
