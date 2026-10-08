@@ -1,0 +1,358 @@
+Nonuniform positive nonlinear collision evolution; D=0.1, T=0.02; natural collision boundaries; entropy-metric Newton-GMRES; output=/home/runner/work/sato-morrison/sato-morrison/results/nonuniform_evolution
+Execution fields: ['mirror']; accepted 4 completed canonical rows for resume.
+Evolve nonuniform boxes and compare independent finite-time refinements
+  Starting canonical case mirror: {'nx': 5, 'nu': 21, 'nmu': 21, 'umax': 4.0, 'mumax': 20.0, 'dt': 0.005}
+  Evolve nonuniform boxes and compare independent finite-time refinements: 15.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 30.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 45.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 60.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 75.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 90.0 s elapsed
+  mirror 5^3 x 21 x 21, U=4, M=20, dt=0.005: t=0.005, Newton=5, GMRES=47, dS=4.450e-05, 71.13s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 105.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 120.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 135.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 150.0 s elapsed
+  mirror 5^3 x 21 x 21, U=4, M=20, dt=0.005: t=0.010, Newton=5, GMRES=45, dS=3.848e-05, 64.36s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 165.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 180.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 195.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 210.0 s elapsed
+  mirror 5^3 x 21 x 21, U=4, M=20, dt=0.005: t=0.015, Newton=5, GMRES=47, dS=3.330e-05, 66.61s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 225.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 240.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 255.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 270.0 s elapsed
+  mirror 5^3 x 21 x 21, U=4, M=20, dt=0.005: t=0.020, Newton=4, GMRES=32, dS=2.881e-05, 47.48s
+  Starting canonical case mirror: {'nx': 5, 'nu': 25, 'nmu': 13, 'umax': 4.0, 'mumax': 20.0, 'dt': 0.005}
+  Evolve nonuniform boxes and compare independent finite-time refinements: 285.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 300.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 315.0 s elapsed
+  mirror 5^3 x 25 x 13, U=4, M=20, dt=0.005: t=0.005, Newton=5, GMRES=47, dS=4.450e-05, 39.88s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 330.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 345.0 s elapsed
+  mirror 5^3 x 25 x 13, U=4, M=20, dt=0.005: t=0.010, Newton=5, GMRES=45, dS=3.848e-05, 35.02s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 360.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 375.0 s elapsed
+  mirror 5^3 x 25 x 13, U=4, M=20, dt=0.005: t=0.015, Newton=5, GMRES=47, dS=3.330e-05, 36.47s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 390.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 405.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 420.0 s elapsed
+  mirror 5^3 x 25 x 13, U=4, M=20, dt=0.005: t=0.020, Newton=5, GMRES=47, dS=2.881e-05, 37.01s
+  Starting canonical case mirror: {'nx': 5, 'nu': 25, 'nmu': 17, 'umax': 4.0, 'mumax': 20.0, 'dt': 0.005}
+  Evolve nonuniform boxes and compare independent finite-time refinements: 435.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 450.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 465.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 480.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 495.0 s elapsed
+  mirror 5^3 x 25 x 17, U=4, M=20, dt=0.005: t=0.005, Newton=5, GMRES=47, dS=4.450e-05, 65.83s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 510.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 525.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 540.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 555.0 s elapsed
+  mirror 5^3 x 25 x 17, U=4, M=20, dt=0.005: t=0.010, Newton=5, GMRES=45, dS=3.848e-05, 62.63s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 570.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 585.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 600.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 615.0 s elapsed
+  mirror 5^3 x 25 x 17, U=4, M=20, dt=0.005: t=0.015, Newton=5, GMRES=47, dS=3.330e-05, 61.64s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 630.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 645.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 660.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 675.0 s elapsed
+  mirror 5^3 x 25 x 17, U=4, M=20, dt=0.005: t=0.020, Newton=5, GMRES=47, dS=2.881e-05, 61.50s
+  Starting canonical case mirror: {'nx': 5, 'nu': 25, 'nmu': 21, 'umax': 4.0, 'mumax': 20.0, 'dt': 0.01}
+  Evolve nonuniform boxes and compare independent finite-time refinements: 690.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 705.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 720.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 735.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 750.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 765.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 780.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 795.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 810.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 825.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 840.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 855.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 870.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 885.0 s elapsed
+  mirror 5^3 x 25 x 21, U=4, M=20, dt=0.01: t=0.010, Newton=8, GMRES=109, dS=8.307e-05, 197.26s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 900.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 915.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 930.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 945.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 960.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 975.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 990.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1005.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1020.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1035.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1050.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1065.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1080.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1095.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1110.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1125.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1140.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1155.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1170.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1185.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1200.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1215.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1230.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1245.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1260.0 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1275.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1290.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1305.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1320.1 s elapsed
+  mirror 5^3 x 25 x 21, U=4, M=20, dt=0.01: t=0.020, Newton=12, GMRES=261, dS=6.215e-05, 436.54s
+  Starting canonical case mirror: {'nx': 5, 'nu': 25, 'nmu': 21, 'umax': 4.0, 'mumax': 20.0, 'dt': 0.0025}
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1335.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1350.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1365.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1380.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1395.1 s elapsed
+  mirror 5^3 x 25 x 21, U=4, M=20, dt=0.0025: t=0.003, Newton=4, GMRES=28, dS=2.305e-05, 66.35s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1410.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1425.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1440.1 s elapsed
+  mirror 5^3 x 25 x 21, U=4, M=20, dt=0.0025: t=0.005, Newton=4, GMRES=23, dS=2.143e-05, 55.45s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1455.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1470.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1485.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1500.1 s elapsed
+  mirror 5^3 x 25 x 21, U=4, M=20, dt=0.0025: t=0.007, Newton=4, GMRES=24, dS=1.993e-05, 55.27s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1515.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1530.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1545.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1560.1 s elapsed
+  mirror 5^3 x 25 x 21, U=4, M=20, dt=0.0025: t=0.010, Newton=4, GMRES=24, dS=1.854e-05, 55.97s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1575.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1590.1 s elapsed
+  mirror 5^3 x 25 x 21, U=4, M=20, dt=0.0025: t=0.013, Newton=3, GMRES=13, dS=1.725e-05, 35.75s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1605.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1620.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1635.1 s elapsed
+  mirror 5^3 x 25 x 21, U=4, M=20, dt=0.0025: t=0.015, Newton=3, GMRES=13, dS=1.604e-05, 35.78s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1650.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1665.1 s elapsed
+  mirror 5^3 x 25 x 21, U=4, M=20, dt=0.0025: t=0.018, Newton=3, GMRES=13, dS=1.492e-05, 36.06s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1680.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1695.1 s elapsed
+  mirror 5^3 x 25 x 21, U=4, M=20, dt=0.0025: t=0.020, Newton=3, GMRES=13, dS=1.388e-05, 35.26s
+  Starting canonical case mirror: {'nx': 5, 'nu': 25, 'nmu': 21, 'umax': 5.0, 'mumax': 20.0, 'dt': 0.005}
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1710.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1725.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1740.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1755.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1770.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1785.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1800.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1815.1 s elapsed
+  mirror 5^3 x 25 x 21, U=5, M=20, dt=0.005: t=0.005, Newton=5, GMRES=48, dS=4.455e-05, 99.28s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1830.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1845.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1860.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1875.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1890.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1905.1 s elapsed
+  mirror 5^3 x 25 x 21, U=5, M=20, dt=0.005: t=0.010, Newton=5, GMRES=46, dS=3.853e-05, 93.45s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1920.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1935.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1950.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1965.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1980.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 1995.1 s elapsed
+  mirror 5^3 x 25 x 21, U=5, M=20, dt=0.005: t=0.015, Newton=5, GMRES=48, dS=3.333e-05, 94.67s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2010.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2025.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2040.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2055.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2070.1 s elapsed
+  mirror 5^3 x 25 x 21, U=5, M=20, dt=0.005: t=0.020, Newton=4, GMRES=32, dS=2.885e-05, 67.19s
+  Starting canonical case mirror: {'nx': 5, 'nu': 25, 'nmu': 21, 'umax': 4.0, 'mumax': 24.0, 'dt': 0.005}
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2085.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2100.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2115.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2130.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2145.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2160.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2175.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2190.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2205.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2220.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2235.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2250.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2265.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2280.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2295.1 s elapsed
+  mirror 5^3 x 25 x 21, U=4, M=24, dt=0.005: t=0.005, Newton=9, GMRES=117, dS=4.450e-05, 217.21s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2310.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2325.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2340.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2355.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2370.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2385.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2400.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2415.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2430.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2445.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2460.1 s elapsed
+  mirror 5^3 x 25 x 21, U=4, M=24, dt=0.005: t=0.010, Newton=7, GMRES=89, dS=3.848e-05, 164.78s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2475.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2490.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2505.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2520.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2535.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2550.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2565.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2580.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2595.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2610.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2625.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2640.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2655.1 s elapsed
+  mirror 5^3 x 25 x 21, U=4, M=24, dt=0.005: t=0.015, Newton=8, GMRES=107, dS=3.330e-05, 195.56s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2670.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2685.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2700.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2715.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2730.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2745.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2760.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2775.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2790.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2805.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2820.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2835.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2850.1 s elapsed
+  mirror 5^3 x 25 x 21, U=4, M=24, dt=0.005: t=0.020, Newton=9, GMRES=110, dS=2.881e-05, 207.89s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2865.1 s elapsed
+  Starting canonical case mirror: {'nx': 5, 'nu': 29, 'nmu': 21, 'umax': 5.0, 'mumax': 20.0, 'dt': 0.005}
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2880.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2895.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2910.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2925.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2940.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2955.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2970.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 2985.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3000.1 s elapsed
+  mirror 5^3 x 29 x 21, U=5, M=20, dt=0.005: t=0.005, Newton=5, GMRES=48, dS=4.455e-05, 135.15s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3015.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3030.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3045.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3060.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3075.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3090.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3105.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3120.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3135.1 s elapsed
+  mirror 5^3 x 29 x 21, U=5, M=20, dt=0.005: t=0.010, Newton=5, GMRES=47, dS=3.853e-05, 129.74s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3150.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3165.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3180.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3195.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3210.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3225.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3240.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3255.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3270.1 s elapsed
+  mirror 5^3 x 29 x 21, U=5, M=20, dt=0.005: t=0.015, Newton=5, GMRES=49, dS=3.333e-05, 131.73s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3285.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3300.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3315.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3330.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3345.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3360.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3375.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3390.1 s elapsed
+  mirror 5^3 x 29 x 21, U=5, M=20, dt=0.005: t=0.020, Newton=5, GMRES=47, dS=2.885e-05, 127.56s
+  Starting canonical case mirror: {'nx': 5, 'nu': 25, 'nmu': 25, 'umax': 4.0, 'mumax': 24.0, 'dt': 0.005}
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3405.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3420.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3435.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3450.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3465.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3480.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3495.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3510.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3525.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3540.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3555.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3570.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3585.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3600.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3615.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3630.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3645.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3660.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3675.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3690.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3705.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3720.1 s elapsed
+  mirror 5^3 x 25 x 25, U=4, M=24, dt=0.005: t=0.005, Newton=9, GMRES=119, dS=4.450e-05, 319.95s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3735.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3750.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3765.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3780.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3795.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3810.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3825.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3840.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3855.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3870.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3885.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3900.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3915.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3930.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3945.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3960.1 s elapsed
+  mirror 5^3 x 25 x 25, U=4, M=24, dt=0.005: t=0.010, Newton=7, GMRES=92, dS=3.848e-05, 244.34s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3975.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 3990.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4005.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4020.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4035.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4050.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4065.1 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4080.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4095.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4110.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4125.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4140.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4155.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4170.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4185.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4200.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4215.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4230.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4245.2 s elapsed
+  mirror 5^3 x 25 x 25, U=4, M=24, dt=0.005: t=0.015, Newton=8, GMRES=108, dS=3.330e-05, 284.85s
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4260.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4275.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4290.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4305.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4320.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4335.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4350.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4365.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4380.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4395.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4410.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4425.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4440.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4455.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4470.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4485.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4500.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4515.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4530.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4545.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4560.2 s elapsed
+  Evolve nonuniform boxes and compare independent finite-time refinements: 4575.2 s elapsed
+  mirror 5^3 x 25 x 25, U=4, M=24, dt=0.005: t=0.020, Newton=10, GMRES=122, dS=2.881e-05, 325.00s
+  mirror refinement status: passed; [('spatial', {'entropy_gain_per_particle': 0.00046811139752949083, 'final_production_per_particle': 0.00022129016988201613, 'relaxation_moment_change_per_particle': 0.0005898701968169189}), ('parallel_velocity', {'entropy_gain_per_particle': 4.034965562481365e-08, 'final_production_per_particle': 1.0970625409880668e-07, 'relaxation_moment_change_per_particle': 1.9813617744260976e-09}), ('magnetic_moment', {'entropy_gain_per_particle': 5.083814798773108e-09, 'final_production_per_particle': 3.824311088253934e-09, 'relaxation_moment_change_per_particle': 5.5200366646632025e-09}), ('timestep', {'entropy_gain_per_particle': 0.00023972934965751886, 'final_production_per_particle': 0.00018666800455690888, 'relaxation_moment_change_per_particle': 0.0002833837729683356}), ('parallel_tail', {'entropy_gain_per_particle': 0.0011124307281756157, 'final_production_per_particle': 0.001089469368672513, 'relaxation_moment_change_per_particle': 0.0011261032713653762}), ('moment_tail', {'entropy_gain_per_particle': 2.0604754379709337e-09, 'final_production_per_particle': 1.4622551695164874e-09, 'relaxation_moment_change_per_particle': 2.3106213349755497e-09}), ('wider_parallel_quadrature', {'entropy_gain_per_particle': 6.900945198747059e-08, 'final_production_per_particle': 1.1547087665324694e-07, 'relaxation_moment_change_per_particle': 3.631475716974339e-08}), ('wider_moment_quadrature', {'entropy_gain_per_particle': 3.057374266513576e-09, 'final_production_per_particle': 1.8450595821851442e-09, 'relaxation_moment_change_per_particle': 3.5655501901393197e-09})]
+  Evolve nonuniform boxes and compare independent finite-time refinements: returned after 4583.707 s
+Saved /home/runner/work/sato-morrison/sato-morrison/results/nonuniform_evolution/summary.json; every independent convergence status remains explicit.

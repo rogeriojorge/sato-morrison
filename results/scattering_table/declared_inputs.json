@@ -1,0 +1,50 @@
+{
+  "mass": 1.0,
+  "charge": 1.0,
+  "field": 2.0,
+  "strength": 0.03,
+  "screening": 3.0,
+  "theta": 0.5,
+  "theta_definition": "single-particle velocity variance k_B*T/m",
+  "training_bounds": [
+    [
+      1.2,
+      2.4
+    ],
+    [
+      0.7,
+      1.5
+    ],
+    [
+      0.2,
+      0.8
+    ]
+  ],
+  "training_orders": [
+    6,
+    6,
+    6,
+    32
+  ],
+  "holdout_count": 256,
+  "holdout_seed": 1311,
+  "second_moment_rms_target": 0.02,
+  "second_moment_p95_target": 0.05,
+  "bootstrap_count": 2000,
+  "bootstrap_seed": 1312,
+  "start_distance": 24.0,
+  "max_step": 0.2,
+  "rtol": 1e-10,
+  "impact_derivative_states": 8,
+  "impact_fd_steps": [
+    0.001,
+    0.0005,
+    0.00025
+  ],
+  "derivative_rms_target": 0.05,
+  "table_derivative_step": 1e-05,
+  "method": "spatial cubic of signed c and log(COMvariance); truly periodic cubic phase; exact moment reconstruction",
+  "validation_domain": "uniform independent states inside the new training-node inner hull; no extrapolation",
+  "previous_test_reuse": "none; seeds701 and1301 are excluded from this test and fitting",
+  "scope": "single-encounter conditional moment interpolation, not a plasma or SM collision coefficient"
+}

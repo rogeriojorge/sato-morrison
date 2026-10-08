@@ -1,0 +1,136 @@
+{
+  "prior_metadata_sha256": "c8f2626a09aa81e33d3826f5a4a6b80a892fe973b0d5cd5e33347997da193810",
+  "flight_time_factors": [
+    6.0,
+    12.0,
+    24.0,
+    48.0
+  ],
+  "active_max_steps": [
+    0.2,
+    0.1,
+    0.05
+  ],
+  "endpoint_distances": [
+    24.0,
+    32.0,
+    40.0
+  ],
+  "energy_target": 1e-08,
+  "timestep_moment_target": 0.001,
+  "endpoint_moment_target": 0.005,
+  "independent_pair_velocity_absolute_target": 1e-08,
+  "independent_pair_position_absolute_target": 1e-08,
+  "independent_pair_max_steps": [
+    0.05,
+    0.025
+  ],
+  "cutoff_counterexample_node": [
+    1.2,
+    0.7,
+    0.8,
+    1.5707963267948966
+  ],
+  "cutoff_inverse_moment_absolute_target": 1e-10,
+  "cutoff_energy_target": 1e-08,
+  "cutoff_audit_scope": "fixed deterministic boundary counterexample previously inspected; no fitting or independent statistical validation",
+  "scale_audit_definitions": "relative rho=v_perp/abs(Omega); reduced_mass=m/2; b90=strength/(reduced_mass*relative_speed_squared); minimum separation explicitly sampled",
+  "scope": "finite flight-budget diagnosis of exact previously failed nodes; original quadrature and interpolation failures retained",
+  "physical_inputs": {
+    "mass": 1.0,
+    "charge": 1.0,
+    "field": 2.0,
+    "strength": 0.03,
+    "screening": 3.0,
+    "theta": 0.5,
+    "theta_definition": "single-particle velocity variance k_B*T/m",
+    "training_bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "training_orders": [
+      4,
+      4,
+      4,
+      16
+    ],
+    "holdout_count": 256,
+    "holdout_seed": 1301,
+    "second_moment_rms_target": 0.02,
+    "second_moment_p95_target": 0.05,
+    "impact_annuli": [
+      [
+        0.15,
+        0.4
+      ],
+      [
+        0.4,
+        0.8
+      ],
+      [
+        0.8,
+        1.2
+      ],
+      [
+        1.2,
+        2.4
+      ],
+      [
+        2.4,
+        4.8
+      ],
+      [
+        4.8,
+        8.0
+      ]
+    ],
+    "parallel_bounds": [
+      0.35,
+      3.0
+    ],
+    "perpendicular_bounds": [
+      0.0,
+      2.5
+    ],
+    "sobol_levels": [
+      32,
+      64,
+      128,
+      256
+    ],
+    "sobol_seed": 1307,
+    "replica_seed": 1308,
+    "phase_order": 16,
+    "relative_diffusion_target": 0.05,
+    "start_distance": 24.0,
+    "max_step": 0.2,
+    "rtol": 1e-10,
+    "reverse_checks": 16,
+    "boundary_distances": [
+      18.0,
+      24.0,
+      32.0
+    ],
+    "table_method": "periodic cubic c and logarithmic positive COM variance; reconstruct second and cross moments",
+    "coverage_method": "stratified incoming-flux inverse-CDF scrambled Sobol, explicit phase quadrature, independent replica",
+    "rate_scope": "conditional crossing moments per partner density; screening specified, no SM D inference or plasma lifetime"
+  },
+  "exact_failed_nodes": [
+    [
+      0.9938225266093732,
+      1.9056642462041216,
+      1.9668376625283577,
+      1.5707963267948966
+    ]
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "source_commit": "4ce8e5c770665a396d5083aec1e5f2b89a6a6ecf",
+  "job": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37693078685/job/113037865160",
+  "status": "failed first nonlinear step; no completed selected-field case",
+  "reason": "GMRES reached300iterations without requested convergence; no tolerance or invariant repair applied. The four summary rows are previously completed mirror cases retained with original provenance.",
+  "files": {
+    "commit.txt": "e43c5c63196b334969ce99205c1d52d5a8fead0f6b01631ee3c915ac2b43ee1d",
+    "cpu.txt": "4476e601951bb5e5dc85ca4b9d2e3bc795bb83c0d4e62b8d9f2bdec6659b0e7a",
+    "environment.txt": "a2ee026d19a60feb429570c7dc9cdd45c0dddfaeda45a7d61c8a097bc4e74299",
+    "run.log": "0519a364feb1400d9bcc2b50c7da9465c7c4d33f47af371e0b6aba886511bb08",
+    "summary.json": "89ca8cf8e85905ef928089f9f15e20e88fd3f6804e5400e6508e04c59e177621"
+  }
+}

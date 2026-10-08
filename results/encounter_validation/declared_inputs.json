@@ -1,0 +1,89 @@
+{
+  "mass": 1.0,
+  "charge": 1.0,
+  "field": 2.0,
+  "strength": 0.03,
+  "screening": 3.0,
+  "theta": 0.5,
+  "theta_definition": "single-particle velocity variance k_B*T/m",
+  "training_bounds": [
+    [
+      1.2,
+      2.4
+    ],
+    [
+      0.7,
+      1.5
+    ],
+    [
+      0.2,
+      0.8
+    ]
+  ],
+  "training_orders": [
+    4,
+    4,
+    4,
+    16
+  ],
+  "holdout_count": 256,
+  "holdout_seed": 1301,
+  "second_moment_rms_target": 0.02,
+  "second_moment_p95_target": 0.05,
+  "impact_annuli": [
+    [
+      0.15,
+      0.4
+    ],
+    [
+      0.4,
+      0.8
+    ],
+    [
+      0.8,
+      1.2
+    ],
+    [
+      1.2,
+      2.4
+    ],
+    [
+      2.4,
+      4.8
+    ],
+    [
+      4.8,
+      8.0
+    ]
+  ],
+  "parallel_bounds": [
+    0.35,
+    3.0
+  ],
+  "perpendicular_bounds": [
+    0.0,
+    2.5
+  ],
+  "sobol_levels": [
+    32,
+    64,
+    128,
+    256
+  ],
+  "sobol_seed": 1307,
+  "replica_seed": 1308,
+  "phase_order": 16,
+  "relative_diffusion_target": 0.05,
+  "start_distance": 24.0,
+  "max_step": 0.2,
+  "rtol": 1e-10,
+  "reverse_checks": 16,
+  "boundary_distances": [
+    18.0,
+    24.0,
+    32.0
+  ],
+  "table_method": "periodic cubic c and logarithmic positive COM variance; reconstruct second and cross moments",
+  "coverage_method": "stratified incoming-flux inverse-CDF scrambled Sobol, explicit phase quadrature, independent replica",
+  "rate_scope": "conditional crossing moments per partner density; screening specified, no SM D inference or plasma lifetime"
+}

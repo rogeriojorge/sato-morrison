@@ -1,0 +1,281 @@
+{
+  "model": "encounter",
+  "boundary": "bounded incoming plane flux with transmitted/reflected first exits",
+  "units": "normalized",
+  "inputs": {
+    "mass": 1.0,
+    "charge": 1.0,
+    "field": 2.0,
+    "strength": 0.03,
+    "screening": 3.0,
+    "theta": 0.5,
+    "theta_definition": "single-particle velocity variance k_B*T/m",
+    "training_bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "training_orders": [
+      4,
+      4,
+      4,
+      16
+    ],
+    "holdout_count": 256,
+    "holdout_seed": 1301,
+    "second_moment_rms_target": 0.02,
+    "second_moment_p95_target": 0.05,
+    "impact_annuli": [
+      [
+        0.15,
+        0.4
+      ],
+      [
+        0.4,
+        0.8
+      ],
+      [
+        0.8,
+        1.2
+      ],
+      [
+        1.2,
+        2.4
+      ],
+      [
+        2.4,
+        4.8
+      ],
+      [
+        4.8,
+        8.0
+      ]
+    ],
+    "parallel_bounds": [
+      0.35,
+      3.0
+    ],
+    "perpendicular_bounds": [
+      0.0,
+      2.5
+    ],
+    "sobol_levels": [
+      32,
+      64,
+      128,
+      256
+    ],
+    "sobol_seed": 1307,
+    "replica_seed": 1308,
+    "phase_order": 16,
+    "relative_diffusion_target": 0.05,
+    "start_distance": 24.0,
+    "max_step": 0.2,
+    "rtol": 1e-10,
+    "reverse_checks": 16,
+    "boundary_distances": [
+      18.0,
+      24.0,
+      32.0
+    ],
+    "table_method": "periodic cubic c and logarithmic positive COM variance; reconstruct second and cross moments",
+    "coverage_method": "stratified incoming-flux inverse-CDF scrambled Sobol, explicit phase quadrature, independent replica",
+    "rate_scope": "conditional crossing moments per partner density; screening specified, no SM D inference or plasma lifetime"
+  },
+  "commit": "52916fb6dbac953865a117988021eab218270f78",
+  "working_tree": "?? results/dipole_obstruction/\n?? results/geometry_sensitivity/\n?? tests/test_theory.py",
+  "source_sha256": "d2d2db1edebe93377e56e798926d0cd87970551fdc98dcfba2479c1adbda0ea5",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "?? tests/test_theory.py",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "unset",
+    "OPENBLAS_NUM_THREADS": "unset",
+    "MKL_NUM_THREADS": "unset",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": true,
+  "experiment_dependency_sha256": {
+    "src/sato_morrison/controls.py": "f5171a4d7049272e6ee97a9f4e5a6eb5ced940ff399fc5175ff290adac87f686",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+    "examples/13_encounter_validation.py": "050b728a3deaa05ee496f7739f866297ca20ed835dc6708105001116b30b2461"
+  },
+  "experiment_dependency_sha256_end": {
+    "src/sato_morrison/controls.py": "f5171a4d7049272e6ee97a9f4e5a6eb5ced940ff399fc5175ff290adac87f686",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+    "examples/13_encounter_validation.py": "050b728a3deaa05ee496f7739f866297ca20ed835dc6708105001116b30b2461"
+  },
+  "experiment_dependencies_unchanged": true,
+  "results": {
+    "table_status": "unresolved",
+    "fresh_holdout_rms": [
+      0.009693080167680517,
+      0.010378675951343124,
+      0.014048918384048316
+    ],
+    "fresh_holdout_second_p95": 0.09869078480725006,
+    "reverse_max_absolute_errors": [
+      2.8723735195912425e-11,
+      1.0947125765763447e-13,
+      7.518952823505403e-14
+    ],
+    "reverse_heldout_outside_training_band": 0,
+    "coverage_status": "unresolved",
+    "coverage": [
+      {
+        "impact_lower": 0.15,
+        "impact_upper": 0.4,
+        "flux_per_density": 0.30628010474825756,
+        "drift_per_density": 0.00044669804555348154,
+        "diffusion_per_density": 0.00023974481830611115,
+        "partial_diffusion_lower_bound_per_density": 0.0002397448183061108,
+        "last_diffusion_relative_uncertainty": 0.10409091304001979,
+        "drift_replica_difference": 1.2218975041728927e-05,
+        "phase_diffusion_relative_change": 0.030936075207486625,
+        "missing_fraction": 0.0,
+        "reflected_fraction": 0.051513671875,
+        "max_parallel_turns": 1,
+        "max_energy_error": 1.032091671329707e-09,
+        "max_actual_step": 0.20000000000000284,
+        "status": "unresolved"
+      },
+      {
+        "impact_lower": 0.4,
+        "impact_upper": 0.8,
+        "flux_per_density": 1.069196002030281,
+        "drift_per_density": 0.00028777228539283734,
+        "diffusion_per_density": 0.0004921490657174067,
+        "partial_diffusion_lower_bound_per_density": 0.000492149065717407,
+        "last_diffusion_relative_uncertainty": 0.11550033491418792,
+        "drift_replica_difference": 7.542045777534753e-05,
+        "phase_diffusion_relative_change": 0.0811684661713857,
+        "missing_fraction": 0.0,
+        "reflected_fraction": 0.021728515625,
+        "max_parallel_turns": 1,
+        "max_energy_error": 1.0201465698796815e-09,
+        "max_actual_step": 0.20000000000000284,
+        "status": "unresolved"
+      },
+      {
+        "impact_lower": 0.8,
+        "impact_upper": 1.2,
+        "flux_per_density": 1.7819933367171343,
+        "drift_per_density": null,
+        "diffusion_per_density": null,
+        "partial_diffusion_lower_bound_per_density": 0.00024373442417295848,
+        "last_diffusion_relative_uncertainty": 0.6593798791127721,
+        "drift_replica_difference": 0.0001796410945425879,
+        "phase_diffusion_relative_change": 0.27821909684598506,
+        "missing_fraction": 0.0,
+        "reflected_fraction": 0.00537109375,
+        "max_parallel_turns": 1,
+        "max_energy_error": 9.991546063907211e-10,
+        "max_actual_step": 0.1999999999999993,
+        "status": "unresolved"
+      },
+      {
+        "impact_lower": 1.2,
+        "impact_upper": 2.4,
+        "flux_per_density": 9.622764018272528,
+        "drift_per_density": -1.0160863484210132e-05,
+        "diffusion_per_density": 2.7811653481858045e-05,
+        "partial_diffusion_lower_bound_per_density": 2.781165348185803e-05,
+        "last_diffusion_relative_uncertainty": 0.0861914033568487,
+        "drift_replica_difference": 4.069989317983119e-06,
+        "phase_diffusion_relative_change": 0.052576575639685624,
+        "missing_fraction": 0.0,
+        "reflected_fraction": 0.0,
+        "max_parallel_turns": 0,
+        "max_energy_error": 1.0541904077904083e-09,
+        "max_actual_step": 0.19737140397909414,
+        "status": "unresolved"
+      },
+      {
+        "impact_lower": 2.4,
+        "impact_upper": 4.8,
+        "flux_per_density": 38.491056073090114,
+        "drift_per_density": -3.801247824832115e-07,
+        "diffusion_per_density": 1.5280938805817863e-06,
+        "partial_diffusion_lower_bound_per_density": 1.5280938805817836e-06,
+        "last_diffusion_relative_uncertainty": 0.039523727753730656,
+        "drift_replica_difference": 3.0797810959284763e-07,
+        "phase_diffusion_relative_change": 4.052756319000101e-06,
+        "missing_fraction": 0.0,
+        "reflected_fraction": 0.0,
+        "max_parallel_turns": 0,
+        "max_energy_error": 1.2183702418461189e-09,
+        "max_actual_step": 0.1835865120955802,
+        "status": "passed"
+      },
+      {
+        "impact_lower": 4.8,
+        "impact_upper": 8.0,
+        "flux_per_density": 91.23805883991731,
+        "drift_per_density": -3.893082466929502e-09,
+        "diffusion_per_density": 1.9058110333208478e-07,
+        "partial_diffusion_lower_bound_per_density": 1.9058110333208446e-07,
+        "last_diffusion_relative_uncertainty": 0.04852081463051303,
+        "drift_replica_difference": 4.070025701471859e-09,
+        "phase_diffusion_relative_change": 1.1132952901421967e-09,
+        "missing_fraction": 0.0,
+        "reflected_fraction": 0.0,
+        "max_parallel_turns": 0,
+        "max_energy_error": 1.0471919514618295e-09,
+        "max_actual_step": 0.183877712808993,
+        "status": "passed"
+      }
+    ],
+    "total_conditional_drift_per_density": null,
+    "total_conditional_diffusion_per_density": null,
+    "empirical_diffusion_spread": 0.0002449789826591292,
+    "velocity_flux_retained_fraction": 0.8886406067626146,
+    "old_narrow_diffusion_per_density": 8.007652160853468e-07,
+    "broad_state_boundary_relative_change": 4.573898592142175e-05,
+    "broad_state_timestep_relative_change": 1.354058800619966e-10,
+    "failures": [
+      {
+        "node": [
+          0.9938225266093732,
+          1.9056642462041216,
+          1.9668376625283577,
+          1.5707963267948966
+        ],
+        "distance": 24.0,
+        "charge": 1.0,
+        "reason": "Encounter failed to reach an outgoing plane: The solver successfully reached the end of the integration interval."
+      }
+    ],
+    "unique_encounters": 38220,
+    "wall_s": 1399.4199425409897,
+    "limits": [
+      "conditional initial domain omits reverse states; its drift is not full Maxwellian drift",
+      "b<.15,b>8,v_parallel<.35 or>3,v_perp>2.5 are omitted and are not proved negligible",
+      "two independent Sobol scrambles measure a finite numerical spread, not a statistical confidence interval",
+      "no independent successive-encounter correlations or kinetic closure validation",
+      "no physical SM coefficient, full plasma diffusion rate, constrained mixing time, or dipole lifetime"
+    ]
+  }
+}

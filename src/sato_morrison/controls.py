@@ -326,3 +326,209 @@ def encounter_incoming(impact, gyrophase, parallel_speed, perpendicular_speed,
                          perpendicular_speed*np.sin(phase), parallel_speed])
     position = np.array([impact-velocity[1]/omega, velocity[0]/omega, -start_distance])
     return position, velocity
+
+
+def encounter_flux_quadrature(orders, impact_bounds, parallel_bounds,
+                              perpendicular_bounds, temperature, phase_offset=0.):
+    """Positive bounded two-sided incoming-plane flux, per unit partner density.
+
+    Here temperature denotes theta=k_B*T/m, the single-particle velocity
+    variance, rather than thermodynamic temperature for a general mass.
+    Equal Maxwellians have relative velocity covariance 2*temperature*I.
+    Coordinates are guiding-center impact b, positive parallel speed, relative
+    perpendicular speed, and gyrophase where the incoming free orbit crosses z=0.
+    The measure is 2*(2*pi*b db)*v_parallel*F_rel*(v_perp dv_perp dv_parallel dphi).
+    Isotropy allows impact orientation to integrate analytically. This counts
+    bounded incoming crossings, not a validated independent-encounter plasma rate.
+    """
+    if len(orders) != 4 or any(int(n) != n or n < 2 for n in orders) or not np.isfinite(temperature) or temperature <= 0 or not np.isfinite(phase_offset):
+        raise ValueError("Four quadrature orders >=2 and positive temperature required.")
+    bounds = [impact_bounds, parallel_bounds, perpendicular_bounds]
+    if any(len(x) != 2 or not np.all(np.isfinite(x)) or not 0 <= x[0] < x[1] for x in bounds) or impact_bounds[0] <= 0 or parallel_bounds[0] <= 0:
+        raise ValueError("Positive impact/parallel lower bounds and ordered speed bounds required.")
+    axes=[]; weights=[]
+    for n, (lower,upper) in zip(orders[:3],bounds):
+        x,w=np.polynomial.legendre.leggauss(n)
+        axes.append(lower+(upper-lower)*(x+1)/2)
+        weights.append(w*(upper-lower)/2)
+    phases=(2*np.pi*np.arange(orders[3])/orders[3]+phase_offset) % (2*np.pi)
+    axes.append(phases);weights.append(np.full(orders[3],2*np.pi/orders[3]))
+    mesh=np.meshgrid(*axes,indexing='ij')
+    nodes=np.stack(mesh,axis=-1).reshape(-1,4)
+    volume=np.prod(np.meshgrid(*weights,indexing='ij'),axis=0).ravel()
+    b,parallel,perpendicular,_=nodes.T
+    relative_density=np.exp(-(parallel**2+perpendicular**2)/(4*temperature))/(4*np.pi*temperature)**1.5
+    flux_weights=2*(2*np.pi*b)*parallel*relative_density*perpendicular*volume
+    return nodes,flux_weights
+
+
+def encounter_bounded_flux(impact_bounds, parallel_bounds, perpendicular_bounds, temperature):
+    """Analytic bounded incoming flux per density; temperature is k_B*T/m."""
+    bounds=(impact_bounds,parallel_bounds,perpendicular_bounds)
+    if not np.isfinite(temperature) or temperature<=0 or any(len(x)!=2 or not np.all(np.isfinite(x)) or not 0<=x[0]<x[1] for x in bounds):
+        raise ValueError("Finite ordered nonnegative bounds and positive velocity variance required.")
+    area=np.pi*(impact_bounds[1]**2-impact_bounds[0]**2)
+    def radial_flux(bounds):
+        return 2*temperature*(np.exp(-bounds[0]**2/(4*temperature))-np.exp(-bounds[1]**2/(4*temperature)))
+    return 2*area*2*np.pi*radial_flux(parallel_bounds)*radial_flux(perpendicular_bounds)/(4*np.pi*temperature)**1.5
+
+
+def encounter_relative(impact, phase, parallel_speed, perpendicular_speed, *,
+                       field, strength, screening, start_distance, mass=1.,
+                       charge=1., max_step=.3, rtol=1e-10, flight_time_factor=6.):
+    """Equal-particle 6D relative Lorentz-force solve to the first outgoing plane.
+
+    Initial data share a free incoming helix. Terminal z=+L crossing is transmitted;
+    z=-L with negative velocity is reflected. Initial incoming -L is not an exit.
+    No exit by flight_time_factor*L/v_parallel rejects the encounter (default6).
+    A finite budget failure does not imply trapping. Repulsive parallel acceleration
+    has sign(z), hence at most one parallel turn. Event planes have finite tails.
+    """
+    if not np.all(np.isfinite([impact,phase,parallel_speed,perpendicular_speed,field,strength,start_distance,mass,charge,max_step,rtol,flight_time_factor])) or field <= 0 or strength < 0 or not screening > 0 or mass <= 0 or charge == 0 or max_step <= 0 or rtol <= 0 or flight_time_factor <= 0:
+        raise ValueError("Invalid encounter physical/integration parameters.")
+    omega=charge*field/mass
+    position,velocity=encounter_incoming(impact,phase,parallel_speed,perpendicular_speed,start_distance,omega)
+    initial=np.concatenate((position,velocity))
+    def rhs(t,y):
+        r=y[:3];w=y[3:]
+        radius=np.sqrt(np.dot(r,r))
+        factor=2*strength/mass*np.exp(-radius/screening)*(1+radius/screening)/radius**3
+        return np.array([w[0],w[1],w[2],omega*w[1]+factor*r[0],-omega*w[0]+factor*r[1],factor*r[2]])
+    def transmitted(t,y):
+        return y[2]-start_distance
+    transmitted.terminal=True;transmitted.direction=1
+    def reflected(t,y):
+        return y[2]+start_distance
+    reflected.terminal=True;reflected.direction=-1
+    result=solve_ivp(rhs,(0.,flight_time_factor*start_distance/parallel_speed),initial,method='DOP853',rtol=rtol,atol=rtol*.01,max_step=max_step,events=[transmitted,reflected])
+    if not result.success or result.status != 1 or not np.all(np.isfinite(result.y)):
+        error=RuntimeError('Encounter failed to reach an outgoing plane: '+result.message)
+        error.integration_diagnostics={'solver_success':bool(result.success),'solver_status':int(result.status),
+            'flight_time_factor':float(flight_time_factor),'budget':float(flight_time_factor*start_distance/parallel_speed),
+            'final_time':float(result.t[-1]),'final_position':result.y[:3,-1].tolist(),
+            'final_velocity':result.y[3:,-1].tolist(),'step_count':len(result.t)-1,'evaluations':result.nfev}
+        raise error
+    radius=np.linalg.norm(result.y[:3],axis=0)
+    energy=mass/4*np.sum(result.y[3:]**2,axis=0)+strength*np.exp(-radius/screening)/radius
+    final=result.y[3:,-1]
+    angle=omega*result.t[-1]
+    # Undo the common free gyromotion: R(-Omega*t) maps outgoing velocity to incoming time.
+    unrotated=np.array([final[0]*np.cos(angle)-final[1]*np.sin(angle),final[0]*np.sin(angle)+final[1]*np.cos(angle),final[2]])
+    delta_perpendicular=unrotated[:2]-velocity[:2]
+    conditional_mu_mean=mass/(8*field)*(np.dot(final[:2],final[:2])-perpendicular_speed**2)
+    return {'conditional_mu_mean':float(conditional_mu_mean),'delta_relative_perpendicular':delta_perpendicular,
+        'initial_relative_velocity':velocity,'final_relative_velocity':final,
+        'initial_relative_position':position,'final_relative_position':result.y[:3,-1],
+        'step_count':len(result.t)-1,'min_step':float(np.diff(result.t).min()),
+        'max_actual_step':float(np.diff(result.t).max()),'time':float(result.t[-1]),
+        'flight_time_factor':float(flight_time_factor),'flight_budget':float(flight_time_factor*start_distance/parallel_speed),
+        'energy_error':float(np.max(np.abs(energy-energy[0]))/abs(energy[0])),
+        'end_force':float(strength*np.exp(-radius[-1]/screening)*(1+radius[-1]/screening)/radius[-1]**2),
+        'min_separation':float(radius.min()),'exit':'transmitted' if len(result.t_events[0]) else 'reflected',
+        'parallel_turns':int(np.count_nonzero(np.diff(np.sign(result.y[5])))),
+        'evaluations':result.nfev}
+
+
+def encounter_thermal_moments(result, temperature, mass=1., field=1.):
+    """Analytically average individual moment increments over independent COM.
+
+    temperature means theta=k_B*T/m, the single-particle velocity variance.
+    V_center~N(0,temperature/2 I); it follows its unperturbed common gyromotion.
+    Delta_mu_1=c+m/(2B)*V_center_perp.dot(delta_w_perp), Delta_mu_2=c-minus.
+    Center averaging is essential: symmetric zero-center trajectories alone omit
+    this positive contribution to the individual second moment.
+    """
+    if not np.all(np.isfinite([temperature,mass,field])) or temperature<=0 or mass<=0 or field<=0:
+        raise ValueError("Finite positive thermal/mass/field inputs required.")
+    mean=result['conditional_mu_mean']
+    variance=(mass/(2*field))**2*temperature/2*np.dot(result['delta_relative_perpendicular'],result['delta_relative_perpendicular'])
+    return np.array([mean,mean**2+variance,mean**2-variance])
+
+
+def encounter_flux_samples(unit_cube, impact_bounds, parallel_bounds,
+                           perpendicular_bounds, temperature):
+    """Inverse CDF of the normalized bounded incoming flux, excluding gyrophase.
+
+    Three unit-cube coordinates sample b^2 uniformly and v_parallel^2,v_perp^2
+    with truncated exponentials. Angular quadrature remains explicit. The exact
+    analytic bounded flux supplies the normalization, rather than a fitted rate.
+    """
+    unit_cube=np.asarray(unit_cube,float)
+    encounter_bounded_flux(impact_bounds,parallel_bounds,perpendicular_bounds,temperature)
+    if unit_cube.ndim!=2 or unit_cube.shape[1]!=3 or not np.all(np.isfinite(unit_cube)) or np.any((unit_cube<0)|(unit_cube>1)):
+        raise ValueError("Need finite Nx3 points in the unit cube.")
+    impact=np.sqrt(impact_bounds[0]**2+(impact_bounds[1]**2-impact_bounds[0]**2)*unit_cube[:,0])
+    speeds=[]
+    for axis,bounds in enumerate([parallel_bounds,perpendicular_bounds],start=1):
+        lower=np.exp(-bounds[0]**2/(4*temperature))
+        upper=np.exp(-bounds[1]**2/(4*temperature))
+        speeds.append(np.sqrt(-4*temperature*np.log(lower-unit_cube[:,axis]*(lower-upper))))
+    return np.column_stack((impact,*speeds))
+
+
+def encounter_moment_interpolator(axes, moments):
+    """Cubic space and truly periodic cubic phase, preserving COM constraints.
+
+    Interpolate signed c and log(var), where second=c^2+var and cross=c^2-var.
+    Spatial axes need >=4 nodes. A periodic CubicSpline closes the phase values
+    and first/second derivatives exactly. Predictions remain conditional table
+    moments; independent held-out scattering states must verify their accuracy.
+    """
+    from scipy.interpolate import RegularGridInterpolator, CubicSpline
+    axes=[np.asarray(a,float) for a in axes]
+    moments=np.asarray(moments,float)
+    if len(axes)!=4 or any(a.ndim!=1 or len(a)<4 or not np.all(np.diff(a)>0) for a in axes) or moments.shape!=tuple(map(len,axes))+(3,):
+        raise ValueError("Need four increasing axes with >=4 nodes and matching moment table.")
+    phase=axes[3]
+    spacing=2*np.pi/len(phase)
+    if not np.allclose(phase,spacing*np.arange(len(phase)),atol=1e-13,rtol=0):
+        raise ValueError("Gyrophase axis must uniformly cover [0,2pi).")
+    variance=(moments[...,1]-moments[...,2])/2
+    if not np.all(np.isfinite(moments)) or np.any(variance<=0):
+        raise ValueError("Strictly positive resolved COM variance required for logarithmic interpolation.")
+    fields=np.stack((moments[...,0],np.log(variance)),axis=-1)
+    spatial=RegularGridInterpolator(axes[:3],fields,method='cubic',bounds_error=True,
+        solver_args={'rtol':1e-12,'atol':1e-14})
+    closed_phase=np.concatenate((phase,[2*np.pi]))
+    def evaluate(nodes):
+        nodes=np.asarray(nodes,float)
+        if nodes.shape[-1]!=4 or not np.all(np.isfinite(nodes)):
+            raise ValueError("Finite four-coordinate query nodes required.")
+        original_shape=nodes.shape[:-1]
+        flat=nodes.reshape(-1,4)
+        angles=flat[:,3]%(2*np.pi)
+        raw=spatial(flat[:,:3])
+        closed_values=np.concatenate((raw,raw[:,:1]),axis=1)
+        spline=CubicSpline(closed_phase,closed_values,axis=1,bc_type='periodic')
+        intervals=np.minimum((angles/spacing).astype(int),len(phase)-1)
+        delta=angles-phase[intervals]
+        coefficients=spline.c[:,intervals,np.arange(len(flat))]
+        interpolated=((coefficients[0]*delta[:,None]+coefficients[1])*delta[:,None]+coefficients[2])*delta[:,None]+coefficients[3]
+        mean=interpolated[:,0];variance=np.exp(interpolated[:,1])
+        answer=np.stack((mean,mean**2+variance,mean**2-variance),axis=-1)
+        return answer.reshape(original_shape+(3,))
+    return evaluate
+
+
+def encounter_reverse_incoming(result, *, field, mass=1., charge=1., start_distance):
+    """Parity plus time reversal prepares the inverse encounter at reversed qB.
+
+    For transmitted encounters, reverse (r,w)->(-r_out,w_out), charge->-charge.
+    Rotate its guiding-center impact to +x and recover the zero-plane gyrophase.
+    The reversed solve should return the original incoming velocities up to that
+    rotation, and negate c. This tests microscopic reversibility, not cutoff
+    detailed balance: the outgoing inverse data can leave the incoming bands.
+    """
+    if result['exit']!='transmitted':
+        raise ValueError("This preparation requires a transmitted encounter.")
+    omega=-charge*field/mass
+    position=-np.asarray(result['final_relative_position'])
+    velocity=np.asarray(result['final_relative_velocity'])
+    gc=position+np.cross(velocity,[0.,0.,1.])/omega
+    angle=np.arctan2(gc[1],gc[0])
+    cosine,sine=np.cos(angle),np.sin(angle)
+    rotated=np.array([cosine*velocity[0]+sine*velocity[1],-sine*velocity[0]+cosine*velocity[1],velocity[2]])
+    impact=np.linalg.norm(gc[:2])
+    parallel=rotated[2];perpendicular=np.linalg.norm(rotated[:2])
+    phase=(np.arctan2(rotated[1],rotated[0])-omega*start_distance/parallel)%(2*np.pi)
+    return np.array([impact,parallel,perpendicular,phase]),float(angle)

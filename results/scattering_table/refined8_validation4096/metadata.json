@@ -1,0 +1,215 @@
+{
+  "model": "encounter",
+  "boundary": "same finite incoming/outgoing planes, L=24, transmitted/reflected first exit",
+  "units": "normalized",
+  "inputs": {
+    "mass": 1.0,
+    "charge": 1.0,
+    "field": 2.0,
+    "strength": 0.03,
+    "screening": 3.0,
+    "theta": 0.5,
+    "theta_definition": "single-particle velocity variance k_B*T/m",
+    "training_bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "training_orders": [
+      8,
+      8,
+      8,
+      32
+    ],
+    "holdout_count": 256,
+    "holdout_seed": 1333,
+    "second_moment_rms_target": 0.02,
+    "second_moment_p95_target": 0.05,
+    "bootstrap_count": 2000,
+    "bootstrap_seed": 1334,
+    "start_distance": 24.0,
+    "max_step": 0.2,
+    "rtol": 1e-10,
+    "impact_derivative_states": 8,
+    "impact_fd_steps": [
+      0.001,
+      0.0005,
+      0.00025
+    ],
+    "derivative_rms_target": 0.05,
+    "table_derivative_step": 1e-05,
+    "method": "spatial cubic of signed c and log(COMvariance); truly periodic cubic phase; exact moment reconstruction",
+    "validation_domain": "uniform independent states inside the unchanged Gauss6 training-node inner hull; no extrapolation",
+    "validation_bounds": [
+      [
+        1.2405182914781088,
+        2.359481708521891
+      ],
+      [
+        0.7270121943187391,
+        1.4729878056812609
+      ],
+      [
+        0.2202591457390544,
+        0.7797408542609456
+      ]
+    ],
+    "previous_test_reuse": "none; seeds701,1301,1311,1321 excluded from fitting and all new tests",
+    "robust_holdout_count": 4096,
+    "robust_holdout_seed": 1331,
+    "robust_bootstrap_seed": 1332,
+    "p95_confidence_upper_target": 0.05,
+    "trajectory_reuse": "none: Gauss6 and Gauss8 full training states have zero bitidentical overlap; fresh test seeds share no states",
+    "previous_failed_evidence": "results/scattering_table/validation_4096",
+    "previous_data_sha256": "cd7518fb4b0b0067da43f7c6d1a56118c5256ddc18639520c5c6516cccabd7fe",
+    "previous_metadata_sha256": "b4321994e53d0374922381d3caa8a4365043e89f67cd63072f16d876e55c5f76",
+    "robust_acceptance": "second-moment RMS <=2%, observed p95 <=5%, and two-sided 95% order-statistic p95 upper limit <=5%; no retuning",
+    "scope": "single-encounter conditional moment interpolation, not a plasma or SM collision coefficient"
+  },
+  "commit": "e1bc1abf137bdea156844b21b3a37bc4e346a21e",
+  "working_tree": "",
+  "source_sha256": "d93d5c4ab8104c5c65533c7fbd3bbefc6abe8563a8b3b02277ec00896f5d4ea3",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "unset",
+    "OPENBLAS_NUM_THREADS": "unset",
+    "MKL_NUM_THREADS": "unset",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": true,
+  "load_average_start": [
+    13.6796875,
+    11.8017578125,
+    15.83642578125
+  ],
+  "experiment_dependency_sha256": {
+    "src/sato_morrison/controls.py": "ea673df34611bd68c60756fec2f335c9ebd10a705149ee22b68917d3102ec077",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+    "examples/16_scattering_table.py": "05cdd2553c57c27131045b7e22baf3a160d461189ad377e4db452b2eb37c4a79"
+  },
+  "load_average_end": [
+    7.48193359375,
+    10.96630859375,
+    14.427734375
+  ],
+  "experiment_dependency_sha256_end": {
+    "src/sato_morrison/controls.py": "ea673df34611bd68c60756fec2f335c9ebd10a705149ee22b68917d3102ec077",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+    "examples/16_scattering_table.py": "05cdd2553c57c27131045b7e22baf3a160d461189ad377e4db452b2eb37c4a79"
+  },
+  "experiment_dependencies_unchanged": true,
+  "fresh_4096_results": {
+    "status": "passed",
+    "states": 4096,
+    "seed": 1331,
+    "failure_count": 0,
+    "failures": [],
+    "one_state_fraction": 0.000244140625,
+    "max_energy_error": 4.3861484157988224e-10,
+    "max_training_secondary_energy_error": 5.755515017734691e-10,
+    "sampling": "independent uniform states in unchanged Gauss6 inner hull; fixed Gauss8 training and all original targets",
+    "rms_errors": [
+      0.00018950694114178144,
+      0.0011505851033087318,
+      0.0014768073438452842
+    ],
+    "second_moment_p95": 0.025375993760062304,
+    "p95_order_statistic_95_interval": [
+      0.020564260175974507,
+      0.03367059849318444
+    ],
+    "p95_interval_order_ranks": [
+      3863,
+      3919
+    ],
+    "p95_interval_binomial_count_cutoffs": [
+      3863,
+      3918
+    ],
+    "second_moment_rms_bootstrap_95_interval": [
+      0.000890863998652629,
+      0.0014118961013946437
+    ],
+    "fraction_exceeding_five_percent": 0.0341796875,
+    "fraction_exceeding_one": 0.001953125
+  },
+  "results": {
+    "status": "passed",
+    "rms_errors": [
+      0.00018867241496551418,
+      0.0005963313886720724,
+      0.0007529669681594187
+    ],
+    "second_moment_p95": 0.03905394445048014,
+    "p95_order_statistic_95_interval": [
+      0.012525526311873267,
+      0.1000160571003109
+    ],
+    "p95_interval_binomial_count_cutoffs": [
+      236,
+      250
+    ],
+    "p95_interval_order_ranks": [
+      236,
+      251
+    ],
+    "second_moment_rms_bootstrap_95_interval": [
+      0.00039622479435986666,
+      0.0008169903578421486
+    ],
+    "one_state_fraction": 0.00390625,
+    "training_inner_hull": [
+      [
+        1.2238260861014782,
+        2.376173913898522
+      ],
+      [
+        0.7158840574009855,
+        1.4841159425990145
+      ],
+      [
+        0.21191304305073916,
+        0.788086956949261
+      ]
+    ],
+    "training_states": 16384,
+    "max_training_energy_error": 5.755515017734691e-10,
+    "max_test_energy_error": 3.590907208512819e-10,
+    "training_reflected_states": 0,
+    "derivative_status": "passed",
+    "impact_derivative_relative_rms": 0.004758547730655963,
+    "direct_fd_plateau_relative_change": 6.71491672043197e-07,
+    "wall_s": 354.63764329100377,
+    "limitations": [
+      "finite independent uniform-state sampling intervals describe this inner-hull error distribution, not a bound over all phase space",
+      "table does not extrapolate beyond its training inner hull",
+      "derivative test concerns one conditional impact direction at eight independent states",
+      "no kinetic closure, inter-encounter correlations, SM coefficient or dipole lifetime is validated"
+    ]
+  }
+}

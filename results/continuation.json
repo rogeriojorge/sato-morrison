@@ -1,0 +1,73 @@
+{
+  "source_commit": "cc4a5e2c98e6970743e101d878b32226c99013ea",
+  "runs": [
+    {
+      "name": "tests",
+      "command": [
+        "python",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "cwd": "${REPOSITORY}",
+      "exit_code": 0,
+      "elapsed_s": 49.868059667001944,
+      "source_commit": "660efb5f8e59653a9afb782ef26c1b152ee79a45"
+    },
+    {
+      "name": "09_visual_summary",
+      "command": [
+        "python",
+        "${REPOSITORY}/examples/09_visual_summary.py"
+      ],
+      "cwd": "/tmp",
+      "exit_code": 0,
+      "elapsed_s": 26.780907875014236,
+      "source_commit": "660efb5f8e59653a9afb782ef26c1b152ee79a45",
+      "source_sha256": "72b85cbf5cef6001dd0489fd3028394a33b096b639fbf06778669093a26d4531"
+    },
+    {
+      "name": "10_encounter_ensemble",
+      "command": [
+        "python",
+        "${REPOSITORY}/examples/10_encounter_ensemble.py"
+      ],
+      "cwd": "/tmp",
+      "source_commit": "cc4a5e2c98e6970743e101d878b32226c99013ea",
+      "exit_code": 0,
+      "elapsed_s": 236.02658958299435,
+      "concurrent_work": "field velocity quadrature; elapsed time is not an isolated performance benchmark",
+      "source_sha256": "0308712e3a83594a31bfc2cc78eecb249b89516af2583d1643f9b718fbfc01ba"
+    },
+    {
+      "name": "11_field_velocity",
+      "command": [
+        "python",
+        "${REPOSITORY}/examples/11_field_velocity.py"
+      ],
+      "cwd": "/tmp",
+      "exit_code": 0,
+      "elapsed_s": 446.6930587909883,
+      "source_commit": "cc4a5e2c98e6970743e101d878b32226c99013ea",
+      "source_sha256": "0308712e3a83594a31bfc2cc78eecb249b89516af2583d1643f9b718fbfc01ba",
+      "concurrent_work": "encounter quadrature during part of the run; elapsed time is not an isolated performance benchmark"
+    }
+  ],
+  "source_changes": "",
+  "provenance": "Each run records its own source revision. The later commits alter only the encounter example; runtime library and tests are unchanged from the 66-test revision.",
+  "tests_passed": 66,
+  "test_elapsed_s": 48.72,
+  "notes_build": {
+    "commands": [
+      "pdflatex -interaction=nonstopmode -halt-on-error implementation.tex",
+      "bibtex implementation",
+      "pdflatex -interaction=nonstopmode -halt-on-error implementation.tex",
+      "pdflatex -interaction=nonstopmode -halt-on-error implementation.tex"
+    ],
+    "cwd": "${REPOSITORY}/notes",
+    "pages": 23,
+    "warnings": 0,
+    "pdf_sha256": "0149c04f603a3e06716c9d3a49ac3a30071f554e82e438987eca10c64bf22319",
+    "visual_review": "new proof and experiment pages10-12,21-23 inspected"
+  }
+}

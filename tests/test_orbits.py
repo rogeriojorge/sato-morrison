@@ -111,3 +111,130 @@ def test_toroidal_angular_weighted_invariants_account_for_tiny_nullspace():
     eigenvalues=np.linalg.eigvalsh(scaled)
     tolerance=1e-10*max(np.linalg.norm(scaled,2),1.)
     assert np.count_nonzero(abs(eigenvalues)<tolerance)==39
+
+
+@pytest.mark.parametrize('charge', [-1.3, 1.7])
+def test_toroidal_continuum_null_family_and_streaming_intersection(charge):
+    from sato_morrison.geometry import common_chart_action
+    from sato_morrison.collisions import _kernel
+    field = Field('toroidal', strength=1.4)
+    mass = 1.2
+
+    def coordinates(state):
+        return jnp.hypot(state[0], state[1]), jnp.arctan2(state[1], state[0])
+
+    def collision_invariant(state):
+        radius, theta = coordinates(state)
+        energy = energy_mu(state, field, mass, charge)
+        return (state[0]*jnp.sin(state[2]) + jnp.sin(theta)*state[4]**2
+                + jnp.cos(theta)*energy + jnp.sin(2*theta)*mass*radius*state[3])
+
+    def joint_invariant(state):
+        radius, _ = coordinates(state)
+        return radius**3 + state[4]**2 + .7*energy_mu(state, field, mass, charge) + .3*mass*radius*state[3]
+
+    gradient = jax.grad(collision_invariant)
+    energy_gradient = jax.grad(lambda state: energy_mu(state, field, mass, charge))
+    for radius, theta, height in [(1.1,.3,.2), (1.4,1.7,-.4), (2.2,-.8,.7)]:
+        states = [jnp.array([radius*np.cos(theta), radius*np.sin(theta), height, u, mu])
+                  for u, mu in [(-.7,.2), (.3,.8), (1.1,.4)]]
+        actions, flows = [], []
+        for state in states:
+            grad = gradient(state)
+            action = common_chart_action(state, grad, field, mass, charge)
+            h_r = grad[0]*np.cos(theta)+grad[1]*np.sin(theta)
+            # Independent cylindrical spatial components of J grad(h).
+            cylindrical = np.array([radius*grad[2]/(charge*1.4), grad[3]/mass,
+                (-radius*h_r+state[3]*grad[3])/(charge*1.4)])
+            rotated = np.array([np.cos(theta)*action[0]+np.sin(theta)*action[1],
+                                -np.sin(theta)*action[0]+np.cos(theta)*action[1], action[2]])
+            np.testing.assert_allclose(rotated, cylindrical, atol=2e-14)
+            actions.append(np.asarray(action))
+            flows.append(np.asarray(common_chart_action(state,energy_gradient(state),field,mass,charge)))
+            stream = poisson_mu(state,field,mass,charge)@energy_gradient(state)
+            np.testing.assert_allclose(jax.grad(joint_invariant)(state)@stream,0,atol=2e-14)
+        for i,j in [(0,1),(0,2),(1,2)]:
+            delta = actions[i]-actions[j]
+            np.testing.assert_allclose(_kernel((flows[i]-flows[j])[None])[0]@delta,0,atol=2e-14)
+        # An angularly weighted energy is a collision invariant but is transported.
+        state = states[-1]
+        weighted_energy = lambda point: jnp.sin(coordinates(point)[1])*energy_mu(point,field,mass,charge)
+        stream = poisson_mu(state,field,mass,charge)@energy_gradient(state)
+        assert abs(float(jax.grad(weighted_energy)(state)@stream)) > 1e-3
+
+
+def test_mirror_bounce_integral_and_turning_point():
+    from scipy.integrate import quad, solve_ivp
+    from scipy.optimize import brentq
+    mass, charge, mu, speed = 1.7, -1.1, .5, .4
+    field=Field('mirror',strength=1.3,amplitude=.4)
+    initial=np.array([0.,0.,0.,speed,mu])
+    # Independent scalar energy and field on the symmetry axis.
+    energy=.5*mass*speed**2+mu*field.strength
+    potential=lambda z:mu*(field.strength+field.amplitude*z*z)
+    turning=brentq(lambda z:potential(z)-energy,0.,2.,xtol=1e-14)
+    # z=z_turn*(1-s^2) removes the integrable endpoint singularity.
+    quarter,error=quad(lambda s:2*turning/np.sqrt(
+        2*mu*field.amplitude*turning**2*(2-s*s)/mass),0.,1.,epsabs=1e-12,epsrel=1e-12)
+    period=4*quarter
+    flow=jax.jit(lambda z:poisson_mu(z,field,mass,charge)@jax.grad(
+        lambda state:energy_mu(state,field,mass,charge))(z))
+    def event(t,state):
+        return state[3]
+    deviations=[]
+    for tolerance in (1e-8,1e-11):
+        orbit=solve_ivp(lambda t,state:np.asarray(flow(jnp.asarray(state))),
+            (0,2.1*period),initial,method='DOP853',events=event,
+            rtol=tolerance,atol=tolerance*.01,dense_output=True)
+        assert orbit.success and len(orbit.t_events[0])==4
+        measured=2*(orbit.t_events[0][1]-orbit.t_events[0][0])
+        measured_turn=orbit.y_events[0][0,2]
+        deviations.append(max(abs(measured/period-1),abs(measured_turn/turning-1)))
+        samples=orbit.sol(np.linspace(0,period,81)).T
+        energies=np.asarray(jax.vmap(lambda z:energy_mu(z,field,mass,charge))(jnp.asarray(samples)))
+        assert np.max(abs(energies-energy))/energy<20*tolerance
+        np.testing.assert_array_equal(samples[:,4],np.full(81,mu))
+    assert deviations[1]<2e-10 and deviations[1]<deviations[0]/30
+    assert error<1e-11
+
+
+@pytest.mark.parametrize('field',[Field('uniform'),Field('mirror',amplitude=.15),
+    Field('toroidal'),Field('dipole'),Field('nonaxisymmetric',amplitude=.03)],
+    ids=lambda field:field.kind)
+def test_stationary_density_zero_gamma(field):
+    from sato_morrison.geometry import field_vector
+    from sato_morrison.reference import gauss_interval
+    beta,mass=1.2,1.7
+    positions=jnp.array([[.8,-.2,.1],[1.,.15,.3],[1.2,.2,.5]])
+    strength=np.asarray(jax.vmap(lambda x:jnp.linalg.norm(field_vector(x,field)))(positions))
+    u,wu=gauss_interval(96,-8,8);mu,wm=gauss_interval(96,0,60)
+    # Independent separable velocity quadrature with the actual mu-chart measure.
+    gaussian=np.dot(wu,np.exp(-beta*mass*u*u/2))
+    density=gaussian*strength*(np.exp(-beta*strength[:,None]*mu)@wm)
+    exact=np.sqrt(2*np.pi/(beta*mass))/beta
+    np.testing.assert_allclose(density,exact,rtol=3e-12)
+    assert np.ptp(density)/exact<3e-12
+
+
+def test_stationary_density_controlled_weak_mirror_limit():
+    from sato_morrison.geometry import field_vector
+    from sato_morrison.reference import gauss_interval
+    beta,mass,gamma,b0=1.2,1.7,.3,1.4
+    positions=jnp.array([[.8,-.2,.1],[1.,.15,.3],[1.2,.2,.5]])
+    u,wu=gauss_interval(96,-8,8);mu,wm=gauss_interval(96,0,60)
+    gaussian=np.dot(wu,np.exp(-beta*mass*u*u/2))
+    normalizer=np.sqrt(2*np.pi/(beta*mass))/beta
+    density0=normalizer*b0/(b0+gamma)
+    # B(a)=B0+a*(z^2-R^2/2)+O(a^2), derived from the vector field.
+    x,y,z=np.asarray(positions).T
+    slope=normalizer*gamma*(z*z-(x*x+y*y)/2)/(b0+gamma)**2
+    errors=[]
+    for amplitude in (.08,.04,.02):
+        field=Field('mirror',strength=b0,amplitude=amplitude)
+        strength=np.asarray(jax.vmap(lambda p:jnp.linalg.norm(field_vector(p,field)))(positions))
+        density=gaussian*strength*(np.exp(-beta*(strength[:,None]+gamma)*mu)@wm)
+        exact=normalizer*strength/(strength+gamma)
+        np.testing.assert_allclose(density,exact,rtol=3e-12)
+        errors.append(np.max(abs((density-density0)/amplitude-slope))/np.max(abs(slope)))
+    assert .45<errors[1]/errors[0]<.55 and .45<errors[2]/errors[1]<.55
+    assert errors[-1]<.007

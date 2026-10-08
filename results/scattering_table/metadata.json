@@ -1,0 +1,143 @@
+{
+  "model": "encounter",
+  "boundary": "same finite incoming/outgoing planes, L=24, transmitted/reflected first exit",
+  "units": "normalized",
+  "inputs": {
+    "mass": 1.0,
+    "charge": 1.0,
+    "field": 2.0,
+    "strength": 0.03,
+    "screening": 3.0,
+    "theta": 0.5,
+    "theta_definition": "single-particle velocity variance k_B*T/m",
+    "training_bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "training_orders": [
+      6,
+      6,
+      6,
+      32
+    ],
+    "holdout_count": 256,
+    "holdout_seed": 1311,
+    "second_moment_rms_target": 0.02,
+    "second_moment_p95_target": 0.05,
+    "bootstrap_count": 2000,
+    "bootstrap_seed": 1312,
+    "start_distance": 24.0,
+    "max_step": 0.2,
+    "rtol": 1e-10,
+    "impact_derivative_states": 8,
+    "impact_fd_steps": [
+      0.001,
+      0.0005,
+      0.00025
+    ],
+    "derivative_rms_target": 0.05,
+    "table_derivative_step": 1e-05,
+    "method": "spatial cubic of signed c and log(COMvariance); truly periodic cubic phase; exact moment reconstruction",
+    "validation_domain": "uniform independent states inside the new training-node inner hull; no extrapolation",
+    "previous_test_reuse": "none; seeds701 and1301 are excluded from this test and fitting",
+    "scope": "single-encounter conditional moment interpolation, not a plasma or SM collision coefficient"
+  },
+  "commit": "6d1c83f4ae8cd78e3d66c1f0a929b3a79515f0fb",
+  "working_tree": "M README.md\n M notes/implementation.tex\n M notes/references.bib\n M src/sato_morrison/solver.py\n M tests/test_solver.py\n?? results/dipole_obstruction/\n?? results/encounter_validation/\n?? results/geometry_sensitivity/",
+  "source_sha256": "ef29d2585b31bd8798396dbab58240a426a3303f803db2bc6cede530382b8432",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "M src/sato_morrison/solver.py\n M tests/test_solver.py",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "unset",
+    "OPENBLAS_NUM_THREADS": "unset",
+    "MKL_NUM_THREADS": "unset",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": true,
+  "experiment_dependency_sha256": {
+    "src/sato_morrison/controls.py": "f5171a4d7049272e6ee97a9f4e5a6eb5ced940ff399fc5175ff290adac87f686",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+    "examples/16_scattering_table.py": "6c1bec547c49056d40db7247dab8d31e16c0df602cf7ed8b134085a4c097c3e1"
+  },
+  "experiment_dependency_sha256_end": {
+    "src/sato_morrison/controls.py": "f5171a4d7049272e6ee97a9f4e5a6eb5ced940ff399fc5175ff290adac87f686",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+    "examples/16_scattering_table.py": "6c1bec547c49056d40db7247dab8d31e16c0df602cf7ed8b134085a4c097c3e1"
+  },
+  "experiment_dependencies_unchanged": true,
+  "results": {
+    "status": "passed",
+    "rms_errors": [
+      0.0009459649660752437,
+      0.0013275812443847295,
+      0.0017228831298985792
+    ],
+    "second_moment_p95": 0.0448017166187718,
+    "p95_order_statistic_95_interval": [
+      0.022726166134512497,
+      0.30302816576740177
+    ],
+    "p95_interval_order_ranks": [
+      236,
+      250
+    ],
+    "second_moment_rms_bootstrap_95_interval": [
+      0.000914064142031856,
+      0.0018259575227529948
+    ],
+    "one_state_fraction": 0.00390625,
+    "training_inner_hull": [
+      [
+        1.2405182914781088,
+        2.359481708521891
+      ],
+      [
+        0.7270121943187391,
+        1.4729878056812609
+      ],
+      [
+        0.2202591457390544,
+        0.7797408542609456
+      ]
+    ],
+    "training_states": 6912,
+    "max_training_energy_error": 5.553757685461249e-10,
+    "max_test_energy_error": 2.9320481579428873e-10,
+    "training_reflected_states": 0,
+    "derivative_status": "passed",
+    "impact_derivative_relative_rms": 0.0036316363083089384,
+    "direct_fd_plateau_relative_change": 6.732139916304103e-07,
+    "wall_s": 247.71593354200013,
+    "limitations": [
+      "finite independent uniform-state sampling intervals describe this inner-hull error distribution, not a bound over all phase space",
+      "table does not extrapolate beyond its training inner hull",
+      "derivative test concerns one conditional impact direction at eight independent states",
+      "no kinetic closure, inter-encounter correlations, SM coefficient or dipole lifetime is validated"
+    ]
+  }
+}

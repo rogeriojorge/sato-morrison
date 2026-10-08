@@ -1,0 +1,356 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "scope": "Independent NumPy reconstruction of the same fixed discrete weak-pair model, saved-state residuals/invariants/entropy and diagnostics; no continuum or physical coefficient calibration.",
+  "producer": {
+    "commit": "e1bc1abf137bdea156844b21b3a37bc4e346a21e",
+    "units": "normalized",
+    "source_sha256": "d93d5c4ab8104c5c65533c7fbd3bbefc6abe8563a8b3b02277ec00896f5d4ea3",
+    "summary_reference": "summary.json",
+    "summary_sha256": "ced42b6e200c4dc2995581c089c45c301d865a5a0650f542ab252dd645ac5088",
+    "states_reference": "states.npz",
+    "states_sha256": "af9252f75a2062d838078232ab8d75a9e309ee329ca3e6749135304440c7d4ae",
+    "experiment_dependency_sha256": {
+      "19_solver_accuracy.py": "91bcf357bcd267865fb7a6ca5657e53e4cdaa733dc8812707ee68e326a1d1dfb",
+      "collisions.py": "cf13b3000c2df1ee39e63872b8c0094089adadde3941abf53b92d5e2c8ad6d52",
+      "geometry.py": "3e96f695e3a031aacdea5257428e40e9a057f6bf2ea1ef052363c79c6345dda6",
+      "reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+      "solver.py": "6b5a55eb6e37d3fa620b6d7bba68caaa3e55f4c79ec9cb029469dbe1632969f0"
+    },
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "Apple M4",
+    "logical_cpus": 10,
+    "devices": [
+      "cpu:0"
+    ],
+    "versions": {
+      "sato-morrison": "0.1.0",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2"
+    }
+  },
+  "independent_audit": {
+    "source_sha256": "a1ac3755a0c9ca946cdb601cf11b9639bd9fadaa589e424482a48ba1c114fc4e",
+    "time_utc": "2026-10-07T23:59:26.550972+00:00",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "logical_cpus": 10,
+    "numpy_version": "2.5.3",
+    "wall_s": 10.28923266698257,
+    "load_start": [
+      7.92822265625,
+      11.2236328125,
+      14.578125
+    ],
+    "load_end": [
+      7.6982421875,
+      11.0673828125,
+      14.4833984375
+    ],
+    "implementation": "Analytic mirror field and Jacobian; direct shifted Lagrange-polynomial derivatives; explicit unordered pair fluxes and opposite endpoint accumulation in NumPy. No production collision/geometry/solver functions called.",
+    "pair_block_rows": 64,
+    "unordered_pairs_per_operator_application": 3713850,
+    "minimum_pair_energy_flow_squared": 0.0013919720706351113,
+    "declared_comparison_thresholds": {
+      "independent_outer_residual_multiplier": 2.0,
+      "independent_entropy_balance_absolute": 3e-15,
+      "independent_pair_diagnostic_relative": 2e-08,
+      "independent_pair_diagnostic_absolute": 2e-15,
+      "weighted_endpoint_last_pair": 1e-08,
+      "principal_relative_last_pair": 1e-06,
+      "invariants": 1e-09
+    }
+  },
+  "checked_fixed_inputs": {
+    "field": "mirror",
+    "field_strength": 1.0,
+    "field_amplitude": 0.15,
+    "shape": [
+      3,
+      3,
+      3,
+      25,
+      21
+    ],
+    "bounds": [
+      [
+        0.8,
+        1.2
+      ],
+      [
+        -0.2,
+        0.2
+      ],
+      [
+        0.1,
+        0.5
+      ]
+    ],
+    "u_domain": [
+      -4.0,
+      4.0
+    ],
+    "mu_domain": [
+      0.0,
+      20.0
+    ],
+    "collision_strength": 0.1,
+    "final_time": 0.02,
+    "dt": 0.005,
+    "preconditioner_axis": 0,
+    "reference_run": "baseline"
+  },
+  "formal_checks": {
+    "source_and_dependency_hashes_match": true,
+    "finite_positive_saved_states": true,
+    "five_unique_runs_and_twenty_accepted_steps": true,
+    "all_independent_nonlinear_residuals_below_requested_outer_tolerances": true,
+    "all_state_invariant_budgets_pass": true,
+    "all_twenty_independent_entropy_balances_pass": true,
+    "saved_scalar_entropy_guards_pass": true,
+    "recorded_newton_and_pcg_counts_consistent": true,
+    "both_last_pair_endpoint_and_principal_observable_targets_pass": true,
+    "outer_three_endpoints_exactly_identical": true
+  },
+  "maximum_independent_invariant_errors": {
+    "number_error": 1.0188352565951874e-14,
+    "energy_error": 1.5785094822315163e-14,
+    "full_mu_marginal_error": 4.134659586417731e-15
+  },
+  "invariant_normalizations": {
+    "number_error": "Absolute number difference divided by initial number",
+    "energy_error": "Absolute energy difference divided by initial integral of absolute energy",
+    "full_mu_marginal_error": "Maximum absolute bin-population difference over every magnetic-moment bin, divided by initial number"
+  },
+  "maximum_independent_nonlinear_relative_residual": 2.16187491203e-13,
+  "nonlinear_residual_definition": "R = w*(f_new-f_old) + dt*K(f_old)*log(f_new); norm = ||R/sqrt(w*f_old)|| / sqrt(initial number)",
+  "maximum_independent_entropy_balance_error": 3.5514148092536206e-17,
+  "entropy_balance_definition": "DeltaS - dt*g_new^T*K(f_old)*g_new - D(n_old||n_new) + (g_new+1)^T*R",
+  "runs": [
+    {
+      "name": "outer_1e10",
+      "outer_tolerance": 1e-10,
+      "inner_tolerance": 1e-06,
+      "accepted_steps": 4,
+      "newton_corrections": 12,
+      "pcg_iterations": 81,
+      "maximum_independent_nonlinear_relative_residual": 9.63373289824271e-16,
+      "maximum_independent_invariant_errors": {
+        "number_error": 4.334467690705058e-16,
+        "energy_error": 2.9555345406284346e-16,
+        "full_mu_marginal_error": 4.71037168072906e-16
+      },
+      "maximum_independent_entropy_balance_error": 9.824883035626487e-18,
+      "independent_principal_observables": {
+        "entropy_gain_per_particle": 0.001192911569208422,
+        "final_production_per_particle": 0.043657661560105435,
+        "relaxation_moment_change_per_particle": -0.013933272410883053
+      },
+      "endpoint_errors_against_reference": {
+        "population_weighted_relative_L2": 0.0,
+        "entropy_scaled_log_L2": 0.0,
+        "maximum_absolute_population_difference": 0.0,
+        "maximum_absolute_log_difference": 0.0
+      },
+      "independent_endpoint_pair_production_per_particle": 0.043657661560105435,
+      "independent_endpoint_relaxation_moment_rate_per_particle": -0.6119477010714837
+    },
+    {
+      "name": "outer_1e11",
+      "outer_tolerance": 1e-11,
+      "inner_tolerance": 1e-06,
+      "accepted_steps": 4,
+      "newton_corrections": 12,
+      "pcg_iterations": 81,
+      "maximum_independent_nonlinear_relative_residual": 9.63373289824271e-16,
+      "maximum_independent_invariant_errors": {
+        "number_error": 4.334467690705058e-16,
+        "energy_error": 2.9555345406284346e-16,
+        "full_mu_marginal_error": 4.71037168072906e-16
+      },
+      "maximum_independent_entropy_balance_error": 9.824883035626487e-18,
+      "independent_principal_observables": {
+        "entropy_gain_per_particle": 0.001192911569208422,
+        "final_production_per_particle": 0.043657661560105435,
+        "relaxation_moment_change_per_particle": -0.013933272410883053
+      },
+      "endpoint_errors_against_reference": {
+        "population_weighted_relative_L2": 0.0,
+        "entropy_scaled_log_L2": 0.0,
+        "maximum_absolute_population_difference": 0.0,
+        "maximum_absolute_log_difference": 0.0
+      },
+      "independent_endpoint_pair_production_per_particle": 0.043657661560105435,
+      "independent_endpoint_relaxation_moment_rate_per_particle": -0.6119477010714837
+    },
+    {
+      "name": "baseline",
+      "outer_tolerance": 1e-12,
+      "inner_tolerance": 1e-06,
+      "accepted_steps": 4,
+      "newton_corrections": 12,
+      "pcg_iterations": 81,
+      "maximum_independent_nonlinear_relative_residual": 9.63373289824271e-16,
+      "maximum_independent_invariant_errors": {
+        "number_error": 4.334467690705058e-16,
+        "energy_error": 2.9555345406284346e-16,
+        "full_mu_marginal_error": 4.71037168072906e-16
+      },
+      "maximum_independent_entropy_balance_error": 9.824883035626487e-18,
+      "independent_principal_observables": {
+        "entropy_gain_per_particle": 0.001192911569208422,
+        "final_production_per_particle": 0.043657661560105435,
+        "relaxation_moment_change_per_particle": -0.013933272410883053
+      },
+      "endpoint_errors_against_reference": {
+        "population_weighted_relative_L2": 0.0,
+        "entropy_scaled_log_L2": 0.0,
+        "maximum_absolute_population_difference": 0.0,
+        "maximum_absolute_log_difference": 0.0
+      },
+      "independent_endpoint_pair_production_per_particle": 0.043657661560105435,
+      "independent_endpoint_relaxation_moment_rate_per_particle": -0.6119477010714837
+    },
+    {
+      "name": "inner_1e4",
+      "outer_tolerance": 1e-12,
+      "inner_tolerance": 0.0001,
+      "accepted_steps": 4,
+      "newton_corrections": 12,
+      "pcg_iterations": 56,
+      "maximum_independent_nonlinear_relative_residual": 2.16187491203e-13,
+      "maximum_independent_invariant_errors": {
+        "number_error": 1.0188352565951874e-14,
+        "energy_error": 1.5785094822315163e-14,
+        "full_mu_marginal_error": 4.134659586417731e-15
+      },
+      "maximum_independent_entropy_balance_error": 3.5514148092536206e-17,
+      "independent_principal_observables": {
+        "entropy_gain_per_particle": 0.0011929115692224485,
+        "final_production_per_particle": 0.043657661560114684,
+        "relaxation_moment_change_per_particle": -0.013933272410875568
+      },
+      "endpoint_errors_against_reference": {
+        "population_weighted_relative_L2": 1.530330030661036e-13,
+        "entropy_scaled_log_L2": 1.935573097640446e-13,
+        "maximum_absolute_population_difference": 2.894351425197783e-13,
+        "maximum_absolute_log_difference": 9.782261045643281e-07
+      },
+      "independent_endpoint_pair_production_per_particle": 0.043657661560114684,
+      "independent_endpoint_relaxation_moment_rate_per_particle": -0.6119477010715502
+    },
+    {
+      "name": "inner_1e5",
+      "outer_tolerance": 1e-12,
+      "inner_tolerance": 1e-05,
+      "accepted_steps": 4,
+      "newton_corrections": 12,
+      "pcg_iterations": 67,
+      "maximum_independent_nonlinear_relative_residual": 1.1614285131152593e-14,
+      "maximum_independent_invariant_errors": {
+        "number_error": 4.493438262734329e-16,
+        "energy_error": 8.93558006319269e-16,
+        "full_mu_marginal_error": 5.233746311921177e-16
+      },
+      "maximum_independent_entropy_balance_error": 2.827858161093063e-17,
+      "independent_principal_observables": {
+        "entropy_gain_per_particle": 0.0011929115692090502,
+        "final_production_per_particle": 0.04365766156010981,
+        "relaxation_moment_change_per_particle": -0.013933272410881149
+      },
+      "endpoint_errors_against_reference": {
+        "population_weighted_relative_L2": 9.788173341318643e-15,
+        "entropy_scaled_log_L2": 1.3928760272825979e-14,
+        "maximum_absolute_population_difference": 2.3092638912203256e-14,
+        "maximum_absolute_log_difference": 5.807179093153536e-08
+      },
+      "independent_endpoint_pair_production_per_particle": 0.04365766156010981,
+      "independent_endpoint_relaxation_moment_rate_per_particle": -0.6119477010715151
+    }
+  ],
+  "independent_adjacent_comparisons": {
+    "nonlinear": [
+      {
+        "previous_run": "outer_1e10",
+        "last_run": "outer_1e11",
+        "endpoint_errors": {
+          "population_weighted_relative_L2": 0.0,
+          "entropy_scaled_log_L2": 0.0,
+          "maximum_absolute_population_difference": 0.0,
+          "maximum_absolute_log_difference": 0.0
+        },
+        "relative_principal_observable_changes": {
+          "entropy_gain_per_particle": 0.0,
+          "final_production_per_particle": 0.0,
+          "relaxation_moment_change_per_particle": 0.0
+        },
+        "status": "passed"
+      },
+      {
+        "previous_run": "outer_1e11",
+        "last_run": "baseline",
+        "endpoint_errors": {
+          "population_weighted_relative_L2": 0.0,
+          "entropy_scaled_log_L2": 0.0,
+          "maximum_absolute_population_difference": 0.0,
+          "maximum_absolute_log_difference": 0.0
+        },
+        "relative_principal_observable_changes": {
+          "entropy_gain_per_particle": 0.0,
+          "final_production_per_particle": 0.0,
+          "relaxation_moment_change_per_particle": 0.0
+        },
+        "status": "passed"
+      }
+    ],
+    "linear": [
+      {
+        "previous_run": "inner_1e4",
+        "last_run": "inner_1e5",
+        "endpoint_errors": {
+          "population_weighted_relative_L2": 1.468647177171225e-13,
+          "entropy_scaled_log_L2": 1.84501155914346e-13,
+          "maximum_absolute_population_difference": 2.894351425197783e-13,
+          "maximum_absolute_log_difference": 9.338529913804905e-07
+        },
+        "relative_principal_observable_changes": {
+          "entropy_gain_per_particle": 1.1231640259826661e-11,
+          "final_production_per_particle": 1.1157499844182269e-13,
+          "relaxation_moment_change_per_particle": 4.0052367151446996e-13
+        },
+        "status": "passed"
+      },
+      {
+        "previous_run": "inner_1e5",
+        "last_run": "baseline",
+        "endpoint_errors": {
+          "population_weighted_relative_L2": 9.788173341318643e-15,
+          "entropy_scaled_log_L2": 1.3928760272825979e-14,
+          "maximum_absolute_population_difference": 2.3092638912203256e-14,
+          "maximum_absolute_log_difference": 5.807179093153536e-08
+        },
+        "relative_principal_observable_changes": {
+          "entropy_gain_per_particle": 5.265995862165592e-13,
+          "final_production_per_particle": 1.0029034760227517e-13,
+          "relaxation_moment_change_per_particle": 1.367034477223587e-13
+        },
+        "status": "passed"
+      }
+    ]
+  },
+  "raw_tail_qualification": {
+    "last_linear_pair_maximum_absolute_log_difference": 5.807179093153536e-08,
+    "last_linear_pair_population_weighted_relative_L2": 9.788173341318643e-15,
+    "last_linear_pair_entropy_scaled_log_L2": 1.3928760272825979e-14,
+    "interpretation": "The weighted targets pass. The larger maximum raw log difference occurs in tiny-mass tails; this is not uniform relative pointwise tail certification."
+  },
+  "limitations": [
+    "Archived true PCG residual scalars and counts are checked; correction vectors are not archived, so PCG residual vectors are not independently recomputed.",
+    "The tightest solved endpoint is conditional on this fixed discrete model, grid, box and timestep; it is not continuum truth.",
+    "The normalized collision coefficient is uncalibrated; no physical relaxation time or closure validation follows.",
+    "Independent NumPy and producer diagnostic arithmetic give slightly different tiny principal-observable changes because of floating-point subtraction; both satisfy the same declared criterion."
+  ]
+}

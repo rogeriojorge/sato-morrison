@@ -1,0 +1,44 @@
+name: nonuniform evolution
+on: workflow_call
+permissions:
+  contents: read
+jobs:
+  evolution:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      max-parallel: 12
+      matrix:
+        field: [mirror, dipole, nonaxisymmetric]
+        case: [spatial3, base, spatial7, u17, u21, mu13, mu17, dt_half, dt_quarter, dt_eighth, dt_sixteenth, u_tail, mu_tail, u_wide, mu_wide]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e '.[dev]'
+      - name: Record runner and installed environment
+        run: |
+          mkdir -p results/nonuniform_entropy
+          lscpu > results/nonuniform_entropy/cpu.txt
+          python -m pip freeze > results/nonuniform_entropy/environment.txt
+          git rev-parse HEAD > results/nonuniform_entropy/commit.txt
+      - name: Evolve one predefined field and refinement case
+        run: |
+          set -o pipefail
+          timeout --signal=INT --kill-after=30s 330m python -u examples/12_nonuniform_evolution.py 2>&1 | tee results/nonuniform_entropy/run.log
+        env:
+          JAX_ENABLE_X64: 'true'
+          MPLBACKEND: Agg
+          SM_EVOLUTION_FIELDS: ${{ matrix.field }}
+          SM_EVOLUTION_CASES: ${{ matrix.case }}
+      - name: Preserve complete or partial measured evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nonuniform-entropy-${{ matrix.field }}-${{ matrix.case }}-${{ github.sha }}
+          path: results/nonuniform_entropy/
+          if-no-files-found: error

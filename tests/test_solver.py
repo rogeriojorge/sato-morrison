@@ -3,7 +3,10 @@ jax.config.update('jax_enable_x64',True)
 import jax.numpy as jnp
 import numpy as np
 import pytest
-from sato_morrison.collisions import uniform_grid,mobility_action,dense_mobility
+from sato_morrison.collisions import (uniform_grid,cartesian_grid,mobility_action,
+    dense_mobility,compact_mobility_tangent)
+from sato_morrison.geometry import Field
+from sato_morrison.reference import gauss_interval
 from sato_morrison.solver import (linear_step,checked_linear_step,StepFailure,
     discrete_gradient_step,discrete_gradient_compiler,entropy_discrete_gradient,
     entropy,invariant_diagnostics,toroidal_stream)
@@ -31,6 +34,17 @@ def test_solvax_dense_step_and_implicit_derivative():
     for eps in (1e-3,1e-4,1e-5):
         fd=(solve_d(1+eps)-solve_d(1-eps))/(2*eps)
         np.testing.assert_allclose(fd,jax.grad(solve_d)(1.),rtol=2e-6)
+    # Recover the actual custom-linear-solve transpose solution from its VJP.
+    # dx/dh=A^-1 M, so the input cotangent is M lambda for A^T lambda=2x.
+    _,pullback=jax.vjp(lambda initial:linear_step(mass,stiffness,initial,dt).x,h)
+    cotangent=2*answer.x
+    adjoint=pullback(cotangent)[0]/mass
+    matrix=jnp.diag(mass)+dt*dense
+    primal_residual=jnp.linalg.norm(matrix@answer.x-mass*h)/jnp.linalg.norm(mass*h)
+    adjoint_residual=jnp.linalg.norm(matrix.T@adjoint-cotangent)/jnp.linalg.norm(cotangent)
+    assert float(primal_residual)<5e-11 and float(adjoint_residual)<5e-11
+    implicit_gradient=-dt*jnp.vdot(adjoint,dense@answer.x)
+    np.testing.assert_allclose(implicit_gradient,jax.grad(solve_d)(1.),rtol=2e-9)
     with pytest.raises(StepFailure,match='rejected'):
         checked_linear_step(mass,stiffness,h,dt,max_steps=0)
 
@@ -82,3 +96,136 @@ def test_nonfinite_inputs_reject_without_repair():
         discrete_gradient_step(grid,f,float('nan'))
     with pytest.raises(ValueError,match='nonnegative'):
         mobility_action(grid,f,jnp.ones(grid.size),collision_strength=-1.)
+
+
+@pytest.mark.parametrize('nonuniform',[False,True])
+def test_matrix_free_nonlinear_step_matches_dense_reference(nonuniform):
+    if nonuniform:
+        grid=cartesian_grid(np.linspace(.8,1.2,3),np.linspace(-.2,.2,3),
+            np.linspace(.1,.5,3),np.linspace(-2,2,3),np.array([.1,1.1]),
+            Field('mirror',amplitude=.15),compact=True)
+    else:
+        grid=uniform_grid(np.arange(5)*2*np.pi/5,np.linspace(-2,2,3),
+                          np.linspace(.1,1.1,3),compact=True)
+    initial=jnp.exp(-grid.energy+.12*jnp.asarray(np.random.default_rng(7).normal(size=grid.size)))
+    reference=discrete_gradient_step(grid,initial,.04,rtol=2e-12,chunk_size=64)
+    answer=discrete_gradient_step(grid,initial,.04,method='krylov',rtol=2e-12,chunk_size=64)
+    np.testing.assert_allclose(answer.f,reference.f,rtol=3e-10,atol=1e-12)
+    assert answer.linear_iterations>0 and answer.residual_metric=='entropy_population'
+    assert answer.entropy_change>0 and abs(answer.entropy_identity_error)<2e-12
+    diagnostic=invariant_diagnostics(grid,answer.f,initial)
+    assert max(diagnostic[k] for k in ('number_error','energy_error','marginal_error'))<1e-10
+
+
+def test_matrix_free_direction_and_visible_linear_failure():
+    grid,f=setup();initial=f*jnp.exp(.25*jnp.asarray(np.random.default_rng(3).normal(size=grid.size)))
+    old=jnp.log(initial);new=old+.01*jnp.sin(jnp.arange(grid.size));dt=.1
+    residual,jacobian=discrete_gradient_compiler(grid)
+    _,correction=discrete_gradient_compiler(grid,method='krylov')
+    direction,_,relative,converged=correction(new,old,dt,1e-11)
+    expected=np.linalg.solve(np.asarray(jacobian(new,old,dt)),-np.asarray(residual(new,old,dt)))
+    assert bool(converged) and float(relative)<1e-11
+    np.testing.assert_allclose(direction,expected,rtol=2e-9,atol=1e-11)
+    # The returned correction must solve the independently materialized Jacobian.
+    np.testing.assert_allclose(jacobian(new,old,dt)@direction,-residual(new,old,dt),rtol=2e-9,atol=1e-12)
+    with pytest.raises(StepFailure,match='GMRES rejected'):
+        discrete_gradient_step(grid,initial,1.,method='krylov',linear_restart=1,
+            linear_max_restarts=1,linear_rtol=1e-12)
+    with pytest.raises(ValueError,match='unsupported'):
+        discrete_gradient_step(grid,initial,.1,method='other')
+
+
+@pytest.mark.parametrize('field',[Field('mirror',amplitude=.15),Field('dipole'),
+    Field('nonaxisymmetric',amplitude=.03)],ids=lambda field:field.kind)
+def test_nonuniform_prepared_residual_jvp_and_equilibrium_identity(field):
+    spatial=[gauss_interval(3,a,b) for a,b in ((.8,1.2),(-.2,.2),(.1,.5))]
+    u,wu=gauss_interval(3,-2,2);mu,wm=gauss_interval(2,.1,1.1)
+    grid=cartesian_grid(*[pair[0] for pair in spatial],u,mu,field,compact=True,
+        spatial_weights=[pair[1] for pair in spatial],velocity_weights=(wu,wm),
+        spatial_discretization='polynomial')
+    _,y,_,uu,mm=np.meshgrid(*[pair[0] for pair in spatial],u,mu,indexing='ij')
+    equilibrium=-grid.energy-.2*jnp.asarray(mm.ravel())
+    old=equilibrium+.1*jnp.sin(jnp.pi*jnp.asarray(y.ravel())/.4)*jnp.asarray(uu.ravel())
+    new=old+.02*jnp.sin(jnp.arange(grid.size))
+    vector=jnp.cos(.31*jnp.arange(grid.size));dt=.005
+    mass_root=jnp.sqrt(grid.weights*jnp.exp(old));increment=vector/mass_root
+    residual,_=discrete_gradient_compiler(grid,method='dense',collision_strength=.1,chunk_size=64)
+    independent=jax.jvp(lambda value:residual(value,old,dt)/mass_root,
+        (new,),(increment,))[1]
+    gradient=entropy_discrete_gradient(old,new)
+    gradient_prime=jax.jvp(lambda value:entropy_discrete_gradient(old,value),
+        (new,),(jnp.ones_like(new),))[1]
+    tangent=compact_mobility_tangent(grid,(jnp.exp(new)+jnp.exp(old))/2,
+        grid.action(gradient),gradient_prime*increment,
+        jnp.exp(new)/(jnp.exp(new)+jnp.exp(old))*increment,
+        collision_strength=.1,chunk_size=64)
+    prepared=(grid.weights*jnp.exp(new)*increment-dt*tangent)/mass_root
+    np.testing.assert_allclose(prepared,independent,rtol=3e-12,atol=2e-12)
+
+    # At equilibrium the mobility variation annihilates the entropy gradient,
+    # leaving the identity plus a symmetric positive collision Gram matrix.
+    f=jnp.exp(equilibrium);mass_root=jnp.sqrt(grid.weights*f)
+    increment=vector/mass_root
+    independent=jax.jvp(lambda value:residual(value,equilibrium,dt)/mass_root,
+        (equilibrium,),(increment,))[1]
+    expected=vector+dt/2*mobility_action(grid,f,increment,
+        collision_strength=.1,chunk_size=64)/mass_root
+    np.testing.assert_allclose(independent,expected,rtol=3e-12,atol=2e-12)
+
+
+def test_uniform_fixed_density_D_and_B_derivatives_against_rebuilt_grids():
+    x=np.arange(5)*2*np.pi/5;u=np.linspace(-2,2,3);mu=np.linspace(.1,1.1,3)
+    base=uniform_grid(x,u,mu,magnetic_field=1.)
+    # At fixed physical n0, B f0 is constant; both M and the density marginal
+    # remain fixed while the uniform weak stiffness scales as D/B**2.
+    xx,uu,mm=np.meshgrid(x,u,mu,indexing='ij')
+    shape=np.exp(-.5*uu.ravel()**2-.2*mm.ravel())
+    density=float(jnp.sum(base.weights*jnp.asarray(shape))/(2*np.pi))
+    f=jnp.asarray(shape/density);mass=base.weights*f
+    h=jnp.asarray(np.cos(xx.ravel())*uu.ravel())
+    stiffness=lambda value:mobility_action(base,f,value)
+    def differentiable(parameters):
+        D,B=parameters
+        value=linear_step(mass,lambda v:D/B**2*stiffness(v),h,.2,rtol=1e-13).x
+        return jnp.vdot(mass*h,value)
+    def rebuilt(D,B):
+        grid=uniform_grid(x,u,mu,magnetic_field=B)
+        distribution=jnp.asarray(shape/(density*B))
+        nodal_mass=grid.weights*distribution
+        np.testing.assert_allclose(jnp.sum(nodal_mass)/(2*np.pi),1.,rtol=2e-15)
+        value=checked_linear_step(nodal_mass,lambda v:mobility_action(grid,distribution,v,
+            collision_strength=D),h,.2,rtol=1e-13).x
+        return float(jnp.vdot(nodal_mass*h,value))
+    point=jnp.array([.7,1.3]);ad=np.asarray(jax.grad(differentiable)(point))
+    assert np.all(np.abs(ad)>1e-4)
+    H=float(jnp.sum(mass*h*h));D,B=map(float,point);denominator=1+.2*D/B**2
+    expected=np.array([-.2*H/(B**2*denominator**2),.4*D*H/(B**3*denominator**2)])
+    np.testing.assert_allclose(ad,expected,rtol=2e-10)
+    np.testing.assert_allclose(differentiable(point),H/denominator,rtol=2e-12)
+    errors=[]
+    for eps in (1e-2,3e-3,1e-3,3e-4,1e-4,3e-5,1e-5,3e-6):
+        fd=np.array([(rebuilt(.7+eps,1.3)-rebuilt(.7-eps,1.3))/(2*eps),
+            (rebuilt(.7,1.3+eps)-rebuilt(.7,1.3-eps))/(2*eps)])
+        errors.append(np.max(np.abs((fd-ad)/ad)))
+    assert max(errors[-3:])<2e-8 and min(errors[-3:])<errors[0]/10000
+
+
+def test_matrix_free_thermal_tails_and_accumulated_conservation():
+    nodes,weights=np.polynomial.legendre.leggauss(9)
+    u,wu=4*nodes,4*weights;mu,wm=10*(nodes+1),10*weights
+    axes=[np.linspace(.8,1.2,3),np.linspace(-.2,.2,3),np.linspace(.1,.5,3)]
+    grid=cartesian_grid(*axes,u,mu,Field('mirror',amplitude=.15),
+                        velocity_weights=(wu,wm),compact=True)
+    x,y,z,uu,mm=np.meshgrid(*axes,u,mu,indexing='ij')
+    initial=jnp.exp(-grid.energy-.2*mm.ravel()+.1*jnp.sin(x.ravel())*uu.ravel()+.04*y.ravel()*mm.ravel())
+    assert float(initial.min())<1e-12
+    compiler=discrete_gradient_compiler(grid,method='krylov',collision_strength=.1)
+    state=initial
+    for _ in range(3):
+        step=discrete_gradient_step(grid,state,.02,collision_strength=.1,
+            method='krylov',compiled_residual=compiler,rtol=1e-11)
+        assert step.entropy_change>0 and step.minimum>0
+        assert abs(step.entropy_identity_error)<1e-11
+        state=step.f
+    diagnostics=invariant_diagnostics(grid,state,initial)
+    assert max(diagnostics[k] for k in ('number_error','energy_error','marginal_error'))<1e-10

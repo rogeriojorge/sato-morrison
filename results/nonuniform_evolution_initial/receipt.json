@@ -1,0 +1,14 @@
+{
+  "run": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37686682846",
+  "source_commit": "fdc625d857cf69effe1debfdbd3b7d723cd17fad",
+  "status": "partial; deliberately stopped to resume independent fields in parallel",
+  "completed_cases": 4,
+  "reason": "Preserve completed cases and avoid the six-hour serial runner deadline. No equation, input or acceptance target changed.",
+  "files": {
+    "commit.txt": "d94566690d0f3cf9bad89dda7cd77c2a5997f6b6208a77e30117e91ef38c62b3",
+    "cpu.txt": "4476e601951bb5e5dc85ca4b9d2e3bc795bb83c0d4e62b8d9f2bdec6659b0e7a",
+    "environment.txt": "437e5e6e81d33f3ef9a43b7d08b36ec93b785e98272bf546c4d473a69a90d13c",
+    "run.log": "30293417e0ee2e8ce92652b00542c7863175777014231c0bb19eb0caf3a742ce",
+    "summary.json": "775e7d165612e85fb603f85871e99ba45241329cd4902daeeabe1d9d5e69fd02"
+  }
+}

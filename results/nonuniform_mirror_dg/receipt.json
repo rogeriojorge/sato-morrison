@@ -1,0 +1,22 @@
+{
+  "run": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37693078685",
+  "source_commit": "4ce8e5c770665a396d5083aec1e5f2b89a6a6ecf",
+  "method": "historical discrete-gradient Newton-GMRES",
+  "status": "13 completed mirror cases; selected mirror checks passed; other fields failed separately",
+  "raw_files": {
+    "commit.txt": "e43c5c63196b334969ce99205c1d52d5a8fead0f6b01631ee3c915ac2b43ee1d",
+    "cpu.txt": "d893a2e1fe38c883e9c6304826742490a3e71cb4324cac80c4809870147219b4",
+    "environment.txt": "a2ee026d19a60feb429570c7dc9cdd45c0dddfaeda45a7d61c8a097bc4e74299",
+    "evolution.png": "373a49470f7a616d9abdfb3d7674e7d723f0001571ec55b17b411ddfc5609074",
+    "run.log": "db6bbe49e55c311cf51670114377bfb5de9187d77fae3b8db12a235cb0fdcccf",
+    "summary.json": "a408947d19d9359fd2b0f2731613edc12e109c8e5ec60f7fceaf984dd60fef83"
+  },
+  "figure": {
+    "file": "evolution.png",
+    "sha256": "371eef47efdc85a804fc783447da7370851c354eed96ab68b3ccd9979ed46cd2",
+    "plot_source_commit": "f4515704598a96f41f368242aec83d6a7141500d",
+    "plot_source": "examples/12_nonuniform_evolution.py::plot_evolution_evidence",
+    "plot_source_sha256": "1f04296df048e88cf084ea5bcf0bfc7be6683be2f433e30564db1f074d691215",
+    "description": "Regenerated from retained DG rows/checks with current plot function; no evolution rerun. Raw figure is retained unchanged but lists unused fields and is not displayed in README."
+  }
+}

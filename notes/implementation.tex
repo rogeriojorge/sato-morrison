@@ -260,6 +260,9 @@ Write $f=f_0(1+h)$, where $f_0>0$ is stationary. For the source stationary famil
  \label{eq:fzero}
 \end{equation}
 With the fields and kernel fixed, the zeroth-order collision term vanishes.
+This supplied energy/moment family is not claimed to exhaust stationary
+states. For the exactly local poloidal surrogate,
+\eqref{eq:fluxstationaryfamily} adds an arbitrary conserved-flux function.
 The first-order weak form is
 \begin{equation}
  \int\phi C_L[f_0h]\dd\Gamma
@@ -496,6 +499,25 @@ These formulas are useful checks of velocity integration and the definition of
 pressure. They do not establish that an arbitrary initial state evolves to this
 particular family member.
 
+Two further velocity-integral regressions check explicit limits of the known
+stationary family. With $f=\exp[-\beta(m u^2/2+\mu(B+\gamma))]$ and the
+specified measure $B\dd u\dd\mu$, its density is
+$n(B)=c_\beta B/(B+\gamma)$, where
+$c_\beta=\sqrt{2\pi/(\beta m)}/\beta$. At $\gamma=0$, independent
+positive-quadrature integrals give the constant $c_\beta$ at three points in
+each of the five fields, including nonunit mass. For the harmonic mirror
+of strength $B_0$ and amplitude $a$,
+\[
+ B(a)=B_0+a(z^2-R^2/2)+O(a^2),\qquad
+ n(B(a))=\frac{c_\beta B_0}{B_0+\gamma}
+ +a\frac{c_\beta\gamma(z^2-R^2/2)}{(B_0+\gamma)^2}+O(a^2).
+\]
+The quadrature density agrees with the independently integrated analytic
+formula, and its divided-difference slope approaches this expansion under
+three amplitude halvings. These tests concern the known density family,
+not attraction to it, physical rate calibration or the near-uniform
+projector limit.
+
 For a prescribed fixed-field energy and a known initial marginal $G_0(\mu)$,
 let
 \begin{equation}
@@ -650,45 +672,142 @@ system with measured flux budgets. Arbitrary specular reflection need not
 preserve $\mu$. A density-profile test without these choices is not a closed
 relaxation experiment.
 
-\subsection*{Exact extra population invariants in the vacuum toroidal field}
+\subsection*{Complete smooth nullspace of the local toroidal surrogate}
 
-For every smooth $\phi(R,\theta)$ independent of $z,u,\mu$,
-\begin{equation}
- \J_\mu\nabla\phi=
- \left(-\frac{\partial_R\phi}{qB}\bm e_z,
-       -\frac{\partial_\theta\phi}{mR},0\right),\qquad
- (T\J_\mu\nabla\phi)_\eta=0.
- \label{eq:toroidalpopulation}
-\end{equation}
-Here $\nabla B$ is radial, so its contraction with the vertical spatial action
-vanishes. At a fixed spatial point the entire common-chart action is independent
-of both particle velocities. Thus $\Delta\phi=0$ for every local pair, regardless
-of the energy projector. The weak collision form proves exact conservation of
-\begin{equation}
- \int \phi(R,\theta)f\,C\dd R\dd\theta\dd z\dd u\dd\mu
-\end{equation}
-for this particular vacuum toroidal geometry with local collisions.
-Equivalently the collision-only $(R,\theta)$ population marginal is frozen.
-Since $\dot R=0$, every $\phi(R)$ is preserved by the Hamiltonian part as well,
-and the full radial population remains invariant under combined evolution.
-Angle-dependent marginals can change through $\dot\theta=u/R$.
-A general joint $(R,\mu)$ marginal does not follow from this argument because
-$\partial_R\phi(R,\mu)$ would vary across local pair velocities.
+The following classification concerns the specified local $P I_XP$ closure,
+not a conventional Coulomb operator. Assume $B=(C/R)\bm e_\theta$, $C>0$,
+$m>0$, $q\ne0$, constant electrostatic potential and $D>0$.
+Take a connected radial interval away from $R=0$, periodic $\theta,z$, and a
+product velocity domain $I_u\times I_\mu$ with both intervals of positive
+length. The equilibrium weight is strictly positive in this domain.
+Consider real $C^2$ test functions in the weighted form domain, so the pair
+quadratic integral is finite. Periodicity and natural zero collision flux on
+nonperiodic faces give the weak identity \eqref{eq:linearweak}.
 
-Consequently the combined toroidal model cannot relax arbitrary radial
-populations to a unique state determined only by energy and the global moment
-marginal. This is a proved negative mixing result for this specified local,
-vacuum geometry and its stated boundaries. A spatially nonlocal kernel,
-additional fields or a different scattering closure may change the conclusion.
-It does not prove the same invariants in a dipole.
-The nodal derivative implementation verifies all represented
-$\phi(R,\theta)$ pair differences vanish within rounding and verifies the radial
-population under ideal translation. On the $3^5$ tiny grid, the independent
-collision-null span has at least $N_RN_\theta+N_\mu+1-1=12$ dimensions:
-$N_RN_\theta$ spatial populations, $N_\mu$ moment bins and energy, minus the
-constant counted twice. The larger observed nullity 39 is accounted for by the additional families
-derived in the stronger local-density result at the end of these notes.
-That finite-grid count does not establish continuum exhaustiveness.
+\textbf{Proposition.} The smooth collision-null functions are exactly
+\begin{equation}
+ h=\phi(R,\theta,z)+g(\theta,\mu)
+   +a(\theta)E+b(\theta)mRu,
+ \qquad E=\tfrac12mu^2+\mu C/R.
+ \label{eq:toroidalnullspace}
+\end{equation}
+Here the functions are arbitrary subject to the stated regularity,
+periodicity and integrability. Redundant angle-only terms may be moved between
+$\phi$ and $g$. The common collision and ideal stationary functions are exactly
+\begin{equation}
+ h=\phi(R)+g(\mu)+aE+b mRu,
+ \qquad a,b\ \hbox{constant}.
+ \label{eq:toroidalcommonnull}
+\end{equation}
+For a stationary positive $f_0$, skew Hamiltonian transport and the collision
+norm identity imply that these also exhaust the smooth zero modes of the
+combined linear generator. This classifies stationary null modes; it does not
+prove a decay rate, coercivity constant, or spectral gap.
+
+\textbf{Proof of the collision statement.} In the common Cartesian $\eta$ chart,
+write the spatial action in the local orthonormal basis
+$(\bm e_R,\bm e_\theta,\bm e_z)$:
+\begin{equation}
+ A_Xh=\left(\frac{R h_z}{qC},\frac{h_u}{m},
+                 \frac{-R h_R+u h_u}{qC}\right),\qquad
+ V_X=A_XE=\left(0,u,\frac{m u^2+\mu C/R}{qC}\right).
+ \label{eq:toroidalaction}
+\end{equation}
+The factor $m$ in $\bm B^*$ cancels the bracket denominator $m$ in the
+curvature term, so the last numerator contains $u h_u$, not $m u h_u$.
+The energy characteristic has $\dot u=\dot\eta=0$; thus its pair vector
+$\xi$ is spatial-only and $P I_XP$ discards all $u,\eta$ components.
+Zero dissipation is consequently equivalent to
+$A_Xh(v)-A_Xh(v')$ being parallel to $V_X(v)-V_X(v')$ for all local velocity
+pairs. Positivity of the pair weight first gives the statement almost
+everywhere; smoothness extends it throughout the interior.
+
+The radial component gives $h_z$ independent of $(u,\mu)$.
+The map $(u,\mu)\mapsto(u,(m u^2+\mu C/R)/(qC))$ is invertible onto an open
+two-dimensional set. On such a set, a map whose every chord is parallel to the
+corresponding argument chord has the form $F(v)=\alpha v+c$ with scalar
+$\alpha$ constant on that velocity set. To prove this elementary lemma, fix one
+point and compare its chords with two noncollinear chords: parallelism of the
+third chord forces their scalar factors to agree. An open set supplies a
+noncollinear comparison for each additional point.
+Applied to the angular and vertical components of \eqref{eq:toroidalaction},
+this gives
+\begin{equation}
+ \frac{h_u}{m}=\alpha(\X)u+c_\theta(\X),\quad
+ \frac{-R h_R+u h_u}{qC}
+ =\alpha(\X)\frac{m u^2+\mu C/R}{qC}+c_z(\X).
+\end{equation}
+Integrate the first identity in $u$ to obtain
+$h=m\alpha u^2/2+m c_\theta u+d(\X,\mu)$.
+Comparing the $u^2$, $u$ and constant terms in the second yields
+\begin{equation}
+ \alpha_R=0,\qquad (c_\theta)_R=c_\theta/R,\qquad
+ d_R=-\alpha\mu C/R^2-qC c_z/R.
+\end{equation}
+Hence $c_\theta=R b(\theta,z)$ and
+$h=\alpha(\theta,z)E+b(\theta,z)mRu+
+ g(\theta,z,\mu)+\phi(R,\theta,z)$.
+The already obtained velocity independence of $h_z$ forces
+$\alpha_z=b_z=0$ and makes $g_z$ independent of $\mu$; its remaining
+velocity-independent part can be absorbed into $\phi$.
+This proves necessity of \eqref{eq:toroidalnullspace}.
+The product velocity domain ensures the integration constant is a globally
+single-valued function of $\mu$; connected support alone would not exclude
+branchwise functions on disconnected $u$-fibers.
+
+For sufficiency, a spatial-only $\phi$ has velocity-independent spatial action,
+a $g(\theta,\mu)$ has zero spatial action, an $a(\theta)E$ has pair spatial
+action $a\xi$, and a $b(\theta)mRu$ has spatial action
+$b(\theta)R\bm e_\theta$ independent of velocity. In the last identity,
+$\bm b\times(m u\bm e_R)/(qB)$ cancels the curvature part from
+$\partial_u(mRu)=mR$. Their projected pair differences therefore all vanish.
+This also proves that all spatial populations are conserved by local
+collisions, including the nonlinear surrogate. Since the local energy-flow
+map is injective, distinct toroidal velocity states never have $\xi=0$;
+the coincident diagonal has vanishing test-function difference.
+
+\textbf{Proof of the common stationary statement.} The ideal derivative is
+$\mathcal T h=(u/R)h_\theta+
+[(m u^2+\mu C/R)/(qC)]h_z$.
+Substitute \eqref{eq:toroidalnullspace} and regard it as a polynomial in $u$.
+The cubic coefficient forces $a'=0$; the constant coefficient
+$\mu\phi_z/(qR)$ forces $\phi_z=0$, since the moment interval has nonzero
+length. The quadratic coefficient then forces $b'=0$.
+The remaining linear coefficient is $\phi_\theta+g_\theta=0$;
+angle-only redundant terms can be absorbed between $\phi$ and $g$, giving
+\eqref{eq:toroidalcommonnull}. Periodic $z$ supplies the closed boundary for
+the norm argument, but is not needed for this pointwise algebraic intersection.
+A proposed nonperiodic compensator $\phi=-qC b'(\theta)z$ cancels a quadratic
+term but leaves $-\mu C b'/R$, and is not stationary on open moment support.
+
+Thus combined dynamics retain the full radial population, the full moment
+marginal, energy and toroidal canonical momentum $mRu$. A general joint
+$(R,\mu)$ marginal is not implied. Arbitrary radial profiles cannot approach a
+unique state determined only by energy and $G(\mu)$.
+The same argument classifies positive nonlinear collision equilibria by taking
+$h=\ln f$ when the entropy form is finite; their common ideal stationary family
+is $\ln f=\phi(R)+g(\mu)+aE+b mRu$.
+Open boundaries with imposed flux, velocity support of dimension one,
+vanishing pair weights, disconnected velocity fibers, a nonlocal spatial
+kernel, or an electrostatic field that changes the energy-flow components
+are outside this proposition.
+
+On the $3^5=243$-node test, 27 spatial indicators, nine angular--moment
+indicators, three angular--energy functions and three angular--momentum
+functions have rank 39 after three duplicated angle-only functions are counted
+once. Their production actions vanish to roundoff and account for all 39
+observed near-null eigenvalues of the unmodified matrix. The continuum proof
+above is independent of that finite-grid rank check; eigenvalues are not altered.
+A separate continuous-bracket check at $m=1.7$, $q=-0.8$ and three off-axis
+points verifies random classified functions and the cylindrical action formula.
+
+Primary-source searches of the authors with toroidal collision nullspace,
+radial populations and moment constraints, and local review of SM25 and BS25,
+did not locate this specific local-kernel classification. Local density and
+symmetry-generated invariants are established ideas; publication priority for
+this closure-specific classification remains unresolved. No claim about
+physical Coulomb transport, general magnetic geometry, or a measured lifetime
+follows from it.
 
 \subsection*{Nonzero-field bounds for the executed domains}
 
@@ -704,6 +823,318 @@ nonzero throughout that box, with $B>0.402$. These conservative analytic bounds
 certify the geometry over the domain, beyond sampled minima. They do not
 certify a guiding-center ordering or a confined Hamiltonian boundary.
 For the toroidal annulus $1\le R\le1.5$, $C=1$, $B\ge2/3$ exactly.
+
+\section{Vacuum energy-flow zero sets and spatial population constraints}
+
+The results in this section concern the prescribed local scalar
+$D P I_XP$ closure, a time-independent nonzero vacuum field, constant
+electrostatic potential, $m>0$, $q\ne0$, and the common Cartesian $\eta$ chart.
+The positive scalar $D$ is a symmetric local pair weight and may depend on the local
+velocity pair. Statements about
+the nullspace require it and the equilibrium density to be strictly positive
+almost everywhere. Global conservation statements additionally require the
+closed weak collision boundaries used in the entropy identity. These are
+continuous statements; a modified discrete energy gradient is a separate
+approximation.
+
+\subsection*{Injectivity away from critical magnetic strength}
+Set $\mathbf g=\nabla B$, $\mathbf t=\mathbf b\times\mathbf g$ and
+$s=\mathbf b\cdot\mathbf g$. The vacuum identity
+$\nabla\times\mathbf b=\mathbf t/B$ follows by differentiating
+$\mathbf b=\mathbf B/B$ and using $\nabla\times\mathbf B=0$.
+For $E=mu^2/2+\mu B$, the energy flow in the common chart is exactly
+\begin{equation}
+ V=T\J_\mu\nabla E=
+ \left(u\mathbf b+\frac{mu^2+\mu B}{qB^2}\mathbf t,
+       -\frac{\mu s}{m},\ \mu u s\right).
+ \label{eq:vacuumflowmap}
+\end{equation}
+Here $mu^2$ denotes mass times $u^2$, whereas $\mu$ is the magnetic moment.
+At fixed spatial position, $\mathbf b\cdot V_X=u$. Equality of two flow
+vectors therefore fixes $u$. If $\mathbf t\ne0$, the remaining spatial
+component fixes $\mu$. If $\mathbf t=0$ but $s\ne0$, the parallel-velocity
+component $V_u=-\mu s/m$ fixes $\mu$. Thus the map $(u,\mu)\mapsto V$ is
+injective whenever $\nabla B\ne0$. Its derivative has rank two: the $u$ column
+has $\mathbf b\cdot\partial_u V_X=1$, while the $\mu$ column has zero such
+projection and is nonzero. Conversely, at $\nabla B=0$ the map is
+$V=(u\mathbf b,0,0)$, so distinct equal-$u$ moment states have equal flows.
+This classifies the fixed-position zero set without regularizing $|\xi|^2$.
+The fixed-position qualification is essential. In the unit dipole with
+$m=q=1$, the distinct equatorial states
+$(\X,u,\mu)=((1,0,0),0.2,0.5)$ and
+$((2,0,0),0.2,0.76)$ both have common-chart energy flow
+$(0,1.62,-0.2,0,0)$, even though $\nabla B$ is nonzero at both positions.
+At the equator $B=C/R^3$, $\mathbf b=-\mathbf e_z$, and the azimuthal
+flow is $3[mu^2R^2/C+\mu/R]/q$. This distinct remote pair also has a nonremovable directional weak limit
+for the spatial scalar projector. For $h=u$,
+$(Au)_X=-\mathbf e_z+3uR^2\mathbf e_\theta$,
+so the pair action difference is $-1.8\mathbf e_\theta$.
+Perturbing only $\mu$ at the first state makes $\xi$ parallel to
+$\mathbf e_\theta$ and the weak factor vanish. Perturbing only $u$ by
+$\delta$ instead gives
+\begin{equation}
+ \left|I_XP\Delta Au\right|^2
+ =\frac{(1.8-3\delta)^2}{1+(1.2+3\delta)^2}
+ \longrightarrow\frac{3.24}{2.44}=1.327868852\ldots .
+ \label{eq:nonlocaldirectionallimit}
+\end{equation}
+The actual common-chart action and projection are tested along three
+nonsingular values of each perturbation; the singular pair is not assigned
+a projector. Thus local injectivity supplies no general equal-flow exclusion
+or continuous zero-vector prescription for a nonlocal scalar extension.
+This observation alone does not analyze the full interaction tensor in the
+nonlocal source Eq.~(119).
+
+The point dipole has no critical strength point away from its source:
+homogeneity gives $\X\cdot\nabla B=-3B$. For the mirror, writing
+$B_z=C+a(z^2-R^2/2)$ gives
+\begin{equation}
+ \partial_R(B^2)=2aR(-C+aR^2/2),\qquad
+ \partial_z(B^2)=4az(C+az^2).
+\end{equation}
+For $C>0$ and $a\ne0$, simultaneous zeros in the nonzero-field region occur
+only at the origin. The executed positive-$z$ box excludes it.
+For a dipole plus the degree-one harmonic perturbation, write
+$\mathbf B=\mathbf B_d+\mathbf B_p$. Euler homogeneity yields
+\begin{equation}
+ \frac12\X\cdot\nabla(B^2)
+ =\mathbf B\cdot(-3\mathbf B_d+\mathbf B_p)
+ \le-3|\mathbf B_d|^2+2|\mathbf B_d||\mathbf B_p|+|\mathbf B_p|^2<0
+\end{equation}
+whenever $|\mathbf B_p|<|\mathbf B_d|$. The bounds above establish this on the
+executed perturbed-dipole box. Hence all three nonuniform Cartesian test
+domains have injective continuous local energy-flow maps. This does not by
+itself certify injectivity of a finite-grid energy-flow approximation.
+
+For a smooth test function, $\Delta Ah=O(|\Delta(u,\mu)|)$ near a coincident
+pair. Since $P I_XP$ is bounded, its weak quadratic factor is
+$O(|\Delta(u,\mu)|^2)$ and extends uniquely by zero on the diagonal, even
+though the projector itself has a directional limit. In contrast, a
+distinct equal-flow pair at a critical spatial point need not have a
+continuous weak extension.
+
+\subsection*{A nonremovable critical-point weak limit}
+Consider the mirror near its nonzero-field origin, equal $u\ne0$,
+$\mu\ne\mu'$, and $h=\mu x$. Approach along the $x$ axis with $z=0$.
+Then $\mathbf b=\mathbf e_z$, $\mathbf t$ is parallel to $\mathbf e_y$,
+and both $\xi$ and $\Delta Ah$ are spatial and parallel. Therefore
+$|I_XP\Delta Ah|^2=0$. Approach instead along the $z$ axis. Now
+$\mathbf t=0$ and $\xi$ has only $u$ and $\eta$ components, while
+$\Delta Ah=(\mu-\mu')\mathbf e_y/(qB)$. Consequently,
+\begin{equation}
+ \lim_{x\to0,\ z=0}|I_XP\Delta Ah|^2=0,
+ \qquad
+ \lim_{z\to0,\ x=0}|I_XP\Delta Ah|^2
+ =\frac{(\mu-\mu')^2}{q^2C^2}>0.
+ \label{eq:criticalweaklimit}
+\end{equation}
+Varying $u-u'$ at the exact origin gives the latter uniform-field
+prescription. Thus a simultaneous small-gradient and equal-$u$ limit is
+not equivalent to first imposing the uniform model. There is no universal
+continuous extension at these distinct-state critical pairs. An arbitrary
+bounded assignment on a measure-zero critical spatial set does not change
+an absolutely continuous weak integral, but it cannot be described as its
+unique continuous limit. Positive quadrature nodes on such a set need a
+separately declared prescription. No denominator softening is justified by
+this argument.
+
+\paragraph{Near-uniform mirror fields and tensor diagonal weights.}
+Example~18 tests a finite-quadrature limitation using exact continuous local
+actions, independently checked against the common-chart implementation. Its
+observable is the frozen positive pair Gram $Q_h$ for $h=\mu x$, evaluated
+at $f=e^{-E-0.2\mu}$; it is not this equilibrium's entropy production, which
+is zero. At $X=(1,0,0.3)$, $m=q=C=D=1$, the positive-amplitude mirror field
+has $\Delta A h\to(\mu-\mu')e_y$. For $u\ne u'$, $\Delta V\to(u-u')e_z$
+and the projector approaches the literal uniform prescription. For $u=u'$
+and $\mu\ne\mu'$, however,
+\[
+ \Delta V=a(\mu-\mu')L(u)+O(a^2),\qquad
+ L(u)=(0,-1,0,-0.6,0.6u).
+\]
+Consequently the limiting spatial squared projected action is
+$(\mu-\mu')^2r(u)$, with
+$r(u)=[0.36(1+u^2)/(1+0.36(1+u^2))]^2<1$, whereas the uniform prescription
+gives $(\mu-\mu')^2$. For positive tensor quadrature weights $w_i$ in $u$
+and $v_j$ in $\mu$, put $M_k=\sum_j v_je^{-1.2\mu_j}\mu_j^k$ and
+$H=M_0M_2-M_1^2>0$. The unordered pair sum gives exactly
+\[
+ Q_n(0)-\lim_{a\to0^+}Q_n(a)
+ =H\sum_i w_i^2e^{-u_i^2}[1-r(u_i)]
+ \le H\max_iw_i\sum_iw_ie^{-u_i^2}.
+\]
+Thus a fixed quadrature retains a positive discrepancy. Positive Gauss
+refinement has $\sum_iw_i=2U_{\max}$ and $\max_iw_i\to0$, so the
+displayed bound vanishes when the moment rule is held fixed. On the fixed compact velocity domain the
+projector and analytic test actions are bounded. Dominated convergence
+therefore recovers the same uniform continuum form because $u=u'$ has zero
+product measure. This is a finite-quadrature discontinuity, not a physical
+discontinuity or a claim that the two infinite sequential limits differ.
+The example holds the moment quadrature and velocity tails fixed, isolates
+the parallel-order effect, and reports the direct positive-amplitude checks
+and proved bound. It does not certify the modified discrete-energy projector
+or a full spatial evolution scheme uniformly as $a\to0$, and makes no
+priority claim for this numerical limitation.
+
+\subsection*{Spatial invariants of local collisions}
+For a spatial observable $\phi(\X)$ independent of $u,\mu$, its common-chart
+action is
+\begin{equation}
+ A\phi=\left(\frac{\mathbf b\times\nabla\phi}{qB},
+ -\frac{\mathbf b\cdot\nabla\phi}{m}
+ -\frac{u\,\mathbf t\cdot\nabla\phi}{qB^2},
+ -\frac{\mu\,\mathbf t\cdot\nabla\phi}{qB}\right).
+ \label{eq:vacuumspatialaction}
+\end{equation}
+If $\mathbf t\cdot\nabla\phi=0$, this entire vector is independent of the
+velocity pair at the same spatial position, so $\Delta A\phi=0$.
+Every such observable is conserved by the linear and nonlinear local
+collision surrogates, regardless of the energy projector.
+
+There is also a precise local necessity statement for spatial observables.
+At a point with $s\ne0$ and $\mathbf t\ne0$, let
+$\kappa=\mathbf t\cdot\nabla\phi$. Choose equal nonzero $u$ and unequal
+$\mu,\mu'$ in a product velocity domain of nonzero widths. Their action
+difference has only an $\eta$ component, while
+$\xi_X=(\mu-\mu')\mathbf t/(qB)$ and
+$\xi_\eta=u s(\mu-\mu')$. If $\kappa\ne0$, then
+$\xi\cdot\Delta A\phi=-u s\kappa(\mu-\mu')^2/(qB)\ne0$ and the
+spatial block of $P\Delta A\phi$ is nonzero. Continuity gives a positive
+weak contribution on a neighborhood of this pair. Thus a spatial observable
+is locally null precisely when $\kappa=0$ at such a point. If $s=0$, the
+energy-flow difference is spatial, and the velocity-dependent part of
+$\Delta A\phi$ is nonspatial; every spatial observable is locally null.
+The case $\mathbf t=0$ already has $\kappa=0$. These statements classify
+spatial test functions, not the full nonuniform nullspace.
+
+Locally a vacuum field has $\mathbf B=\nabla\chi$. Since $\mathbf t$ is
+orthogonal to both $\nabla B$ and $\nabla\chi$, every spatial $F(B,\chi)$
+is a collision invariant. When $\chi$ is globally single valued, closed
+collisions therefore preserve the joint spatial pushforward population
+in $(B,\chi)$. The executed scalar potentials are
+\begin{align}
+ \chi_m&=Cz+a(z^3/3-zR^2/2),\\
+ \chi_d&=-Cz/r^3,\qquad
+ \chi_{na}=\chi_d+\varepsilon Cxy/L.
+\end{align}
+Ideal flow generally changes these populations. They are not interior
+Casimirs of the Poisson tensor and are not claimed to be invariants of the
+full combined dynamics.
+
+\subsection*{Poloidal flux memory and inaccessible dipole candidates}
+In an axisymmetric purely poloidal field, $\mathbf t$ is azimuthal. Therefore
+all $\phi(R,z)$ satisfy the preceding sufficient condition: local
+collisions preserve every meridional spatial population. With
+$\mathbf B=\nabla\psi\times\mathbf e_\theta/R$, the poloidal fluxes are
+\begin{equation}
+ \psi_d=\frac{CR^2}{(R^2+z^2)^{3/2}},\qquad
+ \psi_m=\frac{CR^2}{2}+\frac{aR^2z^2}{2}-\frac{aR^4}{8}.
+ \label{eq:poloidalflux}
+\end{equation}
+Both $\mathbf b$ and $\mathbf t$ are tangent to these flux surfaces.
+For constant potential, ideal flow conserves $\psi$; the same remains true
+for an axisymmetric electrostatic potential. Under closed, flux-compatible
+ideal boundaries and closed weak collision boundaries,
+\begin{equation}
+ \frac{\dd}{\dd t}\int F(\psi) f\,\dd\Gamma=0
+ \quad\hbox{for every admissible smooth }F.
+ \label{eq:fluxpopulation}
+\end{equation}
+This is conservation of the full flux pushforward marginal, which obstructs
+accessibility of an energy/$G(\mu)$-only equilibrium from arbitrary initial
+data. It does not generally preserve a joint $(\psi,\mu)$ population:
+for example $h=\mu\psi$ has a nonzero projected pair action off the
+equatorial plane. The test suite checks that counterexample explicitly.
+In particular, under the same closed combined conditions, the stationary
+family includes
+\begin{equation}
+ f=\exp[-\beta E+g(\mu)+F(\psi)]
+ \label{eq:fluxstationaryfamily}
+\end{equation}
+whenever it is positive, normalizable and in the weak form domain.
+The energy term is annihilated by $P$, the moment term by $\J$, and the flux
+term has zero local pair difference; all three terms are ideal constants.
+The earlier energy/moment candidate is therefore a proper subset of this
+stationary family, not a complete equilibrium classification for this field
+and closure. No completeness statement for \eqref{eq:fluxstationaryfamily}
+is asserted.
+
+Canonical toroidal momentum conservation and the ideal flux constraint in
+the purely poloidal limit have established antecedents~\cite{TB15}.
+Here $A\psi=(R\mathbf e_\theta/q,0,0)$ with the flux convention in
+\eqref{eq:poloidalflux}; thus $q\psi$ is the lowest-order canonical rotation
+generator. The additional conclusion is that exact spatial localization
+makes \emph{every} $F(\psi)$ collisionally invariant. This proof uses equality
+of the paired positions essentially. It does not apply to the generally
+spatially nonlocal source Eq.~(119), to its full interaction tensor, or to
+finite-Larmor collision displacements. The source introduces the spatial
+scalar/delta approximation separately in Eqs.~(171)--(172).
+Conventional guiding-center collision operators retain mechanisms absent
+from this closure~\cite{B04,BS25}.
+Flux- or canonical-momentum-dependent equilibria are not new objects:
+Di Troia~\cite{DT15} treats equilibria depending on canonical toroidal
+momentum, energy and moment, and modifies the Landau projection using the
+selected equilibrium score difference in Eqs.~(44) and (46) of the checked
+arXiv version. That target-dependent construction differs from a nullspace
+constraint forced by the present fixed local pair geometry.
+Sato, Yoshida and Kawazura~\cite{SYK15} construct inward diffusion from
+fluctuating electric fields on a moment-preserving leaf; their Eq.~(14d)
+contains a nonzero Wiener increment in $\psi$, and Eq.~(15) contains flux
+diffusion. Such forcing changes the flux population and lies outside the
+closed axisymmetric ideal-plus-local-collision assumptions here.
+These antecedents preclude a broad novelty claim for constrained equilibria
+or dipole transport. The present negative result concerns the specified
+closure's inaccessible states, not a general prohibition of inward diffusion.
+ Focused primary-literature searches found
+no matching statement for this precise surrogate; no publication-priority
+claim follows. Neither the invariant theorem nor the critical-point
+counterexample provides a physical rate, a quantitative decay bound or a
+dipole lifetime.
+
+\subsection*{Symmetry breaking removes spatial ideal constants}
+For the unit dipole plus $a\nabla(xy)$, $0<|a|\le0.03$, on the connected
+Cartesian box stated above, there is no nonconstant $C^2$ spatial function
+$\phi(\X)$ that is an ideal constant for every velocity state in an open
+product domain. Consequently there is no nonconstant spatial function in
+the common ideal/collision nullspace. This concerns spatial observables
+only; it does not classify functions depending on $u,\mu$, establish
+coercivity, or imply a relaxation rate.
+
+Indeed, comparing the $\mu$ and $u$ coefficients of
+$V_X\cdot\nabla\phi=0$ in \eqref{eq:vacuumflowmap} gives
+$\mathbf b\cdot\nabla\phi=\mathbf t\cdot\nabla\phi=0$.
+Set $S=|\mathbf B|^2$, $p=\mathbf B$, and
+$v=\mathbf B\times\nabla S=2B^2\mathbf t$. Both vector fields annihilate
+$\phi$, so their Lie bracket
+$[p,v]=(\nabla v)p-(\nabla p)v$ also annihilates it.
+At the interior unit-radius point $(15/17,0,8/17)$, exact rational
+differentiation gives
+\begin{equation}
+ \det[p,v,[p,v]]=
+ \frac{900a(225a^2+481)(6709a^4-313674a^2+2686977)}{6975757441}.
+ \label{eq:nonaxisrankcertificate}
+\end{equation}
+The quartic factor is at least
+$2686977-313674(0.03)^2>2686694$ on the stated amplitude interval.
+Thus the determinant is nonzero. The field is real analytic and bounded
+away from zero throughout this box, and the analytic determinant is not
+identically zero. Its nonzero set is therefore dense. On that set the
+three annihilating vector fields span physical space, so $\nabla\phi=0$;
+continuity and connectedness make $\phi$ constant throughout the box.
+For $a=0.03$, the exact value is
+$1396271742281072028423/279030297640000000000
+ =5.004014811619193\ldots$; direct field automatic differentiation gives
+$5.004014811619226$.
+
+The certificate was derived independently by exact rational field
+derivatives and by symbolic differentiation; regression tests check the
+actual field implementation at both perturbation signs.
+This two-vector Lie-rank argument is distinct from the one-field
+Pfaff/Frobenius condition $\mathbf B\cdot\nabla\times\mathbf B=0$
+discussed in SM24~\cite{SM24}. The latter holds for all these vacuum fields.
+The result removes the axisymmetric spatial flux constraint, not all
+phase-space constraints or all possible obstructions to mixing. Focused
+primary-source searches found no matching statement for this fixed analytic
+example, but no publication-priority claim is made.
 
 \section{Linear weak discretization and SOLVAX}
 
@@ -738,16 +1169,23 @@ differences are identically zero and need no stored contribution. Distinct
 nodes with equal energy-flow vectors are a separate issue: the uniform field
 uses its derived continuous limit, while an exactly zero nonuniform pair vector
 is rejected. No $|\xi|^2+\epsilon$ is used. Directional limits may depend on the
-approach, so successful finite-grid examples do not resolve the general
-nonuniform zero set.
+approach. The continuous local zero set is classified by
+\eqref{eq:vacuumflowmap}; the critical-point counterexample
+\eqref{eq:criticalweaklimit} prevents a universal continuous prescription.
+Successful finite-grid examples do not by themselves establish a valid
+extension for a modified discrete energy map.
 
 Periodic derivatives are Fourier derivatives; the real even-grid Nyquist
 component is unresolved and given zero derivative. Nonperiodic derivatives
-use local three-point quadratic interpolation, with their transposes in the
-weak collision assembly. This imposes the natural collision flux rather than
-wrapping nonperiodic field values. Pair chunks bound transient action workspace;
-the pair indices and energy directions still require quadratic storage in the
-resolved velocity count (and spatial count for nonlocal pairs).
+support local three-point quadratic interpolation and, for the refined
+nonuniform boxes, the derivative of the full nodal Lagrange polynomial.
+The derivative and its transpose enter the weak collision assembly.
+The selected spatial quadrature and derivative method are recorded explicitly.
+This imposes the natural collision flux rather than
+wrapping nonperiodic field values. The preassembled reference path retains
+pair indices and directions with quadratic velocity-pair storage (and spatial
+pairs for nonlocal models). The compact local path instead stores energy flows
+and forms pair directions only inside bounded blocks, as described below.
 
 If $c$ represents a collision invariant and the derivative/kernel construction
 respects it, then $Kc=0$. Include the discrete energy and all resolved
@@ -805,6 +1243,10 @@ nonlocal direct application can cost $O(N_X^2N_v^2)$. Chunk pair contractions,
 reuse geometry and quadrature, and keep derivatives sparse. Block-tridiagonal
 solves may be useful in a line preconditioner; the full velocity coupling is not
 generally tridiagonal.
+The current tensor derivative matrices are stored densely, including zeros
+outside the nonperiodic stencils. Their contraction adds
+$O(N\sum_\alpha n_\alpha)$ work, with $N=\prod_\alpha n_\alpha$; stencil
+sparsity is a mathematical property, not an implemented sparse matmul claim.
 
 \section{A nonlinear discrete entropy construction}
 
@@ -861,6 +1303,110 @@ solve. Parameterizing $n_i^+=w_i e^{g_i^+}$ enforces positive nodal populations,
 but does not prove existence of the solve or positivity between interpolation
 nodes. Check all required quadrature/reconstruction locations.
 
+\subsection*{Angular leaf components of the Cartesian box}
+The mirror and dipole collision-only boxes have an additional domain
+qualification. In the open rectangle $0.8<x<1.2$, $|y|<0.2$, a fixed circle
+with $1.2<R<\sqrt{1.48}$ meets the box in two disconnected angular arcs,
+with $\arccos(1.2/R)<|\theta|<\arcsin(0.2/R)$.
+For $g\in C_c^\infty((1.2,\sqrt{1.48}))$, the observable
+$\phi=g(R)\operatorname{sign}(y)$ is smooth inside the box: its active support
+is separated from $y=0$. Since $\mathbf t$ is azimuthal,
+$\mathbf t\cdot\nabla\phi=0$. Closed local collisions therefore conserve
+these signed component populations as well as the single-valued meridional
+populations. This is a consequence of the natural closed boundary, not a
+failure of that boundary condition.
+
+The corner region has unweighted geometric area fraction
+\begin{equation}
+ \frac{2}{0.16}\int_{\sqrt{1.4}}^{1.2}
+       [0.2-\sqrt{1.44-x^2}]\dd x
+ =0.01394734125\ldots .
+\end{equation}
+Its volume fraction is the same because the $z$ interval is independent;
+its state-measure or particle fraction requires the actual $B$ and density
+weights. Five-point Gauss nodes per axis have maximum $R=1.19506$ and miss
+this region; seven-point nodes reach $R=1.20487$ with two corner nodes in the
+$xy$ grid. Thus independent bulk-observable refinements do not by themselves
+certify preservation of every localized leaf-component constraint or global
+continuum convergence. This analytical limitation is reported independently
+of the finite-time outcomes; it introduces no later acceptance criterion.
+
+\subsection*{Matrix-free Newton--GMRES and residual control}
+The compact nonuniform evolution solves the same discrete-gradient equation
+as the small dense reference. Let $l=\ln f^+$, $l^-=\ln f^-$,
+$\bar f=(e^l+e^{l^-})/2$, and write the unscaled residual as
+\begin{equation}
+ F(l)=w\,(e^l-f^-)-\Delta t K(\bar f)\overline\nabla S(l^-,l).
+ \label{eq:dgrootresidual}
+\end{equation}
+Products with $w$ are componentwise. Set $a_i=\sqrt{w_i f_i^-}>0$,
+$r=F/a$, and parameterize the Newton correction as $\delta l=v/a$.
+The exact matrix-free operator is
+\begin{equation}
+ v\longmapsto a^{-1}J_F(l)(v/a),\qquad
+ a^{-1}J_F(l)(v/a)=-r.
+ \label{eq:scalednewton}
+\end{equation}
+For the compact path, the pair tangent is prepared exactly. If
+$\mathcal A h$ is the nodal common-chart action, a pair contribution to
+$K(\bar f)h$ is proportional to
+$\bar f_i\bar f_j P I_XP\Delta\mathcal A h$. Its variation is
+\begin{equation}
+ \delta[K(\bar f)h]=\mathcal A^T\sum_{ij}
+ D w_Xv_iv_j\bar f_i\bar f_j P I_XP
+ \left[\Delta\mathcal A\delta h
+       +(r_i+r_j)\Delta\mathcal A h\right],\qquad
+ r_i=\frac{f_i^+}{f_i^++f_i^-}\delta l_i.
+ \label{eq:preparedpairtangent}
+\end{equation}
+The sum denotes the same paired flux accumulation as the mobility, including
+the local velocity Jacobians $v_i$. Here $h=\overline\nabla S$ and its
+componentwise derivative gives $\delta h=h'_i\delta l_i$.
+The actions $\mathcal A h$, nodal mean populations and scalar $h'_i$ are
+cached once per Newton iterate; each Krylov matvec applies one projected pair
+tangent. No frozen-mobility approximation is made. Independent forward
+Jacobian-vector products on the explicit-pair path differentiate all terms
+and check this prepared tangent. SOLVAX restarted GMRES solves this system; a finite-step
+Newton Jacobian need not be symmetric positive definite, so PCG is not
+substituted. Neither route retains a linearization tape containing every
+primal pair block.
+
+The nonlinear relative stopping norm is
+$\|F/a\|_2/\sqrt{\sum_i w_if_i^-}$, fixed by the previous state.
+The dense reference retains its original population residual norm; it solves
+the same unscaled equation with its own explicitly recorded tolerance.
+A backtracking line search decreases the chosen residual norm and rejects
+nonfinite or exponential-underflow candidates. It clips no population and
+applies no invariant correction.
+Since the divided difference gives
+$\Delta S=\overline\nabla S\cdot w(f^+-f^-)$, the exact entropy defect is
+\begin{equation}
+ \Delta S-\Delta t\overline\nabla S^TK(\bar f)\overline\nabla S
+ =\overline\nabla S\cdot F,
+ \qquad
+ |\mathrm{defect}|\le
+ \|a\,\overline\nabla S\|_2\|F/a\|_2.
+ \label{eq:entropyresidualbound}
+\end{equation}
+The implementation checks this bound with a floating-point allowance.
+Likewise, if $Kc=0$, the invariant error is $c\cdot F$ and is bounded by
+$\|ac\|_2\|F/a\|_2$. These are residual-dependent bounds, not exact
+conservation assertions for an unconverged root.
+
+For the compact local Cartesian grid the stored coefficients are
+$N\times5\times4$, and energy flows, populations, moment indices and local
+quadrature have $O(N)$ entries. Dense axis derivative matrices add
+$O(\sum_\alpha n_\alpha^2)$ storage. No local pair list or dense Newton
+Jacobian is stored. A target-row contraction processes all $N_v$ partners;
+with pair budget $C_p$, temporary pair workspace is
+$O(\max(C_p,N_v))$ fixed-dimensional vectors. Restarted GMRES additionally
+stores $O(Nr)$ basis entries for restart length $r$.
+Thus the precise storage bound is
+$O(N+\sum_\alpha n_\alpha^2+Nr+\max(C_p,N_v))$, apart from compiler/runtime
+storage. Measured grid bytes and process timings are reported independently.
+This does not supply an accelerated pair asymptotic: the direct local
+contraction still evaluates $O(N_XN_v^2)$ interactions per matvec.
+
 For the executed nonlinear uniform and linear toroidal examples, continuous
 spatial Fourier positivity is checked with a sufficient certificate. If
 $f(x)=\sum_k\widehat f_k e^{ikx}$, then
@@ -883,6 +1429,157 @@ must enter the collision degeneracy consistently; the fixed vector $e$ above is
 not enough. Likewise, nonlinear Hamiltonian transport requires its own
 conservative and positivity-compatible treatment. A linear skew matrix alone
 is not a proof of a nonlinear H-theorem.
+
+\subsection*{Lagged mobility and an implicit entropy-variable step}
+For a finite positive-quadrature grid, let $n_i=w_i f_i$ and freeze the
+constructed mobility at the old density: $K_-=K(f_-)$. Assume finite
+$w_i,n_{-,i}>0$, $K_-=K_-^T\succeq0$, $K_-\bm1=0$, and $\Delta t\ge0$.
+The implemented lagged-mobility step solves
+\begin{equation}
+ n_+-n_-=-\Delta t K_-g_+,
+ \qquad g_{+,i}=\ln(f_{+,i}/f_{\rm ref}),
+ \qquad n_{+,i}=w_i f_{\rm ref}e^{g_{+,i}},
+ \label{eq:laggedentropy}
+\end{equation}
+where $f_{\rm ref}$ is a fixed positive density scale. Computation uses the
+previously specified normalized units with $f_{\rm ref}=1$. A constant change
+of this scale drops out through $K_-\bm1=0$. This changes the time
+discretization of the same nodal collision ODE, not the kernel, its boundaries
+or its physical calibration.
+
+The residual $R=w f_{\rm ref}e^g-n_-+\Delta t K_-g$ is the gradient of
+\begin{equation}
+ \Psi(g)=\sum_i w_i f_{\rm ref}e^{g_i}-n_-^Tg
+        +\frac{\Delta t}{2}g^TK_-g.
+ \label{eq:laggeddualobjective}
+\end{equation}
+Each exponential minus positive linear term tends to infinity at either end
+of the real line and has a finite lower bound. The finite sum is coercive;
+the nonnegative quadratic preserves this property. Moreover
+$\nabla^2\Psi=\operatorname{diag}(n_+)+\Delta t K_-\succ0$ at every finite
+$g$. There is therefore a unique finite minimizer and a unique positive root
+for every nonnegative timestep. This is a finite-dimensional existence
+statement, not a uniform conditioning or finite-precision convergence bound.
+
+For $\Delta t>0$, the equivalent primal problem is
+\begin{equation}
+ \min_{n\ge0,\ n-n_-\in\operatorname{Range}K_-}
+ \left\{\sum_i n_i[\ln(n_i/(w_i f_{\rm ref}))-1]
+  +\frac{(n-n_-)^TK_-^\dagger(n-n_-)}{2\Delta t}\right\}.
+ \label{eq:laggedprimalobjective}
+\end{equation}
+The range constraint retains every actual Gram null constraint. Since
+$\bm1$ is null, the admissible populations have fixed total mass and form a
+compact set. Strict convexity gives a unique minimizer. A boundary minimizer
+is impossible: the feasible direction toward the strictly positive $n_-$ has
+entropy derivative tending to $-\infty$ at each zero component, while the
+quadratic derivative remains finite. At the interior minimizer, project the
+Euler equation onto $\operatorname{Range}K_-$ and multiply by $K_-$ to recover
+\eqref{eq:laggedentropy}. This is a fixed finite-dimensional Onsager metric;
+it is not an exact Wasserstein-distance or JKO step.
+
+At an exact root, $c^T(n_+-n_-)=0$ for every $K_-c=0$. With a residual,
+$c^T(n_+-n_-)=c^TR$. Positive frozen pair weights retain the same actual
+discrete Gram nullspace, including number, discrete energy and resolved
+moment-bin populations. They do not restore continuum constraints lifted by
+the spatial approximation. A represented stationary density remains stationary.
+
+For $S(n)=-\sum_i n_i\ln(n_i/(w_i f_{\rm ref}))$, define
+\begin{equation}
+ \mathcal D(n_-\Vert n_+)=\sum_i
+ [n_{-,i}\ln(n_{-,i}/n_{+,i})-n_{-,i}+n_{+,i}]\ge0.
+\end{equation}
+Direct subtraction gives the exact budget, including a nonzero root residual,
+\begin{equation}
+ S_+-S_- =\Delta t\,g_+^TK_-g_+
+       +\mathcal D(n_-\Vert n_+) -(g_++\bm1)^TR.
+ \label{eq:laggedentropybudget}
+\end{equation}
+With $a_i=\sqrt{n_{-,i}}$, the residual entropy-defect bound is
+$|(g_++\bm1)^TR|\le\|a(g_++\bm1)\|\,\|R/a\|$; invariant defects have
+the analogous bound $|c^TR|\le\|ac\|\,\|R/a\|$.
+The first positive term is discrete mobility dissipation approximating the
+continuous nodal model, without a calibrated physical rate. The KL term is a
+separate contribution from time discretization. For a smooth positive
+solution it is $O(\Delta t^2)$ per step. Positivity and monotone entropy do
+not establish temporal accuracy or continuum convergence.
+
+The implicit-function expansion at $\Delta t=0$ uses the invertible derivative
+$\operatorname{diag}(n_-)$ and gives
+$n_+-n_-=-\Delta t K(f_-)\ln(f_-/f_{\rm ref})+O(\Delta t^2)$.
+Thus the step is first-order consistent with the same fixed spatial ODE.
+This local statement does not supply a mesh-uniform error bound or a
+convergence theorem near vanishing populations.
+
+The positive Hessian permits PCG after entropy scaling, unlike the generally
+nonsymmetric finite-step discrete-gradient Jacobian. Candidate Newton
+directions must pass an objective-descent check, a true Hessian-residual
+check and objective backtracking. For a log increment $s$, use the stable
+exact objective change
+\begin{equation}
+ \Psi(g+s)-\Psi(g)=\sum_i n_i(e^{s_i}-1-s_i)
+                   +R(g)^Ts+\frac{\Delta t}{2}s^TK_-s.
+\end{equation}
+The small-argument exponential remainder is evaluated by its series.
+Comparing independently evaluated objective values can erase the tiny
+Newton decrease near the root. No population clipping, invariant correction,
+nullspace removal or denominator softening is part of this step.
+
+The method is described as lagged-mobility backward Euler in entropy
+variables, without a new-integrator claim. Shen and Xu~\cite{SX21} provide
+a close antecedent: their first-order scheme treats old density in the
+mobility and new logarithmic density implicitly, and their fully discrete
+positive-quadrature proof uses a PSD stiffness pseudoinverse and a constrained
+strictly convex entropy functional (Theorem~3.2, Eqs.~3.12--3.15).
+The present collision Gram matrix can have additional null directions, so
+the finite-dimensional argument above is stated independently; their PDE
+convergence results are not imported. General variational entropy-flow and
+metriplectic antecedents remain relevant context, but do not identify this
+frozen Gram metric with a Wasserstein distance.
+
+\paragraph{Implementation and independent checks.}
+The compiler accepts the old density dynamically and prepares the positive
+channel-lumped Jacobi approximation once per timestep. The approximation drops
+cross-derivative and pair cross terms only from the auxiliary inverse; the
+full Gram operator remains in the residual and Hessian. Original Hessian
+residuals are recomputed independently of recursive PCG stopping. The checked
+host step rejects nonfinite populations, failed linear corrections,
+non-descent directions, failed backtracking and inconsistent entropy budgets.
+A compiled operator is associated with its grid and solver configuration.
+For a derivative channel $d$, the positive auxiliary covariance is
+\[
+ q_{i,d}=D w_X v_i f_i\sum_{j\ne i}v_jf_j
+             |I_XP_{ij}C_{i,d}|^2\ge0,
+\]
+where $v_i$ includes the velocity Jacobian and $C_{i,d}$ is the corresponding
+common-chart action column. The diagonal approximation is
+$\sum_d(D_d\circ D_d)^Tq_d$. The optional Cartesian $x$-line inverse instead
+retains $L_x=D_x^T\operatorname{diag}(q_x)D_x$ on each fixed
+$(y,z,u,\mu)$ line. Its entropy-scaled block is
+\[
+ B_x=\operatorname{diag}\!\left(\frac{n_+}{n_-}
+       +\Delta t\frac{\sum_{d\ne x}(D_d\circ D_d)^Tq_d}{n_-}\right)
+       +\Delta t\operatorname{diag}(n_-^{-1/2})L_x
+                   \operatorname{diag}(n_-^{-1/2}).
+\]
+It is SPD for strictly positive finite populations: the first mass term is
+positive diagonal and the remaining terms are PSD. Batched Cholesky factors
+apply its inverse. This changes only PCG preconditioning; the full Hessian
+and all null constraints remain unchanged. Independent explicit-pair
+projectors check the covariance, and both inverse choices converge to the
+same separately assembled dense roots. No uniform conditioning bound follows.
+The campaign uses this line inverse and a 3000-iteration linear budget;
+failed residual checks remain fatal. API defaults retain the diagonal inverse
+and a 1000-iteration budget.
+For $N$ state nodes and $n_x$ nodes on a line, stored Cholesky factors use
+$O(Nn_x)$ entries, their factorization costs $O(Nn_x^2)$, and each inverse
+application costs $O(Nn_x)$. This is additional solver storage beyond the
+earlier compact-grid arrays; the direct pair action still costs $O(N_XN_v^2)$.
+
+
+Independent explicit-pair dense roots and a separately assembled pair ODE
+check tiny mirror, dipole and nonaxisymmetric grids. These method checks do
+not resolve the thermal velocity domain or establish a continuum limit.
 
 \section{Scattering physics and validity tests}
 
@@ -912,9 +1609,10 @@ For independent increments, both
 $N|\langle\delta\mu\rangle|/\mu_{\rm ref}\ll1$ and
 $N\operatorname{Var}(\delta\mu)/\mu_{\rm ref}^2\ll1$ are needed for small accumulated
 change on a chosen nonzero scale. Compensating mean changes can still alter the
-full moment marginal through diffusion. These are audit points for SM25
-(85)--(86), which the source itself calls working assumptions, rather than
-replacements for its ordering.
+full moment marginal through diffusion. These are audit points for the
+inference in SM25 (85) and the accumulation hypothesis (86), rather than
+replacements for its ordering. The source explicitly calls (84) and (86)
+working assumptions.
 
 A controlled microscopic reference can integrate
 \begin{equation}
@@ -1194,7 +1892,8 @@ $0.0578\%$ in parallel-velocity tail extent, and $0.519\%$ in moment-tail extent
 These are separate refinements of a specified observable, not a mathematical
 continuum convergence theorem. The unmodified 243-node collision matrix has
 39 near-null eigenvalues, compared with the 39-dimensional independent invariant
-span from spatial populations and angular-weighted invariants derived below, with scaled
+span from spatial populations and angular-weighted invariants in
+\eqref{eq:toroidalnullspace}, with scaled
 eigenpair residual $1.63\times10^{-15}$. Every observed tiny-grid null direction is accounted for by that span; the
 eigenvalues themselves are unchanged. No continuum gap or uniqueness follows
 from that finite matrix.
@@ -1234,11 +1933,60 @@ dense solves and centered finite differences. All performance claims remain
 specific to the saved device and accuracy; no unmeasured GPU speedup is claimed.
 The selected P1--P5 prototype examples have executable structural and
 convergence evidence. This does not certify every geometry or parameter regime;
-box velocity-tail convergence and distinct-state zero-set extensions remain open. Physical
+joint box time-evolution convergence remains specific to the executed scans.
+The continuous local zero set is classified above, including a critical-point
+failure of continuous extension; modified discrete energy maps require separate
+validation. Physical
 coefficient calibration, unequal-species closure, self-consistent electrostatics,
 and measured plasma mixing-versus-moment timescale separation are not implemented
 claims.
 
+
+\subsection*{Focused trajectory, unit and adjoint verification}
+On the symmetry axis of the harmonic mirror, $B(z)=B_0+a z^2$,
+$\dot z=u$ and $m\dot u=-2\mu a z$. For initial $z=0$ and
+$u=u_0>0$, a separate scalar energy calculation locates the positive
+turning point from $\mu B(z_t)=m u_0^2/2+\mu B_0$ by bracketing.
+The bounce integral is
+\[
+ T_b=4\int_0^{z_t}\frac{\dd z}
+ {\sqrt{2[E-\mu B(z)]/m}}.
+\]
+The substitution $z=z_t(1-s^2)$ removes its endpoint singularity and gives
+$T_b=4\int_0^1 2z_t\,[2\mu a z_t^2(2-s^2)/m]^{-1/2}\dd s$.
+Numerical quadrature is compared with turning-point events of a separately
+integrated five-coordinate Poisson flow. Both event position and period
+converge under integrator-tolerance refinement; the check uses nonunit mass
+and negative charge, and does not infer a collision rate from the orbit.
+
+A uniform Fourier-pair regression also changes the base units rather than
+changing the physical input. Let the new units be $L_*,T_*,M_*,Q_*,N_*$,
+where $N_*$ is a number-density unit. Then $U_*=L_*/T_*$,
+$E_*=M_*U_*^2$, $B_*=M_*/(Q_*T_*)$, and the prescribed uniform coefficient
+has unit $D_*=M_*^2L_*^2/(T_*^3N_*)$. In the $(u,\eta)$ chart,
+\[
+ \widehat u=u/U_*,\quad\widehat\eta=\eta/E_*,\quad
+ \widehat w_v=w_v/(U_*E_*),\quad
+ \widehat f=fU_*E_*/N_*,\quad\widehat k=kL_*.
+\]
+Mass, charge, field and coefficient are divided by their respective units,
+and $\partial_{\widehat u}h=U_*\partial_u h$.
+The independent pair calculation verifies
+$\widehat C=T_*U_*E_*C/N_*$ and
+$\widehat\lambda=T_*\lambda$ for the density-neutral observable
+$\lambda=-\langle h,C\rangle_v/\langle f h^2\rangle_v$,
+for two unit maps and both charge signs. This check is restricted to the
+uniform reduced kernel; it does not replace the metric pullback required
+for a general coordinate or units change in phase space.
+
+For the linear implicit system $A x=Mh$, $A=M+\Delta t K$, and observable
+$J=x^Tx$, the adjoint obeys $A^T\lambda=2x$ and
+$\partial_DJ=-\Delta t\lambda^TKx$ at unit coefficient.
+The actual implicitly differentiated solver's VJP with respect to $h$
+returns $M\lambda$. Dividing by the positive diagonal mass recovers the
+adjoint, whose true residual is checked against the independently assembled
+dense matrix alongside the primal residual, dense derivative and centered
+finite-difference plateau. These are finite-grid derivative checks.
 
 \subsection*{Directional zero-set check}
 At the off-axis dipole state $(1,0.2,0.3,0.6,0.4)$, the independent
@@ -1252,43 +2000,6 @@ the kernel's directional discontinuity. This fact does not authorize deletion
 of distinct states with the same energy-flow vector; the general constructor
 rejects those ambiguous pairs. The uniform directional prescription is derived
 separately and tested against the exact oracle.
-
-\subsection*{Stronger toroidal local-density obstruction}
-The radial--angular collision invariants proved above extend to any smooth
-spatial-only $\phi(\X)$ in this toroidal field. The spatial component
-$\J^{XX}\nabla_X\phi$ is independent of $u,\mu$ at a fixed position, so
-$\Delta\phi$ has only $u,\eta$ components. Both $\dot u$ and $\dot\eta$ vanish
-for the toroidal energy characteristic, hence $\xi=\Delta E$ has spatial
-components only. The tensor $P I_XP$ therefore annihilates $\Delta\phi$.
-Every spatial population is conserved by local collisions, including for the
-nonlinear surrogate. This is a property of the local spatial-block closure,
-not an assertion about physical Coulomb transport or finite-range collisions.
-Hamiltonian streaming can change angular and height marginals, but preserves
-arbitrary radial populations because $\dot R=0$.
-There are further local collision invariants $c(\theta)g(\mu)$,
-$c(\theta)E$ and $c(\theta)mRu$ for arbitrary smooth periodic $c$.
-The first has zero spatial bracket action, the second has spatial pair action
-$c(\theta)\xi$, and the third has spatial action $c(\theta)R\bm e_\theta$,
-independent of velocity. In the last identity the perpendicular bracket action
-from $m u\nabla R$ cancels the curvature contribution from
-$\partial_u(mRu)=mR$. Terms from $c'(\theta)$ enter only the discarded
-nonspatial block. Thus $P I_XP$ annihilates each pair difference for any nonzero
-$q$, positive $m$ and $C$. Unweighted $mRu$ is also a Hamiltonian invariant;
-the angular-weighted families generally are not.
-
-On the $3^5=243$-node test the 27 spatial indicators, nine angular--moment
-indicators, three angular--energy functions and three angular--momentum
-functions have rank 39 (three duplicated angular-only functions are counted
-once). Independent production actions vanish to roundoff, and this span
-accounts for all 39 observed near-null eigenvalues of the unmodified matrix.
-This is complete for the tested finite grid, not a proof that the named
-families exhaust the continuum nullspace. No eigenvalues are changed.
-Primary-source searches combining the authors, toroidal collision nullspace,
-radial invariants and finite range did not locate this specific classification.
-Local-collision density conservation and symmetry-generated invariants are
-established ideas; the candidate contribution is this closure-specific
-geometry and range comparison. Publication priority remains unresolved.
-
 
 \subsection*{Measured costs at matched error}
 For four independent uniform Fourier blocks with 128 velocity nodes each,
@@ -1317,6 +2028,711 @@ Its state is 51480 bytes and its stored pair list contains 456885 unordered
 pairs; pair-application chunk workspace and all version/input/commit details
 are in the saved JSON. No extrapolated speedup or isolated-RSS interpretation
 is asserted.
+
+
+
+\subsection*{Nonuniform velocity quadrature and resolved tails}
+The additional \texttt{11\_field\_velocity.py} campaign evaluates the initial
+nonlinear entropy production on the same mirror, dipole and nonaxisymmetric
+boxes, with fixed $3^3$ spatial quadrature. Its positive initial distribution is
+\begin{equation}
+ f=\exp[-E-0.2\mu+0.1\sin(x)u+0.04y\mu].
+\end{equation}
+Positive Gauss--Legendre velocity quadrature replaces both the population
+weight $w_X B w_u w_\mu$ and the local pair weight
+$w_X(Bw_uw_\mu)(Bw'_uw'_\mu)$ consistently. Derivatives and energy directions
+are unchanged. The three-point derivative is exact for the quadratic velocity
+energy and the linear-$u$ logarithmic perturbation on either node family.
+Number and energy are checked independently using shifted Gaussian integrals
+in $u$ and exponential integrals in $\mu$.
+
+The base velocity domain is $u\in[-4,4]$, $\mu\in[0,20]$, with orders 25 and
+21. Separate order scans are $17,21,25$ in $u$ and $13,17,21$ in $\mu$.
+Tail extensions to $|u|=5$ and $\mu=24$ are separately checked at wider-domain
+orders 29 and 25. A Gauss tail extension changes node spacing; these extra
+order checks are essential and are not described as fixed-spacing tests.
+All 36 cases retain their inputs and status. Across all three fields, the
+largest final Gauss production change is $0.261\%$; the largest expanded-domain
+quadrature change is $0.180\%$. Base finite-domain number/energy quadrature
+errors are below $9.4\times10^{-15}$. Independent analytic omitted energy is
+about $0.050\%$, which is not itself a bound on production error.
+
+Equidistant trapezoid controls at $9^2,17^2,25^2$ velocity nodes remain
+unresolved: the last production changes are $16.63\%$, $10.14\%$, and
+$10.15\%$ for mirror, dipole and nonaxisymmetric fields. Their statuses are
+preserved. The successful Gauss checks establish the stated initial-production
+comparison on a fixed spatial grid, not joint spatial--velocity or finite-time
+nonlinear convergence. The constructor now rejects zero pair directions
+without allocating and discarding a 25-component tensor per pair; the
+retained unit directions and collision action are unchanged and tested against
+explicit projector matrices.
+
+\subsection*{Finite-time campaigns and provenance}
+The historical discrete-gradient campaign and the current lagged-mobility
+campaign are separate time discretizations. The recovered four mirror rows
+retain their original execution at commit \texttt{fdc625d}; the subsequent
+field-split execution uses \texttt{4ce8e5c}. Dipole and nonaxisymmetric first
+steps in that execution failed their original GMRES check, and those failed
+logs and partial summaries remain archived. A failed Newton iteration is not
+a proof that a positive root does not exist.
+
+The historical resume validator checked exact input hashes, package-source
+bytes and scientific-function syntax against its fixed anchor, together with
+recorded commits, clean-source hashes, environment metadata, complete time
+histories, positivity and retained solver/invariant tolerances. Tests retain
+that validator from Git history to audit the archived rows. Its saved summaries
+lack stage states and gradient-dependent entropy bounds, so rechecking them
+cannot replay every original entropy acceptance decision. Original timings
+and run identifiers remain attached to their producing executions.
+
+The completed historical mirror run contains thirteen cases. Its eight
+independent refinements all pass the original $1\%$ target; the largest
+selected-observable change is $0.1126103\%$, from extending $|u|\le4$ to
+$|u|\le5$. The baseline relative entropy decreases by $43.7427\%$ and the
+active moment by $25.0538\%$ through $T=0.02$. Across all accepted histories,
+number, energy and full moment-bin errors are at most
+$7.779\times10^{-14}$, $1.363\times10^{-13}$ and $2.258\times10^{-14}$;
+the maximum nonlinear residual is $7.545\times10^{-13}$ at target $10^{-12}$.
+The retained minimum nodal density is $1.232\times10^{-16}$ and the largest
+absolute entropy identity discrepancy is $5.877\times10^{-15}$.
+These are fixed-other-parameter comparisons, not joint continuum convergence
+or a classification of every spatially localized constraint.
+
+The archived validator independently accepts all thirteen rows and exactly
+reproduces each saved comparison. Raw summaries, environment, CPU report and
+logs are in \texttt{results/nonuniform\_mirror\_dg/raw}; its separate audit
+retains exact inputs and per-case costs. The $7^3\times25\times21$ case has
+180075 nodes and 41786320 bytes of stored grid arrays (not peak memory).
+Its four accepted steps took 2001.55 seconds including the first compilation,
+versus 366.68 seconds for the $5^3$ case, on a four-logical-CPU AMD EPYC 7763
+runner. These are observed run costs, not a matched-error speedup comparison.
+
+
+The current \texttt{12\_nonuniform\_evolution.py} instead uses
+\eqref{eq:laggedentropy}. Its fifteen predefined cases per field independently
+vary spatial order, parallel-velocity and magnetic-moment order, timestep,
+velocity tails and quadrature on each expanded domain. Baseline values are
+$5^3\times25\times21$ nodes, $D=0.1$, $T=0.02$, and $\Delta t=0.005$;
+the first-order timestep sequence is $0.005,0.0025,0.00125,0.000625,0.0003125$.
+Every adjacent difference and the coarsest-to-finest difference are retained;
+a finest-pair pass does not certify the original baseline timestep or jointly
+refine the spatial and temporal discretizations.
+The common $1\%$ observable-change target is retained. All units are normalized;
+these times use the freely prescribed coefficient.
+
+\texttt{SM\_EVOLUTION\_FIELDS} and \texttt{SM\_EVOLUTION\_CASES} select
+predefined independent execution jobs, leaving their scientific inputs fixed.
+Without filters the script runs all forty-five cases. The CI driver
+separates each field/case pair and preserves failed or partial evidence.
+Historical discrete-gradient checkpoints are explicitly rejected by this
+new campaign. A completed selected job is distinct from a passing refinement
+comparison. Every row records its actual parameters, full step diagnostics,
+Newton history, separate KL contribution, residual entropy bound and original
+run identifier; metadata record source, versions and hardware. Independent
+refinements do not establish joint continuum convergence. No final outcome
+for the current campaign is asserted by this execution description.
+
+\paragraph{Completed mirror lagged-mobility campaign.}
+The retained collection contains 16 of 45 planned cases and remains
+unresolved overall. All fifteen independently executed mirror cases reach $T=0.02$ with the
+lagged-mobility entropy step, retaining a separate provenance record from
+the historical discrete-gradient campaign. The eight final, fixed-other-parameter
+comparisons all meet the original $1\%$ target. Their largest change is
+$0.197278\%$, in the active-moment change for the final timestep pair.
+At $\Delta t=0.005$, the $5\to7$ spatial-order changes in entropy gain,
+final production and active-moment change are respectively
+$0.045351\%$, $0.024860\%$ and $0.056944\%$.
+The corresponding largest tail change is $0.112113\%$.
+
+The timestep sequence provides important qualification of these passes.
+For $\Delta t=0.005\to0.0025$, entropy gain and active-moment change
+still differ by $1.30210\%$ and $1.51359\%$. For the finest pair,
+$0.000625\to0.0003125$, the entropy-gain, final-production and
+active-moment discrepancies are $0.168910\%$, $0.131882\%$ and
+$0.197278\%$. Successive absolute increments approximately halve,
+as expected for this first-order method. These are measured differences,
+not rigorous continuum error bounds; a first-order Richardson indicator
+additionally assumes the asymptotic expansion. The coarse-to-finest differences
+are still $2.45276\%$, $1.91519\%$ and $2.85202\%$.
+A finest-pair pass therefore does not retrospectively certify the original
+coarse timestep. Spatial scans use the coarse timestep, whereas the time
+scan fixes spatial order five; joint refinement is not asserted.
+
+At $\Delta t=0.005$, the lagged baseline relative entropy decreases by
+$42.5839\%$, compared with $43.7427\%$ in the historical same-grid
+discrete-gradient baseline at the same timestep. The finest lagged result,
+$\Delta t=0.0003125$, decreases relative entropy by $43.6546\%$.
+
+The smallest stored historical discrete-gradient timestep is
+$\Delta t=0.0025$; its same-grid relative-entropy decrease
+is $43.7322\%$. Comparing this historical $0.0025$ endpoint with the
+finest lagged $0.0003125$ endpoint gives discrepancies of $0.177401\%$
+in entropy gain, $0.138914\%$ in final production and $0.207378\%$
+in active-moment-change magnitude. Both comparisons hold all other grid,
+domain, initial-condition and coefficient inputs fixed. These cross-method
+differences do not identify either discrete endpoint with continuum truth.
+The separate numerical KL contribution to the entropy gain decreases from
+$3.51384\%$ at the baseline timestep to $0.227342\%$ at the finest;
+it is not included in the continuous nodal collision production.
+
+Across the completed mirror histories, maximum number, energy and
+moment-bin errors normalized by the declared global scales are
+$1.648\times10^{-12}$, $4.312\times10^{-12}$ and
+$4.862\times10^{-13}$. Every stored entropy identity defect is within
+its recorded residual bound. These bounds certify step budgets, not
+spatial or temporal truncation error. Sampled meridional constraints improve
+with spatial order: the mirror $\psi^2$ drift decreases from
+$1.363\times10^{-10}$ at order three to $1.594\times10^{-12}$ at order
+five and roundoff at order seven. This does not exhaust the disconnected
+Cartesian-cap population invariants or prove continuum mixing.
+
+Accepted-step walls are observed costs of distinct shared Linux CI jobs,
+including each first-step compilation and excluding setup and separate
+initial/final diagnostics. The baseline four steps take $369.79$ seconds;
+the finest timestep's 64 steps take $1456.37$ seconds. These costs are not
+a matched-error speedup comparison with the historical method. Stored grid
+array bytes exclude other workspace and line factors; process RSS is a
+high-water mark including compiled runtime. No dipole or nonaxisymmetric
+campaign conclusion is inferred from these mirror results.
+
+The \href{https://github.com/rogeriojorge/sato-morrison/blob/main/results/nonuniform_entropy/mirror_audit.json}{public mirror audit}
+retains the original per-case provenance and recomputes all eight comparisons,
+including every adjacent timestep difference and the coarse-to-finest bias.
+
+\paragraph{Solver-tolerance audit on one fixed mirror grid.}
+Example 19 at source revision \texttt{e1bc1ab} retains every state in five
+four-step runs on $3^3\times25\times21$ nodes, with $D=0.1$, $T=0.02$
+and $\Delta t=0.005$. Outer Newton tolerances $10^{-10},10^{-11},10^{-12}$
+at inner tolerance $10^{-6}$ give byte-identical endpoints; this is not an
+outer-error-order estimate. At outer tolerance $10^{-12}$, the separate
+inner sequence is $10^{-4},10^{-5},10^{-6}$. An
+\href{https://github.com/rogeriojorge/sato-morrison/blob/main/results/solver_accuracy/audit.json}{independent NumPy saved-state audit}
+reconstructs all 20 nonlinear residuals and entropy/invariant budgets, with
+explicit unordered-pair production checks. The maximum independently
+recomputed nonlinear relative residual is $2.162\times10^{-13}$; maximum
+cumulative number, energy and full moment-bin errors are respectively
+$1.019\times10^{-14}$, $1.579\times10^{-14}$ and $4.135\times10^{-15}$.
+The last inner pair has entropy-scaled log endpoint difference
+$1.393\times10^{-14}$ and maximum independently recomputed relative change
+in the three principal observables $5.27\times10^{-13}$, well below the
+unchanged $10^{-8}$ endpoint and $10^{-6}$ observable targets. The fixed
+finite-dimensional reference is not continuum truth. Krylov correction
+vectors are not archived, so their true residual scalars are checked as
+producer records rather than independently replayed vectors.
+The five recorded run costs sum to 89.698 seconds on the Apple M4; the
+separate 3.670-second setup/initial-diagnostic cost is excluded from that
+sum. These observed costs retain first-use compilation, evidence writes and
+concurrent load, and supply no speedup claim. Exact normalized inputs,
+versions and hardware are retained in
+\href{https://github.com/rogeriojorge/sato-morrison/blob/main/results/solver_accuracy/summary.json}{the producing summary}.
+
+\subsection*{Bounded Maxwellian encounter flux and thermal center motion}
+Let $\theta=k_BT/m$ denote a single-particle velocity variance. For two equal
+Maxwellian particles, $\bm w=\bm v_1-\bm v_2$ and
+$\bm V=(\bm v_1+\bm v_2)/2$ are independent, with covariances
+$2\theta I$ and $\theta I/2$. The transformation has absolute Jacobian one.
+The relative distribution and equations for a screened pair potential are
+\begin{align}
+ F_{\rm rel}(\bm w)&=(4\pi\theta)^{-3/2}e^{-|\bm w|^2/(4\theta)},\\
+ \dot{\bm r}&=\bm w,\qquad
+ \dot{\bm w}=\Omega\bm w\times\bm e_z+
+ \frac{2\kappa}{m}\frac{e^{-r/L_s}(1+r/L_s)}{r^3}\bm r,
+ \qquad \Omega=qB/m.
+\end{align}
+The conserved relative energy is $m|\bm w|^2/4+\kappa e^{-r/L_s}/r$;
+center motion follows an independent free helix. The new six-dimensional
+relative integrator is checked against the independent twelve-dimensional
+pair integrator, including nonunit masses and both charge signs.
+
+For guiding-center impact $b$, the translation to the incoming perpendicular
+position has unit Jacobian. Axisymmetry integrates its orientation to
+$2\pi b\,\dd b$. On a plane normal to the field, the two-sided incoming
+crossing measure per partner density is
+\begin{equation}
+ \frac{\dd\nu}{n}=2(2\pi b\,\dd b)\,w_\parallel F_{\rm rel}(\bm w)
+ w_\perp\,\dd w_\perp\,\dd w_\parallel\,\dd\varphi,
+ \qquad w_\parallel>0.
+\end{equation}
+The factor two includes the opposite incoming direction. There is no
+unordered-pair half factor for this tagged-particle flux, and the plane flux
+uses $|w_\parallel|$, not the cross-section flux $|\bm w|$.
+For impact area $A=\pi(b_{\max}^2-b_{\min}^2)$, the bounded integral is
+$2A(2\pi)J_\parallel J_\perp/(4\pi\theta)^{3/2}$, where
+$J(a,b)=2\theta[e^{-a^2/(4\theta)}-e^{-b^2/(4\theta)}]$.
+This supplies an independent analytic normalization.
+
+Undo outgoing free gyromotion when defining
+$\Delta\bm w_\perp=\overline{\bm w}_{\rm out,\perp}-\bm w_{\rm in,\perp}$.
+With $c=m\Delta|\bm w_\perp|^2/(8B)$, the individual changes are
+$\Delta\mu_{1,2}=c\pm[m/(2B)]\bm V_\perp\cdot\Delta\bm w_\perp$.
+Exact Gaussian center averaging therefore gives
+\begin{align}
+ \langle\Delta\mu_1\rangle_V&=c,\\
+ \langle(\Delta\mu_1)^2\rangle_V&=c^2+\sigma_c^2,
+ &\langle\Delta\mu_1\Delta\mu_2\rangle_V&=c^2-\sigma_c^2,\\
+ \sigma_c^2&=\frac{m^2\theta}{8B^2}|\Delta\bm w_\perp|^2.
+\end{align}
+A separate Gaussian quadrature of the actual individual initial/final
+velocities verifies these raw moments. A zero-center trajectory omits
+$\sigma_c^2$. The drift and diffusion moment integrals are
+$A_\mu/n=\int\langle\Delta\mu\rangle_V\dd\nu/n$ and
+$D_{\mu\mu}/n=\tfrac12\int\langle(\Delta\mu)^2\rangle_V\dd\nu/n$;
+the latter half is the second-moment convention, not pair counting.
+
+The executed normalized case uses $m=q=1$, $B=2$, $\kappa=0.03$, $L_s=3$,
+$\theta=0.5$, $b\in[1.2,2.4]$, $w_\parallel\in[0.7,1.5]$ and
+$w_\perp\in[0.2,0.8]$. The $4^3\times16$ base quadrature is independently
+refined in each impact/speed coordinate through orders $3,4,5$, in gyrophase
+through $8,16,32$, and by a half-grid phase shift. Moving the planes through
+$L=18,24,32$ preserves the same incoming free helix. The first outward exit
+is recorded; reflected trajectories are retained, and failure to exit within
+$6L/w_\parallel$ raises. Eight held-out states additionally check active maximum
+steps $0.2,0.1,0.05$. Direct quadrature changes are below $0.021\%$;
+analytic flux normalization error is $1.62\times10^{-9}$.
+The bounded results are $\nu/n=1.2601061$,
+$A_\mu/n=3.11546\times10^{-6}$ and
+$D_{\mu\mu}/n=8.00765\times10^{-7}$ in the stated normalized units.
+
+A supplementary multilinear scattering table is tested on 64 uniformly
+sampled states in the inner quadrature-node hull (seed 701).
+Its held-out second-moment relative RMS error is $20.5\%$, exceeding the
+predeclared $10\%$ target; this surrogate remains unresolved despite converged
+direct integrals. These speed bands contain only $11.6\%$ of the full thermal
+incoming flux in the same annulus. Omitted impact/speed regions and successive
+encounter correlations remain untested. Truncation can exclude reverse
+encounters, so the positive conditional drift is not a full Maxwellian-plasma
+drift. Neither these bounded crossing coefficients nor the interpolation
+checks calibrate the constrained scalar $D$ or establish a dipole lifetime.
+
+
+\subsection*{Broader encounter coverage and microscopic reversal}
+Example 13 retains the same screened pair model and thermal center average,
+while widening the tested speed band to
+$w_\parallel\in[0.35,3]$, $w_\perp\in[0,2.5]$ and splitting the impact
+interval into $[0.15,0.4]$, $[0.4,0.8]$, $[0.8,1.2]$, $[1.2,2.4]$,
+$[2.4,4.8]$ and $[4.8,8]$. The impact variable $b^2$ is sampled uniformly;
+each squared speed is drawn from its truncated exponential incoming-flux
+law. These inverse cumulative distributions implement the positive crossing
+measure above. Scrambled Sobol orders $32,64,128,256$ share one scramble;
+a separate 128-point scramble checks replication. Gyrophase uses 16 equally
+spaced points and an independent $8\to16$ refinement. The two-scramble
+spread is a finite numerical comparison, not a statistical confidence interval.
+The speed band retains $88.8641\%$ of the complete thermal crossing flux in
+the same impact annuli; this flux fraction does not bound the omitted
+moment contribution.
+
+Microscopic reversal is checked on 16 separate transmitted encounters.
+Starting at the actual outgoing position, apply parity and time reversal,
+$(\bm r_R,\bm w_R)=(-\bm r_{\rm out},\bm w_{\rm out})$, and reverse the
+charge, hence $\Omega_R=-\Omega$. A common axial rotation restores the
+incoming guiding-center orientation, and the free-helix phase is recovered
+from that state. The relative equations then retrace the encounter. The
+thermal-center mean changes sign, while its second and cross moments are
+unchanged. Maximum absolute discrepancies are respectively
+$2.87\times10^{-11}$, $1.09\times10^{-13}$ and $7.52\times10^{-14}$.
+This tests the two-body inverse map; it does not establish detailed balance
+for a truncated incident ensemble that omits reverse states.
+
+The broad campaign evaluates 38,220 distinct trajectories. All base
+trajectories exit, but one independent-replica state fails to reach an
+outgoing plane within $6L/w_\parallel$:
+\begin{equation}
+ (b,w_\parallel,w_\perp,\varphi)
+ =(0.9938225266,1.9056642462,1.9668376625,\pi/2),\qquad L=24.
+\end{equation}
+Missing samples are not renormalized away. The $[0.8,1.2]$ annulus and total
+conditional drift/diffusion are therefore reported as unresolved, with no
+aggregate coefficient. The final empirical diffusion spreads in the six
+annuli are $10.4\%$, $11.6\%$, $65.9\%$, $8.62\%$, $3.95\%$ and $4.85\%$.
+Only the outer two meet the stated $5\%$ finite-comparison target; the inner
+four do not. Positive contributions from completed nodes are lower bounds
+only on their specified finite positive quadrature sums, not certified lower
+bounds on a continuous integral.
+
+Even in the previously tested $[1.2,2.4]$ impact annulus, the wider speed band
+gives $D_{\mu\mu}/n=2.78117\times10^{-5}$, about $34.7$ times the earlier
+narrow-band value, and reverses the conditional drift sign to
+$A_\mu/n=-1.01609\times10^{-5}$. This row is itself unresolved by the
+$8.62\%$ spread and $5.26\%$ phase change; the comparison demonstrates
+cutoff sensitivity rather than a converged full rate. Twelve separate
+states give relative $L^2$ changes of the twelve-state second-moment vector
+of $4.57\times10^{-5}$ on moving the planes from 24 to 32 and
+$1.35\times10^{-10}$ on decreasing the active maximum timestep from
+$0.1$ to $0.05$. These state checks do not settle the
+remaining ensemble quadrature error or its failed trajectory.
+
+For a repulsive uniform-field pair,
+\begin{equation}
+ \ddot z=k(t)z,\qquad
+ k(t)=\frac{2\kappa}{m}\frac{e^{-r/L_s}(1+r/L_s)}{r^3}\ge0.
+ \label{eq:encounterparallelturn}
+\end{equation}
+On $z<0$, the incoming positive parallel velocity decreases monotonically.
+If it turns, the particle thereafter recedes toward the incoming exit and
+cannot turn again. If it crosses $z=0$ with positive velocity, that velocity
+increases on $z>0$. Reaching $(z,\dot z)=(0,0)$ at a finite time is excluded
+by uniqueness of the regular equations unless the trajectory stays in that
+plane. Thus an exiting trajectory has at most one parallel turn. A finite
+flight-budget failure can involve slow outward travel or long near-turning
+motion; it does not establish a bound pair or a failure of molecular chaos.
+The omitted impact and speed tails, reverse-complete incident statistics
+and successive-encounter correlations remain unchecked. No physical constrained
+coefficient, plasma relaxation time or dipole lifetime follows.
+
+\subsection*{Resolving the failed encounter's flight budget}
+Example 17 preserves the original broad-campaign metadata and replays its
+exact failed node. The declared flight factors $6,12,24,48$ vary only the
+finite integration budget. Factor 6 ends at $t=75.5642$, after reflection,
+with $z=-19.268$ and $\dot z=-0.320016$; the particle is already travelling
+toward the incoming plane. Factor 12 reaches the reflected outgoing event
+$z=-24$ at $t=90.3503$, with one parallel turn. Factors 24 and 48 reach the
+same event. This diagnoses an insufficient original numerical flight budget,
+not a trapped trajectory.
+
+Active maximum steps $0.2,0.1,0.05$ give a final conditional second-moment
+change $2.13\times10^{-10}$; independently moving the planes through
+$L=24,32,40$ gives a final change $2.24\times10^{-5}$. The original comparison
+of the $0.2$ relative solve to the Cartesian pair path has velocity error
+$1.69\times10^{-8}$, above the unchanged $10^{-8}$ absolute target, and
+is retained as an unresolved coarse comparison. The finest declared relative
+solve instead uses maximum step $0.05$ and its own event time
+$t=90.350330908$. Independent twelve-dimensional pair paths with maximum
+steps $0.05$ and $0.025$ agree with it in relative velocity to
+$5.15\times10^{-12}$ and $4.34\times10^{-11}$, and in relative position to
+$2.54\times10^{-10}$ and $4.02\times10^{-9}$. Their velocity plateau is
+$4.63\times10^{-11}$. Both satisfy the unchanged $10^{-8}$ position and
+velocity targets. No discrepancy is removed by an invariant correction.
+
+Restoring this one node changes only the chosen replica's finite quadrature.
+Its conditional thermal-center mean, second and cross moments are
+$(0.2205711,0.1127298,-0.0154266)$. The positive increment to that replica's
+finite $D_{\mu\mu}/n$ sum, using the half-second-moment convention, is
+$4.90439\times10^{-5}$, equal to about
+$20.12\%$ of the \emph{base} annulus's reported finite diffusion sum, even
+though the node represents only $1/2048=0.04883\%$ of the replica count.
+The two populations are distinct; this ratio is a diagnostic of numerical
+leverage, not a percentage correction to a converged continuous coefficient.
+For this node the unperturbed relative gyro-radius is
+$\rho_{\rm rel}=w_\perp/|\Omega|=0.9834188$.
+At the declared zero-plane phase $\varphi=\pi/2$ and $\Omega=2$,
+$\bm r_\perp=(b-w_\perp\sin\varphi/\Omega,
+              w_\perp\cos\varphi/\Omega)$;
+the free relative orbit's closest perpendicular gap is only
+$b-\rho_{\rm rel}=0.0104037$. The interacting independent Cartesian path
+has sampled minimum separation $0.0225124$. These are relative-orbit
+geometrical quantities, not individual thermal gyro-radii. The Coulomb reference length is
+$b_{90}=\kappa/[(m/2)|\bm w_{\rm in}|^2]=0.00799999$,
+so the free gap is $1.30046b_{90}$, despite the much larger guiding-center
+impact. This is the unscreened Coulomb $90$-degree reference length, not an
+exact deflection parameter for the screened magnetized trajectory.
+At the sampled closest point, the actual relative perpendicular velocity
+gives $\rho_{\rm kin}=|\bm w_\perp(t)|/|\Omega|=0.683913$ and
+$\rho_{\rm kin}/r=30.3794$; these differ from the incoming ratio
+$\rho_{\rm rel}/r=43.6835$. The measured full-speed ratio is
+$|\Omega|r/|\bm w(t)|=0.0302907$, while
+$|\Omega|b_{90}/|\bm w_{\rm in}|=0.00584237$.
+These local scales place this concrete close encounter outside a verified
+grazing or close-collision adiabatic ordering. They help interpret its large
+finite moment contribution, but are not a counterexample to an asymptotic
+SM working regime or an ensemble relaxation law.
+Resolving the trajectory does not settle the independent Sobol/phase spread,
+omitted bands or kinetic closure. Example 13's original aggregate remains
+unresolved and its metadata and failed comparisons remain available.
+
+The same final audit gives a deterministic inverse-cutoff counterexample,
+with the field explicitly fixed at $B=2$ in both trajectory and thermal-center
+moment calculations. The incoming node
+$(b,w_\parallel,w_\perp,\varphi)=(1.2,0.7,0.8,\pi/2)$ maps under the tested
+microscopic inverse to
+$(1.20082758,0.69429998,0.80495188,3.94743171)$.
+Both inverse speeds lie outside the original narrow bands. Its forward
+mean and second moment are $4.96721\times10^{-4}$ and
+$7.44799\times10^{-6}$. The reverse mean negation, second-moment equality
+and cross-moment equality have absolute errors respectively
+$5.07\times10^{-16}$, $3.19\times10^{-18}$ and $2.18\times10^{-18}$;
+energy errors are below $1.52\times10^{-14}$. This is a fixed boundary
+counterexample, not an independent statistical validation or a fitted state.
+The outgoing event is transverse, so continuity also gives nearby interior
+incoming states with inverse speeds outside the bands. The incident rectangle
+therefore is genuinely not closed under this inverse. Conditional drift on
+that rectangle is not a full Maxwellian drift or evidence against microscopic
+reversibility.
+
+\subsection*{Positive periodic scattering table: bulk accuracy and a failed tail target}
+The refined table interpolates the signed conditional mean $c$ and
+$\ln\sigma_c^2$ with cubic interpolation in impact and speeds and a truly
+periodic cubic spline in gyrophase. Reconstruction as
+$c^2+\sigma_c^2$ and $c^2-\sigma_c^2$ preserves the positive variance and
+thermal-center identities. A $4^3\times16$ version, tested at 256 fresh
+uniform states with seed 1301, gives a second-moment relative $L^2$ error
+$1.038\%$, but a 95th percentile pointwise relative error $9.869\%$;
+the prescribed $5\%$ tail target fails.
+
+Example 16 refines to $6^3\times32=6912$ training states on the original
+narrow bands, and evaluates 256 independent uniform states (seed 1311)
+inside the training-node hull, with no extrapolation. Its relative $L^2$
+error is defined as
+\begin{equation}
+ e_{\rm bulk}=\frac{\sqrt{\sum_i(\widehat M_i-M_i)^2}}
+                         {\sqrt{\sum_i M_i^2}},\qquad
+ e_i=|\widehat M_i-M_i|/M_i,
+\end{equation}
+where $M_i=\langle(\Delta\mu)^2\rangle_V>0$ is the direct moment.
+This first sample gives $e_{\rm bulk}=0.1328\%$ and an observed 95th
+percentile $4.480\%$, meeting the original observed-error criteria. However,
+the two-sided $95\%$ binomial order-statistic interval for the population
+95th percentile is $[2.273\%,30.303\%]$; 256 states do not establish a
+$5\%$ population tail bound. Eight independent impact-direction derivative
+checks give relative $L^2$ error $0.3632\%$, with direct centered-difference
+plateau change $6.73\times10^{-7}$. This is one moment derivative on eight
+states, not a general kinetic sensitivity result.
+
+The same table is then tested without retraining on 4096 new independent
+uniform states (seed 1321). All direct trajectories exit. The original
+256-state measurements and training archive remain separate; cached nodes,
+producer metadata, dependency hashes and interpolant values are verified.
+After a duration-helper change invalidated that cache's controls hash, the
+complete training table, original 256-state stage and fresh 4096-state stage
+were regenerated at source revision \texttt{cdb577b}. All eleven saved
+training, moment, derivative and validation arrays are identical in shape,
+dtype and element bytes to the archived \texttt{90abe1d} measurements;
+the negative tail result is reproduced without retuning.
+The fresh bulk error is $0.2282\%$, with an empirical 2000-resample
+bootstrap interval $[0.1912\%,0.2700\%]$. The observed 95th percentile is
+$6.2610\%$ and its two-sided $95\%$ order-statistic interval is
+$[5.3207\%,7.2237\%]$. Thus the predeclared $5\%$ tail target fails in
+the larger sample, including its confidence interval. Of these states,
+$5.884\%$ have relative error above $5\%$ and $0.2930\%$ above $100\%$;
+small direct moments permit large relative outliers despite small bulk error.
+
+The order-statistic interval uses the binomial distribution of the count
+below a fixed population quantile, valid for these independent uniform
+samples and a continuous error distribution. It describes that declared
+sampling distribution, not every state, a flux-weighted ensemble or omitted
+domain regions. The bootstrap bulk interval is an empirical uncertainty
+estimate. A failed tail target is retained as a result, with no parameter
+retuning on those validation states. Table resolution and conditional moment
+accuracy do not supply kinetic closure, screening validation, inter-encounter
+independence or a constrained collision coefficient.
+
+\subsection*{Predeclared eight-node refinement on the unchanged validation domain}
+A separate, predeclared $8^3\times32$ table uses 16384 direct training
+states, with the same signed-mean/log-variance interpolation, physical inputs,
+integration tolerances and accuracy targets. The validation domain remains
+exactly the original six-node inner hull: the impact and two speed intervals
+are approximately $[1.2405183,2.3594817]$, $[0.7270122,1.4729878]$ and
+$[0.2202591,0.7797409]$, respectively, with uniform gyrophase on $[0,2\pi)$.
+The larger eight-node training hull is not substituted for this fixed test
+domain. Gauss-six and Gauss-eight training nodes have no bit-identical full
+states, so no earlier trajectory is reused. The failed six-node record above
+remains available and is not revised by the new outcome.
+
+Source revision \texttt{e1bc1ab} declares 4096 fresh primary states with
+seed 1331 and bootstrap seed 1332, and 256 fresh secondary states with seed
+1333 and bootstrap seed 1334, before training or inspecting their outcomes.
+The normalized inputs remain $m=q=1$, $B=2$, $\kappa=0.03$,
+$\lambda_s=3$, $\theta=0.5$, incoming/outgoing planes $L=24$, maximum
+DOP853 step $0.2$ and relative tolerance $10^{-10}$. The exact hull,
+source, versions and hardware are recorded in
+\href{https://github.com/rogeriojorge/sato-morrison/blob/main/results/scattering_table/refined8_validation4096/metadata.json}{the public normalized-input metadata}.
+
+All 4096 primary direct encounters exit. Their second-moment bulk relative
+error is $0.11506\%$, with 2000-resample bootstrap interval
+$[0.08909\%,0.14119\%]$. The observed 95th percentile is $2.53760\%$;
+the two-sided $95\%$ order-statistic interval is
+$[2.05643\%,3.36706\%]$. Thus the unchanged criteria---bulk error at most
+$2\%$, observed 95th percentile at most $5\%$, and confidence upper limit
+at most $5\%$---all pass for this declared sampling distribution. The
+secondary sample has bulk error $0.05963\%$ and observed 95th percentile
+$3.90539\%$, but its much wider interval $[1.25255\%,10.00161\%]$
+illustrates why the larger primary sample is the confidence evidence.
+The eight impact-direction checks give derivative relative error
+$0.47585\%$, below the original $5\%$ target; their direct finite-difference
+plateau change is $6.7149\times10^{-7}$. Maximum saved training, secondary
+and primary energy errors are respectively $5.76\times10^{-10}$,
+$3.59\times10^{-10}$ and $4.39\times10^{-10}$, below the unchanged
+$10^{-8}$ guard applied jointly to all three stages.
+
+The pass is not a pointwise accuracy bound: 140 of 4096 states
+($3.4180\%$) exceed $5\%$ relative error, and eight ($0.1953\%$) exceed
+$100\%$; the maximum relative error is $293.95\%$. Small direct moments
+still permit large relative outliers. An
+\href{https://github.com/rogeriojorge/sato-morrison/blob/main/results/scattering_table/refined8_validation4096/audit.json}{independent saved-array audit}
+reconstructs the seeds and fixed domain, verifies no overlap with earlier
+states, rebuilds the interpolant and reproduces the reported statistics and
+derivative comparisons. It verifies source dependencies against the producer
+revision. Training energy maxima are replayed from the saved checkpoint;
+secondary and primary energy checks use saved producer maxima rather than
+rerunning individual trajectories.
+
+The calculation comprises $16384+4096+256+48=20784$ direct solves, including
+48 finite-difference solves for the eight derivative states, and takes
+354.638 seconds on the recorded Apple M4. This is one observed whole-run
+cost including concurrent machine load, not a matched-cost speedup over the
+older table. The successful bounded conditional interpolation test does not
+validate a physical kinetic closure, a calibrated collision coefficient,
+inter-encounter independence or accuracy outside the declared hull.
+
+\subsection*{Reproducible evolution visualization}
+The README animation is a solution of the uniform linear surrogate at finite
+velocity quadrature, not a nonlinear encounter or physical-rate simulation.
+The nine positive velocity masses $M_j$ are proportional to
+$\exp(-v_j^2/2)$, with $v_j$ equally spaced on $[-2,2]$ and
+$\sum_jM_j=1$. Define
+\begin{equation}
+ p_j=\frac{v_j^2-\sum_iM_iv_i^2}{\max_i|v_i^2-\sum_lM_lv_l^2|},
+ \qquad h_j(x,0)=(0.25+0.20p_j)\cos x.
+\end{equation}
+The density and velocity-neutral amplitudes are evolved using matrix
+exponentials of an independently assembled ordered-pair Fourier matrix
+($N_x=64$, Gaussian range $\ell=0.6$) and the analytic local matrix.
+For $D=0.8$, $B=1.7$, $q=-1.3$, and $\tau=\lambda t$, the exact comparisons are
+\begin{align}
+ h_{j,\mathrm{local}}(x,t)&=[0.25+0.20e^{-\tau}p_j]\cos x,\\
+ h_{j,\mathrm{range}}(x,t)&=[0.25e^{-(1-e^{-0.6^2/2})\tau}
+                            +0.20e^{-\tau}p_j]\cos x.
+\end{align}
+All 65 saved frames on $0\leq\tau\leq8$ are checked against these formulas;
+$1+h_j$ stays positive. Fixed color limits prevent apparent relaxation caused
+by automatic rescaling. The displayed velocity coordinate is a discrete node
+index, not a physical three-dimensional velocity grid. GIF and MP4 use the
+same frames, and the arrays are saved in a compressed archive.
+The accompanying validation and cost panels read the existing experiment JSON
+files. Their metadata retain each source file's hash and source commit, rather
+than attributing old measurements to the visualization revision.
+
+\subsection*{Continuous local geometric sensitivity}
+Example 14 differentiates an initial local entropy-production density, not
+a kinetic trajectory or an implicitly defined steady state. Its prescribed
+distribution is
+\begin{equation}
+ \ln f=-E-0.2\mu+p,\qquad
+ p=0.1\sin(x)u+0.04y\mu.
+\end{equation}
+At $\X=(1,0.12,0.3)$, $m=1.3$, $q=-0.8$, $D=0.1$, define
+\begin{equation}
+ \mathcal P(\X)=\frac{DB^2}{2}
+ \iint ff'\left|I_XP\Delta A\ln f\right|^2
+ \dd u\dd\mu\dd u'\dd\mu'.
+ \label{eq:localproductionderivative}
+\end{equation}
+Energy and moment degeneracy give
+$P\Delta A\ln f=P\Delta Ap$. The independent NumPy reference reconstructs
+$A p$ from the analytic gradient
+$\nabla_Xp=(0.1\cos(x)u,0.04\mu,0)$, $p_u=0.1\sin(x)$ and the vacuum
+flow \eqref{eq:vacuumflowmap}; it shares only the field derivative data.
+Both evaluations retain the two local $B$ Jacobians. Automatic
+differentiation translates the sample in $x$ while holding the analytic
+distribution definition, velocity bounds and field parameters fixed; hence
+it differentiates $B^2$, $f,f'$, both observable actions and the energy-flow
+projector. No part of the geometry is stopped in this derivative.
+
+On the base $25\times21$ velocity quadrature, $|u|\le4$, $0\le\mu\le20$,
+the mirror, dipole and perturbed dipole respectively give
+\begin{align}
+ (\mathcal P,\partial_x\mathcal P)_m
+   &=(0.00142987874,-0.00316286298),\\
+ (\mathcal P,\partial_x\mathcal P)_d
+   &=(0.00528569785,0.0324274535),\\
+ (\mathcal P,\partial_x\mathcal P)_{na}
+   &=(0.00507509906,0.0310717576).
+\end{align}
+The independent pair values differ by at most $1.03\times10^{-15}$ relative.
+Sixteen independent centered-difference steps from $0.04$ to $10^{-8}$
+show the derivative plateau; the last-three-step maximum relative discrepancy
+is below $1.54\times10^{-8}$. Separate velocity-order checks, expanded
+$|u|\le5$ and $\mu\le24$ bounds, and quadrature refinement on each expanded
+domain give final derivative changes below $0.661\%$.
+The local maps are injective on these domains, as established above.
+This is a checked derivative of the specified normalized weak observable,
+with no general steady-state sensitivity or physical-rate inference.
+
+\subsection*{Positive dipole distributions with incompatible flux populations}
+Example 15 constructs a finite-domain counterexample without a time solve.
+Use poloidal flux $\psi$, magnetic latitude $\lambda$, and periodic azimuth
+$\theta$. With $r=C\cos^2\lambda/\psi$,
+\begin{equation}
+ \left|\frac{\partial\X}{\partial(\psi,\lambda,\theta)}\right|
+ =\frac{C^3\cos^7\lambda}{\psi^4},\qquad
+ B\dd\X=
+ \frac{C\cos\lambda\sqrt{1+3\sin^2\lambda}}{\psi}
+ \dd\psi\dd\lambda\dd\theta.
+ \label{eq:dipolefluxmeasure}
+\end{equation}
+An independent Cartesian automatic-differentiation determinant checks both
+identities at two nontrivial coordinates and verifies the inverse flux map.
+The finite domain is $0.4\le\psi\le1$, $|\lambda|\le\pi/6$,
+$|u|\le4$, $0\le\mu\le12$; $C=1$ and
+$f_* =\exp(-E-0.2\mu)$. Angular integration is exact over $2\pi$.
+
+Let conditional means under $f_*\dd\Gamma$ at fixed $\mu$ be denoted by
+an overbar, and set
+\begin{equation}
+ r_E=E-\overline E_\mu,\quad
+ r_\psi=\psi-\overline\psi_\mu,\quad
+ r_2=\psi^2-\overline{\psi^2}_\mu.
+\end{equation}
+Solve the positive two-dimensional covariance system
+\begin{equation}
+ \int f_*\begin{pmatrix}r_E^2&r_Er_\psi\\r_Er_\psi&r_\psi^2\end{pmatrix}
+ \dd\Gamma\begin{pmatrix}a\\b\end{pmatrix}
+ =\int f_*\begin{pmatrix}r_Er_2\\r_\psi r_2\end{pmatrix}\dd\Gamma,
+ \qquad h=r_2-a r_E-b r_\psi.
+ \label{eq:fluxcounterexampleprojection}
+\end{equation}
+The Gram matrix is nonsingular on this positive product domain: an affine
+relation between $E$ and $\psi$ would require a vanishing $u^2$ coefficient,
+then a constant flux. The residual $h$ is nonzero because $\psi^2$ cannot be
+an affine function of $\psi$ on a nonzero-width flux interval after the
+$u^2$ coefficient has vanished.
+Define $f_\pm=f_*(1\pm\epsilon h)$. The conservative bound
+\begin{equation}
+ |h|\le(\psi_{\max}^2-\psi_{\min}^2)
+      +|a|E_{\max}+|b|(\psi_{\max}-\psi_{\min})=:H
+\end{equation}
+holds over the entire truncated domain, since conditional means lie in the
+same global intervals as their observables. Taking $\epsilon=0.4/H$
+guarantees $f_\pm\ge0.6 f_*>0$. Conditional centering preserves every
+$G(\mu)$; the covariance projection also preserves total energy and mean
+flux. Number follows from the moment marginal. Nevertheless, writing
+$N=\int f_*\dd\Gamma$,
+\begin{equation}
+ \frac1N\int\psi^2(f_+-f_-)\dd\Gamma
+ =\frac{2\epsilon}{N}\int f_*h^2\dd\Gamma>0.
+ \label{eq:fluxcounterexampleidentity}
+\end{equation}
+Thus the flux populations differ even after matching the mean canonical
+toroidal momentum. This is stronger than a mismatch of mean momentum alone.
+
+For mass-normalized distributions let $\rho_\psi$ be the flux pushforward
+density. The conditional Jensen inequality gives the information bound
+\begin{equation}
+ \frac1N\int f\ln(f/f_*)\dd\Gamma
+ \ge\int\rho_\psi\ln(\rho_\psi/\rho_{\psi,*})\dd\psi.
+ \label{eq:fluxinformationfloor}
+\end{equation}
+Conservation of the full flux population fixes its strictly positive
+right-hand side. Therefore any closed evolution satisfying
+\eqref{eq:fluxpopulation} cannot reach $f_*$ from $f_+$.
+Ten independent quadratures refine each integration coordinate and all
+coordinates jointly. The $32\times24\times32\times32$ base and
+$40\times30\times40\times40$ joint refinement give
+$\Delta\langle\psi^2\rangle=2.5868566\times10^{-4}$ and a flux information
+floor of $1.5140605\times10^{-5}$ per particle. Discrete number, energy,
+each moment-bin population and mean flux match to rounding; the independent
+squared-residual identity has about $4\times10^{-12}$ relative discrepancy.
+These are matched \emph{discrete} constraints; replacing sums by conditional
+integrals gives the continuous construction. The quadrature convergence is
+on the stated finite domain, not a tail limit.
+
+The finite-domain distributions are not asserted to satisfy a confined
+ideal evolution. In particular, $u=\pm4$ walls are not tangent to the
+mirror force. Collision-only natural boundaries suffice for their local
+invariant algebra; the combined theorem separately requires closed
+flux-compatible ideal boundaries. Specular reversal of $u$ at latitude
+endcaps preserves energy, moment and flux, but does not by itself close
+finite-$u$ walls. No kinetic trajectory, approach rate or physical dipole
+confinement time is inferred from this constructive obstruction.
 
 \bibliographystyle{unsrt}
 \bibliography{references}

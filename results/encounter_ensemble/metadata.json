@@ -1,0 +1,710 @@
+{
+  "model": "encounter",
+  "boundary": "bounded incoming flux; first outgoing plane; finite screening-tail convergence",
+  "units": "normalized",
+  "inputs": {
+    "mass": 1.0,
+    "charge": 1.0,
+    "field": 2.0,
+    "interaction_strength": 0.03,
+    "screening_length": 3.0,
+    "temperature": 0.5,
+    "temperature_definition": "theta=k_B*T/m, single-particle velocity variance",
+    "impact_bounds": [
+      1.2,
+      2.4
+    ],
+    "parallel_bounds": [
+      0.7,
+      1.5
+    ],
+    "perpendicular_bounds": [
+      0.2,
+      0.8
+    ],
+    "accepted_orders": [
+      4,
+      4,
+      4,
+      16
+    ],
+    "refinement_orders": [
+      3,
+      4,
+      5
+    ],
+    "phase_orders": [
+      8,
+      16,
+      32
+    ],
+    "start_distance": 24.0,
+    "start_distances": [
+      18.0,
+      24.0,
+      32.0
+    ],
+    "max_step": 0.35,
+    "rtol": 1e-10,
+    "held_out_count": 64,
+    "held_out_seed": 701,
+    "interpolation_rms_target": 0.1,
+    "relative_distribution": "Gaussian covariance 2*theta I; independent center covariance theta/2 I",
+    "flux_measure": "2*(2*pi*b db)*v_parallel*F_relative*v_perp dv_perp dv_parallel dphi",
+    "pair_potential": "kappa exp(-r/screening_length)/r",
+    "exit_policy": "first outgoing +/-start_distance plane; reflected retained; no exit by 6L/vpar rejected",
+    "rate_scope": "bounded crossing flux/moment integrals per unit partner density; no plasma independent-encounter validation or SM D inference"
+  },
+  "commit": "cc4a5e2c98e6970743e101d878b32226c99013ea",
+  "working_tree": "M README.md\n M notes/implementation.pdf\n M notes/implementation.tex\n M results/summary.csv\n M results/validation.csv\n?? results/continuation.json\n?? results/encounter_ensemble/\n?? results/field_velocity/\n?? results/visual_summary/",
+  "source_sha256": "0308712e3a83594a31bfc2cc78eecb249b89516af2583d1643f9b718fbfc01ba",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "unset",
+    "OPENBLAS_NUM_THREADS": "unset",
+    "MKL_NUM_THREADS": "unset",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": true,
+  "results": {
+    "accepted": {
+      "case": "accepted",
+      "orders": [
+        4,
+        4,
+        4,
+        16
+      ],
+      "start_distance": 24.0,
+      "phase_offset": 0.0,
+      "nodes": 1024,
+      "crossing_flux_per_density": 1.260106088728493,
+      "conditional_mean_delta_mu": 2.4723828227680132e-06,
+      "conditional_second_moment_delta_mu": 1.270948887951739e-06,
+      "conditional_cross_moment_mu1_mu2": -9.396196529010209e-07,
+      "conditional_initial_mu": 0.14531390607782688,
+      "conditional_drift_per_density": 3.1154646486377118e-06,
+      "conditional_diffusion_per_density": 8.007652160853468e-07,
+      "max_energy_error": 4.433763337723897e-10,
+      "max_end_force": 1.5623086469824846e-07,
+      "min_separation": 0.9128139382216135,
+      "reflected_nodes": 0,
+      "parallel_turns": 0,
+      "conditional_rms_mu_fraction": 0.007758126663363147
+    },
+    "runs": [
+      {
+        "case": "accepted",
+        "orders": [
+          4,
+          4,
+          4,
+          16
+        ],
+        "start_distance": 24.0,
+        "phase_offset": 0.0,
+        "nodes": 1024,
+        "crossing_flux_per_density": 1.260106088728493,
+        "conditional_mean_delta_mu": 2.4723828227680132e-06,
+        "conditional_second_moment_delta_mu": 1.270948887951739e-06,
+        "conditional_cross_moment_mu1_mu2": -9.396196529010209e-07,
+        "conditional_initial_mu": 0.14531390607782688,
+        "conditional_drift_per_density": 3.1154646486377118e-06,
+        "conditional_diffusion_per_density": 8.007652160853468e-07,
+        "max_energy_error": 4.433763337723897e-10,
+        "max_end_force": 1.5623086469824846e-07,
+        "min_separation": 0.9128139382216135,
+        "reflected_nodes": 0,
+        "parallel_turns": 0,
+        "conditional_rms_mu_fraction": 0.007758126663363147
+      },
+      {
+        "case": "impact_3",
+        "orders": [
+          3,
+          4,
+          4,
+          16
+        ],
+        "start_distance": 24.0,
+        "phase_offset": 0.0,
+        "nodes": 768,
+        "crossing_flux_per_density": 1.2601060887284925,
+        "conditional_mean_delta_mu": 2.4612042654447884e-06,
+        "conditional_second_moment_delta_mu": 1.2666546707084367e-06,
+        "conditional_cross_moment_mu1_mu2": -9.364771169830853e-07,
+        "conditional_initial_mu": 0.1453139060778269,
+        "conditional_drift_per_density": 3.1013784804915145e-06,
+        "conditional_diffusion_per_density": 7.980596314380425e-07,
+        "max_energy_error": 3.963436772359342e-10,
+        "max_end_force": 1.561100687780372e-07,
+        "min_separation": 0.9642096321311903,
+        "reflected_nodes": 0,
+        "parallel_turns": 0,
+        "conditional_rms_mu_fraction": 0.007745009192599853
+      },
+      {
+        "case": "impact_4",
+        "orders": [
+          4,
+          4,
+          4,
+          16
+        ],
+        "start_distance": 24.0,
+        "phase_offset": 0.0,
+        "nodes": 1024,
+        "crossing_flux_per_density": 1.260106088728493,
+        "conditional_mean_delta_mu": 2.4723828227680132e-06,
+        "conditional_second_moment_delta_mu": 1.270948887951739e-06,
+        "conditional_cross_moment_mu1_mu2": -9.396196529010209e-07,
+        "conditional_initial_mu": 0.14531390607782688,
+        "conditional_drift_per_density": 3.1154646486377118e-06,
+        "conditional_diffusion_per_density": 8.007652160853468e-07,
+        "max_energy_error": 4.433763337723897e-10,
+        "max_end_force": 1.5623086469824846e-07,
+        "min_separation": 0.9128139382216135,
+        "reflected_nodes": 0,
+        "parallel_turns": 0,
+        "conditional_rms_mu_fraction": 0.007758126663363147
+      },
+      {
+        "case": "impact_5",
+        "orders": [
+          5,
+          4,
+          4,
+          16
+        ],
+        "start_distance": 24.0,
+        "phase_offset": 0.0,
+        "nodes": 1280,
+        "crossing_flux_per_density": 1.2601060887284927,
+        "conditional_mean_delta_mu": 2.4728932311436053e-06,
+        "conditional_second_moment_delta_mu": 1.2711393527564737e-06,
+        "conditional_cross_moment_mu1_mu2": -9.39758037947112e-07,
+        "conditional_initial_mu": 0.1453139060778269,
+        "conditional_drift_per_density": 3.116107817339533e-06,
+        "conditional_diffusion_per_density": 8.008852190154139e-07,
+        "max_energy_error": 4.610514356899078e-10,
+        "max_end_force": 1.5629235051311997e-07,
+        "min_separation": 0.8853204772500344,
+        "reflected_nodes": 0,
+        "parallel_turns": 0,
+        "conditional_rms_mu_fraction": 0.007758707959250779
+      },
+      {
+        "case": "parallel_3",
+        "orders": [
+          4,
+          3,
+          4,
+          16
+        ],
+        "start_distance": 24.0,
+        "phase_offset": 0.0,
+        "nodes": 768,
+        "crossing_flux_per_density": 1.2601073392058078,
+        "conditional_mean_delta_mu": 2.4750704278246e-06,
+        "conditional_second_moment_delta_mu": 1.271346893514359e-06,
+        "conditional_cross_moment_mu1_mu2": -9.39897656109348e-07,
+        "conditional_initial_mu": 0.14531390607782693,
+        "conditional_drift_per_density": 3.118854411153037e-06,
+        "conditional_diffusion_per_density": 8.010167755969741e-07,
+        "max_energy_error": 4.699756567174429e-10,
+        "max_end_force": 1.5624329598381783e-07,
+        "min_separation": 0.9116625730358858,
+        "reflected_nodes": 0,
+        "parallel_turns": 0,
+        "conditional_rms_mu_fraction": 0.007759341321126115
+      },
+      {
+        "case": "parallel_4",
+        "orders": [
+          4,
+          4,
+          4,
+          16
+        ],
+        "start_distance": 24.0,
+        "phase_offset": 0.0,
+        "nodes": 1024,
+        "crossing_flux_per_density": 1.260106088728493,
+        "conditional_mean_delta_mu": 2.4723828227680132e-06,
+        "conditional_second_moment_delta_mu": 1.270948887951739e-06,
+        "conditional_cross_moment_mu1_mu2": -9.396196529010209e-07,
+        "conditional_initial_mu": 0.14531390607782688,
+        "conditional_drift_per_density": 3.1154646486377118e-06,
+        "conditional_diffusion_per_density": 8.007652160853468e-07,
+        "max_energy_error": 4.433763337723897e-10,
+        "max_end_force": 1.5623086469824846e-07,
+        "min_separation": 0.9128139382216135,
+        "reflected_nodes": 0,
+        "parallel_turns": 0,
+        "conditional_rms_mu_fraction": 0.007758126663363147
+      },
+      {
+        "case": "parallel_5",
+        "orders": [
+          4,
+          5,
+          4,
+          16
+        ],
+        "start_distance": 24.0,
+        "phase_offset": 0.0,
+        "nodes": 1280,
+        "crossing_flux_per_density": 1.2601060786515828,
+        "conditional_mean_delta_mu": 2.4722889935219923e-06,
+        "conditional_second_moment_delta_mu": 1.2709443236354976e-06,
+        "conditional_cross_moment_mu1_mu2": -9.396163250133759e-07,
+        "conditional_initial_mu": 0.14531390607782693,
+        "conditional_drift_per_density": 3.115346388920466e-06,
+        "conditional_diffusion_per_density": 8.007623339204075e-07,
+        "max_energy_error": 4.83813808978203e-10,
+        "max_end_force": 1.5624979303837258e-07,
+        "min_separation": 0.9150487001717146,
+        "reflected_nodes": 0,
+        "parallel_turns": 0,
+        "conditional_rms_mu_fraction": 0.007758112732600208
+      },
+      {
+        "case": "perpendicular_3",
+        "orders": [
+          4,
+          4,
+          3,
+          16
+        ],
+        "start_distance": 24.0,
+        "phase_offset": 0.0,
+        "nodes": 768,
+        "crossing_flux_per_density": 1.260108475404899,
+        "conditional_mean_delta_mu": 2.472405565895191e-06,
+        "conditional_second_moment_delta_mu": 1.2709434522676947e-06,
+        "conditional_cross_moment_mu1_mu2": -9.396188783370938e-07,
+        "conditional_initial_mu": 0.14531326094050467,
+        "conditional_drift_per_density": 3.1154992082227758e-06,
+        "conditional_diffusion_per_density": 8.007633079814418e-07,
+        "max_energy_error": 4.724721041594621e-10,
+        "max_end_force": 1.5620151397649653e-07,
+        "min_separation": 0.926210921962953,
+        "reflected_nodes": 0,
+        "parallel_turns": 0,
+        "conditional_rms_mu_fraction": 0.00775814451624256
+      },
+      {
+        "case": "perpendicular_4",
+        "orders": [
+          4,
+          4,
+          4,
+          16
+        ],
+        "start_distance": 24.0,
+        "phase_offset": 0.0,
+        "nodes": 1024,
+        "crossing_flux_per_density": 1.260106088728493,
+        "conditional_mean_delta_mu": 2.4723828227680132e-06,
+        "conditional_second_moment_delta_mu": 1.270948887951739e-06,
+        "conditional_cross_moment_mu1_mu2": -9.396196529010209e-07,
+        "conditional_initial_mu": 0.14531390607782688,
+        "conditional_drift_per_density": 3.1154646486377118e-06,
+        "conditional_diffusion_per_density": 8.007652160853468e-07,
+        "max_energy_error": 4.433763337723897e-10,
+        "max_end_force": 1.5623086469824846e-07,
+        "min_separation": 0.9128139382216135,
+        "reflected_nodes": 0,
+        "parallel_turns": 0,
+        "conditional_rms_mu_fraction": 0.007758126663363147
+      },
+      {
+        "case": "perpendicular_5",
+        "orders": [
+          4,
+          4,
+          5,
+          16
+        ],
+        "start_distance": 24.0,
+        "phase_offset": 0.0,
+        "nodes": 1280,
+        "crossing_flux_per_density": 1.2601060966727555,
+        "conditional_mean_delta_mu": 2.47238289042314e-06,
+        "conditional_second_moment_delta_mu": 1.2709488712368115e-06,
+        "conditional_cross_moment_mu1_mu2": -9.396196485960636e-07,
+        "conditional_initial_mu": 0.14531390323454774,
+        "conditional_drift_per_density": 3.1154647535316085e-06,
+        "conditional_diffusion_per_density": 8.007652106024316e-07,
+        "max_energy_error": 4.3708924853659007e-10,
+        "max_end_force": 1.5624599530253538e-07,
+        "min_separation": 0.9057748942593419,
+        "reflected_nodes": 0,
+        "parallel_turns": 0,
+        "conditional_rms_mu_fraction": 0.007758126764146613
+      },
+      {
+        "case": "phase_8",
+        "orders": [
+          4,
+          4,
+          4,
+          8
+        ],
+        "start_distance": 24.0,
+        "phase_offset": 0.0,
+        "nodes": 512,
+        "crossing_flux_per_density": 1.260106088728493,
+        "conditional_mean_delta_mu": 2.4724144237681947e-06,
+        "conditional_second_moment_delta_mu": 1.2709471455541118e-06,
+        "conditional_cross_moment_mu1_mu2": -9.396248765400655e-07,
+        "conditional_initial_mu": 0.14531390607782693,
+        "conditional_drift_per_density": 3.1155044692504504e-06,
+        "conditional_diffusion_per_density": 8.007641182824172e-07,
+        "max_energy_error": 3.8548105531907747e-10,
+        "max_end_force": 1.5623086469824846e-07,
+        "min_separation": 0.9128139382216135,
+        "reflected_nodes": 0,
+        "parallel_turns": 0,
+        "conditional_rms_mu_fraction": 0.0077581213453892075
+      },
+      {
+        "case": "phase_16",
+        "orders": [
+          4,
+          4,
+          4,
+          16
+        ],
+        "start_distance": 24.0,
+        "phase_offset": 0.0,
+        "nodes": 1024,
+        "crossing_flux_per_density": 1.260106088728493,
+        "conditional_mean_delta_mu": 2.4723828227680132e-06,
+        "conditional_second_moment_delta_mu": 1.270948887951739e-06,
+        "conditional_cross_moment_mu1_mu2": -9.396196529010209e-07,
+        "conditional_initial_mu": 0.14531390607782688,
+        "conditional_drift_per_density": 3.1154646486377118e-06,
+        "conditional_diffusion_per_density": 8.007652160853468e-07,
+        "max_energy_error": 4.433763337723897e-10,
+        "max_end_force": 1.5623086469824846e-07,
+        "min_separation": 0.9128139382216135,
+        "reflected_nodes": 0,
+        "parallel_turns": 0,
+        "conditional_rms_mu_fraction": 0.007758126663363147
+      },
+      {
+        "case": "phase_32",
+        "orders": [
+          4,
+          4,
+          4,
+          32
+        ],
+        "start_distance": 24.0,
+        "phase_offset": 0.0,
+        "nodes": 2048,
+        "crossing_flux_per_density": 1.260106088728493,
+        "conditional_mean_delta_mu": 2.4723828524475712e-06,
+        "conditional_second_moment_delta_mu": 1.2709488878999469e-06,
+        "conditional_cross_moment_mu1_mu2": -9.39619652886696e-07,
+        "conditional_initial_mu": 0.14531390607782688,
+        "conditional_drift_per_density": 3.1154646860371035e-06,
+        "conditional_diffusion_per_density": 8.007652160527149e-07,
+        "max_energy_error": 4.433763337723897e-10,
+        "max_end_force": 1.5623086469824846e-07,
+        "min_separation": 0.9128139382216135,
+        "reflected_nodes": 0,
+        "parallel_turns": 0,
+        "conditional_rms_mu_fraction": 0.007758126663205073
+      },
+      {
+        "case": "held_out_shifted_phase",
+        "orders": [
+          4,
+          4,
+          4,
+          16
+        ],
+        "start_distance": 24.0,
+        "phase_offset": 0.19634954084936207,
+        "nodes": 1024,
+        "crossing_flux_per_density": 1.260106088728493,
+        "conditional_mean_delta_mu": 2.4723828821271284e-06,
+        "conditional_second_moment_delta_mu": 1.2709488878481495e-06,
+        "conditional_cross_moment_mu1_mu2": -9.396196528723682e-07,
+        "conditional_initial_mu": 0.14531390607782688,
+        "conditional_drift_per_density": 3.1154647234364944e-06,
+        "conditional_diffusion_per_density": 8.007652160200798e-07,
+        "max_energy_error": 4.1724364222565675e-10,
+        "max_end_force": 1.5621647738903713e-07,
+        "min_separation": 0.914199840304807,
+        "reflected_nodes": 0,
+        "parallel_turns": 0,
+        "conditional_rms_mu_fraction": 0.007758126663046982
+      },
+      {
+        "case": "boundary_18.0",
+        "orders": [
+          4,
+          4,
+          4,
+          16
+        ],
+        "start_distance": 18.0,
+        "phase_offset": 0.0,
+        "nodes": 1024,
+        "crossing_flux_per_density": 1.260106088728493,
+        "conditional_mean_delta_mu": 2.4722688715090086e-06,
+        "conditional_second_moment_delta_mu": 1.2709408836021277e-06,
+        "conditional_cross_moment_mu1_mu2": -9.396161667442623e-07,
+        "conditional_initial_mu": 0.14531390607782688,
+        "conditional_drift_per_density": 3.1153210579624222e-06,
+        "conditional_diffusion_per_density": 8.00760172920506e-07,
+        "max_energy_error": 4.159625535544558e-10,
+        "max_end_force": 1.592367594334493e-06,
+        "min_separation": 0.9116536704790127,
+        "reflected_nodes": 0,
+        "parallel_turns": 0,
+        "conditional_rms_mu_fraction": 0.0077581022332477816
+      },
+      {
+        "case": "boundary_24.0",
+        "orders": [
+          4,
+          4,
+          4,
+          16
+        ],
+        "start_distance": 24.0,
+        "phase_offset": 0.0,
+        "nodes": 1024,
+        "crossing_flux_per_density": 1.260106088728493,
+        "conditional_mean_delta_mu": 2.4723828227680132e-06,
+        "conditional_second_moment_delta_mu": 1.270948887951739e-06,
+        "conditional_cross_moment_mu1_mu2": -9.396196529010209e-07,
+        "conditional_initial_mu": 0.14531390607782688,
+        "conditional_drift_per_density": 3.1154646486377118e-06,
+        "conditional_diffusion_per_density": 8.007652160853468e-07,
+        "max_energy_error": 4.433763337723897e-10,
+        "max_end_force": 1.5623086469824846e-07,
+        "min_separation": 0.9128139382216135,
+        "reflected_nodes": 0,
+        "parallel_turns": 0,
+        "conditional_rms_mu_fraction": 0.007758126663363147
+      },
+      {
+        "case": "boundary_32.0",
+        "orders": [
+          4,
+          4,
+          4,
+          16
+        ],
+        "start_distance": 32.0,
+        "phase_offset": 0.0,
+        "nodes": 1024,
+        "crossing_flux_per_density": 1.260106088728493,
+        "conditional_mean_delta_mu": 2.4723317577642583e-06,
+        "conditional_second_moment_delta_mu": 1.2709443361632727e-06,
+        "conditional_cross_moment_mu1_mu2": -9.39616169601929e-07,
+        "conditional_initial_mu": 0.14531390607782688,
+        "conditional_drift_per_density": 3.1154003013155596e-06,
+        "conditional_diffusion_per_density": 8.007623482171663e-07,
+        "max_energy_error": 4.999887859000035e-10,
+        "max_end_force": 7.930062678962882e-09,
+        "min_separation": 0.9128375371338504,
+        "reflected_nodes": 0,
+        "parallel_turns": 0,
+        "conditional_rms_mu_fraction": 0.007758112770836304
+      }
+    ],
+    "analytic_bounded_flux": 1.2601060866850065,
+    "flux_relative_error": 1.6216781370433162e-09,
+    "velocity_band_fraction_of_flux_in_same_impact_annulus": 0.11636796217247107,
+    "last_relative_changes": {
+      "impact": 0.0002064012991600299,
+      "parallel": 3.795237784367031e-05,
+      "perpendicular": 2.7364340382960574e-08,
+      "phase": 1.2004434501871806e-08,
+      "boundary": 2.0654592003918915e-05,
+      "held_out_shifted_phase": 2.4008868949358697e-08
+    },
+    "held_out_interpolation_rms_errors": [
+      0.039446954618000796,
+      0.20475311567259064,
+      0.20072983940789121
+    ],
+    "held_out_interpolation_status": "unresolved",
+    "timestep_results": [
+      {
+        "max_step": 0.2,
+        "moments": [
+          [
+            2.2014576071746617e-05,
+            5.624865898681725e-09,
+            -4.655582779444287e-09
+          ],
+          [
+            -1.3544702255261637e-05,
+            1.3050935425274225e-07,
+            -1.3014243633437485e-07
+          ],
+          [
+            0.00014054703817352118,
+            3.933020844289181e-07,
+            -3.537951445502197e-07
+          ],
+          [
+            -0.0001373932470922698,
+            1.7544416722505355e-07,
+            -1.3769035853193853e-07
+          ],
+          [
+            -6.192338930085736e-07,
+            1.6342266958262689e-07,
+            -1.6342190268139836e-07
+          ],
+          [
+            9.938840039265887e-05,
+            1.2021481454848878e-07,
+            -1.0045870628326585e-07
+          ],
+          [
+            3.669855698992634e-05,
+            3.320731442508706e-06,
+            -3.3180378743384208e-06
+          ],
+          [
+            0.00027271179930758727,
+            1.1512484364573838e-06,
+            -1.0025049854942203e-06
+          ]
+        ],
+        "max_energy_error": 2.2780463565597193e-10,
+        "total_rhs_evaluations": 25672
+      },
+      {
+        "max_step": 0.1,
+        "moments": [
+          [
+            2.2014580816027973e-05,
+            5.624880100767993e-09,
+            -4.65559656375714e-09
+          ],
+          [
+            -1.3544700434174953e-05,
+            1.3050938657811943e-07,
+            -1.3014246875841634e-07
+          ],
+          [
+            0.00014054703981731826,
+            3.933021122700437e-07,
+            -3.5379517146722196e-07
+          ],
+          [
+            -0.00013739324711469977,
+            1.7544419925524774e-07,
+            -1.376903905498058e-07
+          ],
+          [
+            -6.192321912561194e-07,
+            1.6342265025663814e-07,
+            -1.6342188335962477e-07
+          ],
+          [
+            9.938841594657813e-05,
+            1.2021475807870836e-07,
+            -1.0045864362996832e-07
+          ],
+          [
+            3.6698562511833926e-05,
+            3.320731688481358e-06,
+            -3.318038119500488e-06
+          ],
+          [
+            0.0002727118015319087,
+            1.1512483017730062e-06,
+            -1.0025048483834477e-06
+          ]
+        ],
+        "max_energy_error": 1.7266014174036112e-12,
+        "total_rhs_evaluations": 43096
+      },
+      {
+        "max_step": 0.05,
+        "moments": [
+          [
+            2.2014580897573854e-05,
+            5.624880318737645e-09,
+            -4.6555967745459975e-09
+          ],
+          [
+            -1.3544700444912891e-05,
+            1.3050938707545591e-07,
+            -1.3014246925517107e-07
+          ],
+          [
+            0.0001405470398258453,
+            3.933021126355476e-07,
+            -3.537951718279321e-07
+          ],
+          [
+            -0.00013739324708598663,
+            1.754441996957662e-07,
+            -1.3769039100610427e-07
+          ],
+          [
+            -6.192321582963733e-07,
+            1.6342264997344485e-07,
+            -1.634218830765131e-07
+          ],
+          [
+            9.93884160276036e-05,
+            1.2021475710034234e-07,
+            -1.0045864261939031e-07
+          ],
+          [
+            3.669856263130607e-05,
+            3.320731692191744e-06,
+            -3.3180381231933367e-06
+          ],
+          [
+            0.00027271180158341957,
+            1.1512482997537518e-06,
+            -1.002504846308003e-06
+          ]
+        ],
+        "max_energy_error": 8.014028809250913e-15,
+        "total_rhs_evaluations": 86020
+      }
+    ],
+    "timestep_second_moment_relative_change": 1.244350811643705e-09,
+    "numerical_status": "passed",
+    "unique_integrated_encounters": 9560,
+    "wall_s": 233.37750945799053,
+    "limits": [
+      "incoming impact/speed domain is conditional, not converged to complete plasma statistics",
+      "screening is prescribed rather than derived from density/temperature",
+      "successive encounters/correlations and kinetic closure have not been validated",
+      "bounded cutoffs need not preserve the detailed-balance reverse ensemble; conditional drift is not full Maxwellian drift",
+      "no independent SM mixing rate or physical constrained-state lifetime"
+    ]
+  }
+}

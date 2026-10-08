@@ -1,0 +1,59 @@
+{
+  "mass": 1.0,
+  "charge": 1.0,
+  "field": 2.0,
+  "strength": 0.03,
+  "screening": 3.0,
+  "theta": 0.5,
+  "theta_definition": "single-particle velocity variance k_B*T/m",
+  "training_bounds": [
+    [
+      1.2,
+      2.4
+    ],
+    [
+      0.7,
+      1.5
+    ],
+    [
+      0.2,
+      0.8
+    ]
+  ],
+  "training_orders": [
+    6,
+    6,
+    6,
+    32
+  ],
+  "holdout_count": 256,
+  "holdout_seed": 1311,
+  "second_moment_rms_target": 0.02,
+  "second_moment_p95_target": 0.05,
+  "bootstrap_count": 2000,
+  "bootstrap_seed": 1312,
+  "start_distance": 24.0,
+  "max_step": 0.2,
+  "rtol": 1e-10,
+  "impact_derivative_states": 8,
+  "impact_fd_steps": [
+    0.001,
+    0.0005,
+    0.00025
+  ],
+  "derivative_rms_target": 0.05,
+  "table_derivative_step": 1e-05,
+  "method": "spatial cubic of signed c and log(COMvariance); truly periodic cubic phase; exact moment reconstruction",
+  "validation_domain": "uniform independent states inside the new training-node inner hull; no extrapolation",
+  "previous_test_reuse": "none; seeds701 and1301 are excluded from this test and fitting",
+  "robust_holdout_count": 4096,
+  "robust_holdout_seed": 1321,
+  "robust_bootstrap_seed": 1322,
+  "p95_confidence_upper_target": 0.05,
+  "reuse_training_cache": true,
+  "cache_data_sha256": "7636ce6c8bb55c7106b62693f571dfef30dd69eb729130880030c178c3f9f100",
+  "cache_metadata_sha256": "7dc4d6a6173662ad9952ef319383f9b379fa121d8f4e813c71619f8936ff6385",
+  "cache_producer_commit": "6d1c83f4ae8cd78e3d66c1f0a929b3a79515f0fb",
+  "robust_acceptance": "second-moment RMS <=2%, observed p95 <=5%, and two-sided 95% order-statistic p95 upper limit <=5%; no retuning",
+  "scope": "single-encounter conditional moment interpolation, not a plasma or SM collision coefficient"
+}
