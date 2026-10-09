@@ -4106,6 +4106,127 @@ $1.43\times10^{-13}$ in weighted relative $L^1$. The diagnostic takes
 inputs, formulas, signed error decomposition and source hashes are in
 \path{results/landau_consistency/independent_flux_audit.json}.
 
+\section{Hermite quadrature and full-density solver conditioning}
+\subsection{Physical-volume measure and weighted integration by parts}
+Let $z_a,q_a$ be the $n$-point Gauss--Hermite nodes and positive weights for
+$e^{-z^2/2}\,dz$, so $\sum_aq_a=\sqrt{2\pi}$. For a fixed scale
+$\theta>0$, define
+\[
+ v_a=\sqrt\theta z_a,\qquad
+ w_a=\sqrt\theta q_a e^{z_a^2/2},\qquad
+ \int_{\mathbb R}\phi(v)\,dv
+ =\sqrt\theta\int_{\mathbb R}e^{-z^2/2}
+       [e^{z^2/2}\phi(\sqrt\theta z)]\,dz.
+\]
+The three-dimensional weights are tensor products of these physical-volume
+weights. This is a quadrature transformation, not a Gaussian density closure:
+every nodal log density remains an independent unknown. Nor does nodal
+positivity establish global integrability of the exponential of a polynomial
+interpolant. Quadrature and decay accuracy require order and scale tests.
+
+For the polynomial nodal derivative $D_z$ and $Q=\operatorname{diag}(q_a)$,
+Gaussian integration by parts and exact quadrature through degree $2n-1$ give
+\[
+ QD_z+D_z^TQ=Q\operatorname{diag}(z_a).
+\]
+Indeed, the product of two degree-$n-1$ basis functions times $z$ has degree
+at most $2n-1$, and their differentiated product has degree at most $2n-3$;
+the Gaussian-weighted polynomial boundary term vanishes. This identity
+explains the boundary-free weak adjoint for Gaussian-reference-times-polynomial
+fluxes, but is not an error estimate for the nonlinear collision flux. With
+$D_v=D_z/\sqrt\theta$, constants, physical velocities and energy still have
+exact polynomial gradients in real arithmetic. The same Coulomb pair Gram
+therefore retains its five raw invariant directions. Independent small-matrix
+checks verify finite numerical nullity; no continuum nullspace theorem is
+inherited from a different basis or quadrature.
+
+For extreme Hermite nodes the polynomial derivative can have large entries.
+The implementation tests each raw reproduction error with the componentwise
+allowance $10^{-11}+8n\epsilon_{\rm mach}(|D_v||h|+|h'|)$. No correction to
+$D_v$ is applied. Weighted raw invariant actions and trajectory drifts remain
+separate measured checks.
+
+
+\subsection{Relation to existing structure-preserving formulations}
+The positive exponential representation, quadratic reproduction, collision
+invariants and entropy mechanism parallel Hirvijoki--Burby--Kraus
+\cite[Eqs.~(7)--(17)]{HBK18}. Their compactly supported second-order Galerkin
+basis and exact mass/collision bilinear forms differ from the present Hermite
+physical-volume quadrature, nodal gradients and diagonal population mass.
+Their basis-specific equilibrium and nullspace argument is consequently not
+an inherited theorem for this finite pair operator. The present raw checks
+are independent finite-dimensional statements. No novelty of Gauss--Hermite
+quadrature or the positive exponential representation is asserted.
+
+\subsection{Completed independent checks and the strong oracle}
+The shared public helper \texttt{landau\_gaussian\_relative\_rate} evaluates
+Eq.~\eqref{eq:gaussian-strong} at arbitrary physical velocities. It is an
+instantaneous nonisotropic Gaussian oracle, with scalar-quadrature refinement
+separate from velocity discretization; evolving densities are not replaced
+by Gaussians. An independent implementation uses SciPy probabilists' Hermite
+roots, direct barycentric gradients and explicit NumPy Coulomb pairs.
+For $A=(1.15,1.15,0.7)$, $\Gamma=1$, the completed measurements are
+\begin{center}
+\begin{tabular}{rrrrr}
+$n$ & $\theta$ & initial $E_1$ & RMS error in $C/F$ & $\max|C_h/F|$\\
+\hline
+16 & 0.7 & 0.0071857 & 0.0012145 & 3.5397\\
+20 & 0.7 & 0.0047427 & 0.0007923 & 19.9347\\
+24 & 0.7 & 0.0033262 & 0.0005563 & 137.8144\\
+20 & 0.65 & 0.0041851 & 0.0006928 & 1.3452\\
+20 & 0.6 & 0.0047481 & 0.0008047 & 0.7664\\
+24 & 0.6 & 0.0031602 & 0.0005283 & 0.8486\\
+20 & 0.5 & 0.0596696 & 0.0115032 & 0.8852
+\end{tabular}
+\end{center}
+The RMS is $[\sum_iw_iF_i(C_{h,i}/F_i-C[F]_i/F_i)^2]^{1/2}$;
+these are errors at the same nodes, without mass renormalization.
+Order changes both the largest sampled velocity and core resolution.
+The $20^3$, $\theta=0.5$ example shows why a small maximum relative rate
+alone cannot establish collision accuracy. At $\theta=1$, the $20^3$
+weighted $E_1$ is 0.0094182 but its maximum relative rate is
+$1.2062\times10^8$; a weighted density norm can conceal severe tail rates.
+The independently checked weighted integration-by-parts defect is at most
+$1.34\times10^{-15}$ for the reported $\theta=0.7$ orders.
+
+A separate $4^3$ dense Gram using a positive non-Gaussian density has five
+numerical zero eigenvalues at threshold $10^{-11}\|K\|_2$, first positive
+eigenvalue 0.0224943 and largest eigenvalue 56.0472; its raw invariant-action
+relative norms are at most $1.22\times10^{-16}$. This small-grid nullity check
+is not a proof for every order. Endpoint Gauss--Lobatto SBP was also tested:
+at $28^3$ and extent 5 it gives $E_1=0.0136215$ and maximum relative rate
+$1.2028\times10^5$. Its exact SBP relation does not cure collision-flux
+interpolation error, so this candidate was not adopted.
+
+One accepted full-density $16^3$, $\theta=0.7$, $\Delta t=0.05$ step was
+independently checked against the original frozen weak root. Its weighted
+root norm is $3.50\times10^{-13}$, maximum absolute drift among the five
+invariants $4.78\times10^{-15}$ and minimum new nodal density
+$4.63\times10^{-23}$. Its entropy gain 0.00195281655 splits into frozen Gram
+production 0.00191820352 and time-step KL $3.46130287\times10^{-5}$;
+the entropy identity including the measured residual defect differs by
+$6.82\times10^{-17}$. A separate accepted $20^3$, $\theta=0.65$, $\Delta t=0.05$ endpoint
+using an auxiliary tensor preconditioner also passes the original
+unregularized Coulomb equation independently: weighted root norm
+$1.28\times10^{-13}$, largest absolute invariant drift
+$2.98\times10^{-14}$ and minimum density $6.35\times10^{-28}$. Its
+entropy gain is 0.00195647958, with Gram production 0.00192170246 and KL
+$3.47771210\times10^{-5}$; the corrected identity defect is
+$3.01\times10^{-16}$. The tensor approximation changes only the PCG
+preconditioner; all original pair interactions and residuals are retained.
+These checks verify two individual finite discrete equations, with no
+finite-time continuum trajectory claim. Inputs, source hashes, signed root
+and entropy budgets, and negative candidate checks are retained in
+\path{results/landau_evolution/hermite_independent_method_audit.json}.
+
+\subsection{Damped Newton acceptance}
+The optional Newton globalization chooses the initial common line-search
+fraction $\alpha_0=\min\{1,c/\|d\|_\infty\}$, then performs ordinary Armijo
+backtracking. It changes neither the convex objective nor its root, and no
+nodal value is clipped. For strictly positive finite old populations the
+finite convex objective is coercive and its Hessian is positive definite;
+its minimizer is unique. Residual and entropy tests still decide acceptance.
+
 \bibliographystyle{unsrt}
 \bibliography{references}
 \end{document}

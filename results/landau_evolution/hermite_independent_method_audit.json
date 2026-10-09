@@ -1,0 +1,1128 @@
+{
+  "status": "passed_independent_initial_method_and_two_one_step_checks",
+  "observed_producer_commit": "9b9eafe3e56e99710acd52cb17db6febbf04c8d5",
+  "executed_utc": "2026-10-09T18:37:36.070925+00:00",
+  "measure": "q integrates exp(-z\u00b2/2) dz, sum(q)=sqrt(2pi); physical v=sqrt(theta)z, w=sqrt(theta)q exp(z\u00b2/2), tensor products in3V",
+  "weighted_integration_by_parts": "Q Dz+Dz.T Q=Q diag(z), exact quadrature of polynomial products through degree2n\u22121 and vanishing Gaussian polynomial boundary term",
+  "independent_algorithm": "SciPy roots_hermitenorm; direct barycentric derivative; NumPy all Coulomb pairs and tensor adjoint; separately checked Gaussian strong Laplace oracle",
+  "method_scope": "Only physical positive quadrature and discrete gradient changed. Same full Coulomb Gram. Every nodal logdensity is free; no Gaussian closure, state clipping or nullprojection. No integrable global exp(polynomial) reconstruction is assumed.",
+  "probe_receipts": {
+    "landau_sbp_theory_probe.json": {
+      "status": "private_method_comparison",
+      "rows": [
+        {
+          "n": 12,
+          "extent": 5.0,
+          "mass": 0.9975094501541151,
+          "SBP_max_abs_defect": 5.423930814088072e-14,
+          "score_max_abs_error": 1.163513729807164e-13,
+          "full_RHS_relative_L1_error": 2.460174145290844,
+          "core_L1_over_full_reference": 1.0909683364232412,
+          "max_abs_relative_rate": 5032225.581333935,
+          "interior_max_abs_relative_rate": 318808.7710996032,
+          "relative_rate_RMS_error": 179.30526285319363,
+          "number_rate": 5.204170427930421e-18,
+          "momentum_rate": [
+            -6.868462671080986e-18,
+            1.3483469555564188e-18,
+            -4.306088440448554e-17
+          ],
+          "energy_rate": 6.591949208711867e-17,
+          "polynomial_repro_max_abs": 8.881784197001252e-15,
+          "pair_seconds_so_far": 0.15157733399996687
+        },
+        {
+          "n": 16,
+          "extent": 5.0,
+          "mass": 0.9999752104895776,
+          "SBP_max_abs_defect": 2.367306391752672e-13,
+          "score_max_abs_error": 1.5898393712632242e-13,
+          "full_RHS_relative_L1_error": 0.7769974532702038,
+          "core_L1_over_full_reference": 0.3365962130435482,
+          "max_abs_relative_rate": 3306574.9863795904,
+          "interior_max_abs_relative_rate": 471517.2207511956,
+          "relative_rate_RMS_error": 101.35213729622633,
+          "number_rate": 4.336808689942018e-19,
+          "momentum_rate": [
+            -7.546047120499111e-17,
+            -6.640738306473715e-18,
+            2.813737571660379e-17
+          ],
+          "energy_rate": -1.1796119636642288e-16,
+          "polynomial_repro_max_abs": 7.283063041541027e-14,
+          "pair_seconds_so_far": 0.8477090000001226
+        },
+        {
+          "n": 20,
+          "extent": 5.0,
+          "mass": 0.9999936909452637,
+          "SBP_max_abs_defect": 2.7550469436025257e-13,
+          "score_max_abs_error": 3.517186542012496e-13,
+          "full_RHS_relative_L1_error": 0.211917454291443,
+          "core_L1_over_full_reference": 0.08627195796190332,
+          "max_abs_relative_rate": 1474383.577937253,
+          "interior_max_abs_relative_rate": 306214.5334602377,
+          "relative_rate_RMS_error": 37.171938717375006,
+          "number_rate": 0.0,
+          "momentum_rate": [
+            -6.331740687315346e-17,
+            3.110304982317791e-17,
+            -8.099336872290808e-17
+          ],
+          "energy_rate": -1.734723475976807e-17,
+          "polynomial_repro_max_abs": 6.039613253960852e-14,
+          "pair_seconds_so_far": 3.2868225839999923
+        },
+        {
+          "n": 28,
+          "extent": 5.0,
+          "mass": 0.9999937506331946,
+          "SBP_max_abs_defect": 5.6710942339393e-13,
+          "score_max_abs_error": 7.762679388179095e-13,
+          "full_RHS_relative_L1_error": 0.01362154722018618,
+          "core_L1_over_full_reference": 0.006982099985681822,
+          "max_abs_relative_rate": 120275.76969526897,
+          "interior_max_abs_relative_rate": 34600.967859266755,
+          "relative_rate_RMS_error": 2.174249107959289,
+          "number_rate": -1.734723475976807e-18,
+          "momentum_rate": [
+            -3.385692476906622e-16,
+            -2.072293922636917e-17,
+            3.278756195504086e-18
+          ],
+          "energy_rate": 7.632783294297951e-17,
+          "polynomial_repro_max_abs": 2.7000623958883807e-13,
+          "pair_seconds_so_far": 29.363293042000123
+        }
+      ],
+      "method": "Gauss-Lobatto endpoint SBP global polynomial derivative, positive tensor weights, full Coulomb weak Gram; no state repair or null projection",
+      "source_sha256": "de358aa30ddca0f62b49cba2a3a4604e6c5f261fa6c4a803518aaab4a0dc3a2c",
+      "helper_sha256": "f6cdcb919c3f936fe71cd22b8c24f85e58d7c017150f1fa45c408ba4b41e49e9",
+      "wall_s": 29.404979625000124
+    },
+    "landau_hermite_independent_theory.json": {
+      "status": "independent_measure_and_raw_gradient_audit",
+      "method": "SciPy roots_hermitenorm; physical Lebesgue weights sqrt(theta) q exp(z\u00b2/2); independent barycentric nodal derivative and NumPy all Coulomb pairs",
+      "rows": [
+        {
+          "n": 16,
+          "theta": 1.0,
+          "outer_node": 6.630878198393129,
+          "mass": 0.9999999999989648,
+          "variance_sample": [
+            1.1499999999988095,
+            1.149999999998814,
+            0.7000000000635107
+          ],
+          "quadratic_reproduction": [
+            {
+              "degree": 0,
+              "max_abs": 3.637978807091713e-12,
+              "max_backward_ratio": 1.8454680087874352e-16
+            },
+            {
+              "degree": 1,
+              "max_abs": 2.637534635141492e-11,
+              "max_backward_ratio": 6.723659436455508e-16
+            },
+            {
+              "degree": 2,
+              "max_abs": 1.5937828834466927e-10,
+              "max_backward_ratio": 2.2014970242597658e-15
+            }
+          ],
+          "max_abs_D": 7005.096465818389,
+          "score_max_abs_error": 1.226787560426601e-10,
+          "score_population_RMS_error": 5.665644356970305e-15,
+          "momentum_gradient_population_RMS_error": [
+            1.781426491061391e-15,
+            1.7814264910613907e-15,
+            4.76802756550821e-16
+          ],
+          "energy_gradient_population_RMS_error": 6.409942782193751e-15,
+          "full_RHS_relative_L1_error": 0.012839373275052716,
+          "core_L1_over_full_reference": 0.01185794071400248,
+          "rate_RMS_error": 0.07932712928221887,
+          "max_abs_rate": 541843.383464702,
+          "number_rate": -5.204170427930421e-18,
+          "momentum_rate": [
+            -2.862293735361732e-17,
+            -9.75781955236954e-19,
+            1.5178830414797062e-18
+          ],
+          "energy_rate": 7.632783294297951e-17,
+          "cumulative_wall_s": 1.0220480420002787
+        },
+        {
+          "n": 20,
+          "theta": 1.0,
+          "outer_node": 7.619048541679758,
+          "mass": 0.9999999999999991,
+          "variance_sample": [
+            1.1499999999999977,
+            1.1500000000000015,
+            0.7000000000000801
+          ],
+          "quadratic_reproduction": [
+            {
+              "degree": 0,
+              "max_abs": 5.820766091346741e-11,
+              "max_backward_ratio": 1.0850391655313255e-16
+            },
+            {
+              "degree": 1,
+              "max_abs": 5.529727786779404e-10,
+              "max_backward_ratio": 6.066814687450624e-16
+            },
+            {
+              "degree": 2,
+              "max_abs": 5.4254449821655726e-09,
+              "max_backward_ratio": 2.5351363831706957e-15
+            }
+          ],
+          "max_abs_D": 198008.20961062342,
+          "score_max_abs_error": 3.7088749849090163e-09,
+          "score_population_RMS_error": 1.053130946419852e-14,
+          "momentum_gradient_population_RMS_error": [
+            2.28421166073637e-15,
+            2.28421166073637e-15,
+            4.512799114878439e-16
+          ],
+          "energy_gradient_population_RMS_error": 1.2142235823174696e-14,
+          "full_RHS_relative_L1_error": 0.009418192482137445,
+          "core_L1_over_full_reference": 0.00907857523574138,
+          "rate_RMS_error": 0.1063352723509424,
+          "max_abs_rate": 120623634.73496202,
+          "number_rate": 3.469446951953614e-18,
+          "momentum_rate": [
+            -1.1535911115245767e-16,
+            -1.2332799712022613e-17,
+            -9.096337701134399e-18
+          ],
+          "energy_rate": 1.734723475976807e-17,
+          "cumulative_wall_s": 4.734556041999895
+        },
+        {
+          "n": 24,
+          "theta": 1.0,
+          "outer_node": 8.507803519195257,
+          "mass": 0.9999999999999999,
+          "variance_sample": [
+            1.1499999999999975,
+            1.1499999999999972,
+            0.7000000000000007
+          ],
+          "quadratic_reproduction": [
+            {
+              "degree": 0,
+              "max_abs": 3.725290298461914e-09,
+              "max_backward_ratio": 2.1152862813636942e-16
+            },
+            {
+              "degree": 1,
+              "max_abs": 1.862645149230957e-09,
+              "max_backward_ratio": 2.9119691896096206e-16
+            },
+            {
+              "degree": 2,
+              "max_abs": 9.190912919621042e-09,
+              "max_backward_ratio": 9.25488993613763e-16
+            }
+          ],
+          "max_abs_D": 6183684.181888764,
+          "score_max_abs_error": 1.3721263680821494e-07,
+          "score_population_RMS_error": 5.6768597677021426e-15,
+          "momentum_gradient_population_RMS_error": [
+            1.341656171883205e-15,
+            1.341656171883205e-15,
+            6.096845404698196e-16
+          ],
+          "energy_gradient_population_RMS_error": 5.6531216281068635e-15,
+          "full_RHS_relative_L1_error": 0.006762627743274912,
+          "core_L1_over_full_reference": 0.006650394057803087,
+          "rate_RMS_error": 0.15506864169962864,
+          "max_abs_rate": 31296112674.490044,
+          "number_rate": 3.469446951953614e-18,
+          "momentum_rate": [
+            -1.842180195507813e-16,
+            -3.271964636850835e-18,
+            6.963709262691563e-20
+          ],
+          "energy_rate": 3.469446951953614e-17,
+          "cumulative_wall_s": 17.902291584000068
+        },
+        {
+          "n": 20,
+          "theta": 0.7,
+          "outer_node": 6.374553355046197,
+          "mass": 0.9999999999991808,
+          "variance_sample": [
+            1.149999999963117,
+            1.149999999963114,
+            0.6999999999994251
+          ],
+          "quadratic_reproduction": [
+            {
+              "degree": 0,
+              "max_abs": 1.1641532182693481e-10,
+              "max_backward_ratio": 2.214418072648199e-16
+            },
+            {
+              "degree": 1,
+              "max_abs": 1.3096723705530167e-09,
+              "max_backward_ratio": 1.0837995461948735e-15
+            },
+            {
+              "degree": 2,
+              "max_abs": 8.396101591756633e-09,
+              "max_backward_ratio": 4.568708265489058e-15
+            }
+          ],
+          "max_abs_D": 236665.0770096991,
+          "score_max_abs_error": 6.3274470107899106e-09,
+          "score_population_RMS_error": 5.461567171078089e-13,
+          "momentum_gradient_population_RMS_error": [
+            1.4052897205019537e-13,
+            1.4052897205019535e-13,
+            3.345787123374021e-15
+          ],
+          "energy_gradient_population_RMS_error": 6.312338342247947e-13,
+          "full_RHS_relative_L1_error": 0.004742711102483949,
+          "core_L1_over_full_reference": 0.004720680656467929,
+          "rate_RMS_error": 0.0007923189304636681,
+          "max_abs_rate": 19.934683826624877,
+          "number_rate": -1.734723475976807e-18,
+          "momentum_rate": [
+            -9.367506770274758e-17,
+            -1.951563910473908e-18,
+            3.7327344437803946e-19
+          ],
+          "energy_rate": 9.8879238130678e-17,
+          "cumulative_wall_s": 22.261981084000126
+        },
+        {
+          "n": 20,
+          "theta": 0.5,
+          "outer_node": 5.387480890011233,
+          "mass": 0.9999999893499847,
+          "variance_sample": [
+            1.1499997310168966,
+            1.1499997310168975,
+            0.6999999925449704
+          ],
+          "quadratic_reproduction": [
+            {
+              "degree": 0,
+              "max_abs": 1.1641532182693481e-10,
+              "max_backward_ratio": 1.8715248558463474e-16
+            },
+            {
+              "degree": 1,
+              "max_abs": 1.3387762010097504e-09,
+              "max_backward_ratio": 1.1078839805547617e-15
+            },
+            {
+              "degree": 2,
+              "max_abs": 7.719165751041146e-09,
+              "max_backward_ratio": 4.969928337373766e-15
+            }
+          ],
+          "max_abs_D": 280025.8954925578,
+          "score_max_abs_error": 6.8526304630722734e-09,
+          "score_population_RMS_error": 6.842769505625693e-12,
+          "momentum_gradient_population_RMS_error": [
+            1.9424142632058537e-12,
+            1.9424142632058537e-12,
+            7.465622871326116e-14
+          ],
+          "energy_gradient_population_RMS_error": 7.707617532826657e-12,
+          "full_RHS_relative_L1_error": 0.0596696317368697,
+          "core_L1_over_full_reference": 0.05515865130731701,
+          "rate_RMS_error": 0.01150322886286472,
+          "max_abs_rate": 0.885233857151715,
+          "number_rate": -3.469446951953614e-18,
+          "momentum_rate": [
+            4.163336342344337e-17,
+            3.404394821604484e-17,
+            1.1841879647247561e-17
+          ],
+          "energy_rate": -1.3791051634015616e-16,
+          "cumulative_wall_s": 26.714816416999838
+        }
+      ],
+      "source_sha256": "40692b8525e49c372d05359809a10bc6473c4ee5d8adc38cdd93817fc59d24d2",
+      "helper_sha256": "f6cdcb919c3f936fe71cd22b8c24f85e58d7c017150f1fa45c408ba4b41e49e9",
+      "wall_s": 26.717243209000117,
+      "interpretation": [
+        "Hermite quadrature evaluates integral of physical density via Gaussian reference factor; all n\u00b3 nodal log-density values remain degrees of freedom.",
+        "The sampled positive nodal density need not define an integrable global exponential of its interpolating polynomial. Infinite-domain reconstruction is neither evaluated nor assumed.",
+        "Order changes both core resolution and outer sample velocity; theta scans are necessary.",
+        "Quadratic gradient backward error and weighted raw invariant rates are reported without projection or repair."
+      ]
+    },
+    "landau_hermite_scale_audit.json": {
+      "status": "independent_scale_order_comparison",
+      "rows": [
+        {
+          "n": 16,
+          "theta": 0.7,
+          "outer_node": 5.547790729411818,
+          "mass": 0.999999999764722,
+          "variance_sample": [
+            1.149999991491793,
+            1.1499999914917958,
+            0.6999999998353041
+          ],
+          "quadratic_reproduction": [
+            {
+              "degree": 0,
+              "max_abs": 3.637978807091713e-12,
+              "max_backward_ratio": 2.0626648744471866e-16
+            },
+            {
+              "degree": 1,
+              "max_abs": 2.000888343900442e-11,
+              "max_backward_ratio": 5.100707158690381e-16
+            },
+            {
+              "degree": 2,
+              "max_abs": 1.0879297462906834e-10,
+              "max_backward_ratio": 1.7961424447504924e-15
+            }
+          ],
+          "max_abs_D": 8372.691707093387,
+          "score_max_abs_error": 8.343459256821006e-11,
+          "score_population_RMS_error": 6.088728596333111e-14,
+          "momentum_gradient_population_RMS_error": [
+            1.814860233179298e-14,
+            1.8148602331792978e-14,
+            1.1296077322211744e-15
+          ],
+          "energy_gradient_population_RMS_error": 6.908503110573024e-14,
+          "full_RHS_relative_L1_error": 0.007185724553237228,
+          "core_L1_over_full_reference": 0.007110407378768535,
+          "rate_RMS_error": 0.0012144781437592234,
+          "max_abs_rate": 3.5397235685725073,
+          "number_rate": 0.0,
+          "momentum_rate": [
+            9.367506770274758e-17,
+            3.144186300207963e-18,
+            4.689174395999807e-18
+          ],
+          "energy_rate": 0.0,
+          "weighted_SBP_max_abs_defect": 5.551115123125783e-16,
+          "weighted_SBP_max_scaled_defect": 4.440892098500626e-16,
+          "tail_mass_r_gt3": 0.03003082370454995,
+          "tail_mass_maxcoord_gt4": 0.00014596323418906185,
+          "tail_mass_maxcoord_gt5": 2.5456889785637653e-06,
+          "cumulative_wall_s": 2.033484708999822
+        },
+        {
+          "n": 24,
+          "theta": 0.7,
+          "outer_node": 7.118139118116605,
+          "mass": 0.9999999999999973,
+          "variance_sample": [
+            1.1499999999998516,
+            1.1499999999998454,
+            0.6999999999999964
+          ],
+          "quadratic_reproduction": [
+            {
+              "degree": 0,
+              "max_abs": 3.725290298461914e-09,
+              "max_backward_ratio": 2.180271269637501e-16
+            },
+            {
+              "degree": 1,
+              "max_abs": 1.0244548320770264e-08,
+              "max_backward_ratio": 8.206458625263479e-16
+            },
+            {
+              "degree": 2,
+              "max_abs": 4.502437001008275e-08,
+              "max_backward_ratio": 3.2276923643087494e-15
+            }
+          ],
+          "max_abs_D": 7390916.245281991,
+          "score_max_abs_error": 8.219291736111245e-08,
+          "score_population_RMS_error": 4.2895880576952665e-13,
+          "momentum_gradient_population_RMS_error": [
+            1.4322557149931592e-13,
+            1.4322557149931592e-13,
+            1.0404823175743117e-14
+          ],
+          "energy_gradient_population_RMS_error": 4.814330537858064e-13,
+          "full_RHS_relative_L1_error": 0.003326222161456888,
+          "core_L1_over_full_reference": 0.00331209748682866,
+          "rate_RMS_error": 0.0005563061276837312,
+          "max_abs_rate": 137.81443446894446,
+          "number_rate": -1.0408340855860843e-17,
+          "momentum_rate": [
+            -1.3280865777369976e-16,
+            -8.17270810981413e-18,
+            1.1849521256294196e-17
+          ],
+          "energy_rate": 2.0816681711721685e-17,
+          "weighted_SBP_max_abs_defect": 1.3322676295501878e-15,
+          "weighted_SBP_max_scaled_defect": 1.3322676295501878e-15,
+          "tail_mass_r_gt3": 0.03547434412307132,
+          "tail_mass_maxcoord_gt4": 0.0005333306536764394,
+          "tail_mass_maxcoord_gt5": 2.379800009493627e-06,
+          "cumulative_wall_s": 28.26012449999962
+        },
+        {
+          "n": 20,
+          "theta": 0.65,
+          "outer_node": 6.14267331398204,
+          "mass": 0.9999999999887853,
+          "variance_sample": [
+            1.1499999995652668,
+            1.149999999565266,
+            0.6999999999921499
+          ],
+          "quadratic_reproduction": [
+            {
+              "degree": 0,
+              "max_abs": 3.4924596548080444e-10,
+              "max_backward_ratio": 2.743202422311417e-16
+            },
+            {
+              "degree": 1,
+              "max_abs": 7.275957614183426e-10,
+              "max_backward_ratio": 6.021108589971536e-16
+            },
+            {
+              "degree": 2,
+              "max_abs": 5.3852797776698935e-09,
+              "max_backward_ratio": 3.04099954212621e-15
+            }
+          ],
+          "max_abs_D": 245598.9572553802,
+          "score_max_abs_error": 3.902826506418933e-09,
+          "score_population_RMS_error": 5.536127687961186e-13,
+          "momentum_gradient_population_RMS_error": [
+            1.3987699797513773e-13,
+            1.3987699797513773e-13,
+            5.829281611138836e-15
+          ],
+          "energy_gradient_population_RMS_error": 6.513057331203312e-13,
+          "full_RHS_relative_L1_error": 0.0041850973030341625,
+          "core_L1_over_full_reference": 0.004120902026053982,
+          "rate_RMS_error": 0.0006928053384082196,
+          "max_abs_rate": 1.3451888972284434,
+          "number_rate": 3.469446951953614e-18,
+          "momentum_rate": [
+            -1.1275702593849246e-16,
+            -7.697835424647081e-18,
+            1.8799669344989712e-17
+          ],
+          "energy_rate": 4.85722573273506e-17,
+          "weighted_SBP_max_abs_defect": 8.049116928532385e-16,
+          "weighted_SBP_max_scaled_defect": 8.049116928532385e-16,
+          "tail_mass_r_gt3": 0.02954937353780082,
+          "tail_mass_maxcoord_gt4": 0.0001678352677069787,
+          "tail_mass_maxcoord_gt5": 7.613579373875349e-06,
+          "cumulative_wall_s": 41.4885737919999
+        },
+        {
+          "n": 20,
+          "theta": 0.75,
+          "outer_node": 6.598289589761451,
+          "mass": 0.9999999999999531,
+          "variance_sample": [
+            1.149999999997503,
+            1.1499999999975066,
+            0.6999999999999674
+          ],
+          "quadratic_reproduction": [
+            {
+              "degree": 0,
+              "max_abs": 1.1641532182693481e-10,
+              "max_backward_ratio": 2.423175154682507e-16
+            },
+            {
+              "degree": 1,
+              "max_abs": 2.3283064365386963e-10,
+              "max_backward_ratio": 1.9303501278251995e-16
+            },
+            {
+              "degree": 2,
+              "max_abs": 2.124666664826691e-09,
+              "max_backward_ratio": 1.1169273732610122e-15
+            }
+          ],
+          "max_abs_D": 228640.1862408986,
+          "score_max_abs_error": 2.462265058511548e-09,
+          "score_population_RMS_error": 8.550825465768054e-14,
+          "momentum_gradient_population_RMS_error": [
+            1.4183280099542931e-14,
+            1.418328009954293e-14,
+            1.0313295222662191e-15
+          ],
+          "energy_gradient_population_RMS_error": 9.828941312323344e-14,
+          "full_RHS_relative_L1_error": 0.00541350199023663,
+          "core_L1_over_full_reference": 0.005390358572797842,
+          "rate_RMS_error": 0.00091056738610555,
+          "max_abs_rate": 343.66631922602625,
+          "number_rate": 1.0408340855860843e-17,
+          "momentum_rate": [
+            -1.0321604682062002e-16,
+            -1.2088854223213374e-17,
+            1.9230317963061975e-18
+          ],
+          "energy_rate": 3.122502256758253e-17,
+          "weighted_SBP_max_abs_defect": 8.881784197001252e-16,
+          "weighted_SBP_max_scaled_defect": 8.881784197001252e-16,
+          "tail_mass_r_gt3": 0.03406990217794678,
+          "tail_mass_maxcoord_gt4": 0.0007510982263148006,
+          "tail_mass_maxcoord_gt5": 1.2851696673713568e-06,
+          "cumulative_wall_s": 57.36029133399961
+        }
+      ],
+      "source_sha256": "5c2bb36fe5272892efd302e6cee044b767b40b71dac6441789fcbae9c0be4bb8",
+      "helper_sha256": "40692b8525e49c372d05359809a10bc6473c4ee5d8adc38cdd93817fc59d24d2",
+      "definition": "q integrates exp(-z\u00b2/2) dz, sum(q)=sqrt(2pi); physical1D weights sqrt(theta)*q*exp(z\u00b2/2). QDz+Dz\u1d40Q=Qdiag(z).",
+      "wall_s": 57.38045870899987
+    },
+    "landau_hermite_dense_gram_audit.json": {
+      "status": "passed_independent_unrepaired_Hermite_Gram",
+      "order": 4,
+      "theta": 0.7,
+      "density": "non-Gaussian positive drifted anisotropic Gaussian times exp(.05 sin vx cos vy); every nodal value distinct unknown",
+      "quadrature_measure": "physical d\u00b3v with positive sqrt(theta)q exp(z\u00b2/2) one-axis weights",
+      "size": 64,
+      "numerical_nullity": 5,
+      "relative_eigenvalue_threshold": 1e-11,
+      "minimum_eigenvalue": -2.4618866137847756e-15,
+      "first_nonzero_eigenvalue": 0.02249432880372893,
+      "largest_eigenvalue": 56.047214584238105,
+      "raw_null_norm_relative_to_operator_norm": [
+        1.2146661509519394e-16,
+        7.667770398017469e-17,
+        6.724252898452922e-17,
+        5.512154579699779e-17,
+        4.331503779207167e-17
+      ],
+      "Gram_entropy_production": 8.775620556290887,
+      "symmetry_defect": 0.0,
+      "source_sha256": "59c388ee69685f28970806a0c94ed1f67bebab6728f320507edfd72ffbb50bdd",
+      "helper_sha256": "40692b8525e49c372d05359809a10bc6473c4ee5d8adc38cdd93817fc59d24d2",
+      "limitation": "Finite n4 raw matrix audit, not a theorem about nullity on every order or continuum interpolation."
+    },
+    "landau_hermite_theta06_refinement_audit.json": [
+      {
+        "n": 20,
+        "theta": 0.6,
+        "outer_node": 5.901689623174322,
+        "mass": 0.9999999998727753,
+        "variance_sample": [
+          1.1499999957325133,
+          1.149999995732508,
+          0.699999999910939
+        ],
+        "quadratic_reproduction": [
+          {
+            "degree": 0,
+            "max_abs": 2.3283064365386963e-10,
+            "max_backward_ratio": 1.7570557575934802e-16
+          },
+          {
+            "degree": 1,
+            "max_abs": 1.862645149230957e-09,
+            "max_backward_ratio": 1.5414037990327095e-15
+          },
+          {
+            "degree": 2,
+            "max_abs": 1.0860954802183187e-08,
+            "max_backward_ratio": 6.383474729305019e-15
+          }
+        ],
+        "max_abs_D": 255627.49941143056,
+        "score_max_abs_error": 9.129031752763694e-09,
+        "score_population_RMS_error": 2.449539038179779e-12,
+        "momentum_gradient_population_RMS_error": [
+          6.520121740604406e-13,
+          6.520121740604405e-13,
+          1.5588587957952226e-14
+        ],
+        "energy_gradient_population_RMS_error": 2.7713259892743486e-12,
+        "full_RHS_relative_L1_error": 0.004748134509921012,
+        "core_L1_over_full_reference": 0.0044357568938651806,
+        "rate_RMS_error": 0.0008046660131909542,
+        "max_abs_rate": 0.7663582334473381,
+        "number_rate": 1.734723475976807e-18,
+        "momentum_rate": [
+          -2.6020852139652106e-17,
+          7.589415207398531e-18,
+          5.662161092327988e-19
+        ],
+        "energy_rate": -2.6020852139652106e-17
+      },
+      {
+        "n": 24,
+        "theta": 0.6,
+        "outer_node": 6.590116268529616,
+        "mass": 0.999999999998767,
+        "variance_sample": [
+          1.1499999999505248,
+          1.1499999999505257,
+          0.699999999999138
+        ],
+        "quadratic_reproduction": [
+          {
+            "degree": 0,
+            "max_abs": 3.725290298461914e-09,
+            "max_backward_ratio": 1.9836330729882028e-16
+          },
+          {
+            "degree": 1,
+            "max_abs": 1.955777406692505e-08,
+            "max_backward_ratio": 4.799752894145673e-16
+          },
+          {
+            "degree": 2,
+            "max_abs": 9.212072171749242e-08,
+            "max_backward_ratio": 1.798834192587686e-15
+          }
+        ],
+        "max_abs_D": 7983101.951553791,
+        "score_max_abs_error": 8.894881808885202e-08,
+        "score_population_RMS_error": 3.663517337967731e-12,
+        "momentum_gradient_population_RMS_error": [
+          9.738619126939199e-13,
+          9.7386191269392e-13,
+          4.277502038789793e-14
+        ],
+        "energy_gradient_population_RMS_error": 4.111147268707235e-12,
+        "full_RHS_relative_L1_error": 0.00316024741944018,
+        "core_L1_over_full_reference": 0.002977748819261277,
+        "rate_RMS_error": 0.0005283337733382509,
+        "max_abs_rate": 0.8485557066278471,
+        "number_rate": 3.469446951953614e-18,
+        "momentum_rate": [
+          -1.516525953731765e-16,
+          8.356426126237638e-18,
+          4.666985756851972e-18
+        ],
+        "energy_rate": 2.0816681711721685e-17
+      }
+    ],
+    "landau_hermite_campaign_scale_gates.json": [
+      {
+        "n": 16,
+        "theta": 0.6,
+        "outer_node": 5.136256166621286,
+        "mass": 0.9999999868413029,
+        "variance_sample": [
+          1.1499996450472734,
+          1.1499996450472691,
+          0.6999999907889112
+        ],
+        "quadratic_reproduction": [
+          {
+            "degree": 0,
+            "max_abs": 3.637978807091713e-12,
+            "max_backward_ratio": 1.8522895244481915e-16
+          },
+          {
+            "degree": 1,
+            "max_abs": 1.2732925824820995e-11,
+            "max_backward_ratio": 3.2459045555302387e-16
+          },
+          {
+            "degree": 2,
+            "max_abs": 6.964562260236562e-11,
+            "max_backward_ratio": 1.241958672147168e-15
+          }
+        ],
+        "max_abs_D": 9043.540650230367,
+        "score_max_abs_error": 5.437783556772047e-11,
+        "score_population_RMS_error": 8.927366203505373e-14,
+        "momentum_gradient_population_RMS_error": [
+          2.7950948729062058e-14,
+          2.7950948729062058e-14,
+          3.254701315654458e-15
+        ],
+        "energy_gradient_population_RMS_error": 1.0539064360541203e-13,
+        "full_RHS_relative_L1_error": 0.007775787407575459,
+        "core_L1_over_full_reference": 0.007165642454104762,
+        "rate_RMS_error": 0.0013343440242975448,
+        "max_abs_rate": 0.6767973049454017,
+        "number_rate": 6.938893903907228e-18,
+        "momentum_rate": [
+          5.0306980803327406e-17,
+          -2.4936649967166602e-18,
+          6.207057437479513e-18
+        ],
+        "energy_rate": 3.469446951953614e-17
+      },
+      {
+        "n": 16,
+        "theta": 0.75,
+        "outer_node": 5.74250896920884,
+        "mass": 0.9999999999758579,
+        "variance_sample": [
+          1.1499999989778609,
+          1.1499999989778638,
+          0.6999999999831004
+        ],
+        "quadratic_reproduction": [
+          {
+            "degree": 0,
+            "max_abs": 3.637978807091713e-12,
+            "max_backward_ratio": 9.612329980715523e-17
+          },
+          {
+            "degree": 1,
+            "max_abs": 2.091837814077735e-11,
+            "max_backward_ratio": 5.332557484085397e-16
+          },
+          {
+            "degree": 2,
+            "max_abs": 1.184012887733843e-10,
+            "max_backward_ratio": 1.888490229740182e-15
+          }
+        ],
+        "max_abs_D": 8088.788660479096,
+        "score_max_abs_error": 9.882938911687233e-11,
+        "score_population_RMS_error": 3.701330589813364e-14,
+        "momentum_gradient_population_RMS_error": [
+          1.0389736978560635e-14,
+          1.0389736978560635e-14,
+          7.846831449232229e-16
+        ],
+        "energy_gradient_population_RMS_error": 4.3676854606170534e-14,
+        "full_RHS_relative_L1_error": 0.008106329960735102,
+        "core_L1_over_full_reference": 0.008045415206501606,
+        "rate_RMS_error": 0.001407729894129387,
+        "max_abs_rate": 29.184363169548387,
+        "number_rate": 6.938893903907228e-18,
+        "momentum_rate": [
+          -2.42861286636753e-17,
+          1.3010426069826053e-18,
+          1.179069862577986e-18
+        ],
+        "energy_rate": -3.469446951953614e-17
+      }
+    ],
+    "landau_auditor_smoke_receipt.json": {
+      "status": "passed_independent_all_saved_stages",
+      "input_summary_sha256": "8f3e518ae64a0b7a531ffe67bc54504520b8cc2ce94cc897cc5fba1c9c9f0d40",
+      "producer_status": "private_scale07_step",
+      "rows": [
+        {
+          "case": "cap_n16",
+          "declared_status": "accepted_private_single_step",
+          "source_arrays_sha256": "16c188517ffb031d18b4d081291c941cfca920a7f6c701ea3ad47268894f43e0",
+          "n": 16,
+          "theta": 0.7,
+          "softening": 0.0,
+          "saved_stages": 2,
+          "last_time": 0.05,
+          "nodal_min_density": 4.4525708073387584e-23,
+          "quadrature_max_relative_difference": 1.4963962384021825e-13,
+          "derivative_max_scaled_difference": 0.0,
+          "weighted_SBP_max_abs_defect": 5.551115123125783e-16,
+          "raw_invariant_max_abs_drifts": [
+            4.773959005888173e-15,
+            4.921080550052574e-16,
+            6.12236842348295e-17,
+            9.21779497008039e-19,
+            2.6645352591003757e-15
+          ],
+          "stages": [
+            {
+              "j": 1,
+              "time": 0.05,
+              "dt": 0.05,
+              "weighted_root_norm": 3.4989636141593904e-13,
+              "entropy_change": 0.0019528165491967437,
+              "frozen_Gram_production": 0.001918203520487177,
+              "time_KL": 3.461302870794324e-05,
+              "residual_entropy_defect": -1.5551781398685187e-15,
+              "entropy_identity_defect_with_residual": 6.817066793971497e-17,
+              "min_f": 4.6337308063268934e-23,
+              "tail_mass_r_gt3": 0.029930881830416037,
+              "tail_mass_maxcoord_gt4": 0.00014511120175443427,
+              "tail_mass_maxcoord_gt5": 2.5320894082896514e-06
+            }
+          ],
+          "independent_initial_L1": 0.007185724553237761
+        }
+      ],
+      "source_sha256": "8180bea6fa7d2d5118b633b004e2c8890cb18b288df7efc23fc249b8e6f3fe5f",
+      "helper_sha256": "40692b8525e49c372d05359809a10bc6473c4ee5d8adc38cdd93817fc59d24d2",
+      "wall_s": 13.235548417000246,
+      "scope": "Independent SciPy Hermite nodes/measure, barycentric gradients, NumPy full Coulomb pair flux and adjoint. Every saved accepted stage; positivity, raw five invariant drifts, frozen root and corrected entropy identity. Partial/failed producers remain partial/failed.",
+      "limitations": [
+        "No continuum finite-time trajectory oracle. Independent finite root agreement alone does not establish physical trajectory convergence.",
+        "Barycentric derivatives may differ in unpopulated extreme tails; their backward error and weighted root measurements accompany absolute differences."
+      ]
+    }
+  },
+  "private_receipt_sha256": {
+    "landau_sbp_theory_probe.json": "a717c98d8c457bedf5acb4d9d3dcd297c61294946b1939c89d538fdbb79c8276",
+    "landau_hermite_independent_theory.json": "66d1cda90aee067c64ea76799f7064d1ba689cebe03af96c58541f06e4430291",
+    "landau_hermite_scale_audit.json": "d7d96e8dfedbdd797a5b4fba5207bbd947477d2cab9f8efe52f32b3171d86294",
+    "landau_hermite_dense_gram_audit.json": "087a6d4449f3e0f171d6718bb25ef598762bde7df0f76f6bc082eb072e602ac3",
+    "landau_hermite_theta06_refinement_audit.json": "535ca1b3927daa49e397992356ea5f7a94168f6be66af7a4393a2219727436d2",
+    "landau_hermite_campaign_scale_gates.json": "0d2a1774a5859720d93cc2553a18bb5db522db7f1dea6aa29a7d0180b55030aa",
+    "landau_auditor_smoke_receipt.json": "6c5caa7f6da37d0ff66339fdaefa51a24037e65318f6614e6b38c991be47091b"
+  },
+  "production_source_sha256": {
+    "src/sato_morrison/controls.py": "a4f707700916ce70c930d8598caa0f4e3b87890294f6d6f366be52f250274adf",
+    "src/sato_morrison/solver.py": "2823a80258f21851131e0e0cd10a8101af8bcf9b8f8aefcf49eada752751add0"
+  },
+  "scope_limits": [
+    "Instantaneous Gaussian accuracy and one finite discrete root are independently checked; these establish no physical finite-time trajectory convergence.",
+    "Lobatto SBP negative results and Hermite scale sensitivity retained; lowweightedL1 does not certify tailrelative rates.",
+    "The smoke step source omitted derivative; its audit fixture stores the independently reconstructed barycentric matrix. Original velocity/weights/initial/new density were copied unchanged. Full production allstage audit will additionally compare saved production derivative."
+  ],
+  "inputs": {
+    "covariance": [
+      1.15,
+      1.15,
+      0.7
+    ],
+    "density": 1.0,
+    "gamma": 1.0,
+    "kernel": "Coulomb unsoftened, coincident quadrature samples zero",
+    "strong_scalar_order": 256,
+    "independent_pair_chunk": 64,
+    "all_scan_orders": [
+      12,
+      16,
+      20,
+      24,
+      28
+    ],
+    "physical_tail_masks": [
+      "|v|>3",
+      "max|coordinate|>4",
+      "max|coordinate|>5"
+    ]
+  },
+  "environment": {
+    "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.11.2",
+    "solvax": "0.28.2",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "Apple M4",
+    "logical_cpus": 10,
+    "thread_settings": {
+      "OPENBLAS_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "peak_rss_scope": "Historical independent initial probes did not separately record process peakRSS; no reconstructed RSS claim.",
+    "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 .venv/bin/python private_checker.py",
+    "runtime_scope": "Measured private receipt wall times include the named checks; concurrent machine load existed, so these are not isolated CPU cost benchmarks."
+  },
+  "fine_grid_accepted_step": {
+    "original_endpoint_file": "fine_step_hermite20_theta065.npz",
+    "original_endpoint_sha256": "50709239d3845988143057fef64b9fc4b54bdcf67a2c18e4e28cf932f6908170",
+    "producer_receipt": [
+      {
+        "n": 20,
+        "initial_action_s": 4.234176916000251,
+        "mass": 0.9999999999887856,
+        "L1_error": 0.0041850973027234015,
+        "max_relative_rate": 1.3451888972316859,
+        "status": "passed",
+        "newton": 4,
+        "linear": 123,
+        "step_s": 469.31269754100003,
+        "change": 0.001956479577603092,
+        "history": [
+          {
+            "iteration": 1,
+            "relative_residual": 0.008737818436347067,
+            "linear_iterations": 25,
+            "true_linear_relative_residual": 9.935954386032669e-09,
+            "linear_wall_s": 112.96506716600015,
+            "maximum_log_direction": 1.0634190997017041,
+            "minimum_signed_log_direction": -1.0634190997017041,
+            "maximum_signed_log_direction": 0.13750329810399733,
+            "objective_descent": -7.30701992881204e-05,
+            "mobility_curvature": 6.192011686624197e-05
+          },
+          {
+            "iteration": 1,
+            "relative_residual": 0.008737818436347067,
+            "linear_iterations": 25,
+            "true_linear_relative_residual": 9.935954386032669e-09,
+            "linear_wall_s": 112.96506716600015,
+            "maximum_log_direction": 1.0634190997017041,
+            "minimum_signed_log_direction": -1.0634190997017041,
+            "maximum_signed_log_direction": 0.13750329810399733,
+            "objective_descent": -7.30701992881204e-05,
+            "mobility_curvature": 6.192011686624197e-05,
+            "fraction": 1.0,
+            "backtracks": 0,
+            "maximum_log_step": 1.0634190997017041,
+            "objective_change": -3.6422211377098806e-05
+          },
+          {
+            "iteration": 2,
+            "relative_residual": 6.942022532615393e-05,
+            "linear_iterations": 28,
+            "true_linear_relative_residual": 9.433171076608714e-09,
+            "linear_wall_s": 97.18848570799992,
+            "maximum_log_direction": 2.956712999270671,
+            "minimum_signed_log_direction": -0.023749147014581765,
+            "maximum_signed_log_direction": 2.956712999270671,
+            "objective_descent": -4.531914303323509e-09,
+            "mobility_curvature": 3.469740810494058e-09
+          },
+          {
+            "iteration": 2,
+            "relative_residual": 6.942022532615393e-05,
+            "linear_iterations": 28,
+            "true_linear_relative_residual": 9.433171076608714e-09,
+            "linear_wall_s": 97.18848570799992,
+            "maximum_log_direction": 2.956712999270671,
+            "minimum_signed_log_direction": -0.023749147014581765,
+            "maximum_signed_log_direction": 2.956712999270671,
+            "objective_descent": -4.531914303323509e-09,
+            "mobility_curvature": 3.469740810494058e-09,
+            "fraction": 0.6764268295547582,
+            "backtracks": 0,
+            "maximum_log_step": 2.0,
+            "objective_change": -2.0287643428196484e-09
+          },
+          {
+            "iteration": 3,
+            "relative_residual": 2.2466061413202958e-05,
+            "linear_iterations": 31,
+            "true_linear_relative_residual": 8.469688147742374e-09,
+            "linear_wall_s": 117.53775050000013,
+            "maximum_log_direction": 0.7586783628342872,
+            "minimum_signed_log_direction": -0.7586783628342872,
+            "maximum_signed_log_direction": 0.009009652978698095,
+            "objective_descent": -4.747102522713079e-10,
+            "mobility_curvature": 3.634990254730888e-10
+          },
+          {
+            "iteration": 3,
+            "relative_residual": 2.2466061413202958e-05,
+            "linear_iterations": 31,
+            "true_linear_relative_residual": 8.469688147742374e-09,
+            "linear_wall_s": 117.53775050000013,
+            "maximum_log_direction": 0.7586783628342872,
+            "minimum_signed_log_direction": -0.7586783628342872,
+            "maximum_signed_log_direction": 0.009009652978698095,
+            "objective_descent": -4.747102522713079e-10,
+            "mobility_curvature": 3.634990254730888e-10,
+            "fraction": 1.0,
+            "backtracks": 0,
+            "maximum_log_step": 0.7586783628342872,
+            "objective_change": -2.373608227012832e-10
+          },
+          {
+            "iteration": 4,
+            "relative_residual": 9.145648984592599e-10,
+            "linear_iterations": 39,
+            "true_linear_relative_residual": 4.5718840260314e-09,
+            "linear_wall_s": 118.54212291699969,
+            "maximum_log_direction": 0.4303284943020092,
+            "minimum_signed_log_direction": -0.4303284943020092,
+            "maximum_signed_log_direction": 0.0003587540975918421,
+            "objective_descent": -7.763939752365783e-19,
+            "mobility_curvature": 7.130503634729387e-19
+          },
+          {
+            "iteration": 4,
+            "relative_residual": 9.145648984592599e-10,
+            "linear_iterations": 39,
+            "true_linear_relative_residual": 4.5718840260314e-09,
+            "linear_wall_s": 118.54212291699969,
+            "maximum_log_direction": 0.4303284943020092,
+            "minimum_signed_log_direction": -0.4303284943020092,
+            "maximum_signed_log_direction": 0.0003587540975918421,
+            "objective_descent": -7.763939752365783e-19,
+            "mobility_curvature": 7.130503634729387e-19,
+            "fraction": 1.0,
+            "backtracks": 0,
+            "maximum_log_step": 0.4303284943020092,
+            "objective_change": -3.8819698871016737e-19
+          }
+        ]
+      }
+    ],
+    "producer_receipt_sha256": "09c2f0855d732a94b64fd720a705abda72344eda39a17d146fbc59425852ece4",
+    "producer_private_source_basename": "landau_hermite_tensor065_probe.py",
+    "producer_private_source_sha256": "bd9f09ef60cd8d6ca19207f921d4004ff3f79c1037cd308cd61615545f70723d",
+    "independent_audit": {
+      "status": "passed_independent_all_saved_stages",
+      "input_summary_sha256": "b21a76a264e46c9e9669803d45e930e4157ca7887a208057d09280640eccf200",
+      "producer_status": "private_fine20_single_accepted_step",
+      "rows": [
+        {
+          "case": "fine20",
+          "declared_status": "passed_discrete_trajectory",
+          "source_arrays_sha256": "e8eb352421078e32af27a23192364d0e37196e73eb6f2db5910952918180d425",
+          "n": 20,
+          "theta": 0.65,
+          "softening": 0.0,
+          "saved_stages": 2,
+          "last_time": 0.05,
+          "nodal_min_density": 6.346478472142452e-28,
+          "quadrature_max_relative_difference": 1.8787932955232029e-13,
+          "derivative_max_scaled_difference": 0.0,
+          "weighted_SBP_max_abs_defect": 8.049116928532385e-16,
+          "raw_invariant_max_abs_drifts": [
+            8.326672684688674e-15,
+            3.262593430162918e-17,
+            7.1113729808576e-18,
+            9.419226523113974e-18,
+            2.9753977059954195e-14
+          ],
+          "stages": [
+            {
+              "j": 1,
+              "time": 0.05,
+              "dt": 0.05,
+              "weighted_root_norm": 1.2773266360237967e-13,
+              "entropy_change": 0.0019564795776033927,
+              "frozen_Gram_production": 0.0019217024565755917,
+              "time_KL": 3.477712102747123e-05,
+              "residual_entropy_defect": -2.906045151492024e-17,
+              "entropy_identity_defect_with_residual": 3.00713191773702e-16,
+              "min_f": 6.346478472142452e-28,
+              "tail_mass_r_gt3": 0.02950743313121502,
+              "tail_mass_maxcoord_gt4": 0.00016684460305826568,
+              "tail_mass_maxcoord_gt5": 7.5719452749038926e-06
+            }
+          ],
+          "independent_initial_L1": 0.004185097303021765
+        }
+      ],
+      "source_sha256": "8180bea6fa7d2d5118b633b004e2c8890cb18b288df7efc23fc249b8e6f3fe5f",
+      "helper_sha256": "40692b8525e49c372d05359809a10bc6473c4ee5d8adc38cdd93817fc59d24d2",
+      "wall_s": 25.647744666999643,
+      "scope": "Independent SciPy Hermite nodes/measure, barycentric gradients, NumPy full Coulomb pair flux and adjoint. Every saved accepted stage; positivity, raw five invariant drifts, frozen root and corrected entropy identity. Partial/failed producers remain partial/failed.",
+      "limitations": [
+        "No continuum finite-time trajectory oracle. Independent finite root agreement alone does not establish physical trajectory convergence.",
+        "Barycentric derivatives may differ in unpopulated extreme tails; their backward error and weighted root measurements accompany absolute differences."
+      ]
+    },
+    "independent_audit_sha256": "2d7bb3fbf6c38ae6c88535697023d45fa55411c4ea82b9a001c5d83f7c67ae15",
+    "fixture_scope": "Producer original endpoint file contains velocity/weights/initial/new. Auditor reconstructs D independently and adds it only to the private audit fixture. Public endpoint is unchanged byte-for-byte."
+  },
+  "negative_regularized_optimizer_probe": {
+    "status": "externally_terminated_first_correction_budget",
+    "order": 20,
+    "theta": 0.6,
+    "dt": 0.05,
+    "eta_rule": "1e\u221212*mass/N*min(1,rootnorm/1e\u22126)",
+    "linear_method": "diagonal PCG on regularized Hessian with max400; original nonlinear root and objective retained",
+    "observation": "No first-correction callback or accepted state after approximately310s under concurrent CPU load. Callback budget only runs between corrections; the first linear solve exceeded that check interval. Process terminated explicitly.",
+    "accepted_steps": 0,
+    "source_sha256": "4f5de2e645dfa3226ab27bbc601969bbe5a13177e93669e4fe44f9c4d1d460d7",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "terminated_utc": "2026-10-09T18:38:09.090298+00:00"
+  }
+}
