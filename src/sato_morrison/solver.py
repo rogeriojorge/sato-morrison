@@ -447,7 +447,7 @@ def lagged_entropy_compiler(grid, *, collision_strength=1.,chunk_size=65536,
 def lagged_entropy_step(grid,f,dt,*,collision_strength=1.,rtol=1e-11,
                         max_steps=80,compiled=None,chunk_size=65536,
                         linear_rtol=1e-6,linear_max_steps=1000,
-                        iteration_callback=None,preconditioner_axis=None):
+                        iteration_callback=None,preconditioner_axis=None,max_log_step=None):
     """First-order positive conservative lagged-mobility entropy step.
 
     The root w(exp(g)-f)+dt K(f)g=0 minimizes a strictly convex coercive
@@ -458,11 +458,16 @@ def lagged_entropy_step(grid,f,dt,*,collision_strength=1.,rtol=1e-11,
     interpolation. Reuse a compiler built with matching grid/D/linear budget/axis.
     A compiler's fixed reference, when supplied, changes the congruence and
     residual metric only. Its total population must match the actual old state
-    within relative 1e-9; no population or reference is repaired. The entropy
-    defect bound uses the dual norm of that same metric.
+    within relative 1e-9; no population or reference is repaired. Optional
+    max_log_step bounds the initial uniform line-search fraction by the largest
+    log-density change; it changes no component of the Newton direction and
+    no collision operator. Armijo descent still certifies every accepted trial.
+    The entropy defect bound uses the dual norm of that same metric.
     """
     from time import perf_counter
     _check_preconditioner_axis(preconditioner_axis)
+    if max_log_step is not None and (not np.isfinite(max_log_step) or max_log_step<=0):
+        raise ValueError('max_log_step must be finite positive or None')
     if not np.isfinite(rtol) or rtol<=0 or not isinstance(max_steps,int) or max_steps<0:
         raise ValueError('positive finite tolerance and nonnegative integer iteration limit required')
     if not np.isfinite(linear_rtol) or not 0<linear_rtol<1:
@@ -539,7 +544,7 @@ def lagged_entropy_step(grid,f,dt,*,collision_strength=1.,rtol=1e-11,
             raise StepFailure(f'SOLVAX PCG rejected lagged correction: status={int(answer[6])}, iterations={count}, true residual={true:.3e}')
         if not np.all(np.isfinite(direction)) or not np.isfinite(descent) or not np.isfinite(curvature) or descent>=0:
             raise StepFailure('lagged Newton direction is nonfinite or lacks objective descent')
-        alpha0=1.
+        alpha0=1. if max_log_step is None else min(1.,float(max_log_step)/float(np.max(np.abs(direction))))
         rejections={'log_range':0,'population':0,'armijo':0}
         for backtrack in range(30):
             fraction=alpha0*2.**(-backtrack);candidate=new_log+fraction*direction

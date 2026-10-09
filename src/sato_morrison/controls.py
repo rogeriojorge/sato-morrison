@@ -174,6 +174,46 @@ def landau_gaussian_analytic(covariance, gamma=1.):
     return rotation @ np.diag(rates) @ rotation.T
 
 
+def landau_gaussian_relative_rate(velocity, covariance, *, mean=None, gamma=1.,
+                                  scalar_order=192, chunk_size=256):
+    """Independent continuum Coulomb C[F]/F for one Gaussian, never a closure.
+
+    A one-dimensional Laplace integral evaluates the convolution diffusion
+    tensor analytically in all three velocity coordinates. This instantaneous
+    oracle does not call the nodal weak operator or fit its collision rate.
+    Covariance may be a diagonal vector or a symmetric positive definite 3x3
+    matrix. Scalar quadrature refinement is required for accuracy claims.
+    """
+    velocity=np.asarray(velocity,dtype=float)
+    a=np.asarray(covariance,dtype=float)
+    if a.shape==(3,):a=np.diag(a)
+    a=_covariance(a)
+    if (velocity.ndim!=2 or velocity.shape[1]!=3 or not np.all(np.isfinite(velocity))
+        or not np.isfinite(gamma) or gamma<0
+        or type(scalar_order) is not int or scalar_order<2
+        or type(chunk_size) is not int or chunk_size<1):
+        raise ValueError('Finite Nx3 velocities, nonnegative rate and integer quadrature budgets required')
+    mean=np.zeros(3) if mean is None else np.asarray(mean,dtype=float)
+    if mean.shape!=(3,) or not np.all(np.isfinite(mean)):
+        raise ValueError('Finite three-velocity Gaussian mean required')
+    eigenvalues,rotation=np.linalg.eigh(a)
+    q,weights=np.polynomial.legendre.leggauss(scalar_order)
+    q=(q+1)/2;z=q/(1-q);weights=weights/(2*(1-q)**2)
+    d=1+2*z[:,None]**2*eigenvalues;variance=eigenvalues/d
+    answer=np.empty(len(velocity))
+    for first in range(0,len(velocity),chunk_size):
+        x=(velocity[first:first+chunk_size]-mean)@rotation
+        score=-x/eigenvalues;center=x[:,None,:]/d
+        factor=np.prod(d,axis=1)**-.5*np.exp(-z*z*np.sum(x[:,None,:]**2/d,axis=2))
+        trace=np.sum(score*score-1/eigenvalues,axis=1)[:,None]
+        contraction=(np.sum(variance*(score[:,None,:]**2-1/eigenvalues),axis=2)
+            +np.sum(center*score[:,None,:],axis=2)**2-np.sum(center*center/eigenvalues,axis=2))
+        density=np.exp(-np.sum(x*x/eigenvalues,axis=1)/2)/np.sqrt(np.prod(2*np.pi*eigenvalues))
+        answer[first:first+len(x)]=gamma*(2/np.sqrt(np.pi)*np.sum(
+            weights*factor*(trace-2*z*z*contraction),axis=1)+8*np.pi*density)
+    return answer
+
+
 def landau_gaussian_quadrature(covariance, gamma=1., radial_order=48,
                                polar_order=32, phase_order=48, radius=12., softening=0.):
     """3V Gaussian weak moments with explicit radial, polar, gyrophase integrals.
@@ -563,8 +603,12 @@ class LandauVelocityGrid:
         if not np.array_equal(velocity,expected):raise ValueError('Velocity tensor ordering must be ij')
         x=axes[0]
         for h,dh in [(np.ones(n),np.zeros(n)),(x,np.ones(n)),(x*x,2*x)]:
-            if not np.allclose(derivative@h,dh,rtol=1e-11,atol=1e-11):
-                raise ValueError('Velocity derivative must reproduce quadratics without repairs')
+            # Outer spectral nodes can have large cancelling entries. Judge
+            # reproduction by the matrix-vector floating-point backward error,
+            # without altering the derivative or any invariant direction.
+            rounding=8*n*np.finfo(float).eps*(np.abs(derivative)@np.abs(h)+np.abs(dh))
+            if np.any(np.abs(derivative@h-dh)>1e-11+rounding):
+                raise ValueError('Velocity derivative must reproduce quadratics within its floating-point backward error without repairs')
         for name,a in [('velocity',velocity),('weights',weights),('derivative',derivative)]:
             object.__setattr__(self,name,jnp.array(a.copy()))
     @property
@@ -589,6 +633,29 @@ def landau_velocity_grid(order=12,extent=5.,*,derivative='polynomial'):
     v=np.stack(np.meshgrid(x,x,x,indexing='ij'),axis=-1).reshape(-1,3)
     weights=np.prod(np.meshgrid(w,w,w,indexing='ij'),axis=0).ravel()
     return LandauVelocityGrid((order,)*3,v,weights,derivative_matrix(x,method=derivative))
+
+def landau_hermite_grid(order=16,thermal_variance=1.):
+    """Physical 3V Gauss-Hermite volume rule and global polynomial gradients.
+
+    The Gaussian reference sets nodes and quadrature only. Every nodal density
+    remains an independent unknown, so evolved distributions need not be
+    Gaussian. Physical volume weights undo the Hermite Gaussian weight:
+    v=sqrt(2*theta)*x, w=sqrt(2*theta)*q*exp(x^2). The weak boundary is at
+    infinity in the quadrature formulation. Order and reference-scale scans
+    must test tails and the full evolving density; finite positive nodal values
+    do not certify polynomial reconstruction between nodes or extrapolated tails.
+    """
+    from .collisions import derivative_matrix
+    if (type(order) is not int or order<3 or not np.isfinite(thermal_variance)
+        or thermal_variance<=0):
+        raise ValueError('Need integer order>=3 and finite positive Hermite reference variance')
+    x,q=np.polynomial.hermite.hermgauss(order)
+    w=np.sqrt(2*thermal_variance)*q*np.exp(x*x)
+    x=np.sqrt(2*thermal_variance)*x
+    v=np.stack(np.meshgrid(x,x,x,indexing='ij'),axis=-1).reshape(-1,3)
+    weights=np.prod(np.meshgrid(w,w,w,indexing='ij'),axis=0).ravel()
+    return LandauVelocityGrid((order,)*3,v,weights,derivative_matrix(x,method='polynomial'))
+
 
 @dataclass(frozen=True,eq=False)
 class LandauEntropyCompiler(LaggedEntropyCompiler):

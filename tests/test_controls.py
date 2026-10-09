@@ -521,3 +521,76 @@ def test_landau_local_higher_test_gradient_refines_and_invalid_option_rejects():
         errors.append(np.sqrt(np.sum(weights*np.exp(-x*x/2)*difference**2)))
     assert errors[1]<.6*errors[0] and errors[2]<.65*errors[1]
     with pytest.raises(ValueError):landau_velocity_grid(4,3.,derivative='unspecified')
+
+
+def test_continuum_gaussian_strong_oracle_independent_weak_integrals():
+    from sato_morrison.controls import landau_gaussian_relative_rate
+    # The weak pressure oracle integrates out velocity before adaptive scalar
+    # quadrature, independently of this sampled strong collision term.
+    a=np.array([[1.1,.08,0.],[.08,.9,.04],[0.,.04,.7]])
+    drift=np.array([.3,-.2,.1]);gamma=.6
+    x,q=np.polynomial.hermite.hermgauss(30)
+    z=np.stack(np.meshgrid(x,x,x,indexing='ij'),axis=-1).reshape(-1,3)
+    v=drift+np.sqrt(2)*z@np.linalg.cholesky(a).T
+    prob=np.prod(np.meshgrid(q,q,q,indexing='ij'),axis=0).ravel()/np.pi**1.5
+    rate=landau_gaussian_relative_rate(v,a,mean=drift,gamma=gamma,scalar_order=192)
+    refined=landau_gaussian_relative_rate(v,a,mean=drift,gamma=gamma,scalar_order=96)
+    np.testing.assert_allclose(rate,refined,rtol=0,atol=1e-11)
+    centered=v-drift
+    covariance=np.einsum('n,ni,nj->ij',prob*rate,centered,centered)
+    np.testing.assert_allclose(covariance,landau_gaussian_analytic(a,gamma),rtol=2e-9,atol=1e-11)
+    np.testing.assert_allclose(prob@rate,0.,atol=1e-11)
+    np.testing.assert_allclose((prob*rate)@v,0.,atol=1e-11)
+    for temperature in [.4,1.,1.8]:
+        stationary=landau_gaussian_relative_rate(np.array([[0.,0.,0.],[2.,.3,-1.],[-.2,.4,.7]]),temperature*np.eye(3),mean=drift)
+        np.testing.assert_allclose(stationary,0.,atol=3e-13)
+    for options in [{'scalar_order':0},{'chunk_size':0},{'gamma':-1.},{'mean':[0.,0.]}]:
+        with pytest.raises(ValueError):landau_gaussian_relative_rate(v[:2],a,**options)
+
+
+def test_hermite_volume_rule_quadratic_backward_error_and_raw_invariants():
+    from sato_morrison.controls import landau_hermite_grid,landau_entropy_compiler
+    grid=landau_hermite_grid(20,.7)
+    v,w,D=map(np.asarray,(grid.velocity,grid.weights,grid.derivative))
+    x=np.unique(v[:,0]);eps=np.finfo(float).eps
+    for h,dh in [(np.ones(20),np.zeros(20)),(x,np.ones(20)),(x*x,2*x)]:
+        denominator=np.abs(D)@np.abs(h)+np.abs(dh)
+        assert np.max(np.abs(D@h-dh)/denominator)<8*len(x)*eps
+    a=np.array([1.15,1.15,.7]);f=np.exp(-np.sum(v*v/a,axis=1)/2)/np.sqrt(np.prod(2*np.pi*a))
+    np.testing.assert_allclose(w@f,1.,atol=2e-10,rtol=0)
+    np.testing.assert_allclose((w*f)@(v*v),a,atol=2e-9,rtol=0)
+    c=landau_entropy_compiler(grid)
+    old=np.log(f);R=np.asarray(c.apply(old,old))
+    invariants=np.column_stack((np.ones(grid.size),v,np.sum(v*v,axis=1)/2))
+    np.testing.assert_allclose(R@invariants,0.,atol=2e-13)
+    for h in invariants.T:
+        action=np.asarray(c.apply(old,h))
+        assert np.linalg.norm(action/np.sqrt(w*f))<2e-12
+    maxwellian=-np.sum((v-[.2,-.1,.3])**2,axis=1)/2-1.5*np.log(2*np.pi)
+    residual=np.asarray(c.apply(maxwellian,maxwellian))
+    assert np.linalg.norm(residual/np.sqrt(w*np.exp(maxwellian)))<2e-12
+    from sato_morrison.controls import LandauVelocityGrid
+    bad=D.copy();bad[len(x)//2,len(x)//2]+=1e-4
+    with pytest.raises(ValueError):LandauVelocityGrid(grid.shape,v,w,bad)
+    for n,theta in [(2,.7),(True,.7),(4,0.),(4,np.nan)]:
+        with pytest.raises(ValueError):landau_hermite_grid(n,theta)
+
+
+def test_uniform_log_step_globalization_same_independent_root(landau_dense_reference):
+    from scipy.optimize import root
+    from sato_morrison.controls import landau_entropy_compiler,landau_entropy_step
+    grid,v,w,f,matrix=landau_dense_reference
+    K=matrix(f);dt=.4;old=np.log(f)
+    endpoint=root(lambda g:w*(np.exp(g)-f)+dt*K@g,old,
+                  jac=lambda g:np.diag(w*np.exp(g))+dt*K,tol=1e-12)
+    assert endpoint.success
+    c=landau_entropy_compiler(grid)
+    capped=landau_entropy_step(grid,f,dt,compiled=c,rtol=1e-12,
+        linear_rtol=1e-9,max_log_step=.005,max_steps=80)
+    assert any(r['fraction']<1. for r in capped.iteration_history)
+    assert all(r['maximum_log_step']<=.005*(1+1e-14) for r in capped.iteration_history)
+    np.testing.assert_allclose(capped.f,np.exp(endpoint.x),rtol=2e-11,atol=1e-13)
+    uncapped=landau_entropy_step(grid,f,dt,compiled=c,rtol=1e-12,linear_rtol=1e-9)
+    np.testing.assert_allclose(capped.f,uncapped.f,rtol=2e-11,atol=1e-13)
+    for invalid in [0.,-1.,np.inf,np.nan]:
+        with pytest.raises(ValueError):landau_entropy_step(grid,f,dt,compiled=c,max_log_step=invalid)
