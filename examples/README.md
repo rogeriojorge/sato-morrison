@@ -58,3 +58,5 @@ Examples 27 and 28 render recorded data. Example 27 writes 120-frame GIF and MP4
 Every scientific result records its producing commit, inputs, normalized units, versions and hardware. See the [validation ledger](../results/validation.csv) and [reproduction record](../results/deep_reproduction.json).
 
 `30_landau_consistency.py` compares the full initial Coulomb collision term with an independent continuum Gaussian formula. It records velocity, extent and softening scans, saves figures and arrays, and raises an accuracy failure when the declared full-term target remains unresolved.
+
+`31_landau_trajectory.py` saves full 3V Landau states and compares velocity-grid, timestep, quadrature-scale, kernel and solver-tolerance refinements. The archived first campaign has ten independently checked accepted stages and an interrupted fine-grid continuation; its overall accuracy status remains unresolved. The output guard prevents overwriting saved evidence.

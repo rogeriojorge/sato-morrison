@@ -101,6 +101,23 @@ An independent diagnostic supplies the exact velocity-space particle flux to eac
 These are initial collision terms. Full Landau trajectories still need velocity, tail, timestep and kernel convergence. Example 30 saves every refinement and exits with a visible failure because the declared 1% target is unresolved for the local option. [Inputs and measured errors](results/landau_consistency/summary.json) · [Independent array audit](results/landau_consistency/independent_audit.json) · [Independent continuum derivation and checks](results/landau_evolution/independent_strong_audit.json)
 
 
+### Evolving the full Landau distribution
+
+A Gaussian is useful for checking the initial collision term. During relaxation, each velocity node has its own density; the solver does not constrain the distribution to remain Gaussian. Gauss–Hermite nodes put more resolution near the populated velocities. Their integration weights are converted to physical velocity volume before assembling the Coulomb operator.
+
+![Physical Gauss–Hermite quadrature, its volume weights and the initial full collision-term accuracy.](results/landau_trajectory/partial_figures/quadrature.png)
+
+At scale **θ = 0.65**, the initial full-term error is **0.652% on 16³ nodes** and **0.419% on 20³ nodes**. The quadrature scale controls where velocities are sampled; it is independent of the plasma temperature. The derivation and weighted integration-by-parts check are in the [technical notes](notes/implementation.pdf).
+
+![Saved Landau density evolution, velocity marginals and departure from the initial Gaussian.](results/landau_trajectory/partial_figures/trajectory.gif)
+
+The movie shows four accepted **16³-node** steps to **t = 0.2**. Pressure anisotropy falls from **0.45 to 0.409189**. The fourth cumulants become nonzero, resolving the departure from a Gaussian. The finer **20³-node** campaign reaches **t = 0.1** before its capped Newton iteration stalls. Both sets of accepted states are preserved.
+
+![Completed and missing refinements, full-density differences and moment differences for the recorded Landau campaign.](results/landau_trajectory/partial_figures/convergence.png)
+
+Over the shared interval, the two grids differ by about **0.22% of the actual density change**, including an independent comparison on the larger velocity cube **[−5,5]³**. Every saved step passes an independent replay of its discrete equation, conservation and entropy balance. Timestep, tail, kernel and complete fine-grid checks remain necessary before reporting a converged four-operator trajectory. [Saved states and failures](results/landau_trajectory/summary.json) · [Independent stage checks](results/landau_trajectory/independent_allstage_audit.json) · [Larger-box comparison](results/landau_trajectory/independent_expanded_box_audit.json)
+
+
 ## Fields, boundaries and simulations
 
 | Field | Domain and boundary treatment |
@@ -211,7 +228,7 @@ MPLBACKEND=Agg python examples/30_landau_consistency.py
 
 Example 24 exits nonzero because the declared angular and Cartesian checks remain unresolved. It saves the results before raising the error.
 
-**255 tests pass on fresh Linux CI.** Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
+**261 tests pass on fresh Linux CI.** Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
 
 | Capability | Current evidence |
 |---|---|
