@@ -1,0 +1,209 @@
+{
+  "status": "passed_private_comparison_replay",
+  "sources": {
+    "/Users/rogerio/local/sato_morrison_handoff/verification/31_landau_trajectory_next_draft.py": "90e8cec9fe50fa0c1bd367552efcb91925aaf124988863d88ad7019392830b7b"
+  },
+  "inputs": {
+    "/Users/rogerio/local/sato-morrison/results/landau_trajectory/baseline.npz": "56800f6409959a985940474164b224f7369dbd0b374205892537de13727df069",
+    "/Users/rogerio/local/sato-morrison/results/landau_trajectory/grid20.npz": "22f0001f912a8170b795c4909ead2f820944cc042723fb8a1c8fd7eeb9510397",
+    "/Users/rogerio/local/sato-morrison/results/landau_trajectory/independent_expanded_box_audit.json": "cc99bceb68328a74191a3bb0174d6d1e436912f57013a3c600cc1a469436f8d1"
+  },
+  "independent_max_abs_difference": 5.857727497504683e-15,
+  "invalid_nodal_guard": "passed",
+  "no_extrapolation_guard": "passed",
+  "comparisons": [
+    {
+      "status": "passed",
+      "extent": 4.0,
+      "order": 48,
+      "maximum_relative_increment_L1": 0.0021792757763058734,
+      "highest_order": 64,
+      "highest_order_maximum_relative_increment_L1": 0.0021629035240567753,
+      "shared_times": [
+        0.05,
+        0.1
+      ],
+      "shared_time_common_quadrature": [
+        {
+          "time": 0.05,
+          "values": [
+            {
+              "order": 32,
+              "time": 0.05,
+              "baseline_increment_L1": 0.006551284446430775,
+              "relative_increment_L1_error": 0.0021656192071870853
+            },
+            {
+              "order": 48,
+              "time": 0.05,
+              "baseline_increment_L1": 0.0065580012858530165,
+              "relative_increment_L1_error": 0.0021792757763058734
+            },
+            {
+              "order": 64,
+              "time": 0.05,
+              "baseline_increment_L1": 0.006552599739058306,
+              "relative_increment_L1_error": 0.0021629035240567753
+            }
+          ]
+        },
+        {
+          "time": 0.1,
+          "values": [
+            {
+              "order": 32,
+              "time": 0.1,
+              "baseline_increment_L1": 0.012757814740418443,
+              "relative_increment_L1_error": 0.0019778832454989646
+            },
+            {
+              "order": 48,
+              "time": 0.1,
+              "baseline_increment_L1": 0.012769922295997063,
+              "relative_increment_L1_error": 0.002005507100138469
+            },
+            {
+              "order": 64,
+              "time": 0.1,
+              "baseline_increment_L1": 0.012760467322659095,
+              "relative_increment_L1_error": 0.002000158680506779
+            }
+          ]
+        }
+      ],
+      "final_common_quadrature": [
+        {
+          "order": 32,
+          "time": 0.1,
+          "baseline_increment_L1": 0.012757814740418443,
+          "relative_increment_L1_error": 0.0019778832454989646
+        },
+        {
+          "order": 48,
+          "time": 0.1,
+          "baseline_increment_L1": 0.012769922295997063,
+          "relative_increment_L1_error": 0.002005507100138469
+        },
+        {
+          "order": 64,
+          "time": 0.1,
+          "baseline_increment_L1": 0.012760467322659095,
+          "relative_increment_L1_error": 0.002000158680506779
+        }
+      ],
+      "quadrature_refinements": [
+        {
+          "time": 0.05,
+          "absolute_change_in_increment_error": 1.6372252249098086e-05,
+          "baseline_increment_relative_change": 0.0008236574772199079
+        },
+        {
+          "time": 0.1,
+          "absolute_change_in_increment_error": 5.348419631689711e-06,
+          "baseline_increment_relative_change": 0.0007404096218293077
+        }
+      ],
+      "quadrature_absolute_change_in_increment_error": 1.6372252249098086e-05,
+      "quadrature_baseline_increment_relative_change": 0.0008236574772199079,
+      "common_quadrature_status": "passed"
+    },
+    {
+      "status": "passed",
+      "extent": 5.0,
+      "order": 48,
+      "maximum_relative_increment_L1": 0.002175544497596159,
+      "highest_order": 64,
+      "highest_order_maximum_relative_increment_L1": 0.002205362716295576,
+      "shared_times": [
+        0.05,
+        0.1
+      ],
+      "shared_time_common_quadrature": [
+        {
+          "time": 0.05,
+          "values": [
+            {
+              "order": 32,
+              "time": 0.05,
+              "baseline_increment_L1": 0.006568310008955339,
+              "relative_increment_L1_error": 0.0022473062099392857
+            },
+            {
+              "order": 48,
+              "time": 0.05,
+              "baseline_increment_L1": 0.006545389908148489,
+              "relative_increment_L1_error": 0.002175544497596159
+            },
+            {
+              "order": 64,
+              "time": 0.05,
+              "baseline_increment_L1": 0.006558388939235857,
+              "relative_increment_L1_error": 0.002205362716295576
+            }
+          ]
+        },
+        {
+          "time": 0.1,
+          "values": [
+            {
+              "order": 32,
+              "time": 0.1,
+              "baseline_increment_L1": 0.01278330758505254,
+              "relative_increment_L1_error": 0.002024353052913148
+            },
+            {
+              "order": 48,
+              "time": 0.1,
+              "baseline_increment_L1": 0.01274534264593451,
+              "relative_increment_L1_error": 0.002022870547695806
+            },
+            {
+              "order": 64,
+              "time": 0.1,
+              "baseline_increment_L1": 0.01277167126241744,
+              "relative_increment_L1_error": 0.0020195098970942175
+            }
+          ]
+        }
+      ],
+      "final_common_quadrature": [
+        {
+          "order": 32,
+          "time": 0.1,
+          "baseline_increment_L1": 0.01278330758505254,
+          "relative_increment_L1_error": 0.002024353052913148
+        },
+        {
+          "order": 48,
+          "time": 0.1,
+          "baseline_increment_L1": 0.01274534264593451,
+          "relative_increment_L1_error": 0.002022870547695806
+        },
+        {
+          "order": 64,
+          "time": 0.1,
+          "baseline_increment_L1": 0.01277167126241744,
+          "relative_increment_L1_error": 0.0020195098970942175
+        }
+      ],
+      "quadrature_refinements": [
+        {
+          "time": 0.05,
+          "absolute_change_in_increment_error": 2.9818218699417115e-05,
+          "baseline_increment_relative_change": 0.001985982694657329
+        },
+        {
+          "time": 0.1,
+          "absolute_change_in_increment_error": 3.360650601588657e-06,
+          "baseline_increment_relative_change": 0.002065744108600276
+        }
+      ],
+      "quadrature_absolute_change_in_increment_error": 2.9818218699417115e-05,
+      "quadrature_baseline_increment_relative_change": 0.002065744108600276,
+      "common_quadrature_status": "passed"
+    }
+  ],
+  "scope": "Unchanged archived theta=.65 accepted inputs; comparison arithmetic and guards only. No dynamics rerun, no certification of forthcoming theta=.6 campaign.",
+  "copied_private_receipt_sha256": "7e02456e07f57f1add52812040bb8c2606e87ede6e7c474686692f569c87936b",
+  "public_source_sha256": "90e8cec9fe50fa0c1bd367552efcb91925aaf124988863d88ad7019392830b7b"
+}

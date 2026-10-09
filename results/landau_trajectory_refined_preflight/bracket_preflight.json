@@ -1,0 +1,57 @@
+{
+  "status": "passed_initial_preflight",
+  "scope": "Initial physical strong collision term only; no dynamics or endpoint acceptance.",
+  "inputs": {
+    "covariance": [
+      1.15,
+      1.15,
+      0.7
+    ],
+    "density": 1.0,
+    "mass": 1.0,
+    "gamma": 1.0,
+    "order": 16,
+    "thermal_variances": [
+      0.585,
+      0.59
+    ],
+    "softening": 0.0,
+    "scalar_orders": [
+      96,
+      192
+    ],
+    "initial_target": 0.01,
+    "expanded_box_extent": 5.0,
+    "normalization": "raw physical w*F0; no state rescaling"
+  },
+  "sources": {
+    "/Users/rogerio/local/sato_morrison_handoff/verification/landau_next_scale_bracket_preflight.py": "65adb937ed17429205564cc61fecf44998ea54e61fde99948adbfedce7404b77",
+    "/Users/rogerio/local/sato-morrison/src/sato_morrison/controls.py": "90d32edf198a9734a8e8ebc4eee670256f82261dd5e8cf9c86eaaf49212e9ecb",
+    "/Users/rogerio/local/sato-morrison/src/sato_morrison/collisions.py": "cf13b3000c2df1ee39e63872b8c0094089adadde3941abf53b92d5e2c8ad6d52"
+  },
+  "rows": [
+    {
+      "variance": 0.585,
+      "initial_relative_L1_error": 0.009190167248984991,
+      "scalar_refinement_max_abs": 5.794253965518692e-13,
+      "initial_rate_RMS_error": 0.0016673423353700193,
+      "outer_axis": 5.071646598879529,
+      "sampled_number": 0.999999977054444,
+      "sampled_outside5_population": 2.097760786891697e-05,
+      "initial_gate": "passed",
+      "expanded_box_geometry": "passed"
+    },
+    {
+      "variance": 0.59,
+      "initial_relative_L1_error": 0.008647083958126224,
+      "scalar_refinement_max_abs": 5.841993555577574e-13,
+      "initial_rate_RMS_error": 0.0015351065659018463,
+      "outer_axis": 5.093274187822203,
+      "sampled_number": 0.9999999809140252,
+      "sampled_outside5_population": 1.9146094994031822e-05,
+      "initial_gate": "passed",
+      "expanded_box_geometry": "passed"
+    }
+  ],
+  "wall_s": 1.3474414160000379
+}

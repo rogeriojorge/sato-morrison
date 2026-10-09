@@ -1,0 +1,69 @@
+{
+  "status": "unresolved",
+  "scope": "Initial physical strong collision term only; no dynamics or endpoint acceptance.",
+  "inputs": {
+    "covariance": [
+      1.15,
+      1.15,
+      0.7
+    ],
+    "density": 1.0,
+    "mass": 1.0,
+    "gamma": 1.0,
+    "order": 16,
+    "thermal_variances": [
+      0.575,
+      0.625,
+      0.65
+    ],
+    "softening": 0.0,
+    "scalar_orders": [
+      96,
+      192
+    ],
+    "initial_target": 0.01,
+    "expanded_box_extent": 5.0,
+    "normalization": "raw physical w*F0; no state rescaling"
+  },
+  "sources": {
+    "/Users/rogerio/local/sato_morrison_handoff/verification/landau_next_scale_preflight.py": "cd7e0b3c011fdc074297ae2b7638c9af9d0b0cd9d2c90b4c1dc07084fed5c42f",
+    "/Users/rogerio/local/sato-morrison/src/sato_morrison/controls.py": "90d32edf198a9734a8e8ebc4eee670256f82261dd5e8cf9c86eaaf49212e9ecb",
+    "/Users/rogerio/local/sato-morrison/src/sato_morrison/collisions.py": "cf13b3000c2df1ee39e63872b8c0094089adadde3941abf53b92d5e2c8ad6d52"
+  },
+  "rows": [
+    {
+      "variance": 0.575,
+      "initial_relative_L1_error": 0.010708025678963248,
+      "scalar_refinement_max_abs": 5.676570324908425e-13,
+      "initial_rate_RMS_error": 0.0020072328078114066,
+      "outer_axis": 5.028112346309205,
+      "sampled_number": 0.9999999669490167,
+      "sampled_outside5_population": 2.5180362238386726e-05,
+      "initial_gate": "unresolved",
+      "expanded_box_geometry": "passed"
+    },
+    {
+      "variance": 0.625,
+      "initial_relative_L1_error": 0.00670031985847481,
+      "scalar_refinement_max_abs": 6.211697822777751e-13,
+      "initial_rate_RMS_error": 0.0011044658145892968,
+      "outer_axis": 5.242169498519036,
+      "sampled_number": 0.9999999949182224,
+      "sampled_outside5_population": 1.0091264163677946e-05,
+      "initial_gate": "passed",
+      "expanded_box_geometry": "passed"
+    },
+    {
+      "variance": 0.65,
+      "initial_relative_L1_error": 0.006523088081182216,
+      "scalar_refinement_max_abs": 6.471490010540037e-13,
+      "initial_rate_RMS_error": 0.0010840891133420028,
+      "outer_axis": 5.345984913301893,
+      "sampled_number": 0.9999999981026158,
+      "sampled_outside5_population": 6.380740760481695e-06,
+      "initial_gate": "passed",
+      "expanded_box_geometry": "passed"
+    }
+  ],
+  "wall_s": 1.3242965829995228
+}

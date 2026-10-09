@@ -1,0 +1,10 @@
+{
+  "scope": "Initial-only preflight; no evolution, no target or physical input changes.",
+  "reason": "theta .575 narrowly fails initial1% gate; bracket a narrower lower direction around proposed theta .6.",
+  "variances": [
+    0.585,
+    0.59
+  ],
+  "prerequisite_receipt_sha256": "f808570f206fc572e196abc87c982379a81f0a3a6002e6774ed20cb3b1a1646e",
+  "initial_target": 0.01
+}

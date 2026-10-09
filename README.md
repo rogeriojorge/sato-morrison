@@ -224,6 +224,8 @@ MPLBACKEND=Agg python examples/28_spatial_relaxation.py
 MPLBACKEND=Agg python examples/29_operator_comparison.py
 # Saves the underresolved Landau study, then exits with a declared accuracy failure:
 MPLBACKEND=Agg python examples/30_landau_consistency.py
+# Run the declared trajectory refinements in a new output directory:
+SM_LANDAU_OUTPUT=results/landau_reproduction MPLBACKEND=Agg python examples/31_landau_trajectory.py
 # Independently replay the archived accepted Landau stages:
 python examples/32_landau_audit.py
 ```
