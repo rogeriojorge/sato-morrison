@@ -333,8 +333,8 @@ for name in shared_indices:
                                                and all(item['absolute_change_in_increment_error'] < quadrature_target
                                                        and item['baseline_increment_relative_change'] < TARGET for item in refinements) else 'unresolved')
     summary['target_status'] = ('passed' if density_records and moments
-                                and all(value <= TARGET for value in density_maxima.values() if value is not None)
-                                and all(value is not None and value <= TARGET for value in moment_maxima.values())
+                                and all(value < TARGET for value in density_maxima.values() if value is not None)
+                                and all(value is not None and value < TARGET for value in moment_maxima.values())
                                 and summary['quadrature_refinement_status'] == 'passed' else 'unresolved')
     comparison_summaries.append(summary)
     published = next((entry for entry in meta.get('comparisons', []) if entry['case'] == name), None)
