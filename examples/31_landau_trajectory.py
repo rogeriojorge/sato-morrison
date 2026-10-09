@@ -22,7 +22,7 @@ from sato_morrison.reference import run_metadata, progress, gauss_interval
 
 ROOT = Path(__file__).resolve().parents[1]
 output_override=os.environ.get('SM_LANDAU_OUTPUT')
-OUTPUT=Path(output_override) if output_override else ROOT/'results'/'landau_trajectory_refined'
+OUTPUT=Path(output_override) if output_override else ROOT/'results'/'landau_trajectory_dt_refined'
 if not OUTPUT.is_absolute():OUTPUT=ROOT/OUTPUT
 A = np.array([1.15, 1.15, .7])
 GAMMA = 1.
@@ -30,16 +30,18 @@ FINAL_TIME = .2
 # The campaign is fixed before execution. A failed baseline prevents downstream
 # finite-time scans, whose initial collision terms are still checked independently.
 CASES = [
-    {'name':'baseline', 'order':16, 'variance':.6, 'dt':.05},
-    {'name':'grid12', 'order':12, 'variance':.6, 'dt':.05},
-    {'name':'dt_coarse', 'order':16, 'variance':.6, 'dt':.1},
-    {'name':'dt_fine', 'order':16, 'variance':.6, 'dt':.025},
-    {'name':'tail_narrow', 'order':16, 'variance':.585, 'dt':.05},
-    {'name':'tail_wide', 'order':16, 'variance':.625, 'dt':.05},
-    {'name':'kernel02', 'order':16, 'variance':.6, 'dt':.05, 'softening':.2},
-    {'name':'kernel01', 'order':16, 'variance':.6, 'dt':.05, 'softening':.1},
-    {'name':'tolerance', 'order':16, 'variance':.6, 'dt':.05, 'rtol':1e-12, 'linear_rtol':1e-10},
-    {'name':'grid20', 'order':20, 'variance':.6, 'dt':.05, 'case_budget_s':2400., 'linear_rtol':1e-12, 'max_log_step':None},
+    {'name':'baseline', 'order':16, 'variance':.6, 'dt':.025},
+    {'name':'grid12', 'order':12, 'variance':.6, 'dt':.025},
+    {'name':'dt_coarse', 'order':16, 'variance':.6, 'dt':.05},
+    {'name':'dt_fine', 'order':16, 'variance':.6, 'dt':.0125},
+    {'name':'tail_narrow', 'order':16, 'variance':.585, 'dt':.025},
+    {'name':'tail_wide', 'order':16, 'variance':.625, 'dt':.025},
+    {'name':'kernel02', 'order':16, 'variance':.6, 'dt':.025, 'softening':.2},
+    {'name':'kernel01', 'order':16, 'variance':.6, 'dt':.025, 'softening':.1},
+    {'name':'tolerance', 'order':16, 'variance':.6, 'dt':.025, 'rtol':1e-12, 'linear_rtol':1e-10},
+    {'name':'nonlinear_tolerance', 'order':16, 'variance':.6, 'dt':.025, 'rtol':1e-12},
+    {'name':'linear_tolerance', 'order':16, 'variance':.6, 'dt':.025, 'linear_rtol':1e-10},
+    {'name':'grid20', 'order':20, 'variance':.6, 'dt':.025, 'case_budget_s':2400., 'linear_rtol':1e-12, 'max_log_step':None},
 ]
 RTOL, LINEAR_RTOL = 1e-10, 1e-8
 LINEAR_MAX_STEPS, NEWTON_MAX_STEPS, CHUNK = 200, 30, 128
@@ -80,6 +82,7 @@ metadata = run_metadata({'covariance':A.tolist(), 'density':1., 'mass':1.,
 metadata.update(status='running', rows=[], comparisons=[], matched_alpha=alpha,
     plan='Initial oracle checks for every declared row; baseline first, cheaper grid/time/scale/kernel/tolerance scans next, fine20 last. Scale span .585/.6/.625 is explicitly asymmetric and chosen from recorded initial-only preflights, including failed .575. Budgets checked at accepted stages and Newton callbacks. No post-outcome campaign extension.',
     scope='Nodal positivity and discrete invariants are distinct from physical trajectory convergence. Scalar quadrature, initial full strong collision term, full density increments on the common cube, tail populations and every finite step are reported separately.')
+metadata['followup_plan']='Separate twelve-row campaign after ff536d6 time accuracy failure: baseline .025, coarse .05, fine .0125, common timestep for grid/order/scale/kernel scans, separate nonlinear and linear tolerance variations plus retained joint row. The predeclared sixteen-step .0125 preflight passed independent raw replay and all eight shared-time accuracy comparisons against .025. Physical inputs and 1% targets are unchanged; all former outcomes remain archived.'
 metadata['moment_definitions']='Raw quadrature number, momentum and energy are conserved budgets. Covariance is centered and divided by actual quadrature number; anisotropy, mu_second, speed_fourth and fourth_cumulant are number-normalized expectations. No state or population is rescaled.'
 source_paths = [Path(__file__), ROOT/'src/sato_morrison/controls.py', ROOT/'src/sato_morrison/solver.py']
 metadata['frozen_sources'] = {str(p.relative_to(ROOT)):sha256(p.read_bytes()).hexdigest() for p in source_paths}
@@ -349,7 +352,7 @@ if baseline_ok:
         save()
     # Three resolution levels and two independent parameter directions are kept
     # separately; no averaging conceals a failed refinement.
-    required=['grid20','dt_fine','tail_narrow','tail_wide','kernel01','tolerance']
+    required=['grid20','dt_fine','tail_narrow','tail_wide','kernel01','tolerance','nonlinear_tolerance','linear_tolerance']
     byname={r['case']:r for r in metadata['comparisons']}
     continuum_rows=[r for r in metadata['rows'] if r['name'] in ['baseline','grid20','tail_narrow','tail_wide']]
     initial_ok=all(r.get('initial_gate',{}).get('status')=='passed' for r in continuum_rows)
@@ -427,6 +430,7 @@ metadata['movie']={'status':'passed' if len(times)>1 else 'not_run',
 
 # Keep the exact values behind every figure, including explicit missing scans.
 row_names=np.array([row['name'] for row in metadata['rows']])
+row_labels=np.array([{'baseline':'baseline 16³','grid12':'grid 12³','grid20':'grid 20³','dt_coarse':f'Δt={row["dt"]:g}','dt_fine':f'Δt={row["dt"]:g}','tail_narrow':f'θ={row["variance"]:g}','tail_wide':f'θ={row["variance"]:g}','kernel02':f'ε={row["softening"]:g}','kernel01':f'ε={row["softening"]:g}','tolerance':'both tolerances','nonlinear_tolerance':'nonlinear tolerance','linear_tolerance':'linear tolerance'}[row['name']] for row in metadata['rows']])
 initial_errors=np.array([row.get('initial_gate',{}).get('relative_L1_error',np.nan) for row in metadata['rows']])
 comparison_by_name={row['case']:row for row in metadata['comparisons']}
 density_errors=np.array([comparison_by_name.get(name,{}).get('maximum_relative_increment_L1',np.nan) for name in row_names])
@@ -437,7 +441,7 @@ np.savez_compressed(OUTPUT/'plotted_arrays.npz', velocity_axis=x, time=times,
     integrated_density=marginal, integrated_density_change=change,
     anisotropy=np.array([d['anisotropy'] for d in curve]),
     fourth_cumulant=np.array([d['fourth_cumulant'] for d in curve]),
-    row_names=row_names, row_status=np.array([row['status'] for row in metadata['rows']]),
+    row_names=row_names, row_labels=row_labels, row_status=np.array([row['status'] for row in metadata['rows']]),
     initial_RHS_L1_error=initial_errors, density_increment_L1_error=density_errors,
     expanded_density_increment_L1_error=expanded_density_errors,
     moment_names=np.array(moment_names), moment_increment_errors=moment_errors,
@@ -445,7 +449,9 @@ np.savez_compressed(OUTPUT/'plotted_arrays.npz', velocity_axis=x, time=times,
     final_common_quadrature_errors=np.array([[r['relative_increment_L1_error'] for r in comparison_by_name[name]['final_common_quadrature']] if name in comparison_by_name and 'final_common_quadrature' in comparison_by_name[name] else [np.nan]*len(COMMON_QUADRATURE_ORDERS) for name in row_names]),
     expanded_quadrature_orders=np.array(EXPANDED_QUADRATURE_ORDERS),
     final_expanded_quadrature_errors=np.array([[r['relative_increment_L1_error'] for r in comparison_by_name[name]['expanded_cube']['final_common_quadrature']] if name in comparison_by_name and 'final_common_quadrature' in comparison_by_name[name]['expanded_cube'] else [np.nan]*len(EXPANDED_QUADRATURE_ORDERS) for name in row_names]))
-fig,axes=plt.subplots(1,3,figsize=(12,6),sharey=True,layout='constrained')
+fig,axes=plt.subplots(1,3,figsize=(12,6.7),sharey=True,layout='constrained')
+DISPLAY_LOWER=1e-5
+moment_labels=['anisotropy',r'$\langle\mu^2\rangle$',r'$\langle|v|^4\rangle$','fourth cumulant']
 y=np.arange(len(row_names))
 colors=['#147d92','#c66b28','#7256a8','#5f6670']
 for j,row in enumerate(metadata['rows']):
@@ -453,11 +459,11 @@ for j,row in enumerate(metadata['rows']):
         axes[0].plot(initial_errors[j],j,'o',color='#147d92' if row['initial_gate']['status']=='passed' else '#c66b28')
     else:axes[0].text(.03,j,'not measured',transform=axes[0].get_yaxis_transform(),fontsize=8)
     if np.isfinite(density_errors[j]):
-        axes[1].plot(max(density_errors[j],1e-12),j-.07,'o',color='#7256a8')
+        axes[1].plot(max(density_errors[j],DISPLAY_LOWER),j-.07,marker='<' if density_errors[j]<DISPLAY_LOWER else 'o',linestyle='none',color='#7256a8',clip_on=False)
         if np.isfinite(expanded_density_errors[j]):
-            axes[1].plot(max(expanded_density_errors[j],1e-12),j+.07,'s',color='#147d92')
+            axes[1].plot(max(expanded_density_errors[j],DISPLAY_LOWER),j+.07,marker='<' if expanded_density_errors[j]<DISPLAY_LOWER else 's',linestyle='none',color='#147d92',clip_on=False)
         for k,key in enumerate(moment_names):
-            axes[2].plot(max(moment_errors[j,k],1e-12),j+.07*(k-1.5),'o',color=colors[k],label=key.replace('_',' ') if j==next(i for i in range(len(row_names)) if np.isfinite(density_errors[i])) else None)
+            axes[2].plot(max(moment_errors[j,k],DISPLAY_LOWER),j+.07*(k-1.5),marker='<' if moment_errors[j,k]<DISPLAY_LOWER else 'o',linestyle='none',clip_on=False,color=colors[k],label=moment_labels[k] if j==next(i for i in range(len(row_names)) if np.isfinite(density_errors[i])) else None)
     else:
         label='reference' if row['name']=='baseline' and baseline_ok else f'{row["status"]}, t={row["last_accepted_time"]:g}'
         for ax in axes[1:]:ax.text(.03,j,label,transform=ax.get_yaxis_transform(),fontsize=8,color='#8e3c39' if row['status']=='failed' else '.4')
@@ -465,14 +471,17 @@ for ax,title in zip(axes,['Initial continuum collision term','Density increment 
     ax.set_xscale('log');ax.set(xlabel='Relative error',title=title)
     ax.axvline(INCREMENT_TARGET,color='.45',ls=':',lw=1)
     ax.grid(axis='x',alpha=.18)
-axes[0].set_yticks(y,row_names,fontsize=9);axes[0].set_ylim(len(row_names)-.5,-.5)
+comparison_values=np.concatenate([density_errors,expanded_density_errors,moment_errors.ravel()])
+display_upper=max(.1,1.25*float(np.max(comparison_values[np.isfinite(comparison_values)]))) if np.any(np.isfinite(comparison_values)) else .1
+for ax in axes[1:]:ax.set_xlim(DISPLAY_LOWER,display_upper)
+axes[0].set_yticks(y,row_labels,fontsize=9);axes[0].set_ylim(len(row_names)-.5,-.5)
 axes[2].legend(fontsize=8,loc='upper left',bbox_to_anchor=(1.02,1.)) if np.any(np.isfinite(density_errors)) else None
 fig.suptitle(f'Landau trajectory validation: {metadata["status"]}',fontweight='bold')
-fig.supxlabel('Initial RHS / continuum RHS; density and moments / actual baseline relaxation increment. Circles: cube 4; squares: cube 5. Dotted line: 1% target.',fontsize=8)
+fig.supxlabel('Initial RHS / continuum RHS; density and moments / actual baseline relaxation increment. Circles: cube 4; squares: cube 5. Dotted line: 1% target.\nLeft triangles: below 1e−5; exact arrays and acceptance gates retain their true values.',fontsize=8)
 fig.savefig(OUTPUT/'convergence.png',dpi=180)
 fig.savefig(OUTPUT/'convergence.svg',metadata={'Creator':None,'Date':None})
 plt.close(fig)
-metadata['convergence_figure']='Separate initial strong RHS, common-cube full-density increments and raw whole-quadrature moment increment refinements. Missing/failed scans have text only; no invented values. Exact error arrays retained; display floor 1e-12 only for finite errors below it.'
+metadata['convergence_figure']='Separate initial strong RHS, common-cube full-density increments and raw whole-quadrature moment increment refinements. Missing/failed scans have text only; no invented values. Exact error arrays retained; errors below1e-5 are explicitly shown by left triangles at the lower display bound. Acceptance gates use exact errors.'
 
 # Explain the measure without identifying the quadrature reference with F(t).
 z=np.linspace(-4,4,241)
