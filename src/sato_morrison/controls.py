@@ -661,10 +661,11 @@ def landau_hermite_grid(order=16,thermal_variance=1.):
 class LandauEntropyCompiler(LaggedEntropyCompiler):
     """Physical Landau kernels bound to one grid, Gamma, softening and budgets."""
     softening:float=0.
+    preconditioner:str='diagonal'
 
 
 def landau_entropy_compiler(grid,*,gamma=1.,softening=0.,chunk_size=128,
-                            linear_max_steps=1000,reference_population=None):
+                            linear_max_steps=1000,reference_population=None,preconditioner='diagonal'):
     """Matrix-free Coulomb weak Gram, convex residual and SPD PCG correction.
 
     h^T K(f)k=Gamma sum(i<j) w_i w_j f_i f_j Delta grad h^T U Delta grad k.
@@ -676,8 +677,13 @@ def landau_entropy_compiler(grid,*,gamma=1.,softening=0.,chunk_size=128,
 
     Polynomial reproduction gives exact discrete constant/momentum/energy null
     directions. All pair cross terms remain in K. The diagonal preconditioner
-    drops correlations only as an auxiliary SPD approximation. This compiler
-    reuses the distribution-independent convex entropy-variable host solver.
+    drops correlations only as an auxiliary SPD approximation. The optional
+    tensor inverse uses a separable approximation of the positive population
+    metric and weighted one-axis stiffness eigensystems. Its scalar diffusivity
+    is sum(q)/(3*sum(old_population)), with q from the diagonal local diffusion
+    tensor. The congruence scaling also supports a nonseparable metric. It leaves the full pair Gram
+    in the residual and Hessian. No eigenvalue or invariant direction is removed.
+    The host checks true PCG residuals and the original nonlinear equation.
     """
     import jax
     import jax.numpy as jnp
@@ -687,6 +693,8 @@ def landau_entropy_compiler(grid,*,gamma=1.,softening=0.,chunk_size=128,
         raise ValueError('Physical 3V grid, finite nonnegative gamma/softening required')
     if type(chunk_size) is not int or chunk_size<1 or type(linear_max_steps) is not int or linear_max_steps<0:
         raise ValueError('Positive integer chunk and nonnegative linear budget required')
+    if preconditioner not in ('diagonal','tensor'):
+        raise ValueError('Landau preconditioner must be diagonal or tensor')
     N=grid.size;chunks=(N+chunk_size-1)//chunk_size;pad=chunks*chunk_size-N
     v=jnp.pad(grid.velocity,((0,pad),(0,0)));D=grid.derivative
     if reference_population is not None:
@@ -724,6 +732,7 @@ def landau_entropy_compiler(grid,*,gamma=1.,softening=0.,chunk_size=128,
             q=gamma*ni[:,None]*jnp.sum(n[None,:,None]*diag,axis=1)
             return jax.lax.dynamic_update_slice(out,q,(start,0))
         q=jax.lax.fori_loop(0,chunks,body,jnp.zeros((N+pad,3)))[:N]
+        if preconditioner=='tensor':return q
         return sum(jnp.moveaxis(jnp.tensordot((D*D).T,q[:,d].reshape(grid.shape),axes=(1,d)),0,d).ravel() for d in range(3))
     def evaluate(new_log,old_log,dt):return _population_difference(new_log,old_log,grid.weights)+dt*apply(old_log,new_log)
     def correction(new_log,old_log,dt,diagonal,linear_rtol):
@@ -732,14 +741,45 @@ def landau_entropy_compiler(grid,*,gamma=1.,softening=0.,chunk_size=128,
         root=jnp.sqrt(metric);ratio=grid.weights*jnp.exp(new_log)/metric
         value=evaluate(new_log,old_log,dt)/root
         def operator(x):return ratio*x+dt*apply(old_log,x/root)/root
-        pre=ratio+dt*diagonal/metric
-        answer=pcg(operator,-value,precond=lambda x:x/pre,rtol=linear_rtol,atol=0.,max_steps=linear_max_steps)
+        if preconditioner=='diagonal':
+            pre=ratio+dt*diagonal/metric
+            inverse=lambda x:x/pre
+            linear_value=value
+        else:
+            # Auxiliary separable SPD inverse; every pair remains in operator.
+            total=jnp.sum(metric);mass=metric.reshape(grid.shape)
+            marginals=[jnp.sum(mass,axis=tuple(k for k in range(3) if k!=d)) for d in range(3)]
+            separable=(marginals[0][:,None,None]*marginals[1][None,:,None]*marginals[2][None,None,:]/total**2).ravel()
+            rotations=[];eigenvalues=[]
+            for axis in range(3):
+                md=marginals[axis];sd=jnp.sqrt(md)
+                stiffness=(D.T@(md[:,None]*D))/(sd[:,None]*sd[None,:])
+                eigen,Q=jnp.linalg.eigh(stiffness)
+                rotations.append(Q);eigenvalues.append(eigen)
+            kappa=jnp.sum(diagonal)/(3*jnp.sum(oldmass))
+            denominator=1+dt*kappa*(eigenvalues[0][:,None,None]+eigenvalues[1][None,:,None]+eigenvalues[2][None,None,:])
+            scaling=root/jnp.sqrt(separable)
+            valid=(jnp.all(jnp.isfinite(denominator))&jnp.all(denominator>0)
+                &jnp.all(jnp.isfinite(scaling))&jnp.all(scaling>0))
+            # Reject invalid auxiliary factors before PCG through its supported
+            # nonfinite-input status. The physical residual remains unchanged.
+            linear_value=jnp.where(valid,value,jnp.nan)
+            def transform(x,transpose=False):
+                for axis,Q in enumerate(rotations):
+                    x=jnp.moveaxis(jnp.tensordot(Q.T if transpose else Q,x,axes=(1,axis)),0,axis)
+                return x
+            def inverse(x):
+                transformed=transform((scaling*x).reshape(grid.shape),True)/denominator
+                result=scaling*transform(transformed).ravel()
+                # Invalid auxiliary factors reject PCG rather than being repaired.
+                return jnp.where(valid,result,jnp.nan)
+        answer=pcg(operator,-linear_value,precond=inverse,rtol=linear_rtol,atol=0.,max_steps=linear_max_steps)
         d=answer.x/root
         true=jnp.linalg.norm(operator(answer.x)+value)/jnp.maximum(jnp.linalg.norm(value),1e-300)
         return d,answer.iterations,true,answer.converged,jnp.vdot(value,answer.x).real,jnp.vdot(d,apply(old_log,d)).real,answer.status
     def objective(new_log,old_log,dt,direction,fraction,descent,curvature):
         return fraction*descent+jnp.sum(grid.weights*jnp.exp(new_log)*_expm1_minus_x(fraction*direction))+.5*dt*fraction**2*curvature
-    compiled=LandauEntropyCompiler(jax.jit(evaluate),jax.jit(correction,static_argnums=(4,)),jax.jit(objective),jax.jit(prepare),jax.jit(apply),grid,float(gamma),chunk_size,linear_max_steps,None,reference_population,float(softening))
+    compiled=LandauEntropyCompiler(jax.jit(evaluate),jax.jit(correction,static_argnums=(4,)),jax.jit(objective),jax.jit(prepare),jax.jit(apply),grid,float(gamma),chunk_size,linear_max_steps,None,reference_population,float(softening),preconditioner)
     return compiled
 
 def landau_entropy_step(grid,f,dt,*,gamma=1.,softening=0.,compiled=None,chunk_size=128,linear_max_steps=1000,**kwargs):

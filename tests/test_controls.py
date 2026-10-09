@@ -594,3 +594,43 @@ def test_uniform_log_step_globalization_same_independent_root(landau_dense_refer
     np.testing.assert_allclose(capped.f,uncapped.f,rtol=2e-11,atol=1e-13)
     for invalid in [0.,-1.,np.inf,np.nan]:
         with pytest.raises(ValueError):landau_entropy_step(grid,f,dt,compiled=c,max_log_step=invalid)
+
+
+@pytest.mark.parametrize('fixed_reference',[False,True])
+def test_landau_tensor_correction_against_independent_dense_hessian(landau_dense_reference,fixed_reference):
+    from sato_morrison.controls import landau_entropy_compiler,landau_entropy_step
+    grid,v,w,f,matrix=landau_dense_reference
+    old=np.log(f);new=old+.04*np.sin(np.arange(grid.size));dt=.4;K=matrix(f)
+    # Deliberately nonseparable reference: it is a numerical congruence metric,
+    # and its separable tensor approximation does not replace the physical K.
+    reference=w*f*np.exp(.2*np.sin(np.arange(grid.size))) if fixed_reference else None
+    if reference is not None:reference*=float((w*f).sum()/reference.sum())
+    c=landau_entropy_compiler(grid,reference_population=reference,preconditioner='tensor')
+    answer=c.correction(new,old,dt,c.prepare_diagonal(old),1e-10)
+    R=w*(np.exp(new)-f)+dt*K@new;H=np.diag(w*np.exp(new))+dt*K
+    expected=np.linalg.solve(H,-R)
+    assert bool(answer[3]) and float(answer[2])<5e-10
+    np.testing.assert_allclose(answer[0],expected,rtol=5e-9,atol=2e-11)
+    assert np.linalg.norm(H@np.asarray(answer[0])+R)/np.linalg.norm(R)<5e-10
+    tensor=landau_entropy_step(grid,f,dt,compiled=c,rtol=1e-12,linear_rtol=1e-9,max_log_step=.01)
+    diagonal=landau_entropy_step(grid,f,dt,rtol=1e-12,linear_rtol=1e-9,max_log_step=.01)
+    np.testing.assert_allclose(tensor.f,diagonal.f,rtol=3e-11,atol=1e-13)
+    for bad in ['lines','unsupported',None]:
+        with pytest.raises(ValueError):landau_entropy_compiler(grid,preconditioner=bad)
+
+
+def test_landau_tensor_invalid_spectral_factor_rejects_step(landau_dense_reference,monkeypatch):
+    from sato_morrison.controls import landau_entropy_compiler,landau_entropy_step
+    from sato_morrison.solver import StepFailure
+    import jax.numpy as jnp
+    grid,v,w,f,matrix=landau_dense_reference
+    # Exercise an indefinite numerical eigensystem without altering the raw
+    # operator, density, or claimed nullspace. Such factors must never enter PCG.
+    original=jnp.linalg.eigh
+    def invalid(matrix):
+        eigen,rotation=original(matrix)
+        return -jnp.ones_like(eigen)*1e6,rotation
+    monkeypatch.setattr(jnp.linalg,'eigh',invalid)
+    c=landau_entropy_compiler(grid,reference_population=w*f,preconditioner='tensor')
+    with pytest.raises(StepFailure,match='SOLVAX PCG rejected'):
+        landau_entropy_step(grid,f,.1,compiled=c)

@@ -7732,6 +7732,16 @@
       "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37837124805",
       "log_sha256": "f2b7a569e32f58ed4b758c1df01dc1d207ef29281a36bce2629b4d9f08fd92c2",
       "scope": "Full suite including the explicit local derivative diagnostic, independently checked raw pair action and five null modes."
+    },
+    {
+      "source_commit": "9b9eafe3e56e99710acd52cb17db6febbf04c8d5",
+      "command": "python -m pytest -q",
+      "passed": 258,
+      "elapsed_s": 257.07,
+      "environment": "Fresh Ubuntu CI installation",
+      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37974335343",
+      "log_sha256": "032099d7051f75cd7c79e24168d412bde6ff24f332c6615c7809cfe59878cdaf",
+      "scope": "Physical Hermite quadrature, independent Gaussian strong collision oracle, raw invariant and Maxwellian checks, and damped Newton equivalence."
     }
   ],
   "additional_experiments": [
