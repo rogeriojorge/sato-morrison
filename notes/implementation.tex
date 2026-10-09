@@ -4272,6 +4272,65 @@ nodal value is clipped. For strictly positive finite old populations the
 finite convex objective is coercive and its Hessian is positive definite;
 its minimizer is unique. Residual and entropy tests still decide acceptance.
 
+\subsection{Archived finite stages and the representation limit}
+The interrupted $\theta=0.65$ campaign retains ten accepted advances:
+four for $16^3$, four for $12^3$ and two for $20^3$. The first two cases
+reach $t=0.2$; the fine case reaches only $t=0.1$. Independent raw-pair
+replay verifies positivity, five unprojected invariants, the original root
+and the entropy--Gram--KL identity at every saved advance. The $12^3$
+initial strong error is 0.0115355, so passing its discrete equations does
+not satisfy the separate one-percent instantaneous accuracy target.
+Measured campaign wall time is 661.7 seconds (baseline 45.46, $12^3$ 10.27,
+fine 605.71 including its interrupted third attempt), not an isolated
+performance benchmark. The portable independent source is
+\path{examples/32_landau_audit.py}; its inputs and hashes are retained in
+\path{results/landau_trajectory/independent_portable_audit.json}.
+
+At shared times $0.05$ and $0.1$, independent interpolation of
+$\log(F/F_0)$ and Legendre cubature on $[-5,5]^3$ give $16^3$ versus
+$20^3$ full-density differences of respectively 0.2176--0.2247 percent
+and 0.2020--0.2024 percent of the actual baseline relaxation increment,
+across orders 32, 48 and 64. Both node sets enclose this box; no
+extrapolation or time interpolation is used. Outside-$5$ sampled
+populations are about $6.3\times10^{-6}$ and $7.5\times10^{-6}$; outside
+$4$ they are about $2.7\times10^{-4}$ and $1.7\times10^{-4}$.
+These raw quadrature sums are not rigorous continuum tail bounds.
+The missing fine endpoint and unexecuted time, scale and kernel scans
+leave the campaign unresolved.
+
+A bounded continuation from the immutable fine $t=0.1$ state removes the
+optional initial direction cap ($\alpha_0=1$) and tightens inner tolerance
+to $10^{-12}$, retaining the original tensor inverse, Hessian, objective,
+population reference and acceptance. For $m=wF_0$ its original equation
+and measured norm are
+\[
+ R(g)=w(e^g-F^{\rm old})+\Delta t K(F^{\rm old})g,
+ \qquad \rho=\|R(g)/\sqrt m\|_2/\sqrt{\sum_i m_i}.
+\]
+It accepts $t=0.15$ after three Newton corrections and 317 PCG iterations
+in 485.5 seconds, all with fraction one despite negative log directions
+of magnitudes 3.86, 95.13 and 183.61. Independent replay gives
+$\rho=1.27\times10^{-13}$, minimum positive density
+$4.86\times10^{-151}$ and cumulative invariant drift at most
+$4.39\times10^{-11}$. Entropy gain 0.00171836379 contains frozen
+production 0.00168914213 and KL $2.92216659\times10^{-5}$; the identity
+including $(g+1)^TR$ has defect $4.82\times10^{-17}$.
+The shared $t=0.15$ density difference on the $5$-box remains
+0.1886--0.1906 percent of the actual baseline increment.
+
+No $t=0.2$ root is accepted. True inner residuals stay below $10^{-12}$,
+but fractions fall from one half to $1/32$ as outer values approach the
+actual population representation limit; the last completed correction
+starts at $\rho=0.001935$. Trials with minimum logs $-727.8$, $-715.1$
+and $-708.7$ pass the finite log-range check but yield zero populations
+in the backend and are rejected by the separate positivity guard;
+the selected minimum is $-705.5$. The probe is deliberately interrupted
+at this representation-driven slowdown, without clipping or accepting a
+failed iterate. This is a numerical outer-node limit, not nonexistence
+of the positive minimizer in real arithmetic. Launch source, accepted
+arrays, trial history and independent replay are archived in
+\path{results/landau_evolution/uncapped_theta065/}.
+
 \bibliographystyle{unsrt}
 \bibliography{references}
 \end{document}

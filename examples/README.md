@@ -60,3 +60,5 @@ Every scientific result records its producing commit, inputs, normalized units, 
 `30_landau_consistency.py` compares the full initial Coulomb collision term with an independent continuum Gaussian formula. It records velocity, extent and softening scans, saves figures and arrays, and raises an accuracy failure when the declared full-term target remains unresolved.
 
 `31_landau_trajectory.py` saves full 3V Landau states and compares velocity-grid, timestep, quadrature-scale, kernel and solver-tolerance refinements. The archived first campaign has ten independently checked accepted stages and an interrupted fine-grid continuation; its overall accuracy status remains unresolved. The output guard prevents overwriting saved evidence.
+
+`32_landau_audit.py` independently rebuilds the Hermite measure, velocity derivatives and Coulomb pairs with NumPy/SciPy. It replays every saved accepted stage and compares the baseline and finer distributions in two velocity boxes. Its default input is the archived first campaign; change the explicit `INPUT_DIRECTORY` for another immutable run.

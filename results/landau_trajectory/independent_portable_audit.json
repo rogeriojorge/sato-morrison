@@ -1,0 +1,441 @@
+{
+  "status": "passed_independent_saved_stages_and_expanded_boxes",
+  "producer_status": "unresolved",
+  "accepted_stage_count": 10,
+  "allstage_rows": [
+    {
+      "case": "baseline",
+      "declared_status": "passed_discrete_trajectory",
+      "source_arrays_sha256": "56800f6409959a985940474164b224f7369dbd0b374205892537de13727df069",
+      "n": 16,
+      "theta": 0.65,
+      "softening": 0.0,
+      "saved_stages": 5,
+      "last_time": 0.2,
+      "nodal_min_density": 1.448158218674213e-21,
+      "quadrature_max_relative_difference": 1.490164645125066e-13,
+      "derivative_max_scaled_difference": 7.740764256129659e-13,
+      "weighted_SBP_max_abs_defect": 6.661338147750939e-16,
+      "raw_invariant_max_abs_drifts": [
+        8.326672684688674e-15,
+        2.917766554529825e-16,
+        6.895802522143746e-17,
+        4.78382216077186e-18,
+        1.687538997430238e-14
+      ],
+      "stages": [
+        {
+          "j": 1,
+          "time": 0.05,
+          "dt": 0.05,
+          "weighted_root_norm": 3.422997633925352e-15,
+          "initial_reference_root_norm": 3.422997633925352e-15,
+          "entropy_change": 0.001953942483103234,
+          "frozen_Gram_production": 0.0019192787605169445,
+          "time_KL": 3.466372258614954e-05,
+          "residual_entropy_defect": -1.8203307806111704e-16,
+          "entropy_identity_defect_with_residual": -4.227941802773552e-17,
+          "min_f": 1.4825267474956444e-21,
+          "tail_mass_r_gt3": 0.032593662990203276,
+          "tail_mass_maxcoord_gt4": 0.00027001133284094536,
+          "tail_mass_maxcoord_gt5": 6.345946059622411e-06
+        },
+        {
+          "j": 2,
+          "time": 0.1,
+          "dt": 0.05,
+          "weighted_root_norm": 3.3625627496125015e-15,
+          "initial_reference_root_norm": 3.3654621827542136e-15,
+          "entropy_change": 0.001830098070607655,
+          "frozen_Gram_production": 0.0017983645551786333,
+          "time_KL": 3.17335154288823e-05,
+          "residual_entropy_defect": -1.706027764282643e-16,
+          "entropy_identity_defect_with_residual": -3.1242139682408766e-17,
+          "min_f": 1.5125059582857746e-21,
+          "tail_mass_r_gt3": 0.03253183645044664,
+          "tail_mass_maxcoord_gt4": 0.00026842803569851947,
+          "tail_mass_maxcoord_gt5": 6.312170484589095e-06
+        },
+        {
+          "j": 3,
+          "time": 0.15000000000000002,
+          "dt": 0.05000000000000002,
+          "weighted_root_norm": 3.3392410738509712e-15,
+          "initial_reference_root_norm": 3.3444293080259477e-15,
+          "entropy_change": 0.0017165761147071939,
+          "frozen_Gram_production": 0.0016874347335142405,
+          "time_KL": 2.914138119273452e-05,
+          "residual_entropy_defect": -9.736359709925511e-17,
+          "entropy_identity_defect_with_residual": 1.2150971647125609e-16,
+          "min_f": 1.539472329760637e-21,
+          "tail_mass_r_gt3": 0.03247179613494094,
+          "tail_mass_maxcoord_gt4": 0.0002668659051576855,
+          "tail_mass_maxcoord_gt5": 6.278973956030519e-06
+        },
+        {
+          "j": 4,
+          "time": 0.2,
+          "dt": 0.04999999999999999,
+          "weighted_root_norm": 3.2569468100919244e-15,
+          "initial_reference_root_norm": 3.259778947474913e-15,
+          "entropy_change": 0.0016121994509597979,
+          "frozen_Gram_production": 0.0015853658421435676,
+          "time_KL": 2.6833608816207143e-05,
+          "residual_entropy_defect": -1.8684279809552296e-17,
+          "entropy_identity_defect_with_residual": 4.436331518701086e-18,
+          "min_f": 1.566168933987913e-21,
+          "tail_mass_r_gt3": 0.032413494424910566,
+          "tail_mass_maxcoord_gt4": 0.0002653258800369903,
+          "tail_mass_maxcoord_gt5": 6.246143218795668e-06
+        }
+      ],
+      "strong_scalar192_256_max_abs_difference": 3.347322419244847e-13,
+      "independent_initial_L1": 0.0065230880811360595
+    },
+    {
+      "case": "grid12",
+      "declared_status": "passed_discrete_trajectory",
+      "source_arrays_sha256": "e41660ce6a2ffd7e1f5eabfe8af1ad1586838ced13c77e74a3372ad39df12269",
+      "n": 12,
+      "theta": 0.65,
+      "softening": 0.0,
+      "saved_stages": 5,
+      "last_time": 0.2,
+      "nodal_min_density": 1.9500502874593734e-15,
+      "quadrature_max_relative_difference": 2.827918118197557e-14,
+      "derivative_max_scaled_difference": 9.268362345542481e-14,
+      "weighted_SBP_max_abs_defect": 8.326672684688674e-16,
+      "raw_invariant_max_abs_drifts": [
+        9.992007221626409e-15,
+        1.2728127338491173e-16,
+        3.644571376860238e-17,
+        3.455065416469116e-17,
+        8.659739592076221e-15
+      ],
+      "stages": [
+        {
+          "j": 1,
+          "time": 0.05,
+          "dt": 0.05,
+          "weighted_root_norm": 1.9550267889816527e-15,
+          "initial_reference_root_norm": 1.9550267889816527e-15,
+          "entropy_change": 0.0019485772453255107,
+          "frozen_Gram_production": 0.0019141509158981775,
+          "time_KL": 3.442632942721719e-05,
+          "residual_entropy_defect": -2.5123099485300106e-16,
+          "entropy_identity_defect_with_residual": -1.3519425734273994e-16,
+          "min_f": 1.991630735645192e-15,
+          "tail_mass_r_gt3": 0.03102597964338552,
+          "tail_mass_maxcoord_gt4": 0.0003232403012337857,
+          "tail_mass_maxcoord_gt5": 0.0
+        },
+        {
+          "j": 2,
+          "time": 0.1,
+          "dt": 0.05,
+          "weighted_root_norm": 1.8959533937628746e-15,
+          "initial_reference_root_norm": 1.8961605991026983e-15,
+          "entropy_change": 0.0018255871084210343,
+          "frozen_Gram_production": 0.0017940532129452685,
+          "time_KL": 3.153389547564551e-05,
+          "residual_entropy_defect": -1.0433186187699466e-16,
+          "entropy_identity_defect_with_residual": 1.6001026741740268e-17,
+          "min_f": 2.0325244656158074e-15,
+          "tail_mass_r_gt3": 0.03100197537200291,
+          "tail_mass_maxcoord_gt4": 0.00032126108983139003,
+          "tail_mass_maxcoord_gt5": 0.0
+        },
+        {
+          "j": 3,
+          "time": 0.15000000000000002,
+          "dt": 0.05000000000000002,
+          "weighted_root_norm": 1.9108579028365462e-15,
+          "initial_reference_root_norm": 1.911465137847586e-15,
+          "entropy_change": 0.0017127843972447624,
+          "frozen_Gram_production": 0.0016838122053408097,
+          "time_KL": 2.897219190383552e-05,
+          "residual_entropy_defect": -1.3000204990013235e-16,
+          "entropy_identity_defect_with_residual": -1.2786242527293249e-17,
+          "min_f": 2.0728935924960496e-15,
+          "tail_mass_r_gt3": 0.03097851555338247,
+          "tail_mass_maxcoord_gt4": 0.00031932080184763294,
+          "tail_mass_maxcoord_gt5": 0.0
+        },
+        {
+          "j": 4,
+          "time": 0.2,
+          "dt": 0.04999999999999999,
+          "weighted_root_norm": 2.020888805411801e-15,
+          "initial_reference_root_norm": 2.0235541856231803e-15,
+          "entropy_change": 0.0016090178348253344,
+          "frozen_Gram_production": 0.0015823285205822622,
+          "time_KL": 2.6689314242937283e-05,
+          "residual_entropy_defect": -4.614959134714787e-17,
+          "entropy_identity_defect_with_residual": 8.876581649151709e-17,
+          "min_f": 2.1128871653873654e-15,
+          "tail_mass_r_gt3": 0.03095558341479489,
+          "tail_mass_maxcoord_gt4": 0.00031741499255698866,
+          "tail_mass_maxcoord_gt5": 0.0
+        }
+      ],
+      "strong_scalar192_256_max_abs_difference": 2.3858692799194614e-13,
+      "independent_initial_L1": 0.011535509421837143
+    },
+    {
+      "case": "grid20",
+      "declared_status": "unresolved",
+      "source_arrays_sha256": "22f0001f912a8170b795c4909ead2f820944cc042723fb8a1c8fd7eeb9510397",
+      "n": 20,
+      "theta": 0.65,
+      "softening": 0.0,
+      "saved_stages": 3,
+      "last_time": 0.1,
+      "nodal_min_density": 2.64149850368822e-28,
+      "quadrature_max_relative_difference": 1.8870517275914367e-13,
+      "derivative_max_scaled_difference": 3.0766760204094394e-11,
+      "weighted_SBP_max_abs_defect": 8.049116928532385e-16,
+      "raw_invariant_max_abs_drifts": [
+        1.7764456572422205e-11,
+        7.144033650176883e-17,
+        4.0616294234515825e-17,
+        2.580891870556444e-17,
+        4.3877346200815737e-11
+      ],
+      "stages": [
+        {
+          "j": 1,
+          "time": 0.05,
+          "dt": 0.05,
+          "weighted_root_norm": 1.272565301214189e-13,
+          "initial_reference_root_norm": 1.272565301214189e-13,
+          "entropy_change": 0.0019564795776030675,
+          "frozen_Gram_production": 0.0019217024565755922,
+          "time_KL": 3.4777121027471135e-05,
+          "residual_entropy_defect": -2.0107337167275363e-17,
+          "entropy_identity_defect_with_residual": -1.593315880320617e-17,
+          "min_f": 6.229429163553316e-28,
+          "tail_mass_r_gt3": 0.029507433131215007,
+          "tail_mass_maxcoord_gt4": 0.00016684460305826584,
+          "tail_mass_maxcoord_gt5": 7.571945274903872e-06
+        },
+        {
+          "j": 2,
+          "time": 0.1,
+          "dt": 0.05,
+          "weighted_root_norm": 7.229942147343892e-11,
+          "initial_reference_root_norm": 7.324328320119943e-11,
+          "entropy_change": 0.0018322278038570702,
+          "frozen_Gram_production": 0.0018003991717708075,
+          "time_KL": 3.1828546280437736e-05,
+          "residual_entropy_defect": -8.580584587702994e-11,
+          "entropy_identity_defect_with_residual": -2.0920859293759057e-17,
+          "min_f": 2.64149850368822e-28,
+          "tail_mass_r_gt3": 0.029466480935083656,
+          "tail_mass_maxcoord_gt4": 0.00016586882092593618,
+          "tail_mass_maxcoord_gt5": 7.530773338136977e-06
+        }
+      ],
+      "strong_scalar192_256_max_abs_difference": 4.261035968511351e-13,
+      "independent_initial_L1": 0.004185097303014334
+    }
+  ],
+  "expanded_box_rows": [
+    {
+      "box_extent": 4.0,
+      "GL_order": 32,
+      "time": 0.05,
+      "baseline_increment_L1": 0.00655128444643088,
+      "fine_increment_L1": 0.006563951124447241,
+      "relative_increment_L1_difference": 0.002165619207185855
+    },
+    {
+      "box_extent": 4.0,
+      "GL_order": 32,
+      "time": 0.1,
+      "baseline_increment_L1": 0.012757814740418628,
+      "fine_increment_L1": 0.01278114034446977,
+      "relative_increment_L1_difference": 0.0019778832454986446
+    },
+    {
+      "box_extent": 4.0,
+      "GL_order": 48,
+      "time": 0.05,
+      "baseline_increment_L1": 0.006558001285853186,
+      "fine_increment_L1": 0.006570780664109901,
+      "relative_increment_L1_difference": 0.002179275776311155
+    },
+    {
+      "box_extent": 4.0,
+      "GL_order": 48,
+      "time": 0.1,
+      "baseline_increment_L1": 0.012769922295997396,
+      "fine_increment_L1": 0.012793498615284914,
+      "relative_increment_L1_difference": 0.0020055071001408814
+    },
+    {
+      "box_extent": 4.0,
+      "GL_order": 64,
+      "time": 0.05,
+      "baseline_increment_L1": 0.0065525997390584005,
+      "fine_increment_L1": 0.006565327018814897,
+      "relative_increment_L1_difference": 0.002162903524059347
+    },
+    {
+      "box_extent": 4.0,
+      "GL_order": 64,
+      "time": 0.1,
+      "baseline_increment_L1": 0.012760467322659272,
+      "fine_increment_L1": 0.012783940179607794,
+      "relative_increment_L1_difference": 0.0020001586805090447
+    },
+    {
+      "box_extent": 5.0,
+      "GL_order": 32,
+      "time": 0.05,
+      "baseline_increment_L1": 0.006568310008955429,
+      "fine_increment_L1": 0.006581346861076479,
+      "relative_increment_L1_difference": 0.0022473062099420795
+    },
+    {
+      "box_extent": 5.0,
+      "GL_order": 32,
+      "time": 0.1,
+      "baseline_increment_L1": 0.012783307585052724,
+      "fine_increment_L1": 0.012806979037839988,
+      "relative_increment_L1_difference": 0.0020243530529141084
+    },
+    {
+      "box_extent": 5.0,
+      "GL_order": 48,
+      "time": 0.05,
+      "baseline_increment_L1": 0.0065453899081486565,
+      "fine_increment_L1": 0.006557967322129271,
+      "relative_increment_L1_difference": 0.0021755444976020166
+    },
+    {
+      "box_extent": 5.0,
+      "GL_order": 48,
+      "time": 0.1,
+      "baseline_increment_L1": 0.012745342645934847,
+      "fine_increment_L1": 0.012768644873331984,
+      "relative_increment_L1_difference": 0.002022870547699295
+    },
+    {
+      "box_extent": 5.0,
+      "GL_order": 64,
+      "time": 0.05,
+      "baseline_increment_L1": 0.006558388939235948,
+      "fine_increment_L1": 0.00657118356748406,
+      "relative_increment_L1_difference": 0.0022053627162996583
+    },
+    {
+      "box_extent": 5.0,
+      "GL_order": 64,
+      "time": 0.1,
+      "baseline_increment_L1": 0.012771671262417612,
+      "fine_increment_L1": 0.012795199328216086,
+      "relative_increment_L1_difference": 0.002019509897095071
+    }
+  ],
+  "raw_nodal_tail_populations": [
+    {
+      "case": "baseline",
+      "time": 0.0,
+      "outside4_raw_nodal_population": 0.0002716130091122245,
+      "outside5_raw_nodal_population": 6.380740760481695e-06,
+      "mass": 0.9999999981026158
+    },
+    {
+      "case": "baseline",
+      "time": 0.05,
+      "outside4_raw_nodal_population": 0.00027001133284094536,
+      "outside5_raw_nodal_population": 6.345946059622411e-06,
+      "mass": 0.9999999981026159
+    },
+    {
+      "case": "baseline",
+      "time": 0.1,
+      "outside4_raw_nodal_population": 0.00026842803569851947,
+      "outside5_raw_nodal_population": 6.312170484589095e-06,
+      "mass": 0.9999999981026159
+    },
+    {
+      "case": "baseline",
+      "time": 0.15000000000000002,
+      "outside4_raw_nodal_population": 0.0002668659051576855,
+      "outside5_raw_nodal_population": 6.278973956030519e-06,
+      "mass": 0.9999999981026159
+    },
+    {
+      "case": "baseline",
+      "time": 0.2,
+      "outside4_raw_nodal_population": 0.0002653258800369903,
+      "outside5_raw_nodal_population": 6.246143218795668e-06,
+      "mass": 0.9999999981026159
+    },
+    {
+      "case": "grid20",
+      "time": 0.0,
+      "outside4_raw_nodal_population": 0.0001678352677069751,
+      "outside5_raw_nodal_population": 7.613579373875359e-06,
+      "mass": 0.9999999999887856
+    },
+    {
+      "case": "grid20",
+      "time": 0.05,
+      "outside4_raw_nodal_population": 0.00016684460305826584,
+      "outside5_raw_nodal_population": 7.571945274903872e-06,
+      "mass": 0.9999999999887856
+    },
+    {
+      "case": "grid20",
+      "time": 0.1,
+      "outside4_raw_nodal_population": 0.00016586882092593618,
+      "outside5_raw_nodal_population": 7.530773338136977e-06,
+      "mass": 1.0000000000065699
+    }
+  ],
+  "input_summary_sha256": "a1d6b30b7804a69fed7c207da1ef4faffab438394eb474927393dd678650c732",
+  "input_npz_sha256": {
+    "baseline.npz": "56800f6409959a985940474164b224f7369dbd0b374205892537de13727df069",
+    "grid12_initial_rhs.npz": "364c3e409cc33604b78b82bde0d014a3d64cc2a72edecccb5a53d0f28313129c",
+    "grid20_initial_rhs.npz": "48fd372d97955ef7f0ef91b8931d59b50b3082f8101d3bccbaa4e3eaa5cbaac4",
+    "grid20.npz": "22f0001f912a8170b795c4909ead2f820944cc042723fb8a1c8fd7eeb9510397",
+    "grid12.npz": "e41660ce6a2ffd7e1f5eabfe8af1ad1586838ced13c77e74a3372ad39df12269",
+    "baseline_initial_rhs.npz": "6c149a53fb94eff7320188fc32d22beccd5719178de47afcda7f4ab3fbb47bd7"
+  },
+  "audit_source_sha256": "bbad9ab8dea55331e0fe05aac7176987d6f74644394bc12b766dd433961e853b",
+  "wall_s": 20.878738708999663,
+  "environment": {
+    "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "versions": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1"
+    },
+    "thread_caps": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    }
+  },
+  "scope": "Independent NumPy ordered Coulomb pairs and adjoint, SciPy Hermite measure and barycentric derivatives, raw five invariants, positive density, original root, entropy/Gram/KL/residual identity for every saved accepted advance. Independent direct Lagrange reconstruction of log(F/F0) and Legendre cubature on shared saved times; no time interpolation or extrapolation.",
+  "limitations": [
+    "Producer interruption/failure remains unresolved; failed Newton iterates and absent states are not accepted stages.",
+    "The initial Gaussian strong reference is an instantaneous check, not a Gaussian closure for later nodal densities.",
+    "Discrete root checks and shared-time density comparisons do not establish continuum finite-time convergence.",
+    "Raw outside-box nodal populations are not rigorous continuum tail bounds.",
+    "Coarse12 lacks nodes enclosing box5 and retains its box4 producer diagnostic."
+  ],
+  "source_commit": "5e5498a4872be00835b9a3813912c4e60e35156c",
+  "source_dirty": true,
+  "hardware": {
+    "processor": "arm",
+    "machine": "arm64",
+    "model": "Apple M4"
+  },
+  "units": "normalized",
+  "input_summary_sha256_at_start": "a1d6b30b7804a69fed7c207da1ef4faffab438394eb474927393dd678650c732",
+  "input_summary_sha256_at_end": "a1d6b30b7804a69fed7c207da1ef4faffab438394eb474927393dd678650c732"
+}

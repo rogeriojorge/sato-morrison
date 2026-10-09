@@ -34,5 +34,8 @@
     "landau_strong_consistency.py": "f6cdcb919c3f936fe71cd22b8c24f85e58d7c017150f1fa45c408ba4b41e49e9",
     "landau_allstage_independent_audit_8180bea6fa7d.py": "8180bea6fa7d2d5118b633b004e2c8890cb18b288df7efc23fc249b8e6f3fe5f"
   },
-  "provenance_note": "Historical audits pin their own immutable snapshot summary hashes, which can differ from the final producer summary; all three raw case arrays match exactly at publication. Archived source variants match historical receipts."
+  "provenance_note": "Historical audit source variants and publisher remain private with exact hashes listed here; they are not public source copies. The portable public reproduction source is examples/32_landau_audit.py, which contains all independent NumPy/SciPy helpers and replays all ten saved accepted advances and expanded-box comparisons. Its successful receipt is independent_portable_audit.json. Historical snapshot summary hashes can differ from the final summary; every public raw case array matches exactly.",
+  "portable_source": "examples/32_landau_audit.py",
+  "portable_source_sha256": "bbad9ab8dea55331e0fe05aac7176987d6f74644394bc12b766dd433961e853b",
+  "portable_receipt_sha256": "88f600b5c0c8038a51dcdc55f609515c123e7cd968e24ceb2df57234210940aa"
 }

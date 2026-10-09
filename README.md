@@ -224,6 +224,8 @@ MPLBACKEND=Agg python examples/28_spatial_relaxation.py
 MPLBACKEND=Agg python examples/29_operator_comparison.py
 # Saves the underresolved Landau study, then exits with a declared accuracy failure:
 MPLBACKEND=Agg python examples/30_landau_consistency.py
+# Independently replay the archived accepted Landau stages:
+python examples/32_landau_audit.py
 ```
 
 Example 24 exits nonzero because the declared angular and Cartesian checks remain unresolved. It saves the results before raising the error.
