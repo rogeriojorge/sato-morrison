@@ -1,0 +1,11 @@
+{
+  "status": "prepared_before_launch",
+  "input_sha256": "e6a1691b06f0613edf84ac261939e775eb37c33c96aa4ce33d713182f3493f19",
+  "reference_dt025_sha256": "31b8728348ac0f3848e69dec22c9f7a0739158771f6b5ead340b3505cf13cf6a",
+  "source_sha256": {
+    "/Users/rogerio/local/sato_morrison_handoff/verification/landau_dt0125_preflight_v1/run.py": "86c0c4533320949bdddeb82dad111b7c7c00ccf20843ff29020d292d8d914fc0",
+    "/Users/rogerio/local/sato-morrison/src/sato_morrison/controls.py": "90d32edf198a9734a8e8ebc4eee670256f82261dd5e8cf9c86eaaf49212e9ecb",
+    "/Users/rogerio/local/sato-morrison/src/sato_morrison/solver.py": "2823a80258f21851131e0e0cd10a8101af8bcf9b8f8aefcf49eada752751add0"
+  },
+  "declared_before_launch": "n16 theta=.6 dt=.0125 T=.2, original tensor fixedwF0 rtol1e-10 linear1e-8 cap2, exact physicalF0 from accepted dt025, unchanged1% density/moment gates every shared time"
+}

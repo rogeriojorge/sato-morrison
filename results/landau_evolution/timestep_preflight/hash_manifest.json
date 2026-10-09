@@ -1,0 +1,24 @@
+{
+  "status": "archived_supplementary_time_preflight",
+  "source_provenance": "Exact historical launcher, producer and private independent receipts are archived unchanged. Public32 provides all independent replay/comparison mathematics; no private mathematical helper is needed for advertised audit command.",
+  "file_sha256": {
+    "summary.json": "c3cb6d221b5d89f34166884bb4368d29dcfd7eba3b791479b3b0ec25e3e28390",
+    "comparison_plan_manifest.json": "49de2846121651b0d08f75368a525e1f2a7f2dc1952abf4475dedfe4a61305a5",
+    "independent_portable_audit.json": "2d6185267ce5df732bb80ebf9275a5cb2f821ee88bad85576d4de92ac68b5347",
+    "baseline.npz": "31b8728348ac0f3848e69dec22c9f7a0739158771f6b5ead340b3505cf13cf6a",
+    "accepted_states.npz": "ef8a0a56b820c8796b72740d2ff9ac6dc2512012f47c1dc1a47243d0d9312dc1",
+    "independent_raw_replay.json": "2b9df0b8fa0bbcd14f3f4ce5312929405df4f129301a010bf8ca55d767ed4d8b",
+    "producer_receipt.json": "b59d6cbb5061c3f4a15fa76c5fe70cb1970ea3370645cb7c02f94ccd95100843",
+    "launch_source.py": "86c0c4533320949bdddeb82dad111b7c7c00ccf20843ff29020d292d8d914fc0",
+    "independent_comparison.json": "3000de45e489e3c1cb1f53b5bf75e41b9cd3df76f6dd02e2107a9bb2a08b5c15",
+    "launch_manifest.json": "21c2cd07e73bac97c6a0004f6aff061e12e270c9f8d416ec4d17a6bfb54beaf0",
+    "immutable_input.npz": "e6a1691b06f0613edf84ac261939e775eb37c33c96aa4ce33d713182f3493f19"
+  },
+  "portable_independent_audit": {
+    "source": "examples/32_landau_audit.py",
+    "source_sha256": "c4ce4734bbd229ebf0770b67ff56330e9340f2d0bfc0cc9284129d70f4da43c0",
+    "input_environment": "SM_LANDAU_AUDIT_INPUT=results/landau_evolution/timestep_preflight",
+    "output_environment": "SM_LANDAU_AUDIT_OUTPUT=<fresh receipt path>",
+    "scope": "24 original roots: eight immutable dt025 reference advances and sixteen preflight advances; every eight positive shared times, boxes4/5 GL32/48/64, moment increments and quadrature refinement."
+  }
+}

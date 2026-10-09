@@ -1,0 +1,800 @@
+{
+  "status": "passed_one_percent_time_refinement_preflight",
+  "scope": "Same-grid n16theta.6 original public tensor, dt.025 reference vsdt.0125; all8 shared times including earliest .025; no state/time interpolation or extrapolation. Densities use independent direct Lagrange reconstruction of log(F/F0) with reference-only Gaussian, not evolving Gaussian closure. Raw whole-quadrature normalized moments compare changes from actual shared sampled initialF0. Conserved moments are audited separately, not normalized by zero increments. This is a time preflight, not all physical convergence scans.",
+  "target": 0.01,
+  "density_maximum_relative_increment_L1": 0.006290861321637574,
+  "required_moment_maxima": {
+    "anisotropy": 0.005062599529834338,
+    "mu_second": 0.0037870898425558202,
+    "speed_fourth": 0.0034470475566016332,
+    "fourth_cumulant": 0.009313788399046197
+  },
+  "density_rows": [
+    {
+      "time": 0.025,
+      "box_extent": 4.0,
+      "GL_order": 32,
+      "reference_actual_density_increment_L1": 0.00336416963906677,
+      "relative_increment_L1": 0.006276863067405858
+    },
+    {
+      "time": 0.05,
+      "box_extent": 4.0,
+      "GL_order": 32,
+      "reference_actual_density_increment_L1": 0.006634337998015476,
+      "relative_increment_L1": 0.006081020942370222
+    },
+    {
+      "time": 0.07500000000000001,
+      "box_extent": 4.0,
+      "GL_order": 32,
+      "reference_actual_density_increment_L1": 0.009815044627467046,
+      "relative_increment_L1": 0.005907345650083138
+    },
+    {
+      "time": 0.1,
+      "box_extent": 4.0,
+      "GL_order": 32,
+      "reference_actual_density_increment_L1": 0.012910479138343431,
+      "relative_increment_L1": 0.005746604610620144
+    },
+    {
+      "time": 0.125,
+      "box_extent": 4.0,
+      "GL_order": 32,
+      "reference_actual_density_increment_L1": 0.015924494671947113,
+      "relative_increment_L1": 0.005596655372026022
+    },
+    {
+      "time": 0.15000000000000002,
+      "box_extent": 4.0,
+      "GL_order": 32,
+      "reference_actual_density_increment_L1": 0.018860669985060863,
+      "relative_increment_L1": 0.0054560572608414746
+    },
+    {
+      "time": 0.17500000000000002,
+      "box_extent": 4.0,
+      "GL_order": 32,
+      "reference_actual_density_increment_L1": 0.021722296658589577,
+      "relative_increment_L1": 0.00532375802144682
+    },
+    {
+      "time": 0.2,
+      "box_extent": 4.0,
+      "GL_order": 32,
+      "reference_actual_density_increment_L1": 0.024512436555742492,
+      "relative_increment_L1": 0.005199067030619751
+    },
+    {
+      "time": 0.025,
+      "box_extent": 4.0,
+      "GL_order": 48,
+      "reference_actual_density_increment_L1": 0.0033671767532182945,
+      "relative_increment_L1": 0.006250397488819994
+    },
+    {
+      "time": 0.05,
+      "box_extent": 4.0,
+      "GL_order": 48,
+      "reference_actual_density_increment_L1": 0.006640171033387857,
+      "relative_increment_L1": 0.0060534605907971795
+    },
+    {
+      "time": 0.07500000000000001,
+      "box_extent": 4.0,
+      "GL_order": 48,
+      "reference_actual_density_increment_L1": 0.00982345729495901,
+      "relative_increment_L1": 0.005879048478486867
+    },
+    {
+      "time": 0.1,
+      "box_extent": 4.0,
+      "GL_order": 48,
+      "reference_actual_density_increment_L1": 0.012921168989380918,
+      "relative_increment_L1": 0.005718554831284028
+    },
+    {
+      "time": 0.125,
+      "box_extent": 4.0,
+      "GL_order": 48,
+      "reference_actual_density_increment_L1": 0.01593713360246419,
+      "relative_increment_L1": 0.005569578657946562
+    },
+    {
+      "time": 0.15000000000000002,
+      "box_extent": 4.0,
+      "GL_order": 48,
+      "reference_actual_density_increment_L1": 0.01887575056214472,
+      "relative_increment_L1": 0.005431106451789384
+    },
+    {
+      "time": 0.17500000000000002,
+      "box_extent": 4.0,
+      "GL_order": 48,
+      "reference_actual_density_increment_L1": 0.021739808211748805,
+      "relative_increment_L1": 0.005302258152446096
+    },
+    {
+      "time": 0.2,
+      "box_extent": 4.0,
+      "GL_order": 48,
+      "reference_actual_density_increment_L1": 0.024532875503564665,
+      "relative_increment_L1": 0.00518042669366628
+    },
+    {
+      "time": 0.025,
+      "box_extent": 4.0,
+      "GL_order": 64,
+      "reference_actual_density_increment_L1": 0.0033645078599097945,
+      "relative_increment_L1": 0.006260553895887711
+    },
+    {
+      "time": 0.05,
+      "box_extent": 4.0,
+      "GL_order": 64,
+      "reference_actual_density_increment_L1": 0.006635068063607589,
+      "relative_increment_L1": 0.00606271180537727
+    },
+    {
+      "time": 0.07500000000000001,
+      "box_extent": 4.0,
+      "GL_order": 64,
+      "reference_actual_density_increment_L1": 0.009816269263133615,
+      "relative_increment_L1": 0.005888244692823679
+    },
+    {
+      "time": 0.1,
+      "box_extent": 4.0,
+      "GL_order": 64,
+      "reference_actual_density_increment_L1": 0.012912402490068392,
+      "relative_increment_L1": 0.005728291984731846
+    },
+    {
+      "time": 0.125,
+      "box_extent": 4.0,
+      "GL_order": 64,
+      "reference_actual_density_increment_L1": 0.015927571551417892,
+      "relative_increment_L1": 0.0055802721667727205
+    },
+    {
+      "time": 0.15000000000000002,
+      "box_extent": 4.0,
+      "GL_order": 64,
+      "reference_actual_density_increment_L1": 0.018865507564931116,
+      "relative_increment_L1": 0.005441260269605166
+    },
+    {
+      "time": 0.17500000000000002,
+      "box_extent": 4.0,
+      "GL_order": 64,
+      "reference_actual_density_increment_L1": 0.02172958062660497,
+      "relative_increment_L1": 0.005310241689923141
+    },
+    {
+      "time": 0.2,
+      "box_extent": 4.0,
+      "GL_order": 64,
+      "reference_actual_density_increment_L1": 0.02452298424550379,
+      "relative_increment_L1": 0.005186597234338651
+    },
+    {
+      "time": 0.025,
+      "box_extent": 5.0,
+      "GL_order": 32,
+      "reference_actual_density_increment_L1": 0.003373626858990764,
+      "relative_increment_L1": 0.006290861321637574
+    },
+    {
+      "time": 0.05,
+      "box_extent": 5.0,
+      "GL_order": 32,
+      "reference_actual_density_increment_L1": 0.006650785794718364,
+      "relative_increment_L1": 0.006091990522652251
+    },
+    {
+      "time": 0.07500000000000001,
+      "box_extent": 5.0,
+      "GL_order": 32,
+      "reference_actual_density_increment_L1": 0.009836334010057748,
+      "relative_increment_L1": 0.005917345864416535
+    },
+    {
+      "time": 0.1,
+      "box_extent": 5.0,
+      "GL_order": 32,
+      "reference_actual_density_increment_L1": 0.012934716438609327,
+      "relative_increment_L1": 0.005756411354339336
+    },
+    {
+      "time": 0.125,
+      "box_extent": 5.0,
+      "GL_order": 32,
+      "reference_actual_density_increment_L1": 0.015950009496679594,
+      "relative_increment_L1": 0.005606509545502551
+    },
+    {
+      "time": 0.15000000000000002,
+      "box_extent": 5.0,
+      "GL_order": 32,
+      "reference_actual_density_increment_L1": 0.018894204680285007,
+      "relative_increment_L1": 0.005463648587109467
+    },
+    {
+      "time": 0.17500000000000002,
+      "box_extent": 5.0,
+      "GL_order": 32,
+      "reference_actual_density_increment_L1": 0.021765208074460876,
+      "relative_increment_L1": 0.005329309833349929
+    },
+    {
+      "time": 0.2,
+      "box_extent": 5.0,
+      "GL_order": 32,
+      "reference_actual_density_increment_L1": 0.024566180908852132,
+      "relative_increment_L1": 0.0052026193915850425
+    },
+    {
+      "time": 0.025,
+      "box_extent": 5.0,
+      "GL_order": 48,
+      "reference_actual_density_increment_L1": 0.0033611374874397515,
+      "relative_increment_L1": 0.006283496327978273
+    },
+    {
+      "time": 0.05,
+      "box_extent": 5.0,
+      "GL_order": 48,
+      "reference_actual_density_increment_L1": 0.006628059522995651,
+      "relative_increment_L1": 0.006082485394755533
+    },
+    {
+      "time": 0.07500000000000001,
+      "box_extent": 5.0,
+      "GL_order": 48,
+      "reference_actual_density_increment_L1": 0.009805361856272038,
+      "relative_increment_L1": 0.005905562236985148
+    },
+    {
+      "time": 0.1,
+      "box_extent": 5.0,
+      "GL_order": 48,
+      "reference_actual_density_increment_L1": 0.012897567372681731,
+      "relative_increment_L1": 0.005743597606281076
+    },
+    {
+      "time": 0.125,
+      "box_extent": 5.0,
+      "GL_order": 48,
+      "reference_actual_density_increment_L1": 0.015910453839379952,
+      "relative_increment_L1": 0.005592493006326444
+    },
+    {
+      "time": 0.15000000000000002,
+      "box_extent": 5.0,
+      "GL_order": 48,
+      "reference_actual_density_increment_L1": 0.018846196821133115,
+      "relative_increment_L1": 0.005451462312371494
+    },
+    {
+      "time": 0.17500000000000002,
+      "box_extent": 5.0,
+      "GL_order": 48,
+      "reference_actual_density_increment_L1": 0.02170797075398051,
+      "relative_increment_L1": 0.0053195095958890075
+    },
+    {
+      "time": 0.2,
+      "box_extent": 5.0,
+      "GL_order": 48,
+      "reference_actual_density_increment_L1": 0.024498791229615114,
+      "relative_increment_L1": 0.005195466925470067
+    },
+    {
+      "time": 0.025,
+      "box_extent": 5.0,
+      "GL_order": 64,
+      "reference_actual_density_increment_L1": 0.0033676430614193852,
+      "relative_increment_L1": 0.006264028454968085
+    },
+    {
+      "time": 0.05,
+      "box_extent": 5.0,
+      "GL_order": 64,
+      "reference_actual_density_increment_L1": 0.006640735382127941,
+      "relative_increment_L1": 0.0060608967902382035
+    },
+    {
+      "time": 0.07500000000000001,
+      "box_extent": 5.0,
+      "GL_order": 64,
+      "reference_actual_density_increment_L1": 0.0098242418744801,
+      "relative_increment_L1": 0.005882308276685833
+    },
+    {
+      "time": 0.1,
+      "box_extent": 5.0,
+      "GL_order": 64,
+      "reference_actual_density_increment_L1": 0.012923373527971396,
+      "relative_increment_L1": 0.005719336113371665
+    },
+    {
+      "time": 0.125,
+      "box_extent": 5.0,
+      "GL_order": 64,
+      "reference_actual_density_increment_L1": 0.015941879408075153,
+      "relative_increment_L1": 0.005569988255325358
+    },
+    {
+      "time": 0.15000000000000002,
+      "box_extent": 5.0,
+      "GL_order": 64,
+      "reference_actual_density_increment_L1": 0.01888286851572349,
+      "relative_increment_L1": 0.005431014911070534
+    },
+    {
+      "time": 0.17500000000000002,
+      "box_extent": 5.0,
+      "GL_order": 64,
+      "reference_actual_density_increment_L1": 0.02175010522676992,
+      "relative_increment_L1": 0.005300269075984856
+    },
+    {
+      "time": 0.2,
+      "box_extent": 5.0,
+      "GL_order": 64,
+      "reference_actual_density_increment_L1": 0.024546382674128307,
+      "relative_increment_L1": 0.005177023428439068
+    }
+  ],
+  "whole_quadrature_moment_rows": [
+    {
+      "time": 0.025,
+      "observables": {
+        "anisotropy": {
+          "reference_increment": -0.005434375817020776,
+          "actual_increment": -0.005461887885476968,
+          "reference_increment_max_abs_scale": 0.005434375817020776,
+          "relative_increment_error": 0.005062599529834338
+        },
+        "mu_second": {
+          "reference_increment": -0.0064127715155257725,
+          "actual_increment": -0.0064370572573948515,
+          "reference_increment_max_abs_scale": 0.0064127715155257725,
+          "relative_increment_error": 0.0037870898425558202
+        },
+        "speed_fourth": {
+          "reference_increment": -0.003254586403173221,
+          "actual_increment": -0.003265805117282028,
+          "reference_increment_max_abs_scale": 0.003254586403173221,
+          "relative_increment_error": 0.0034470475566016332
+        },
+        "fourth_cumulant": {
+          "reference_increment": [
+            0.002870152007913518,
+            0.002870152007885096,
+            -0.002799575757570727
+          ],
+          "actual_increment": [
+            0.002896883996382993,
+            0.0028968839963599002,
+            -0.0028210381146327457
+          ],
+          "reference_increment_max_abs_scale": 0.002870152007913518,
+          "relative_increment_error": 0.009313788399046197
+        },
+        "covariance_diagnostic": {
+          "reference_increment": [
+            -0.0018114586056765525,
+            -0.0018114586056721116,
+            0.0036229172113464436
+          ],
+          "actual_increment": [
+            -0.0018206292842286587,
+            -0.00182062928422555,
+            0.003641258601250086
+          ],
+          "reference_increment_max_abs_scale": 0.0036229172113464436,
+          "relative_increment_error": 0.005062602547527078
+        }
+      }
+    },
+    {
+      "time": 0.05,
+      "observables": {
+        "anisotropy": {
+          "reference_increment": -0.01078397205185977,
+          "actual_increment": -0.010837811182872081,
+          "reference_increment_max_abs_scale": 0.01078397205185977,
+          "relative_increment_error": 0.004992513959921396
+        },
+        "mu_second": {
+          "reference_increment": -0.012743743169441935,
+          "actual_increment": -0.012791475465845803,
+          "reference_increment_max_abs_scale": 0.012743743169441935,
+          "relative_increment_error": 0.003745547581210294
+        },
+        "speed_fourth": {
+          "reference_increment": -0.00642957469894867,
+          "actual_increment": -0.006450586271981251,
+          "reference_increment_max_abs_scale": 0.00642957469894867,
+          "relative_increment_error": 0.003267956904834896
+        },
+        "fourth_cumulant": {
+          "reference_increment": [
+            0.005649001630851025,
+            0.005649001630799955,
+            -0.005513376992205776
+          ],
+          "actual_increment": [
+            0.005700817269866931,
+            0.005700817269855829,
+            -0.005554426101405108
+          ],
+          "reference_increment_max_abs_scale": 0.005649001630851025,
+          "relative_increment_error": 0.009172530376499172
+        },
+        "covariance_diagnostic": {
+          "reference_increment": [
+            -0.0035946573506271395,
+            -0.0035946573506173696,
+            0.007189314701237737
+          ],
+          "actual_increment": [
+            -0.0036126037059609484,
+            -0.0036126037059576177,
+            0.007225207476912909
+          ],
+          "reference_increment_max_abs_scale": 0.007189314701237737,
+          "relative_increment_error": 0.0049925169736961365
+        }
+      }
+    },
+    {
+      "time": 0.07500000000000001,
+      "observables": {
+        "anisotropy": {
+          "reference_increment": -0.01605070735042713,
+          "actual_increment": -0.016129746072115703,
+          "reference_increment_max_abs_scale": 0.01605070735042713,
+          "relative_increment_error": 0.004924313923552422
+        },
+        "mu_second": {
+          "reference_increment": -0.018994483553996133,
+          "actual_increment": -0.019064859986217098,
+          "reference_increment_max_abs_scale": 0.018994483553996133,
+          "relative_increment_error": 0.0037050984840363444
+        },
+        "speed_fourth": {
+          "reference_increment": -0.009528123973526093,
+          "actual_increment": -0.009557639707008292,
+          "reference_increment_max_abs_scale": 0.009528123973526093,
+          "relative_increment_error": 0.0030977486821339535
+        },
+        "fourth_cumulant": {
+          "reference_increment": [
+            0.008339482063780768,
+            0.00833948206377011,
+            -0.008144561913475679
+          ],
+          "actual_increment": [
+            0.008414823373868785,
+            0.00841482337384658,
+            -0.008203478728037839
+          ],
+          "reference_increment_max_abs_scale": 0.008339482063780768,
+          "relative_increment_error": 0.00903429127993841
+        },
+        "covariance_diagnostic": {
+          "reference_increment": [
+            -0.0053502357834793735,
+            -0.005350235783473378,
+            0.010700471566950864
+          ],
+          "actual_increment": [
+            -0.00537658199186164,
+            -0.005376581991856089,
+            0.01075316408025695
+          ],
+          "reference_increment_max_abs_scale": 0.010700471566950864,
+          "relative_increment_error": 0.004924316930931303
+        }
+      }
+    },
+    {
+      "time": 0.1,
+      "observables": {
+        "anisotropy": {
+          "reference_increment": -0.021236430257509986,
+          "actual_increment": -0.02133959464945967,
+          "reference_increment_max_abs_scale": 0.021236430257509986,
+          "relative_increment_error": 0.004857897052316555
+        },
+        "mu_second": {
+          "reference_increment": -0.02516650533474518,
+          "actual_increment": -0.025258756279755712,
+          "reference_increment_max_abs_scale": 0.02516650533474518,
+          "relative_increment_error": 0.0036656239626233463
+        },
+        "speed_fourth": {
+          "reference_increment": -0.012553208336528954,
+          "actual_increment": -0.012590059328184466,
+          "reference_increment_max_abs_scale": 0.012553208336528954,
+          "relative_increment_error": 0.0029355835311263693
+        },
+        "fourth_cumulant": {
+          "reference_increment": [
+            0.01094441364856591,
+            0.010944413648540152,
+            -0.010696110419527782
+          ],
+          "actual_increment": [
+            0.011041810533269913,
+            0.011041810533244156,
+            -0.010771316732334668
+          ],
+          "reference_increment_max_abs_scale": 0.01094441364856591,
+          "relative_increment_error": 0.008899232780439215
+        },
+        "covariance_diagnostic": {
+          "reference_increment": [
+            -0.0070788100858389935,
+            -0.007078810085832998,
+            0.014157620171674101
+          ],
+          "actual_increment": [
+            -0.007113198174025115,
+            -0.007113198174020896,
+            0.014226396475436776
+          ],
+          "reference_increment_max_abs_scale": 0.014157620171674101,
+          "relative_increment_error": 0.004857900051611688
+        }
+      }
+    },
+    {
+      "time": 0.125,
+      "observables": {
+        "anisotropy": {
+          "reference_increment": -0.026342923427609133,
+          "actual_increment": -0.026469189579796715,
+          "reference_increment_max_abs_scale": 0.026342923427609133,
+          "relative_increment_error": 0.004793171590638514
+        },
+        "mu_second": {
+          "reference_increment": -0.031261270009117936,
+          "actual_increment": -0.031374656008882784,
+          "reference_increment_max_abs_scale": 0.031261270009117936,
+          "relative_increment_error": 0.0036270439342923916
+        },
+        "speed_fourth": {
+          "reference_increment": -0.015507634466612075,
+          "actual_increment": -0.015550758360094008,
+          "reference_increment_max_abs_scale": 0.015507634466612075,
+          "relative_increment_error": 0.0027808169953179554
+        },
+        "fourth_cumulant": {
+          "reference_increment": [
+            0.013466506666200306,
+            0.013466506666184319,
+            -0.013170838588533407
+          ],
+          "actual_increment": [
+            0.013584572325008093,
+            0.013584572324948585,
+            -0.013260883210532093
+          ],
+          "reference_increment_max_abs_scale": 0.013466506666200306,
+          "relative_increment_error": 0.00876735605857758
+        },
+        "covariance_diagnostic": {
+          "reference_increment": [
+            -0.008780974475869341,
+            -0.0087809744758649,
+            0.017561948951742234
+          ],
+          "actual_increment": [
+            -0.00882306314075798,
+            -0.008823063140746878,
+            0.017646126439044507
+          ],
+          "reference_increment_max_abs_scale": 0.017561948951742234,
+          "relative_increment_error": 0.004793174580656202
+        }
+      }
+    },
+    {
+      "time": 0.15000000000000002,
+      "observables": {
+        "anisotropy": {
+          "reference_increment": -0.0313719074259895,
+          "actual_increment": -0.03152029824849667,
+          "reference_increment_max_abs_scale": 0.0313719074259895,
+          "relative_increment_error": 0.004730054200792394
+        },
+        "mu_second": {
+          "reference_increment": -0.03728019156375462,
+          "actual_increment": -0.03741400132154071,
+          "reference_increment_max_abs_scale": 0.03728019156375462,
+          "relative_increment_error": 0.003589299093521609
+        },
+        "speed_fourth": {
+          "reference_increment": -0.018394055894892958,
+          "actual_increment": -0.018442486037514527,
+          "reference_increment_max_abs_scale": 0.018394055894892958,
+          "relative_increment_error": 0.0026329235323796023
+        },
+        "fourth_cumulant": {
+          "reference_increment": [
+            0.015908365597077978,
+            0.015908365597081087,
+            -0.015571411621754905
+          ],
+          "actual_increment": [
+            0.0160457914284291,
+            0.01604579142840734,
+            -0.015674958205450285
+          ],
+          "reference_increment_max_abs_scale": 0.015908365597081087,
+          "relative_increment_error": 0.008638588955759145
+        },
+        "covariance_diagnostic": {
+          "reference_increment": [
+            -0.010457302475331831,
+            -0.010457302475330499,
+            0.020914604950658333
+          ],
+          "actual_increment": [
+            -0.010506766020512703,
+            -0.010506766020507596,
+            0.02101353222798663
+          ],
+          "reference_increment_max_abs_scale": 0.020914604950658333,
+          "relative_increment_error": 0.00473005718069678
+        }
+      }
+    },
+    {
+      "time": 0.17500000000000002,
+      "observables": {
+        "anisotropy": {
+          "reference_increment": -0.03632504418877336,
+          "actual_increment": -0.03649462651539548,
+          "reference_increment_max_abs_scale": 0.03632504418877336,
+          "relative_increment_error": 0.004668468556867741
+        },
+        "mu_second": {
+          "reference_increment": -0.04322463947347899,
+          "actual_increment": -0.043378188180867916,
+          "reference_increment_max_abs_scale": 0.04322463947347899,
+          "relative_increment_error": 0.0035523421192012548
+        },
+        "speed_fourth": {
+          "reference_increment": -0.021214985102536943,
+          "actual_increment": -0.02126784130156345,
+          "reference_increment_max_abs_scale": 0.021214985102536943,
+          "relative_increment_error": 0.002491455863439981
+        },
+        "fourth_cumulant": {
+          "reference_increment": [
+            0.018272493908263243,
+            0.018272493908227716,
+            -0.01790035544347468
+          ],
+          "actual_increment": [
+            0.0184280444984668,
+            0.018428044498391305,
+            -0.018016171722365026
+          ],
+          "reference_increment_max_abs_scale": 0.018272493908263243,
+          "relative_increment_error": 0.008512827585796235
+        },
+        "covariance_diagnostic": {
+          "reference_increment": [
+            -0.012108348062925822,
+            -0.01210834806292116,
+            0.02421669612584998
+          ],
+          "actual_increment": [
+            -0.012164875433250844,
+            -0.012164875433239297,
+            0.02432975108215063
+          ],
+          "reference_increment_max_abs_scale": 0.02421669612584998,
+          "relative_increment_error": 0.004668471525311465
+        }
+      }
+    },
+    {
+      "time": 0.2,
+      "observables": {
+        "anisotropy": {
+          "reference_increment": -0.04120394019107021,
+          "actual_increment": -0.04139382213611997,
+          "reference_increment_max_abs_scale": 0.04120394019107021,
+          "relative_increment_error": 0.0046083443517597154
+        },
+        "mu_second": {
+          "reference_increment": -0.049095941273262333,
+          "actual_increment": -0.04926856913918609,
+          "reference_increment_max_abs_scale": 0.049095941273262333,
+          "relative_increment_error": 0.0035161331353834556
+        },
+        "speed_fourth": {
+          "reference_increment": -0.023972804045270024,
+          "actual_increment": -0.024029284500777237,
+          "reference_increment_max_abs_scale": 0.023972804045270024,
+          "relative_increment_error": 0.0023560220740367187
+        },
+        "fourth_cumulant": {
+          "reference_increment": [
+            0.020561298924871352,
+            0.020561298924800298,
+            -0.020160067135165605
+          ],
+          "actual_increment": [
+            0.020733807326635212,
+            0.020733807326647646,
+            -0.020287015382785656
+          ],
+          "reference_increment_max_abs_scale": 0.020561298924871352,
+          "relative_increment_error": 0.008389956416551062
+        },
+        "covariance_diagnostic": {
+          "reference_increment": [
+            -0.013734646730365174,
+            -0.013734646730350741,
+            0.027469293460712363
+          ],
+          "actual_increment": [
+            -0.013797940630833505,
+            -0.013797940630831063,
+            0.0275958815052878
+          ],
+          "reference_increment_max_abs_scale": 0.027469293460712363,
+          "relative_increment_error": 0.004608347308112914
+        }
+      }
+    }
+  ],
+  "native_whole_quadrature_density_rows": [
+    {
+      "time": 0.025,
+      "relative_whole_quadrature_density_increment_L1": 0.0062163682208836385
+    },
+    {
+      "time": 0.05,
+      "relative_whole_quadrature_density_increment_L1": 0.006021218259271291
+    },
+    {
+      "time": 0.07500000000000001,
+      "relative_whole_quadrature_density_increment_L1": 0.005861491726209917
+    },
+    {
+      "time": 0.1,
+      "relative_whole_quadrature_density_increment_L1": 0.005708653637153601
+    },
+    {
+      "time": 0.125,
+      "relative_whole_quadrature_density_increment_L1": 0.0055630438908651535
+    },
+    {
+      "time": 0.15000000000000002,
+      "relative_whole_quadrature_density_increment_L1": 0.005424839030938837
+    },
+    {
+      "time": 0.17500000000000002,
+      "relative_whole_quadrature_density_increment_L1": 0.005293847075556085
+    },
+    {
+      "time": 0.2,
+      "relative_whole_quadrature_density_increment_L1": 0.005169699317426089
+    }
+  ],
+  "case_arrays_sha256": {
+    "reference": "31b8728348ac0f3848e69dec22c9f7a0739158771f6b5ead340b3505cf13cf6a",
+    "fine": "ef8a0a56b820c8796b72740d2ff9ac6dc2512012f47c1dc1a47243d0d9312dc1"
+  },
+  "comparison_source_sha256": "db84a548ba49c7782155a9ef563e39f7f26b547d01c3d11ea93b83dc3859d437",
+  "wall_s": 0.4204249169997638
+}

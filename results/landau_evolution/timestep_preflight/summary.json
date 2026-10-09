@@ -1,0 +1,105 @@
+{
+  "status": "passed_supplementary_fixed_input_time_preflight",
+  "inputs": {
+    "gamma": 1,
+    "covariance": [
+      1.15,
+      1.15,
+      0.7
+    ],
+    "density": 1,
+    "mass": 1,
+    "increment_relative_L1_target": 0.01,
+    "moment_increment_floor": 1e-14
+  },
+  "units": "normalized",
+  "rows": [
+    {
+      "name": "baseline",
+      "order": 16,
+      "variance": 0.6,
+      "dt": 0.025,
+      "rtol": 1e-10,
+      "softening": 0,
+      "status": "accepted_immutable_dt025_reference"
+    },
+    {
+      "name": "accepted_states",
+      "order": 16,
+      "variance": 0.6,
+      "dt": 0.0125,
+      "rtol": 1e-10,
+      "softening": 0,
+      "status": "passed_discrete_trajectory"
+    }
+  ],
+  "scope": "Supplementary same-input time refinement only. Baseline file is the immutable dt025 case from landau_trajectory_refined, not a new production baseline. Fine array contains all16 accepted dt0125 advances. No complete grid/tail/kernel campaign claim.",
+  "input_origin": {
+    "source": "/Users/rogerio/local/sato-morrison/results/landau_trajectory_refined/dt_fine.npz",
+    "source_sha256": "31b8728348ac0f3848e69dec22c9f7a0739158771f6b5ead340b3505cf13cf6a",
+    "physical_covariance": [
+      1.15,
+      1.15,
+      0.7
+    ],
+    "order": 16,
+    "variance": 0.6,
+    "gamma": 1,
+    "softening": 0,
+    "density_renormalization": false
+  },
+  "launch_commit": "d97812be8134626ed3c93a40e62452b4927c5ab9",
+  "launch_dirty": true,
+  "hardware": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "arm",
+    "machine": "arm64",
+    "model": "Apple M4"
+  },
+  "versions": {
+    "numpy": "2.5.3",
+    "jax": "0.11.2",
+    "scipy": "1.18.1",
+    "solvax": "0.28.2"
+  },
+  "cost": {
+    "wall_s": 50.359679166000205,
+    "process_peak_rss_bytes": 351469568
+  },
+  "plan": {
+    "n": 16,
+    "variance": 0.6,
+    "covariance": [
+      1.15,
+      1.15,
+      0.7
+    ],
+    "gamma": 1,
+    "softening": 0,
+    "dt": 0.0125,
+    "final_time": 0.2,
+    "steps": 16,
+    "rtol": 1e-10,
+    "linear_rtol": 1e-08,
+    "linear_max_steps": 200,
+    "newton_max_steps": 30,
+    "max_log_step": 2,
+    "preconditioner": "tensor",
+    "reference": "fixed original w*F0",
+    "density_boxes": [
+      4,
+      5
+    ],
+    "GL_orders": [
+      32,
+      48,
+      64
+    ],
+    "comparison_reference_dt": 0.025,
+    "density_moment_target": 0.01,
+    "moment_normalization_floor": 1e-14,
+    "case_budget_s": 900,
+    "purpose": "Determine sufficient next time refinement before another full campaign; no change to physical equation/gates"
+  },
+  "portable_reproduction": "SM_LANDAU_AUDIT_INPUT=results/landau_evolution/timestep_preflight SM_LANDAU_AUDIT_OUTPUT=<fresh-output.json> python examples/32_landau_audit.py; extended public32 reproduces every saved root and this baseline/fine comparison without private helpers. Exact historical launch_source retains original host paths/manifest provenance."
+}
