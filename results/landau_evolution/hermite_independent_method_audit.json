@@ -1,5 +1,5 @@
 {
-  "status": "passed_independent_initial_method_and_two_one_step_checks",
+  "status": "passed_independent_initial_method_and_three_finite_equations",
   "observed_producer_commit": "9b9eafe3e56e99710acd52cb17db6febbf04c8d5",
   "executed_utc": "2026-10-09T18:37:36.070925+00:00",
   "measure": "q integrates exp(-z\u00b2/2) dz, sum(q)=sqrt(2pi); physical v=sqrt(theta)z, w=sqrt(theta)q exp(z\u00b2/2), tensor products in3V",
@@ -1124,5 +1124,230 @@
     "source_sha256": "4f5de2e645dfa3226ab27bbc601969bbe5a13177e93669e4fe44f9c4d1d460d7",
     "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "terminated_utc": "2026-10-09T18:38:09.090298+00:00"
+  },
+  "two_step_fine_grid_root_check": {
+    "original_endpoint_file": "two_step_hermite20_theta065.npz",
+    "original_endpoint_sha256": "b5a368e2437beb2f0bd51d5214b798e127b3d2048976022ef0aea745264fd176",
+    "producer_receipt": {
+      "status": "passed",
+      "order": 20,
+      "variance": 0.65,
+      "dt": 0.05,
+      "time_interval": [
+        0.05,
+        0.1
+      ],
+      "rtol": 1e-10,
+      "linear_rtol": 1e-08,
+      "linear_max_steps": 80,
+      "preconditioner": "tensor",
+      "history": [
+        {
+          "iteration": 1,
+          "relative_residual": 0.0083856831923828,
+          "linear_iterations": 24,
+          "true_linear_relative_residual": 6.698355882112919e-09,
+          "linear_wall_s": 56.615641417000006,
+          "maximum_log_direction": 2.616032250456882,
+          "minimum_signed_log_direction": -0.053314412045276205,
+          "maximum_signed_log_direction": 2.616032250456882,
+          "objective_descent": -6.676559071328917e-05,
+          "mobility_curvature": 5.453918237539716e-05
+        },
+        {
+          "iteration": 1,
+          "relative_residual": 0.0083856831923828,
+          "linear_iterations": 24,
+          "true_linear_relative_residual": 6.698355882112919e-09,
+          "linear_wall_s": 56.615641417000006,
+          "maximum_log_direction": 2.616032250456882,
+          "minimum_signed_log_direction": -0.053314412045276205,
+          "maximum_signed_log_direction": 2.616032250456882,
+          "objective_descent": -6.676559071328917e-05,
+          "mobility_curvature": 5.453918237539716e-05,
+          "fraction": 0.7645165688040375,
+          "backtracks": 0,
+          "maximum_log_step": 2.0,
+          "objective_change": -3.1485926547928375e-05
+        },
+        {
+          "iteration": 2,
+          "relative_residual": 0.0019522352253898278,
+          "linear_iterations": 32,
+          "true_linear_relative_residual": 8.631844925571305e-09,
+          "linear_wall_s": 69.89945075000014,
+          "maximum_log_direction": 1.166919977999399,
+          "minimum_signed_log_direction": -1.166919977999399,
+          "maximum_signed_log_direction": 0.044308833790754266,
+          "objective_descent": -3.5951183286507255e-06,
+          "mobility_curvature": 2.947131554108165e-06
+        },
+        {
+          "iteration": 2,
+          "relative_residual": 0.0019522352253898278,
+          "linear_iterations": 32,
+          "true_linear_relative_residual": 8.631844925571305e-09,
+          "linear_wall_s": 69.89945075000014,
+          "maximum_log_direction": 1.166919977999399,
+          "minimum_signed_log_direction": -1.166919977999399,
+          "maximum_signed_log_direction": 0.044308833790754266,
+          "objective_descent": -3.5951183286507255e-06,
+          "mobility_curvature": 2.947131554108165e-06,
+          "fraction": 1.0,
+          "backtracks": 0,
+          "maximum_log_step": 1.166919977999399,
+          "objective_change": -1.7964050115082898e-06
+        },
+        {
+          "iteration": 3,
+          "relative_residual": 3.4207816092263992e-06,
+          "linear_iterations": 31,
+          "true_linear_relative_residual": 9.128672216190993e-09,
+          "linear_wall_s": 72.0687897910002,
+          "maximum_log_direction": 1.0076179971236245,
+          "minimum_signed_log_direction": -1.0076179971236245,
+          "maximum_signed_log_direction": 0.009667452314286536,
+          "objective_descent": -1.0812178331672885e-11,
+          "mobility_curvature": 8.117426118382576e-12
+        },
+        {
+          "iteration": 3,
+          "relative_residual": 3.4207816092263992e-06,
+          "linear_iterations": 31,
+          "true_linear_relative_residual": 9.128672216190993e-09,
+          "linear_wall_s": 72.0687897910002,
+          "maximum_log_direction": 1.0076179971236245,
+          "minimum_signed_log_direction": -1.0076179971236245,
+          "maximum_signed_log_direction": 0.009667452314286536,
+          "objective_descent": -1.0812178331672885e-11,
+          "mobility_curvature": 8.117426118382576e-12,
+          "fraction": 1.0,
+          "backtracks": 0,
+          "maximum_log_step": 1.0076179971236245,
+          "objective_change": -5.406108701169744e-12
+        }
+      ],
+      "wall_s": 210.82712470900015,
+      "newton": 3,
+      "linear": 87,
+      "entropy_change": 0.0018322277433121844,
+      "residual": 2.112265772295778e-11
+    },
+    "producer_receipt_sha256": "cdeb228daf462c5765906d3db391d515326aa9e00c6c307da795b1e45d3f1708",
+    "independent_audit": {
+      "status": "passed_independent_all_saved_stages",
+      "input_summary_sha256": "7c29da024ff3efe559d8a6050f935cafe856d371dfe35a46f3dde88d797b9d9d",
+      "producer_status": "private_two_fine20_accepted_steps",
+      "rows": [
+        {
+          "case": "fine20_second",
+          "declared_status": "passed_discrete_trajectory",
+          "source_arrays_sha256": "0a6d167fa0976100941a86c5d50caee59d5a6934dd6ae777cd1ef205309ef848",
+          "n": 20,
+          "theta": 0.65,
+          "softening": 0.0,
+          "saved_stages": 3,
+          "last_time": 0.1,
+          "nodal_min_density": 3.0176709021896526e-28,
+          "quadrature_max_relative_difference": 1.8787932955232029e-13,
+          "derivative_max_scaled_difference": 3.0766760204094394e-11,
+          "weighted_SBP_max_abs_defect": 8.049116928532385e-16,
+          "raw_invariant_max_abs_drifts": [
+            5.189959573215219e-12,
+            4.866799253041554e-17,
+            1.5723680350654363e-17,
+            9.419226523113974e-18,
+            1.2788659020657178e-11
+          ],
+          "stages": [
+            {
+              "j": 1,
+              "time": 0.05,
+              "dt": 0.05,
+              "weighted_root_norm": 1.2773266360237967e-13,
+              "initial_reference_root_norm": 1.2773266360237967e-13,
+              "entropy_change": 0.0019564795776033927,
+              "frozen_Gram_production": 0.0019217024565755917,
+              "time_KL": 3.477712102747123e-05,
+              "residual_entropy_defect": -2.906045151492024e-17,
+              "entropy_identity_defect_with_residual": 3.00713191773702e-16,
+              "min_f": 6.346478472142452e-28,
+              "tail_mass_r_gt3": 0.02950743313121502,
+              "tail_mass_maxcoord_gt4": 0.00016684460305826568,
+              "tail_mass_maxcoord_gt5": 7.5719452749038926e-06
+            },
+            {
+              "j": 2,
+              "time": 0.1,
+              "dt": 0.05,
+              "weighted_root_norm": 2.0851643874491227e-11,
+              "initial_reference_root_norm": 2.1123032434082445e-11,
+              "entropy_change": 0.001832227743312014,
+              "frozen_Gram_production": 0.001800399172232974,
+              "time_KL": 3.182854604935383e-05,
+              "residual_entropy_defect": -2.502985802030635e-11,
+              "entropy_identity_defect_with_residual": -1.7187189592706206e-16,
+              "min_f": 3.0176709021896526e-28,
+              "tail_mass_r_gt3": 0.029466480934409893,
+              "tail_mass_maxcoord_gt4": 0.00016586882092529707,
+              "tail_mass_maxcoord_gt5": 7.530773338118054e-06
+            }
+          ],
+          "independent_initial_L1": 0.004185097303021765
+        }
+      ],
+      "source_sha256": "931d5d3037628cf40837ea123030774d00d0270d2d0fb4c0208de1f63a7351f6",
+      "helper_sha256": "40692b8525e49c372d05359809a10bc6473c4ee5d8adc38cdd93817fc59d24d2",
+      "wall_s": 18.781694875000085,
+      "scope": "Independent SciPy Hermite nodes/measure, barycentric gradients, NumPy full Coulomb pair flux and adjoint. Every saved accepted stage; positivity, raw five invariant drifts, frozen root and corrected entropy identity. Partial/failed producers remain partial/failed.",
+      "limitations": [
+        "No continuum finite-time trajectory oracle. Independent finite root agreement alone does not establish physical trajectory convergence.",
+        "Barycentric derivatives may differ in unpopulated extreme tails; their backward error and weighted root measurements accompany absolute differences."
+      ]
+    },
+    "independent_audit_sha256": "cc9e42a008d7d7d37b00d978ed9558e9a162210c313cfc63b011e3964d63a62a",
+    "metric_scope": "Every original frozen Coulomb root independently evaluated. Both current-old-population and fixed-initial-population root norms reported. Saved producer derivative compared with independent barycentric derivative.",
+    "producer_private_source_sha256": "d4030e6a7bc22c60532d2c584f1b74047fb1d0f01aedc1d277732a4cb0fa9b7e"
+  },
+  "negative_current_mass_eta_optimizer_probe": {
+    "receipt": {
+      "status": "failed",
+      "newton_eta": 1e-16,
+      "initial_time": 0.1,
+      "target_time": 0.2,
+      "dt": 0.05,
+      "rtol": 1e-10,
+      "linear_rtol": 1e-08,
+      "linear_max_steps": 100,
+      "max_log_step": 2.0,
+      "reference": "fixed raw sampled initial wF0",
+      "optimizer": "Hessian+etaI; current-population+eta linear congruence; original nonlinear root/reference/objective unchanged",
+      "input_sha256": "11301b7e4c80837d1345925ab6ce3ea942e04520430748e8bf53be7c994d4e3f",
+      "steps": [
+        {
+          "time": 0.15,
+          "status": "failed",
+          "iterations": [
+            {
+              "iteration": 1,
+              "relative_residual": 0.00806392052032256,
+              "linear_iterations": 100,
+              "true_linear_relative_residual": 0.003067884129302444,
+              "linear_wall_s": 88.39768716700019,
+              "maximum_log_direction": 310.80618256553913,
+              "minimum_signed_log_direction": -310.80618256553913,
+              "maximum_signed_log_direction": 233.34150483683672,
+              "objective_descent": -6.120940511209971e-05,
+              "mobility_curvature": 4.84150242177696e-05
+            }
+          ],
+          "error": "SOLVAX PCG rejected lagged correction: status=2, iterations=100, true residual=3.068e-03",
+          "wall_s": 89.89358208300018
+        }
+      ],
+      "wall_s": 89.89402425000026
+    },
+    "receipt_sha256": "f3b6e9ac024054fb471481c50d9bd8049b1665ac976fac1990b158291e30a7f6",
+    "interpretation": "Adding etaI preserved the original equation and SPD auxiliary but did not provide a useful product-marginal inverse in the floored nonseparable metric. The linear solve failed; no accepted correction or new density is claimed."
   }
 }

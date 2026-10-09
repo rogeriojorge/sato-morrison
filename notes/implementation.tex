@@ -4214,10 +4214,55 @@ entropy gain is 0.00195647958, with Gram production 0.00192170246 and KL
 $3.47771210\times10^{-5}$; the corrected identity defect is
 $3.01\times10^{-16}$. The tensor approximation changes only the PCG
 preconditioner; all original pair interactions and residuals are retained.
-These checks verify two individual finite discrete equations, with no
-finite-time continuum trajectory claim. Inputs, source hashes, signed root
+The next $20^3$ step reaches $t=0.1$. Independent evaluation gives
+fixed-initial-population root norm $2.11\times10^{-11}$, maximum cumulative
+invariant drift $1.28\times10^{-11}$ and positive minimum density
+$3.02\times10^{-28}$. Its entropy gain 0.00183222774 contains frozen
+production 0.00180039917 and KL $3.18285460\times10^{-5}$. The residual
+entropy defect is $-2.50\times10^{-11}$; retaining it gives corrected
+identity defect $1.72\times10^{-16}$ in magnitude. These checks verify
+three finite equations, including every stage of the two-step fine-grid
+pilot, with no finite-time continuum trajectory claim. Inputs, source hashes, signed root
 and entropy budgets, and negative candidate checks are retained in
 \path{results/landau_evolution/hermite_independent_method_audit.json}.
+
+\subsection{Auxiliary tensor inverse in population coordinates}
+Let the positive correction metric be $m_i$ (the old population or a fixed
+reference with the same total population), with $M=\sum_i m_i$. Write its
+one-axis population marginals as $m^{(a)}$ and define
+\[
+ s_{ijk}=m^{(1)}_i m^{(2)}_j m^{(3)}_k/M^2,\qquad
+ L_a=\operatorname{diag}(m^{(a)})^{-1/2}
+       D^T\operatorname{diag}(m^{(a)})D
+       \operatorname{diag}(m^{(a)})^{-1/2}.
+\]
+The auxiliary population $s$ has total $M$; it is used only for the inverse,
+not as a replacement for the evolved density. Each $L_a$ is positive
+semidefinite. The frozen local diffusion diagonal is
+$q_{i,a}=\Gamma n_i\sum_j n_j(U_{ij})_{aa}$, and
+\[
+ \kappa=\frac{\sum_{i,a}q_{i,a}}{3\sum_i n_i}
+\]
+is its population-weighted mean trace divided by three. It has units
+velocity squared per time, whereas $L_a$ has units inverse velocity squared.
+If $L_a=Q_a\Lambda_aQ_a^T$, the tensor inverse in coordinates
+$x=\sqrt m\odot d$ is
+\begin{align}
+ P_m^{-1}&=A\mathcal Q
+  \operatorname{diag}\!\left[
+    \frac1{1+\Delta t\kappa(\lambda_{1,i}+\lambda_{2,j}+\lambda_{3,k})}
+  \right]\mathcal Q^T A,\\
+ \mathcal Q&=Q_1\otimes Q_2\otimes Q_3,\qquad
+ A=\operatorname{diag}(\sqrt{m/s}).
+\end{align}
+This is the inverse of the congruence-scaled auxiliary logarithmic Hessian
+$\operatorname{diag}(s)+\Delta t\kappa\sum_a D_a^T\operatorname{diag}(s)D_a$;
+therefore the scaling also applies to nonseparable $m$. All computed
+spectral denominators and scaling factors must be finite and positive.
+Invalid factors reject the correction; no eigenvalue is clipped and no
+invariant direction is removed. The default inverse remains diagonal.
+The residual, full pair Hessian, objective and true PCG residual use the
+original weak operator for both choices.
 
 \subsection{Damped Newton acceptance}
 The optional Newton globalization chooses the initial common line-search

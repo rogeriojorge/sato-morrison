@@ -1,0 +1,110 @@
+{
+  "status": "passed_render_only",
+  "scientific_status": "unresolved",
+  "producer_commit": "261c4e7fa23bff12e1460f919068fa6b61b9b069",
+  "producer_source_sha256": "a658727447e17487846be70fc4eab0569b9522a9bcd2a67c2bec14848ff48f60",
+  "renderer_source_sha256": "d77fd61659d425f68a0f2c6c4295b8a45da54c16a34807b7c4f2cad108e77272",
+  "rendered_producer_fragment_sha256": "861217b0bebcc234a592fcbb69343092fc6dfd6093fc67a61e34c88fe25c8a1c",
+  "inputs": {
+    "results/landau_trajectory/baseline.npz": "56800f6409959a985940474164b224f7369dbd0b374205892537de13727df069",
+    "results/landau_trajectory/grid12.npz": "e41660ce6a2ffd7e1f5eabfe8af1ad1586838ced13c77e74a3372ad39df12269",
+    "results/landau_trajectory/grid20.npz": "22f0001f912a8170b795c4909ead2f820944cc042723fb8a1c8fd7eeb9510397",
+    "results/landau_trajectory/summary.json": "a1d6b30b7804a69fed7c207da1ef4faffab438394eb474927393dd678650c732",
+    "results/landau_trajectory/execution_receipt.json": "3cac91cfba758b65c20629947ee0a7e10aea889973d560f3e4ac7dee8860a9a2",
+    "results/landau_trajectory/checkpoint_summary.json": "4508519c2483b721da922d365719a7b9378e7c3871d43520d697f2aed1043e6d",
+    "results/landau_trajectory/iterations.jsonl": "7e45c4acec35e1316702a7e86da0ed379cc74b67a89093dc696e484e01b1f4be"
+  },
+  "scope": "No dynamics recomputed. All visual states are immutable accepted stage arrays. Fine-grid comparisons stop at t=.1; baseline and coarse-grid states reach t=.2. Four-operator evolution withheld.",
+  "partial_comparisons": [
+    {
+      "case": "grid12",
+      "maximum_relative_increment_L1": 0.006117445795312073,
+      "whole_quadrature_moment_increment_errors": {
+        "anisotropy": 0.002817228184344847,
+        "mu_second": 0.0019833065171391637,
+        "speed_fourth": 0.002998595206972564,
+        "fourth_cumulant": 0.007097617216356897
+      },
+      "final_common_quadrature": [
+        {
+          "order": 24,
+          "relative_increment_L1_error": 0.004448703474897942
+        },
+        {
+          "order": 32,
+          "relative_increment_L1_error": 0.0043699107623820024
+        },
+        {
+          "order": 40,
+          "relative_increment_L1_error": 0.0044290848287352694
+        }
+      ],
+      "scope": "Only actual matching accepted times through t=0.2; no comparison of unequal-time states."
+    },
+    {
+      "case": "grid20",
+      "maximum_relative_increment_L1": 0.0021656192071872918,
+      "whole_quadrature_moment_increment_errors": {
+        "anisotropy": 0.0013329645747249942,
+        "mu_second": 0.0009204890472151977,
+        "speed_fourth": 0.001370060136430639,
+        "fourth_cumulant": 0.0033824503831783176
+      },
+      "final_common_quadrature": [
+        {
+          "order": 24,
+          "relative_increment_L1_error": 0.0020133276340516073
+        },
+        {
+          "order": 32,
+          "relative_increment_L1_error": 0.001977883245499011
+        },
+        {
+          "order": 40,
+          "relative_increment_L1_error": 0.002010738673338724
+        }
+      ],
+      "scope": "Only actual matching accepted times through t=0.1; no comparison of unequal-time states."
+    }
+  ],
+  "movie": {
+    "status": "passed",
+    "saved_physical_times": [
+      0.0,
+      0.05,
+      0.1,
+      0.15000000000000002,
+      0.2
+    ],
+    "frame_physical_times": [
+      0.0,
+      0.0,
+      0.0,
+      0.05,
+      0.1,
+      0.15000000000000002,
+      0.2,
+      0.2,
+      0.2,
+      0.2,
+      0.2
+    ],
+    "frames": 11,
+    "fps": 3,
+    "duration_s": 3.6666666666666665,
+    "scope": "Each frame is a quadrature marginal of one actual saved accepted physical 3V state; first and final states are held for readability. No Gaussian closure and no temporal interpolation."
+  },
+  "wall_s": 12.721853999999439,
+  "outputs": {
+    "trajectory.png": "32c36d049034d372f8445225614e2b4239c175cf797c3ebaa832f00a7500f207",
+    "trajectory.svg": "c38b93d17dc995e157c9d7014f5c7a26b03b88946a58660a07e6218fc8343c2b",
+    "plotted_arrays.npz": "c97a590507cd6367eccf76c149a822e6c4ddcf06e44e2f189aa7966a8b3ee5c8",
+    "trajectory.gif": "33103b77afb52f51f87e183b271e87375cbecb14ae30f664cf0851a1038bcd9b",
+    "quadrature.png": "bf5c643b0c6339e7a25f45f482214539adbe0c23e20a0b21d50494a77bd79b94",
+    "convergence.png": "6a6841af5ed91af7b95bad873a851a03af126bd8bd5ef9e932842899e3affb87",
+    "trajectory.mp4": "c14125194b925c10bb120609cbd0f0937cbe79a2191612ec7dc9ca330429880a",
+    "convergence.svg": "a354ccc600ad94af3a399616296c19b0b78e12ec1bbdb7d786ec4b96b29f3428",
+    "quadrature.svg": "ae236612a1de5fb4aac5078f0423ad7cdcfbf4604357f97422f6ba0ec9677b72",
+    "quadrature_plot_arrays.npz": "6df271fc1663982b7263873a60adb1cb3f429cf89d9ed23f93099007bf908b82"
+  }
+}

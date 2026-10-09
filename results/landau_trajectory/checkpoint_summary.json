@@ -1,0 +1,880 @@
+{
+  "model": "Full physical 3V Coulomb Landau distribution; no Gaussian closure",
+  "boundary": "Infinite-domain Hermite quadrature with natural finite weak adjoint; measured tail and scale scans",
+  "units": "normalized",
+  "inputs": {
+    "covariance": [
+      1.15,
+      1.15,
+      0.7
+    ],
+    "density": 1.0,
+    "mass": 1.0,
+    "gamma": 1.0,
+    "field_for_mu": 1.0,
+    "final_time": 0.2,
+    "cases": [
+      {
+        "name": "baseline",
+        "order": 16,
+        "variance": 0.65,
+        "dt": 0.05
+      },
+      {
+        "name": "grid12",
+        "order": 12,
+        "variance": 0.65,
+        "dt": 0.05
+      },
+      {
+        "name": "grid20",
+        "order": 20,
+        "variance": 0.65,
+        "dt": 0.05,
+        "case_budget_s": 2400.0
+      },
+      {
+        "name": "dt_coarse",
+        "order": 16,
+        "variance": 0.65,
+        "dt": 0.1
+      },
+      {
+        "name": "dt_fine",
+        "order": 16,
+        "variance": 0.65,
+        "dt": 0.025
+      },
+      {
+        "name": "tail_narrow",
+        "order": 16,
+        "variance": 0.6,
+        "dt": 0.05
+      },
+      {
+        "name": "tail_wide",
+        "order": 16,
+        "variance": 0.7,
+        "dt": 0.05
+      },
+      {
+        "name": "kernel02",
+        "order": 16,
+        "variance": 0.65,
+        "dt": 0.05,
+        "softening": 0.2
+      },
+      {
+        "name": "kernel01",
+        "order": 16,
+        "variance": 0.65,
+        "dt": 0.05,
+        "softening": 0.1
+      },
+      {
+        "name": "tolerance",
+        "order": 16,
+        "variance": 0.65,
+        "dt": 0.05,
+        "rtol": 1e-12,
+        "linear_rtol": 1e-10
+      }
+    ],
+    "rtol": 1e-10,
+    "linear_rtol": 1e-08,
+    "linear_max_steps": 200,
+    "newton_max_steps": 30,
+    "chunk": 128,
+    "max_log_step": 2.0,
+    "preconditioner": "tensor",
+    "reference_population": "fixed raw sampled initial physical population w*F0; no normalization",
+    "scalar_orders": [
+      96,
+      192
+    ],
+    "initial_relative_L1_target": 0.01,
+    "increment_relative_L1_target": 0.01,
+    "invariant_target": 1e-09,
+    "common_cube": [
+      32,
+      4.0
+    ],
+    "common_quadrature_orders": [
+      24,
+      32,
+      40
+    ],
+    "quadrature_increment_error_target": 0.0001,
+    "case_budget_s": 900.0,
+    "campaign_budget_s": 5400.0
+  },
+  "commit": "261c4e7fa23bff12e1460f919068fa6b61b9b069",
+  "working_tree": "M notes/implementation.tex",
+  "source_sha256": "09b586b1bc92e5b8ca8a92b608d4b6cebce1eb1d0fdbeabc15cbe601b7ec1834",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "unset",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": true,
+  "status": "running",
+  "rows": [
+    {
+      "name": "baseline",
+      "order": 16,
+      "variance": 0.65,
+      "dt": 0.05,
+      "softening": 0.0,
+      "rtol": 1e-10,
+      "linear_rtol": 1e-08,
+      "case_budget_s": 900.0,
+      "status": "passed_discrete_trajectory",
+      "steps": [
+        {
+          "step": 1,
+          "time": 0.05,
+          "wall_s": 12.558976499999972,
+          "newton_iterations": 3,
+          "linear_iterations": 44,
+          "linear_relative_residual": 9.785964945581605e-09,
+          "residual_metric": "fixed_reference_population",
+          "relative_residual": 1.2179946437252953e-15,
+          "entropy_change": 0.0019539424831032763,
+          "entropy_production": 0.0019192787605169428,
+          "generalized_KL": 3.466372258614965e-05,
+          "residual_entropy_defect": -1.8452261446433047e-16,
+          "entropy_defect_bound": 1.9160767259545187e-13,
+          "diagnostics": {
+            "number": 0.9999999981026159,
+            "momentum": [
+              -1.3877787807814457e-17,
+              -2.862293735361732e-17,
+              -1.0625181290357943e-17
+            ],
+            "mean_velocity": [
+              -1.3877787834145953e-17,
+              -2.862293740792603e-17,
+              -1.0625181310517994e-17
+            ],
+            "energy": 1.4999999402356217,
+            "covariance": [
+              1.146442352951332,
+              1.146442352951339,
+              0.7071151802607282
+            ],
+            "anisotropy": 0.4393271726906073,
+            "mu_second": 2.6323531002004192,
+            "speed_fourth": 15.263606552261242,
+            "fourth_cumulant": [
+              0.005538868055380508,
+              0.005538868055331658,
+              -0.0054265529802537404
+            ],
+            "entropy": 4.220193955005116,
+            "min_f": 1.4825267474956444e-21,
+            "outside_common_cube_mass": 0.00027001133284094536
+          },
+          "maximum_absolute_invariant_drift": 1.1102230246251565e-16,
+          "direct_entropy_gain": 0.0019539424831034324,
+          "direct_entropy_budget_error": 1.5548318682712372e-16,
+          "structural_status": "passed"
+        },
+        {
+          "step": 2,
+          "time": 0.1,
+          "wall_s": 12.524899750000259,
+          "newton_iterations": 3,
+          "linear_iterations": 43,
+          "linear_relative_residual": 9.800569550178327e-09,
+          "residual_metric": "fixed_reference_population",
+          "relative_residual": 1.4516056682378635e-15,
+          "entropy_change": 0.001830098070607686,
+          "entropy_production": 0.0017983645551786346,
+          "generalized_KL": 3.173351542888207e-05,
+          "residual_entropy_defect": -1.6892004713027266e-16,
+          "entropy_defect_bound": 1.9249263796387955e-13,
+          "diagnostics": {
+            "number": 0.9999999981026159,
+            "momentum": [
+              6.938893903907228e-17,
+              -5.2909066017292616e-17,
+              -3.577867169202165e-18
+            ],
+            "mean_velocity": [
+              6.938893917072975e-17,
+              -5.290906611768144e-17,
+              -3.577867175990753e-18
+            ],
+            "energy": 1.4999999402356217,
+            "covariance": [
+              1.1429922136267658,
+              1.142992213626763,
+              0.7140154589098694
+            ],
+            "anisotropy": 0.4289767547168949,
+            "mu_second": 2.6200223404723193,
+            "speed_fourth": 15.257516023314988,
+            "fourth_cumulant": [
+              0.010739714544077739,
+              0.010739714544086176,
+              -0.010536328107883408
+            ],
+            "entropy": 4.222024053075724,
+            "min_f": 1.5125059582857746e-21,
+            "outside_common_cube_mass": 0.00026842803569851947
+          },
+          "maximum_absolute_invariant_drift": 1.1102230246251565e-16,
+          "direct_entropy_gain": 0.001830098070607633,
+          "direct_entropy_budget_error": -5.253094391395376e-17,
+          "structural_status": "passed"
+        },
+        {
+          "step": 3,
+          "time": 0.15000000000000002,
+          "wall_s": 9.41159133300016,
+          "newton_iterations": 3,
+          "linear_iterations": 44,
+          "linear_relative_residual": 6.625438213411859e-09,
+          "residual_metric": "fixed_reference_population",
+          "relative_residual": 1.2541392350655213e-15,
+          "entropy_change": 0.001716576114707072,
+          "entropy_production": 0.0016874347335142379,
+          "generalized_KL": 2.914138119273456e-05,
+          "residual_entropy_defect": -1.0103700325734666e-16,
+          "entropy_defect_bound": 1.9188870192210224e-13,
+          "diagnostics": {
+            "number": 0.9999999981026159,
+            "momentum": [
+              5.551115123125783e-17,
+              -4.5102810375396984e-17,
+              -8.673617379884035e-18
+            ],
+            "mean_velocity": [
+              5.551115133658381e-17,
+              -4.510281046097434e-17,
+              -8.67361739634122e-18
+            ],
+            "energy": 1.4999999402356217,
+            "covariance": [
+              1.1396449546144256,
+              1.139644954614426,
+              0.7207099769345384
+            ],
+            "anisotropy": 0.4189349776798874,
+            "mu_second": 2.607994570213542,
+            "speed_fourth": 15.251699770469065,
+            "fourth_cumulant": [
+              0.015620336738459084,
+              0.01562033673845642,
+              -0.015350475269663821
+            ],
+            "entropy": 4.223740629190431,
+            "min_f": 1.539472329760637e-21,
+            "outside_common_cube_mass": 0.0002668659051576855
+          },
+          "maximum_absolute_invariant_drift": 1.1102230246251565e-16,
+          "direct_entropy_gain": 0.0017165761147071024,
+          "direct_entropy_budget_error": 2.889107458788498e-17,
+          "structural_status": "passed"
+        },
+        {
+          "step": 4,
+          "time": 0.2,
+          "wall_s": 9.973576249999951,
+          "newton_iterations": 3,
+          "linear_iterations": 44,
+          "linear_relative_residual": 8.667407946592346e-09,
+          "residual_metric": "fixed_reference_population",
+          "relative_residual": 1.0460530156483385e-15,
+          "entropy_change": 0.0016121994509597916,
+          "entropy_production": 0.0015853658421435641,
+          "generalized_KL": 2.6833608816207066e-05,
+          "residual_entropy_defect": -2.14820678996615e-17,
+          "entropy_defect_bound": 1.912437972232568e-13,
+          "diagnostics": {
+            "number": 0.9999999981026159,
+            "momentum": [
+              -9.71445146547012e-17,
+              2.42861286636753e-17,
+              -2.168404344971009e-18
+            ],
+            "mean_velocity": [
+              -9.714451483902165e-17,
+              2.4286128709755413e-17,
+              -2.168404349085305e-18
+            ],
+            "energy": 1.4999999402356217,
+            "covariance": [
+              1.1363963045175978,
+              1.1363963045175978,
+              0.7272072771282023
+            ],
+            "anisotropy": 0.40918902738939544,
+            "mu_second": 2.5962591028925615,
+            "speed_fourth": 15.246138529089462,
+            "fourth_cumulant": [
+              0.020199995646585922,
+              0.020199995646579705,
+              -0.019888078220278604
+            ],
+            "entropy": 4.225352828641391,
+            "min_f": 1.566168933987913e-21,
+            "outside_common_cube_mass": 0.0002653258800369903
+          },
+          "maximum_absolute_invariant_drift": 1.1102230246251565e-16,
+          "direct_entropy_gain": 0.001612199450960361,
+          "direct_entropy_budget_error": 5.683205258006639e-16,
+          "structural_status": "passed"
+        }
+      ],
+      "initial": {
+        "number": 0.9999999981026158,
+        "momentum": [
+          -4.163336342344337e-17,
+          1.5612511283791264e-17,
+          -5.421010862427522e-18
+        ],
+        "mean_velocity": [
+          -4.163336350243786e-17,
+          1.5612511313414196e-17,
+          -5.421010872713263e-18
+        ],
+        "energy": 1.4999999402356217,
+        "covariance": [
+          1.1499999430816943,
+          1.1499999430816972,
+          0.6999999999999973
+        ],
+        "anisotropy": 0.44999994308169833,
+        "mu_second": 2.644998225270957,
+        "speed_fourth": 15.269992741712581,
+        "fourth_cumulant": [
+          -3.0258096783697397e-06,
+          -3.025809708567806e-06,
+          1.4876988529977098e-14
+        ],
+        "entropy": 4.2182400125220125,
+        "min_f": 1.448158218674213e-21,
+        "outside_common_cube_mass": 0.0002716130091122245
+      },
+      "axis_extent": 5.345984913301893,
+      "saved_states": 5,
+      "last_accepted_time": 0.2,
+      "initial_gate": {
+        "relative_L1_error": 0.006523088081182216,
+        "scalar_refinement_max_abs": 6.471490010540037e-13,
+        "population_weighted_relative_rate_RMS_error": 0.0010840891133420028,
+        "core_L1_over_full_reference": 0.0063309326875749874,
+        "pressure_rate": [
+          -0.07374542959158843,
+          -0.07374542959158836,
+          0.1474908591831763
+        ],
+        "status": "passed"
+      },
+      "final": {
+        "number": 0.9999999981026159,
+        "momentum": [
+          -9.71445146547012e-17,
+          2.42861286636753e-17,
+          -2.168404344971009e-18
+        ],
+        "mean_velocity": [
+          -9.714451483902165e-17,
+          2.4286128709755413e-17,
+          -2.168404349085305e-18
+        ],
+        "energy": 1.4999999402356217,
+        "covariance": [
+          1.1363963045175978,
+          1.1363963045175978,
+          0.7272072771282023
+        ],
+        "anisotropy": 0.40918902738939544,
+        "mu_second": 2.5962591028925615,
+        "speed_fourth": 15.246138529089462,
+        "fourth_cumulant": [
+          0.020199995646585922,
+          0.020199995646579705,
+          -0.019888078220278604
+        ],
+        "entropy": 4.225352828641391,
+        "min_f": 1.566168933987913e-21,
+        "outside_common_cube_mass": 0.0002653258800369903
+      },
+      "wall_s": 45.45822045900013
+    },
+    {
+      "name": "grid12",
+      "order": 12,
+      "variance": 0.65,
+      "dt": 0.05,
+      "softening": 0.0,
+      "rtol": 1e-10,
+      "linear_rtol": 1e-08,
+      "case_budget_s": 900.0,
+      "status": "passed_discrete_trajectory",
+      "steps": [
+        {
+          "step": 1,
+          "time": 0.05,
+          "wall_s": 3.600580499999978,
+          "newton_iterations": 3,
+          "linear_iterations": 28,
+          "linear_relative_residual": 4.659957082099537e-09,
+          "residual_metric": "fixed_reference_population",
+          "relative_residual": 4.51821129844324e-16,
+          "entropy_change": 0.0019485772453256439,
+          "entropy_production": 0.001914150915898174,
+          "generalized_KL": 3.4426329427216787e-05,
+          "residual_entropy_defect": -2.515698027707573e-16,
+          "entropy_defect_bound": 1.8896924229827467e-13,
+          "diagnostics": {
+            "number": 0.9999996777876717,
+            "momentum": [
+              2.6615076452366282e-17,
+              3.201680408035397e-17,
+              -3.5028551940717825e-18
+            ],
+            "mean_velocity": [
+              2.6615085028074798e-17,
+              3.201681439656628e-17,
+              -3.502856322735274e-18
+            ],
+            "energy": 1.4999923016217929,
+            "covariance": [
+              1.146445217350783,
+              1.1464452173507784,
+              0.7070951351743572
+            ],
+            "anisotropy": 0.4393500821764237,
+            "mu_second": 2.632209916815949,
+            "speed_fourth": 15.26293260888182,
+            "fourth_cumulant": [
+              0.0052369899842821255,
+              0.005236989984308327,
+              -0.005387218739260957
+            ],
+            "entropy": 4.220181014131212,
+            "min_f": 1.991630735645192e-15,
+            "outside_common_cube_mass": 0.0003232403012337857
+          },
+          "maximum_absolute_invariant_drift": 2.220446049250313e-16,
+          "direct_entropy_gain": 0.001948577245325822,
+          "direct_entropy_budget_error": 1.7972582144397639e-16,
+          "structural_status": "passed"
+        },
+        {
+          "step": 2,
+          "time": 0.1,
+          "wall_s": 2.1132862499998737,
+          "newton_iterations": 3,
+          "linear_iterations": 27,
+          "linear_relative_residual": 8.682481849214119e-09,
+          "residual_metric": "fixed_reference_population",
+          "relative_residual": 3.8711115569361836e-16,
+          "entropy_change": 0.0018255871084210168,
+          "entropy_production": 0.0017940532129452687,
+          "generalized_KL": 3.1533895475645415e-05,
+          "residual_entropy_defect": -1.0289731954559883e-16,
+          "entropy_defect_bound": 1.8882736678531368e-13,
+          "diagnostics": {
+            "number": 0.9999996777876718,
+            "momentum": [
+              -9.708870263952518e-18,
+              4.7354217380242595e-17,
+              -1.8793511603079102e-17
+            ],
+            "mean_velocity": [
+              -9.708873392271217e-18,
+              4.735423263836014e-17,
+              -1.8793517658582182e-17
+            ],
+            "energy": 1.499992301621793,
+            "covariance": [
+              1.1430042876044193,
+              1.1430042876044229,
+              0.7139769946670678
+            ],
+            "anisotropy": 0.4290272929373533,
+            "mu_second": 2.6199026143730553,
+            "speed_fourth": 15.25685865003584,
+            "fourth_cumulant": [
+              0.010410416431996694,
+              0.010410416431978042,
+              -0.010462487824679512
+            ],
+            "entropy": 4.222006601239633,
+            "min_f": 2.0325244656158074e-15,
+            "outside_common_cube_mass": 0.00032126108983139003
+          },
+          "maximum_absolute_invariant_drift": 1.1102230246251565e-16,
+          "direct_entropy_gain": 0.0018255871084207342,
+          "direct_entropy_budget_error": -2.8279356501525613e-16,
+          "structural_status": "passed"
+        },
+        {
+          "step": 3,
+          "time": 0.15000000000000002,
+          "wall_s": 2.073551666000185,
+          "newton_iterations": 3,
+          "linear_iterations": 29,
+          "linear_relative_residual": 3.841961024552624e-09,
+          "residual_metric": "fixed_reference_population",
+          "relative_residual": 3.956307769631354e-16,
+          "entropy_change": 0.0017127843972447746,
+          "entropy_production": 0.00168381220534081,
+          "generalized_KL": 2.8972191903835257e-05,
+          "residual_entropy_defect": -1.2875165844202887e-16,
+          "entropy_defect_bound": 1.8893263331164285e-13,
+          "diagnostics": {
+            "number": 0.9999996777876718,
+            "momentum": [
+              -7.464320640004935e-18,
+              -1.8595183908596144e-17,
+              -9.16705381885984e-19
+            ],
+            "mean_velocity": [
+              -7.464323045101841e-18,
+              -1.8595189900195574e-17,
+              -9.167056772598545e-19
+            ],
+            "energy": 1.499992301621793,
+            "covariance": [
+              1.1396654982698424,
+              1.1396654982698422,
+              0.7206545733362345
+            ],
+            "anisotropy": 0.4190109249336077,
+            "mu_second": 2.6078967962656616,
+            "speed_fourth": 15.251056731721336,
+            "fourth_cumulant": [
+              0.015266967584264712,
+              0.015266967584262048,
+              -0.01524631366872864
+            ],
+            "entropy": 4.223719385636878,
+            "min_f": 2.0728935924960496e-15,
+            "outside_common_cube_mass": 0.00031932080184763294
+          },
+          "maximum_absolute_invariant_drift": 1.1102230246251565e-16,
+          "direct_entropy_gain": 0.001712784397245315,
+          "direct_entropy_budget_error": 5.410210098744695e-16,
+          "structural_status": "passed"
+        },
+        {
+          "step": 4,
+          "time": 0.2,
+          "wall_s": 2.156663541999933,
+          "newton_iterations": 3,
+          "linear_iterations": 29,
+          "linear_relative_residual": 8.482506634668644e-09,
+          "residual_metric": "fixed_reference_population",
+          "relative_residual": 4.610768760706802e-16,
+          "entropy_change": 0.0016090178348252449,
+          "entropy_production": 0.0015823285205822644,
+          "generalized_KL": 2.6689314242937147e-05,
+          "residual_entropy_defect": -4.4899287860209394e-17,
+          "entropy_defect_bound": 1.8922925780649604e-13,
+          "diagnostics": {
+            "number": 0.9999996777876718,
+            "momentum": [
+              -1.1049941022978571e-16,
+              1.2421554472060228e-17,
+              -3.375560034545101e-17
+            ],
+            "mean_velocity": [
+              -1.1049944583406941e-16,
+              1.2421558474439503e-17,
+              -3.3755611221925094e-17
+            ],
+            "energy": 1.499992301621793,
+            "covariance": [
+              1.1364246420191153,
+              1.1364246420191142,
+              0.7271362858376784
+            ],
+            "anisotropy": 0.4092883561814362,
+            "mu_second": 2.5961818792218136,
+            "speed_fourth": 15.245507885889028,
+            "fourth_cumulant": [
+              0.019825522753278868,
+              0.01982552275329086,
+              -0.019757230289632277
+            ],
+            "entropy": 4.225328403471703,
+            "min_f": 2.1128871653873654e-15,
+            "outside_common_cube_mass": 0.00031741499255698866
+          },
+          "maximum_absolute_invariant_drift": 1.2728127338491173e-16,
+          "direct_entropy_gain": 0.0016090178348253659,
+          "direct_entropy_budget_error": 1.1942510390712487e-16,
+          "structural_status": "passed"
+        }
+      ],
+      "initial": {
+        "number": 0.9999996777876717,
+        "momentum": [
+          1.6781863155126033e-17,
+          1.0908503611640214e-17,
+          7.950538192401519e-19
+        ],
+        "mean_velocity": [
+          1.6781868562450974e-17,
+          1.0908507126495693e-17,
+          7.950540754163767e-19
+        ],
+        "energy": 1.499992301621793,
+        "covariance": [
+          1.1499927849379592,
+          1.149992784937964,
+          0.6999999999999977
+        ],
+        "anisotropy": 0.4499927849379639,
+        "mu_second": 2.6448299627275245,
+        "speed_fourth": 15.26929964873608,
+        "fourth_cumulant": [
+          -0.00027369618242589766,
+          -0.0002736961824494344,
+          -3.0020430585864233e-13
+        ],
+        "entropy": 4.218232436885886,
+        "min_f": 1.9500502874593734e-15,
+        "outside_common_cube_mass": 0.0003252639421727637
+      },
+      "axis_extent": 4.43496873894738,
+      "saved_states": 5,
+      "last_accepted_time": 0.2,
+      "initial_gate": {
+        "relative_L1_error": 0.011535509421845778,
+        "scalar_refinement_max_abs": 4.36206626375224e-13,
+        "population_weighted_relative_rate_RMS_error": 0.0019205306195912307,
+        "core_L1_over_full_reference": 0.011032855463221107,
+        "pressure_rate": [
+          -0.07352646528206414,
+          -0.07352646528206425,
+          0.14705293056412877
+        ],
+        "status": "unresolved"
+      },
+      "final": {
+        "number": 0.9999996777876718,
+        "momentum": [
+          -1.1049941022978571e-16,
+          1.2421554472060228e-17,
+          -3.375560034545101e-17
+        ],
+        "mean_velocity": [
+          -1.1049944583406941e-16,
+          1.2421558474439503e-17,
+          -3.3755611221925094e-17
+        ],
+        "energy": 1.499992301621793,
+        "covariance": [
+          1.1364246420191153,
+          1.1364246420191142,
+          0.7271362858376784
+        ],
+        "anisotropy": 0.4092883561814362,
+        "mu_second": 2.5961818792218136,
+        "speed_fourth": 15.245507885889028,
+        "fourth_cumulant": [
+          0.019825522753278868,
+          0.01982552275329086,
+          -0.019757230289632277
+        ],
+        "entropy": 4.225328403471703,
+        "min_f": 2.1128871653873654e-15,
+        "outside_common_cube_mass": 0.00031741499255698866
+      },
+      "wall_s": 10.269067458000336
+    },
+    {
+      "name": "grid20",
+      "order": 20,
+      "variance": 0.65,
+      "dt": 0.05,
+      "case_budget_s": 2400.0,
+      "softening": 0.0,
+      "rtol": 1e-10,
+      "linear_rtol": 1e-08,
+      "status": "running",
+      "steps": [
+        {
+          "step": 1,
+          "time": 0.05,
+          "wall_s": 165.22069750000037,
+          "newton_iterations": 4,
+          "linear_iterations": 123,
+          "linear_relative_residual": 9.935954391380354e-09,
+          "residual_metric": "fixed_reference_population",
+          "relative_residual": 1.2303899330000841e-14,
+          "entropy_change": 0.0019564795776030857,
+          "entropy_production": 0.0019217024565755907,
+          "generalized_KL": 3.477712102747123e-05,
+          "residual_entropy_defect": -2.289939863004196e-17,
+          "entropy_defect_bound": 2.297752525586872e-13,
+          "diagnostics": {
+            "number": 0.9999999999887856,
+            "momentum": [
+              2.0816681711721685e-17,
+              2.7755575615628914e-17,
+              3.0746106993238304e-18
+            ],
+            "mean_velocity": [
+              2.0816681711955132e-17,
+              2.7755575615940175e-17,
+              3.0746106993583103e-18
+            ],
+            "energy": 1.4999999995613402,
+            "covariance": [
+              1.1464376673061851,
+              1.146437667306181,
+              0.7071246645439562
+            ],
+            "anisotropy": 0.43931300276222673,
+            "mu_second": 2.6323432188620495,
+            "speed_fourth": 15.263604994430784,
+            "fourth_cumulant": [
+              0.005556957833799725,
+              0.005556957833846354,
+              -0.005445298161294687
+            ],
+            "entropy": 4.220196549183294,
+            "min_f": 6.229429163553316e-28,
+            "outside_common_cube_mass": 0.00016684460305826584
+          },
+          "maximum_absolute_invariant_drift": 2.3592239273284576e-16,
+          "direct_entropy_gain": 0.001956479577604142,
+          "direct_entropy_budget_error": 1.0573589884530464e-15,
+          "structural_status": "passed"
+        },
+        {
+          "step": 2,
+          "time": 0.1,
+          "wall_s": 112.74257424999996,
+          "newton_iterations": 3,
+          "linear_iterations": 85,
+          "linear_relative_residual": 7.96643872482582e-09,
+          "residual_metric": "fixed_reference_population",
+          "relative_residual": 7.324317882722723e-11,
+          "entropy_change": 0.0018322278038570916,
+          "entropy_production": 0.0018003991717708064,
+          "generalized_KL": 3.182854628043767e-05,
+          "residual_entropy_defect": -8.580584713092182e-11,
+          "entropy_defect_bound": 2.5232470889240077e-10,
+          "diagnostics": {
+            "number": 1.0000000000065699,
+            "momentum": [
+              -1.0408340855860843e-16,
+              2.7755575615628914e-17,
+              2.728345877492777e-17
+            ],
+            "mean_velocity": [
+              -1.0408340855792462e-16,
+              2.7755575615446563e-17,
+              2.7283458774748523e-17
+            ],
+            "energy": 1.4999999996052398,
+            "covariance": [
+              1.1429831740028256,
+              1.1429831740028222,
+              0.7140336511851185
+            ],
+            "anisotropy": 0.42894952281770526,
+            "mu_second": 2.6200016052335835,
+            "speed_fourth": 15.257506987820626,
+            "fourth_cumulant": [
+              0.010771142358760866,
+              0.010771142358789287,
+              -0.010571523765241286
+            ],
+            "entropy": 4.22202877698715,
+            "min_f": 2.64149850368822e-28,
+            "outside_common_cube_mass": 0.00016586882092593618
+          },
+          "maximum_absolute_invariant_drift": 4.389955066130824e-11,
+          "direct_entropy_gain": 0.0018322278038560569,
+          "direct_entropy_budget_error": -1.0343181367678714e-15,
+          "structural_status": "passed"
+        }
+      ],
+      "initial": {
+        "number": 0.9999999999887856,
+        "momentum": [
+          -2.1510571102112408e-16,
+          -2.6020852139652106e-18,
+          1.296663150439926e-18
+        ],
+        "mean_velocity": [
+          -2.1510571102353634e-16,
+          -2.6020852139943916e-18,
+          1.296663150454467e-18
+        ],
+        "energy": 1.4999999995613402,
+        "covariance": [
+          1.1499999995781636,
+          1.1499999995781636,
+          0.7000000000000003
+        ],
+        "anisotropy": 0.4499999995781633,
+        "mu_second": 2.6449999836317155,
+        "speed_fourth": 15.269999933345714,
+        "fourth_cumulant": [
+          -2.885566852128818e-08,
+          -2.8855681399875266e-08,
+          1.3322676295501878e-15
+        ],
+        "entropy": 4.21824006960569,
+        "min_f": 7.327171079347879e-28,
+        "outside_common_cube_mass": 0.0001678352677069751
+      },
+      "axis_extent": 6.14267331398204,
+      "saved_states": 3,
+      "last_accepted_time": 0.1,
+      "initial_gate": {
+        "relative_L1_error": 0.004185097302711261,
+        "scalar_refinement_max_abs": 8.597567102697212e-13,
+        "population_weighted_relative_rate_RMS_error": 0.0006928053383771309,
+        "core_L1_over_full_reference": 0.0041209020258700605,
+        "pressure_rate": [
+          -0.07384911338561004,
+          -0.07384911338561001,
+          0.1476982267712205
+        ],
+        "status": "passed"
+      },
+      "wall_s": 605.7130577920002
+    }
+  ],
+  "comparisons": [],
+  "matched_alpha": 0.49359502504148167,
+  "plan": "Initial oracle checks for every declared row; baseline first; conditional downstream scans. Budgets checked at accepted stages and Newton callbacks. No post-outcome campaign extension.",
+  "scope": "Nodal positivity and discrete invariants are distinct from physical trajectory convergence. Scalar quadrature, initial full strong collision term, full density increments on the common cube, tail populations and every finite step are reported separately.",
+  "moment_definitions": "Raw quadrature number, momentum and energy are conserved budgets. Covariance is centered and divided by actual quadrature number; anisotropy, mu_second, speed_fourth and fourth_cumulant are number-normalized expectations. No state or population is rescaled.",
+  "frozen_sources": {
+    "examples/31_landau_trajectory.py": "a658727447e17487846be70fc4eab0569b9522a9bcd2a67c2bec14848ff48f60",
+    "src/sato_morrison/controls.py": "90d32edf198a9734a8e8ebc4eee670256f82261dd5e8cf9c86eaaf49212e9ecb",
+    "src/sato_morrison/solver.py": "2823a80258f21851131e0e0cd10a8101af8bcf9b8f8aefcf49eada752751add0"
+  },
+  "wall_s": 661.6669388750001,
+  "process_peak_rss_bytes": 504004608
+}

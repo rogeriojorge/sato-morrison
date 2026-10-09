@@ -1,0 +1,192 @@
+{
+  "status": "passed_independent_shared_time_box_comparisons",
+  "inputs": {
+    "same_fixed_Hermite_variance": 0.65,
+    "orders": [
+      16,
+      20
+    ],
+    "boxes": [
+      4.0,
+      5.0
+    ],
+    "quadrature_orders": [
+      32,
+      48,
+      64
+    ],
+    "shared_times": [
+      0.05,
+      0.1
+    ]
+  },
+  "rows": [
+    {
+      "box_extent": 4.0,
+      "GL_order": 32,
+      "time": 0.05,
+      "baseline_increment_L1": 0.00655128444643088,
+      "fine_increment_L1": 0.006563951124447241,
+      "relative_increment_L1_difference": 0.002165619207185855
+    },
+    {
+      "box_extent": 4.0,
+      "GL_order": 32,
+      "time": 0.1,
+      "baseline_increment_L1": 0.012757814740418628,
+      "fine_increment_L1": 0.01278114034446977,
+      "relative_increment_L1_difference": 0.0019778832454986446
+    },
+    {
+      "box_extent": 4.0,
+      "GL_order": 48,
+      "time": 0.05,
+      "baseline_increment_L1": 0.006558001285853186,
+      "fine_increment_L1": 0.006570780664109901,
+      "relative_increment_L1_difference": 0.002179275776311155
+    },
+    {
+      "box_extent": 4.0,
+      "GL_order": 48,
+      "time": 0.1,
+      "baseline_increment_L1": 0.012769922295997396,
+      "fine_increment_L1": 0.012793498615284914,
+      "relative_increment_L1_difference": 0.0020055071001408814
+    },
+    {
+      "box_extent": 4.0,
+      "GL_order": 64,
+      "time": 0.05,
+      "baseline_increment_L1": 0.0065525997390584005,
+      "fine_increment_L1": 0.006565327018814897,
+      "relative_increment_L1_difference": 0.002162903524059347
+    },
+    {
+      "box_extent": 4.0,
+      "GL_order": 64,
+      "time": 0.1,
+      "baseline_increment_L1": 0.012760467322659272,
+      "fine_increment_L1": 0.012783940179607794,
+      "relative_increment_L1_difference": 0.0020001586805090447
+    },
+    {
+      "box_extent": 5.0,
+      "GL_order": 32,
+      "time": 0.05,
+      "baseline_increment_L1": 0.006568310008955429,
+      "fine_increment_L1": 0.006581346861076479,
+      "relative_increment_L1_difference": 0.0022473062099420795
+    },
+    {
+      "box_extent": 5.0,
+      "GL_order": 32,
+      "time": 0.1,
+      "baseline_increment_L1": 0.012783307585052724,
+      "fine_increment_L1": 0.012806979037839988,
+      "relative_increment_L1_difference": 0.0020243530529141084
+    },
+    {
+      "box_extent": 5.0,
+      "GL_order": 48,
+      "time": 0.05,
+      "baseline_increment_L1": 0.0065453899081486565,
+      "fine_increment_L1": 0.006557967322129271,
+      "relative_increment_L1_difference": 0.0021755444976020166
+    },
+    {
+      "box_extent": 5.0,
+      "GL_order": 48,
+      "time": 0.1,
+      "baseline_increment_L1": 0.012745342645934847,
+      "fine_increment_L1": 0.012768644873331984,
+      "relative_increment_L1_difference": 0.002022870547699295
+    },
+    {
+      "box_extent": 5.0,
+      "GL_order": 64,
+      "time": 0.05,
+      "baseline_increment_L1": 0.006558388939235948,
+      "fine_increment_L1": 0.00657118356748406,
+      "relative_increment_L1_difference": 0.0022053627162996583
+    },
+    {
+      "box_extent": 5.0,
+      "GL_order": 64,
+      "time": 0.1,
+      "baseline_increment_L1": 0.012771671262417612,
+      "fine_increment_L1": 0.012795199328216086,
+      "relative_increment_L1_difference": 0.002019509897095071
+    }
+  ],
+  "raw_nodal_tail_populations": [
+    {
+      "case": "baseline",
+      "time": 0.0,
+      "outside4_raw_nodal_population": 0.0002716130091122245,
+      "outside5_raw_nodal_population": 6.380740760481695e-06,
+      "mass": 0.9999999981026158
+    },
+    {
+      "case": "baseline",
+      "time": 0.05,
+      "outside4_raw_nodal_population": 0.00027001133284094536,
+      "outside5_raw_nodal_population": 6.345946059622411e-06,
+      "mass": 0.9999999981026159
+    },
+    {
+      "case": "baseline",
+      "time": 0.1,
+      "outside4_raw_nodal_population": 0.00026842803569851947,
+      "outside5_raw_nodal_population": 6.312170484589095e-06,
+      "mass": 0.9999999981026159
+    },
+    {
+      "case": "baseline",
+      "time": 0.15000000000000002,
+      "outside4_raw_nodal_population": 0.0002668659051576855,
+      "outside5_raw_nodal_population": 6.278973956030519e-06,
+      "mass": 0.9999999981026159
+    },
+    {
+      "case": "baseline",
+      "time": 0.2,
+      "outside4_raw_nodal_population": 0.0002653258800369903,
+      "outside5_raw_nodal_population": 6.246143218795668e-06,
+      "mass": 0.9999999981026159
+    },
+    {
+      "case": "grid20",
+      "time": 0.0,
+      "outside4_raw_nodal_population": 0.0001678352677069751,
+      "outside5_raw_nodal_population": 7.613579373875359e-06,
+      "mass": 0.9999999999887856
+    },
+    {
+      "case": "grid20",
+      "time": 0.05,
+      "outside4_raw_nodal_population": 0.00016684460305826584,
+      "outside5_raw_nodal_population": 7.571945274903872e-06,
+      "mass": 0.9999999999887856
+    },
+    {
+      "case": "grid20",
+      "time": 0.1,
+      "outside4_raw_nodal_population": 0.00016586882092593618,
+      "outside5_raw_nodal_population": 7.530773338136977e-06,
+      "mass": 1.0000000000065699
+    }
+  ],
+  "source_sha256": "db9cb111932568c12271a162ee80e4552db350940d0f2a06b2bab7676e3b2c4c",
+  "case_npz_sha256": {
+    "baseline": "56800f6409959a985940474164b224f7369dbd0b374205892537de13727df069",
+    "grid20": "22f0001f912a8170b795c4909ead2f820944cc042723fb8a1c8fd7eeb9510397"
+  },
+  "producer_summary_sha256": "a1d6b30b7804a69fed7c207da1ef4faffab438394eb474927393dd678650c732",
+  "method": "Independent direct-product Lagrange tensor interpolation of log(F/F0) and SciPy Legendre cubature; no extrapolation or time interpolation. Comparison normalized by actual baseline density increment.",
+  "limitations": [
+    "The raw outside-box quadrature populations are not rigorous continuum tail bounds.",
+    "Only shared accepted times .05/.1 are compared; no fine-grid .15/.2 accepted state exists.",
+    "Coarse12 node set cannot cover[-5,5]\u00b3 and retains its4-box diagnostic."
+  ],
+  "wall_s": 0.14542299999993702
+}

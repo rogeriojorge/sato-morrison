@@ -7742,6 +7742,16 @@
       "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37974335343",
       "log_sha256": "032099d7051f75cd7c79e24168d412bde6ff24f332c6615c7809cfe59878cdaf",
       "scope": "Physical Hermite quadrature, independent Gaussian strong collision oracle, raw invariant and Maxwellian checks, and damped Newton equivalence."
+    },
+    {
+      "source_commit": "7081c9291ff052d9e9874c4f7916174668acbdf9",
+      "command": "python -m pytest -q",
+      "passed": 261,
+      "elapsed_s": 260.31,
+      "environment": "Fresh Ubuntu CI installation",
+      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/37975246863",
+      "log_sha256": "8da9a825a33927d3d2493d7bea5b02cc19e0b5c5b1422321e32394564a820771",
+      "scope": "Includes optional Landau tensor inverse checked against independent dense Hessians, nonseparable reference metrics, same nonlinear endpoint as diagonal solves, and invalid spectral-factor rejection."
     }
   ],
   "additional_experiments": [

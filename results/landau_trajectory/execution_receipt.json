@@ -1,0 +1,76 @@
+{
+  "commit": "261c4e7fa23bff12e1460f919068fa6b61b9b069",
+  "cwd": "/Users/rogerio/local/sato-morrison",
+  "command": "JAX_ENABLE_X64=true MPLBACKEND=Agg OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 .venv/bin/python -u examples/31_landau_trajectory.py > /Users/rogerio/local/sato_morrison_handoff/verification/landau_trajectory_production_261c4e7.log 2>&1",
+  "explicit_environment": {
+    "JAX_ENABLE_X64": "true",
+    "MPLBACKEND": "Agg",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1"
+  },
+  "source_sha256": "a658727447e17487846be70fc4eab0569b9522a9bcd2a67c2bec14848ff48f60",
+  "timing_scope": "Observed costs on a shared Apple M4 CPU with concurrent workloads; not an isolated-machine or matched-accuracy benchmark. Compiler/setup and first-call costs remain in per-case wall times. Final producer process peak RSS covers this process only, excluding external ffmpeg child processes.",
+  "status": "interrupted_for_demonstrated_stagnation",
+  "scientific_status": "unresolved",
+  "return_code": 130,
+  "owned_pid": 26757,
+  "producer_wall_s": 661.6669388750001,
+  "producer_process_peak_rss_bytes": 504004608,
+  "last_completed_correction": {
+    "iteration": 13,
+    "relative_residual": 0.003041370066416337,
+    "linear_iterations": 24,
+    "true_linear_relative_residual": 7.81114755123814e-09,
+    "linear_wall_s": 29.431576416000098,
+    "maximum_log_direction": 46.567935089845214,
+    "minimum_signed_log_direction": -46.567935089845214,
+    "maximum_signed_log_direction": 0.04452647897881162,
+    "objective_descent": -8.658978878287294e-06,
+    "mobility_curvature": 6.830137438377433e-06,
+    "fraction": 0.04294800695245188,
+    "backtracks": 0,
+    "maximum_log_step": 2.0,
+    "objective_change": -3.6389962684205635e-07,
+    "case": "grid20",
+    "step": 3
+  },
+  "interruption_scope": "Deliberate SIGINT after completed correction13; unconverged correction14 was in flight. This is a stopped experiment, not a native solver nonconvergence result.",
+  "original_checkpoint_summary": {
+    "file": "checkpoint_summary.json",
+    "sha256": "4508519c2483b721da922d365719a7b9378e7c3871d43520d697f2aed1043e6d"
+  },
+  "private_log": {
+    "name": "landau_trajectory_production_261c4e7.log",
+    "sha256": "cd4ec21ad75748270fb796d9078ca70787f27ad8b28f1f4bf5f1b242d0f6a8e0"
+  },
+  "accepted_stages": {
+    "baseline": [
+      0.05,
+      0.1,
+      0.15000000000000002,
+      0.2
+    ],
+    "grid12": [
+      0.05,
+      0.1,
+      0.15000000000000002,
+      0.2
+    ],
+    "grid20": [
+      0.05,
+      0.1
+    ]
+  },
+  "rationale": "Grid20 step3 corrections remained near max log direction45\u201347 and uniform fractions .043\u2013.044; residual3.041e-3 after13 corrections was far above declared1e-10. Remaining work was redirected to the demonstrated conditioning bottleneck.",
+  "frozen_sources_unchanged": true,
+  "immutable_data_sha256": {
+    "baseline.npz": "56800f6409959a985940474164b224f7369dbd0b374205892537de13727df069",
+    "grid12_initial_rhs.npz": "364c3e409cc33604b78b82bde0d014a3d64cc2a72edecccb5a53d0f28313129c",
+    "grid20_initial_rhs.npz": "48fd372d97955ef7f0ef91b8931d59b50b3082f8101d3bccbaa4e3eaa5cbaac4",
+    "grid20.npz": "22f0001f912a8170b795c4909ead2f820944cc042723fb8a1c8fd7eeb9510397",
+    "grid12.npz": "e41660ce6a2ffd7e1f5eabfe8af1ad1586838ced13c77e74a3372ad39df12269",
+    "iterations.jsonl": "7e45c4acec35e1316702a7e86da0ed379cc74b67a89093dc696e484e01b1f4be",
+    "baseline_initial_rhs.npz": "6c149a53fb94eff7320188fc32d22beccd5719178de47afcda7f4ab3fbb47bd7"
+  }
+}

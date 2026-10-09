@@ -1,0 +1,38 @@
+{
+  "status": "archived_independent_partial_campaign_audits",
+  "hardware": "Apple M4",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "versions": {
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "jax": "0.11.2",
+    "solvax": "0.28.2"
+  },
+  "environment_scope": "Audit runs used thread caps of one; historical peak RSS was not separately captured and wall times are not isolated benchmarks.",
+  "accepted_stage_count": 10,
+  "case_npz_sha256": {
+    "baseline": "56800f6409959a985940474164b224f7369dbd0b374205892537de13727df069",
+    "grid12": "e41660ce6a2ffd7e1f5eabfe8af1ad1586838ced13c77e74a3372ad39df12269",
+    "grid20": "22f0001f912a8170b795c4909ead2f820944cc042723fb8a1c8fd7eeb9510397"
+  },
+  "producer_summary_sha256": "a1d6b30b7804a69fed7c207da1ef4faffab438394eb474927393dd678650c732",
+  "producer_execution_receipt_sha256": "3cac91cfba758b65c20629947ee0a7e10aea889973d560f3e4ac7dee8860a9a2",
+  "original_audit_receipt_sha256": {
+    "landau_campaign_baseline_grid12_audit.json": "aafd4c48264ca4c64cf455c7b86865bc5d7e958aecfbd01eb9728df274b9fb6c",
+    "landau_campaign_grid20_interrupted_audit.json": "0c74162d76fa34877e8d31329116bab66dd09e5b2e7362f4f0834e84fee2a1d0",
+    "landau_campaign_extended_box_audit.json": "cc99bceb68328a74191a3bb0174d6d1e436912f57013a3c600cc1a469436f8d1"
+  },
+  "published_sha256": {
+    "independent_allstage_audit.json": "69cda45432d3f1e77fd205dbf4a93daaf57094e5de7bcc897c6deead04ba2092",
+    "independent_expanded_box_audit.json": "cc99bceb68328a74191a3bb0174d6d1e436912f57013a3c600cc1a469436f8d1"
+  },
+  "audit_source_sha256": {
+    "publish_interrupted_landau_audits.py": "5c67756deaf09b9c46ffe9ac858a66fbedf4c94bbf25bc2d40ec0b1c7365b0ec",
+    "landau_campaign_extended_box_audit.py": "db9cb111932568c12271a162ee80e4552db350940d0f2a06b2bab7676e3b2c4c",
+    "landau_allstage_independent_audit_931d5d303762.py": "931d5d3037628cf40837ea123030774d00d0270d2d0fb4c0208de1f63a7351f6",
+    "landau_strong_consistency.py": "f6cdcb919c3f936fe71cd22b8c24f85e58d7c017150f1fa45c408ba4b41e49e9",
+    "landau_allstage_independent_audit_8180bea6fa7d.py": "8180bea6fa7d2d5118b633b004e2c8890cb18b288df7efc23fc249b8e6f3fe5f"
+  },
+  "provenance_note": "Historical audits pin their own immutable snapshot summary hashes, which can differ from the final producer summary; all three raw case arrays match exactly at publication. Archived source variants match historical receipts."
+}
