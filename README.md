@@ -80,7 +80,7 @@ The initial higher-moment rates already distinguish the conventional operators. 
 | Mean squared magnetic moment | 0 | −0.340581 | −0.340581 | −0.260753 |
 | Fourth speed moment | 0 | 0 | −0.266541 | −0.133271 |
 
-The Landau entries have independent Gaussian integral checks. Its nonzero fourth-cumulant rates also show that the evolving distribution leaves the Gaussian family. [Initial-rate derivation and evidence](results/operator_comparison/physical_initial_rates.json)
+Independent spherical and Laplace integrals for the Landau entries agree to **4.14×10⁻¹⁴**. Nonzero fourth-cumulant rates show that the evolving distribution leaves the Gaussian family. [Initial-rate derivation and evidence](results/operator_comparison/physical_initial_rates.json)
 
 The Lorentz frequency here is constant; physical Coulomb deflection has a speed-dependent frequency. Matching one initial slope is a comparison convention and supplies no physical Sato–Morrison coefficient. The full Landau density solver passes independent finite-grid matrix, nullspace, conservation, entropy and timestep-order checks. The velocity-space consistency test below determines how much those checks establish. [Independent 3V matrix audit](results/landau_evolution/independent_gram_audit.json)
 
@@ -98,25 +98,57 @@ At **28³ nodes**, polynomial differentiation reaches **0.73% full-term error**,
 
 An independent diagnostic supplies the exact velocity-space particle flux to each discrete derivative. The local method still has **24.37% error**, close to its **24.59%** total. The main defect is therefore in the finite derivative and boundary reconstruction; refining the collision integral alone will not resolve it. [Flux and derivative checks](results/landau_consistency/independent_flux_audit.json)
 
-These are initial collision terms. Full Landau trajectories still need velocity, tail, timestep and kernel convergence. Example 30 saves every refinement and exits with a visible failure because the declared 1% target is unresolved for the local option. [Inputs and measured errors](results/landau_consistency/summary.json) · [Independent array audit](results/landau_consistency/independent_audit.json) · [Independent continuum derivation and checks](results/landau_evolution/independent_strong_audit.json)
+This initial-rate test motivated the velocity quadrature used below. Example 30 saves every refinement and exits with a visible failure because the declared 1% target is unresolved for the local option. [Inputs and measured errors](results/landau_consistency/summary.json) · [Independent array audit](results/landau_consistency/independent_audit.json) · [Independent continuum derivation and checks](results/landau_evolution/independent_strong_audit.json)
 
 
 ### Evolving the full Landau distribution
 
-A Gaussian is useful for checking the initial collision term. During relaxation, each velocity node has its own density; the solver does not constrain the distribution to remain Gaussian. Gauss–Hermite nodes put more resolution near the populated velocities. Their integration weights are converted to physical velocity volume before assembling the Coulomb operator.
+Each velocity node carries an independent density. Gauss–Hermite nodes concentrate resolution near populated velocities; their weights are converted to physical velocity volume before assembling the Coulomb operator. The distribution can leave the initial Gaussian family.
 
-![Physical Gauss–Hermite quadrature, its volume weights and the initial full collision-term accuracy.](results/landau_trajectory/partial_figures/quadrature.png)
+![Physical Gauss–Hermite nodes, velocity-volume weights and initial collision-term accuracy.](results/landau_trajectory_dt_refined/quadrature.png)
 
-At scale **θ = 0.65**, the initial full-term error is **0.652% on 16³ nodes** and **0.419% on 20³ nodes**. The quadrature scale controls where velocities are sampled; it is independent of the plasma temperature. The derivation and weighted integration-by-parts check are in the [technical notes](notes/implementation.pdf).
+The sampling scale is **θ = 0.6**, independent of the plasma temperatures. Initial collision-term errors against the continuum Gaussian integral are **0.778% on 16³ nodes** and **0.475% on 20³ nodes**. Every accepted step solves the full discrete collision equation and conserves its raw number, momentum and energy.
 
-![Saved Landau density evolution, velocity marginals and departure from the initial Gaussian.](results/landau_trajectory/partial_figures/trajectory.gif)
+![Saved Landau density evolution, velocity marginals and departure from the initial Gaussian.](results/landau_trajectory_dt_refined/trajectory.gif)
 
-The movie shows four accepted **16³-node** steps to **t = 0.2**. Pressure anisotropy falls from **0.45 to 0.409189**. The fourth cumulants become nonzero, resolving the departure from a Gaussian. The finer **20³-node** campaign reaches **t = 0.1** before its capped Newton iteration stalls. Both sets of accepted states are preserved.
+The movie follows eight accepted **16³-node** steps, **Δt = 0.025**, through **t = 0.2**. Pressure anisotropy falls from **0.45 to 0.408796**. The fourth cumulants reach **(0.020546, 0.020546, −0.020160)**, from sampled initial magnitudes below **1.54×10⁻⁵**. A Gaussian with the same mean and covariance has zero fourth cumulants; the simulation resolves a change in distribution shape beyond its pressure change.
 
-![Completed and missing refinements, full-density differences and moment differences for the recorded Landau campaign.](results/landau_trajectory/partial_figures/convergence.png)
+![Constrained, Lorentz, Dougherty and Landau evolution from one initial Gaussian: pressure anisotropy and squared magnetic moment.](results/landau_trajectory_dt_refined/four_operator_comparison.png)
 
-Over the shared interval, the two grids differ by about **0.22% of the actual density change**, including an independent comparison on the larger velocity cube **[−5,5]³**. Every saved step passes an independent replay of its discrete equation, conservation and entropy balance. Timestep, tail, kernel and complete fine-grid checks remain necessary before reporting a converged four-operator trajectory. [Saved states and failures](results/landau_trajectory/summary.json) · [Independent stage checks](results/landau_trajectory/independent_allstage_audit.json) · [Larger-box comparison](results/landau_trajectory/independent_expanded_box_audit.json)
+Matching the initial pressure slope leaves different distribution evolution. At **τ = αt = 0.098719**, Landau retains more of the initial squared magnetic moment than either conventional control. Lorentz preserves the fourth speed moment; Dougherty and Landau change it at different rates. Only the constrained model preserves the entire magnetic-moment marginal.
 
+| At t = 0.2 | T⊥ − T∥ | ⟨μ²⟩ | ⟨\|v\|⁴⟩ |
+|---|---:|---:|---:|
+| Constrained | 0.450000 | 2.645000 | 15.270000 |
+| Lorentz | 0.407699 | 2.581282 | 15.270000 |
+| Dougherty | 0.407699 | 2.580536 | 15.221624 |
+| Landau | 0.408796 | 2.595895 | 15.245989 |
+
+Landau entries use the saved nodal populations; the other entries use the exact homogeneous control formulas. The small initial quadrature offsets are retained in every refinement comparison.
+
+### Trajectory refinement
+
+Each refinement is compared at every shared saved time. The density error is the integrated absolute difference between two runs, divided by the baseline's actual change from its initial density. The moment errors use the same change-based normalization. Thus a small relaxation signal still has to be resolved.
+
+![Velocity-grid, timestep, quadrature-scale, Coulomb-kernel and solver-tolerance refinements, compared with the 1% relaxation-increment target.](results/landau_trajectory_dt_refined/convergence.png)
+
+| Refinement | Density change | Largest moment change |
+|---|---:|---:|
+| Velocity grid: 16³ → 20³ | 0.345% | 0.296% |
+| Timestep: 0.025 → 0.0125 | 0.628% | 0.931% |
+| Sampling scale: 0.6 → 0.585 / 0.625 | 0.132% | 0.072% |
+| Coulomb softening: 0 → 0.1 | 0.140% | 0.196% |
+| Separate linear / nonlinear tolerances | <10⁻⁸% | <10⁻⁸% |
+
+These are the largest changes over shared times; the density column uses 48-point quadrature on both boxes. All required comparisons pass the **1%** target. Coarse grid, doubled timestep and larger softening rows remain diagnostic, with their failed checks shown in the figure. The three timestep levels give an observed order of **0.963**, consistent with the first-order scheme over this interval.
+
+Density comparisons cover **[−4,4]³** and **[−5,5]³**, with independent 32-, 48- and 64-point quadrature in each velocity direction. The scale scan moves the outer nodes and tests tail sensitivity; the reported tail populations and finite boxes do not supply a rigorous infinite-domain error bound. The kernel scan approaches the unsoftened Coulomb kernel. Separate linear and nonlinear tolerance reductions leave the observables unchanged to the reported accuracy.
+
+An independent NumPy/SciPy reconstruction passes **all 100 saved advances**: maximum original root residual **3.82×10⁻¹¹**, raw number/momentum/energy drift **3.12×10⁻¹⁰**, and corrected entropy-balance defect **1.46×10⁻¹⁶**. All saved populations are positive.
+
+The full campaign takes **2,011.9 s** with **602.1 MB** peak process memory on the shared Apple M4; the baseline and fine-grid cases take **26.4 s** and **1,725.6 s**. These observed costs include their setup and compilation. [Inputs, states and comparisons](results/landau_trajectory_dt_refined/summary.json) · [Independent replay](results/landau_trajectory_dt_refined/independent_portable_audit.json) · [Execution and cost record](results/landau_trajectory_dt_refined/execution_receipt.json)
+
+The earlier **Δt = 0.05** study failed the unchanged 1% timestep target; it remains [archived with its checks](results/landau_trajectory_refined/summary.json). The earlier stalled fine-grid solve and all accepted states also remain [available](results/landau_trajectory/summary.json). The present result establishes short-time numerical agreement under the declared refinements. It does not determine a magnetized collision coefficient, long-time equilibrium or dipole confinement lifetime.
 
 ## Fields, boundaries and simulations
 
@@ -192,8 +224,6 @@ The earlier 2,048-angle study passed its narrower second-moment criterion. That 
 
 Near the boundary between transmission and reflection, refined trajectories disagree by tens to hundreds of length units despite energy errors near **10⁻¹²**. One predicted reflection becomes transmission. The exact flow's continuity implies slow intermediate trajectories between true opposite exits, but the finest computed bracket fails its trajectory checks. No trapping classification or collision rate follows from these data.
 
-The physical 3V Landau Gaussian weak-moment reference has independent spherical and Laplace calculations agreeing to **4.14×10⁻¹⁴**. This checks instantaneous rates. Convergence of full Landau trajectories and plasma-rate calibration remain open.
-
 ## Runtime, memory and failure diagnostics
 
 A preconditioner approximates the linear system used in each Newton correction. `xline` couples one spatial direction; `xyz` couples all three.
@@ -226,8 +256,8 @@ MPLBACKEND=Agg python examples/29_operator_comparison.py
 MPLBACKEND=Agg python examples/30_landau_consistency.py
 # Run the declared trajectory refinements in a new output directory:
 SM_LANDAU_OUTPUT=results/landau_reproduction MPLBACKEND=Agg python examples/31_landau_trajectory.py
-# Independently replay the archived accepted Landau stages:
-SM_LANDAU_AUDIT_OUTPUT=results/landau_archived_audit.json python examples/32_landau_audit.py
+# Independently replay all 100 accepted stages in the published campaign:
+SM_LANDAU_AUDIT_INPUT=results/landau_trajectory_dt_refined SM_LANDAU_AUDIT_OUTPUT=results/landau_archived_audit.json python examples/32_landau_audit.py
 ```
 
 Example 24 exits nonzero because the declared angular and Cartesian checks remain unresolved. It saves the results before raising the error.
@@ -240,8 +270,8 @@ Example 24 exits nonzero because the declared angular and Cartesian checks remai
 | Nonlinear constrained evolution | Number, energy, full μ marginal, entropy, positivity and solver-failure tests |
 | Toroidal decay | Eight final refinement changes below **0.71%**; all **39** sampled collision nulls explained |
 | Nonuniform evolution | Completed three-field pilots and mirror refinement; dipole/nonaxisymmetric refinements remain open |
-| Collision-model comparison | Shared initial data for constrained, Lorentz and Dougherty evolution; independently checked initial 3V Landau rates |
-| Landau evolution | Full 3V nodal density; structural checks and initial continuum comparison; converged trajectories remain open |
+| Collision-model comparison | Four operators from shared initial data; independently checked short-time Landau trajectories and analytical controls |
+| Landau evolution | 12 trajectories and 100 independent stage checks; required refinement changes below 1% of relaxation increments through t = 0.2; long-time and infinite-domain limits remain open |
 | Physical encounters | Independently checked binary trajectories; angular and rate-calibration limits retained |
 | Physical rates and lifetimes | Uncalibrated; no metastable regime or dipole lifetime established |
 

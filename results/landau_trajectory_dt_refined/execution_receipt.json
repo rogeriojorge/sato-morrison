@@ -1,0 +1,346 @@
+{
+  "status": "completed",
+  "receipt_created_utc": "2026-10-09T20:00:07.790575+00:00",
+  "launch_commit": "4304054b7fb2761254859a005c546758edfda796",
+  "scientific_source_commit": "5f87b955adeb8e5c42bdb5eddc830ba868e9b70e",
+  "source_hashes": {
+    "examples/31_landau_trajectory.py": "a7fd7a8eabee82ebf8b80c4e9d7e39ade72cf7aaf7e730491104e3619465d1e1",
+    "src/sato_morrison/controls.py": "90d32edf198a9734a8e8ebc4eee670256f82261dd5e8cf9c86eaaf49212e9ecb",
+    "src/sato_morrison/solver.py": "2823a80258f21851131e0e0cd10a8101af8bcf9b8f8aefcf49eada752751add0"
+  },
+  "source_changes": "",
+  "working_tree_at_launch": "",
+  "command": "JAX_ENABLE_X64=true MPLBACKEND=Agg OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 SM_LANDAU_OUTPUT=results/landau_trajectory_dt_refined .venv/bin/python -u examples/31_landau_trajectory.py > /Users/rogerio/local/sato_morrison_handoff/verification/landau_trajectory_dt_refined_production_5f87b95.log 2>&1",
+  "working_directory": "/Users/rogerio/local/sato-morrison",
+  "output_directory": "/Users/rogerio/local/sato-morrison/results/landau_trajectory_dt_refined",
+  "empty_output_at_launch": "Frozen producer nonempty guard passed before any metadata/state writes.",
+  "owned_pid": 68289,
+  "owned_exec_session": 60667,
+  "owned_process_start_local": "Fri Oct  9 14:58:25 2026",
+  "process_start_timezone": "CDT",
+  "provenance_note": "Receipt preparation first asserted outdatedHEAD5f87b95 while root concurrently committed data-only4304054. Scientific hashes were unchanged; actual producer launch commit4304054 is retained separately from reviewed science commit5f87b95. No dynamics restarted.",
+  "authorization": "Root explicit launch; independent dt=.0125 original raw16-stage and all-shared-time preflights passed.",
+  "preflight_receipts": {
+    "/Users/rogerio/local/sato_morrison_handoff/verification/landau_dt0125_preflight_v1/independent_allstages.json": "2b9df0b8fa0bbcd14f3f4ce5312929405df4f129301a010bf8ca55d767ed4d8b",
+    "/Users/rogerio/local/sato_morrison_handoff/verification/landau_dt0125_preflight_v1/comparison.json": "3000de45e489e3c1cb1f53b5bf75e41b9cd3df76f6dd02e2107a9bb2a08b5c15"
+  },
+  "environment": {
+    "JAX_ENABLE_X64": "true",
+    "MPLBACKEND": "Agg",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1",
+    "SM_LANDAU_OUTPUT": "results/landau_trajectory_dt_refined",
+    "MKL_NUM_THREADS": null,
+    "XLA_FLAGS": null
+  },
+  "hardware": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "uname": [
+      "Darwin",
+      "Rogerio-macmini-2025.local",
+      "25.6.0",
+      "Darwin Kernel Version 25.6.0: Fri Jul 31 19:11:03 PDT 2026; root:xnu-12377.161.14~5/RELEASE_ARM64_T8132",
+      "arm64",
+      "arm"
+    ],
+    "logical_cpu_count": 10,
+    "cpu_brand": "Apple M4",
+    "physical_cpu_count": 10,
+    "physical_memory_bytes": 25769803776
+  },
+  "software": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "python": "3.12.13",
+  "physical_inputs": {
+    "covariance": [
+      1.15,
+      1.15,
+      0.7
+    ],
+    "density": 1.0,
+    "mass": 1.0,
+    "Gamma": 1.0,
+    "final_time": 0.2
+  },
+  "declared_cases": [
+    {
+      "name": "baseline",
+      "order": 16,
+      "variance": 0.6,
+      "dt": 0.025
+    },
+    {
+      "name": "grid12",
+      "order": 12,
+      "variance": 0.6,
+      "dt": 0.025
+    },
+    {
+      "name": "dt_coarse",
+      "order": 16,
+      "variance": 0.6,
+      "dt": 0.05
+    },
+    {
+      "name": "dt_fine",
+      "order": 16,
+      "variance": 0.6,
+      "dt": 0.0125
+    },
+    {
+      "name": "tail_narrow",
+      "order": 16,
+      "variance": 0.585,
+      "dt": 0.025
+    },
+    {
+      "name": "tail_wide",
+      "order": 16,
+      "variance": 0.625,
+      "dt": 0.025
+    },
+    {
+      "name": "kernel02",
+      "order": 16,
+      "variance": 0.6,
+      "dt": 0.025,
+      "softening": 0.2
+    },
+    {
+      "name": "kernel01",
+      "order": 16,
+      "variance": 0.6,
+      "dt": 0.025,
+      "softening": 0.1
+    },
+    {
+      "name": "tolerance",
+      "order": 16,
+      "variance": 0.6,
+      "dt": 0.025,
+      "rtol": 1e-12,
+      "linear_rtol": 1e-10
+    },
+    {
+      "name": "nonlinear_tolerance",
+      "order": 16,
+      "variance": 0.6,
+      "dt": 0.025,
+      "rtol": 1e-12
+    },
+    {
+      "name": "linear_tolerance",
+      "order": 16,
+      "variance": 0.6,
+      "dt": 0.025,
+      "linear_rtol": 1e-10
+    },
+    {
+      "name": "grid20",
+      "order": 20,
+      "variance": 0.6,
+      "dt": 0.025,
+      "case_budget_s": 2400.0,
+      "linear_rtol": 1e-12,
+      "max_log_step": null
+    }
+  ],
+  "optimizer": {
+    "preconditioner": "tensor",
+    "reference": "fixed raw w*F0 per case",
+    "baseline_max_log_step": 2.0,
+    "baseline_linear_rtol": 1e-08,
+    "fine20_max_log_step": null,
+    "fine20_linear_rtol": 1e-12,
+    "newton_max_steps": 30,
+    "linear_max_steps": 200
+  },
+  "budgets_s": {
+    "case_default": 900.0,
+    "fine20": 2400.0,
+    "campaign": 5400.0
+  },
+  "expected_accepted_stages": 100,
+  "timing_scope": "Shared machine; total process peak RSS from producer resource.getrusage; no general timing-speedup claim.",
+  "completed_utc": "2026-10-09T20:32:08.511134+00:00",
+  "exit_code": 0,
+  "scientific_status": "passed",
+  "summary_sha256": "b075d159ae78f8e54d3a13a06fce0dba6b120e79b83285630e55ed9e52b31613",
+  "production_log": "/Users/rogerio/local/sato_morrison_handoff/verification/landau_trajectory_dt_refined_production_5f87b95.log",
+  "production_log_sha256": "f4f356a8344b03445ad551725826018a875d36d53f6be51d44e700706a55991d",
+  "scientific_sources_unchanged": true,
+  "accepted_advances": 100,
+  "saved_state_count": 112,
+  "cases": [
+    {
+      "name": "baseline",
+      "status": "passed_discrete_trajectory",
+      "last_accepted_time": 0.2,
+      "accepted_advances": 8,
+      "initial_gate": "passed"
+    },
+    {
+      "name": "grid12",
+      "status": "passed_discrete_trajectory",
+      "last_accepted_time": 0.2,
+      "accepted_advances": 8,
+      "initial_gate": "unresolved"
+    },
+    {
+      "name": "dt_coarse",
+      "status": "passed_discrete_trajectory",
+      "last_accepted_time": 0.2,
+      "accepted_advances": 4,
+      "initial_gate": "passed"
+    },
+    {
+      "name": "dt_fine",
+      "status": "passed_discrete_trajectory",
+      "last_accepted_time": 0.2,
+      "accepted_advances": 16,
+      "initial_gate": "passed"
+    },
+    {
+      "name": "tail_narrow",
+      "status": "passed_discrete_trajectory",
+      "last_accepted_time": 0.2,
+      "accepted_advances": 8,
+      "initial_gate": "passed"
+    },
+    {
+      "name": "tail_wide",
+      "status": "passed_discrete_trajectory",
+      "last_accepted_time": 0.2,
+      "accepted_advances": 8,
+      "initial_gate": "passed"
+    },
+    {
+      "name": "kernel02",
+      "status": "passed_discrete_trajectory",
+      "last_accepted_time": 0.2,
+      "accepted_advances": 8,
+      "initial_gate": "unresolved"
+    },
+    {
+      "name": "kernel01",
+      "status": "passed_discrete_trajectory",
+      "last_accepted_time": 0.2,
+      "accepted_advances": 8,
+      "initial_gate": "passed"
+    },
+    {
+      "name": "tolerance",
+      "status": "passed_discrete_trajectory",
+      "last_accepted_time": 0.2,
+      "accepted_advances": 8,
+      "initial_gate": "passed"
+    },
+    {
+      "name": "nonlinear_tolerance",
+      "status": "passed_discrete_trajectory",
+      "last_accepted_time": 0.2,
+      "accepted_advances": 8,
+      "initial_gate": "passed"
+    },
+    {
+      "name": "linear_tolerance",
+      "status": "passed_discrete_trajectory",
+      "last_accepted_time": 0.2,
+      "accepted_advances": 8,
+      "initial_gate": "passed"
+    },
+    {
+      "name": "grid20",
+      "status": "passed_discrete_trajectory",
+      "last_accepted_time": 0.2,
+      "accepted_advances": 8,
+      "initial_gate": "passed"
+    }
+  ],
+  "failed_comparison_names": [
+    "dt_coarse"
+  ],
+  "timing": {
+    "campaign_wall_s_including_initial_checks_comparisons_and_rendering": 2011.937683708,
+    "per_case_wall_s_including_initial_checks_compile_and_checkpoint": {
+      "baseline": 26.35176995799975,
+      "grid12": 4.454594290999921,
+      "dt_coarse": 14.940517457999704,
+      "dt_fine": 26.180339958999866,
+      "tail_narrow": 25.32306362500003,
+      "tail_wide": 21.91143395800009,
+      "kernel02": 23.326984291999906,
+      "kernel01": 24.54221754199989,
+      "tolerance": 37.587337292000484,
+      "nonlinear_tolerance": 27.61322695800027,
+      "linear_tolerance": 32.26899429099922,
+      "grid20": 1725.620013875001
+    },
+    "per_case_step_wall_s_sum": {
+      "baseline": 25.69130437700005,
+      "grid12": 4.296244375002061,
+      "dt_coarse": 14.687585541999397,
+      "dt_fine": 25.857025336000333,
+      "tail_narrow": 25.064905583000836,
+      "tail_wide": 21.651717167001152,
+      "kernel02": 23.065030831999138,
+      "kernel01": 24.260911291998127,
+      "tolerance": 37.300484042999415,
+      "nonlinear_tolerance": 27.332214875999853,
+      "linear_tolerance": 31.983078917999592,
+      "grid20": 1724.7601470010013
+    },
+    "all_case_wall_s_sum": 1990.120493499,
+    "all_step_wall_s_sum": 1985.9506493420013,
+    "noncase_validation_rendering_and_overhead_s": 21.81719020899982,
+    "timing_interpretation": "Shared Apple M4 machine with concurrent audit and agent workloads. Step times include host diagnostics inside the measured step region. Case times include initial oracle, compilation, steps and checkpointing. Remaining campaign wall includes comparisons, figures, animation and unseparated overhead; it is not a pure rendering benchmark."
+  },
+  "total_process_peak_rss_bytes": 602128384,
+  "producer_output_sha256": {
+    "baseline.npz": "31b8728348ac0f3848e69dec22c9f7a0739158771f6b5ead340b3505cf13cf6a",
+    "baseline_initial_rhs.npz": "e2fc5b572297174a6932f33e870e5d402f918fc305d00162239f5e09ea9753ce",
+    "convergence.png": "b675118b98146f9b0cd40425f35ff821e528ff392c3847d2aabcf717e653a438",
+    "convergence.svg": "935bab25e1b101143b8f6a1245f83ea20062d1940fd213c7c6795d0f007b527a",
+    "dt_coarse.npz": "a4cb1fe05d3d11718621b778427c32933b3fdd014c4d817709bd455673e71942",
+    "dt_coarse_initial_rhs.npz": "e2fc5b572297174a6932f33e870e5d402f918fc305d00162239f5e09ea9753ce",
+    "dt_fine.npz": "667e9f6d64fb9b5aca02914f98500de5f5313193938bb0daabb716a98e4eae42",
+    "dt_fine_initial_rhs.npz": "e2fc5b572297174a6932f33e870e5d402f918fc305d00162239f5e09ea9753ce",
+    "four_operator_comparison.png": "1ca76327344db53749c486c2889296a7521603ce79fc963126df81d01d319cd6",
+    "grid12.npz": "32ddc4d524f5456df63acf209434367a5a8cbebec7d499bf8e54823feacc6273",
+    "grid12_initial_rhs.npz": "6a800ca317225a3b84ba8fa62447225489eb00b3224e123c71b0043b6a214ffc",
+    "grid20.npz": "988fb927f2b67e1f1b2f0e850ca8239da11a7fb2705f910e6b2e949eb75a0cf6",
+    "grid20_initial_rhs.npz": "933f6d0c8a7d0270ddfa039e192a86918ce8b79df57ac2c2b4746d0623f9fe32",
+    "iterations.jsonl": "6caed8237b5bbb57c645031494b587b8e301a2c6a5deba50103ee5bb5b137963",
+    "kernel01.npz": "f5df99aebb197e25356ede1c376610bea7d9a3f45897cc9717d871cff5628d03",
+    "kernel01_initial_rhs.npz": "e6b347a226ad8e5fd728677c83d09b1de983306ecf7231c56b01f837c446a42b",
+    "kernel02.npz": "1e4fb5171222116ca2a62411caed25a9f97d9f185344bb8b7553647d2454ac34",
+    "kernel02_initial_rhs.npz": "a13c85a80dc46836da8c5f10949573fcf802b4e66e8b8630dcc4e2e5ccd6da08",
+    "linear_tolerance.npz": "04b491028babda325ecb881680c99b987df45e32e26f56caf36541eaa84eee3c",
+    "linear_tolerance_initial_rhs.npz": "e2fc5b572297174a6932f33e870e5d402f918fc305d00162239f5e09ea9753ce",
+    "nonlinear_tolerance.npz": "31b8728348ac0f3848e69dec22c9f7a0739158771f6b5ead340b3505cf13cf6a",
+    "nonlinear_tolerance_initial_rhs.npz": "e2fc5b572297174a6932f33e870e5d402f918fc305d00162239f5e09ea9753ce",
+    "plotted_arrays.npz": "c773ef5f24468b5256992038b1c1dfbaea6cbda49ce1f9106394624c4beaa7b7",
+    "quadrature.png": "7079ba5b3386724e2384030ae0b89a3dd0e79a69b3525049f19f1a1831636af4",
+    "quadrature.svg": "f566f4faa97856240f69e70eaa6274c2ee7e6f8949650f1a903fc65c57ddb49b",
+    "quadrature_plot_arrays.npz": "67adde0e00fa383c38b2befacb5509a6487599d20b305a7b716ba3808234380b",
+    "tail_narrow.npz": "475fc14de88aeb8aba5cf1304b8b93300ccee22d950bda0fbe525244fe0064cc",
+    "tail_narrow_initial_rhs.npz": "e1f5db3cf5d7d71b28284e62e9aff1fa464e5690f0b55fdcdd59bae6f8f2e2de",
+    "tail_wide.npz": "b6c0bc3bb42d33633bade60049ca4c8e09a561262a4ab9d730fbf102116953e9",
+    "tail_wide_initial_rhs.npz": "2df00b6125bb05a1043df40279ed7bff145b001154de5386e597eaf33a5a4203",
+    "tolerance.npz": "04b491028babda325ecb881680c99b987df45e32e26f56caf36541eaa84eee3c",
+    "tolerance_initial_rhs.npz": "e2fc5b572297174a6932f33e870e5d402f918fc305d00162239f5e09ea9753ce",
+    "trajectory.gif": "d0ab1d2c107f26264a2c1750f0a8804463819d415863c9b945da9f0082e4e88d",
+    "trajectory.mp4": "68b87812055ee90fe01c14b5501a7351377752969b4cd976ae0c32baba91a75c",
+    "trajectory.png": "46bbf3cc8d1e45f03fb263fcc99955332bd6f3b47e772cfd45c73435f3b801ea",
+    "trajectory.svg": "4ff39dda577d67e8f93185c789c6f7e37084b6034bc173aed96964d8afa98505"
+  },
+  "scope": "Execution provenance supplements the unchanged producer summary. Physical acceptance is limited to the declared T=.2 campaign, bounded-box reconstructed density increment and native quadrature moment scans. Subsequent independent raw-stage/comparison/media receipts provide separate validation."
+}

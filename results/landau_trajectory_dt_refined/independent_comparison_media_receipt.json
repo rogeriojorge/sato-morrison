@@ -1,0 +1,3926 @@
+{
+  "producer_status": "passed",
+  "scope": "Independent all-shared-time saved full-density reconstruction, whole-native-quadrature moment comparison, observed temporal order, frozen plot series, provenance, analytic controls, and media audit. Density L1 reconstruction is restricted to the documented cubes [-4,4]^3 and [-5,5]^3; no full-domain density convergence claim.",
+  "rows": [
+    {
+      "name": "baseline",
+      "status": "passed_discrete_trajectory",
+      "saved_states": 9,
+      "last_saved_time": 0.2,
+      "completed": true,
+      "maximum_absolute_invariant_drift": 7.771561172376096e-16,
+      "maximum_diagnostic_discrepancy": 0.0,
+      "maximum_initial_density_discrepancy": 1.0408340855860843e-17,
+      "final_recomputed_moments": {
+        "number": 0.9999999868413026,
+        "momentum": [
+          -6.938893903907228e-17,
+          -1.734723475976807e-18,
+          -2.7430314963883262e-17
+        ],
+        "energy": 1.4999996404417286,
+        "covariance": [
+          1.1362650134494072,
+          1.1362650134494174,
+          0.7274692934607119
+        ],
+        "anisotropy": 0.40879571998870046,
+        "mu_second": 2.5958948062841127,
+        "speed_fourth": 15.245989234687558,
+        "fourth_cumulant": [
+          0.020545920385263372,
+          0.020545920385209193,
+          -0.0201600671351867
+        ],
+        "entropy": 4.225415521521417,
+        "min_f": 5.0459088779331696e-20,
+        "outside_expanded_cube_mass": 1.5619868344495044e-05,
+        "outside_common_cube_mass": 0.0004933194680002652
+      },
+      "metadata_state_count_matches": true,
+      "strict_time_order": true
+    },
+    {
+      "name": "grid12",
+      "status": "passed_discrete_trajectory",
+      "saved_states": 9,
+      "last_saved_time": 0.2,
+      "completed": true,
+      "maximum_absolute_invariant_drift": 2.220446049250313e-16,
+      "maximum_diagnostic_discrepancy": 0.0,
+      "maximum_initial_density_discrepancy": 3.469446951953614e-18,
+      "final_recomputed_moments": {
+        "number": 0.9999986328907455,
+        "momentum": [
+          -3.015182217196101e-17,
+          5.951435192426446e-18,
+          -3.502697352610808e-17
+        ],
+        "energy": 1.499971608000072,
+        "covariance": [
+          1.1362700967690444,
+          1.1362700967690436,
+          0.727407123717798
+        ],
+        "anisotropy": 0.40886297305124597,
+        "mu_second": 2.595442746602705,
+        "speed_fourth": 15.243839528635514,
+        "fourth_cumulant": [
+          0.01963080470436207,
+          0.019630804704367844,
+          -0.02004578885650976
+        ],
+        "entropy": 4.225372453772473,
+        "min_f": 2.2905144212211624e-14,
+        "outside_expanded_cube_mass": 0.0,
+        "outside_common_cube_mass": 0.0005892003420096772
+      },
+      "metadata_state_count_matches": true,
+      "strict_time_order": true
+    },
+    {
+      "name": "dt_coarse",
+      "status": "passed_discrete_trajectory",
+      "saved_states": 5,
+      "last_saved_time": 0.2,
+      "completed": true,
+      "maximum_absolute_invariant_drift": 3.608224830031759e-16,
+      "maximum_diagnostic_discrepancy": 0.0,
+      "maximum_initial_density_discrepancy": 1.0408340855860843e-17,
+      "final_recomputed_moments": {
+        "number": 0.9999999868413029,
+        "momentum": [
+          -2.220446049250313e-16,
+          -3.642919299551295e-17,
+          -4.553649124439119e-18
+        ],
+        "energy": 1.4999996404417288,
+        "covariance": [
+          1.1363891248864613,
+          1.1363891248864628,
+          0.7272210705866117
+        ],
+        "anisotropy": 0.40916805429985026,
+        "mu_second": 2.5962351058605857,
+        "speed_fourth": 15.246098111359577,
+        "fourth_cumulant": [
+          0.02021027492035188,
+          0.020210274920339444,
+          -0.01991429759454766
+        ],
+        "entropy": 4.2253558004842295,
+        "min_f": 5.0390320136710974e-20,
+        "outside_expanded_cube_mass": 1.562069012153645e-05,
+        "outside_common_cube_mass": 0.0004933568343344354
+      },
+      "metadata_state_count_matches": true,
+      "strict_time_order": true
+    },
+    {
+      "name": "dt_fine",
+      "status": "passed_discrete_trajectory",
+      "saved_states": 17,
+      "last_saved_time": 0.2,
+      "completed": true,
+      "maximum_absolute_invariant_drift": 3.116071844999624e-10,
+      "maximum_diagnostic_discrepancy": 0.0,
+      "maximum_initial_density_discrepancy": 1.0408340855860843e-17,
+      "final_recomputed_moments": {
+        "number": 0.9999999869678339,
+        "momentum": [
+          3.885780586188048e-16,
+          -1.5612511283791264e-17,
+          -1.1492543028346347e-17
+        ],
+        "energy": 1.4999996407533358,
+        "covariance": [
+          1.136201719548939,
+          1.1362017195489371,
+          0.7275958815052873
+        ],
+        "anisotropy": 0.4086058380436507,
+        "mu_second": 2.595722178418189,
+        "speed_fourth": 15.24593275423205,
+        "fourth_cumulant": [
+          0.020718428787027232,
+          0.020718428787056542,
+          -0.020287015382806972
+        ],
+        "entropy": 4.225445925913901,
+        "min_f": 5.0517059612899235e-20,
+        "outside_expanded_cube_mass": 1.5619510896339178e-05,
+        "outside_common_cube_mass": 0.0004933000501618245
+      },
+      "metadata_state_count_matches": true,
+      "strict_time_order": true
+    },
+    {
+      "name": "tail_narrow",
+      "status": "passed_discrete_trajectory",
+      "saved_states": 9,
+      "last_saved_time": 0.2,
+      "completed": true,
+      "maximum_absolute_invariant_drift": 5.551115123125783e-16,
+      "maximum_diagnostic_discrepancy": 0.0,
+      "maximum_initial_density_discrepancy": 1.3877787807814457e-17,
+      "final_recomputed_moments": {
+        "number": 0.9999999770544441,
+        "momentum": [
+          9.71445146547012e-17,
+          -4.163336342344337e-17,
+          1.1926223897340549e-18
+        ],
+        "energy": 1.499999398767605,
+        "covariance": [
+          1.1362627878040812,
+          1.136262787804081,
+          0.7274732907636904
+        ],
+        "anisotropy": 0.4087894970403906,
+        "mu_second": 2.595884680705616,
+        "speed_fourth": 15.245964045623731,
+        "fourth_cumulant": [
+          0.02054396733842001,
+          0.02054396733841335,
+          -0.020167707135845925
+        ],
+        "entropy": 4.225416226509013,
+        "min_f": 1.426943858505944e-19,
+        "outside_expanded_cube_mass": 2.055364047109838e-05,
+        "outside_common_cube_mass": 0.0005941936306195939
+      },
+      "metadata_state_count_matches": true,
+      "strict_time_order": true
+    },
+    {
+      "name": "tail_wide",
+      "status": "passed_discrete_trajectory",
+      "saved_states": 9,
+      "last_saved_time": 0.2,
+      "completed": true,
+      "maximum_absolute_invariant_drift": 2.636779683484747e-16,
+      "maximum_diagnostic_discrepancy": 0.0,
+      "maximum_initial_density_discrepancy": 2.0816681711721685e-17,
+      "final_recomputed_moments": {
+        "number": 0.9999999949182223,
+        "momentum": [
+          6.938893903907228e-17,
+          -5.204170427930421e-17,
+          -5.9631119486702744e-18
+        ],
+        "energy": 1.49999985099325,
+        "covariance": [
+          1.1362686577369374,
+          1.1362686577369363,
+          0.7274624017579591
+        ],
+        "anisotropy": 0.4088062559789777,
+        "mu_second": 2.595908064680359,
+        "speed_fourth": 15.246014937565107,
+        "fourth_cumulant": [
+          0.020542775416009018,
+          0.02054277541602101,
+          -0.0201469083990351
+        ],
+        "entropy": 4.225414100586381,
+        "min_f": 8.926440239223845e-21,
+        "outside_expanded_cube_mass": 9.880162387702865e-06,
+        "outside_common_cube_mass": 0.00036178693024272086
+      },
+      "metadata_state_count_matches": true,
+      "strict_time_order": true
+    },
+    {
+      "name": "kernel02",
+      "status": "passed_discrete_trajectory",
+      "saved_states": 9,
+      "last_saved_time": 0.2,
+      "completed": true,
+      "maximum_absolute_invariant_drift": 6.938893903907228e-16,
+      "maximum_diagnostic_discrepancy": 0.0,
+      "maximum_initial_density_discrepancy": 1.0408340855860843e-17,
+      "final_recomputed_moments": {
+        "number": 0.9999999868413025,
+        "momentum": [
+          -6.245004513516506e-16,
+          5.204170427930421e-18,
+          4.228388472693467e-18
+        ],
+        "energy": 1.4999996404417284,
+        "covariance": [
+          1.136325372560458,
+          1.1363253725604594,
+          0.7273485752386221
+        ],
+        "anisotropy": 0.40897679732183667,
+        "mu_second": 2.5960789492268703,
+        "speed_fourth": 15.246087044797058,
+        "fourth_cumulant": [
+          0.02041046774964661,
+          0.020410467749631067,
+          -0.020014823110809266
+        ],
+        "entropy": 4.225386462017433,
+        "min_f": 5.0464015480994e-20,
+        "outside_expanded_cube_mass": 1.562023554596766e-05,
+        "outside_common_cube_mass": 0.0004933342048550327
+      },
+      "metadata_state_count_matches": true,
+      "strict_time_order": true
+    },
+    {
+      "name": "kernel01",
+      "status": "passed_discrete_trajectory",
+      "saved_states": 9,
+      "last_saved_time": 0.2,
+      "completed": true,
+      "maximum_absolute_invariant_drift": 6.106226635438361e-16,
+      "maximum_diagnostic_discrepancy": 0.0,
+      "maximum_initial_density_discrepancy": 1.0408340855860843e-17,
+      "final_recomputed_moments": {
+        "number": 0.9999999868413028,
+        "momentum": [
+          -3.3306690738754696e-16,
+          1.214306433183765e-17,
+          1.2468324983583301e-17
+        ],
+        "energy": 1.4999996404417288,
+        "covariance": [
+          1.1362802659117202,
+          1.1362802659117157,
+          0.7274387885361048
+        ],
+        "anisotropy": 0.40884147737561316,
+        "mu_second": 2.5959412857614925,
+        "speed_fourth": 15.246013928925084,
+        "fourth_cumulant": [
+          0.02051161274845681,
+          0.020511612748471908,
+          -0.020123257753310364
+        ],
+        "entropy": 4.225408181068044,
+        "min_f": 5.04604036317838e-20,
+        "outside_expanded_cube_mass": 1.561996073190289e-05,
+        "outside_common_cube_mass": 0.0004933231564257195
+      },
+      "metadata_state_count_matches": true,
+      "strict_time_order": true
+    },
+    {
+      "name": "tolerance",
+      "status": "passed_discrete_trajectory",
+      "saved_states": 9,
+      "last_saved_time": 0.2,
+      "completed": true,
+      "maximum_absolute_invariant_drift": 7.494005416219807e-16,
+      "maximum_diagnostic_discrepancy": 0.0,
+      "maximum_initial_density_discrepancy": 1.0408340855860843e-17,
+      "final_recomputed_moments": {
+        "number": 0.9999999868413026,
+        "momentum": [
+          -4.163336342344337e-17,
+          -1.734723475976807e-17,
+          -3.0682921481339775e-17
+        ],
+        "energy": 1.4999996404417284,
+        "covariance": [
+          1.136265013449407,
+          1.1362650134494174,
+          0.7274692934607121
+        ],
+        "anisotropy": 0.4087957199887,
+        "mu_second": 2.5958948062841127,
+        "speed_fourth": 15.24598923468756,
+        "fourth_cumulant": [
+          0.020545920385264704,
+          0.02054592038521008,
+          -0.02016006713518781
+        ],
+        "entropy": 4.225415521521417,
+        "min_f": 5.0459088783064744e-20,
+        "outside_expanded_cube_mass": 1.5619868344495044e-05,
+        "outside_common_cube_mass": 0.0004933194680002652
+      },
+      "metadata_state_count_matches": true,
+      "strict_time_order": true
+    },
+    {
+      "name": "nonlinear_tolerance",
+      "status": "passed_discrete_trajectory",
+      "saved_states": 9,
+      "last_saved_time": 0.2,
+      "completed": true,
+      "maximum_absolute_invariant_drift": 7.771561172376096e-16,
+      "maximum_diagnostic_discrepancy": 0.0,
+      "maximum_initial_density_discrepancy": 1.0408340855860843e-17,
+      "final_recomputed_moments": {
+        "number": 0.9999999868413026,
+        "momentum": [
+          -6.938893903907228e-17,
+          -1.734723475976807e-18,
+          -2.7430314963883262e-17
+        ],
+        "energy": 1.4999996404417286,
+        "covariance": [
+          1.1362650134494072,
+          1.1362650134494174,
+          0.7274692934607119
+        ],
+        "anisotropy": 0.40879571998870046,
+        "mu_second": 2.5958948062841127,
+        "speed_fourth": 15.245989234687558,
+        "fourth_cumulant": [
+          0.020545920385263372,
+          0.020545920385209193,
+          -0.0201600671351867
+        ],
+        "entropy": 4.225415521521417,
+        "min_f": 5.0459088779331696e-20,
+        "outside_expanded_cube_mass": 1.5619868344495044e-05,
+        "outside_common_cube_mass": 0.0004933194680002652
+      },
+      "metadata_state_count_matches": true,
+      "strict_time_order": true
+    },
+    {
+      "name": "linear_tolerance",
+      "status": "passed_discrete_trajectory",
+      "saved_states": 9,
+      "last_saved_time": 0.2,
+      "completed": true,
+      "maximum_absolute_invariant_drift": 7.494005416219807e-16,
+      "maximum_diagnostic_discrepancy": 0.0,
+      "maximum_initial_density_discrepancy": 1.0408340855860843e-17,
+      "final_recomputed_moments": {
+        "number": 0.9999999868413026,
+        "momentum": [
+          -4.163336342344337e-17,
+          -1.734723475976807e-17,
+          -3.0682921481339775e-17
+        ],
+        "energy": 1.4999996404417284,
+        "covariance": [
+          1.136265013449407,
+          1.1362650134494174,
+          0.7274692934607121
+        ],
+        "anisotropy": 0.4087957199887,
+        "mu_second": 2.5958948062841127,
+        "speed_fourth": 15.24598923468756,
+        "fourth_cumulant": [
+          0.020545920385264704,
+          0.02054592038521008,
+          -0.02016006713518781
+        ],
+        "entropy": 4.225415521521417,
+        "min_f": 5.0459088783064744e-20,
+        "outside_expanded_cube_mass": 1.5619868344495044e-05,
+        "outside_common_cube_mass": 0.0004933194680002652
+      },
+      "metadata_state_count_matches": true,
+      "strict_time_order": true
+    },
+    {
+      "name": "grid20",
+      "status": "passed_discrete_trajectory",
+      "saved_states": 9,
+      "last_saved_time": 0.2,
+      "completed": true,
+      "maximum_absolute_invariant_drift": 5.828670879282072e-16,
+      "maximum_diagnostic_discrepancy": 0.0,
+      "maximum_initial_density_discrepancy": 1.3877787807814457e-17,
+      "final_recomputed_moments": {
+        "number": 0.9999999998727754,
+        "momentum": [
+          4.85722573273506e-17,
+          -6.678685382510707e-17,
+          5.9553144071726265e-18
+        ],
+        "energy": 1.4999999956879837,
+        "covariance": [
+          1.1362507098832035,
+          1.1362507098832055,
+          0.7274985719912355
+        ],
+        "anisotropy": 0.4087521378919692,
+        "mu_second": 2.595866889975589,
+        "speed_fourth": 15.24600097300729,
+        "fourth_cumulant": [
+          0.020604279512332457,
+          0.02060427951232624,
+          -0.020214481006300078
+        ],
+        "entropy": 4.225422793665913,
+        "min_f": 7.002566915390281e-26,
+        "outside_expanded_cube_mass": 1.808510411703343e-05,
+        "outside_common_cube_mass": 0.00031414789454630484
+      },
+      "metadata_state_count_matches": true,
+      "strict_time_order": true
+    }
+  ],
+  "comparisons": [
+    {
+      "case": "grid12",
+      "whole_quadrature_moment_increment_errors": {
+        "anisotropy": 0.0024763106001814755,
+        "mu_second": 0.0017672208238880445,
+        "speed_fourth": 0.002838217289729432,
+        "fourth_cumulant": 0.006221699981252147
+      },
+      "common_cube_quadratures": [
+        {
+          "order": 32,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.009608256720465962,
+            0.008718866041231533,
+            0.008045729743189602,
+            0.007480563580827515,
+            0.0070044204438397435,
+            0.006616058099444205,
+            0.006277947805835956,
+            0.005998707796649344
+          ],
+          "baseline_increment_L1": [
+            0.003364169639066726,
+            0.0066343379980153975,
+            0.009815044627466914,
+            0.012910479138343261,
+            0.015924494671946902,
+            0.018860669985060613,
+            0.021722296658589275,
+            0.024512436555742156
+          ],
+          "maximum_relative_increment_L1": 0.009608256720465962
+        },
+        {
+          "order": 48,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.009488796059354748,
+            0.008679269856235456,
+            0.008011714829341628,
+            0.007468379288222766,
+            0.007012137012450677,
+            0.006621503652171836,
+            0.00628799973755714,
+            0.0060098816147659976
+          ],
+          "baseline_increment_L1": [
+            0.003367176753218213,
+            0.006640171033387702,
+            0.009823457294958766,
+            0.012921168989380592,
+            0.015937133602463786,
+            0.018875750562144224,
+            0.021739808211748247,
+            0.02453287550356402
+          ],
+          "maximum_relative_increment_L1": 0.009488796059354748
+        },
+        {
+          "order": 64,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.00948341643308495,
+            0.008677774982121701,
+            0.008015989681905833,
+            0.007469293844069936,
+            0.00700954496573321,
+            0.006626026026739562,
+            0.006299529815805171,
+            0.0060191818603663695
+          ],
+          "baseline_increment_L1": [
+            0.00336450785990976,
+            0.006635068063607506,
+            0.009816269263133481,
+            0.012912402490068219,
+            0.01592757155141767,
+            0.018865507564930856,
+            0.021729580626604673,
+            0.02452298424550344
+          ],
+          "maximum_relative_increment_L1": 0.00948341643308495
+        }
+      ],
+      "maximum_producer_comparison_discrepancy": 2.474756510828513e-14,
+      "GL48_to64_maximum_absolute_increment_error_change": 1.1530078248030498e-05,
+      "GL48_to64_maximum_relative_baseline_increment_change": 0.0007926204960586603,
+      "quadrature_refinement_status": "passed",
+      "finest_common_cube_and_moment_1percent_status": "passed"
+    },
+    {
+      "case": "dt_coarse",
+      "whole_quadrature_moment_increment_errors": {
+        "anisotropy": 0.00976870364862749,
+        "mu_second": 0.007376504603948908,
+        "speed_fourth": 0.0062499424101622545,
+        "fourth_cumulant": 0.017788058108169247
+      },
+      "common_cube_quadratures": [
+        {
+          "order": 32,
+          "shared_times": [
+            0.05,
+            0.1,
+            0.15000000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.011758172060963077,
+            0.011149644868154012,
+            0.010613816673900937,
+            0.010135554103746116
+          ],
+          "baseline_increment_L1": [
+            0.0066343379980153975,
+            0.012910479138343261,
+            0.018860669985060613,
+            0.024512436555742156
+          ],
+          "maximum_relative_increment_L1": 0.011758172060963077
+        },
+        {
+          "order": 48,
+          "shared_times": [
+            0.05,
+            0.1,
+            0.15000000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.011706163290425625,
+            0.011096739322571157,
+            0.01056582610456729,
+            0.010099189351617561
+          ],
+          "baseline_increment_L1": [
+            0.006640171033387702,
+            0.012921168989380592,
+            0.018875750562144224,
+            0.02453287550356402
+          ],
+          "maximum_relative_increment_L1": 0.011706163290425625
+        },
+        {
+          "order": 64,
+          "shared_times": [
+            0.05,
+            0.1,
+            0.15000000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.011723730319940577,
+            0.011115170690030004,
+            0.010585519661815286,
+            0.010111380808116197
+          ],
+          "baseline_increment_L1": [
+            0.006635068063607506,
+            0.012912402490068219,
+            0.018865507564930856,
+            0.02452298424550344
+          ],
+          "maximum_relative_increment_L1": 0.011723730319940577
+        }
+      ],
+      "maximum_producer_comparison_discrepancy": 1.2125717097077882e-15,
+      "GL48_to64_maximum_absolute_increment_error_change": 1.9693557247997193e-05,
+      "GL48_to64_maximum_relative_baseline_increment_change": 0.0007684997501626878,
+      "quadrature_refinement_status": "passed",
+      "finest_common_cube_and_moment_1percent_status": "unresolved"
+    },
+    {
+      "case": "dt_fine",
+      "whole_quadrature_moment_increment_errors": {
+        "anisotropy": 0.005062599529834338,
+        "mu_second": 0.0037870898425558202,
+        "speed_fourth": 0.0034470475566016332,
+        "fourth_cumulant": 0.009313788399199482
+      },
+      "common_cube_quadratures": [
+        {
+          "order": 32,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.006276863067408127,
+            0.0060810209423719525,
+            0.005907345650083721,
+            0.00574660461061931,
+            0.005596655372025888,
+            0.005456057260841224,
+            0.005323758021447052,
+            0.005199067030619003
+          ],
+          "baseline_increment_L1": [
+            0.003364169639066726,
+            0.0066343379980153975,
+            0.009815044627466914,
+            0.012910479138343261,
+            0.015924494671946902,
+            0.018860669985060613,
+            0.021722296658589275,
+            0.024512436555742156
+          ],
+          "maximum_relative_increment_L1": 0.006276863067408127
+        },
+        {
+          "order": 48,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.0062503974888241205,
+            0.006053460590795966,
+            0.005879048478486607,
+            0.005718554831283894,
+            0.005569578657946403,
+            0.005431106451789803,
+            0.005302258152446125,
+            0.005180426693666222
+          ],
+          "baseline_increment_L1": [
+            0.003367176753218213,
+            0.006640171033387702,
+            0.009823457294958766,
+            0.012921168989380592,
+            0.015937133602463786,
+            0.018875750562144224,
+            0.021739808211748247,
+            0.02453287550356402
+          ],
+          "maximum_relative_increment_L1": 0.0062503974888241205
+        },
+        {
+          "order": 64,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.00626055389588506,
+            0.006062711805377283,
+            0.005888244692823513,
+            0.0057282919847322766,
+            0.00558027216677305,
+            0.0054412602696052624,
+            0.005310241689922953,
+            0.005186597234338642
+          ],
+          "baseline_increment_L1": [
+            0.00336450785990976,
+            0.006635068063607506,
+            0.009816269263133481,
+            0.012912402490068219,
+            0.01592757155141767,
+            0.018865507564930856,
+            0.021729580626604673,
+            0.02452298424550344
+          ],
+          "maximum_relative_increment_L1": 0.00626055389588506
+        }
+      ],
+      "maximum_producer_comparison_discrepancy": 4.638650574761982e-15,
+      "GL48_to64_maximum_absolute_increment_error_change": 1.069350882664747e-05,
+      "GL48_to64_maximum_relative_baseline_increment_change": 0.0007926204960586603,
+      "quadrature_refinement_status": "passed",
+      "finest_common_cube_and_moment_1percent_status": "passed"
+    },
+    {
+      "case": "tail_narrow",
+      "whole_quadrature_moment_increment_errors": {
+        "anisotropy": 0.00016017847479524215,
+        "mu_second": 0.00010340400154493821,
+        "speed_fourth": 0.0001375268229530228,
+        "fourth_cumulant": 0.00041564560010438786
+      },
+      "common_cube_quadratures": [
+        {
+          "order": 32,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.0010304961574725152,
+            0.0007526916007854419,
+            0.0005833404400878503,
+            0.00047595447731757414,
+            0.0004090663007303982,
+            0.00036696662392003227,
+            0.0003389849202880206,
+            0.0003180519266580777
+          ],
+          "baseline_increment_L1": [
+            0.003364169639066726,
+            0.0066343379980153975,
+            0.009815044627466914,
+            0.012910479138343261,
+            0.015924494671946902,
+            0.018860669985060613,
+            0.021722296658589275,
+            0.024512436555742156
+          ],
+          "maximum_relative_increment_L1": 0.0010304961574725152
+        },
+        {
+          "order": 48,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.0010125313582742318,
+            0.0007326313935340281,
+            0.0005666792876868806,
+            0.0004689261887051255,
+            0.0004067487489674171,
+            0.00036445076943988734,
+            0.00033553910157116965,
+            0.00031452281847449713
+          ],
+          "baseline_increment_L1": [
+            0.003367176753218213,
+            0.006640171033387702,
+            0.009823457294958766,
+            0.012921168989380592,
+            0.015937133602463786,
+            0.018875750562144224,
+            0.021739808211748247,
+            0.02453287550356402
+          ],
+          "maximum_relative_increment_L1": 0.0010125313582742318
+        },
+        {
+          "order": 64,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.001010848207652706,
+            0.0007317909804568216,
+            0.0005693420949506944,
+            0.0004696259195784548,
+            0.0004069887806207512,
+            0.00036539446156905365,
+            0.00033615868755011296,
+            0.00031461827524378996
+          ],
+          "baseline_increment_L1": [
+            0.00336450785990976,
+            0.006635068063607506,
+            0.009816269263133481,
+            0.012912402490068219,
+            0.01592757155141767,
+            0.018865507564930856,
+            0.021729580626604673,
+            0.02452298424550344
+          ],
+          "maximum_relative_increment_L1": 0.001010848207652706
+        }
+      ],
+      "maximum_producer_comparison_discrepancy": 3.1864701849348975e-15,
+      "GL48_to64_maximum_absolute_increment_error_change": 2.662807263813802e-06,
+      "GL48_to64_maximum_relative_baseline_increment_change": 0.0007926204960586603,
+      "quadrature_refinement_status": "passed",
+      "finest_common_cube_and_moment_1percent_status": "passed"
+    },
+    {
+      "case": "tail_wide",
+      "whole_quadrature_moment_increment_errors": {
+        "anisotropy": 0.00027599357407763215,
+        "mu_second": 0.0001821735922914789,
+        "speed_fourth": 0.00025674999642473755,
+        "fourth_cumulant": 0.000715879351796507
+      },
+      "common_cube_quadratures": [
+        {
+          "order": 32,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.0012834039057657374,
+            0.001002383115428302,
+            0.0008133825795576945,
+            0.0006890826847797786,
+            0.0006107833709204398,
+            0.0005586588239627939,
+            0.000519830553189406,
+            0.0004901519470776937
+          ],
+          "baseline_increment_L1": [
+            0.003364169639066726,
+            0.0066343379980153975,
+            0.009815044627466914,
+            0.012910479138343261,
+            0.015924494671946902,
+            0.018860669985060613,
+            0.021722296658589275,
+            0.024512436555742156
+          ],
+          "maximum_relative_increment_L1": 0.0012834039057657374
+        },
+        {
+          "order": 48,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.001266027787544477,
+            0.0009831794667759413,
+            0.0008071269494182064,
+            0.0006921875606821297,
+            0.0006132778527913137,
+            0.000559812741780852,
+            0.0005207035448030217,
+            0.0004905475961202293
+          ],
+          "baseline_increment_L1": [
+            0.003367176753218213,
+            0.006640171033387702,
+            0.009823457294958766,
+            0.012921168989380592,
+            0.015937133602463786,
+            0.018875750562144224,
+            0.021739808211748247,
+            0.02453287550356402
+          ],
+          "maximum_relative_increment_L1": 0.001266027787544477
+        },
+        {
+          "order": 64,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.0012564058313523044,
+            0.0009830573417532803,
+            0.0008067995634646,
+            0.0006907551134847212,
+            0.0006130342610229008,
+            0.0005592344785089189,
+            0.0005200837891531893,
+            0.000490055803188365
+          ],
+          "baseline_increment_L1": [
+            0.00336450785990976,
+            0.006635068063607506,
+            0.009816269263133481,
+            0.012912402490068219,
+            0.01592757155141767,
+            0.018865507564930856,
+            0.021729580626604673,
+            0.02452298424550344
+          ],
+          "maximum_relative_increment_L1": 0.0012564058313523044
+        }
+      ],
+      "maximum_producer_comparison_discrepancy": 7.952839775615672e-15,
+      "GL48_to64_maximum_absolute_increment_error_change": 9.621956192172555e-06,
+      "GL48_to64_maximum_relative_baseline_increment_change": 0.0007926204960586603,
+      "quadrature_refinement_status": "passed",
+      "finest_common_cube_and_moment_1percent_status": "passed"
+    },
+    {
+      "case": "kernel02",
+      "whole_quadrature_moment_increment_errors": {
+        "anisotropy": 0.004709254233749701,
+        "mu_second": 0.003953685337693409,
+        "speed_fourth": 0.004643240668219007,
+        "fourth_cumulant": 0.007725668441829969
+      },
+      "common_cube_quadratures": [
+        {
+          "order": 32,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.005538712651266671,
+            0.005431900187882036,
+            0.005330417529698989,
+            0.005233470056084005,
+            0.005140700235026175,
+            0.005051776848783879,
+            0.0049664014527309045,
+            0.004885113805750517
+          ],
+          "baseline_increment_L1": [
+            0.003364169639066726,
+            0.0066343379980153975,
+            0.009815044627466914,
+            0.012910479138343261,
+            0.015924494671946902,
+            0.018860669985060613,
+            0.021722296658589275,
+            0.024512436555742156
+          ],
+          "maximum_relative_increment_L1": 0.005538712651266671
+        },
+        {
+          "order": 48,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.005537906835031134,
+            0.005431539809815282,
+            0.005330101435999236,
+            0.00523312054661907,
+            0.00514054776538643,
+            0.00505196817615282,
+            0.004967247005891861,
+            0.004885965986995464
+          ],
+          "baseline_increment_L1": [
+            0.003367176753218213,
+            0.006640171033387702,
+            0.009823457294958766,
+            0.012921168989380592,
+            0.015937133602463786,
+            0.018875750562144224,
+            0.021739808211748247,
+            0.02453287550356402
+          ],
+          "maximum_relative_increment_L1": 0.005537906835031134
+        },
+        {
+          "order": 64,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.005540519143620531,
+            0.00543283886642715,
+            0.005330810905801191,
+            0.0052336954658357875,
+            0.005140790993086572,
+            0.005051878174958621,
+            0.0049669154319561745,
+            0.004885645263171506
+          ],
+          "baseline_increment_L1": [
+            0.00336450785990976,
+            0.006635068063607506,
+            0.009816269263133481,
+            0.012912402490068219,
+            0.01592757155141767,
+            0.018865507564930856,
+            0.021729580626604673,
+            0.02452298424550344
+          ],
+          "maximum_relative_increment_L1": 0.005540519143620531
+        }
+      ],
+      "maximum_producer_comparison_discrepancy": 1.6479873021779667e-15,
+      "GL48_to64_maximum_absolute_increment_error_change": 2.612308589397018e-06,
+      "GL48_to64_maximum_relative_baseline_increment_change": 0.0007926204960586603,
+      "quadrature_refinement_status": "passed",
+      "finest_common_cube_and_moment_1percent_status": "passed"
+    },
+    {
+      "case": "kernel01",
+      "whole_quadrature_moment_increment_errors": {
+        "anisotropy": 0.0011904574909664348,
+        "mu_second": 0.000998156304302938,
+        "speed_fourth": 0.0011734306715864178,
+        "fourth_cumulant": 0.0019590969432822947
+      },
+      "common_cube_quadratures": [
+        {
+          "order": 32,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.0014020563429850996,
+            0.0013748174441982,
+            0.0013489501490975566,
+            0.0013242480320374062,
+            0.001300618661603838,
+            0.0012779762815410742,
+            0.0012562438325175798,
+            0.0012355506724388557
+          ],
+          "baseline_increment_L1": [
+            0.003364169639066726,
+            0.0066343379980153975,
+            0.009815044627466914,
+            0.012910479138343261,
+            0.015924494671946902,
+            0.018860669985060613,
+            0.021722296658589275,
+            0.024512436555742156
+          ],
+          "maximum_relative_increment_L1": 0.0014020563429850996
+        },
+        {
+          "order": 48,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.0014018444300267895,
+            0.001374722852814842,
+            0.0013488679787123817,
+            0.0013241581460917613,
+            0.001300575252662948,
+            0.001278017840710988,
+            0.0012564511230155186,
+            0.0012357619301699941
+          ],
+          "baseline_increment_L1": [
+            0.003367176753218213,
+            0.006640171033387702,
+            0.009823457294958766,
+            0.012921168989380592,
+            0.015937133602463786,
+            0.018875750562144224,
+            0.021739808211748247,
+            0.02453287550356402
+          ],
+          "maximum_relative_increment_L1": 0.0014018444300267895
+        },
+        {
+          "order": 64,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.0014025211637962334,
+            0.0013750596363850387,
+            0.0013490506931198307,
+            0.0013243059665375642,
+            0.0013006401814731861,
+            0.0012779974021852136,
+            0.0012563673193057056,
+            0.0012356830931740514
+          ],
+          "baseline_increment_L1": [
+            0.00336450785990976,
+            0.006635068063607506,
+            0.009816269263133481,
+            0.012912402490068219,
+            0.01592757155141767,
+            0.018865507564930856,
+            0.021729580626604673,
+            0.02452298424550344
+          ],
+          "maximum_relative_increment_L1": 0.0014025211637962334
+        }
+      ],
+      "maximum_producer_comparison_discrepancy": 1.7008963681952594e-15,
+      "GL48_to64_maximum_absolute_increment_error_change": 6.767337694438789e-07,
+      "GL48_to64_maximum_relative_baseline_increment_change": 0.0007926204960586603,
+      "quadrature_refinement_status": "passed",
+      "finest_common_cube_and_moment_1percent_status": "passed"
+    },
+    {
+      "case": "tolerance",
+      "whole_quadrature_moment_increment_errors": {
+        "anisotropy": 4.085926560867854e-14,
+        "mu_second": 6.925074576178043e-14,
+        "speed_fourth": 2.7627905772534394e-13,
+        "fourth_cumulant": 7.736336065573552e-13
+      },
+      "common_cube_quadratures": [
+        {
+          "order": 32,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            4.0810516410683525e-14,
+            3.0015231404692165e-14,
+            2.1327993179549703e-14,
+            2.1018591348816565e-14,
+            1.6019953466293728e-14,
+            1.6202482181142956e-14,
+            1.545120694419693e-14,
+            1.3903548635497412e-14
+          ],
+          "baseline_increment_L1": [
+            0.003364169639066726,
+            0.0066343379980153975,
+            0.009815044627466914,
+            0.012910479138343261,
+            0.015924494671946902,
+            0.018860669985060613,
+            0.021722296658589275,
+            0.024512436555742156
+          ],
+          "maximum_relative_increment_L1": 4.0810516410683525e-14
+        },
+        {
+          "order": 48,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            4.0703786496971723e-14,
+            3.049222086649637e-14,
+            2.1100689632819648e-14,
+            2.0689673729596398e-14,
+            1.6254969446494293e-14,
+            1.6398041523765025e-14,
+            1.5406074005987405e-14,
+            1.396071690904717e-14
+          ],
+          "baseline_increment_L1": [
+            0.003367176753218213,
+            0.006640171033387702,
+            0.009823457294958766,
+            0.012921168989380592,
+            0.015937133602463786,
+            0.018875750562144224,
+            0.021739808211748247,
+            0.02453287550356402
+          ],
+          "maximum_relative_increment_L1": 4.0703786496971723e-14
+        },
+        {
+          "order": 64,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            4.004722677570954e-14,
+            2.88475286021107e-14,
+            2.1547282413128385e-14,
+            2.0761402322779212e-14,
+            1.6308222840977042e-14,
+            1.643411548785902e-14,
+            1.504346031721455e-14,
+            1.3747959714345235e-14
+          ],
+          "baseline_increment_L1": [
+            0.00336450785990976,
+            0.006635068063607506,
+            0.009816269263133481,
+            0.012912402490068219,
+            0.01592757155141767,
+            0.018865507564930856,
+            0.021729580626604673,
+            0.02452298424550344
+          ],
+          "maximum_relative_increment_L1": 4.004722677570954e-14
+        }
+      ],
+      "maximum_producer_comparison_discrepancy": 4.114342092261027e-16,
+      "GL48_to64_maximum_absolute_increment_error_change": 1.6446922643856666e-15,
+      "GL48_to64_maximum_relative_baseline_increment_change": 0.0007926204960586603,
+      "quadrature_refinement_status": "passed",
+      "finest_common_cube_and_moment_1percent_status": "passed"
+    },
+    {
+      "case": "nonlinear_tolerance",
+      "whole_quadrature_moment_increment_errors": {
+        "anisotropy": 0.0,
+        "mu_second": 0.0,
+        "speed_fourth": 0.0,
+        "fourth_cumulant": 0.0
+      },
+      "common_cube_quadratures": [
+        {
+          "order": 32,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "baseline_increment_L1": [
+            0.003364169639066726,
+            0.0066343379980153975,
+            0.009815044627466914,
+            0.012910479138343261,
+            0.015924494671946902,
+            0.018860669985060613,
+            0.021722296658589275,
+            0.024512436555742156
+          ],
+          "maximum_relative_increment_L1": 0.0
+        },
+        {
+          "order": 48,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "baseline_increment_L1": [
+            0.003367176753218213,
+            0.006640171033387702,
+            0.009823457294958766,
+            0.012921168989380592,
+            0.015937133602463786,
+            0.018875750562144224,
+            0.021739808211748247,
+            0.02453287550356402
+          ],
+          "maximum_relative_increment_L1": 0.0
+        },
+        {
+          "order": 64,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "baseline_increment_L1": [
+            0.00336450785990976,
+            0.006635068063607506,
+            0.009816269263133481,
+            0.012912402490068219,
+            0.01592757155141767,
+            0.018865507564930856,
+            0.021729580626604673,
+            0.02452298424550344
+          ],
+          "maximum_relative_increment_L1": 0.0
+        }
+      ],
+      "maximum_producer_comparison_discrepancy": 4.0497358735356123e-16,
+      "GL48_to64_maximum_absolute_increment_error_change": 0.0,
+      "GL48_to64_maximum_relative_baseline_increment_change": 0.0007926204960586603,
+      "quadrature_refinement_status": "passed",
+      "finest_common_cube_and_moment_1percent_status": "passed"
+    },
+    {
+      "case": "linear_tolerance",
+      "whole_quadrature_moment_increment_errors": {
+        "anisotropy": 4.085926560867854e-14,
+        "mu_second": 6.925074576178043e-14,
+        "speed_fourth": 2.7627905772534394e-13,
+        "fourth_cumulant": 7.736336065573552e-13
+      },
+      "common_cube_quadratures": [
+        {
+          "order": 32,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            4.0810516410683525e-14,
+            3.0015231404692165e-14,
+            2.1327993179549703e-14,
+            2.1018591348816565e-14,
+            1.6019953466293728e-14,
+            1.6202482181142956e-14,
+            1.545120694419693e-14,
+            1.3903548635497412e-14
+          ],
+          "baseline_increment_L1": [
+            0.003364169639066726,
+            0.0066343379980153975,
+            0.009815044627466914,
+            0.012910479138343261,
+            0.015924494671946902,
+            0.018860669985060613,
+            0.021722296658589275,
+            0.024512436555742156
+          ],
+          "maximum_relative_increment_L1": 4.0810516410683525e-14
+        },
+        {
+          "order": 48,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            4.0703786496971723e-14,
+            3.049222086649637e-14,
+            2.1100689632819648e-14,
+            2.0689673729596398e-14,
+            1.6254969446494293e-14,
+            1.6398041523765025e-14,
+            1.5406074005987405e-14,
+            1.396071690904717e-14
+          ],
+          "baseline_increment_L1": [
+            0.003367176753218213,
+            0.006640171033387702,
+            0.009823457294958766,
+            0.012921168989380592,
+            0.015937133602463786,
+            0.018875750562144224,
+            0.021739808211748247,
+            0.02453287550356402
+          ],
+          "maximum_relative_increment_L1": 4.0703786496971723e-14
+        },
+        {
+          "order": 64,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            4.004722677570954e-14,
+            2.88475286021107e-14,
+            2.1547282413128385e-14,
+            2.0761402322779212e-14,
+            1.6308222840977042e-14,
+            1.643411548785902e-14,
+            1.504346031721455e-14,
+            1.3747959714345235e-14
+          ],
+          "baseline_increment_L1": [
+            0.00336450785990976,
+            0.006635068063607506,
+            0.009816269263133481,
+            0.012912402490068219,
+            0.01592757155141767,
+            0.018865507564930856,
+            0.021729580626604673,
+            0.02452298424550344
+          ],
+          "maximum_relative_increment_L1": 4.004722677570954e-14
+        }
+      ],
+      "maximum_producer_comparison_discrepancy": 4.774279346648902e-16,
+      "GL48_to64_maximum_absolute_increment_error_change": 1.6446922643856666e-15,
+      "GL48_to64_maximum_relative_baseline_increment_change": 0.0007926204960586603,
+      "quadrature_refinement_status": "passed",
+      "finest_common_cube_and_moment_1percent_status": "passed"
+    },
+    {
+      "case": "grid20",
+      "whole_quadrature_moment_increment_errors": {
+        "anisotropy": 0.001169871332587446,
+        "mu_second": 0.0008088232465136235,
+        "speed_fourth": 0.001253929384719619,
+        "fourth_cumulant": 0.0029647303594411154
+      },
+      "common_cube_quadratures": [
+        {
+          "order": 32,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.0032939780028868764,
+            0.002840712106184583,
+            0.0025120570904127136,
+            0.002281847826607462,
+            0.0021156532788019922,
+            0.001986566719739042,
+            0.0018867721078127738,
+            0.0018073908051339938
+          ],
+          "baseline_increment_L1": [
+            0.003364169639066726,
+            0.0066343379980153975,
+            0.009815044627466914,
+            0.012910479138343261,
+            0.015924494671946902,
+            0.018860669985060613,
+            0.021722296658589275,
+            0.024512436555742156
+          ],
+          "maximum_relative_increment_L1": 0.0032939780028868764
+        },
+        {
+          "order": 48,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.003303316997471875,
+            0.002857029421029855,
+            0.002537364901054845,
+            0.0023062627468068125,
+            0.0021385092138929765,
+            0.002011528440680365,
+            0.0019118313076397935,
+            0.0018307877345549114
+          ],
+          "baseline_increment_L1": [
+            0.003367176753218213,
+            0.006640171033387702,
+            0.009823457294958766,
+            0.012921168989380592,
+            0.015937133602463786,
+            0.018875750562144224,
+            0.021739808211748247,
+            0.02453287550356402
+          ],
+          "maximum_relative_increment_L1": 0.003303316997471875
+        },
+        {
+          "order": 64,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.003311789097280606,
+            0.0028560855381386573,
+            0.0025361264200325804,
+            0.0023095851443037173,
+            0.002141449668074619,
+            0.002013218737806758,
+            0.0019128005712671927,
+            0.0018310680785403632
+          ],
+          "baseline_increment_L1": [
+            0.00336450785990976,
+            0.006635068063607506,
+            0.009816269263133481,
+            0.012912402490068219,
+            0.01592757155141767,
+            0.018865507564930856,
+            0.021729580626604673,
+            0.02452298424550344
+          ],
+          "maximum_relative_increment_L1": 0.003311789097280606
+        }
+      ],
+      "maximum_producer_comparison_discrepancy": 6.571132527000145e-15,
+      "GL48_to64_maximum_absolute_increment_error_change": 8.472099808730978e-06,
+      "GL48_to64_maximum_relative_baseline_increment_change": 0.0007926204960586603,
+      "quadrature_refinement_status": "passed",
+      "finest_common_cube_and_moment_1percent_status": "passed"
+    }
+  ],
+  "gates": {
+    "three_grid_and_time_levels": {
+      "status": "passed",
+      "required_completed_names": [
+        "baseline",
+        "grid12",
+        "grid20",
+        "dt_coarse",
+        "dt_fine",
+        "kernel02",
+        "kernel01"
+      ],
+      "reason": "Three-level claims need both the coarse and fine trajectories completed; coarse accuracy need not meet the finest 1% target."
+    },
+    "same_physical_initial_density": {
+      "status": "passed",
+      "maximum_absolute_discrepancy": 2.0816681711721685e-17
+    },
+    "whole_quadrature_saved_diagnostics": {
+      "status": "passed",
+      "maximum_absolute_discrepancy": 0.0
+    },
+    "independent_comparator_agreement": {
+      "status": "passed",
+      "maximum_absolute_discrepancy": 2.474756510828513e-14
+    },
+    "plotted_saved_state_arrays": {
+      "status": "passed",
+      "maximum_absolute_discrepancy": 2.7755575615628914e-17
+    },
+    "quadrature_figure_arrays": {
+      "status": "passed",
+      "maximum_scaled_discrepancy": 6.7070243207933265e-15,
+      "scope": "Reference_curve displays exp(-z\u00b2/2) functionvalues; q are integrationweights. Physical axisweights independently reconstruct the fixed volume quadrature."
+    },
+    "required_media_assets": {
+      "status": "passed",
+      "required": [
+        "trajectory.png",
+        "convergence.png",
+        "quadrature.png",
+        "trajectory.gif",
+        "trajectory.mp4",
+        "four_operator_comparison.png"
+      ]
+    },
+    "source_and_output_checksums": {
+      "status": "passed",
+      "captured_producer_commit": "4304054b7fb2761254859a005c546758edfda796",
+      "verified_committed_source_sha256": {
+        "examples/31_landau_trajectory.py": "a7fd7a8eabee82ebf8b80c4e9d7e39ade72cf7aaf7e730491104e3619465d1e1",
+        "src/sato_morrison/controls.py": "90d32edf198a9734a8e8ebc4eee670256f82261dd5e8cf9c86eaaf49212e9ecb",
+        "src/sato_morrison/solver.py": "2823a80258f21851131e0e0cd10a8101af8bcf9b8f8aefcf49eada752751add0"
+      }
+    },
+    "convergence_display_arrays": {
+      "status": "passed"
+    },
+    "four_operator_comparison_gate": {
+      "status": "passed"
+    },
+    "four_operator_array_agreement": {
+      "status": "passed"
+    },
+    "expanded_shared_time_comparison": {
+      "status": "passed"
+    }
+  },
+  "media": {
+    "convergence.png": {
+      "status": "passed",
+      "dimensions": [
+        2160,
+        1206
+      ],
+      "mode": "RGBA"
+    },
+    "four_operator_comparison.png": {
+      "status": "passed",
+      "dimensions": [
+        1800,
+        720
+      ],
+      "mode": "RGBA"
+    },
+    "quadrature.png": {
+      "status": "passed",
+      "dimensions": [
+        2160,
+        828
+      ],
+      "mode": "RGBA"
+    },
+    "trajectory.png": {
+      "status": "passed",
+      "dimensions": [
+        2340,
+        810
+      ],
+      "mode": "RGBA"
+    },
+    "trajectory.gif": {
+      "status": "passed",
+      "decoded_distinct_frames": 9,
+      "total_duration_s": 4.96,
+      "producer_duration_s": 5.0,
+      "dimensions": [
+        1300,
+        450
+      ],
+      "first_last_pixel_RMS_change": 27.610547862662074
+    },
+    "trajectory.mp4": {
+      "status": "passed",
+      "decoded_frames": 15,
+      "duration_s": 5.0,
+      "producer_frames": 15,
+      "producer_duration_s": 5.0,
+      "dimensions": [
+        1300,
+        450
+      ],
+      "codec": "h264",
+      "decode_stderr": ""
+    }
+  },
+  "expanded_comparisons": [
+    {
+      "case": "dt_coarse",
+      "extent": 5.0,
+      "common_cube_quadratures": [
+        {
+          "order": 48,
+          "shared_times": [
+            0.05,
+            0.1,
+            0.15000000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.011759171456354453,
+            0.011145194403339748,
+            0.010605940460926442,
+            0.010128239642535524
+          ],
+          "baseline_increment_L1": [
+            0.00662805952299548,
+            0.012897567372681391,
+            0.018846196821132602,
+            0.02449879122961445
+          ],
+          "maximum_relative_increment_L1": 0.011759171456354453
+        },
+        {
+          "order": 64,
+          "shared_times": [
+            0.05,
+            0.1,
+            0.15000000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.011717869252616444,
+            0.011098304743760987,
+            0.010565736701598485,
+            0.010092565415331179
+          ],
+          "baseline_increment_L1": [
+            0.006640735382127859,
+            0.012923373527971231,
+            0.018882868515723232,
+            0.02454638267412797
+          ],
+          "maximum_relative_increment_L1": 0.011717869252616444
+        }
+      ],
+      "maximum_producer_discrepancy": 1.6479873021779667e-16,
+      "GL48_to64_absolute_error_change": 4.688965957876101e-05,
+      "GL48_to64_baseline_increment_relative_change": 0.002000854466905233,
+      "status": "unresolved"
+    },
+    {
+      "case": "dt_fine",
+      "extent": 5.0,
+      "common_cube_quadratures": [
+        {
+          "order": 48,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.0062834963279795085,
+            0.006082485394754301,
+            0.005905562236984162,
+            0.005743597606280928,
+            0.0055924930063267885,
+            0.005451462312371898,
+            0.005319509595888563,
+            0.005195466925469859
+          ],
+          "baseline_increment_L1": [
+            0.0033611374874396678,
+            0.00662805952299548,
+            0.009805361856271778,
+            0.012897567372681391,
+            0.015910453839379515,
+            0.018846196821132602,
+            0.021707970753979927,
+            0.02449879122961445
+          ],
+          "maximum_relative_increment_L1": 0.0062834963279795085
+        },
+        {
+          "order": 64,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.006264028454968512,
+            0.0060608967902388705,
+            0.005882308276686111,
+            0.005719336113372044,
+            0.005569988255325182,
+            0.00543101491107077,
+            0.00530026907598477,
+            0.005177023428438911
+          ],
+          "baseline_increment_L1": [
+            0.0033676430614193436,
+            0.006640735382127859,
+            0.009824241874479969,
+            0.012923373527971231,
+            0.01594187940807494,
+            0.018882868515723232,
+            0.021750105226769626,
+            0.02454638267412797
+          ],
+          "maximum_relative_increment_L1": 0.006264028454968512
+        }
+      ],
+      "maximum_producer_discrepancy": 2.5240226575462543e-16,
+      "GL48_to64_absolute_error_change": 2.4261492908884096e-05,
+      "GL48_to64_baseline_increment_relative_change": 0.002000854466905233,
+      "status": "passed"
+    },
+    {
+      "case": "tail_narrow",
+      "extent": 5.0,
+      "common_cube_quadratures": [
+        {
+          "order": 48,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.0010729682269878956,
+            0.0007797403568517656,
+            0.0006044092782331526,
+            0.0004968220086157252,
+            0.00042868458712499,
+            0.00038398264068649143,
+            0.0003517626719421138,
+            0.0003281511307836348
+          ],
+          "baseline_increment_L1": [
+            0.0033611374874396678,
+            0.00662805952299548,
+            0.009805361856271778,
+            0.012897567372681391,
+            0.015910453839379515,
+            0.018846196821132602,
+            0.021707970753979927,
+            0.02449879122961445
+          ],
+          "maximum_relative_increment_L1": 0.0010729682269878956
+        },
+        {
+          "order": 64,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.0010816666036622803,
+            0.0007814479146382514,
+            0.0006046249685885221,
+            0.0004983253532059985,
+            0.0004302565102424026,
+            0.0003847699353030638,
+            0.00035296169935806137,
+            0.0003294258823687582
+          ],
+          "baseline_increment_L1": [
+            0.0033676430614193436,
+            0.006640735382127859,
+            0.009824241874479969,
+            0.012923373527971231,
+            0.01594187940807494,
+            0.018882868515723232,
+            0.021750105226769626,
+            0.02454638267412797
+          ],
+          "maximum_relative_increment_L1": 0.0010816666036622803
+        }
+      ],
+      "maximum_producer_discrepancy": 1.0224026486538307e-15,
+      "GL48_to64_absolute_error_change": 8.698376674384735e-06,
+      "GL48_to64_baseline_increment_relative_change": 0.002000854466905233,
+      "status": "passed"
+    },
+    {
+      "case": "tail_wide",
+      "extent": 5.0,
+      "common_cube_quadratures": [
+        {
+          "order": 48,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.0013161221281306641,
+            0.001028332495502425,
+            0.0008416343255656694,
+            0.0007170102010128031,
+            0.0006361513637137623,
+            0.0005784309507818827,
+            0.0005372829079996278,
+            0.0005050282433077663
+          ],
+          "baseline_increment_L1": [
+            0.0033611374874396678,
+            0.00662805952299548,
+            0.009805361856271778,
+            0.012897567372681391,
+            0.015910453839379515,
+            0.018846196821132602,
+            0.021707970753979927,
+            0.02449879122961445
+          ],
+          "maximum_relative_increment_L1": 0.0013161221281306641
+        },
+        {
+          "order": 64,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.0013277752824157238,
+            0.001035924516158825,
+            0.0008471470732715475,
+            0.000723645995804339,
+            0.0006402263686394192,
+            0.0005817863719236963,
+            0.0005395130265802622,
+            0.0005070609459785696
+          ],
+          "baseline_increment_L1": [
+            0.0033676430614193436,
+            0.006640735382127859,
+            0.009824241874479969,
+            0.012923373527971231,
+            0.01594187940807494,
+            0.018882868515723232,
+            0.021750105226769626,
+            0.02454638267412797
+          ],
+          "maximum_relative_increment_L1": 0.0013277752824157238
+        }
+      ],
+      "maximum_producer_discrepancy": 5.877026296174925e-15,
+      "GL48_to64_absolute_error_change": 1.1653154285059695e-05,
+      "GL48_to64_baseline_increment_relative_change": 0.002000854466905233,
+      "status": "passed"
+    },
+    {
+      "case": "kernel02",
+      "extent": 5.0,
+      "common_cube_quadratures": [
+        {
+          "order": 48,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.005535319611253961,
+            0.00542924121556619,
+            0.005328026272631727,
+            0.005231145324765808,
+            0.005137948025291651,
+            0.005049879891493314,
+            0.004965272015197307,
+            0.004883914640101424
+          ],
+          "baseline_increment_L1": [
+            0.0033611374874396678,
+            0.00662805952299548,
+            0.009805361856271778,
+            0.012897567372681391,
+            0.015910453839379515,
+            0.018846196821132602,
+            0.021707970753979927,
+            0.02449879122961445
+          ],
+          "maximum_relative_increment_L1": 0.005535319611253961
+        },
+        {
+          "order": 64,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.005540786016726695,
+            0.005433218997651623,
+            0.005330942635399494,
+            0.005233179081634087,
+            0.005140106775435543,
+            0.00505108153422201,
+            0.0049661949842275364,
+            0.004884696321840231
+          ],
+          "baseline_increment_L1": [
+            0.0033676430614193436,
+            0.006640735382127859,
+            0.009824241874479969,
+            0.012923373527971231,
+            0.01594187940807494,
+            0.018882868515723232,
+            0.021750105226769626,
+            0.02454638267412797
+          ],
+          "maximum_relative_increment_L1": 0.005540786016726695
+        }
+      ],
+      "maximum_producer_discrepancy": 3.851086116668512e-15,
+      "GL48_to64_absolute_error_change": 5.466405472734359e-06,
+      "GL48_to64_baseline_increment_relative_change": 0.002000854466905233,
+      "status": "passed"
+    },
+    {
+      "case": "kernel01",
+      "extent": 5.0,
+      "common_cube_quadratures": [
+        {
+          "order": 48,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.0014011929944505272,
+            0.0013741439281291473,
+            0.0013483454108890267,
+            0.0013236608508000146,
+            0.0012999115290963925,
+            0.0012774866349294397,
+            0.0012559492630185918,
+            0.0012352444982274104
+          ],
+          "baseline_increment_L1": [
+            0.0033611374874396678,
+            0.00662805952299548,
+            0.009805361856271778,
+            0.012897567372681391,
+            0.015910453839379515,
+            0.018846196821132602,
+            0.021707970753979927,
+            0.02449879122961445
+          ],
+          "maximum_relative_increment_L1": 0.0014011929944505272
+        },
+        {
+          "order": 64,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.0014025889723778264,
+            0.0013751563999277164,
+            0.0013490871955704478,
+            0.0013241743743297263,
+            0.001300463616447396,
+            0.0012777941672043652,
+            0.0012561815198808273,
+            0.0012354410326203243
+          ],
+          "baseline_increment_L1": [
+            0.0033676430614193436,
+            0.006640735382127859,
+            0.009824241874479969,
+            0.012923373527971231,
+            0.01594187940807494,
+            0.018882868515723232,
+            0.021750105226769626,
+            0.02454638267412797
+          ],
+          "maximum_relative_increment_L1": 0.0014025889723778264
+        }
+      ],
+      "maximum_producer_discrepancy": 1.2945373939476923e-16,
+      "GL48_to64_absolute_error_change": 1.3959779272992075e-06,
+      "GL48_to64_baseline_increment_relative_change": 0.002000854466905233,
+      "status": "passed"
+    },
+    {
+      "case": "tolerance",
+      "extent": 5.0,
+      "common_cube_quadratures": [
+        {
+          "order": 48,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            4.52894485807095e-14,
+            3.086150554094076e-14,
+            2.2199984144333707e-14,
+            2.1509565196860312e-14,
+            1.7372752652415518e-14,
+            1.710597413279848e-14,
+            1.6334448847659854e-14,
+            1.4858531351665996e-14
+          ],
+          "baseline_increment_L1": [
+            0.0033611374874396678,
+            0.00662805952299548,
+            0.009805361856271778,
+            0.012897567372681391,
+            0.015910453839379515,
+            0.018846196821132602,
+            0.021707970753979927,
+            0.02449879122961445
+          ],
+          "maximum_relative_increment_L1": 4.52894485807095e-14
+        },
+        {
+          "order": 64,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            4.3188164064952686e-14,
+            3.1395281016433823e-14,
+            2.3084694480047062e-14,
+            2.164627153092537e-14,
+            1.7367877753542804e-14,
+            1.739645209376855e-14,
+            1.5556902863696856e-14,
+            1.431026317382385e-14
+          ],
+          "baseline_increment_L1": [
+            0.0033676430614193436,
+            0.006640735382127859,
+            0.009824241874479969,
+            0.012923373527971231,
+            0.01594187940807494,
+            0.018882868515723232,
+            0.021750105226769626,
+            0.02454638267412797
+          ],
+          "maximum_relative_increment_L1": 4.3188164064952686e-14
+        }
+      ],
+      "maximum_producer_discrepancy": 1.120761917037336e-15,
+      "GL48_to64_absolute_error_change": 2.1012845157568127e-15,
+      "GL48_to64_baseline_increment_relative_change": 0.002000854466905233,
+      "status": "passed"
+    },
+    {
+      "case": "nonlinear_tolerance",
+      "extent": 5.0,
+      "common_cube_quadratures": [
+        {
+          "order": 48,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "baseline_increment_L1": [
+            0.0033611374874396678,
+            0.00662805952299548,
+            0.009805361856271778,
+            0.012897567372681391,
+            0.015910453839379515,
+            0.018846196821132602,
+            0.021707970753979927,
+            0.02449879122961445
+          ],
+          "maximum_relative_increment_L1": 0.0
+        },
+        {
+          "order": 64,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "baseline_increment_L1": [
+            0.0033676430614193436,
+            0.006640735382127859,
+            0.009824241874479969,
+            0.012923373527971231,
+            0.01594187940807494,
+            0.018882868515723232,
+            0.021750105226769626,
+            0.02454638267412797
+          ],
+          "maximum_relative_increment_L1": 0.0
+        }
+      ],
+      "maximum_producer_discrepancy": 4.880482710172247e-16,
+      "GL48_to64_absolute_error_change": 0.0,
+      "GL48_to64_baseline_increment_relative_change": 0.002000854466905233,
+      "status": "passed"
+    },
+    {
+      "case": "linear_tolerance",
+      "extent": 5.0,
+      "common_cube_quadratures": [
+        {
+          "order": 48,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            4.52894485807095e-14,
+            3.086150554094076e-14,
+            2.2199984144333707e-14,
+            2.1509565196860312e-14,
+            1.7372752652415518e-14,
+            1.710597413279848e-14,
+            1.6334448847659854e-14,
+            1.4858531351665996e-14
+          ],
+          "baseline_increment_L1": [
+            0.0033611374874396678,
+            0.00662805952299548,
+            0.009805361856271778,
+            0.012897567372681391,
+            0.015910453839379515,
+            0.018846196821132602,
+            0.021707970753979927,
+            0.02449879122961445
+          ],
+          "maximum_relative_increment_L1": 4.52894485807095e-14
+        },
+        {
+          "order": 64,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            4.3188164064952686e-14,
+            3.1395281016433823e-14,
+            2.3084694480047062e-14,
+            2.164627153092537e-14,
+            1.7367877753542804e-14,
+            1.739645209376855e-14,
+            1.5556902863696856e-14,
+            1.431026317382385e-14
+          ],
+          "baseline_increment_L1": [
+            0.0033676430614193436,
+            0.006640735382127859,
+            0.009824241874479969,
+            0.012923373527971231,
+            0.01594187940807494,
+            0.018882868515723232,
+            0.021750105226769626,
+            0.02454638267412797
+          ],
+          "maximum_relative_increment_L1": 4.3188164064952686e-14
+        }
+      ],
+      "maximum_producer_discrepancy": 1.1490016156995785e-15,
+      "GL48_to64_absolute_error_change": 2.1012845157568127e-15,
+      "GL48_to64_baseline_increment_relative_change": 0.002000854466905233,
+      "status": "passed"
+    },
+    {
+      "case": "grid20",
+      "extent": 5.0,
+      "common_cube_quadratures": [
+        {
+          "order": 48,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.003450630534416337,
+            0.002959762580360447,
+            0.00262174199070979,
+            0.002380940659699409,
+            0.0022002618827259685,
+            0.002062762089798954,
+            0.0019543429755500396,
+            0.0018665077374782812
+          ],
+          "baseline_increment_L1": [
+            0.0033611374874396678,
+            0.00662805952299548,
+            0.009805361856271778,
+            0.012897567372681391,
+            0.015910453839379515,
+            0.018846196821132602,
+            0.021707970753979927,
+            0.02449879122961445
+          ],
+          "maximum_relative_increment_L1": 0.003450630534416337
+        },
+        {
+          "order": 64,
+          "shared_times": [
+            0.025,
+            0.05,
+            0.07500000000000001,
+            0.1,
+            0.125,
+            0.15000000000000002,
+            0.17500000000000002,
+            0.2
+          ],
+          "relative_increment_L1_errors": [
+            0.003437870734063517,
+            0.0029519613140494747,
+            0.0026098252070380235,
+            0.0023673710398225043,
+            0.0021899299875990253,
+            0.002056451699994244,
+            0.0019524530445292317,
+            0.0018679604470042959
+          ],
+          "baseline_increment_L1": [
+            0.0033676430614193436,
+            0.006640735382127859,
+            0.009824241874479969,
+            0.012923373527971231,
+            0.01594187940807494,
+            0.018882868515723232,
+            0.021750105226769626,
+            0.02454638267412797
+          ],
+          "maximum_relative_increment_L1": 0.003437870734063517
+        }
+      ],
+      "maximum_producer_discrepancy": 1.176836406102666e-14,
+      "GL48_to64_absolute_error_change": 1.3569619876904748e-05,
+      "GL48_to64_baseline_increment_relative_change": 0.002000854466905233,
+      "status": "passed"
+    }
+  ],
+  "independent_convergence_plot": {
+    "status": "passed",
+    "exact_saved_comparison_arrays_match_metadata": true,
+    "source_plot_series_match_declared_display_rule": true,
+    "display_lower": 1e-05,
+    "left_triangle_count": 18,
+    "plotted_series_count": 77,
+    "scope": "Values below the display lower bound use left triangles only for rendering; saved error values and acceptance criteria remain exact. Frozen plot block replayed without evolution solver.",
+    "plot_series": [
+      {
+        "axis": 0,
+        "x": 0.007775787407625759,
+        "y": 0.0,
+        "marker": "o"
+      },
+      {
+        "axis": 0,
+        "x": 0.014032448159062008,
+        "y": 1.0,
+        "marker": "o"
+      },
+      {
+        "axis": 1,
+        "x": 0.00948879605933,
+        "y": 0.9299999999999999,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.0024763106001814755,
+        "y": 0.895,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.0017672208238880445,
+        "y": 0.965,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.002838217289729432,
+        "y": 1.035,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.006221699981252147,
+        "y": 1.105,
+        "marker": "o"
+      },
+      {
+        "axis": 0,
+        "x": 0.007775787407625759,
+        "y": 2.0,
+        "marker": "o"
+      },
+      {
+        "axis": 1,
+        "x": 0.011706163290424412,
+        "y": 1.93,
+        "marker": "o"
+      },
+      {
+        "axis": 1,
+        "x": 0.011759171456354288,
+        "y": 2.07,
+        "marker": "s"
+      },
+      {
+        "axis": 2,
+        "x": 0.00976870364862749,
+        "y": 1.895,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.007376504603948908,
+        "y": 1.965,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.0062499424101622545,
+        "y": 2.035,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.017788058108169247,
+        "y": 2.105,
+        "marker": "o"
+      },
+      {
+        "axis": 0,
+        "x": 0.007775787407625759,
+        "y": 3.0,
+        "marker": "o"
+      },
+      {
+        "axis": 1,
+        "x": 0.006250397488819482,
+        "y": 2.93,
+        "marker": "o"
+      },
+      {
+        "axis": 1,
+        "x": 0.006283496327979256,
+        "y": 3.07,
+        "marker": "s"
+      },
+      {
+        "axis": 2,
+        "x": 0.005062599529834338,
+        "y": 2.895,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.0037870898425558202,
+        "y": 2.965,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.0034470475566016332,
+        "y": 3.035,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.009313788399199482,
+        "y": 3.105,
+        "marker": "o"
+      },
+      {
+        "axis": 0,
+        "x": 0.009190167248984991,
+        "y": 4.0,
+        "marker": "o"
+      },
+      {
+        "axis": 1,
+        "x": 0.0010125313582710453,
+        "y": 3.93,
+        "marker": "o"
+      },
+      {
+        "axis": 1,
+        "x": 0.0010729682269868732,
+        "y": 4.07,
+        "marker": "s"
+      },
+      {
+        "axis": 2,
+        "x": 0.00016017847479524215,
+        "y": 3.895,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.00010340400154493821,
+        "y": 3.965,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.0001375268229530228,
+        "y": 4.035,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.00041564560010438786,
+        "y": 4.105,
+        "marker": "o"
+      },
+      {
+        "axis": 0,
+        "x": 0.00670031985847481,
+        "y": 5.0,
+        "marker": "o"
+      },
+      {
+        "axis": 1,
+        "x": 0.0012660277875524298,
+        "y": 4.93,
+        "marker": "o"
+      },
+      {
+        "axis": 1,
+        "x": 0.0013161221281365412,
+        "y": 5.07,
+        "marker": "s"
+      },
+      {
+        "axis": 2,
+        "x": 0.00027599357407763215,
+        "y": 4.895,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.0001821735922914789,
+        "y": 4.965,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.00025674999642473755,
+        "y": 5.035,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.000715879351796507,
+        "y": 5.105,
+        "marker": "o"
+      },
+      {
+        "axis": 0,
+        "x": 0.012583421774583528,
+        "y": 6.0,
+        "marker": "o"
+      },
+      {
+        "axis": 1,
+        "x": 0.005537906835032782,
+        "y": 5.93,
+        "marker": "o"
+      },
+      {
+        "axis": 1,
+        "x": 0.00553531961125011,
+        "y": 6.07,
+        "marker": "s"
+      },
+      {
+        "axis": 2,
+        "x": 0.004709254233749701,
+        "y": 5.895,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.003953685337693409,
+        "y": 5.965,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.004643240668219007,
+        "y": 6.035,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.007725668441829969,
+        "y": 6.105,
+        "marker": "o"
+      },
+      {
+        "axis": 0,
+        "x": 0.00891083234254819,
+        "y": 7.0,
+        "marker": "o"
+      },
+      {
+        "axis": 1,
+        "x": 0.0014018444300284904,
+        "y": 6.93,
+        "marker": "o"
+      },
+      {
+        "axis": 1,
+        "x": 0.0014011929944506567,
+        "y": 7.07,
+        "marker": "s"
+      },
+      {
+        "axis": 2,
+        "x": 0.0011904574909664348,
+        "y": 6.895,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.000998156304302938,
+        "y": 6.965,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.0011734306715864178,
+        "y": 7.035,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.0019590969432822947,
+        "y": 7.105,
+        "marker": "o"
+      },
+      {
+        "axis": 0,
+        "x": 0.007775787407625759,
+        "y": 8.0,
+        "marker": "o"
+      },
+      {
+        "axis": 1,
+        "x": 1e-05,
+        "y": 7.93,
+        "marker": "<"
+      },
+      {
+        "axis": 1,
+        "x": 1e-05,
+        "y": 8.07,
+        "marker": "<"
+      },
+      {
+        "axis": 2,
+        "x": 1e-05,
+        "y": 7.895,
+        "marker": "<"
+      },
+      {
+        "axis": 2,
+        "x": 1e-05,
+        "y": 7.965,
+        "marker": "<"
+      },
+      {
+        "axis": 2,
+        "x": 1e-05,
+        "y": 8.035,
+        "marker": "<"
+      },
+      {
+        "axis": 2,
+        "x": 1e-05,
+        "y": 8.105,
+        "marker": "<"
+      },
+      {
+        "axis": 0,
+        "x": 0.007775787407625759,
+        "y": 9.0,
+        "marker": "o"
+      },
+      {
+        "axis": 1,
+        "x": 1e-05,
+        "y": 8.93,
+        "marker": "<"
+      },
+      {
+        "axis": 1,
+        "x": 1e-05,
+        "y": 9.07,
+        "marker": "<"
+      },
+      {
+        "axis": 2,
+        "x": 1e-05,
+        "y": 8.895,
+        "marker": "<"
+      },
+      {
+        "axis": 2,
+        "x": 1e-05,
+        "y": 8.965,
+        "marker": "<"
+      },
+      {
+        "axis": 2,
+        "x": 1e-05,
+        "y": 9.035,
+        "marker": "<"
+      },
+      {
+        "axis": 2,
+        "x": 1e-05,
+        "y": 9.105,
+        "marker": "<"
+      },
+      {
+        "axis": 0,
+        "x": 0.007775787407625759,
+        "y": 10.0,
+        "marker": "o"
+      },
+      {
+        "axis": 1,
+        "x": 1e-05,
+        "y": 9.93,
+        "marker": "<"
+      },
+      {
+        "axis": 1,
+        "x": 1e-05,
+        "y": 10.07,
+        "marker": "<"
+      },
+      {
+        "axis": 2,
+        "x": 1e-05,
+        "y": 9.895,
+        "marker": "<"
+      },
+      {
+        "axis": 2,
+        "x": 1e-05,
+        "y": 9.965,
+        "marker": "<"
+      },
+      {
+        "axis": 2,
+        "x": 1e-05,
+        "y": 10.035,
+        "marker": "<"
+      },
+      {
+        "axis": 2,
+        "x": 1e-05,
+        "y": 10.105,
+        "marker": "<"
+      },
+      {
+        "axis": 0,
+        "x": 0.004748134516881048,
+        "y": 11.0,
+        "marker": "o"
+      },
+      {
+        "axis": 1,
+        "x": 0.0033033169974784463,
+        "y": 10.93,
+        "marker": "o"
+      },
+      {
+        "axis": 1,
+        "x": 0.003450630534428105,
+        "y": 11.07,
+        "marker": "s"
+      },
+      {
+        "axis": 2,
+        "x": 0.001169871332587446,
+        "y": 10.895,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.0008088232465136235,
+        "y": 10.965,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.001253929384719619,
+        "y": 11.035,
+        "marker": "o"
+      },
+      {
+        "axis": 2,
+        "x": 0.0029647303594411154,
+        "y": 11.105,
+        "marker": "o"
+      }
+    ]
+  },
+  "four_operator_independent_arrays": {
+    "status": "passed",
+    "scope": "Frozen plot fragment only, no solver. Plotted Landau moments independently recomputed from all native saved densitynodes; Lorentz Legendre and OU formulas independently derived for same physicalGaussian.",
+    "source_sha256": "a7fd7a8eabee82ebf8b80c4e9d7e39ade72cf7aaf7e730491104e3619465d1e1",
+    "producer_commit": "4304054b7fb2761254859a005c546758edfda796",
+    "fragment_sha256": "d98236cf4b4fc0d61d22dfcb5dd81f9958e77dddcb653bd44b98fb482ab985f1",
+    "independent_initial_Landau_covariance_rate": [
+      -0.07403925375622351,
+      -0.07403925375622351,
+      0.14807850751244703
+    ],
+    "independent_alpha": 0.49359502504149017,
+    "maximum_alpha_discrepancy": 8.493206138382448e-15,
+    "angular_quadrature256_to384_maximum_rate_discrepancy": 3.164135620181696e-15,
+    "independent_radial_integrated_angular_r4_coefficients_P0_P2_P4": [
+      15.27000000000018,
+      -3.0150000000001267,
+      0.6074999999999378
+    ],
+    "angular_coefficient_maximum_discrepancy": 1.8118839761882555e-13,
+    "maximum_array_discrepancy_by_operator": {
+      "Constrained local": 1.7069679003611782e-15,
+      "Lorentz": 1.7069679003611782e-15,
+      "Dougherty": 1.7763568394002505e-15,
+      "Landau": 1.7069679003611782e-15
+    },
+    "array_artifact": "independent_four_operator_plot_arrays.npz",
+    "terminal_physical_time": 0.2,
+    "terminal_matched_time": 0.09871900500829804,
+    "terminal_scalar_table": {
+      "Constrained local": {
+        "anisotropy": 0.44999999999999996,
+        "mu_second": 2.6449999999999996,
+        "speed_fourth": 15.27,
+        "fourth_cumulant": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "Lorentz": {
+        "anisotropy": 0.40769876382728554,
+        "mu_second": 2.581281590293157,
+        "speed_fourth": 15.27,
+        "fourth_cumulant": [
+          0.0011187637763994118,
+          0.0011187637763994118,
+          0.002188083589623524
+        ]
+      },
+      "Dougherty": {
+        "anisotropy": 0.40769876382728554,
+        "mu_second": 2.5805357477755577,
+        "speed_fourth": 15.221624376035063,
+        "fourth_cumulant": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "Landau": {
+        "anisotropy": 0.40879571998870046,
+        "mu_second": 2.5958948062841127,
+        "speed_fourth": 15.245989234687558,
+        "fourth_cumulant": [
+          0.020545920385263372,
+          0.020545920385209193,
+          -0.0201600671351867
+        ]
+      }
+    },
+    "terminal_table_scope": "Same physical initial Gaussian and independently matched initial pressure slope. Landau values use whole native saved density; Lorentz fourth moments follow exact P2/P4 angular decay and conserve speed-fourth moment; Dougherty is the exact OU solution; constrained local initial log density lies in its nullspace. This is a moment comparison, not a full-density equivalence claim.",
+    "array_sha256": "56d644ac712aa485c92369410e1ca451bb629e7431f386c307d47bed74a80e4a",
+    "terminal_table_artifact": "four_operator_terminal_moments.csv"
+  },
+  "observed_cost_scope": "Recorded shared-machine costs paired with disagreement relative to measured baseline densityincrements, not a continuum finite-time error oracle; casewall includes startup/oracle/compilation, acceptedstep wall includes compiledsolve work; processpeakRSS is aggregate, not percase. No isolated speedup or equal-error speed ranking is inferred.",
+  "observed_matched_error_costs": [
+    {
+      "case": "baseline",
+      "case_wall_s": 26.35176995799975,
+      "accepted_step_wall_s": 25.69130437700005,
+      "newton_iterations": 24,
+      "pcg_iterations": 374,
+      "maximum_distribution_increment_error_primary": null,
+      "maximum_distribution_increment_error_expanded": null
+    },
+    {
+      "case": "grid12",
+      "case_wall_s": 4.454594290999921,
+      "accepted_step_wall_s": 4.296244375002061,
+      "newton_iterations": 24,
+      "pcg_iterations": 224,
+      "maximum_distribution_increment_error_primary": 0.00948879605933,
+      "maximum_distribution_increment_error_expanded": null
+    },
+    {
+      "case": "dt_coarse",
+      "case_wall_s": 14.940517457999704,
+      "accepted_step_wall_s": 14.687585541999397,
+      "newton_iterations": 12,
+      "pcg_iterations": 229,
+      "maximum_distribution_increment_error_primary": 0.011706163290424412,
+      "maximum_distribution_increment_error_expanded": 0.011759171456354288
+    },
+    {
+      "case": "dt_fine",
+      "case_wall_s": 26.180339958999866,
+      "accepted_step_wall_s": 25.857025336000333,
+      "newton_iterations": 32,
+      "pcg_iterations": 369,
+      "maximum_distribution_increment_error_primary": 0.006250397488819482,
+      "maximum_distribution_increment_error_expanded": 0.006283496327979256
+    },
+    {
+      "case": "tail_narrow",
+      "case_wall_s": 25.32306362500003,
+      "accepted_step_wall_s": 25.064905583000836,
+      "newton_iterations": 24,
+      "pcg_iterations": 411,
+      "maximum_distribution_increment_error_primary": 0.0010125313582710453,
+      "maximum_distribution_increment_error_expanded": 0.0010729682269868732
+    },
+    {
+      "case": "tail_wide",
+      "case_wall_s": 21.91143395800009,
+      "accepted_step_wall_s": 21.651717167001152,
+      "newton_iterations": 24,
+      "pcg_iterations": 341,
+      "maximum_distribution_increment_error_primary": 0.0012660277875524298,
+      "maximum_distribution_increment_error_expanded": 0.0013161221281365412
+    },
+    {
+      "case": "kernel02",
+      "case_wall_s": 23.326984291999906,
+      "accepted_step_wall_s": 23.065030831999138,
+      "newton_iterations": 24,
+      "pcg_iterations": 370,
+      "maximum_distribution_increment_error_primary": 0.005537906835032782,
+      "maximum_distribution_increment_error_expanded": 0.00553531961125011
+    },
+    {
+      "case": "kernel01",
+      "case_wall_s": 24.54221754199989,
+      "accepted_step_wall_s": 24.260911291998127,
+      "newton_iterations": 24,
+      "pcg_iterations": 372,
+      "maximum_distribution_increment_error_primary": 0.0014018444300284904,
+      "maximum_distribution_increment_error_expanded": 0.0014011929944506567
+    },
+    {
+      "case": "tolerance",
+      "case_wall_s": 37.587337292000484,
+      "accepted_step_wall_s": 37.300484042999415,
+      "newton_iterations": 24,
+      "pcg_iterations": 584,
+      "maximum_distribution_increment_error_primary": 4.1115220706197826e-14,
+      "maximum_distribution_increment_error_expanded": 4.416868666367216e-14
+    },
+    {
+      "case": "nonlinear_tolerance",
+      "case_wall_s": 27.61322695800027,
+      "accepted_step_wall_s": 27.332214875999853,
+      "newton_iterations": 24,
+      "pcg_iterations": 374,
+      "maximum_distribution_increment_error_primary": 4.0497358735356123e-16,
+      "maximum_distribution_increment_error_expanded": 4.880482710172247e-16
+    },
+    {
+      "case": "linear_tolerance",
+      "case_wall_s": 32.26899429099922,
+      "accepted_step_wall_s": 31.983078917999592,
+      "newton_iterations": 24,
+      "pcg_iterations": 584,
+      "maximum_distribution_increment_error_primary": 4.1181214431636613e-14,
+      "maximum_distribution_increment_error_expanded": 4.414044696500992e-14
+    },
+    {
+      "case": "grid20",
+      "case_wall_s": 1725.620013875001,
+      "accepted_step_wall_s": 1724.7601470010013,
+      "newton_iterations": 24,
+      "pcg_iterations": 1519,
+      "maximum_distribution_increment_error_primary": 0.0033033169974784463,
+      "maximum_distribution_increment_error_expanded": 0.003450630534428105
+    }
+  ],
+  "aggregate_process_peak_rss_bytes": 602128384,
+  "data_integrity_status": "passed",
+  "scientific_convergence_status": "passed",
+  "empirical_temporal_order": {
+    "status": "computed",
+    "case_names": [
+      "dt_coarse",
+      "baseline",
+      "dt_fine"
+    ],
+    "time_steps": [
+      0.05,
+      0.025,
+      0.0125
+    ],
+    "final_time": 0.2,
+    "scope": "Empirical finite-interval difference ratio and log2 ratio. This is not a temporal-order theorem or continuum error estimate.",
+    "native_density_L1": {
+      "coarse_medium_difference": 0.00024951147735912136,
+      "medium_fine_difference": 0.0001280240480697747,
+      "difference_ratio": 1.9489422582789644,
+      "observed_log2_order": 0.9626913482004175
+    },
+    "whole_quadrature_moment_maxnorm": {
+      "anisotropy": {
+        "coarse_medium_difference": 0.0003723343111498023,
+        "medium_fine_difference": 0.00018988194504976352,
+        "difference_ratio": 1.960872641431087,
+        "observed_log2_order": 0.9714958356103303
+      },
+      "mu_second": {
+        "coarse_medium_difference": 0.0003402995764729688,
+        "medium_fine_difference": 0.0001726278659237579,
+        "difference_ratio": 1.9712899458727255,
+        "observed_log2_order": 0.9791399898305386
+      },
+      "speed_fourth": {
+        "coarse_medium_difference": 0.00010887667201942008,
+        "medium_fine_difference": 5.648045550721292e-05,
+        "difference_ratio": 1.9276875698269789,
+        "observed_log2_order": 0.9468712455584066
+      },
+      "fourth_cumulant": {
+        "coarse_medium_difference": 0.0003356454649114937,
+        "medium_fine_difference": 0.00017250840184734884,
+        "difference_ratio": 1.9456760442804601,
+        "observed_log2_order": 0.9602715209019317
+      }
+    },
+    "boxes": [
+      {
+        "extent": 4.0,
+        "status": "computed",
+        "quadratures": [
+          {
+            "order": 32,
+            "coarse_medium_difference": 0.0002484471269253687,
+            "medium_fine_difference": 0.00012744180073709908,
+            "difference_ratio": 1.949494792826199,
+            "observed_log2_order": 0.9631003012480635
+          },
+          {
+            "order": 48,
+            "coarse_medium_difference": 0.00024776215505015306,
+            "medium_fine_difference": 0.0001270907631310532,
+            "difference_ratio": 1.9494898680769284,
+            "observed_log2_order": 0.9630966567549617
+          },
+          {
+            "order": 64,
+            "coarse_medium_difference": 0.00024796123225771934,
+            "medium_fine_difference": 0.00012719084226545823,
+            "difference_ratio": 1.9495211120640503,
+            "observed_log2_order": 0.9631197782827076
+          }
+        ]
+      },
+      {
+        "extent": 5.0,
+        "status": "computed",
+        "quadratures": [
+          {
+            "order": 32,
+            "coarse_medium_difference": 0.0002491361597019228,
+            "medium_fine_difference": 0.00012780848917360568,
+            "difference_ratio": 1.9492927372258857,
+            "observed_log2_order": 0.9629507652138118
+          },
+          {
+            "order": 48,
+            "coarse_medium_difference": 0.0002481296285259827,
+            "medium_fine_difference": 0.00012728265954745294,
+            "difference_ratio": 1.9494378056539285,
+            "observed_log2_order": 0.9630581281102838
+          },
+          {
+            "order": 64,
+            "coarse_medium_difference": 0.0002477359728483884,
+            "medium_fine_difference": 0.00012707719818738747,
+            "difference_ratio": 1.9494919338957886,
+            "observed_log2_order": 0.9630981855369752
+          }
+        ]
+      }
+    ]
+  },
+  "convergence_plot_auditor_source_sha256": "5f1de82d2e041dcf2eb186ad0b29cc4017f00006acccf6992d2005a02301281a",
+  "temporal_auditor_source_sha256": "0b1483cb12ec80bc6646cabfed6d6512276b84ff4d6aeed8be5bc0b26ef6c649",
+  "auditor_environment": {
+    "python": "3.13.7 (main, Aug 14 2025, 11:12:11) [Clang 17.0.0 (clang-1700.3.19.1)]",
+    "executable": "/Users/rogerio/base_env/bin/python",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "numpy": "2.5.1",
+    "PIL": "12.3.0",
+    "matplotlib": "3.11.1",
+    "ffmpeg_version": "ffmpeg version 8.1.2 Copyright (c) 2000-2026 the FFmpeg developers",
+    "ffprobe_version": "ffprobe version 8.1.2 Copyright (c) 2007-2026 the FFmpeg developers",
+    "scope": "Numerical audit and media decode only; no evolution solver executed."
+  },
+  "auditor_source_sha256": "f30ae67c2963dd5d95dba040462e79a25667e25ec8634783cc8dc7f84b70ea77",
+  "four_operator_auditor_source_sha256": "01cca5260e426204dd6fcc9ae0d64d5ec3eb6e4b65d46d1bebe64d08d28a8e4a",
+  "producer_summary_sha256": "b075d159ae78f8e54d3a13a06fce0dba6b120e79b83285630e55ed9e52b31613",
+  "visual_inspection": {
+    "status": "passed",
+    "inspected": [
+      "trajectory.png",
+      "convergence.png",
+      "quadrature.png",
+      "four_operator_comparison.png",
+      "trajectory.gif first and final accepted frames",
+      "trajectory.mp4 first and final accepted frames"
+    ],
+    "finding": "Labels and legends are readable; saved t=0 and t=.2 movie endpoints agree with independently checked saved-state plot arrays. Convergence rows and below-bound triangles are visible. The four-operator plot shows the common matched initial pressure slope and distinct moment histories. Full encoded-frame decode is recorded separately."
+  },
+  "producer_array_provenance": {
+    "baseline.npz": {
+      "file_sha256": "31b8728348ac0f3848e69dec22c9f7a0739158771f6b5ead340b3505cf13cf6a",
+      "arrays": {
+        "velocity": {
+          "shape": [
+            4096,
+            3
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "9a1bb13c894daf3ab6551b982ac36e48e9595e9b210a014a7e8e541b09717a31"
+        },
+        "weights": {
+          "shape": [
+            4096
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "8bf8f206ec169434fbcccb5b256560a27315c8792a33a9bb7d987da77b1245c4"
+        },
+        "derivative": {
+          "shape": [
+            16,
+            16
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "b1ffc5d27c752205fae46538a6fb9a74ad5a266d4d141cce26920538be4d91d9"
+        },
+        "density": {
+          "shape": [
+            9,
+            4096
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "4c7e0c4b2b810058110fb768dbb93bc46a01571f2747cef5cd9937473df9a6d3"
+        },
+        "time": {
+          "shape": [
+            9
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "6fea169327c56591c3fbc3e829e2fd6dd6fc848c60b2cd89a43db1049acc8877"
+        }
+      }
+    },
+    "grid12.npz": {
+      "file_sha256": "32ddc4d524f5456df63acf209434367a5a8cbebec7d499bf8e54823feacc6273",
+      "arrays": {
+        "velocity": {
+          "shape": [
+            1728,
+            3
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "d8fa00b647f7f83f6f678937f0ec99ad61d48e67509b5dcfa68d68da43eb7048"
+        },
+        "weights": {
+          "shape": [
+            1728
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "11259d28676e71d4fbd22c82cb63fe41dc7a3b417748598b2df2a3ed2ccefe8b"
+        },
+        "derivative": {
+          "shape": [
+            12,
+            12
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "94acec34f065e8cb79b9f1bf2e5c76c6d6bc821ed3f6284ac7e0f8a3d5f14200"
+        },
+        "density": {
+          "shape": [
+            9,
+            1728
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "be9ff407da616e169b8691cc627e9b2e42e6be7504577b17b33362badd4003fe"
+        },
+        "time": {
+          "shape": [
+            9
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "6fea169327c56591c3fbc3e829e2fd6dd6fc848c60b2cd89a43db1049acc8877"
+        }
+      }
+    },
+    "dt_coarse.npz": {
+      "file_sha256": "a4cb1fe05d3d11718621b778427c32933b3fdd014c4d817709bd455673e71942",
+      "arrays": {
+        "velocity": {
+          "shape": [
+            4096,
+            3
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "9a1bb13c894daf3ab6551b982ac36e48e9595e9b210a014a7e8e541b09717a31"
+        },
+        "weights": {
+          "shape": [
+            4096
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "8bf8f206ec169434fbcccb5b256560a27315c8792a33a9bb7d987da77b1245c4"
+        },
+        "derivative": {
+          "shape": [
+            16,
+            16
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "b1ffc5d27c752205fae46538a6fb9a74ad5a266d4d141cce26920538be4d91d9"
+        },
+        "density": {
+          "shape": [
+            5,
+            4096
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "37139061cabbc67d9fd5fccc52a601f820935f52929cce2251ca38f22caa1c57"
+        },
+        "time": {
+          "shape": [
+            5
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "6605d158052f96e0563498af53242cb155ebde9484a063e02d7bc04946469591"
+        }
+      }
+    },
+    "dt_fine.npz": {
+      "file_sha256": "667e9f6d64fb9b5aca02914f98500de5f5313193938bb0daabb716a98e4eae42",
+      "arrays": {
+        "velocity": {
+          "shape": [
+            4096,
+            3
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "9a1bb13c894daf3ab6551b982ac36e48e9595e9b210a014a7e8e541b09717a31"
+        },
+        "weights": {
+          "shape": [
+            4096
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "8bf8f206ec169434fbcccb5b256560a27315c8792a33a9bb7d987da77b1245c4"
+        },
+        "derivative": {
+          "shape": [
+            16,
+            16
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "b1ffc5d27c752205fae46538a6fb9a74ad5a266d4d141cce26920538be4d91d9"
+        },
+        "density": {
+          "shape": [
+            17,
+            4096
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "06b54460f0c3d29dfb5953561ff13b5cd28c3b8da1ec51497cbd5d127827002e"
+        },
+        "time": {
+          "shape": [
+            17
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "8137cf480ccf5f3d214cd2c292e558ccbd6f4749b0587782046a3cf7be347f1b"
+        }
+      }
+    },
+    "tail_narrow.npz": {
+      "file_sha256": "475fc14de88aeb8aba5cf1304b8b93300ccee22d950bda0fbe525244fe0064cc",
+      "arrays": {
+        "velocity": {
+          "shape": [
+            4096,
+            3
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "9b4e61a8eb60010c9afdddcad6818cab7d7547e9c58477bb7d986d8484b851f2"
+        },
+        "weights": {
+          "shape": [
+            4096
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "fe00fb7f7ccdf4bdb5ba50f08974028fd63c386ccd2f022f8c8208a576f2d127"
+        },
+        "derivative": {
+          "shape": [
+            16,
+            16
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "b62ad50572fb95ef9a6077118fff7bfbbab8279302f94eba4f46f5f52aa3162c"
+        },
+        "density": {
+          "shape": [
+            9,
+            4096
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "64ec82e5c9389bff0eee5c0227ac0a36de77d909494a0a4a2a9946abe6b276b9"
+        },
+        "time": {
+          "shape": [
+            9
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "6fea169327c56591c3fbc3e829e2fd6dd6fc848c60b2cd89a43db1049acc8877"
+        }
+      }
+    },
+    "tail_wide.npz": {
+      "file_sha256": "b6c0bc3bb42d33633bade60049ca4c8e09a561262a4ab9d730fbf102116953e9",
+      "arrays": {
+        "velocity": {
+          "shape": [
+            4096,
+            3
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "188d7fe8e683b754b0654d5d9c040bd02014448c99a9ca7969b58af1d4261472"
+        },
+        "weights": {
+          "shape": [
+            4096
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "cda1a9dd30a3781e63e63582ff7e30fa2c90199ffdf261b4fbc04601bb208418"
+        },
+        "derivative": {
+          "shape": [
+            16,
+            16
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "9facddcca49174fc2511011fadd29a133f71a3ac7c39bf2f7c42ee9b9c72f426"
+        },
+        "density": {
+          "shape": [
+            9,
+            4096
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "67f37e57bbe565d325463de7d602f982f3c289a1658892bef1056521a8348962"
+        },
+        "time": {
+          "shape": [
+            9
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "6fea169327c56591c3fbc3e829e2fd6dd6fc848c60b2cd89a43db1049acc8877"
+        }
+      }
+    },
+    "kernel02.npz": {
+      "file_sha256": "1e4fb5171222116ca2a62411caed25a9f97d9f185344bb8b7553647d2454ac34",
+      "arrays": {
+        "velocity": {
+          "shape": [
+            4096,
+            3
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "9a1bb13c894daf3ab6551b982ac36e48e9595e9b210a014a7e8e541b09717a31"
+        },
+        "weights": {
+          "shape": [
+            4096
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "8bf8f206ec169434fbcccb5b256560a27315c8792a33a9bb7d987da77b1245c4"
+        },
+        "derivative": {
+          "shape": [
+            16,
+            16
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "b1ffc5d27c752205fae46538a6fb9a74ad5a266d4d141cce26920538be4d91d9"
+        },
+        "density": {
+          "shape": [
+            9,
+            4096
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "c17edc2d4b89f58ddb62a120af77526d07e0b1686d7cd7f644111ce63d66e2a1"
+        },
+        "time": {
+          "shape": [
+            9
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "6fea169327c56591c3fbc3e829e2fd6dd6fc848c60b2cd89a43db1049acc8877"
+        }
+      }
+    },
+    "kernel01.npz": {
+      "file_sha256": "f5df99aebb197e25356ede1c376610bea7d9a3f45897cc9717d871cff5628d03",
+      "arrays": {
+        "velocity": {
+          "shape": [
+            4096,
+            3
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "9a1bb13c894daf3ab6551b982ac36e48e9595e9b210a014a7e8e541b09717a31"
+        },
+        "weights": {
+          "shape": [
+            4096
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "8bf8f206ec169434fbcccb5b256560a27315c8792a33a9bb7d987da77b1245c4"
+        },
+        "derivative": {
+          "shape": [
+            16,
+            16
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "b1ffc5d27c752205fae46538a6fb9a74ad5a266d4d141cce26920538be4d91d9"
+        },
+        "density": {
+          "shape": [
+            9,
+            4096
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "78529039595d50b3f978d1e6d288eb9ba492d26e533dfdfe00130024bfe97860"
+        },
+        "time": {
+          "shape": [
+            9
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "6fea169327c56591c3fbc3e829e2fd6dd6fc848c60b2cd89a43db1049acc8877"
+        }
+      }
+    },
+    "tolerance.npz": {
+      "file_sha256": "04b491028babda325ecb881680c99b987df45e32e26f56caf36541eaa84eee3c",
+      "arrays": {
+        "velocity": {
+          "shape": [
+            4096,
+            3
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "9a1bb13c894daf3ab6551b982ac36e48e9595e9b210a014a7e8e541b09717a31"
+        },
+        "weights": {
+          "shape": [
+            4096
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "8bf8f206ec169434fbcccb5b256560a27315c8792a33a9bb7d987da77b1245c4"
+        },
+        "derivative": {
+          "shape": [
+            16,
+            16
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "b1ffc5d27c752205fae46538a6fb9a74ad5a266d4d141cce26920538be4d91d9"
+        },
+        "density": {
+          "shape": [
+            9,
+            4096
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "621ae8d4cf7ed134cc6bac9b54f1ba3159a494e2dfe93d63437ef93dc5ece002"
+        },
+        "time": {
+          "shape": [
+            9
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "6fea169327c56591c3fbc3e829e2fd6dd6fc848c60b2cd89a43db1049acc8877"
+        }
+      }
+    },
+    "nonlinear_tolerance.npz": {
+      "file_sha256": "31b8728348ac0f3848e69dec22c9f7a0739158771f6b5ead340b3505cf13cf6a",
+      "arrays": {
+        "velocity": {
+          "shape": [
+            4096,
+            3
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "9a1bb13c894daf3ab6551b982ac36e48e9595e9b210a014a7e8e541b09717a31"
+        },
+        "weights": {
+          "shape": [
+            4096
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "8bf8f206ec169434fbcccb5b256560a27315c8792a33a9bb7d987da77b1245c4"
+        },
+        "derivative": {
+          "shape": [
+            16,
+            16
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "b1ffc5d27c752205fae46538a6fb9a74ad5a266d4d141cce26920538be4d91d9"
+        },
+        "density": {
+          "shape": [
+            9,
+            4096
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "4c7e0c4b2b810058110fb768dbb93bc46a01571f2747cef5cd9937473df9a6d3"
+        },
+        "time": {
+          "shape": [
+            9
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "6fea169327c56591c3fbc3e829e2fd6dd6fc848c60b2cd89a43db1049acc8877"
+        }
+      }
+    },
+    "linear_tolerance.npz": {
+      "file_sha256": "04b491028babda325ecb881680c99b987df45e32e26f56caf36541eaa84eee3c",
+      "arrays": {
+        "velocity": {
+          "shape": [
+            4096,
+            3
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "9a1bb13c894daf3ab6551b982ac36e48e9595e9b210a014a7e8e541b09717a31"
+        },
+        "weights": {
+          "shape": [
+            4096
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "8bf8f206ec169434fbcccb5b256560a27315c8792a33a9bb7d987da77b1245c4"
+        },
+        "derivative": {
+          "shape": [
+            16,
+            16
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "b1ffc5d27c752205fae46538a6fb9a74ad5a266d4d141cce26920538be4d91d9"
+        },
+        "density": {
+          "shape": [
+            9,
+            4096
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "621ae8d4cf7ed134cc6bac9b54f1ba3159a494e2dfe93d63437ef93dc5ece002"
+        },
+        "time": {
+          "shape": [
+            9
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "6fea169327c56591c3fbc3e829e2fd6dd6fc848c60b2cd89a43db1049acc8877"
+        }
+      }
+    },
+    "grid20.npz": {
+      "file_sha256": "988fb927f2b67e1f1b2f0e850ca8239da11a7fb2705f910e6b2e949eb75a0cf6",
+      "arrays": {
+        "velocity": {
+          "shape": [
+            8000,
+            3
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "3ca3639b24c09794989a43859fdf3f0e9f7f8fbb8b98e965a9e6f9739fa701c7"
+        },
+        "weights": {
+          "shape": [
+            8000
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "6b486e626901c8f9bfae6f36abb2df318e87952ba98823abd5bbeb1a88f2664e"
+        },
+        "derivative": {
+          "shape": [
+            20,
+            20
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "426d484aaeec915b430b9f0235d8f4122d7074e1c875721a30d48f850512c097"
+        },
+        "density": {
+          "shape": [
+            9,
+            8000
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "8b44e0b6ca8e94982bdef76ed648b15766cf53bf7e5080872a2c9b85ae164e13"
+        },
+        "time": {
+          "shape": [
+            9
+          ],
+          "dtype": "float64",
+          "sha256_c_order_bytes": "6fea169327c56591c3fbc3e829e2fd6dd6fc848c60b2cd89a43db1049acc8877"
+        }
+      }
+    }
+  },
+  "producer_plot_array_provenance": {
+    "plotted_arrays.npz": "c773ef5f24468b5256992038b1c1dfbaea6cbda49ce1f9106394624c4beaa7b7",
+    "quadrature_plot_arrays.npz": "67adde0e00fa383c38b2befacb5509a6487599d20b305a7b716ba3808234380b"
+  },
+  "reproduction_scope": "Portable independent numerical replay is examples/32_landau_audit.py. This supplemental receipt additionally captures frozen producer plot series, full GIF/MP4 decoding, direct visual inspection, and independent analytic control derivations; no evolution solve was executed for this supplemental audit."
+}

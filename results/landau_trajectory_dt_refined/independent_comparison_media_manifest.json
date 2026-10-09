@@ -1,0 +1,11 @@
+{
+  "scope": "Supplemental final audit and observed-cost evidence; producer summary and arrays remain immutable inputs. Numeric array hashes in the receipt specify shape, dtype, and C-order bytes.",
+  "input_summary_sha256": "b075d159ae78f8e54d3a13a06fce0dba6b120e79b83285630e55ed9e52b31613",
+  "producer_launch_commit": "4304054b7fb2761254859a005c546758edfda796",
+  "outputs": {
+    "independent_comparison_media_receipt.json": "4bf977055933ec97637f619600d043166d84da6bfff882a517fa95f819b9c636",
+    "observed_comparison_costs.csv": "6dd0e500ee3eba7e1fcc7aeb8824fe6c3a88e3f352f16ce8442f73ca84e27f47",
+    "independent_four_operator_plot_arrays.npz": "56d644ac712aa485c92369410e1ca451bb629e7431f386c307d47bed74a80e4a",
+    "four_operator_terminal_moments.csv": "1a226090c6ea2ca09b24824985f19ee9aa60ca47a817350dd0cdffde1e65442a"
+  }
+}

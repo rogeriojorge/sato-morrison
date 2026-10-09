@@ -8139,6 +8139,32 @@
       "evidence_path": "results/landau_trajectory_refined/summary.json",
       "evidence_sha256": "c6fa98c83cbb81f1f25923d6b5c2151137dc35c794e73db20399aa10902e51d8",
       "scope": "All ten trajectories and42 stages complete through t=.2; grid/scale/kernel/tolerance changes pass. Density timestep increment difference1.186% and fourth-cumulant1.811% exceed unchanged1% criterion. Four-operator Landau curve withheld. Shared-machine observed costs."
+    },
+    {
+      "command": "JAX_ENABLE_X64=true MPLBACKEND=Agg OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 SM_LANDAU_OUTPUT=results/landau_trajectory_dt_refined .venv/bin/python -u examples/31_landau_trajectory.py > /Users/rogerio/local/sato_morrison_handoff/verification/landau_trajectory_dt_refined_production_5f87b95.log 2>&1",
+      "producer_commit": "4304054b7fb2761254859a005c546758edfda796",
+      "scientific_source_commit": "5f87b955adeb8e5c42bdb5eddc830ba868e9b70e",
+      "source_sha256": "59826c53fc10533634bc3127066120ed8ea2145d506850e24b5ac8f41de99992",
+      "status": "passed",
+      "exit_code": 0,
+      "wall_s": 2011.937683708,
+      "process_peak_rss_bytes": 602128384,
+      "evidence_path": "results/landau_trajectory_dt_refined/summary.json",
+      "evidence_sha256": "b075d159ae78f8e54d3a13a06fce0dba6b120e79b83285630e55ed9e52b31613",
+      "execution_receipt_path": "results/landau_trajectory_dt_refined/execution_receipt.json",
+      "execution_receipt_sha256": "8535a9b99debcee6e491ed5a1046e2528058ba76c96ddc1b86445724df7b46a4",
+      "scope": "Twelve complete trajectories and100 accepted advances through t=.2. Required velocity-grid/timestep/scale/kernel/separate-tolerance tests pass1% actual relaxation-increment target. Coarse diagnostic failures retained. Bounded boxes and native moments; no rigorous infinite-domain error bound or calibrated magnetized rate. Shared-machine observed costs."
+    },
+    {
+      "command": "SM_LANDAU_AUDIT_INPUT=results/landau_trajectory_dt_refined SM_LANDAU_AUDIT_OUTPUT=results/landau_trajectory_dt_refined/independent_portable_audit.json OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 MKL_NUM_THREADS=1 python examples/32_landau_audit.py",
+      "producer_commit": "55aef9d5ee54940b0caf94c102a8a3edfb4c4c1e",
+      "source_sha256": "58445a4db04aa77f60f74c3f7554987b7935a3a75828c12de18dd900b39be1b0",
+      "status": "passed_independent_saved_stage_and_comparison_replay",
+      "exit_code": 0,
+      "wall_s": 139.67813725000087,
+      "evidence_path": "results/landau_trajectory_dt_refined/independent_portable_audit.json",
+      "evidence_sha256": "e600f111d8a0e1ac6961aecfb2138e92d660bde2ade47077b7ce40653a0880ad",
+      "scope": "Independent NumPy/SciPy replay of all100 raw roots, five invariants, positivity and entropy identity; allcase/sharedtime density and whole-moment increment comparisons, GL32/48/64 and empirical temporal order. Input summary and NPZ hashes unchanged during replay."
     }
   ]
 }

@@ -4440,6 +4440,88 @@ commit, versions, inputs, accepted arrays and independent receipts are
 retained in \path{results/landau_evolution/timestep_preflight/}. This is
 a timestep preflight, not a substitute for the other declared controls.
 
+
+\subsection{Short-time Landau results}
+The twelve-case study completes all 100 advances to $T=0.2$.
+Every row has $\epsilon=0$ except the two explicitly named softening
+controls. Independent NumPy raw-pair replay verifies each original
+fixed-population equation at its declared nonlinear tolerance, positive
+nodal density, and all five unprojected invariants. Across every stage,
+the largest root norm is $3.82\times10^{-11}$, the largest absolute
+invariant drift $3.12\times10^{-10}$, and the largest corrected
+entropy--Gram--KL identity defect $1.46\times10^{-16}$. The minimum saved
+density remains positive at $7.00\times10^{-26}$.
+
+All eight required controls pass the separate density, moment and
+quadrature-refinement gates at every shared saved time. Across both
+boxes and all three Legendre orders, the fine-grid density maximum is
+0.34682 percent and its largest moment error, the fourth cumulant,
+0.29647 percent. The fine-timestep maxima are 0.62909 and 0.93138 percent.
+The quadrature-scale density maxima are 0.10817 and 0.13278 percent;
+softening 0.1 gives 0.14075 percent, with largest moment error 0.19591
+percent. Separate and combined tolerance-control moment differences
+are below $8\times10^{-13}$ in the defined normalized norm. The coarser
+$\Delta t=0.05$ diagnostic remains outside the accuracy target, with
+1.17751 percent density and 1.77881 percent fourth-cumulant differences;
+it is retained explicitly rather than averaged into the passing controls.
+The baseline and fine-grid initial strong-RHS $L^1$ errors are 0.77758
+and 0.47481 percent respectively, distinct from these trajectory tests.
+
+For timesteps $0.05,0.025,0.0125$, the final native-density ratio is
+1.948942 and $p_{\rm obs}=0.962691$. The $4$- and $5$-box GL64 values
+are 0.963120 and 0.963098. Observable orders range from 0.946871 to
+0.979140. These are empirical refinement trends for this fixed interval.
+At $T=0.2$, raw outside-$5$ sampled populations are
+$1.56\times10^{-5}$ for the baseline and $1.81\times10^{-5}$ for the
+fine grid. Neither those sums nor the integrated error tests bound
+continuum tails or large relative rates at vanishing-density outer nodes.
+The supported result is short-time numerical agreement under the declared
+refinements, without a rigorous infinite-domain or finite-time continuum
+error bound.
+
+The producer costs 2011.94 seconds under shared load, with 284 Newton
+corrections, 5751 PCG iterations and measured process peak RSS
+602,128,384 bytes on Apple M4. Independent replay costs 139.68 seconds.
+The actual producer launch commit is \texttt{4304054}; scientific
+source and core hashes, Python and library versions, units, hardware,
+all input/output hashes and costs are retained in
+\path{results/landau_trajectory_dt_refined/execution_receipt.json} and
+\path{results/landau_trajectory_dt_refined/independent_portable_audit.json}.
+The portable audit source is \path{examples/32_landau_audit.py}.
+
+For the same initial covariance and $\Gamma=1$, matching the initial
+pressure-anisotropy slope gives $\alpha=0.4935950250$ and
+$\tau=\alpha t$. This is a comparison time scale for the chosen input.
+The exact Lorentz and Dougherty anisotropies are $0.45e^{-\tau}$;
+their second magnetic moments are respectively
+\[
+ 2.036+0.5742857143e^{-\tau}+0.0347142857e^{-10\tau/3},
+ \qquad 2(1+0.15e^{-\tau})^2.
+\]
+At $t=0.2$ ($\tau=0.0987190050$), independently checked values are:
+\begin{center}
+\begin{tabular}{lrrr}
+\hline
+Operator & anisotropy$/0.45$ & $\langle\mu^2\rangle$ & fourth cumulant in $v_z$\\
+\hline
+Constrained local &1&2.645000&0\\
+Lorentz &0.905997&2.581282&0.002188\\
+Dougherty &0.905997&2.580536&0\\
+Landau saved state &0.908435&2.595895&$-0.020160$\\
+\hline
+\end{tabular}
+\end{center}
+Independent control-formula and source-plot replay is retained in
+\path{results/landau_trajectory_dt_refined/independent_comparison_media_receipt.json}.
+Matching one initial slope does not equate the subsequent operators.
+The Landau values come from the evolved full nodal density, not a
+Gaussian moment closure. Its nonzero fourth cumulants are well separated
+from the sampled initial offsets (at most $1.54\times10^{-5}$), which
+are preserved in the raw evidence and subtracted in increment comparisons.
+The standard operator distinctions shown here provide an implementation
+comparison for this input, not a new physical collision-rate or lifetime
+claim.
+
 \bibliographystyle{unsrt}
 \bibliography{references}
 \end{document}
