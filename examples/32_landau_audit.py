@@ -1,6 +1,8 @@
 """Independent saved-stage Landau audit, executed directly with NumPy/SciPy.
 
-Edit INPUT_DIRECTORY to audit another immutable campaign. This source imports no
+Set SM_LANDAU_AUDIT_INPUT to audit another immutable campaign and
+SM_LANDAU_AUDIT_OUTPUT to a fresh receipt path. Relative paths resolve from the
+repository root. Existing receipts are protected. This source imports no
 production collision kernel. It rebuilds Hermite measure and barycentric D,
 replays every saved raw Coulomb root and entropy/KL identity, and compares full
 nodal density increments on shared times in boxes 4/5 with GL32/48/64. The
@@ -20,8 +22,15 @@ import traceback
 import subprocess
 import numpy as np
 from scipy.special import roots_hermitenorm, roots_legendre
-INPUT_DIRECTORY = Path(__file__).resolve().parents[1] / 'results' / 'landau_trajectory'
-OUTPUT = INPUT_DIRECTORY / 'independent_portable_audit.json'
+REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
+DEFAULT_INPUT = REPOSITORY_ROOT / 'results' / 'landau_trajectory'
+input_path = Path(os.environ.get('SM_LANDAU_AUDIT_INPUT', str(DEFAULT_INPUT))).expanduser()
+INPUT_DIRECTORY = (input_path if input_path.is_absolute() else REPOSITORY_ROOT / input_path).resolve()
+output_path = Path(os.environ.get('SM_LANDAU_AUDIT_OUTPUT', str(INPUT_DIRECTORY / 'independent_portable_audit_reproduction.json'))).expanduser()
+OUTPUT = (output_path if output_path.is_absolute() else REPOSITORY_ROOT / output_path).resolve()
+if OUTPUT.exists():
+    raise RuntimeError(f'Audit output already exists: {OUTPUT}. Preserve it and set SM_LANDAU_AUDIT_OUTPUT to a fresh path.')
+OUTPUT.parent.mkdir(parents=True, exist_ok=True)
 A = np.array([1.15, 1.15, 0.7])
 
 def audit_failure(kind, error, frames):

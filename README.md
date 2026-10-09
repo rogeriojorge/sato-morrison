@@ -227,7 +227,7 @@ MPLBACKEND=Agg python examples/30_landau_consistency.py
 # Run the declared trajectory refinements in a new output directory:
 SM_LANDAU_OUTPUT=results/landau_reproduction MPLBACKEND=Agg python examples/31_landau_trajectory.py
 # Independently replay the archived accepted Landau stages:
-python examples/32_landau_audit.py
+SM_LANDAU_AUDIT_OUTPUT=results/landau_archived_audit.json python examples/32_landau_audit.py
 ```
 
 Example 24 exits nonzero because the declared angular and Cartesian checks remain unresolved. It saves the results before raising the error.
