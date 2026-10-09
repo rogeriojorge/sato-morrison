@@ -8128,6 +8128,17 @@
       "evidence_path": "results/landau_trajectory/independent_portable_audit.json",
       "evidence_sha256": "88f600b5c0c8038a51dcdc55f609515c123e7cd968e24ceb2df57234210940aa",
       "scope": "Independent NumPy/SciPy raw pair replay of all ten accepted advances and shared-time boxes4/5; no production collision imports."
+    },
+    {
+      "command": "JAX_ENABLE_X64=true MPLBACKEND=Agg OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 python -u examples/31_landau_trajectory.py",
+      "producer_commit": "ff536d62cde2e699ba9430aaa88c9c7b4f05a1e4",
+      "status": "unresolved",
+      "exit_code": 1,
+      "wall_s": 671.23787275,
+      "process_peak_rss_bytes": 517095424,
+      "evidence_path": "results/landau_trajectory_refined/summary.json",
+      "evidence_sha256": "c6fa98c83cbb81f1f25923d6b5c2151137dc35c794e73db20399aa10902e51d8",
+      "scope": "All ten trajectories and42 stages complete through t=.2; grid/scale/kernel/tolerance changes pass. Density timestep increment difference1.186% and fourth-cumulant1.811% exceed unchanged1% criterion. Four-operator Landau curve withheld. Shared-machine observed costs."
     }
   ]
 }
