@@ -1,0 +1,24 @@
+{
+  "timestamp_utc": "2026-10-09T19:33:46.196019+00:00",
+  "scope": "Read-only shared-machine observation during third accepted-stage attempt. Costs are not isolated; this does not alter numerical tolerances or budgets.",
+  "load": {
+    "returncode": 0,
+    "stdout": "14:33  up 21:55, 1 user, load averages: 30.34 44.78 58.33\n",
+    "stderr": ""
+  },
+  "owned_process": {
+    "returncode": 0,
+    "stdout": "ELAPSED      TIME  %CPU    RSS\n  08:49  14:31.36 145.9 165680\n",
+    "stderr": ""
+  },
+  "virtual_memory": {
+    "returncode": 0,
+    "stdout": "Mach Virtual Memory Statistics: (page size of 16384 bytes)\nPages free:                                     5124.\nPages active:                                 327758.\nPages inactive:                               325574.\nPages speculative:                              1595.\nPages throttled:                                   0.\nPages wired down:                             165831.\nPages purgeable:                                  36.\n\"Translation faults\":                      483385159.\nPages copy-on-write:                         6117393.\nPages zero filled:                         103557362.\nPages reactivated:                         128081901.\nPages purged:                                3156192.\nFile-backed pages:                            237412.\nAnonymous pages:                              417515.\nPages stored in compressor:                  1972603.\nPages occupied by compressor:                 712159.\nDecompressions:                            262101258.\nCompressions:                              273342265.\nPageins:                                     8734096.\nPageouts:                                     110086.\nSwapins:                                     3631297.\nSwapouts:                                    4085930.\n",
+    "stderr": ""
+  },
+  "hardware": {
+    "returncode": 0,
+    "stdout": "Apple M4\n10\n25769803776\n",
+    "stderr": ""
+  }
+}

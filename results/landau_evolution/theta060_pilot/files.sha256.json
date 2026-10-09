@@ -1,0 +1,11 @@
+{
+  "historical_source/run.py": "0cc3e2750c59b36cb506bf74de4e7390b78f00c618888ee7da095732fa0368ea",
+  "immutable_input.npz": "5f282697a7468276e45b2e8230f11c8c47b9aa3235e3f60acd5a7afff1560ca7",
+  "independent_allstage_receipt.json": "39d1ea6164660fbc08c4e69fa5a6043f8f4c6b912662b68bbfc597e955ea0ece",
+  "machine_observation.json": "a35d24eeeaf80afa838ba4f494a1929a4355ed7ecf365cc932f174fd2c87df0d",
+  "native_stage_diagnostics.json": "e7a6c16fbabe011e138abf0c4f9043254be0f7c08f994ea54263d381a94a236b",
+  "producer_receipt.json": "88075f114c00345dc600bb74daef8967bae08e9c3641fae3f2ec2573594fbb73",
+  "receipt.json": "ca86d23e6a61949f224bc7ee567c997a8673dc58a6feccac7fabf643eed8c36e",
+  "summary.json": "72705d00f306f5ee5bebe87e2898b60a2649b65c2c57c6da3a4f6bad02e15a6c",
+  "theta06.npz": "bd6c0ee772d3a02d8557a67b41d67ad913b83bd3407ced799827c8e3f1a4aaaa"
+}

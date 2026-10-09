@@ -1,0 +1,88 @@
+{
+  "status": "passed_supplemental_discrete_feasibility",
+  "scope": "Supplemental private quadrature-scale feasibility pilot, not the preregistered ten-row physical-convergence campaign. Original physical Coulomb root and objective; no clipping, normalization, projection or Gaussian closure. Public example31 is the portable fullcampaign producer.",
+  "physical_inputs": {
+    "covariance": [
+      1.15,
+      1.15,
+      0.7
+    ],
+    "gamma": 1.0,
+    "softening": 0.0,
+    "density": 1.0,
+    "mass": 1.0
+  },
+  "numerical_inputs": {
+    "order": 20,
+    "thermal_variance": 0.6,
+    "dt": 0.05,
+    "final_time": 0.2,
+    "rtol": 1e-10,
+    "linear_rtol": 1e-12,
+    "max_linear_steps": 200,
+    "max_newton_steps": 8,
+    "max_log_step": null,
+    "preconditioner": "tensor",
+    "reference_population": "fixed raw sampled initial populationwF0"
+  },
+  "initial_strong_gate": {
+    "status": "passed",
+    "relative_L1_error": 0.004748134516881048,
+    "scalar_refinement_max_abs": 7.946976410266871e-13,
+    "max_abs_relative_rate": 0.7663582316190731,
+    "sampled_mass": 0.9999999998727755,
+    "axis_extent": 5.901689623174321
+  },
+  "accepted_times": [
+    0.0,
+    0.05,
+    0.1,
+    0.15,
+    0.2
+  ],
+  "newton_per_step": [
+    3,
+    3,
+    3,
+    3
+  ],
+  "pcg_per_step": [
+    202,
+    198,
+    199,
+    199
+  ],
+  "trajectory_wall_s": 722.4627422910007,
+  "wall_time_scope": "Producer measured nonlineartrajectory after initial strong consistency gate; shared-machine timing is not isolated.",
+  "process_peak_rss_bytes": null,
+  "peak_rss_limitation": "Private runner did not record getrusage or use a resource wrapper. No peak is inferred from a resident-memory spotcheck. Public fullcampaign records peakRSS.",
+  "observed_resident_sample_kib": 165680,
+  "machine_observation": "machine_observation.json",
+  "source_commit": "7081c9291ff052d9e9874c4f7916174668acbdf9",
+  "source_commit_scope": "Verified scientificcore commit: git show controls.py/solver.py bytes exactly match pinned producer hashes; not a captured launchHEAD.",
+  "launch_head": null,
+  "launch_head_limitation": "Private launch did not capture repositoryHEAD. Do not infer it from commitdates. Historicalrunner is pinned separately by its SHA256.",
+  "verified_scientific_core_sources": {
+    "src/sato_morrison/controls.py": "90d32edf198a9734a8e8ebc4eee670256f82261dd5e8cf9c86eaaf49212e9ecb",
+    "src/sato_morrison/solver.py": "2823a80258f21851131e0e0cd10a8101af8bcf9b8f8aefcf49eada752751add0"
+  },
+  "immutable_runner_sha256": "0cc3e2750c59b36cb506bf74de4e7390b78f00c618888ee7da095732fa0368ea",
+  "immutable_input_sha256": "5f282697a7468276e45b2e8230f11c8c47b9aa3235e3f60acd5a7afff1560ca7",
+  "saved_stage_arrays": "theta06.npz",
+  "saved_array_equivalence": "Every namedarray exactly equals producer accepted_states.npz; ZIPentryorder differs without changing arrays.",
+  "audit_input_summary": "summary.json",
+  "producer_receipt": "producer_receipt.json",
+  "independent_receipt": "independent_allstage_receipt.json",
+  "independent_original_fixed_reference_root_norms": [
+    1.6974375533422746e-12,
+    1.700932029265683e-12,
+    1.688441289904912e-12,
+    1.68280457202612e-12
+  ],
+  "independent_maximum_absolute_raw_invariant_drift": 1.4210854715202004e-14,
+  "independent_maximum_corrected_entropy_identity_error": 7.982204566066254e-17,
+  "native_maximum_absolute_raw_invariant_drift": 4.0939474033052647e-16,
+  "minimum_saved_density": 7.268418876915601e-26,
+  "main_campaign_source_commit": "ff536d62cde2e699ba9430aaa88c9c7b4f05a1e4",
+  "private_corrections_scope": "All correction/trial files remain privately preserved. Compact public dataset contains initialdensity and each of4acceptedstates; individualadvance endpoints recoverable from consecutive frames."
+}

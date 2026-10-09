@@ -1,0 +1,103 @@
+{
+  "status": "passed_independent_all_saved_stages",
+  "input_summary_sha256": "72705d00f306f5ee5bebe87e2898b60a2649b65c2c57c6da3a4f6bad02e15a6c",
+  "producer_status": "accepted_private_optimizer_pilot_only",
+  "rows": [
+    {
+      "case": "theta06",
+      "declared_status": "accepted_private_optimizer_pilot_through_.2",
+      "source_arrays_sha256": "bd6c0ee772d3a02d8557a67b41d67ad913b83bd3407ced799827c8e3f1a4aaaa",
+      "n": 20,
+      "theta": 0.6,
+      "softening": 0.0,
+      "saved_stages": 5,
+      "last_time": 0.2,
+      "nodal_min_density": 7.268418876915601e-26,
+      "quadrature_max_relative_difference": 1.8833424284299423e-13,
+      "derivative_max_scaled_difference": 9.741460875019127e-11,
+      "weighted_SBP_max_abs_defect": 1.0269562977782698e-15,
+      "raw_invariant_max_abs_drifts": [
+        1.2989609388114332e-14,
+        3.188598077977529e-16,
+        6.382318895499471e-17,
+        2.2993180791756542e-17,
+        1.4210854715202004e-14
+      ],
+      "stages": [
+        {
+          "j": 1,
+          "time": 0.05,
+          "dt": 0.05,
+          "weighted_root_norm": 1.6974375533422746e-12,
+          "initial_reference_root_norm": 1.6974375533422746e-12,
+          "entropy_change": 0.0019571577136901176,
+          "frozen_Gram_production": 0.0019223499750353748,
+          "time_KL": 3.480773865453991e-05,
+          "residual_entropy_defect": -1.6723389296252478e-16,
+          "entropy_identity_defect_with_residual": 3.567454361813738e-17,
+          "min_f": 7.555186626675515e-26,
+          "tail_mass_r_gt3": 0.03303492307462408,
+          "tail_mass_maxcoord_gt4": 0.0003197491167724865,
+          "tail_mass_maxcoord_gt5": 1.8393581824052453e-05
+        },
+        {
+          "j": 2,
+          "time": 0.1,
+          "dt": 0.05,
+          "weighted_root_norm": 1.6998316241933904e-12,
+          "initial_reference_root_norm": 1.700932029265683e-12,
+          "entropy_change": 0.0018327959194531834,
+          "frozen_Gram_production": 0.0018009417656656864,
+          "time_KL": 3.1854153787286735e-05,
+          "residual_entropy_defect": -1.6466905656577742e-16,
+          "entropy_identity_defect_with_residual": 4.5652612369254376e-17,
+          "min_f": 7.592963783603693e-26,
+          "tail_mass_r_gt3": 0.032979958396307935,
+          "tail_mass_maxcoord_gt4": 0.0003178623490371307,
+          "tail_mass_maxcoord_gt5": 1.8289810313542106e-05
+        },
+        {
+          "j": 3,
+          "time": 0.15,
+          "dt": 0.04999999999999999,
+          "weighted_root_norm": 1.6863425290950844e-12,
+          "initial_reference_root_norm": 1.688441289904912e-12,
+          "entropy_change": 0.0017188398770271371,
+          "frozen_Gram_production": 0.001689596609355226,
+          "time_KL": 2.9243267671882314e-05,
+          "residual_entropy_defect": -1.0859744894478563e-16,
+          "entropy_identity_defect_with_residual": -7.982204566066254e-17,
+          "min_f": 7.478942289237979e-26,
+          "tail_mass_r_gt3": 0.032926696588462145,
+          "tail_mass_maxcoord_gt4": 0.00031600338170283257,
+          "tail_mass_maxcoord_gt5": 1.8187407303519614e-05
+        },
+        {
+          "j": 4,
+          "time": 0.2,
+          "dt": 0.05000000000000002,
+          "weighted_root_norm": 1.6796050059440245e-12,
+          "initial_reference_root_norm": 1.68280457202612e-12,
+          "entropy_change": 0.0016140961632291945,
+          "frozen_Gram_production": 0.0015871759421889923,
+          "time_KL": 2.6920221039995674e-05,
+          "residual_entropy_defect": -1.4355537905441487e-16,
+          "entropy_identity_defect_with_residual": 6.291059590471535e-17,
+          "min_f": 7.434455925607725e-26,
+          "tail_mass_r_gt3": 0.032875056467029734,
+          "tail_mass_maxcoord_gt4": 0.00031417150799000317,
+          "tail_mass_maxcoord_gt5": 1.8086324406886126e-05
+        }
+      ],
+      "independent_initial_L1": 0.004748134509804377
+    }
+  ],
+  "source_sha256": "931d5d3037628cf40837ea123030774d00d0270d2d0fb4c0208de1f63a7351f6",
+  "helper_sha256": "40692b8525e49c372d05359809a10bc6473c4ee5d8adc38cdd93817fc59d24d2",
+  "wall_s": 12.892437165999581,
+  "scope": "Independent SciPy Hermite nodes/measure, barycentric gradients, NumPy full Coulomb pair flux and adjoint. Every saved accepted stage; positivity, raw five invariant drifts, frozen root and corrected entropy identity. Partial/failed producers remain partial/failed.",
+  "limitations": [
+    "No continuum finite-time trajectory oracle. Independent finite root agreement alone does not establish physical trajectory convergence.",
+    "Barycentric derivatives may differ in unpopulated extreme tails; their backward error and weighted root measurements accompany absolute differences."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "status": "accepted_private_optimizer_pilot_only",
+  "rows": [
+    {
+      "name": "theta06",
+      "order": 20,
+      "variance": 0.6,
+      "status": "accepted_private_optimizer_pilot_through_.2",
+      "rtol": 1e-10,
+      "softening": 0.0
+    }
+  ],
+  "source_sha256": {
+    "step_1.npz": "7505980e6df82964d70631b480e37609d9552174df2e1cc0b1cea66b6615489e",
+    "step_2.npz": "bdb49ed9fc85983155d9bd34859c981d7c01e7852e23efe2de8c02bf4966fd9c",
+    "step_3.npz": "7c586444e757a7a2a3d349e50a65bbeff985393cce29398b81da263b616ae044",
+    "step_4.npz": "6428b11c11c176bce6000ceccb83680cfa2e762d91fecca8f7f032cce504a8c5"
+  }
+}
