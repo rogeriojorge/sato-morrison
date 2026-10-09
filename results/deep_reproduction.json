@@ -8107,6 +8107,27 @@
       "scope": "18 initial full collision-term cases; polynomial28 weighted L1 error .7254%; local28 error24.59%; scalar reference refined independently. Expected declared accuracy failure retained. No finite-time or physical-rate claim.",
       "independent_evidence_path": "results/landau_consistency/independent_audit.json",
       "independent_evidence_sha256": "d763b351e728a47207d802f3460873e4a8b812aa1c8d77910c3885c038362b45"
+    },
+    {
+      "command": "JAX_ENABLE_X64=true MPLBACKEND=Agg OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 python -u examples/31_landau_trajectory.py",
+      "producer_commit": "261c4e7fa23bff12e1460f919068fa6b61b9b069",
+      "exit_code": 130,
+      "status": "interrupted_for_demonstrated_stagnation",
+      "wall_s": 661.6669388750001,
+      "process_peak_rss_bytes": 504004608,
+      "evidence_path": "results/landau_trajectory/summary.json",
+      "evidence_sha256": "a1d6b30b7804a69fed7c207da1ef4faffab438394eb474927393dd678650c732",
+      "scope": "Ten independently checked accepted stages; incomplete fine-grid continuation and absent refinements remain unresolved. Shared-machine observed costs."
+    },
+    {
+      "command": "OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 MKL_NUM_THREADS=1 python examples/32_landau_audit.py",
+      "producer_commit": "5e5498a4872be00835b9a3813912c4e60e35156c",
+      "source_sha256": "bbad9ab8dea55331e0fe05aac7176987d6f74644394bc12b766dd433961e853b",
+      "exit_code": 0,
+      "wall_s": 20.878738708999663,
+      "evidence_path": "results/landau_trajectory/independent_portable_audit.json",
+      "evidence_sha256": "88f600b5c0c8038a51dcdc55f609515c123e7cd968e24ceb2df57234210940aa",
+      "scope": "Independent NumPy/SciPy raw pair replay of all ten accepted advances and shared-time boxes4/5; no production collision imports."
     }
   ]
 }
