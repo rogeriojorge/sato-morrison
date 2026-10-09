@@ -4331,6 +4331,115 @@ of the positive minimizer in real arithmetic. Launch source, accepted
 arrays, trial history and independent replay are archived in
 \path{results/landau_evolution/uncapped_theta065/}.
 
+
+\subsection{Finite-time refinement protocol and timestep preflight}
+The physical initial density is the same sampled anisotropic Gaussian in
+all cases: covariance $(1.15,1.15,0.7)$, density and particle mass one,
+$\Gamma=1$, and magnetic field one for
+$\mu=(v_x^2+v_y^2)/2$. Quadrature variance $\theta$ changes the sampling
+measure and outer node extent, not this physical covariance. The initial
+strong-RHS oracle is an instantaneous continuum comparison; subsequent
+accepted states have independent positive nodal densities. An initial
+oracle pass does not verify a finite-time trajectory.
+
+For the baseline $b$, a comparison case $c$ and a shared positive saved
+time, the bounded-box density error is
+\[
+ E_{c,L}(t)=
+ \frac{\int_{[-L,L]^3}|F_c(t)-F_b(t)|\,dv}
+      {\int_{[-L,L]^3}|F_b(t)-F_0|\,dv},\qquad L\in\{4,5\}.
+\]
+The integrals use Legendre orders 32, 48 and 64 after tensor interpolation
+of $\log(F/F_0)$. Both node axes must enclose the entire box; $12^3$
+therefore retains its $4$-box diagnostic and skips the $5$-box. No
+extrapolation or time interpolation is allowed. Every shared positive
+saved time, including the earliest, is tested. The Legendre 48-to-64
+change in the relative error must be below $10^{-4}$ and the relative
+change in its baseline increment denominator below one percent.
+Neither the boxes nor the separately reported raw outside-box sampled
+populations constitute a rigorous continuum tail bound.
+
+For a whole-quadrature observable $M$, write
+$\delta M_c(t)=M_c(t)-M_c(0)$ and test
+\[
+ E^M_c(t)=\frac{\|\delta M_c(t)-\delta M_b(t)\|_\infty}
+                 {\|\delta M_b(t)\|_\infty}.
+\]
+The observables are pressure anisotropy, $\langle\mu^2\rangle$,
+$\langle|v|^4\rangle$, and the vector of centered fourth cumulants
+$\langle(v_a-\langle v_a\rangle)^4\rangle-3\Sigma_{aa}^2$.
+Each case uses its own raw sampled initial moments. Expectations divide
+by its actual quadrature number, with no normalization of the evolved
+population. Denominators at or below $10^{-14}$ reject an unresolved
+comparison rather than being clipped. The refinement target is strictly
+one percent. Velocity-grid, temporal, quadrature-scale, softening and separate
+linear/nonlinear tolerance controls are retained individually.
+
+The twelve declared cases use $T=0.2$, the same original tensor-PCG
+residual and objective, and the following parameters. A dash means the
+baseline value in that column; the table specifies inputs, not a claim
+that every trajectory has passed.
+\begin{center}
+\begin{tabular}{lrrrrrl}
+\hline
+Case & $n$ & $\theta$ & $\Delta t$ & root tol. & PCG tol. & log cap\\
+\hline
+Baseline &16&0.6&0.025&$10^{-10}$&$10^{-8}$&2\\
+Coarse grid &12&0.6&0.025&--&--&--\\
+Fine grid &20&0.6&0.025&--&$10^{-12}$&none\\
+Coarse timestep &16&0.6&0.05&--&--&--\\
+Fine timestep &16&0.6&0.0125&--&--&--\\
+Narrow quadrature &16&0.585&0.025&--&--&--\\
+Wide quadrature &16&0.625&0.025&--&--&--\\
+Softening 0.2 &16&0.6&0.025&--&--&--\\
+Softening 0.1 &16&0.6&0.025&--&--&--\\
+Both tolerances &16&0.6&0.025&$10^{-12}$&$10^{-10}$&--\\
+Nonlinear tolerance &16&0.6&0.025&$10^{-12}$&--&--\\
+Linear tolerance &16&0.6&0.025&--&$10^{-10}$&--\\
+\hline
+\end{tabular}
+\end{center}
+The coarse grid, coarse timestep and softening 0.2 cases remain explicit
+diagnostics; the finer grid/timestep, both quadrature scales, softening
+0.1 and each tolerance control determine the declared refinement gate.
+Every accepted stage additionally requires its original fixed-population
+root to satisfy the row's nonlinear tolerance, positive density, raw
+five-invariant absolute drift below $10^{-9}$, and the entropy--Gram--KL
+identity including its residual term.
+
+The earlier complete $\Delta t=0.05$ baseline study saved 42 accepted
+advances but remained unresolved: comparison to $\Delta t=0.025$ at the
+earliest shared time gave a full-density increment error above one
+percent. Independent replay confirms all 42 discrete equations and the
+producer's density and whole-moment comparisons; passing these equations
+does not repair the failed accuracy gate. At $T=0.2$, the empirical
+native-density ratio for timesteps $0.1,0.05,0.025$ is 1.903880,
+corresponding to $\log_2$ ratio 0.928943. Generally, for three factor-two
+levels one measures
+\[
+ p_{\rm obs}=\log_2\!\left(
+ \frac{\|F_{2h}(T)-F_h(T)\|}{\|F_h(T)-F_{h/2}(T)\|}\right),
+\]
+using native weighted $L^1$, bounded-box $L^1$, or observable maximum
+norms separately. This is a finite-interval difference diagnostic,
+not a convergence theorem or an absolute continuum-error oracle.
+
+A predeclared $16^3$, $\theta=0.6$, $\Delta t=0.0125$ preflight then saves
+16 advances to $T=0.2$. Its eight comparisons to the immutable
+$\Delta t=0.025$ reference, starting at $t=0.025$, have maximum density
+error 0.62909 percent across both boxes and all Legendre orders; the
+largest of the four moment errors is the fourth cumulant at 0.93138
+percent. Every quadrature-refinement gate also passes. Independent replay
+checks 24 original roots (eight reference and sixteen preflight), with
+maximum root norm $3.82\times10^{-11}$, raw invariant drift
+$3.12\times10^{-10}$ and corrected entropy identity defect
+$1.15\times10^{-16}$. The preflight costs 50.36 seconds, 32 Newton
+corrections and 369 PCG iterations; measured process peak RSS is
+351,469,568 bytes on Apple M4 under shared load. Exact source, launch
+commit, versions, inputs, accepted arrays and independent receipts are
+retained in \path{results/landau_evolution/timestep_preflight/}. This is
+a timestep preflight, not a substitute for the other declared controls.
+
 \bibliographystyle{unsrt}
 \bibliography{references}
 \end{document}
