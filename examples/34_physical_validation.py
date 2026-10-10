@@ -59,7 +59,7 @@ inputs={'mass':MASS,'charge':CHARGE,'theta':THETA,'screening':SCREENING,'strengt
     'ring_deltas':RING_DELTAS,'ring_phases':RING_PHASES,'ring_speed':np.sqrt(2*THETA),
     'ring_impact':1.8,'ring_parallel_speed':1.1,'ring_refined_fields':(16.,32.),
     'ring_increment_normalized_target':RING_INCREMENT_TARGET,'ring_refined_max_step':RING_REFINED_STEP,'ring_broadening_signal_to_refinement_minimum':10.,
-    'step_target':STEP_TARGET,'flux_target':FLUX_TARGET,
+    'step_target':STEP_TARGET,'flux_target':FLUX_TARGET,'fine_to_coarse_actual_step_ratio_target':.6,
     'cartesian_position_absolute_target':CARTESIAN_POSITION_TARGET,'cartesian_velocity_absolute_target':CARTESIAN_VELOCITY_TARGET,
     'required_gates':['complete_base_scan','energy','phase_and_coordinate_moments','final_B2_refinement','incoming_flux','receding_planes','active_timestep','heldout_table','weak_Born','ring_refinement_and_positive_broadening','cartesian_trajectory','full_moment_consistency','source_integrity'],
     'screening_asymptotic_controls':[3.,6.,12.,'infinity'],
@@ -333,6 +333,10 @@ step_error=None
 if '0.05' in step_changes and '0.1' in step_changes:
     a,b=step_changes['0.05'],step_changes['0.1'];scale=np.array([np.sqrt(np.mean(a[:,1]**2))/.25,np.sqrt(np.mean(a[:,1]**2)),np.sqrt(np.mean(a[:,1]**2))])
     if np.all(np.isfinite(scale)) and np.all(scale>0):step_error=(np.sqrt(np.mean((a-b)**2,axis=0))/scale).tolist()
+step_activity={'status':'unresolved'}
+if all(row['status']=='passed' for row in step_rows['0.1']+step_rows['0.05']):
+    ratios=[fine['max_actual_step']/coarse['max_actual_step'] for coarse,fine in zip(step_rows['0.1'],step_rows['0.05'])]
+    step_activity={'fine_over_coarse_actual_step_ratios':ratios,'status':'passed' if all(ratio<=.6 for ratio in ratios) else 'unresolved'}
 ring_checks=[]
 for field in (16.,32.):
     selected=[row for row in ring_rows if row['field']==field]
@@ -358,7 +362,7 @@ gates={
     'final_B2_refinement':within(changes(final,scans[0]),MOMENT_TARGET),
     'incoming_flux':all(row['flux_quadrature_relative_error']<=FLUX_TARGET for row in scans+[final]),
     'receding_planes':within(changes(boundaries[-1],boundaries[-2]),MOMENT_TARGET),
-    'active_timestep':within(step_error,STEP_TARGET),
+    'active_timestep':within(step_error,STEP_TARGET) and step_activity['status']=='passed',
     'heldout_table':table_check['status']=='passed',
     'weak_Born':len(born_checks)==len(WEAK_STRENGTHS) and all(row['status']=='passed' for row in born_checks),
     'ring_refinement_and_positive_broadening':len(ring_checks)==24 and all(row['status']=='passed' for row in ring_checks),
@@ -368,7 +372,7 @@ gates={
 overall_status='passed' if all(gates.values()) and not budget_exhausted else 'unresolved'
 summary={'overall_status':overall_status,'required_gates':gates,'ring_checks':ring_checks,'scan_checks':scan_checks,'ordering':ordering,'born_checks':born_checks,'heldout_table':table_check,
     'boundary_changes_24_to_32':changes(boundaries[-1],boundaries[-2]),'base_final_refinement_changes':changes(final,scans[0]),
-    'step_changes_01_to_005':step_error,'trajectory_checks':trajectory_checks,'budget_exhausted':budget_exhausted,
+    'step_changes_01_to_005':step_error,'step_activity':step_activity,'trajectory_checks':trajectory_checks,'budget_exhausted':budget_exhausted,
     'ring_rows':ring_rows,'screening_asymptotic_controls':screening_asymptotic,
     'attempted_unique_encounters':len(attempts),'failed_attempts':[r for r in attempts if r['status']!='passed'],
     'limits':['All coefficients are for explicit finite screened incoming bands. Omitted corners and tails remain unbounded.',
