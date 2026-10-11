@@ -1,0 +1,191 @@
+{
+  "cases": [
+    {
+      "label": "phase2054",
+      "initial": [
+        0.012169097897780201,
+        -0.058899436192351155,
+        -24.0,
+        -0.11779887238470231,
+        1.963306857423186,
+        1.9056642462041216
+      ],
+      "duration": 151.1284060524644,
+      "original_record": {
+        "master_phase_index": 2054,
+        "phase": 1.5753982691585535,
+        "max_step": 0.025,
+        "status": "outgoing_event",
+        "moments": [
+          -0.02168182759088233,
+          0.14217626197103844,
+          -0.14123605867567696
+        ],
+        "time": 27.821499637643694,
+        "exit": "reflected",
+        "energy_error": 3.306731972223414e-11,
+        "parallel_turns": 1,
+        "step_count": 1188,
+        "evaluations": 14693,
+        "min_step": 0.0013641296619084642,
+        "max_actual_step": 0.025000000000000355,
+        "min_separation": 0.021388533538276567,
+        "flight_budget": 151.1284060524644,
+        "end_force": 1.560962124977263e-07,
+        "initial_relative_position": [
+          0.012169097897780201,
+          -0.058899436192351155,
+          -24.0
+        ],
+        "initial_relative_velocity": [
+          -0.11779887238470231,
+          1.963306857423186,
+          1.9056642462041216
+        ],
+        "final_relative_position": [
+          -0.9432852047136482,
+          -0.20063548916277907,
+          -24.0
+        ],
+        "final_relative_velocity": [
+          1.390704180354392,
+          1.259953583284208,
+          -1.9946091027139303
+        ],
+        "delta_relative_perpendicular": [
+          1.9674647078757836,
+          -2.2799730007081553
+        ],
+        "wall_s": 0.05718475003959611
+      },
+      "absorb_at_first_outgoing_plane": true,
+      "initial_binary64_hex": [
+        "0x1.8ec1cabf13b00p-7",
+        "-0x1.e28112065e19fp-5",
+        "-0x1.8000000000000p+4",
+        "-0x1.e28112065e19fp-4",
+        "0x1.f69b4738a5268p+0",
+        "0x1.e7d99cae9a6afp+0"
+      ]
+    },
+    {
+      "label": "endpoint0",
+      "initial": [
+        0.011426781588523616,
+        -0.044846380566698554,
+        -24.0,
+        -0.08969276113339711,
+        1.9647914900416992,
+        1.9056642462041216
+      ],
+      "duration": 151.1284060524644,
+      "original_record": {
+        "endpoint_index": 0,
+        "phase": 1.5610882243791782,
+        "phase_hex": "0x1.8fa37a55e1188p+0",
+        "free_flight_angle": 25.188067675410736,
+        "free_flight_angle_hex": "0x1.93025340352e8p+4",
+        "incoming_angle": 26.749155899789912,
+        "incoming_angle_hex": "0x1.abfc8ae593400p+4",
+        "initial_double_state": [
+          0.011426781588523616,
+          -0.044846380566698554,
+          -24.0,
+          -0.08969276113339711,
+          1.9647914900416992,
+          1.9056642462041216
+        ],
+        "initial_double_state_hex": [
+          "0x1.766eca9c51b80p-7",
+          "-0x1.6f61ad3c18162p-5",
+          "-0x1.8000000000000p+4",
+          "-0x1.6f61ad3c18162p-4",
+          "0x1.f6fc9339302e6p+0",
+          "0x1.e7d99cae9a6afp+0"
+        ]
+      },
+      "absorb_at_first_outgoing_plane": false,
+      "initial_binary64_hex": [
+        "0x1.766eca9c51b80p-7",
+        "-0x1.6f61ad3c18162p-5",
+        "-0x1.8000000000000p+4",
+        "-0x1.6f61ad3c18162p-4",
+        "0x1.f6fc9339302e6p+0",
+        "0x1.e7d99cae9a6afp+0"
+      ]
+    },
+    {
+      "label": "endpoint1",
+      "initial": [
+        0.011426781588523727,
+        -0.044846380566702045,
+        -24.0,
+        -0.08969276113340409,
+        1.964791490041699,
+        1.9056642462041216
+      ],
+      "duration": 151.1284060524644,
+      "original_record": {
+        "endpoint_index": 1,
+        "phase": 1.5610882243791784,
+        "phase_hex": "0x1.8fa37a55e1189p+0",
+        "free_flight_angle": 25.188067675410736,
+        "free_flight_angle_hex": "0x1.93025340352e8p+4",
+        "incoming_angle": 26.749155899789915,
+        "incoming_angle_hex": "0x1.abfc8ae593401p+4",
+        "initial_double_state": [
+          0.011426781588523727,
+          -0.044846380566702045,
+          -24.0,
+          -0.08969276113340409,
+          1.964791490041699,
+          1.9056642462041216
+        ],
+        "initial_double_state_hex": [
+          "0x1.766eca9c51bc0p-7",
+          "-0x1.6f61ad3c18359p-5",
+          "-0x1.8000000000000p+4",
+          "-0x1.6f61ad3c18359p-4",
+          "0x1.f6fc9339302e5p+0",
+          "0x1.e7d99cae9a6afp+0"
+        ]
+      },
+      "absorb_at_first_outgoing_plane": false,
+      "initial_binary64_hex": [
+        "0x1.766eca9c51bc0p-7",
+        "-0x1.6f61ad3c18359p-5",
+        "-0x1.8000000000000p+4",
+        "-0x1.6f61ad3c18359p-4",
+        "0x1.f6fc9339302e5p+0",
+        "0x1.e7d99cae9a6afp+0"
+      ]
+    }
+  ],
+  "mass": 1.0,
+  "charge": 1.0,
+  "field": 2.0,
+  "strength": 0.03,
+  "screening": 3.0,
+  "start_distance": 24.0,
+  "refinements": [
+    [
+      50,
+      28,
+      "1e-30"
+    ],
+    [
+      70,
+      36,
+      "1e-44"
+    ]
+  ],
+  "max_step": ".5",
+  "position_absolute_target": 1e-08,
+  "velocity_absolute_target": 1e-08,
+  "time_absolute_target": 1e-08,
+  "initial_convention": "Convert each saved binary64 state component and physical parameter exactly using mp.mpf(float). No trigonometric re-preparation; phase parameter and initial-state uncertainty are distinct.",
+  "method": "Cartesian6D analytic Taylor coefficients; sqrt, inverse-cube power and exponential series; adaptive steps from the last4 coefficients, with safety0.75. First outgoing event located within the step polynomial by high-precision bisection.",
+  "event_convention": "First upward z=+24 or downward z=-24 crossing; initial incoming -24 is excluded. Phase2054 absorbs there. Saved endpoint cases continue the unabsorbed IVP to identical binary64 T.",
+  "acceptance": "Independent50/70-digit endpoint and first-exit agreement at unchanged absolute1e-8 targets; energy recorded separately. This is numerical convergence evidence, without interval certification.",
+  "scope": "Fixed saved states only; preserves original failures. No new phase search, continuous gyrophase integral, rate, sourceD calibration, trapping or lifetime conclusion."
+}

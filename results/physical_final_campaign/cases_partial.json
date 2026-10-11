@@ -1,0 +1,1412 @@
+[
+  {
+    "case": "B2_coarse",
+    "field": 2.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      3,
+      3,
+      3,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 432,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 2.888010473212077e-06,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      2.46396479810994e-06,
+      1.267053809562711e-06,
+      -9.367590591915377e-07
+    ],
+    "drift_per_density": 3.104857039475928e-06,
+    "diffusion_mu_per_density": 7.983111087936987e-07,
+    "cross_per_density": -1.1804157922445768e-06,
+    "gc_trace_diffusion_per_density": 0.00011481478117250096,
+    "mu_reference": 0.25,
+    "normalized_mu_rate_per_density": 2.5545955481398358e-05,
+    "normalized_spatial_rate_per_density": 2.5514395816111322e-05,
+    "max_energy_error": 3.4970906439347102e-12,
+    "min_separation": 0.9764092540713725,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 1.0012369356309472
+  },
+  {
+    "case": "B2",
+    "field": 2.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      4,
+      4,
+      4,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 1024,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 1.6216781251188195e-09,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      2.4723879889538314e-06,
+      1.2709489168106706e-06,
+      -9.396196809603637e-07
+    ],
+    "drift_per_density": 3.1154711535276252e-06,
+    "diffusion_mu_per_density": 8.007652329694211e-07,
+    "cross_per_density": -1.1840204791471782e-06,
+    "gc_trace_diffusion_per_density": 0.00011484992263826444,
+    "mu_reference": 0.25,
+    "normalized_mu_rate_per_density": 2.5624487455021474e-05,
+    "normalized_spatial_rate_per_density": 2.552220503072543e-05,
+    "max_energy_error": 3.8282699888345976e-12,
+    "min_separation": 0.9115601051640657,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 1.0040075857149846
+  },
+  {
+    "case": "B2_phase8",
+    "field": 2.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      4,
+      4,
+      4,
+      8
+    ],
+    "distance": 24.0,
+    "nodes": 512,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 1.6216781251188195e-09,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      2.4724194122440843e-06,
+      1.270947174886248e-06,
+      -9.396249048930679e-07
+    ],
+    "drift_per_density": 3.115510750206937e-06,
+    "diffusion_mu_per_density": 8.007641354646372e-07,
+    "cross_per_density": -1.1840270618565752e-06,
+    "gc_trace_diffusion_per_density": 0.00011484993138163575,
+    "mu_reference": 0.25,
+    "normalized_mu_rate_per_density": 2.562445233486839e-05,
+    "normalized_spatial_rate_per_density": 2.5522206973696835e-05,
+    "max_energy_error": 3.1794152011625012e-12,
+    "min_separation": 0.9115601051640657,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 1.004006133218688
+  },
+  {
+    "case": "B2_shifted",
+    "field": 2.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      4,
+      4,
+      4,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 1024,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 1.6216781251188195e-09,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      2.4723879900266765e-06,
+      1.2709489168145354e-06,
+      -9.396196809527762e-07
+    ],
+    "drift_per_density": 3.115471154879524e-06,
+    "diffusion_mu_per_density": 8.007652329718561e-07,
+    "cross_per_density": -1.184020479137617e-06,
+    "gc_trace_diffusion_per_density": 0.0001148499226382551,
+    "mu_reference": 0.25,
+    "normalized_mu_rate_per_density": 2.5624487455099394e-05,
+    "normalized_spatial_rate_per_density": 2.5522205030723357e-05,
+    "max_energy_error": 4.08869404807888e-12,
+    "min_separation": 0.9136655831989378,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 1.0040075857181192
+  },
+  {
+    "case": "B4_coarse",
+    "field": 4.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      3,
+      3,
+      3,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 432,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 2.888010473212077e-06,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      1.344697435489699e-08,
+      7.536666094567575e-09,
+      -6.105832460726671e-09
+    ],
+    "drift_per_density": 1.6944614232102886e-08,
+    "diffusion_mu_per_density": 4.748499409538559e-09,
+    "cross_per_density": -7.693996648040569e-09,
+    "gc_trace_diffusion_per_density": 2.8652165080794808e-05,
+    "mu_reference": 0.125,
+    "normalized_mu_rate_per_density": 6.078079244209355e-07,
+    "normalized_spatial_rate_per_density": 6.36714779573218e-06,
+    "max_energy_error": 3.4496490029849226e-12,
+    "min_separation": 1.1547865705254243,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 0.0954599993466999
+  },
+  {
+    "case": "B4",
+    "field": 4.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      4,
+      4,
+      4,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 1024,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 1.6216781251188195e-09,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      1.4051242460665197e-08,
+      7.685112151842317e-09,
+      -6.214527388820674e-09
+    ],
+    "drift_per_density": 1.770605615017102e-08,
+    "diffusion_mu_per_density": 4.8420282996967055e-09,
+    "cross_per_density": -7.830963788523611e-09,
+    "gc_trace_diffusion_per_density": 2.866049984871287e-05,
+    "mu_reference": 0.125,
+    "normalized_mu_rate_per_density": 6.197796223611783e-07,
+    "normalized_spatial_rate_per_density": 6.3689999663806376e-06,
+    "max_energy_error": 4.841094374289615e-12,
+    "min_separation": 1.0963542614542896,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 0.09731192112305591
+  },
+  {
+    "case": "B4_phase8",
+    "field": 4.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      4,
+      4,
+      4,
+      8
+    ],
+    "distance": 24.0,
+    "nodes": 512,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 1.6216781251188195e-09,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      1.405124263490662e-08,
+      7.685112151707695e-09,
+      -6.214527389072869e-09
+    ],
+    "drift_per_density": 1.77060563697337e-08,
+    "diffusion_mu_per_density": 4.842028299611887e-09,
+    "cross_per_density": -7.830963788841404e-09,
+    "gc_trace_diffusion_per_density": 2.866049984871314e-05,
+    "mu_reference": 0.125,
+    "normalized_mu_rate_per_density": 6.197796223503216e-07,
+    "normalized_spatial_rate_per_density": 6.368999966380698e-06,
+    "max_energy_error": 4.841094374289615e-12,
+    "min_separation": 1.0963542614542896,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 0.09731192112135036
+  },
+  {
+    "case": "B4_shifted",
+    "field": 4.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      4,
+      4,
+      4,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 1024,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 1.6216781251188195e-09,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      1.4051242397622593e-08,
+      7.685112151819532e-09,
+      -6.214527388816018e-09
+    ],
+    "drift_per_density": 1.7706056070730654e-08,
+    "diffusion_mu_per_density": 4.84202829968235e-09,
+    "cross_per_density": -7.830963788517745e-09,
+    "gc_trace_diffusion_per_density": 2.8660499848712917e-05,
+    "mu_reference": 0.125,
+    "normalized_mu_rate_per_density": 6.197796223593408e-07,
+    "normalized_spatial_rate_per_density": 6.3689999663806486e-06,
+    "max_energy_error": 4.5010317623411874e-12,
+    "min_separation": 1.095979437709367,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 0.09731192112276722
+  },
+  {
+    "case": "B8_coarse",
+    "field": 8.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      3,
+      3,
+      3,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 432,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 2.888010473212077e-06,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      -1.037231328307249e-12,
+      1.4050445986496741e-10,
+      -1.403039516821406e-10
+    ],
+    "drift_per_density": -1.3070215101003388e-12,
+    "diffusion_mu_per_density": 8.852526254111732e-11,
+    "cross_per_density": -1.7679786350062443e-10,
+    "gc_trace_diffusion_per_density": 7.1667651922475645e-06,
+    "mu_reference": 0.0625,
+    "normalized_mu_rate_per_density": 4.532493442105207e-08,
+    "normalized_spatial_rate_per_density": 1.5926144871661255e-06,
+    "max_energy_error": 6.2393254377001684e-12,
+    "min_separation": 1.2443333054084054,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 0.028459451289874035
+  },
+  {
+    "case": "B8",
+    "field": 8.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      4,
+      4,
+      4,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 1024,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 1.6216781251188195e-09,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      -8.836374267427987e-13,
+      1.4070056343897892e-10,
+      -1.4046301033108446e-10
+    ],
+    "drift_per_density": -1.113476899861277e-12,
+    "diffusion_mu_per_density": 8.864881819473361e-11,
+    "cross_per_density": -1.7699829427229847e-10,
+    "gc_trace_diffusion_per_density": 7.1688758874347655e-06,
+    "mu_reference": 0.0625,
+    "normalized_mu_rate_per_density": 4.538819491570361e-08,
+    "normalized_spatial_rate_per_density": 1.593083530541059e-06,
+    "max_energy_error": 6.603218338639171e-12,
+    "min_separation": 1.1890841601475037,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 0.028490781585249588
+  },
+  {
+    "case": "B8_phase8",
+    "field": 8.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      4,
+      4,
+      4,
+      8
+    ],
+    "distance": 24.0,
+    "nodes": 512,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 1.6216781251188195e-09,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      -8.837954302801783e-13,
+      1.4070056344026397e-10,
+      -1.4046301033237763e-10
+    ],
+    "drift_per_density": -1.113676001080447e-12,
+    "diffusion_mu_per_density": 8.864881819554326e-11,
+    "cross_per_density": -1.7699829427392801e-10,
+    "gc_trace_diffusion_per_density": 7.168875887434759e-06,
+    "mu_reference": 0.0625,
+    "normalized_mu_rate_per_density": 4.538819491611815e-08,
+    "normalized_spatial_rate_per_density": 1.5930835305410576e-06,
+    "max_energy_error": 5.867869616537155e-12,
+    "min_separation": 1.1894798149020709,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 0.02849078158550983
+  },
+  {
+    "case": "B8_shifted",
+    "field": 8.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      4,
+      4,
+      4,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 1024,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 1.6216781251188195e-09,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      -8.837990506154578e-13,
+      1.407005634386716e-10,
+      -1.4046301033094477e-10
+    ],
+    "drift_per_density": -1.1136805630869685e-12,
+    "diffusion_mu_per_density": 8.864881819453998e-11,
+    "cross_per_density": -1.7699829427212243e-10,
+    "gc_trace_diffusion_per_density": 7.168875887434732e-06,
+    "mu_reference": 0.0625,
+    "normalized_mu_rate_per_density": 4.538819491560447e-08,
+    "normalized_spatial_rate_per_density": 1.5930835305410514e-06,
+    "max_energy_error": 6.816944457321264e-12,
+    "min_separation": 1.189131576040204,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 0.028490781585187495
+  },
+  {
+    "case": "B16_coarse",
+    "field": 16.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      3,
+      3,
+      3,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 432,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 2.888010473212077e-06,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      -2.95067624492695e-14,
+      8.724948003310301e-12,
+      -8.724947984917764e-12
+    ],
+    "drift_per_density": -3.7181650960693085e-14,
+    "diffusion_mu_per_density": 5.497180042490752e-12,
+    "cross_per_density": -1.0994360061804955e-11,
+    "gc_trace_diffusion_per_density": 1.791919473187174e-06,
+    "mu_reference": 0.03125,
+    "normalized_mu_rate_per_density": 1.125822472702106e-08,
+    "normalized_spatial_rate_per_density": 3.982043273749275e-07,
+    "max_energy_error": 7.638659081421304e-12,
+    "min_separation": 1.2896132030764174,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 0.028272482123030594
+  },
+  {
+    "case": "B16",
+    "field": 16.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      4,
+      4,
+      4,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 1024,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 1.6216781251188195e-09,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      -2.920325585252858e-14,
+      8.728596776082575e-12,
+      -8.728596732072025e-12
+    ],
+    "drift_per_density": -3.67992004507908e-14,
+    "diffusion_mu_per_density": 5.499478962880388e-12,
+    "cross_per_density": -1.0998957870302816e-11,
+    "gc_trace_diffusion_per_density": 1.7924493289830999e-06,
+    "mu_reference": 0.03125,
+    "normalized_mu_rate_per_density": 1.1262932915979035e-08,
+    "normalized_spatial_rate_per_density": 3.9832207310735553e-07,
+    "max_energy_error": 9.98795379218614e-12,
+    "min_separation": 1.2360621801245664,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 0.02827594471005742
+  },
+  {
+    "case": "B16_phase8",
+    "field": 16.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      4,
+      4,
+      4,
+      8
+    ],
+    "distance": 24.0,
+    "nodes": 512,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 1.6216781251188195e-09,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      -2.918320755190442e-14,
+      8.728596776140508e-12,
+      -8.728596732129935e-12
+    ],
+    "drift_per_density": -3.67739374651466e-14,
+    "diffusion_mu_per_density": 5.49947896291689e-12,
+    "cross_per_density": -1.0998957870375788e-11,
+    "gc_trace_diffusion_per_density": 1.7924493289831094e-06,
+    "mu_reference": 0.03125,
+    "normalized_mu_rate_per_density": 1.126293291605379e-08,
+    "normalized_spatial_rate_per_density": 3.9832207310735765e-07,
+    "max_energy_error": 9.98795379218614e-12,
+    "min_separation": 1.2362314061670925,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 0.028275944710244947
+  },
+  {
+    "case": "B16_shifted",
+    "field": 16.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      4,
+      4,
+      4,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 1024,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 1.6216781251188195e-09,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      -2.9237102556412117e-14,
+      8.728596776116888e-12,
+      -8.728596732106341e-12
+    ],
+    "drift_per_density": -3.684185088836867e-14,
+    "diffusion_mu_per_density": 5.499478962902008e-12,
+    "cross_per_density": -1.0998957870346058e-11,
+    "gc_trace_diffusion_per_density": 1.7924493289831244e-06,
+    "mu_reference": 0.03125,
+    "normalized_mu_rate_per_density": 1.1262932916023312e-08,
+    "normalized_spatial_rate_per_density": 3.98322073107361e-07,
+    "max_energy_error": 9.612238080945878e-12,
+    "min_separation": 1.236097358482347,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 0.028275944710168192
+  },
+  {
+    "case": "B32_coarse",
+    "field": 32.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      3,
+      3,
+      3,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 432,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 2.888010473212077e-06,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      -3.1177839241868096e-14,
+      5.451574562801528e-13,
+      -5.451574562437107e-13
+    ],
+    "drift_per_density": -3.9287384998364634e-14,
+    "diffusion_mu_per_density": 3.4347811443016794e-13,
+    "cross_per_density": -6.86956228814415e-13,
+    "gc_trace_diffusion_per_density": 4.4799379143150496e-07,
+    "mu_reference": 0.015625,
+    "normalized_mu_rate_per_density": 2.8137727134119357e-09,
+    "normalized_spatial_rate_per_density": 9.955417587366777e-08,
+    "max_energy_error": 1.6528587752723793e-11,
+    "min_separation": 1.3123883677652484,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 0.028263733677857533
+  },
+  {
+    "case": "B32",
+    "field": 32.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      4,
+      4,
+      4,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 1024,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 1.6216781251188195e-09,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      -3.012355067521961e-14,
+      5.453844370873091e-13,
+      -5.453844370732881e-13
+    ],
+    "drift_per_density": -3.795886955840847e-14,
+    "diffusion_mu_per_density": 3.4362112437849706e-13,
+    "cross_per_density": -6.872422487393263e-13,
+    "gc_trace_diffusion_per_density": 4.4812638783833937e-07,
+    "mu_reference": 0.015625,
+    "normalized_mu_rate_per_density": 2.814944250908648e-09,
+    "normalized_spatial_rate_per_density": 9.95836417418532e-08,
+    "max_energy_error": 1.929481406914305e-11,
+    "min_separation": 1.259657922084447,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 0.028267135060251348
+  },
+  {
+    "case": "B32_phase8",
+    "field": 32.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      4,
+      4,
+      4,
+      8
+    ],
+    "distance": 24.0,
+    "nodes": 512,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 1.6216781251188195e-09,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      -3.022412159637512e-14,
+      5.453844371168531e-13,
+      -5.453844371028343e-13
+    ],
+    "drift_per_density": -3.808559958830004e-14,
+    "diffusion_mu_per_density": 3.436211243971114e-13,
+    "cross_per_density": -6.872422487765577e-13,
+    "gc_trace_diffusion_per_density": 4.481263878383391e-07,
+    "mu_reference": 0.015625,
+    "normalized_mu_rate_per_density": 2.8149442510611366e-09,
+    "normalized_spatial_rate_per_density": 9.958364174185313e-08,
+    "max_energy_error": 1.929481406914305e-11,
+    "min_separation": 1.2596638140909553,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 0.028267135061782626
+  },
+  {
+    "case": "B32_shifted",
+    "field": 32.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      4,
+      4,
+      4,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 1024,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 1.6216781251188195e-09,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      -3.007100080570987e-14,
+      5.453844370692188e-13,
+      -5.453844370551998e-13
+    ],
+    "drift_per_density": -3.789265114798474e-14,
+    "diffusion_mu_per_density": 3.4362112436709924e-13,
+    "cross_per_density": -6.872422487165329e-13,
+    "gc_trace_diffusion_per_density": 4.481263878383333e-07,
+    "mu_reference": 0.015625,
+    "normalized_mu_rate_per_density": 2.814944250815277e-09,
+    "normalized_spatial_rate_per_density": 9.958364174185185e-08,
+    "max_energy_error": 1.901966415700476e-11,
+    "min_separation": 1.2596599627975622,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 0.028267135059314115
+  },
+  {
+    "case": "B2_final",
+    "field": 2.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      5,
+      5,
+      5,
+      32
+    ],
+    "distance": 24.0,
+    "nodes": 4000,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 7.075706687231786e-11,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      2.4728051462781484e-06,
+      1.271134816090224e-06,
+      -9.397547457194726e-07
+    ],
+    "drift_per_density": 3.1159968160111027e-06,
+    "diffusion_mu_per_density": 8.008823593762587e-07,
+    "cross_per_density": -1.184190675072228e-06,
+    "gc_trace_diffusion_per_density": 0.00011485163122918134,
+    "mu_reference": 0.25,
+    "normalized_mu_rate_per_density": 2.5628235500040278e-05,
+    "normalized_spatial_rate_per_density": 2.5522584717595852e-05,
+    "max_energy_error": 4.544509056813155e-12,
+    "min_separation": 0.8779034931915775,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 1.004139501685015
+  },
+  {
+    "case": "boundary_18",
+    "field": 2.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      4,
+      4,
+      4,
+      16
+    ],
+    "distance": 18.0,
+    "nodes": 1024,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 1.6216781251188195e-09,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      2.4722722289816156e-06,
+      1.2709409049719582e-06,
+      -9.396161875170437e-07
+    ],
+    "drift_per_density": 3.115325283682042e-06,
+    "diffusion_mu_per_density": 8.007601850860574e-07,
+    "cross_per_density": -1.184016077037987e-06,
+    "gc_trace_diffusion_per_density": 0.00011484281560612637,
+    "mu_reference": 0.25,
+    "normalized_mu_rate_per_density": 2.5624325922753837e-05,
+    "normalized_spatial_rate_per_density": 2.5520625690250306e-05,
+    "max_energy_error": 2.9975500872296213e-12,
+    "min_separation": 0.9119190411533094,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 1.0040633891097406
+  },
+  {
+    "case": "boundary_24",
+    "field": 2.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      4,
+      4,
+      4,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 1024,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 1.6216781251188195e-09,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      2.4723879889538314e-06,
+      1.2709489168106706e-06,
+      -9.396196809603637e-07
+    ],
+    "drift_per_density": 3.1154711535276252e-06,
+    "diffusion_mu_per_density": 8.007652329694211e-07,
+    "cross_per_density": -1.1840204791471782e-06,
+    "gc_trace_diffusion_per_density": 0.00011484992263826444,
+    "mu_reference": 0.25,
+    "normalized_mu_rate_per_density": 2.5624487455021474e-05,
+    "normalized_spatial_rate_per_density": 2.552220503072543e-05,
+    "max_energy_error": 3.8282699888345976e-12,
+    "min_separation": 0.9115601051640657,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 1.0040075857149846
+  },
+  {
+    "case": "boundary_32",
+    "field": 2.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      4,
+      4,
+      4,
+      16
+    ],
+    "distance": 32.0,
+    "nodes": 1024,
+    "flux_per_density": 1.2601060866850065,
+    "flux_quadrature_relative_error": 1.6216781251188195e-09,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      2.472338713172553e-06,
+      1.270944373098045e-06,
+      -9.396162062273892e-07
+    ],
+    "drift_per_density": 3.11540906081571e-06,
+    "diffusion_mu_per_density": 8.007623701894532e-07,
+    "cross_per_density": -1.1840161006150073e-06,
+    "gc_trace_diffusion_per_density": 0.00011485055753166493,
+    "mu_reference": 0.25,
+    "normalized_mu_rate_per_density": 2.5624395846062503e-05,
+    "normalized_spatial_rate_per_density": 2.5522346118147764e-05,
+    "max_energy_error": 3.5812209487044927e-12,
+    "min_separation": 0.9120584434781122,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 1.0039984462024898
+  },
+  {
+    "case": "inner_impact",
+    "field": 2.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        0.6,
+        1.2
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      3,
+      3,
+      3,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 432,
+    "flux_per_density": 0.3150265216712516,
+    "flux_quadrature_relative_error": 2.888010473212077e-06,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      0.00012526956995218021,
+      5.322095429576038e-05,
+      -3.886993783870813e-05
+    ],
+    "drift_per_density": 3.946323689328887e-05,
+    "diffusion_mu_per_density": 8.383006055909025e-06,
+    "cross_per_density": -1.224506131490599e-05,
+    "gc_trace_diffusion_per_density": 0.0001676624697957469,
+    "mu_reference": 0.25,
+    "normalized_mu_rate_per_density": 0.0002682561937890888,
+    "normalized_spatial_rate_per_density": 3.725832662127709e-05,
+    "max_energy_error": 2.5832673325020405e-12,
+    "min_separation": 0.31766987964186144,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 7.199899139750841
+  },
+  {
+    "case": "outer_impact",
+    "field": 2.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        2.4,
+        4.8
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      3,
+      3,
+      3,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 432,
+    "flux_per_density": 5.040424346740026,
+    "flux_quadrature_relative_error": 2.888010473212077e-06,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      6.746111909555405e-09,
+      1.1138503443207968e-08,
+      -9.787443147198033e-09
+    ],
+    "drift_per_density": 3.400326671475591e-08,
+    "diffusion_mu_per_density": 2.8071391970696528e-08,
+    "cross_per_density": -4.933286673147079e-08,
+    "gc_trace_diffusion_per_density": 5.408289643797679e-05,
+    "mu_reference": 0.25,
+    "normalized_mu_rate_per_density": 8.982845430622889e-07,
+    "normalized_spatial_rate_per_density": 1.2018421430661509e-05,
+    "max_energy_error": 2.658064759440258e-12,
+    "min_separation": 2.3071438074175847,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 0.07474230690318255
+  },
+  {
+    "case": "far_impact",
+    "field": 2.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        4.8,
+        8.0
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      3,
+      3,
+      3,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 432,
+    "flux_per_density": 11.947672525605988,
+    "flux_quadrature_relative_error": 2.888010473212077e-06,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      -5.056509173867689e-14,
+      6.100523733106933e-10,
+      -6.097065187186656e-10
+    ],
+    "drift_per_density": -6.041351573209362e-13,
+    "diffusion_mu_per_density": 3.644352989892449e-09,
+    "cross_per_density": -7.284573822377874e-09,
+    "gc_trace_diffusion_per_density": 9.8627950602594e-06,
+    "mu_reference": 0.25,
+    "normalized_mu_rate_per_density": 1.1661929567655837e-07,
+    "normalized_spatial_rate_per_density": 2.1917322356132e-06,
+    "max_energy_error": 2.2063580509902135e-12,
+    "min_separation": 4.794809074006431,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 0.05320873315710063
+  },
+  {
+    "case": "slow_parallel",
+    "field": 2.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.35,
+        0.7
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      3,
+      3,
+      3,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 432,
+    "flux_per_density": 0.4343392457769437,
+    "flux_quadrature_relative_error": 1.958981171945595e-06,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      -4.2125824347734704e-07,
+      2.595724070884214e-07,
+      -2.435471643557377e-07
+    ],
+    "drift_per_density": -1.8296898774927103e-07,
+    "diffusion_mu_per_density": 5.6371241759645375e-08,
+    "cross_per_density": -1.0578209167738448e-07,
+    "gc_trace_diffusion_per_density": 0.00018006388745351947,
+    "mu_reference": 0.25,
+    "normalized_mu_rate_per_density": 1.803879736308652e-06,
+    "normalized_spatial_rate_per_density": 4.001419721189322e-05,
+    "max_energy_error": 6.767526442157384e-12,
+    "min_separation": 0.977310938072077,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 0.045080992797538716
+  },
+  {
+    "case": "fast_parallel",
+    "field": 2.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        1.5,
+        3.0
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "orders": [
+      3,
+      3,
+      3,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 432,
+    "flux_per_density": 0.8625614010622662,
+    "flux_quadrature_relative_error": 0.00010286931236258567,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      7.98442809885317e-06,
+      2.554910333257608e-06,
+      -1.8510210111465916e-06
+    ],
+    "drift_per_density": 6.887059487627718e-06,
+    "diffusion_mu_per_density": 1.101883518321572e-06,
+    "cross_per_density": -1.5966192767702968e-06,
+    "gc_trace_diffusion_per_density": 2.268992853927257e-05,
+    "mu_reference": 0.25,
+    "normalized_mu_rate_per_density": 3.52602725862903e-05,
+    "normalized_spatial_rate_per_density": 5.0422063420605714e-06,
+    "max_energy_error": 1.0635308453407445e-12,
+    "min_separation": 0.9725238618580473,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 6.993024520269965
+  },
+  {
+    "case": "high_perpendicular",
+    "field": 2.0,
+    "strength": 0.03,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.8,
+        1.6
+      ]
+    ],
+    "orders": [
+      3,
+      3,
+      3,
+      16
+    ],
+    "distance": 24.0,
+    "nodes": 432,
+    "flux_per_density": 2.2226692988154935,
+    "flux_quadrature_relative_error": 3.5649870300247244e-07,
+    "complete": true,
+    "missing_count": 0,
+    "moments_per_crossing": [
+      -2.965903436039207e-06,
+      2.95743394665887e-06,
+      -9.618858383350101e-07
+    ],
+    "drift_per_density": -6.592222510535727e-06,
+    "diffusion_mu_per_density": 3.286698818256704e-06,
+    "cross_per_density": -2.13795412183263e-06,
+    "gc_trace_diffusion_per_density": 0.00021122891524954482,
+    "mu_reference": 0.25,
+    "normalized_mu_rate_per_density": 0.00010517436218421452,
+    "normalized_spatial_rate_per_density": 4.693975894434329e-05,
+    "max_energy_error": 5.6094380571274495e-12,
+    "min_separation": 0.5874947375402471,
+    "reflected_count": 0,
+    "moment_to_spatial_rate_ratio": 2.240624250092982
+  }
+]

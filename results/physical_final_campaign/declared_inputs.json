@@ -1,0 +1,216 @@
+{
+  "mass": 1.0,
+  "charge": 1.0,
+  "theta": 0.5,
+  "screening": 3.0,
+  "strength": 0.03,
+  "fields": [
+    2.0,
+    4.0,
+    8.0,
+    16.0,
+    32.0
+  ],
+  "bounds": [
+    [
+      1.2,
+      2.4
+    ],
+    [
+      0.7,
+      1.5
+    ],
+    [
+      0.2,
+      0.8
+    ]
+  ],
+  "scan_orders": [
+    4,
+    4,
+    4,
+    16
+  ],
+  "coarse_orders": [
+    3,
+    3,
+    3,
+    16
+  ],
+  "final_B2_orders": [
+    5,
+    5,
+    5,
+    32
+  ],
+  "start_distance": 24.0,
+  "boundary_distances": [
+    18.0,
+    24.0,
+    32.0
+  ],
+  "rtol": 1e-12,
+  "max_step": 0.2,
+  "step_levels": [
+    0.2,
+    0.1,
+    0.05
+  ],
+  "weak_strengths": [
+    0.003,
+    0.0015
+  ],
+  "heldout_count": 128,
+  "heldout_seed": 3401,
+  "born_orders": [
+    256,
+    512
+  ],
+  "cutoff_domains": {
+    "inner_impact": [
+      [
+        0.6,
+        1.2
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "outer_impact": [
+      [
+        2.4,
+        4.8
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "far_impact": [
+      [
+        4.8,
+        8.0
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "slow_parallel": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.35,
+        0.7
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "fast_parallel": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        1.5,
+        3.0
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "high_perpendicular": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.8,
+        1.6
+      ]
+    ]
+  },
+  "workers": 4,
+  "runtime_cap_s": 2400.0,
+  "moment_target": 0.01,
+  "energy_target": 1e-09,
+  "born_target": 0.03,
+  "table_rms_target": 0.02,
+  "table_p95_target": 0.05,
+  "ring_deltas": [
+    1.0471975511965976,
+    1.5707963267948966,
+    2.0943951023931953
+  ],
+  "ring_phases": [
+    0.0,
+    0.8,
+    1.6,
+    2.4
+  ],
+  "ring_speed": 1.0,
+  "ring_impact": 1.8,
+  "ring_parallel_speed": 1.1,
+  "ring_refined_fields": [
+    16.0,
+    32.0
+  ],
+  "ring_increment_normalized_target": 1e-09,
+  "ring_refined_max_step": 0.0025,
+  "ring_broadening_signal_to_refinement_minimum": 10.0,
+  "step_target": 0.001,
+  "flux_target": 1e-05,
+  "fine_to_coarse_actual_step_ratio_target": 0.6,
+  "cartesian_position_absolute_target": 1e-08,
+  "cartesian_velocity_absolute_target": 1e-08,
+  "required_gates": [
+    "complete_base_scan",
+    "energy",
+    "phase_and_coordinate_moments",
+    "final_B2_refinement",
+    "incoming_flux",
+    "receding_planes",
+    "active_timestep",
+    "heldout_table",
+    "weak_Born",
+    "ring_refinement_and_positive_broadening",
+    "cartesian_trajectory",
+    "full_moment_consistency",
+    "source_integrity"
+  ],
+  "screening_asymptotic_controls": [
+    3.0,
+    6.0,
+    12.0,
+    "infinity"
+  ],
+  "units": "m,q,velocity,length normalized; theta=kBT/m; potential=kappa exp(-r/lambda)/r",
+  "flux": "2*(2*pi*b db)*u*F_relative*(vperp dvperp du dphi), F covariance=2theta I",
+  "mu_reference": "m theta/B; spatial_reference=lambda fixed, independent of B",
+  "mean_error_scale": "second moment divided by mu_reference; retain signed drift separately",
+  "ordering": "rho_thermal=sqrt(2theta)/Omega; rho_rel=vperp/Omega; b90=2kappa/(m(u^2+vperp^2)); tau_enc=2lambda/u; near_duration=2(b-rho_rel)/u; uniform L_B=infinity",
+  "scope": "Finite screened independent-pair incoming model; no plasma coefficient, kinetic mixing time, or lifetime.",
+  "stop_rule": "All planned cases through B32; cap checked between batches; failures keep original weights and invalidate integral; no outcome-driven extension."
+}
