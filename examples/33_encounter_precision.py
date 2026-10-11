@@ -1,7 +1,7 @@
 """Resolve saved sensitive encounters using independent arbitrary-precision Taylor integration."""
 from pathlib import Path
 from time import perf_counter
-import gzip,hashlib,json,platform,sys
+import gzip,hashlib,json,platform,sys,os
 import mpmath as mp
 import numpy as np
 import matplotlib
@@ -11,7 +11,7 @@ from sato_morrison.reference import run_metadata
 import time
 
 ROOT=Path(__file__).resolve().parents[1]
-OUTPUT=ROOT/'results'/'encounter_precision'/'saved_binary64'
+OUTPUT=ROOT/os.environ.get('SM_PRECISION_OUTPUT','results/encounter_precision/saved_binary64')
 PHASE_SOURCE=ROOT/'results'/'encounter_phase'/'all_moments8192'/'nodes.json'
 CENSOR_SOURCE=ROOT/'results'/'encounter_censoring'/'precision_checked'/'summary.json'
 REFINEMENTS=((50,28,'1e-30'),(70,36,'1e-44'))
@@ -107,7 +107,8 @@ inputs={'cases':cases,'mass':1.,'charge':1.,'field':2.,'strength':.03,'screening
     'event_convention':'First upward z=+24 or downward z=-24 crossing; initial incoming -24 is excluded. Phase2054 absorbs there. Saved endpoint cases continue the unabsorbed IVP to identical binary64 T.',
     'acceptance':'Independent50/70-digit endpoint and first-exit agreement at unchanged absolute1e-8 targets; energy recorded separately. This is numerical convergence evidence, without interval certification.',
     'scope':'Fixed saved states only; preserves original failures. No new phase search, continuous gyrophase integral, rate, sourceD calibration, trapping or lifetime conclusion.'}
-OUTPUT.mkdir(parents=True,exist_ok=True)
+if OUTPUT.exists():raise FileExistsError(f'Preserve existing evidence: {OUTPUT}; select a fresh output')
+OUTPUT.mkdir(parents=True)
 metadata=run_metadata(inputs,model='arbitrary-precision screened equal-particle encounter validation',
     boundary='first outgoing z=+/-24 and separate full-budget unabsorbed endpoints',units='normalized')
 metadata['mpmath_version']=mp.__version__

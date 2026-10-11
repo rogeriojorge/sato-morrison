@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation, PillowWriter
 
 ROOT=Path(__file__).resolve().parents[1]
-OUTPUT=ROOT/'results'/'physical_final_campaign'
+OUTPUT=ROOT/os.environ.get('SM_PHYSICAL_OUTPUT','results/physical_final_campaign')
 MASS,CHARGE,THETA,SCREENING=1.,1.,.5,3.
 STRENGTH=.03
 FIELDS=(2.,4.,8.,16.,32.)
