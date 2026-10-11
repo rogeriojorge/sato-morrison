@@ -272,9 +272,10 @@ for run in p['results']['runs']:
     case=next(c for c in p['inputs']['cases'] if run['label'].startswith(c['label']+'_'))
     states=[[mp.mpf(v) for v in row] for row in path['state']];times=[mp.mpf(v) for v in path['time']]
     plane=mp.mpf(float(p['inputs']['start_distance']));crossings=[]
+    plane_tolerance=mp.mpf(10)**(-run['dps']+8)
     for j,(before,after) in enumerate(zip(states,states[1:])):
-        if before[2]<plane<=after[2] and after[5]>0:crossings.append((j,'transmitted'))
-        if before[2]>-plane>=after[2] and after[5]<0:crossings.append((j,'reflected'))
+        if before[2]<plane and after[2]>=plane-plane_tolerance and after[5]>0:crossings.append((j,'transmitted'))
+        if before[2]>-plane and after[2]<=-plane+plane_tolerance and after[5]<0:crossings.append((j,'reflected'))
     event=run['event'];event_time=mp.mpf(event['time']);event_state=[mp.mpf(v) for v in event['state']]
     if not crossings:errors.append('retained first outgoing crossing '+run['label'])
     else:
