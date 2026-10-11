@@ -1,0 +1,128 @@
+[
+  {
+    "case": "B4_order5",
+    "orders": [
+      5,
+      5,
+      5,
+      16
+    ],
+    "field": 4.0,
+    "strength": 0.03,
+    "complete": true,
+    "nodes": 2000,
+    "integrals": [
+      1.7755341196030475e-08,
+      9.69703351024273e-09,
+      -7.84049192012712e-09
+    ],
+    "spatial_second_integral": 5.732179169110818e-05,
+    "normalized_mu_rate_per_density": 6.206101446555347e-07,
+    "normalized_spatial_rate_per_density": 6.369087965678687e-06,
+    "flux_per_density": 1.260106086595845,
+    "flux_relative_error": 7.075706687231786e-11,
+    "max_energy_error": 5.3577123667894456e-12
+  },
+  {
+    "case": "B4_order6",
+    "orders": [
+      6,
+      6,
+      6,
+      16
+    ],
+    "field": 4.0,
+    "strength": 0.03,
+    "complete": true,
+    "nodes": 3456,
+    "integrals": [
+      1.775918496586144e-08,
+      9.697784175376847e-09,
+      -7.841043286249166e-09
+    ],
+    "spatial_second_integral": 5.732183110844601e-05,
+    "normalized_mu_rate_per_density": 6.206581872241182e-07,
+    "normalized_spatial_rate_per_density": 6.36909234538289e-06,
+    "flux_per_density": 1.2601060866855414,
+    "flux_relative_error": 4.2454928461665986e-13,
+    "max_energy_error": 5.087192946617362e-12
+  },
+  {
+    "case": "B2_table7",
+    "orders": [
+      7,
+      7,
+      7,
+      32
+    ],
+    "field": 2.0,
+    "strength": 0.03,
+    "complete": true,
+    "nodes": 10976,
+    "integrals": [
+      3.1160560787776176e-06,
+      1.6017784588838427e-06,
+      -1.1842005409821657e-06
+    ],
+    "spatial_second_integral": 0.00022970344745532737,
+    "normalized_mu_rate_per_density": 2.5628455342141484e-05,
+    "normalized_spatial_rate_per_density": 2.5522605272814153e-05,
+    "flux_per_density": 1.260106086685005,
+    "flux_relative_error": 1.2212453270876722e-15,
+    "max_energy_error": 5.049970594571738e-12
+  },
+  {
+    "case": "B32_weak0.003",
+    "orders": [
+      4,
+      4,
+      4,
+      16
+    ],
+    "field": 32.0,
+    "strength": 0.003,
+    "complete": true,
+    "nodes": 1024,
+    "integrals": [
+      -3.793885721043513e-14,
+      6.437283156793351e-15,
+      -6.437283156448523e-15
+    ],
+    "spatial_second_integral": 8.657528180513811e-09,
+    "normalized_mu_rate_per_density": 2.6367111810225566e-11,
+    "normalized_spatial_rate_per_density": 9.619475756126456e-10,
+    "flux_per_density": 1.260106088728493,
+    "flux_relative_error": 1.6216781251188195e-09,
+    "max_energy_error": 1.9403349119013674e-11,
+    "asymptotic_mu_rate": 2.6183361998244602e-11,
+    "asymptotic_spatial_rate": 9.583631054186312e-10,
+    "asymptotic_relative_errors": [
+      0.007017808178845897,
+      0.0037402005291602425
+    ]
+  },
+  {
+    "case": "B32_weak0.0015",
+    "orders": [
+      4,
+      4,
+      4,
+      16
+    ],
+    "field": 32.0,
+    "strength": 0.0015,
+    "complete": true,
+    "nodes": 1024,
+    "integrals": [
+      -3.850703926669314e-14,
+      1.6036678887358432e-15,
+      -1.6036678886406866e-15
+    ],
+    "spatial_second_integral": 2.160354050018694e-09,
+    "normalized_mu_rate_per_density": 6.568623672262014e-12,
+    "normalized_spatial_rate_per_density": 2.4003933889096596e-10,
+    "flux_per_density": 1.260106088728493,
+    "flux_relative_error": 1.6216781251188195e-09,
+    "max_energy_error": 1.8442067248405237e-11
+  }
+]

@@ -33,6 +33,7 @@ OUTPUT.mkdir(parents=True)
 AUDIT_RTOL, AUDIT_ATOL = 2e-7, 2e-13
 # Dimensionless cancellation checks have binary64 drift subtraction noise.
 AUDIT_CHANGE_ATOL = 2e-9
+AUDIT_SCALED_TARGET = 1e-6
 source_revisions = {}
 started = perf_counter()
 errors = []
@@ -51,6 +52,24 @@ def compare(label, actual, recorded, rtol=AUDIT_RTOL, atol=AUDIT_ATOL):
     if a.shape != b.shape or not np.all(np.isfinite(a)) or not np.allclose(a, b, rtol=rtol, atol=atol):
         errors.append(label)
     return float(np.max(np.abs(a-b))) if a.shape == b.shape and a.size else None
+
+
+def scaled_error(label, actual, recorded, scales):
+    a,b,q=np.asarray(actual,float),np.asarray(recorded,float),np.asarray(scales,float)
+    if np.any(q<=0) or not np.all(np.isfinite(q)):
+        errors.append(label+' invalid positive scale')
+        return np.full(a.shape,np.inf).tolist()
+    discrepancy=abs(a-b)/q
+    if not np.all(np.isfinite(discrepancy)) or np.max(discrepancy)>AUDIT_SCALED_TARGET:
+        errors.append(label+' scaled discrepancy')
+    return discrepancy.tolist()
+
+
+def scaled_moment_error(row, actual):
+    # A signed mean or cross may vanish. Positive second supplies a natural
+    # increment scale without an absolute floor that swallows weak signals.
+    second=actual[1]
+    return scaled_error('COM moments '+str(row['node']),actual,row['moments'],[np.sqrt(second),second,second])
 
 
 def status(label, actual, recorded):
@@ -143,11 +162,15 @@ s = read(CAMPAIGN/'summary.json'); inputs = s['inputs']; saved = s['results']
 attempts = read(CAMPAIGN/'attempts.json'); cases = read(CAMPAIGN/'cases.json')
 lookup = {key(r['node'], r['field'], r['strength'], r['distance'], r['max_step']): r for r in attempts}
 if len(lookup) != len(attempts): errors.append('duplicate encounter keys')
-row_errors, gc_errors = [], []
+row_errors, gc_errors, row_scaled_errors, gc_scaled_errors = [], [], [], []
 for row in attempts:
     if row['status'] == 'passed':
-        row_errors.append(compare('COM moment '+str(row['node']), thermal(row, inputs['theta'], inputs['mass'], inputs['charge']), row['moments']))
-        gc_errors.append(compare('individual GC second '+str(row['node']), np.dot(row['gc_relative_kick'], row['gc_relative_kick'])/4, row['individual_gc_second']))
+        value=thermal(row, inputs['theta'], inputs['mass'], inputs['charge'])
+        row_errors.append(compare('COM moment '+str(row['node']),value,row['moments']))
+        row_scaled_errors.append(scaled_moment_error(row,value))
+        gc_second=np.dot(row['gc_relative_kick'],row['gc_relative_kick'])/4
+        gc_errors.append(compare('individual GC second '+str(row['node']),gc_second,row['individual_gc_second']))
+        gc_scaled_errors.append(scaled_error('GC second',gc_second,row['individual_gc_second'],gc_second))
 regenerated, case_reports = {}, []
 for case in cases:
     nodes, weights, flux, axes = quadrature(case, inputs['theta'])
@@ -164,9 +187,10 @@ for case in cases:
         integral = np.r_[weights@moments, weights@gc]
         recorded = [case['drift_per_density'], 2*case['diffusion_mu_per_density'], case['cross_per_density'], 2*case['gc_trace_diffusion_per_density']]
         error = compare('case integral '+case['case'], integral, recorded)
+        coefficient_scaled=scaled_error('case coefficients '+case['case'],integral,recorded,[integral[1]/entry['mu_reference'],integral[1],integral[1],integral[3]])
         normalized = [integral[1]/entry['mu_reference']**2, integral[3]/inputs['screening']**2]
         compare('normalized rates '+case['case'], normalized, [case['normalized_mu_rate_per_density'], case['normalized_spatial_rate_per_density']])
-        entry.update(integral=integral.tolist(), normalized_rates=normalized, maximum_integral_absolute_error=error, max_energy_error=max(r['energy_error'] for r in records))
+        entry.update(integral=integral.tolist(), normalized_rates=normalized, maximum_integral_absolute_error=error,coefficient_scaled_errors=coefficient_scaled, max_energy_error=max(r['energy_error'] for r in records))
     regenerated[case['case']] = entry
     case_reports.append(entry)
 
@@ -261,7 +285,7 @@ for k,v in gates.items(): status('required gate '+k,v,saved['required_gates'][k]
 for filename,wanted in s['output_sha256'].items(): status('campaign artifact hash '+filename,sha(CAMPAIGN/filename),wanted)
 for filename,wanted in s['experiment_dependency_sha256'].items(): status('campaign dependency hash '+filename,source_hash_matches(filename,wanted,s['commit']),True)
 physical_errors=list(errors)
-physical=dict(audit_passed=not physical_errors,errors=physical_errors,producer_overall_status=saved['overall_status'],reconstructed_overall_status='passed' if all(gates.values()) and not saved['budget_exhausted'] else 'unresolved',required_gates=gates,failed_gates=[k for k,v in gates.items() if not v],maximum_row_moment_absolute_error=max(row_errors),maximum_gc_second_absolute_error=max(gc_errors),audit_numeric_comparison_tolerances=dict(relative=AUDIT_RTOL,absolute=AUDIT_ATOL,dimensionless_cancellation_absolute=AUDIT_CHANGE_ATOL),case_integrals=case_reports,scan_checks=scan_checks,heldout_table=table_check,born_checks=born_checks,step_changes=step_error,actual_step_ratios=ratios,ring_rows=ring_rows,ring_checks=ring_checks,cartesian_checks=trajectory_checks,original_failures_preserved=True,scope='Independent retained-state algebra, positive incoming flux, COM moments, kick coefficients, ring marginal changes, all declared gates, and three independent Cartesian ODE controls. Encounter rows omit positions: their stored GC kicks are primitive inputs, not independently recomputed trajectories. Energy/max-step row diagnostics and source-integrity gate use retained producer records. Finite conditional incoming model only.')
+physical=dict(audit_passed=not physical_errors,errors=physical_errors,producer_overall_status=saved['overall_status'],reconstructed_overall_status='passed' if all(gates.values()) and not saved['budget_exhausted'] else 'unresolved',required_gates=gates,failed_gates=[k for k,v in gates.items() if not v],maximum_row_moment_absolute_error=max(row_errors),maximum_gc_second_absolute_error=max(gc_errors),maximum_row_moment_scaled_errors=np.max(np.array(row_scaled_errors),axis=0).tolist(),maximum_gc_second_relative_error=max(gc_scaled_errors),audit_numeric_comparison_tolerances=dict(relative=AUDIT_RTOL,absolute=AUDIT_ATOL,dimensionless_cancellation_absolute=AUDIT_CHANGE_ATOL,scaled_positive_second_target=AUDIT_SCALED_TARGET,mean_scale='sqrt of positive individual second; integral drift uses integrated second/mu_reference',second_cross_scale='positive individual or integrated second; no absolute floor'),case_integrals=case_reports,scan_checks=scan_checks,heldout_table=table_check,born_checks=born_checks,step_changes=step_error,actual_step_ratios=ratios,ring_rows=ring_rows,ring_checks=ring_checks,cartesian_checks=trajectory_checks,original_failures_preserved=True,scope='Independent retained-state algebra, positive incoming flux, COM moments, kick coefficients, ring marginal changes, all declared gates, and three independent Cartesian ODE controls. Encounter rows omit positions: their stored GC kicks are primitive inputs, not independently recomputed trajectories. Energy/max-step row diagnostics and source-integrity gate use retained producer records. Finite conditional incoming model only.')
 
 print('Audit: checking full precision paths, exact binary64 inputs and precision refinement',flush=True)
 errors=[];p=read(PRECISION/'summary.json');mp.mp.dps=90;packed=np.load(PRECISION/'paths_binary64.npz');path_checks=[]
@@ -322,15 +346,19 @@ if (REFINEMENT/'summary.json').exists():
     print('Audit: reconstructing focused refinement, fresh heldouts and weak B32 amplitudes',flush=True)
     errors=[];rs=read(REFINEMENT/'summary.json');ri=rs['inputs'];rr=rs['results'];ra=read(REFINEMENT/'attempts.json');rc=read(REFINEMENT/'cases.json')
     rl={key(r['node'],r['field'],r['strength'],ri['start_distance'],ri['max_step']):r for r in ra}
-    row_moment_errors=[];row_kick_errors=[];refcases={}
+    row_moment_errors=[];row_kick_errors=[];row_scaled_errors=[];row_kick_scaled_errors=[];row_gc_scaled_errors=[];refcases={}
     for row in ra:
         if row['status']!='passed':continue
-        row_moment_errors.append(compare('refinement moment',thermal(row,ri['theta'],ri['mass'],ri['charge']),row['moments']))
+        moment=thermal(row,ri['theta'],ri['mass'],ri['charge'])
+        row_moment_errors.append(compare('refinement moment',moment,row['moments']))
+        row_scaled_errors.append(scaled_moment_error(row,moment))
         omega=ri['charge']*row['field']/ri['mass']
         pos0=np.asarray(row['initial_relative_position']);pos1=np.asarray(row['final_relative_position']);vel0=np.asarray(row['initial_relative_velocity']);vel1=np.asarray(row['final_relative_velocity'])
         kick=pos1[:2]-pos0[:2]+np.array([vel1[1]-vel0[1],vel0[0]-vel1[0]])/omega
         row_kick_errors.append(compare('refinement GC kick',kick,row['gc_relative_kick']))
+        row_kick_scaled_errors.append(scaled_error('refinement GC kick',kick,row['gc_relative_kick'],np.full(2,np.linalg.norm(kick))))
         compare('refinement GC second',kick@kick/4,row['individual_gc_second'])
+        row_gc_scaled_errors.append(scaled_error('refinement GC second',kick@kick/4,row['individual_gc_second'],kick@kick/4))
     for case in rc:
         declared=dict(case,bounds=ri['bounds'],distance=ri['start_distance'])
         cn,cw,cf,caxes=quadrature(declared,ri['theta'])
@@ -343,10 +371,11 @@ if (REFINEMENT/'summary.json').exists():
             spatial=np.array([np.dot(r['gc_relative_kick'],r['gc_relative_kick'])/4 for r in rows])
             integral=np.r_[cw@moments,cw@spatial]
             compare('refinement case integral',integral,case['integrals']+[case['spatial_second_integral']])
+            coefficient_scaled=scaled_error('refinement coefficients',integral,case['integrals']+[case['spatial_second_integral']],[integral[1]/reconstructed['mu_reference'],integral[1],integral[1],integral[3]])
             flux_error=float(abs(cw.sum()/cf-1));compare('refinement flux',cw.sum(),case['flux_per_density']);compare('refinement flux error',flux_error,case['flux_relative_error'])
             normalized=[integral[1]/reconstructed['mu_reference']**2,integral[3]/ri['screening']**2]
             compare('refinement normalized rates',normalized,[case['normalized_mu_rate_per_density'],case['normalized_spatial_rate_per_density']])
-            reconstructed.update(integral=integral.tolist(),normalized_rates=normalized,flux_relative_error=flux_error,max_energy_error=max(r['energy_error'] for r in rows))
+            reconstructed.update(integral=integral.tolist(),coefficient_scaled_errors=coefficient_scaled,normalized_rates=normalized,flux_relative_error=flux_error,max_energy_error=max(r['energy_error'] for r in rows))
         refcases[case['case']]=reconstructed
     table_case=next(c for c in rc if c['case']=='B2_table7');tn,tw,tf,taxes=quadrature(dict(table_case,bounds=ri['bounds']),ri['theta'])
     table_checks=[]
@@ -384,7 +413,7 @@ if (REFINEMENT/'summary.json').exists():
     for filename,wanted in rs['source_artifact_sha256'].items():status('original campaign retained hash '+filename,sha(CAMPAIGN/filename),wanted)
     for filename,wanted in rs['experiment_dependency_sha256'].items():status('refinement source hash '+filename,source_hash_matches(filename,wanted,rs['commit']),True)
     refinement_errors=list(errors)
-    report=dict(audit_passed=not refinement_errors,errors=refinement_errors,producer_overall_status=rr['overall_status'],reconstructed_overall_status=overall,required_gates=gates,maximum_row_moment_absolute_error=max(row_moment_errors,default=None),maximum_gc_kick_absolute_error=max(row_kick_errors,default=None),case_integrals=list(refcases.values()),B4_last_refinement_changes=b4_change,table_checks=table_checks,weak_B32=weak_checks,original_campaign_status=physical['producer_overall_status'],original_failures_preserved=True,scope='Independent saved position/velocity COM moments and GC kicks, flux quadrature, all coefficients, spatial and periodic phase table reconstruction using a direct spline solve, old/fresh seeded heldouts, weak B32 leading references and all declared followup gates. Original campaign failure remains unchanged. No plasma closure or kinetic mixing-time inference.')
+    report=dict(audit_passed=not refinement_errors,errors=refinement_errors,producer_overall_status=rr['overall_status'],reconstructed_overall_status=overall,required_gates=gates,maximum_row_moment_absolute_error=max(row_moment_errors,default=None),maximum_gc_kick_absolute_error=max(row_kick_errors,default=None),maximum_row_moment_scaled_errors=np.max(np.array(row_scaled_errors),axis=0).tolist(),maximum_gc_kick_scaled_error=float(np.max(row_kick_scaled_errors)),maximum_gc_second_relative_error=max(row_gc_scaled_errors),audit_scaled_target=AUDIT_SCALED_TARGET,case_integrals=list(refcases.values()),B4_last_refinement_changes=b4_change,table_checks=table_checks,weak_B32=weak_checks,original_campaign_status=physical['producer_overall_status'],original_failures_preserved=True,scope='Independent saved position/velocity COM moments and GC kicks, flux quadrature, all coefficients, spatial and periodic phase table reconstruction using a direct spline solve, old/fresh seeded heldouts, weak B32 leading references and all declared followup gates. Original campaign failure remains unchanged. No plasma closure or kinetic mixing-time inference.')
     outputs.append((REFINEMENT,report,rs,rs['experiment_dependency_sha256']))
 else:
     print('Audit: focused refinement summary absent; optional followup audit not run',flush=True)
