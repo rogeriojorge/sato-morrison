@@ -258,7 +258,7 @@ Define the moment-change measure **rμ = 2Dμμ/μ₀²** and the spatial measur
 
 ![Field dependence of normalized kick measures, ratios to screened large-field references and analytic screening controls.](results/physical_final_figures/original_campaign/magnetic_scaling.svg)
 
-Between **B = 16** and **32**, rμ and rR scale as **B⁻²·⁰⁰⁰⁴** and **B⁻¹·⁹⁹⁹⁹⁵**. Their ratio approaches **0.0283** on this band. The screened weak-force derivation predicts the same powers. The leading moment-exchange term cancels for unscreened Coulomb interactions, so this screened result cannot be transferred unchanged to that limit. The exchange mechanism is established in [Nersisyan & Zwicknagel (2009)](https://doi.org/10.1103/PhysRevE.79.066405).
+Between **B = 16** and **32**, rμ and rR scale as **B<sup>−2.0004</sup>** and **B<sup>−1.99995</sup>**. Their ratio approaches **0.0283** on this band. The screened weak-force derivation predicts the same powers. The leading moment-exchange term cancels for unscreened Coulomb interactions, so this screened result cannot be transferred unchanged to that limit. The exchange mechanism is established in [Nersisyan & Zwicknagel (2009)](https://doi.org/10.1103/PhysRevE.79.066405).
 
 At **B = 32**, the thermal gyroradius is **0.03125**, small compared with λ = 3. Its ratio to the Coulomb 90-degree impact scale nevertheless ranges from **0.328 to 1.386** on the sampled velocities. Close impacts are excluded. Assigning a plasma density also requires a consistent screening model; interpreting λ as a one-component Debye length fixes that density through **λ² = mθ/(4πnκ)**. The present calculation supplies conditional coefficients per partner density.
 
