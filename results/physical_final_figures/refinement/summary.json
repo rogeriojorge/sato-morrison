@@ -1,0 +1,495 @@
+{
+  "model": "Saved-data scientific figure rendering; no new ODE, quadrature, or interpolation solve",
+  "inputs": {
+    "figure_mode": "refinement",
+    "source_directory": "results/physical_final_campaign",
+    "source_sha256": {
+      "summary.json": "ead69cb24da925a7f7a83356092e704e83d176e846af162cf475d9a08033d6cd",
+      "cases.json": "5f103c9375fc4da5a8b7d45122b2ee9e2e8d36ea57bba59020421401fdc1e988",
+      "ring.json": "63319556a1f8c4a6e05424d62e8adf2505a5da4097145d7145c9bdc5916da1c9",
+      "heldout.npz": "9bc068beb91487246f3aa97d4e0881567e91891becdd559ce16a7ba6a9badfce",
+      "declared_inputs.json": "e2bf1bc93d59629ff9249dd6f9a829f809a5bc8740a933b8adc7e4425e5106dc"
+    },
+    "mass": 1.0,
+    "charge": 1.0,
+    "theta": 0.5,
+    "strength": 0.03,
+    "screening": 3.0,
+    "fields": [
+      2.0,
+      4.0,
+      8.0,
+      16.0,
+      32.0
+    ],
+    "ring_deltas": [
+      1.0471975511965976,
+      1.5707963267948966,
+      2.0943951023931953
+    ],
+    "ring_phases": [
+      0.0,
+      0.8,
+      1.6,
+      2.4
+    ],
+    "ring_selection": "max_step=0.0025 at B16/B32; original max_step=0.2 at B2/B4/B8",
+    "sample_scope": "12 predeclared pair states per B, 24 individual point masses, no inferred continuous distribution",
+    "thresholds": {
+      "moment_target": 0.01,
+      "table_rms_target": 0.02,
+      "table_p95_target": 0.05,
+      "step_target": 0.001,
+      "ring_increment_normalized_target": 1e-09
+    },
+    "svg_fonttype": "path",
+    "raster_dpi": 180
+  },
+  "source_campaign_provenance": {
+    "commit": "57a8d4ee76d89f16aacb99e03af7b36e745891c0",
+    "working_tree": "M notes/implementation.tex\n M notes/references.bib\n?? results/encounter_precision/\n?? results/physical_final_campaign/",
+    "source_sha256": "1c5abdab3cef9562f634438b8bbd64a0d50a09d53a1c5f76eb98c4440900a9e3",
+    "versions": {
+      "sato-morrison": "0.1.0",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2"
+    },
+    "logical_cpus": 10,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "XLA_FLAGS": "unset"
+    },
+    "python": "3.12.13",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "Apple M4",
+    "devices": [
+      "cpu:0"
+    ],
+    "x64": true,
+    "experiment_dependency_sha256": {
+      "examples/34_physical_validation.py": "4f256d58b5a5f3a8f27f76052c93018992f3eebb403a4c434a4ef92947ee5c82",
+      "src/sato_morrison/controls.py": "90d32edf198a9734a8e8ebc4eee670256f82261dd5e8cf9c86eaaf49212e9ecb",
+      "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+    },
+    "experiment_dependency_sha256_end": {
+      "examples/34_physical_validation.py": "4f256d58b5a5f3a8f27f76052c93018992f3eebb403a4c434a4ef92947ee5c82",
+      "src/sato_morrison/controls.py": "90d32edf198a9734a8e8ebc4eee670256f82261dd5e8cf9c86eaaf49212e9ecb",
+      "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+    },
+    "experiment_dependencies_unchanged": true,
+    "wall_s": 872.9388037919998,
+    "parent_process_peak_rss_bytes": 1086046208,
+    "worker_process_peak_rss_bytes_max": 113885184,
+    "memory_scope": "Separate process lifetime peaks; not a simultaneous aggregate job peak."
+  },
+  "source_status": "unresolved",
+  "source_gates": {
+    "complete_base_scan": true,
+    "energy": true,
+    "phase_and_coordinate_moments": false,
+    "final_B2_refinement": true,
+    "incoming_flux": true,
+    "receding_planes": true,
+    "active_timestep": true,
+    "heldout_table": false,
+    "weak_Born": true,
+    "ring_refinement_and_positive_broadening": true,
+    "cartesian_trajectory": true,
+    "full_moment_consistency": true,
+    "source_integrity": true
+  },
+  "focused_refinement_provenance": {
+    "model": "focused bounded screened encounter refinement",
+    "boundary": "first outgoing relative z=+/-24 planes",
+    "units": "m,q,velocity,length normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+    "inputs": {
+      "mass": 1.0,
+      "charge": 1.0,
+      "theta": 0.5,
+      "screening": 3.0,
+      "strength": 0.03,
+      "bounds": [
+        [
+          1.2,
+          2.4
+        ],
+        [
+          0.7,
+          1.5
+        ],
+        [
+          0.2,
+          0.8
+        ]
+      ],
+      "start_distance": 24.0,
+      "rtol": 1e-12,
+      "max_step": 0.2,
+      "B4_orders": [
+        [
+          5,
+          5,
+          5,
+          16
+        ],
+        [
+          6,
+          6,
+          6,
+          16
+        ]
+      ],
+      "table_orders": [
+        7,
+        7,
+        7,
+        32
+      ],
+      "weak_B32_strengths": [
+        0.003,
+        0.0015
+      ],
+      "weak_orders": [
+        4,
+        4,
+        4,
+        16
+      ],
+      "fresh_count": 128,
+      "fresh_seed": 3701,
+      "workers": 4,
+      "runtime_cap_s": 1800.0,
+      "moment_target": 0.01,
+      "energy_target": 1e-09,
+      "table_rms_target": 0.02,
+      "table_p95_target": 0.05,
+      "weak_asymptotic_target": 0.02,
+      "scope": "Refinement of the same finite screened band; no plasma coefficient or mixing time.",
+      "units": "m,q,velocity,length normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+      "stop_rule": "Fixed cases and heldout seed; failures preserve all weights and invalidate their checks."
+    },
+    "commit": "04d0bf4ea02e1152641655c71391dba252a86ffe",
+    "working_tree": "M README.md\n M notes/implementation.tex\n M notes/references.bib\n?? examples/35_encounter_audit.py\n?? examples/36_physical_figures.py\n?? results/encounter_precision/\n?? results/physical_final_campaign/\n?? results/physical_final_figures/\n?? results/physical_refinement/",
+    "source_sha256": "ed2930c0b4cc11b520dc0560ebd9468470ea175bf50dcaf0d629d90c94254f77",
+    "versions": {
+      "sato-morrison": "0.1.0",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2"
+    },
+    "source_changes": "?? examples/35_encounter_audit.py\n?? examples/36_physical_figures.py",
+    "logical_cpus": 10,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "XLA_FLAGS": "unset"
+    },
+    "python": "3.12.13",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "Apple M4",
+    "devices": [
+      "cpu:0"
+    ],
+    "x64": true,
+    "experiment_dependency_sha256": {
+      "examples/37_physical_refinement.py": "11a5e453138bfa8f88da933b441781aceb192fb86987431f9cd4b2bb94ee57cd",
+      "src/sato_morrison/controls.py": "90d32edf198a9734a8e8ebc4eee670256f82261dd5e8cf9c86eaaf49212e9ecb",
+      "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+    },
+    "source_campaign_commit": "57a8d4ee76d89f16aacb99e03af7b36e745891c0",
+    "source_artifact_sha256": {
+      "summary.json": "ead69cb24da925a7f7a83356092e704e83d176e846af162cf475d9a08033d6cd",
+      "cases.json": "5f103c9375fc4da5a8b7d45122b2ee9e2e8d36ea57bba59020421401fdc1e988",
+      "heldout.npz": "9bc068beb91487246f3aa97d4e0881567e91891becdd559ce16a7ba6a9badfce"
+    },
+    "results": {
+      "overall_status": "passed",
+      "required_gates": {
+        "B4_coordinate_refinement": true,
+        "table_both_heldouts": true,
+        "energy": true,
+        "flux": true,
+        "weak_B32_asymptotic": true,
+        "source_integrity": true
+      },
+      "B4_last_refinement_changes": [
+        4.9544434087368724e-05,
+        7.740584040055256e-05,
+        5.68548559211887e-05,
+        6.876496627350886e-07
+      ],
+      "table_checks": [
+        {
+          "sample": "original128",
+          "status": "passed",
+          "rms": [
+            0.00048023439150493054,
+            0.0008581780456516946,
+            0.0010946323438643683
+          ],
+          "second_p95": 0.018827904333747945
+        },
+        {
+          "sample": "fresh128",
+          "status": "passed",
+          "rms": [
+            0.00040172881778462486,
+            0.001137386036214211,
+            0.0014466117544054949
+          ],
+          "second_p95": 0.024498546586898023
+        }
+      ],
+      "weak_B32": [
+        {
+          "case": "B32_weak0.003",
+          "orders": [
+            4,
+            4,
+            4,
+            16
+          ],
+          "field": 32.0,
+          "strength": 0.003,
+          "complete": true,
+          "nodes": 1024,
+          "integrals": [
+            -3.793885721043513e-14,
+            6.437283156793351e-15,
+            -6.437283156448523e-15
+          ],
+          "spatial_second_integral": 8.657528180513811e-09,
+          "normalized_mu_rate_per_density": 2.6367111810225566e-11,
+          "normalized_spatial_rate_per_density": 9.619475756126456e-10,
+          "flux_per_density": 1.260106088728493,
+          "flux_relative_error": 1.6216781251188195e-09,
+          "max_energy_error": 1.9403349119013674e-11,
+          "asymptotic_mu_rate": 2.6183361998244602e-11,
+          "asymptotic_spatial_rate": 9.583631054186312e-10,
+          "asymptotic_relative_errors": [
+            0.007017808178845897,
+            0.0037402005291602425
+          ]
+        },
+        {
+          "case": "B32_weak0.0015",
+          "orders": [
+            4,
+            4,
+            4,
+            16
+          ],
+          "field": 32.0,
+          "strength": 0.0015,
+          "complete": true,
+          "nodes": 1024,
+          "integrals": [
+            -3.850703926669314e-14,
+            1.6036678887358432e-15,
+            -1.6036678886406866e-15
+          ],
+          "spatial_second_integral": 2.160354050018694e-09,
+          "normalized_mu_rate_per_density": 6.568623672262014e-12,
+          "normalized_spatial_rate_per_density": 2.4003933889096596e-10,
+          "flux_per_density": 1.260106088728493,
+          "flux_relative_error": 1.6216781251188195e-09,
+          "max_energy_error": 1.8442067248405237e-11,
+          "asymptotic_mu_rate": 6.5458404995611506e-12,
+          "asymptotic_spatial_rate": 2.395907763546578e-10,
+          "asymptotic_relative_errors": [
+            0.0034805572641727345,
+            0.0018722028582776051
+          ]
+        }
+      ],
+      "attempted_unique_encounters": 18736,
+      "cases": [
+        {
+          "case": "B4_order5",
+          "orders": [
+            5,
+            5,
+            5,
+            16
+          ],
+          "field": 4.0,
+          "strength": 0.03,
+          "complete": true,
+          "nodes": 2000,
+          "integrals": [
+            1.7755341196030475e-08,
+            9.69703351024273e-09,
+            -7.84049192012712e-09
+          ],
+          "spatial_second_integral": 5.732179169110818e-05,
+          "normalized_mu_rate_per_density": 6.206101446555347e-07,
+          "normalized_spatial_rate_per_density": 6.369087965678687e-06,
+          "flux_per_density": 1.260106086595845,
+          "flux_relative_error": 7.075706687231786e-11,
+          "max_energy_error": 5.3577123667894456e-12
+        },
+        {
+          "case": "B4_order6",
+          "orders": [
+            6,
+            6,
+            6,
+            16
+          ],
+          "field": 4.0,
+          "strength": 0.03,
+          "complete": true,
+          "nodes": 3456,
+          "integrals": [
+            1.775918496586144e-08,
+            9.697784175376847e-09,
+            -7.841043286249166e-09
+          ],
+          "spatial_second_integral": 5.732183110844601e-05,
+          "normalized_mu_rate_per_density": 6.206581872241182e-07,
+          "normalized_spatial_rate_per_density": 6.36909234538289e-06,
+          "flux_per_density": 1.2601060866855414,
+          "flux_relative_error": 4.2454928461665986e-13,
+          "max_energy_error": 5.087192946617362e-12
+        },
+        {
+          "case": "B2_table7",
+          "orders": [
+            7,
+            7,
+            7,
+            32
+          ],
+          "field": 2.0,
+          "strength": 0.03,
+          "complete": true,
+          "nodes": 10976,
+          "integrals": [
+            3.1160560787776176e-06,
+            1.6017784588838427e-06,
+            -1.1842005409821657e-06
+          ],
+          "spatial_second_integral": 0.00022970344745532737,
+          "normalized_mu_rate_per_density": 2.5628455342141484e-05,
+          "normalized_spatial_rate_per_density": 2.5522605272814153e-05,
+          "flux_per_density": 1.260106086685005,
+          "flux_relative_error": 1.2212453270876722e-15,
+          "max_energy_error": 5.049970594571738e-12
+        },
+        {
+          "case": "B32_weak0.003",
+          "orders": [
+            4,
+            4,
+            4,
+            16
+          ],
+          "field": 32.0,
+          "strength": 0.003,
+          "complete": true,
+          "nodes": 1024,
+          "integrals": [
+            -3.793885721043513e-14,
+            6.437283156793351e-15,
+            -6.437283156448523e-15
+          ],
+          "spatial_second_integral": 8.657528180513811e-09,
+          "normalized_mu_rate_per_density": 2.6367111810225566e-11,
+          "normalized_spatial_rate_per_density": 9.619475756126456e-10,
+          "flux_per_density": 1.260106088728493,
+          "flux_relative_error": 1.6216781251188195e-09,
+          "max_energy_error": 1.9403349119013674e-11,
+          "asymptotic_mu_rate": 2.6183361998244602e-11,
+          "asymptotic_spatial_rate": 9.583631054186312e-10,
+          "asymptotic_relative_errors": [
+            0.007017808178845897,
+            0.0037402005291602425
+          ]
+        },
+        {
+          "case": "B32_weak0.0015",
+          "orders": [
+            4,
+            4,
+            4,
+            16
+          ],
+          "field": 32.0,
+          "strength": 0.0015,
+          "complete": true,
+          "nodes": 1024,
+          "integrals": [
+            -3.850703926669314e-14,
+            1.6036678887358432e-15,
+            -1.6036678886406866e-15
+          ],
+          "spatial_second_integral": 2.160354050018694e-09,
+          "normalized_mu_rate_per_density": 6.568623672262014e-12,
+          "normalized_spatial_rate_per_density": 2.4003933889096596e-10,
+          "flux_per_density": 1.260106088728493,
+          "flux_relative_error": 1.6216781251188195e-09,
+          "max_energy_error": 1.8442067248405237e-11,
+          "asymptotic_mu_rate": 6.5458404995611506e-12,
+          "asymptotic_spatial_rate": 2.395907763546578e-10,
+          "asymptotic_relative_errors": [
+            0.0034805572641727345,
+            0.0018722028582776051
+          ]
+        }
+      ]
+    },
+    "wall_s": 439.4917105829809,
+    "parent_process_peak_rss_bytes": 1024802816,
+    "worker_process_peak_rss_bytes_max": 30441472,
+    "memory_scope": "Separate process lifetime peaks; not a simultaneous aggregate job peak.",
+    "experiment_dependency_sha256_end": {
+      "examples/37_physical_refinement.py": "11a5e453138bfa8f88da933b441781aceb192fb86987431f9cd4b2bb94ee57cd",
+      "src/sato_morrison/controls.py": "90d32edf198a9734a8e8ebc4eee670256f82261dd5e8cf9c86eaaf49212e9ecb",
+      "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+    },
+    "output_sha256": {
+      "declared_inputs.json": "cf89852c18e4e1a24fb9899e6f9a1ad2625e99ebadf55d80687529800823cae8",
+      "attempts.json": "3d87c6742a259712d6e7154ff7f448465e9df53ebf5ae8095add1fb68953e9bb",
+      "heldout_fresh128.npz": "f94306332c1da62f81fbc74de261a2701a4f583a3d67158cacb98709e20aaa82",
+      "heldout_original128.npz": "cf66503b21da01bb592c96b0be70dc524febc56fe602fc896b0dac6df58b7add",
+      "attempts_partial.json": "3d87c6742a259712d6e7154ff7f448465e9df53ebf5ae8095add1fb68953e9bb",
+      "cases.json": "dc84867e89c890742eab977d763dac02fbba1926757e4adbf689ca1d8d88ec07",
+      "cases_partial.json": "60d5d248f46aa6200ca96fb9e6a46b9a44dcdd8da4d48ed4a4ecf0be66274b3d"
+    }
+  },
+  "focused_refinement_input_sha256": {
+    "summary.json": "ed07f3503406aeaa4206dae785fdaca2b6440cf87b602ebf37328d640aeaff39",
+    "heldout_original128.npz": "cf66503b21da01bb592c96b0be70dc524febc56fe602fc896b0dac6df58b7add",
+    "heldout_fresh128.npz": "f94306332c1da62f81fbc74de261a2701a4f583a3d67158cacb98709e20aaa82"
+  },
+  "render_commit": "1c923759a31ecfb60de54605c5a67d3c4b7737a3",
+  "render_working_tree": "M README.md\n M examples/README.md\n M notes/implementation.tex\n M notes/references.bib\n?? results/encounter_audit/\n?? results/physical_final_figures/",
+  "render_script_sha256": "45340f4aa028f7d0cf88a628d66950332f108072e1e754da49e167c33487029e",
+  "render_versions": {
+    "numpy": "2.5.3",
+    "matplotlib": "3.11.2"
+  },
+  "render_python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "render_platform": "macOS-26.6.2-arm64-arm-64bit",
+  "render_processor": "Apple M4",
+  "render_logical_cpus": 10,
+  "render_wall_s": 0.3812622909899801,
+  "render_parent_process_peak_rss_bytes": 92848128,
+  "render_memory_scope": "Single renderer process lifetime peak; includes imports, no worker processes.",
+  "render_runtime_scope": "Input parsing, validation and rendering; excludes imports, initial hash verification and final metadata writing.",
+  "ring_second_moment_identity_max_normalized_roundoff": 1.5318125644717522e-16,
+  "outputs_sha256": {
+    "focused_refinement.png": "86b07587ff5d0f751e3541c1b8f46e88d809985500edf964a1146484e72f9669",
+    "focused_refinement.svg": "fd74e14add572ea89eb905152eb45d959947f584324f0e96ad1194da7075e17b"
+  }
+}

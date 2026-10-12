@@ -222,7 +222,76 @@ The earlier 2,048-angle study passed its narrower second-moment criterion. That 
 
 ![A finer search near the transmission/reflection boundary, where low energy errors coexist with large trajectory disagreements.](results/encounter_censoring/precision_checked/finite_budget_censoring.png)
 
-Near the boundary between transmission and reflection, refined trajectories disagree by tens to hundreds of length units despite energy errors near **10⁻¹²**. One predicted reflection becomes transmission. The exact flow's continuity implies slow intermediate trajectories between true opposite exits, but the finest computed bracket fails its trajectory checks. No trapping classification or collision rate follows from these data.
+The original search gave opposite exits at two nearby starting states, despite energy errors near **10⁻¹²**. Independent Taylor integration at **50 and 70 decimal digits**, using the exact saved binary64 inputs, finds that **both states transmit**. Their exit times are **41.34** and **43.05**. The opposite-exit bracket was numerical.
+
+![Independent high-precision paths for the sensitive phase and the two saved starting states.](results/encounter_precision/saved_binary64/precision_paths.png)
+
+The two inputs differ by **6.98×10⁻¹⁵** in velocity; their positions differ by **18.06** at the saved final time. The two precision levels agree within **1.39×10⁻²¹** in position. A separate reflected path at phase index 2,054 is reproduced within **4.70×10⁻¹⁰** by tighter binary64 integration. These checks resolve the selected trajectories. The 8,192-angle mean and cross moment still need angular refinement. [Exact inputs, paths and precision comparisons](results/encounter_precision/saved_binary64/summary.json)
+
+## Individual moments during a collision
+
+Equal particles have two motions: their center of mass spirals freely, while their relative separation responds to the repulsive force. Recovering each particle's velocity requires both motions. Even a small rotation of the relative velocity can transfer perpendicular energy between the particles.
+
+![Exact screened relative equations, free center-of-mass motion, individual magnetic-moment exchange and the second-moment budget.](results/physical_final_figures/original_campaign/equations.svg)
+
+The pair potential is **U(r) = κ exp(−r/λ)/r**, with **m = q = 1**, **κ = 0.03**, **λ = 3** and single-particle thermal velocity variance **θ = 0.5**. This specifies a screened two-body model. The magnetic scan keeps the potential and incoming domain fixed: orbit-center separation **b ∈ [1.2, 2.4]**, relative parallel speed **u ∈ [0.7, 1.5]**, relative perpendicular speed **p ∈ [0.2, 0.8]**, and every gyrophase.
+
+![Recorded three-dimensional individual trajectories in the screened encounter model.](results/physical_final_campaign/encounter.gif)
+
+This movie follows one directly integrated pair at **B = 2**. Scattering statistics also average over independent Gaussian center-of-mass velocities. The incoming measure is the two-sided plane flux **2(2πb db) u Frel p dp du dφ**, where Frel has velocity covariance **2θI**. The band contains **11.64%** of the thermal crossing flux in its impact annulus; that fraction does not bound the omitted moment transport.
+
+### A distribution-level check
+
+Give both particles the same perpendicular speed **v₀ = 1**. Every incoming particle then has **μ₀ = mθ/B**. Choose three relative gyroangles and four common phases, and integrate each pair. Conservation of the entire μ marginal would require every outgoing particle to retain μ₀.
+
+![Individual magnetic-moment changes from equal initial values, for twelve prescribed pairs at each field strength.](results/physical_final_figures/original_campaign/ring_individual_samples.svg)
+
+At **B = 16** and **32**, all **24** step-refinement comparisons pass. The largest individual fractional changes are **3.01×10⁻⁴** and **1.50×10⁻⁴**. The particles exchange moment in opposite directions. Their pair-total moment also has a small, measured correction, which is included in the second-moment budget below.
+
+![Positive individual-moment spread, signed pair-total correction and the resulting change of the full second moment.](results/physical_final_figures/original_campaign/ring_second_moment.svg)
+
+Every refined pair increases **μ₁² + μ₂²**, with the signal exceeding its refinement difference by at least **517**. Thus these selected encounters change the individual moment marginal. This tests the exact conservation imposed by the prototype. Its usefulness as an approximate plasma model still depends on the accumulated error over a measured relaxation time. These twelve pairs per field do not determine that time. [All ring states and refinement checks](results/physical_final_campaign/ring.json)
+
+### Increasing the magnetic field
+
+Define the moment-change measure **rμ = 2Dμμ/μ₀²** and the spatial measure **rR = ⟨|ΔR₁|²⟩ν/λ²**. Here ν weights incident pairs by their crossing flux, and R₁ is one particle's guiding center. Both quantities describe accumulated squared kicks in the stated band. Computing a kinetic mixing time additionally requires correlations and evolution of the population.
+
+![Field dependence of normalized kick measures, ratios to screened large-field references and analytic screening controls.](results/physical_final_figures/original_campaign/magnetic_scaling.svg)
+
+Between **B = 16** and **32**, rμ and rR scale as **B⁻²·⁰⁰⁰⁴** and **B⁻¹·⁹⁹⁹⁹⁵**. Their ratio approaches **0.0283** on this band. The screened weak-force derivation predicts the same powers. The leading moment-exchange term cancels for unscreened Coulomb interactions, so this screened result cannot be transferred unchanged to that limit. The exchange mechanism is established in [Nersisyan & Zwicknagel (2009)](https://doi.org/10.1103/PhysRevE.79.066405).
+
+At **B = 32**, the thermal gyroradius is **0.03125**, small compared with λ = 3. Its ratio to the Coulomb 90-degree impact scale nevertheless ranges from **0.328 to 1.386** on the sampled velocities. Close impacts are excluded. Assigning a plasma density also requires a consistent screening model; interpreting λ as a one-component Debye length fixes that density through **λ² = mθ/(4πnκ)**. The present calculation supplies conditional coefficients per partner density.
+
+The original campaign saved **21,524** encounters in **872.94 s**. Its energy, boundary, active-step, weak-force, Cartesian-path and ring checks pass. Two checks require further refinement: the **B = 4** coordinate integral changes by **1.93%**, and the table's heldout 95th-percentile second-moment error is **7.89%** against a **5%** target. The bulk table RMS error is **0.355%**. [Original inputs, measured costs and failed gates](results/physical_final_campaign/summary.json)
+
+![Declared accuracy targets and the original campaign's passing and failed checks.](results/physical_final_figures/original_campaign/convergence.svg)
+
+The focused followup resolves both failed checks with finer sampling. It retains the original result and its nonzero exit.
+
+| Check | Final comparison | Result |
+|---|---|---:|
+| B = 4 integral | 5³ → 6³ nodes; 16 phases | Largest scaled moment change **0.00774%** |
+| Table, original 128 heldout states | 7³ nodes; 32 phases | Second-moment RMS **0.0858%**; 95th percentile **1.88%** |
+| Table, new 128 heldout states | Separate fixed seed | Second-moment RMS **0.114%**; 95th percentile **2.45%** |
+| B = 32 moment amplitude | κ = 0.003 → 0.0015 | Analytical discrepancy **0.702% → 0.348%** |
+| B = 32 spatial amplitude | Same weaker forces | Analytical discrepancy **0.374% → 0.187%** |
+
+![Focused quadrature and heldout-table refinements, with the independent weak-force amplitude comparison.](results/physical_final_figures/refinement/focused_refinement.svg)
+
+Isolated relative table errors still reach **96.2%** and **67.2%** in the two samples. Those states have second moments about **0.03%** and **0.02%** of the largest sampled values. The full error distributions are visible above; the passing RMS and percentile criteria certify the declared statistics, while accuracy at every individual query remains open.
+
+The original κ = 0.03 calculation differs from the weak-force moment prediction by **7.51%** at B = 32. Reducing κ by factors of ten and twenty reduces this discrepancy roughly in proportion. Doubling B from 16 to 32 had left it nearly constant. The force dependence is consistent with a finite-strength correction to the screened prediction. The followup costs **439.49 s** for **18,736** encounters. [Inputs, gates, costs and all saved states](results/physical_refinement/summary.json)
+
+The physical conclusion is limited but concrete: the specified screened encounters allow individual-moment exchange, while the prototype enforces exact conservation of the full μ marginal. A calibrated plasma closure still needs complete incident-domain convergence, screening tied to plasma parameters, successive-encounter correlations and a measured mixing time. A constrained dipole lifetime remains open.
+
+Recorded costs on the shared Apple M4 are below. Parent and worker memory figures are separate process-lifetime peaks; aggregate job memory was not measured.
+
+| Calculation | Wall time | Parent peak | Largest worker peak |
+|---|---:|---:|---:|
+| Six high-precision paths | 164.21 s | Unrecorded | — |
+| Original 21,524 encounters | 872.94 s | 1.086 GB | 0.114 GB |
+| Focused 18,736 encounters | 439.49 s | 1.025 GB | 0.0304 GB |
+| Independent audit of all three studies | 4.40 s | 0.269 GB | — |
 
 ## Runtime, memory and failure diagnostics
 
@@ -243,7 +312,7 @@ git clone https://github.com/rogeriojorge/sato-morrison.git
 cd sato-morrison
 python3.12 -m venv .venv
 source .venv/bin/activate
-python -m pip install -e '.[dev]'
+python -m pip install -e '.[dev,validation]'
 python -m pytest -q
 MPLBACKEND=Agg python examples/00_uniform_reference.py
 MPLBACKEND=Agg python examples/01_relaxation.py
@@ -258,11 +327,22 @@ MPLBACKEND=Agg python examples/30_landau_consistency.py
 SM_LANDAU_OUTPUT=results/landau_reproduction MPLBACKEND=Agg python examples/31_landau_trajectory.py
 # Independently replay all 100 accepted stages in the published campaign:
 SM_LANDAU_AUDIT_INPUT=results/landau_trajectory_dt_refined SM_LANDAU_AUDIT_OUTPUT=results/landau_archived_audit.json python examples/32_landau_audit.py
+# Independent high-precision reproduction in a fresh directory:
+SM_PRECISION_OUTPUT=results/precision_reproduction python examples/33_encounter_precision.py
+# The original physical campaign saves its two failed checks and exits nonzero:
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 SM_PHYSICAL_OUTPUT=results/physical_reproduction python examples/34_physical_validation.py
+# Focused refinements use the archived original inputs:
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 SM_PHYSICAL_REFINEMENT_OUTPUT=results/physical_refinement_reproduction python examples/37_physical_refinement.py
+# Independently audit all three archived encounter studies:
+SM_ENCOUNTER_AUDIT_OUTPUT=results/encounter_audit_reproduction python examples/35_encounter_audit.py
+# Render equations and original/refined evidence in fresh directories:
+PHYSICAL_FIGURE_OUTPUT=results/physical_figures_reproduction python examples/36_physical_figures.py
+PHYSICAL_FIGURE_MODE=refinement PHYSICAL_FIGURE_OUTPUT=results/physical_refinement_figures_reproduction python examples/36_physical_figures.py
 ```
 
 Example 24 exits nonzero because the declared angular and Cartesian checks remain unresolved. It saves the results before raising the error.
 
-**261 tests pass on fresh Linux CI.** Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
+**268 tests pass on fresh Linux CI.** The encounter tests include free helices, exact finite-radius repulsive Coulomb orbits and a sensitive screened trajectory checked at high precision. Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
 
 | Capability | Current evidence |
 |---|---|
@@ -272,7 +352,7 @@ Example 24 exits nonzero because the declared angular and Cartesian checks remai
 | Nonuniform evolution | Completed three-field pilots and mirror refinement; dipole/nonaxisymmetric refinements remain open |
 | Collision-model comparison | Four operators from shared initial data; independently checked short-time Landau trajectories and analytical controls |
 | Landau evolution | 12 trajectories and 100 independent stage checks; required refinement changes below 1% of relaxation increments through t = 0.2; long-time and infinite-domain limits remain open |
-| Physical encounters | Independently checked binary trajectories; angular and rate-calibration limits retained |
+| Microscopic screened encounters | High-precision selected paths; refined bounded field/force comparisons; individual μ-marginal exchange checked independently |
 | Physical rates and lifetimes | Uncalibrated; no metastable regime or dipole lifetime established |
 
-The [example catalogue](examples/README.md), [validation ledger](results/validation.csv), [reproduction record](results/deep_reproduction.json) and [technical notes](notes/implementation.pdf) contain the complete commands and derivations. [LaTeX source](notes/implementation.tex) · [Bibliography](notes/references.bib). Original project material is [MIT](LICENSE); third-party papers are stored outside the public repository.
+The [example catalogue](examples/README.md), [validation ledger](results/validation.csv), [physical-validation record](results/final_physical_validation.json), [earlier reproduction record](results/deep_reproduction.json) and [technical notes](notes/implementation.pdf) contain the complete commands and derivations. [LaTeX source](notes/implementation.tex) · [Bibliography](notes/references.bib). Original project material is [MIT](LICENSE); third-party papers are stored outside the public repository.

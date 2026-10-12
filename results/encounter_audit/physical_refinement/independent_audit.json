@@ -1,0 +1,205 @@
+{
+  "audit_passed": true,
+  "errors": [],
+  "producer_overall_status": "passed",
+  "reconstructed_overall_status": "passed",
+  "required_gates": {
+    "B4_coordinate_refinement": true,
+    "table_both_heldouts": true,
+    "energy": true,
+    "flux": true,
+    "weak_B32_asymptotic": true,
+    "source_integrity": true
+  },
+  "maximum_row_moment_absolute_error": 1.3877787807814457e-17,
+  "maximum_gc_kick_absolute_error": 4.440892098500626e-16,
+  "maximum_row_moment_scaled_errors": [
+    2.2949881539622425e-11,
+    5.063672932189074e-11,
+    5.063672932189074e-11
+  ],
+  "maximum_gc_kick_scaled_error": 1.0934443703666668e-11,
+  "maximum_gc_second_relative_error": 3.5280787402601505e-13,
+  "audit_scaled_target": 1e-06,
+  "case_integrals": [
+    {
+      "case": "B4_order5",
+      "complete": true,
+      "mu_reference": 0.125,
+      "field": 4.0,
+      "integral": [
+        1.7755341196146846e-08,
+        9.697033510242718e-09,
+        -7.840491920127107e-09,
+        5.732179169110818e-05
+      ],
+      "coefficient_scaled_errors": [
+        1.5000860465921161e-12,
+        1.1942341504244761e-15,
+        1.3648390290565441e-15,
+        0.0
+      ],
+      "normalized_rates": [
+        6.206101446555339e-07,
+        6.369087965678687e-06
+      ],
+      "flux_relative_error": 7.075706687231786e-11,
+      "max_energy_error": 5.3577123667894456e-12
+    },
+    {
+      "case": "B4_order6",
+      "complete": true,
+      "mu_reference": 0.125,
+      "field": 4.0,
+      "integral": [
+        1.775918496595422e-08,
+        9.697784175376839e-09,
+        -7.841043286249189e-09,
+        5.732183110844601e-05
+      ],
+      "coefficient_scaled_errors": [
+        1.1958902743728121e-12,
+        8.529583640903051e-16,
+        2.388283419452854e-15,
+        0.0
+      ],
+      "normalized_rates": [
+        6.206581872241177e-07,
+        6.36909234538289e-06
+      ],
+      "flux_relative_error": 4.2454928461665986e-13,
+      "max_energy_error": 5.087192946617362e-12
+    },
+    {
+      "case": "B2_table7",
+      "complete": true,
+      "mu_reference": 0.25,
+      "field": 2.0,
+      "integral": [
+        3.1160560787777137e-06,
+        1.6017784588838434e-06,
+        -1.1842005409821649e-06,
+        0.0002297034474553274
+      ],
+      "coefficient_scaled_errors": [
+        1.5004921401607944e-14,
+        3.966058520248796e-16,
+        5.288078026998395e-16,
+        1.1800020684238527e-16
+      ],
+      "normalized_rates": [
+        2.5628455342141494e-05,
+        2.5522605272814156e-05
+      ],
+      "flux_relative_error": 1.2212453270876722e-15,
+      "max_energy_error": 5.049970594571738e-12
+    },
+    {
+      "case": "B32_weak0.003",
+      "complete": true,
+      "mu_reference": 0.015625,
+      "field": 32.0,
+      "integral": [
+        -3.7938847379606084e-14,
+        6.437283156793291e-15,
+        -6.437283156448464e-15,
+        8.657528180513811e-09
+      ],
+      "coefficient_scaled_errors": [
+        2.3862039332512744e-08,
+        9.313467706252411e-15,
+        9.068376450824716e-15,
+        0.0
+      ],
+      "normalized_rates": [
+        2.636711181022532e-11,
+        9.619475756126456e-10
+      ],
+      "flux_relative_error": 1.6216781251188195e-09,
+      "max_energy_error": 1.9403349119013674e-11
+    },
+    {
+      "case": "B32_weak0.0015",
+      "complete": true,
+      "mu_reference": 0.015625,
+      "field": 32.0,
+      "integral": [
+        -3.850702943586406e-14,
+        1.6036678887357412e-15,
+        -1.6036678886405837e-15,
+        2.160354050018694e-09
+      ],
+      "coefficient_scaled_errors": [
+        9.578461067525516e-08,
+        6.35794186040581e-14,
+        6.419430659829465e-14,
+        0.0
+      ],
+      "normalized_rates": [
+        6.568623672261596e-12,
+        2.4003933889096596e-10
+      ],
+      "flux_relative_error": 1.6216781251188195e-09,
+      "max_energy_error": 1.8442067248405237e-11
+    }
+  ],
+  "B4_last_refinement_changes": [
+    4.954443378328911e-05,
+    7.740584040089381e-05,
+    5.6854855924941764e-05,
+    6.876496627350886e-07
+  ],
+  "table_checks": [
+    {
+      "sample": "original128",
+      "rms": [
+        0.0004802343916989933,
+        0.0008581780459143453,
+        0.0010946323442074311
+      ],
+      "second_p95": 0.018827904329980848,
+      "status": "passed"
+    },
+    {
+      "sample": "fresh128",
+      "rms": [
+        0.0004017288177968803,
+        0.0011373860358399345,
+        0.0014466117539369218
+      ],
+      "second_p95": 0.02449854660233324,
+      "status": "passed"
+    }
+  ],
+  "weak_B32": [
+    {
+      "case": "B32_weak0.003",
+      "strength": 0.003,
+      "asymptotic_rates": [
+        2.61833619982446e-11,
+        9.583631054186312e-10
+      ],
+      "relative_errors": [
+        0.007017808178836571,
+        0.0037402005291602425
+      ],
+      "status": "passed"
+    },
+    {
+      "case": "B32_weak0.0015",
+      "strength": 0.0015,
+      "asymptotic_rates": [
+        6.54584049956115e-12,
+        2.395907763546578e-10
+      ],
+      "relative_errors": [
+        0.0034805572641090077,
+        0.0018722028582776051
+      ],
+      "status": "passed"
+    }
+  ],
+  "original_campaign_status": "unresolved",
+  "original_failures_preserved": true,
+  "scope": "Independent saved position/velocity COM moments and GC kicks, flux quadrature, all coefficients, spatial and periodic phase table reconstruction using a direct spline solve, old/fresh seeded heldouts, weak B32 leading references and all declared followup gates. Original campaign failure remains unchanged. No plasma closure or kinetic mixing-time inference."
+}

@@ -1,0 +1,45 @@
+{
+  "producer_commit": "9fa28f3e760b3343b1bfb04ad4f8e1f1a01d19ed",
+  "producer_scientific_source_changes": "?? examples/33_encounter_precision.py\n?? examples/34_physical_validation.py\n?? tests/test_encounter_precision.py",
+  "producer_dirty_source_diff_sha256": null,
+  "producer_source_sha256": {
+    "examples/33_encounter_precision.py": "c91bdf72b66615146054db3c3af458d72b73310d6dab792e92dee1d6a22acffe",
+    "src/sato_morrison/controls.py": "90d32edf198a9734a8e8ebc4eee670256f82261dd5e8cf9c86eaaf49212e9ecb",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+    "results/encounter_phase/all_moments8192/nodes.json": "b8cca80bd083af11807ed03397c9c5c06f95d676f7df57a649bda7d84a125df6",
+    "results/encounter_censoring/precision_checked/summary.json": "fd460f574b5363bcf26614592f92152754e58a42ea8a6c6e4057ebbf978917e6"
+  },
+  "matching_source_revision": {
+    "examples/33_encounter_precision.py": "5189c0deada069ee7e0a9a1a9356131721382038",
+    "src/sato_morrison/controls.py": "current matching bytes",
+    "src/sato_morrison/reference.py": "current matching bytes",
+    "results/encounter_phase/all_moments8192/nodes.json": "current matching bytes",
+    "results/encounter_censoring/precision_checked/summary.json": "current matching bytes"
+  },
+  "producer_wall_s": 164.21123666600033,
+  "producer_parent_process_peak_rss_bytes": null,
+  "producer_worker_process_peak_rss_bytes_max": null,
+  "producer_memory_scope": null,
+  "producer_python": "3.12.13",
+  "producer_platform": "macOS-26.6.2-arm64-arm-64bit",
+  "audit_source_sha256": "acf9cdbe9c915edf194e95d6ae9ba8c297a6c79f370635d58fc8c64dfce10c1d",
+  "audit_input_sha256": {
+    "phase2054_dps70_full_precision_path.json.gz": "ca2fd6d9417e1c9ab8894279207dc3371a247b228269d693ca9bcfb90c9eca91",
+    "summary.json": "de7681fb7cd1559dcbac15957e45852c1b88b9f81b030a8e7801e0554702da87",
+    "precision_paths.png": "61aead79fc63e459704458a5449e17206ed870eefdb15955ff956b8d6349d05b",
+    "endpoint0_dps50_full_precision_path.json.gz": "274ffae545d6e478ed2717665a131ff4837a024c3034893f2c7202a24e6e4c93",
+    "summary_partial.json": "eca90f3bbca39ac4d88e0b7645d00eec998b83221b3984d26978b125af507330",
+    "declared_inputs.json": "66b3adce21a12bca05c070a52300e1cce7c3f64e694c125b221f4a72f9634dc5",
+    "endpoint1_dps50_full_precision_path.json.gz": "116540a008a68c04b15a21d34f61a75b166cd3b50eda0487d1acf2c2fd24c93b",
+    "paths_binary64.npz": "01564e5066eca70d0e6c6e04aa126817e512277226c803663ed88db7ca020237",
+    "endpoint1_dps70_full_precision_path.json.gz": "067a5570bb0ddcb39395205b5f52f506a5d57016313dae64ac232e2539272dde",
+    "endpoint0_dps70_full_precision_path.json.gz": "cd56a6c2fba0adceb2c477f39f123ce9482ef88a00777ab89e99ca507c1a1204",
+    "phase2054_dps50_full_precision_path.json.gz": "de95e8ed728d2f19f98f6617190486219d4c5ea0719053041d508dfc0241cb89"
+  },
+  "audit_commit": "e77cff3cea6cd743a48dca79caf330521a3640c9",
+  "audit_python": "3.13.7 (main, Aug 14 2025, 11:12:11) [Clang 17.0.0 (clang-1700.3.19.1)]",
+  "audit_platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "audit_wall_s": 4.379827875003684,
+  "audit_process_lifetime_peak_rss_bytes": 269123584,
+  "missing_provenance": "Null means absent in producer metadata. Exact dirty diff bytes were not retained, so no diff hash is asserted. Producer source byte hashes identify actual scientific source content; historical matching revisions do not relabel the producer commit."
+}

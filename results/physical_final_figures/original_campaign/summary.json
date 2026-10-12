@@ -1,0 +1,137 @@
+{
+  "model": "Saved-data scientific figure rendering; no new ODE, quadrature, or interpolation solve",
+  "inputs": {
+    "figure_mode": "original",
+    "source_directory": "results/physical_final_campaign",
+    "source_sha256": {
+      "summary.json": "ead69cb24da925a7f7a83356092e704e83d176e846af162cf475d9a08033d6cd",
+      "cases.json": "5f103c9375fc4da5a8b7d45122b2ee9e2e8d36ea57bba59020421401fdc1e988",
+      "ring.json": "63319556a1f8c4a6e05424d62e8adf2505a5da4097145d7145c9bdc5916da1c9",
+      "heldout.npz": "9bc068beb91487246f3aa97d4e0881567e91891becdd559ce16a7ba6a9badfce",
+      "declared_inputs.json": "e2bf1bc93d59629ff9249dd6f9a829f809a5bc8740a933b8adc7e4425e5106dc"
+    },
+    "mass": 1.0,
+    "charge": 1.0,
+    "theta": 0.5,
+    "strength": 0.03,
+    "screening": 3.0,
+    "fields": [
+      2.0,
+      4.0,
+      8.0,
+      16.0,
+      32.0
+    ],
+    "ring_deltas": [
+      1.0471975511965976,
+      1.5707963267948966,
+      2.0943951023931953
+    ],
+    "ring_phases": [
+      0.0,
+      0.8,
+      1.6,
+      2.4
+    ],
+    "ring_selection": "max_step=0.0025 at B16/B32; original max_step=0.2 at B2/B4/B8",
+    "sample_scope": "12 predeclared pair states per B, 24 individual point masses, no inferred continuous distribution",
+    "thresholds": {
+      "moment_target": 0.01,
+      "table_rms_target": 0.02,
+      "table_p95_target": 0.05,
+      "step_target": 0.001,
+      "ring_increment_normalized_target": 1e-09
+    },
+    "svg_fonttype": "path",
+    "raster_dpi": 180
+  },
+  "source_campaign_provenance": {
+    "commit": "57a8d4ee76d89f16aacb99e03af7b36e745891c0",
+    "working_tree": "M notes/implementation.tex\n M notes/references.bib\n?? results/encounter_precision/\n?? results/physical_final_campaign/",
+    "source_sha256": "1c5abdab3cef9562f634438b8bbd64a0d50a09d53a1c5f76eb98c4440900a9e3",
+    "versions": {
+      "sato-morrison": "0.1.0",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2"
+    },
+    "logical_cpus": 10,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "XLA_FLAGS": "unset"
+    },
+    "python": "3.12.13",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "Apple M4",
+    "devices": [
+      "cpu:0"
+    ],
+    "x64": true,
+    "experiment_dependency_sha256": {
+      "examples/34_physical_validation.py": "4f256d58b5a5f3a8f27f76052c93018992f3eebb403a4c434a4ef92947ee5c82",
+      "src/sato_morrison/controls.py": "90d32edf198a9734a8e8ebc4eee670256f82261dd5e8cf9c86eaaf49212e9ecb",
+      "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+    },
+    "experiment_dependency_sha256_end": {
+      "examples/34_physical_validation.py": "4f256d58b5a5f3a8f27f76052c93018992f3eebb403a4c434a4ef92947ee5c82",
+      "src/sato_morrison/controls.py": "90d32edf198a9734a8e8ebc4eee670256f82261dd5e8cf9c86eaaf49212e9ecb",
+      "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+    },
+    "experiment_dependencies_unchanged": true,
+    "wall_s": 872.9388037919998,
+    "parent_process_peak_rss_bytes": 1086046208,
+    "worker_process_peak_rss_bytes_max": 113885184,
+    "memory_scope": "Separate process lifetime peaks; not a simultaneous aggregate job peak."
+  },
+  "source_status": "unresolved",
+  "source_gates": {
+    "complete_base_scan": true,
+    "energy": true,
+    "phase_and_coordinate_moments": false,
+    "final_B2_refinement": true,
+    "incoming_flux": true,
+    "receding_planes": true,
+    "active_timestep": true,
+    "heldout_table": false,
+    "weak_Born": true,
+    "ring_refinement_and_positive_broadening": true,
+    "cartesian_trajectory": true,
+    "full_moment_consistency": true,
+    "source_integrity": true
+  },
+  "focused_refinement_provenance": null,
+  "focused_refinement_input_sha256": null,
+  "render_commit": "1c923759a31ecfb60de54605c5a67d3c4b7737a3",
+  "render_working_tree": "M README.md\n M examples/README.md\n M notes/implementation.tex\n M notes/references.bib\n?? results/encounter_audit/\n?? results/physical_final_figures/",
+  "render_script_sha256": "45340f4aa028f7d0cf88a628d66950332f108072e1e754da49e167c33487029e",
+  "render_versions": {
+    "numpy": "2.5.3",
+    "matplotlib": "3.11.2"
+  },
+  "render_python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "render_platform": "macOS-26.6.2-arm64-arm-64bit",
+  "render_processor": "Apple M4",
+  "render_logical_cpus": 10,
+  "render_wall_s": 1.3472943749802653,
+  "render_parent_process_peak_rss_bytes": 129007616,
+  "render_memory_scope": "Single renderer process lifetime peak; includes imports, no worker processes.",
+  "render_runtime_scope": "Input parsing, validation and rendering; excludes imports, initial hash verification and final metadata writing.",
+  "ring_second_moment_identity_max_normalized_roundoff": 1.5318125644717522e-16,
+  "outputs_sha256": {
+    "convergence.png": "13bf07f78875b2bdb20201ff84df8df15277c8064cb260163bc86a44bf08f6e7",
+    "convergence.svg": "a7487aade7d166452e2450cba8e1c868df828a2d12b39d519bd9f65543dc0809",
+    "equations.png": "1fa0a5bb892eb90ce29266b001a022bc3b3466a10838074b3c88c76e6a83fb79",
+    "equations.svg": "d38f309099caefad85ced81de2fad6c95178b483b31b2e629c222cb30a4f5fca",
+    "magnetic_scaling.png": "dca06f2e05539abb586b5dc29a4e3d6dc7517223e0e2a32dbb0378dfa328ade1",
+    "magnetic_scaling.svg": "124b172724c39a5e5caab76397a33e5c46bf8fd3d03a55dcc27f93a7f3f784c2",
+    "ring_individual_samples.png": "0a6bc43c2dc0ddd356eaf07b3b2f116cd0890f0696fc8d4027915e2fa93e3e84",
+    "ring_individual_samples.svg": "efec480e58529b8e19332ce1915962c3edf93e6d5ddab53ed93560907ff63a14",
+    "ring_second_moment.png": "da2adf9635bfc6308cb924fbf96aa7a5ab56eaa177ebe5128b435ea0bee679c5",
+    "ring_second_moment.svg": "4bf29004fabf7094767d64ba24139f9a21b3d6e9e9f92f31029d355ffe1fbc8c"
+  }
+}

@@ -1,0 +1,265 @@
+{
+  "date": "2026-10-12",
+  "repository": "https://github.com/rogeriojorge/sato-morrison",
+  "source_commit": "1c923759a31ecfb60de54605c5a67d3c4b7737a3",
+  "author_identity": {
+    "name": "rogeriojorge",
+    "email": "rogerio.jorge@wisc.edu"
+  },
+  "status": {
+    "implementation": "staged prototype and controls implemented",
+    "numerical": "listed prototype and bounded microscopic comparisons verified",
+    "physical": "specified screened two-particle model checked; plasma closure and confinement lifetime unresolved"
+  },
+  "scientific_results": {
+    "precision": {
+      "producer_commit": "9fa28f3e760b3343b1bfb04ad4f8e1f1a01d19ed",
+      "producer_source_hashes": {
+        "examples/33_encounter_precision.py": "c91bdf72b66615146054db3c3af458d72b73310d6dab792e92dee1d6a22acffe",
+        "src/sato_morrison/controls.py": "90d32edf198a9734a8e8ebc4eee670256f82261dd5e8cf9c86eaaf49212e9ecb",
+        "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+        "results/encounter_phase/all_moments8192/nodes.json": "b8cca80bd083af11807ed03397c9c5c06f95d676f7df57a649bda7d84a125df6",
+        "results/encounter_censoring/precision_checked/summary.json": "fd460f574b5363bcf26614592f92152754e58a42ea8a6c6e4057ebbf978917e6"
+      },
+      "later_matching_precision_source_commit": "5189c0deada069ee7e0a9a1a9356131721382038",
+      "producer_source_uncommitted": true,
+      "status": "passed_fixed_state_precision_checks",
+      "both_saved_endpoint_states_transmit": true,
+      "wall_s": 164.21123666600033,
+      "peak_rss_bytes": null,
+      "limits": "Fixed saved states only; preserves original failures. No new phase search, continuous gyrophase integral, rate, sourceD calibration, trapping or lifetime conclusion."
+    },
+    "original": {
+      "producer_commit": "57a8d4ee76d89f16aacb99e03af7b36e745891c0",
+      "status": "unresolved",
+      "required_gates": {
+        "complete_base_scan": true,
+        "energy": true,
+        "phase_and_coordinate_moments": false,
+        "final_B2_refinement": true,
+        "incoming_flux": true,
+        "receding_planes": true,
+        "active_timestep": true,
+        "heldout_table": false,
+        "weak_Born": true,
+        "ring_refinement_and_positive_broadening": true,
+        "cartesian_trajectory": true,
+        "full_moment_consistency": true,
+        "source_integrity": true
+      },
+      "encounters": 21524,
+      "wall_s": 872.9388037919998,
+      "parent_process_peak_rss_bytes": 1086046208,
+      "max_worker_process_peak_rss_bytes": 113885184,
+      "memory_scope": "Separate process lifetime peaks; not a simultaneous aggregate job peak."
+    },
+    "refinement": {
+      "producer_commit": "04d0bf4ea02e1152641655c71391dba252a86ffe",
+      "status": "passed",
+      "required_gates": {
+        "B4_coordinate_refinement": true,
+        "table_both_heldouts": true,
+        "energy": true,
+        "flux": true,
+        "weak_B32_asymptotic": true,
+        "source_integrity": true
+      },
+      "encounters": 18736,
+      "B4_last_refinement_changes": [
+        4.9544434087368724e-05,
+        7.740584040055256e-05,
+        5.68548559211887e-05,
+        6.876496627350886e-07
+      ],
+      "table_checks": [
+        {
+          "sample": "original128",
+          "status": "passed",
+          "rms": [
+            0.00048023439150493054,
+            0.0008581780456516946,
+            0.0010946323438643683
+          ],
+          "second_p95": 0.018827904333747945
+        },
+        {
+          "sample": "fresh128",
+          "status": "passed",
+          "rms": [
+            0.00040172881778462486,
+            0.001137386036214211,
+            0.0014466117544054949
+          ],
+          "second_p95": 0.024498546586898023
+        }
+      ],
+      "maximum_heldout_relative_second_errors": [
+        0.9621319173139562,
+        0.6721554264550581
+      ],
+      "weak_B32_amplitude_checks": [
+        {
+          "strength": 0.003,
+          "asymptotic_relative_errors": [
+            0.007017808178845897,
+            0.0037402005291602425
+          ]
+        },
+        {
+          "strength": 0.0015,
+          "asymptotic_relative_errors": [
+            0.0034805572641727345,
+            0.0018722028582776051
+          ]
+        }
+      ],
+      "wall_s": 439.4917105829809,
+      "parent_process_peak_rss_bytes": 1024802816,
+      "max_worker_process_peak_rss_bytes": 30441472,
+      "memory_scope": "Separate process lifetime peaks; not a simultaneous aggregate job peak."
+    },
+    "independent_audit": {
+      "producer_commit": "e77cff3cea6cd743a48dca79caf330521a3640c9",
+      "all_three_passed": true,
+      "wall_s": 4.403377790993545,
+      "process_lifetime_peak_rss_bytes": 269123584,
+      "timing_scope": "One execution; the three receipts are cumulative samples of it, not additive costs."
+    }
+  },
+  "hardware_versions_and_units": {
+    "precision": {
+      "processor": "Apple M4",
+      "logical_cpus": 10,
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "python": "3.12.13",
+      "versions": {
+        "sato-morrison": "0.1.0",
+        "jax": "0.11.2",
+        "jaxlib": "0.11.2",
+        "solvax": "0.28.2",
+        "numpy": "2.5.3",
+        "scipy": "1.18.1",
+        "matplotlib": "3.11.2"
+      },
+      "units": "normalized",
+      "thread_environment": {
+        "OMP_NUM_THREADS": "unset",
+        "OPENBLAS_NUM_THREADS": "unset",
+        "MKL_NUM_THREADS": "unset",
+        "XLA_FLAGS": "unset"
+      }
+    },
+    "original": {
+      "processor": "Apple M4",
+      "logical_cpus": 10,
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "python": "3.12.13",
+      "versions": {
+        "sato-morrison": "0.1.0",
+        "jax": "0.11.2",
+        "jaxlib": "0.11.2",
+        "solvax": "0.28.2",
+        "numpy": "2.5.3",
+        "scipy": "1.18.1",
+        "matplotlib": "3.11.2"
+      },
+      "units": "m,q,velocity,length normalized; theta=kBT/m; potential=kappa exp(-r/lambda)/r",
+      "thread_environment": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "XLA_FLAGS": "unset"
+      }
+    },
+    "refinement": {
+      "processor": "Apple M4",
+      "logical_cpus": 10,
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "python": "3.12.13",
+      "versions": {
+        "sato-morrison": "0.1.0",
+        "jax": "0.11.2",
+        "jaxlib": "0.11.2",
+        "solvax": "0.28.2",
+        "numpy": "2.5.3",
+        "scipy": "1.18.1",
+        "matplotlib": "3.11.2"
+      },
+      "units": "m,q,velocity,length normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+      "thread_environment": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "XLA_FLAGS": "unset"
+      }
+    }
+  },
+  "executed_commands": [
+    ".venv/bin/python -u examples/33_encounter_precision.py",
+    "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 JAX_ENABLE_X64=true MPLBACKEND=Agg .venv/bin/python -u examples/34_physical_validation.py",
+    "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 JAX_ENABLE_X64=true MPLBACKEND=Agg .venv/bin/python -u examples/37_physical_refinement.py",
+    ".venv/bin/python examples/35_encounter_audit.py",
+    "PHYSICAL_FIGURE_OUTPUT=results/physical_final_figures/original_campaign .venv/bin/python examples/36_physical_figures.py",
+    "PHYSICAL_FIGURE_MODE=refinement PHYSICAL_FIGURE_OUTPUT=results/physical_final_figures/refinement .venv/bin/python examples/36_physical_figures.py",
+    ".venv/bin/python -m pytest -q tests/test_encounter_precision.py",
+    "python -m pytest -q (fresh Linux CI)",
+    "latexmk -cd -pdf -interaction=nonstopmode -halt-on-error notes/implementation.tex"
+  ],
+  "tests": {
+    "focused_passed": 7,
+    "focused_wall_s": 4.13,
+    "linux_ci_passed": 268,
+    "linux_ci_wall_s": 276.3,
+    "linux_ci_commit": "1c923759a31ecfb60de54605c5a67d3c4b7737a3",
+    "linux_ci_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/38176790489"
+  },
+  "analytical_findings": [
+    "Exact COM averaging distinguishes individual moments from the relative perpendicular action.",
+    "A selected equal-individual-moment ring develops a positive full second-moment change including the signed pair-total correction; all 24 active-step checks pass.",
+    "On the fixed screened weak band both normalized moment and spatial kick measures scale as B^-2; their ratio tends to about 0.0283.",
+    "The screened leading phase response vanishes for unscreened Coulomb interactions away from zero impact; spatial deflection remains.",
+    "Decreasing force strength supports a finite-strength interpretation of the remaining large-field amplitude discrepancy."
+  ],
+  "candidate_results_and_novelty": {
+    "bounded_microscopic_applicability": "Checked negative result for exact preservation of every individual magnetic-moment marginal in the specified screened pair model. It does not rule out an approximate constrained regime elsewhere.",
+    "antecedent": "The exchange mechanism and magnetized perturbative encounters are established in Nersisyan and Zwicknagel (2009); no priority claim.",
+    "prototype_results": "The finite-range quartic density branch and specified local dipole entropy obstruction remain separately derived and checked prototype results."
+  },
+  "unresolved": [
+    "Complete incident impact/speed/phase/tail coverage and successor-encounter correlations.",
+    "Dynamic or self-consistent screening and physical source-tensor/scalar coefficient calibration.",
+    "An independently measured kinetic mixing time and constrained dipole relaxation lifetime.",
+    "The broader 8,192-phase mean/cross integral and original failed censoring search, retained unchanged.",
+    "A supremum scattering-table error bound; isolated very weak-kick states have large relative errors.",
+    "Long-time Landau and full nonuniform dipole/nonaxisymmetric evolution refinements."
+  ],
+  "upstream_pr": null,
+  "notes": {
+    "pages": 74,
+    "latex_warnings": false,
+    "source_sha256": "fbb2006b0693d99e1df48f05aa619201ecc422c272506fe436d3e2541bf71ad8",
+    "pdf_sha256": "a0d8d88e940870cb915a881e4eec4fceffe9fed3c376068e7e69095069dc725c",
+    "bibliography_sha256": "3908e53200e343007c09808a271b80520d7ac23abfa209056c3ce15a42faaa41",
+    "visual_qa_pages": [
+      1,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      59,
+      60,
+      74
+    ]
+  },
+  "evidence_sha256": {
+    "results/physical_final_campaign/summary.json": "ead69cb24da925a7f7a83356092e704e83d176e846af162cf475d9a08033d6cd",
+    "results/physical_refinement/summary.json": "ed07f3503406aeaa4206dae785fdaca2b6440cf87b602ebf37328d640aeaff39",
+    "results/encounter_precision/saved_binary64/summary.json": "de7681fb7cd1559dcbac15957e45852c1b88b9f81b030a8e7801e0554702da87",
+    "results/encounter_audit/physical_final_campaign/independent_audit.json": "cfe7b36a8ea4805f72881fb4464a3aa4e66fd095e4b6dd9c0d2fcc1c0f4e1f7a",
+    "results/encounter_audit/physical_refinement/independent_audit.json": "42a5f484d84589c2c10967ab3fb8f1abcc650716f3f9610197748c5246732aa8",
+    "results/encounter_audit/saved_binary64/independent_audit.json": "5b38ad57ca52988054d2afdec535646b7edf16861ab5e8420ea6a503de83769f"
+  }
+}

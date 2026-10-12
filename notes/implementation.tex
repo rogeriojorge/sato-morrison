@@ -18,7 +18,7 @@
 \newcommand{\norm}[1]{\left\lVert #1\right\rVert}
 \title{Magnetic-moment-constrained collisions\\\large Equations, numerical design and verification notes}
 \author{Project: \texttt{sato-morrison}}
-\date{8 October 2026}
+\date{12 October 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -31,11 +31,12 @@ Dougherty evolution, physical three-velocity Landau weak moments, and direct
 screened binary encounters. A checked finite-range Fourier calculation shows
 how spatial localization creates a density nullspace and how Gaussian range
 lifts it with quartic long-wave decay. Geometric identities, finite-grid
-conservation and the selected toroidal observable refinements are verified;
-other velocity-tail convergence and physical collision-rate calibration remain
-separate requirements. No calibrated dipole confinement,
-universal zero-set prescription, full Landau kinetic evolution, or publication
-priority is claimed.
+conservation and the selected toroidal observable refinements are verified.
+Full three-velocity Landau trajectories pass the declared refinements through
+normalized time $0.2$. Selected screened-pair controls resolve sensitive
+paths and test individual magnetic-moment exchange. Long-time Landau
+accuracy, nonuniform velocity-tail convergence, a universal zero-set
+prescription, calibrated plasma rates and dipole confinement remain open.
 \end{abstract}
 
 \section{Scope and equation map}
@@ -3024,6 +3025,474 @@ drift. Neither these bounded crossing coefficients nor the interpolation
 checks calibrate the constrained scalar $D$ or establish a dipole lifetime.
 
 
+\subsection*{Physical applicability: flux, screening and individual moments}
+
+The crossing coefficients above have units
+$[\nu/n]=L^3/T$, $[A_\mu/n]=\mu L^3/T$, and
+$[D_{\mu\mu}/n]=\mu^2L^3/T$. They are conditional on the stated
+potential and incident domain. Integrating the same plane measure over all
+relative velocities gives
+\begin{equation}
+ \frac{\nu_{\rm plane}}n
+ =\pi(b_{\max}^2-b_{\min}^2)\,\mathbb E|w_\parallel|
+ =2\pi(b_{\max}^2-b_{\min}^2)\sqrt{\theta/\pi}.
+ \label{eq:fullplaneflux}
+\end{equation}
+For the original annulus this is $10.82863415$, whereas the narrow speed
+bands give $1.260106087$, or $11.6368\%$ of the crossing flux. This
+normalization is a tagged-particle crossing frequency. An unordered pair
+count per volume has a separate half factor; a second-moment diffusion
+coefficient also has its own half factor. Neither changes
+\eqref{eq:fullplaneflux}. A finite guiding-center annulus is not a complete
+collision volume in a general finite-field kinetic theory: side-surface
+contributions can matter. The surface-flux formulation and its cylindrical
+extreme-field limit are treated explicitly in JB20, Eqs.~(5), (16)--(17)
+in the inspected arXiv version~\cite{JB20}.
+
+For an equilibrium Maxwellian plasma, the complete incident measure and
+outgoing map must preserve the equilibrium pair distribution and include
+inverse states. At a finite plane, the canonical equilibrium pair weight
+contains $\exp[-V(r)/(m\theta)]$ in addition to the velocity Maxwellians;
+using asymptotically free data instead requires receding-plane convergence.
+Hamiltonian phase-volume preservation and pair energy conservation then
+imply a zero net equilibrium mean individual magnetic-moment increment.
+This is a stationarity statement and does not require fixed-$B$ microscopic
+time reversal. Nonzero second moments can coexist with this zero drift.
+A truncated rectangle of impact parameters and speeds need not be invariant
+under the outgoing map, so its signed conditional drift cannot test the
+full equilibrium balance. Nor does zero equilibrium drift imply preservation
+of an arbitrary nonequilibrium $G(\mu)$.
+
+If the supplied Yukawa length $L_s$ is interpreted as the classical
+one-component Debye length, $\kappa=q^2/(4\pi\epsilon_0)$ and
+$\theta=k_BT/m$ require
+\begin{equation}
+ L_s^2=\frac{m\theta}{4\pi n\kappa},\qquad
+ a=\left(\frac3{4\pi n}\right)^{1/3},\qquad
+ \Gamma=\frac{\kappa}{a m\theta},\qquad
+ N_D=\frac{4\pi nL_s^3}{3},\qquad
+ \omega_p^2=\frac{4\pi n\kappa}{m}.
+ \label{eq:screeningdensity}
+\end{equation}
+These equations constrain density; it cannot be chosen independently to
+assign a physical lifetime while retaining the same Debye potential. For
+$m=1$, $\theta=0.5$, $L_s=3$, $\kappa=0.03$, they give
+$n=0.147365688$, $\Gamma=0.0510873$, $N_D=16.6667$ and
+$|\Omega|/\omega_p=8.48528$ at $B=2$. These are consistency diagnostics
+under a hypothetical Debye interpretation, not a measured density or a
+validated many-body closure. A multicomponent plasma requires the screening
+contributions of all species. Static screening, dynamic screening and a
+potential of mean force are distinct approximations~\cite{NZ09,NZ10,JB20}.
+A weakly coupled Debye sphere contains many particles; isolated two-body
+trajectories alone cannot test correlations or repeated encounters.
+
+Use the single-particle rms perpendicular radius
+$\rho_{\rm rms}=\sqrt{2\theta}/|\Omega|$, the relative radius
+$\rho_{\rm rel}=w_\perp/|\Omega|$, the Coulomb reference
+$b_{90}=2\kappa/(m|\bm w|^2)$, and an actual sampled closest separation.
+The literature also uses $r_c=\sqrt{\theta}/|\Omega|$; these conventions
+must not be mixed. A field uniform on the system scale makes
+$\rho/L_B=0$ here, but supplies no close-collision adiabatic estimate.
+At the original parameters $\rho_{\rm rms}=0.5$ and
+$b_{90}=0.02$ at rms relative speed $\sqrt{6\theta}$, hence
+$\rho_{\rm rms}/b_{90}=25$. In the bounded band,
+$b-\rho_{\rm rel}\ge0.8$, but the indicative lower bound
+$|\Omega|(b-\rho_{\rm rel})/w_\parallel\ge1.0667$ is not an
+asymptotically large encounter-time ratio. Small force increments on this
+safe band and adiabatic protection of close collisions are different tests.
+The hierarchy $r_c<L_s$ alone places an encounter in a magnetized screening
+regime; it does not enforce $r_c\ll b_{90}$~\cite{JB20}.
+
+\paragraph{A screened equal-frequency exchange diagnostic.}
+Individual moments require care even if the relative perpendicular action
+is approximately preserved. This distinction is already present in NZ09:
+its Eq.~(14) gives individual energy exchange through
+$\Delta(\bm V\cdot\bm w)$ while the total relative and center energies
+are separately conserved for identical particles~\cite{NZ09}. Its
+Eq.~(23) develops the first-order free-helix response; the second-order
+energy and squared-transfer quantities in Eqs.~(27)--(30), (42)--(46)
+are established antecedents. The following calculation specializes that
+mechanism to the present singular repulsive Yukawa potential away from
+close encounters. It is an audit of the approximation, not a novelty claim.
+
+Let $J\bm v=\bm v\times\bm e_z$ on the perpendicular plane, so
+$J^2=-I$, and write $\bm f=-(2/m)\nabla V$ for the relative acceleration.
+Then
+\begin{equation}
+ \bm R_{\rm rel,\perp}=\bm r_\perp+J\bm w_\perp/\Omega,
+ \qquad \dot{\bm R}_{\rm rel,\perp}=J\bm f_\perp/\Omega.
+\end{equation}
+For a weak interaction, nonzero fixed guiding-center impact $b$, and large
+$|\Omega|$ with $w_\perp/(|\Omega|b)\ll1$, expand the force about
+$\bm r_\perp=\bm b-J\bm w_\perp/\Omega$, $z=w_\parallel t$.
+The rotating-frame velocity receives a gyroaveraged phase increment
+\begin{equation}
+ \Delta\overline{\bm w}_\perp
+ \simeq\alpha J\bm w_{\rm in,\perp},\qquad
+ \alpha=\frac1{m\Omega w_\parallel}
+       \int_{-\infty}^{\infty}\Delta_\perp V(b,z)\,\dd z.
+ \label{eq:resonantphase}
+\end{equation}
+Indeed the conjugated perpendicular Hessian has gyroaverage
+$(\tr H_\perp/2)I$; the factor two in the relative force cancels this
+half. For Yukawa screening and $b>0$,
+\begin{align}
+ \int_{-\infty}^{\infty}V(b,z)\,\dd z&=2\kappa K_0(b/L_s),\\
+ \alpha&=\frac{2\kappa}{m\Omega w_\parallel L_s^2}K_0(b/L_s),\\
+ |\Delta\bm R_{\rm rel,\perp}|&\simeq
+ \frac{4\kappa}{m|\Omega|w_\parallel L_s}K_1(b/L_s).
+ \label{eq:screenedresonance}
+\end{align}
+Here $K_j$ are modified Bessel functions. The leading phase term is
+specifically screened: in the unscreened Coulomb limit its transverse
+Hessian integral is zero for $b>0$, while the guiding-center kick tends to
+$4\kappa/(m|\Omega|w_\parallel b)$. Finite-$B$ oscillatory response,
+finite endpoints, and nonlinear parallel deceleration remain separate
+corrections; a screening scan and a force-strength scan are needed before
+assigning their relative sizes. Direct scalar quadrature of the Yukawa
+Hessian and radial force at four impacts and $L_s=3,6,\infty$ agrees with
+these integral identities with maximum absolute discrepancy
+$2.34\times10^{-18}$ in
+the declared normalized test; it is not an ODE or ensemble-convergence test.
+
+With the thermal scale $\mu_{\rm ref}=m\theta/B$, the exact center-average
+second moment has leading contribution
+$\sigma_c^2/\mu_{\rm ref}^2=\alpha^2w_\perp^2/(8\theta)$.
+The individual spatial kick is one half the relative kick. Define
+\begin{equation}
+ r_\mu=\frac{2D_{\mu\mu}}{\mu_{\rm ref}^2},\qquad
+ r_R=\frac{\int|\Delta\bm R_{\rm rel,\perp}|^2\,\dd\nu}
+                 {4L_s^2}.
+ \label{eq:kickrates}
+\end{equation}
+The spatial quantity is a fixed-distance kick proxy; it is not a certified
+mixing eigenrate. At each incident state the leading integrands obey
+\begin{equation}
+ \frac{r_\mu\text{ integrand}}{r_R\text{ integrand}}
+ \simeq \frac{w_\perp^2}{8\theta}
+       \left[\frac{K_0(b/L_s)}{K_1(b/L_s)}\right]^2.
+ \label{eq:kickrateratio}
+\end{equation}
+Both normalized rates scale as $\Omega^{-2}$ on a fixed, screened weak-force
+band. Increasing $B$ alone therefore does not make this particular ratio
+vanish. Its size depends on the speed band, impact band and stated spatial
+scale. This is not an impossibility theorem for time separation in a
+physical plasma. In particular the Coulomb cancellation above and the
+omitted parts of the incident ensemble prevent that extrapolation.
+
+Nonzero thermal-center second moments do not alone prove that the
+Maxwellian moment marginal changes. A rotation of relative perpendicular
+velocity in a rotationally invariant Gaussian ensemble leaves equilibrium
+stationary. A nonequilibrium diagnostic is a perpendicular ring with
+$|\bm v_{1\perp}|=|\bm v_{2\perp}|=v_0$, independent initial angles, and
+$\mu_1=\mu_2=\mu_0$. Here $\bm V_\perp\cdot\bm w_\perp=0$, but a
+small relative phase rotation gives
+\begin{equation}
+ \Delta\mu_1=-\Delta\mu_2
+ \simeq\frac{m\alpha}{2B}\bm V_\perp\cdot J\bm w_\perp,
+ \qquad
+ \Delta(\mu_1^2+\mu_2^2)=2(\Delta\mu_1)^2,
+ \label{eq:ringmarginal}
+\end{equation}
+where $|\bm V_\perp\cdot J\bm w_\perp|=
+ v_0^2|\sin(\varphi_1-\varphi_2)|$. A smooth narrow ring approximates
+this limiting distribution. Equation~\eqref{eq:ringmarginal} describes the
+leading pure-phase approximation. For direct finite-field trajectories,
+write $\delta_i=\mu_{i,\rm out}-\mu_0$ and retain the exact identity
+\begin{equation}
+ \Delta(\mu_1^2+\mu_2^2)
+ =2\mu_0\Delta(\mu_1+\mu_2)+\delta_1^2+\delta_2^2.
+ \label{eq:ringdirectbudget}
+\end{equation}
+The signed first term is a change of pair-total moment; the positive
+second term includes individual exchange. The centered outgoing spread is
+$(\delta_1-\delta_2)^2/2$ and need not equal either full second-moment
+change. Thus conservation of pair-total moment and
+relative perpendicular energy can coexist with broadening of the individual
+moment marginal. The constrained closure conserves every represented
+$G(\mu)$ exactly. Its physical applicability to such a nonequilibrium
+population therefore needs a distribution-level error estimate over its
+actual mixing time, including the signed drift and correlations, rather
+than a zero equilibrium mean or a small per-encounter increment.
+
+\paragraph{Acceptance and remaining physical scope.}
+An independently validated free-helix force response can support a weak,
+bounded screened-scattering claim. It must predict held-out trajectories or
+weighted observables, and the exact moment integrals must pass impact,
+speed, phase, endpoint and timestep comparisons. This does not calibrate
+the interaction tensor in source Eq.~(119), its scalar/local reduction, or
+the prescribed $D$ in Eq.~(181). A physical constrained interval further
+needs a reverse-complete population model, an interaction potential tied
+to stated plasma parameters, coefficient/correlation evidence for that
+population, and independently measured $\tau_{\rm mix}\ll\tau_\mu$.
+None of those requirements is replaced by a chosen numerical density.
+
+Direct primary comparisons are available beyond binary perturbation
+theory. JWTT25, Eqs.~(6), (10)--(11), computes anisotropic energy-transfer
+coefficients by integrating full two-particle trajectories with a potential
+of mean force and perturbed velocity distributions~\cite{JWTT25}.
+JLB25 compares a generalized collision theory for one-component anisotropy
+relaxation with experiments and molecular dynamics~\cite{JLB25}.
+WJTB26, inspected arXiv version, Sec.~IV and Eqs.~(15)--(22), explicitly
+introduces a memory kernel and a matrix of temperature correlations before
+extracting long-time relaxation coefficients~\cite{WJTB26}. These references
+provide benchmarks for a future plasma-rate calculation. Their demonstrated
+suppression of temperature anisotropy relaxation does not establish
+conservation of the full individual magnetic-moment marginal for the
+present local scalar surrogate. The present outcome can be a supported
+failure of a selected applicability test while leaving stronger or different
+physical regimes open.
+
+\paragraph{Completed screened validation and its failed gates.}
+Example 34, producer \texttt{57a8d4e}, keeps the original band, $\theta=0.5$,
+$\kappa=0.03$, $L_s=3$ and $m=q=1$. It completes 21,524 distinct
+relative encounters, retaining their original weights, and scans
+$B=2,4,8,16,32$ with $4^3\times16$ nodes. Each field has a
+$3^3\times16$ coordinate comparison, an eight-phase comparison and a
+half-grid phase shift. At $B=2$, a separate $5^3\times32$ calculation,
+planes $L=18,24,32$, sixteen held-out active maximum-step controls
+$0.2,0.1,0.05$, and three Cartesian pair controls test different errors.
+The criterion is $1\%$ for moment and spatial-kick quadrature comparisons;
+the signed mean is scaled by $M_2/\mu_{\rm ref}$, and the cross moment by
+$M_2$, rather than by a nearly zero signed result. The active step target
+is $0.1\%$, and the Cartesian position and velocity targets are each
+$10^{-8}$.
+
+Every planned trajectory exits, the runtime cap is not exhausted, and
+the base energy errors are below $1.93\times10^{-11}$. Eleven of the
+thirteen required gates pass, including the incoming-flux normalization,
+receding planes, $B=2$ final refinement, active timestep, weak-force response,
+ring controls, Cartesian trajectories and full-moment consistency. The
+experiment nevertheless exits nonzero and remains unresolved. At $B=4$,
+the coordinate comparison changes the second and cross moments by
+$1.93161\%$ and $1.41436\%$, exceeding the unchanged $1\%$ target.
+Phase comparisons pass at every field; they cannot replace this failed
+coordinate comparison. The $B=2$ final comparison changes the second
+moment by $0.014625\%$, and moving $L=24\to32$ changes it by
+$0.000358\%$. Active step halving changes the scaled moment vector by
+at most $4.35\times10^{-9}$, with all actual maximum-step ratios equal
+to $1/2$. Cartesian position and velocity discrepancies are below
+$1.11\times10^{-13}$ and $2.78\times10^{-14}$ respectively.
+
+The conditional $5^3\times32$ interpolation table is evaluated on 128
+held-out states, seed 3401, within its impact/speed node hull and over
+the full periodic phase. Its second-moment relative RMS error is
+$0.35466\%$, below the $2\%$ target, but its 95th-percentile pointwise
+relative error is $7.89330\%$, above the $5\%$ target. This is the
+second failed gate. A passing bulk RMS does not certify this tail target.
+The direct $B=2$ integral is separately resolved at the declared
+comparisons, with $A_\mu/n=3.115997\times10^{-6}$ and
+$D_{\mu\mu}/n=8.008824\times10^{-7}$ on the final grid. This signed
+conditional drift still does not test equilibrium balance or a complete
+velocity ensemble.
+
+An independently integrated first-order free-helix force response tests
+the same 128 states at $B=2$ and weaker strengths $\kappa=0.003,0.0015$.
+At the first strength, second/cross-moment RMS discrepancies are
+$0.61877\%$/$0.91470\%$; at half strength they are
+$0.30830\%$/$0.45726\%$. All lie below $3\%$, and the independent
+$256\to512$ force-quadrature changes are below $0.065\%$, against a
+$0.1\%$ target. The approximately halved discrepancies support the
+force expansion on these held-out states. First-order phase-averaged
+drift vanishes by symmetry, so this check does not predict the exact
+ensemble drift. Nor does weak-force accuracy establish the original
+$\kappa=0.03$ amplitude at high $B$.
+
+\begin{center}
+\begin{tabular}{rrrr}
+\toprule
+$B$ & $r_\mu/n$ & $r_R/n$ & $r_\mu/r_R$\\
+\midrule
+2 & $2.56245\times10^{-5}$ & $2.55222\times10^{-5}$ & 1.00401\\
+4 & $6.19780\times10^{-7}$ & $6.36900\times10^{-6}$ & 0.097312\\
+8 & $4.53882\times10^{-8}$ & $1.59308\times10^{-6}$ & 0.028491\\
+16 & $1.12629\times10^{-8}$ & $3.98322\times10^{-7}$ & 0.028276\\
+32 & $2.81494\times10^{-9}$ & $9.95836\times10^{-8}$ & 0.028267\\
+\bottomrule
+\end{tabular}
+\end{center}
+These are the fixed $4^3\times16$ sampled rates of
+Eq.~\eqref{eq:kickrates}; the $B=4$ row retains its failed coordinate
+refinement. The $B=16\to32$ exponents are $2.00040$ and $1.99995$
+for the moment and spatial rates. The ratio consequently approaches a
+nonzero value on this selected screened band. At $B=32$, the leading
+weak-force formulas instead give $2.61834\times10^{-9}$ and
+$9.58363\times10^{-8}$ per density: the direct values exceed them by
+$7.50889\%$ and $3.91014\%$. Similar offsets already occur at $B=16$.
+Convergence of the power of $B$ is therefore distinct from convergence
+to the first-order force amplitude. Nonlinear parallel deceleration and
+finite endpoints are candidate corrections; this fixed-strength scan
+does not assign the remaining error between them. A matched high-$B$
+strength scan is the next direct test of the force-order interpretation.
+The separately recorded $L_s=6,12,\infty$ controls are analytic leading
+references only, with the spatial normalization held at length three;
+there are no direct changed-screening trajectories in this campaign.
+
+At $B=32$, sampled relative radii satisfy $\rho_{\rm rel}/L_s\le0.00790$
+and $\rho_{\rm rel}/(b-\rho_{\rm rel})\le0.01882$; the sampled near-pass
+time ratios $2|\Omega|(b-\rho_{\rm rel})/w_\parallel$ range from
+$55.81$ to $195.60$. These support a slowly varying, distant encounter
+interpretation on the selected band. They do not give uniform extreme
+magnetization of close collisions: the thermal radius to $b_{90}$ ratio
+still ranges from $0.3277$ to $1.3862$ on the same nodes, and close
+impacts are excluded. The crossing measure gives
+$\nu/(n|\Omega|)=0.0393783$ at $B=32$; the actual ordering
+$\nu/|\Omega|\ll1$ additionally depends on density. The quantity
+$r_\mu/(n|\Omega|)=8.79670\times10^{-11}$ describes weighted moment
+kicks, not the crossing frequency.
+
+The six separate $B=2$ cutoff probes are coarse conditional integrals,
+without cutoff refinement or a bound on omitted corners. For example,
+the inner impact interval $[0.6,1.2]$ gives a moment rate about $10.47$
+times the base rate, and the perpendicular-speed interval $[0.8,1.6]$
+about $4.10$ times it. These probes show why the original narrow band
+cannot define a plasma coefficient; they do not establish convergence
+after adding those intervals.
+
+\paragraph{Direct nonequilibrium ring evidence.}
+The ring uses $v_0=1$, $b=1.8$, $w_\parallel=1.1$, angle differences
+$\pi/3,\pi/2,2\pi/3$ and four common phases $0,0.8,1.6,2.4$.
+At $B=16,32$ all 24 original/refined pairs pass the unchanged
+$10^{-9}$ normalized increment target, with an active refined maximum
+step $0.0025$. The largest increment difference divided by
+$\mu_{\rm ref}$ is $1.67\times10^{-10}$. The full normalized
+$\Delta(\mu_1^2+\mu_2^2)$ is positive at every refined state and
+exceeds ten times its refinement difference. Its ranges are
+$[1.27951,1.82407]\times10^{-7}$ at $B=16$ and
+$[3.47073,4.88297]\times10^{-8}$ at $B=32$.
+
+The direct pair-total correction is retained in
+Eq.~\eqref{eq:ringdirectbudget}. At $B=16$, its normalized contribution
+$2\mu_0\Delta(\mu_1+\mu_2)/\mu_{\rm ref}^2$ ranges from
+$-7.63373\times10^{-9}$ to $2.02416\times10^{-9}$; at $B=32$
+it ranges from $8.27255\times10^{-10}$ to $4.47729\times10^{-9}$.
+The normalized sum of squared individual increments ranges from
+$1.35545\times10^{-7}$ to $1.80756\times10^{-7}$ and from
+$3.38789\times10^{-8}$ to $4.51748\times10^{-8}$ respectively.
+Thus the positive full second-moment change survives the signed total
+correction; it is not inferred solely from the spread or from an assumed
+exact pair-total invariant. The sampled outgoing moments differ from
+the equal incoming ring moments. This supplies a finite-encounter
+counterexample to exact preservation of every individual $G(\mu)$ by
+the selected screened model, consistent with the established
+center/relative exchange mechanism in NZ09. The 12 selected angle pairs
+are not a converged ring collision integral or a many-body relaxation
+rate. An approximate constrained interval still requires an error bound
+for the actual population over an independently measured mixing time.
+
+All primitive encounters, ring states, failed gates, normalized inputs,
+and software/hardware records are retained under
+\path{results/physical_final_campaign/}. The recorded campaign cost is
+$872.94$ seconds on the shared Apple M4. Parent and largest worker
+process-lifetime memory peaks are $1.0860$ and $0.1139$ GB separately;
+they are not a simultaneous aggregate peak. At this stage the failed
+numerical gates, incident-domain errors, dynamic screening and correlations prevent
+a calibrated source coefficient or plasma lifetime. The restricted
+large-$B$ and ring results support a failure of the selected exact
+moment-preservation claim, while leaving a different population, potential
+or asymptotic regime open.
+
+\paragraph{Focused refinement of the failed numerical checks.}
+Example 37 is separately declared at producer \texttt{04d0bf4}, preserving
+the original example-34 failure. It completes 18,736 distinct encounters
+on the same screened band. At $B=4$ it compares $5^3\times16$ and
+$6^3\times16$ grids. The scaled mean, second moment, cross moment and
+spatial-kick changes are respectively $0.004954\%$, $0.007741\%$,
+$0.005685\%$ and $0.000069\%$, below the unchanged $1\%$ criterion.
+The finer moment and spatial rates per density are
+$6.20658\times10^{-7}$ and $6.36909\times10^{-6}$. This resolves the
+selected final coordinate comparison; it does not alter the failed
+$3^3\to4^3$ comparison in the original record.
+
+At $B=2$, a $7^3\times32$ table is tested both on the original 128
+held-out states and on 128 fresh states, seed 3701. Each sample lies
+within the table's impact/speed node hull and covers periodic phase.
+Second-moment RMS errors are $0.085818\%$ and $0.113739\%$; the
+corresponding 95th-percentile pointwise errors are $1.88279\%$ and
+$2.44985\%$. Both pass the unchanged $2\%$ RMS and $5\%$ tail
+targets. These are held-out validation statistics on the declared hull,
+without a supremum error bound or omitted-domain coverage.
+The largest individual relative errors remain $96.2132\%$ and
+$67.2155\%$. Their direct second moments are respectively
+$0.0312318\%$ and $0.0213705\%$ of the largest value in each sample.
+The full sorted error distributions are retained in the focused figure;
+passing the RMS and percentile tests does not certify every table query.
+
+The follow-up also repeats the matched $B=32$, $4^3\times16$ band at
+$\kappa=0.003$ and $0.0015$. The direct moment-rate discrepancies from
+the screened leading reference fall to $0.70178\%$ and $0.34806\%$;
+the spatial-rate discrepancies fall to $0.37402\%$ and $0.18722\%$.
+They pass the separately declared $2\%$ amplitude target. Together with
+the original $\kappa=0.03$ offsets of $7.50889\%$ and $3.91014\%$,
+this reduction supports a finite-force correction to the leading
+large-field amplitudes. A field scan at fixed force alone had left that
+question unresolved. These are force-strength controls for moment and
+spatial second moments; they do not resolve the tiny signed high-field
+drift or identify a unique correction mechanism. They also do not test
+the changed-screening or close-impact regimes.
+
+All six follow-up gates pass, including energy, flux and source integrity.
+The largest recorded energy error is $1.95\times10^{-11}$ and the
+largest flux normalization error $1.63\times10^{-9}$, against targets
+$10^{-9}$ and $10^{-5}$ respectively. Outputs are retained under
+\path{results/physical_refinement/}. This distinct campaign takes
+$439.49$ seconds on the shared Apple M4, with parent and largest worker
+process-lifetime memory peaks $1.0248$ GB and $0.03044$ GB separately.
+It supplies passing final microscopic checks on this finite screened
+band; the original campaign remains unresolved in its own record.
+Successful numerical refinement and weak-force agreement do not supply
+a reverse-complete plasma population, a collision closure, successive
+encounter correlations or an independently measured mixing time. Thus
+the exact ring exchange counterexample and the physical applicability
+limits remain after the two numerical failures are resolved.
+
+\paragraph{Independent retained-state reconstruction.}
+Example 35, frozen at \texttt{e77cff3}, imports no producing scientific
+kernels. Its separate reports under \path{results/encounter_audit/}
+reconstruct the positive crossing quadrature, Gaussian center moments,
+normalized coefficients, ring budgets, force-response references,
+periodic interpolation tables and every declared acceptance decision.
+The original and follow-up maximum row-moment absolute discrepancies
+are $5.56\times10^{-17}$ and $1.39\times10^{-17}$ respectively;
+their second/cross-moment discrepancies scaled by the positive second
+moment are below $7.46\times10^{-12}$ and $5.07\times10^{-11}$.
+The original integrated moment-vector discrepancy is below
+$4.04\times10^{-18}$. Cancellation-prone signed quantities have separate
+dimensionless arithmetic checks, including a $10^{-6}$ positive-moment
+scale target. These audit tolerances do not change the scientific
+acceptance targets or replace a failed gate.
+
+For the follow-up, saved positions and velocities additionally reconstruct
+the relative guiding-center kick, with maximum component discrepancy
+$4.45\times10^{-16}$. The original campaign's general rows omit positions,
+so their stored guiding-center kicks remain primitive inputs: squaring
+those kicks and weighting them is independently checked, rather than
+claiming an independent trajectory reconstruction for every row.
+General-row energy and actual-step diagnostics are retained producer
+records. Three separately solved Cartesian relative paths, compared
+with the saved individual-particle paths, have maximum position and
+velocity differences $1.64\times10^{-13}$ and $1.09\times10^{-14}$.
+These controls use DOP853 as the producer does. The reconstructed refined
+ring second-moment signal is at least $517$ times its refinement
+difference. The audit preserves the original two failed gates and
+independently confirms all six passing follow-up gates.
+
+The precision report independently checks decimal path serialization,
+exact binary64 initial inputs, outgoing-event brackets, energy and
+canonical angular momentum, and recomputes the 50/70-digit comparisons.
+Across all six saved paths, the maximum relative energy drift is
+$2.80\times10^{-37}$ and the maximum absolute drift of relative
+canonical angular momentum is $6.54\times10^{-37}$.
+This checks retained high-precision paths;
+it does not perform a new arbitrary-precision solve or certify a
+continuous phase integral. Source-byte and input-artifact hashes in
+the three execution receipts distinguish the actual producers and the
+audit. All three independent reports pass. The single audit takes
+$4.40$ seconds with a process-lifetime peak of $0.2691$ GB; the three
+receipt timings belong to this one execution and are not added together
+or pooled with producer costs.
+
+
 \subsection*{Broader encounter coverage and microscopic reversal}
 Example 13 retains the same screened pair model and thermal center average,
 while widening the tested speed band to
@@ -3693,6 +4162,53 @@ hexadecimal initial values, six failed controls and source hashes are
 retained under \path{results/encounter_censoring/precision_checked/}; earlier
 failed searches remain in the parent and \path{refined/} directories.
 
+\paragraph{Arbitrary-precision checks of the saved initial states.}
+Example 33 converts each saved binary64 state component and physical
+parameter exactly to arbitrary precision, without preparing new
+trigonometric initial data. It uses Cartesian six-dimensional Taylor
+integration at 50 and 70 decimal digits, with orders 28 and 36,
+tolerances $10^{-30}$ and $10^{-44}$, and maximum step $0.5$.
+The first outgoing event is located within the step polynomial; the two
+saved search endpoints separately continue to the identical binary64
+terminal time $T=151.1284060524644$. The unchanged absolute position,
+velocity and first-exit-time comparison targets are each $10^{-8}$.
+These are two precision/order/tolerance refinements of one method, not
+interval-certified exact solutions.
+
+All three fixed-state comparisons pass. Master phase index 2054 remains
+reflected at $t=27.8214996438276$; the 50/70-digit position and velocity
+differences are below $1.24\times10^{-32}$. For the two final saved
+machine-width search endpoints, the largest position, velocity and
+first-exit-time differences are $1.39\times10^{-21}$,
+$1.10\times10^{-23}$ and $1.45\times10^{-22}$ respectively. Both
+transmit: their first exits occur at $41.3437052727771$ and
+$43.0504086092726$, and their continued $z(T)$ values are
+$188.230142729897$ and $170.171953545402$. Thus the original opposite
+exit classification is not reproduced for those exact saved binary64
+states. Their common transmitted outcome corrects any description of
+this last bracket as a validated transmission/reflection boundary.
+The original low energy errors and machine-width phase spacing were
+insufficient to validate that interpretation.
+
+The two saved states differ initially by at most
+$6.98\times10^{-15}$ in a Cartesian component and finally by $18.0582$;
+the recorded finite-difference amplification is $2.59\times10^{15}$.
+This is evidence of large finite perturbation amplification at these
+states, without a Lyapunov exponent, an interval error bound, or a new
+opposite-exit bracket. It does not establish a nonexit interval or
+continuous phase convergence. The original example-25 failures and
+example-24 conditional continuity argument remain as recorded; the
+arbitrary-precision calculation resolves only these three saved IVPs.
+Its six runs take $164.21$ seconds on the recorded shared Apple M4.
+Full decimal paths, exact binary64 input values and the precision
+comparisons are retained under
+\path{results/encounter_precision/saved_binary64/}. No phase integral,
+physical coefficient, trapping or lifetime follows from this correction.
+The producing metadata records revision \texttt{9fa28f3} with uncommitted
+precision source; the retained byte hash matches its later committed
+version \texttt{5189c0d}. This source match does not relabel the original
+producer revision. A producer memory peak was not recorded for this run.
+
 \section{Reader-facing analytical figures}
 \texttt{examples/22\_first\_principles.py} generates the introductory README
 figures. Its helical trajectory exactly solves $m\dot v=qv\times B$ for
@@ -3725,6 +4241,18 @@ curve stops at its own outgoing event. No extrapolated segment, thermal
 center average, phase integral or calibrated physical timescale is implied.
 Movie frame count, playback speed, source hashes, rendering versions and
 hardware are saved in \path{results/encounter_movie/summary.json}.
+
+Example 36 renders the screened-encounter evidence from immutable example-34
+and example-37 arrays. It checks their exact input hashes before writing
+figures and records the renderer revision, source bytes, versions, hardware,
+cost and output hashes. The ring panels use twelve prescribed pairs per
+field; their empirical individual marginal has equal weight $1/24$ on
+each outgoing particle. The field-scan panels instead use the thermal
+crossing quadrature. The focused held-out plot retains all 128 error
+ranks in each sample, including the isolated large relative errors.
+Original and follow-up acceptance states appear in the figure captions.
+Equation text uses SVG paths for consistent README rendering. Separate
+fresh output directories preserve the original and refined evidence.
 
 \subsection*{Spatial views of the recorded calculations}
 Example 27 also renders both individual-particle trajectories in three

@@ -1,0 +1,38 @@
+{
+  "producer_commit": "04d0bf4ea02e1152641655c71391dba252a86ffe",
+  "producer_scientific_source_changes": "?? examples/35_encounter_audit.py\n?? examples/36_physical_figures.py",
+  "producer_dirty_source_diff_sha256": null,
+  "producer_source_sha256": {
+    "examples/37_physical_refinement.py": "11a5e453138bfa8f88da933b441781aceb192fb86987431f9cd4b2bb94ee57cd",
+    "src/sato_morrison/controls.py": "90d32edf198a9734a8e8ebc4eee670256f82261dd5e8cf9c86eaaf49212e9ecb",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "matching_source_revision": {
+    "examples/37_physical_refinement.py": "current matching bytes",
+    "src/sato_morrison/controls.py": "current matching bytes",
+    "src/sato_morrison/reference.py": "current matching bytes"
+  },
+  "producer_wall_s": 439.4917105829809,
+  "producer_parent_process_peak_rss_bytes": 1024802816,
+  "producer_worker_process_peak_rss_bytes_max": 30441472,
+  "producer_memory_scope": "Separate process lifetime peaks; not a simultaneous aggregate job peak.",
+  "producer_python": "3.12.13",
+  "producer_platform": "macOS-26.6.2-arm64-arm-64bit",
+  "audit_source_sha256": "acf9cdbe9c915edf194e95d6ae9ba8c297a6c79f370635d58fc8c64dfce10c1d",
+  "audit_input_sha256": {
+    "summary.json": "ed07f3503406aeaa4206dae785fdaca2b6440cf87b602ebf37328d640aeaff39",
+    "declared_inputs.json": "cf89852c18e4e1a24fb9899e6f9a1ad2625e99ebadf55d80687529800823cae8",
+    "attempts.json": "3d87c6742a259712d6e7154ff7f448465e9df53ebf5ae8095add1fb68953e9bb",
+    "heldout_fresh128.npz": "f94306332c1da62f81fbc74de261a2701a4f583a3d67158cacb98709e20aaa82",
+    "heldout_original128.npz": "cf66503b21da01bb592c96b0be70dc524febc56fe602fc896b0dac6df58b7add",
+    "attempts_partial.json": "3d87c6742a259712d6e7154ff7f448465e9df53ebf5ae8095add1fb68953e9bb",
+    "cases.json": "dc84867e89c890742eab977d763dac02fbba1926757e4adbf689ca1d8d88ec07",
+    "cases_partial.json": "60d5d248f46aa6200ca96fb9e6a46b9a44dcdd8da4d48ed4a4ecf0be66274b3d"
+  },
+  "audit_commit": "e77cff3cea6cd743a48dca79caf330521a3640c9",
+  "audit_python": "3.13.7 (main, Aug 14 2025, 11:12:11) [Clang 17.0.0 (clang-1700.3.19.1)]",
+  "audit_platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "audit_wall_s": 4.403377790993545,
+  "audit_process_lifetime_peak_rss_bytes": 269123584,
+  "missing_provenance": "Null means absent in producer metadata. Exact dirty diff bytes were not retained, so no diff hash is asserted. Producer source byte hashes identify actual scientific source content; historical matching revisions do not relabel the producer commit."
+}

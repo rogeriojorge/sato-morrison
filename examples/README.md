@@ -36,6 +36,14 @@ Prefix each command below with `MPLBACKEND=Agg python`.
 | `examples/27_encounter_movie.py` | 3D particle paths, equal-scale close projections and shared-clock movies from checked encounters |
 | `examples/28_spatial_relaxation.py` | Dipole geometry, three accepted spatial-flow maps, velocity shapes and conserved μ-bin populations |
 | `examples/29_operator_comparison.py` | Shared Gaussian data: constrained stationarity, Lorentz and Dougherty evolution, matched initial Landau pressure rate, full μ marginals and velocity-distribution movie |
+| `examples/30_landau_consistency.py` | Full initial physical Coulomb term, continuum Gaussian reference and velocity/kernel refinements |
+| `examples/31_landau_trajectory.py` | Full 3V trajectories and twelve short-time grid, timestep, tail, kernel and solver refinements |
+| `examples/32_landau_audit.py` | Independent NumPy/SciPy reconstruction and replay of every saved Landau stage |
+| `examples/33_encounter_precision.py` | Independent 50/70-digit Taylor paths from exact saved binary64 states |
+| `examples/34_physical_validation.py` | Fixed-strength field scan, bounded flux, Born controls, heldout table, nonthermal ring and physical trajectories |
+| `examples/35_encounter_audit.py` | Independent reconstruction of encounter moments, measures, gates, paths and high-precision provenance |
+| `examples/36_physical_figures.py` | Equations and saved-data figures for individual moment exchange, field scaling and accuracy checks |
+| `examples/37_physical_refinement.py` | Focused B = 4 quadrature, finer table with two heldout samples, and weak-force B = 32 amplitude checks |
 
 Example 12 uses dense spatial blocks per velocity node and writes `results/nonuniform_spatial_blocks/`. A single predefined case can be run with:
 
@@ -64,3 +72,11 @@ Every scientific result records its producing commit, inputs, normalized units, 
 `32_landau_audit.py` independently rebuilds the Hermite measure, velocity derivatives and Coulomb pairs with NumPy/SciPy. It replays every saved accepted stage, checks every saved case against the baseline in two velocity boxes, and independently computes moment increments and the observed timestep order. Its default input is the archived first campaign. `SM_LANDAU_AUDIT_INPUT` selects another immutable campaign and `SM_LANDAU_AUDIT_OUTPUT` selects a fresh receipt; relative paths resolve from the repository root. Existing receipts are protected.
 
 The current example 31 uses fixed scale θ = 0.6 for its 12³/16³/20³ grid study, timesteps 0.05/0.025/0.0125, separate scales 0.585/0.625, Coulomb softenings 0.2/0.1/0, and separate nonlinear/linear tolerance variations. It compares every shared saved time in velocity cubes of half-width 4 and 5, with quadrature orders 32/48/64. `SM_LANDAU_OUTPUT=results/landau_reproduction` selects a fresh output directory; existing outputs are protected. The initial-only scale preflights, including a failed narrower scale, are retained separately.
+
+Example 33 converts every saved initial component to its exact binary64 value before arbitrary-precision integration. It reproduces the reflected phase-2,054 path and finds that both previously ambiguous endpoint states transmit. The 50/70-digit refinement resolves these selected states, while the complete angular integral remains open. Install `.[dev,validation]` for the plotting and mpmath dependencies. `SM_PRECISION_OUTPUT=results/precision_reproduction` selects a fresh output.
+
+Example 34 keeps κ = 0.03 and λ = 3 while scanning B = 2, 4, 8, 16, 32. It tests conditional incoming bands with the tagged-particle plane-flux measure; no physical density is supplied. The archived campaign exits nonzero for its B = 4 coordinate comparison and heldout table's 95th-percentile error. Its other checks, including all 24 refined ring comparisons, pass. `SM_PHYSICAL_OUTPUT=results/physical_reproduction` selects a fresh output. For examples 34 and 37, set `OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1`; four CPU workers start before the parent initializes a JAX device.
+
+Example 37 reads the unchanged archived campaign, independently declares its focused refinements, and saves them in `results/physical_refinement`. `SM_PHYSICAL_REFINEMENT_OUTPUT=results/physical_refinement_reproduction` selects a fresh output. The new B = 32 weak-force check compares against a 2% analytical-amplitude target; it is separate from the original campaign's acceptance criteria.
+
+Example 35 audits historical scientific source hashes against their matching Git blobs, so later output-path changes do not relabel the producing revision. `SM_ENCOUNTER_AUDIT_OUTPUT=results/encounter_audit_reproduction` selects a fresh audit directory. Example 36 protects its output with `PHYSICAL_FIGURE_OUTPUT`; its figures use the original campaign's immutable input hashes and visibly retain that campaign's failed checks.
