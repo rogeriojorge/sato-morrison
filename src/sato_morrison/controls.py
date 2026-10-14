@@ -507,6 +507,35 @@ def encounter_flux_samples(unit_cube, impact_bounds, parallel_bounds,
     return np.column_stack((impact,*speeds))
 
 
+def _encounter_periodic_field_interpolator(axes, fields):
+    """Cubic spatial fields with exactly periodic cubic gyrophase closure."""
+    from scipy.interpolate import RegularGridInterpolator, CubicSpline
+    phase = axes[3]
+    spacing = 2*np.pi/len(phase)
+    spatial = RegularGridInterpolator(axes[:3], fields, method='cubic', bounds_error=True,
+        solver_args={'rtol': 1e-12, 'atol': 1e-14})
+    closed_phase = np.concatenate((phase, [2*np.pi]))
+
+    def evaluate(nodes):
+        nodes = np.asarray(nodes, float)
+        if nodes.ndim == 0 or nodes.shape[-1] != 4 or not np.all(np.isfinite(nodes)):
+            raise ValueError('Finite four-coordinate query nodes required.')
+        original_shape = nodes.shape[:-1]
+        flat = nodes.reshape(-1, 4)
+        angles = flat[:, 3] % (2*np.pi)
+        raw = spatial(flat[:, :3])
+        spline = CubicSpline(closed_phase, np.concatenate((raw, raw[:, :1]), axis=1),
+            axis=1, bc_type='periodic')
+        intervals = np.minimum((angles/spacing).astype(int), len(phase)-1)
+        delta = angles-phase[intervals]
+        coefficients = spline.c[:, intervals, np.arange(len(flat))]
+        answer = ((coefficients[0]*delta[:, None]+coefficients[1])*delta[:, None]
+            +coefficients[2])*delta[:, None]+coefficients[3]
+        return answer.reshape(original_shape+(fields.shape[-1],))
+
+    return evaluate
+
+
 def encounter_moment_interpolator(axes, moments):
     """Cubic space and truly periodic cubic phase, preserving COM constraints.
 
@@ -515,7 +544,6 @@ def encounter_moment_interpolator(axes, moments):
     and first/second derivatives exactly. Predictions remain conditional table
     moments; independent held-out scattering states must verify their accuracy.
     """
-    from scipy.interpolate import RegularGridInterpolator, CubicSpline
     axes=[np.asarray(a,float) for a in axes]
     moments=np.asarray(moments,float)
     if len(axes)!=4 or any(a.ndim!=1 or len(a)<4 or not np.all(np.diff(a)>0) for a in axes) or moments.shape!=tuple(map(len,axes))+(3,):
@@ -528,26 +556,62 @@ def encounter_moment_interpolator(axes, moments):
     if not np.all(np.isfinite(moments)) or np.any(variance<=0):
         raise ValueError("Strictly positive resolved COM variance required for logarithmic interpolation.")
     fields=np.stack((moments[...,0],np.log(variance)),axis=-1)
-    spatial=RegularGridInterpolator(axes[:3],fields,method='cubic',bounds_error=True,
-        solver_args={'rtol':1e-12,'atol':1e-14})
-    closed_phase=np.concatenate((phase,[2*np.pi]))
+    interpolate = _encounter_periodic_field_interpolator(axes, fields)
     def evaluate(nodes):
-        nodes=np.asarray(nodes,float)
-        if nodes.shape[-1]!=4 or not np.all(np.isfinite(nodes)):
-            raise ValueError("Finite four-coordinate query nodes required.")
-        original_shape=nodes.shape[:-1]
-        flat=nodes.reshape(-1,4)
-        angles=flat[:,3]%(2*np.pi)
-        raw=spatial(flat[:,:3])
-        closed_values=np.concatenate((raw,raw[:,:1]),axis=1)
-        spline=CubicSpline(closed_phase,closed_values,axis=1,bc_type='periodic')
-        intervals=np.minimum((angles/spacing).astype(int),len(phase)-1)
-        delta=angles-phase[intervals]
-        coefficients=spline.c[:,intervals,np.arange(len(flat))]
-        interpolated=((coefficients[0]*delta[:,None]+coefficients[1])*delta[:,None]+coefficients[2])*delta[:,None]+coefficients[3]
-        mean=interpolated[:,0];variance=np.exp(interpolated[:,1])
-        answer=np.stack((mean,mean**2+variance,mean**2-variance),axis=-1)
-        return answer.reshape(original_shape+(3,))
+        interpolated = interpolate(nodes)
+        mean = interpolated[..., 0]; variance = np.exp(interpolated[..., 1])
+        return np.stack((mean, mean**2+variance, mean**2-variance), axis=-1)
+    return evaluate
+
+
+def encounter_kick_interpolator(axes, kicks, temperature, mass=1., field=1.):
+    """Interpolate signed relative perpendicular kicks, then COM moments.
+
+    ``kicks`` has a final axis of length two: velocity increments in the free
+    incoming z=0 frame.
+    For an encounter started at -L, first undo the final free rotation as in
+    encounter_relative, then rotate its delta_relative_perpendicular by
+    -Omega*L/v_parallel. This removes the preparation-plane rotation, which
+    otherwise varies rapidly with parallel speed. The incoming velocity in
+    this frame is v_perp*(cos(phi),sin(phi)). All table states must have the
+    same field, mass, charge, interaction and preparation planes.
+
+    Signed cubic interpolation remains smooth through kick cancellations.
+    Reconstruct c=m/(8B)*(2*w_in.dot(delta_w)+|delta_w|^2), and the independent
+    thermal COM variance m^2*theta*|delta_w|^2/(8B^2). A resolved zero kick is
+    permitted; no positive variance floor or logarithm is used. This preserves
+    second=c^2+variance and cross=c^2-variance. Heldout trajectories must check
+    interpolation accuracy; this construction supplies no supremum bound.
+    """
+    axes = [np.asarray(axis, float) for axis in axes]
+    kicks = np.asarray(kicks, float)
+    if (len(axes) != 4 or any(axis.ndim != 1 or len(axis) < 4 or
+            not np.all(np.isfinite(axis)) or not np.all(np.diff(axis) > 0)
+            for axis in axes) or kicks.shape != tuple(map(len, axes))+(2,)
+            or not np.all(np.isfinite(kicks))):
+        raise ValueError('Need four increasing axes and a finite matching signed kick table.')
+    if not np.all(np.isfinite([temperature, mass, field])) or min(temperature, mass, field) <= 0:
+        raise ValueError('Finite positive thermal/mass/field inputs required.')
+    if axes[0][0] <= 0 or axes[1][0] <= 0 or axes[2][0] < 0:
+        raise ValueError('Positive impact/parallel and nonnegative perpendicular speeds required.')
+    phase = axes[3]
+    spacing = 2*np.pi/len(phase)
+    if not np.allclose(phase, spacing*np.arange(len(phase)), atol=1e-13, rtol=0):
+        raise ValueError('Gyrophase axis must uniformly cover [0,2pi).')
+    interpolate = _encounter_periodic_field_interpolator(axes, kicks)
+
+    def evaluate(nodes):
+        nodes = np.asarray(nodes, float)
+        if nodes.ndim == 0 or nodes.shape[-1] != 4 or not np.all(np.isfinite(nodes)):
+            raise ValueError('Finite four-coordinate query nodes required.')
+        kick = interpolate(nodes)
+        angles = nodes[..., 3] % (2*np.pi)
+        initial = nodes[..., 2, None]*np.stack((np.cos(angles), np.sin(angles)), axis=-1)
+        square = np.sum(kick**2, axis=-1)
+        mean = mass/(8*field)*(2*np.sum(initial*kick, axis=-1)+square)
+        variance = mass**2*temperature/(8*field**2)*square
+        return np.stack((mean, mean**2+variance, mean**2-variance), axis=-1)
+
     return evaluate
 
 
