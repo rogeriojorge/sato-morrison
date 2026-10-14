@@ -1,0 +1,540 @@
+{
+  "model": "conditional screened encounter interpolation representation",
+  "boundary": "first outgoing relative z=+/-24 planes",
+  "units": "m,q,velocity,length normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+  "inputs": {
+    "mass": 1.0,
+    "charge": 1.0,
+    "field": 2.0,
+    "theta": 0.5,
+    "strength": 0.03,
+    "screening": 3.0,
+    "start_distance": 24.0,
+    "table_bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.7,
+        1.5
+      ],
+      [
+        0.2,
+        0.8
+      ]
+    ],
+    "table_orders": [
+      7,
+      7,
+      7,
+      32
+    ],
+    "table_axes": [
+      [
+        1.230535252594345,
+        1.3550812886403634,
+        1.5564929091735618,
+        1.7999999999999998,
+        2.0435070908264383,
+        2.2449187113596363,
+        2.369464747405655
+      ],
+      [
+        0.7203568350628966,
+        0.8033875257602422,
+        0.9376619394490411,
+        1.1,
+        1.2623380605509587,
+        1.3966124742397579,
+        1.4796431649371034
+      ],
+      [
+        0.21526762629717247,
+        0.27754064432018166,
+        0.37824645458678086,
+        0.5,
+        0.6217535454132193,
+        0.7224593556798184,
+        0.7847323737028276
+      ],
+      [
+        0.0,
+        0.19634954084936207,
+        0.39269908169872414,
+        0.5890486225480862,
+        0.7853981633974483,
+        0.9817477042468103,
+        1.1780972450961724,
+        1.3744467859455345,
+        1.5707963267948966,
+        1.7671458676442586,
+        1.9634954084936207,
+        2.1598449493429825,
+        2.356194490192345,
+        2.552544031041707,
+        2.748893571891069,
+        2.945243112740431,
+        3.141592653589793,
+        3.3379421944391554,
+        3.5342917352885173,
+        3.730641276137879,
+        3.9269908169872414,
+        4.123340357836604,
+        4.319689898685965,
+        4.516039439535327,
+        4.71238898038469,
+        4.908738521234052,
+        5.105088062083414,
+        5.301437602932776,
+        5.497787143782138,
+        5.6941366846315,
+        5.890486225480862,
+        6.086835766330224
+      ]
+    ],
+    "fresh_count": 128,
+    "fresh_seed": 3811,
+    "weak_anchors": [
+      [
+        "original128",
+        66
+      ],
+      [
+        "fresh128",
+        118
+      ]
+    ],
+    "weak_phase_count": 49,
+    "weak_phase_half_width": 0.3,
+    "rtol": 1e-12,
+    "max_step": 0.2,
+    "tight_rtol": 2e-13,
+    "tight_max_step": 0.1,
+    "second_rms_target": 0.02,
+    "second_p95_target": 0.05,
+    "sampled_max_target": 0.01,
+    "solver_refinement_target": 0.001,
+    "energy_target": 1e-09,
+    "runtime_cap_s": 180.0,
+    "frame": "delta_w0=R(-Omega*L/u)[R(+Omega*t)w_out-w_in]; w_in0=p(cos(phi),sin(phi))",
+    "methods": [
+      "signed c and log(COM variance)",
+      "signed Cartesian zero-plane velocity kicks"
+    ],
+    "scope": "Same finite B2 screened table; no new training solves, correction fit, physical rate, or supremum bound.",
+    "units": "m,q,velocity,length normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+    "stop_rule": "Fixed seed, anchors, neighborhoods and targets; retain failures and all planned sample counts."
+  },
+  "commit": "1c32a8a0ecd6774389f163df193a37ffd9a0e2ef",
+  "working_tree": "M README.md\n?? examples/39_broad_speed_refinement.py\n?? examples/40_refinement_audit.py\n?? results/scattering_interpolation/",
+  "source_sha256": "0a7b04b56161a682bf1a9b6ab0b5b1e2615dcea400b8bfc180edfe5c1c917ec4",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "?? examples/39_broad_speed_refinement.py\n?? examples/40_refinement_audit.py",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": true,
+  "experiment_dependency_sha256": {
+    "examples/38_scattering_interpolation.py": "285067ca52d19d65ebde5d13df4252e148d126eed821799b14e31c30be3c32ef",
+    "src/sato_morrison/controls.py": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "source_artifact_sha256": {
+    "results/physical_refinement/summary.json": "ed07f3503406aeaa4206dae785fdaca2b6440cf87b602ebf37328d640aeaff39",
+    "results/physical_refinement/attempts.json": "3d87c6742a259712d6e7154ff7f448465e9df53ebf5ae8095add1fb68953e9bb",
+    "results/physical_refinement/heldout_original128.npz": "cf66503b21da01bb592c96b0be70dc524febc56fe602fc896b0dac6df58b7add",
+    "results/physical_refinement/heldout_fresh128.npz": "f94306332c1da62f81fbc74de261a2701a4f583a3d67158cacb98709e20aaa82"
+  },
+  "source_campaign_commit": "04d0bf4ea02e1152641655c71391dba252a86ffe",
+  "load_average_start": [
+    2.41650390625,
+    2.5830078125,
+    2.42626953125
+  ],
+  "results": {
+    "overall_status": "passed",
+    "required_gates": {
+      "complete_new_states": true,
+      "signed_original_targets": true,
+      "fresh_p95_confidence": true,
+      "sampled_max": true,
+      "solver_refinement": true,
+      "energy": true,
+      "table_algebra": true,
+      "legacy_reproduction": true,
+      "source_integrity": true,
+      "dependency_integrity": true
+    },
+    "comparisons": {
+      "original128": {
+        "legacy": {
+          "rms": [
+            0.00048023439150493054,
+            0.0008581780456516947,
+            0.0010946323438643683
+          ],
+          "second_p95": 0.018827904333747945,
+          "second_max": 0.9621319173139562,
+          "worst_index": 66,
+          "minimum_direct_second": 1.819722582410224e-09,
+          "fraction_above_five_percent": 0.03125,
+          "status": "passed"
+        },
+        "signed": {
+          "rms": [
+            0.00047575329479677394,
+            0.0007520002913799188,
+            0.0007057053082342748
+          ],
+          "second_p95": 0.0013552131920200382,
+          "second_max": 0.002391999877197293,
+          "worst_index": 3,
+          "minimum_direct_second": 1.819722582410224e-09,
+          "fraction_above_five_percent": 0.0,
+          "status": "passed"
+        },
+        "states": 128
+      },
+      "fresh128": {
+        "legacy": {
+          "rms": [
+            0.0004017288177846248,
+            0.001137386036214211,
+            0.001446611754405495
+          ],
+          "second_p95": 0.024498546586898023,
+          "second_max": 0.6721554264550581,
+          "worst_index": 118,
+          "minimum_direct_second": 1.7984238292143885e-09,
+          "fraction_above_five_percent": 0.0390625,
+          "status": "passed"
+        },
+        "signed": {
+          "rms": [
+            0.0004020174878942424,
+            0.0005943702291467396,
+            0.0005556254588790095
+          ],
+          "second_p95": 0.0016890701804305075,
+          "second_max": 0.0036657562873467775,
+          "worst_index": 104,
+          "minimum_direct_second": 1.7984238292143885e-09,
+          "fraction_above_five_percent": 0.0,
+          "status": "passed"
+        },
+        "states": 128
+      },
+      "new128": {
+        "legacy": {
+          "rms": [
+            0.0006099870137697615,
+            0.0016634107708872704,
+            0.0018981504469054585
+          ],
+          "second_p95": 0.053836564189716524,
+          "second_max": 0.2752099036402229,
+          "worst_index": 106,
+          "minimum_direct_second": 3.9523252362952e-09,
+          "fraction_above_five_percent": 0.0546875,
+          "status": "unresolved",
+          "p95_order_statistic_95_interval": [
+            0.011223903874842733,
+            0.22755110231579745
+          ],
+          "p95_interval_order_ranks": [
+            116,
+            127
+          ]
+        },
+        "signed": {
+          "rms": [
+            0.0006033795329894255,
+            0.0009096105991458749,
+            0.0007914388467598424
+          ],
+          "second_p95": 0.0018186711929157162,
+          "second_max": 0.0030286626203506195,
+          "worst_index": 122,
+          "minimum_direct_second": 3.9523252362952e-09,
+          "fraction_above_five_percent": 0.0,
+          "status": "passed",
+          "p95_order_statistic_95_interval": [
+            0.0010155316033434447,
+            0.0028307052754095174
+          ],
+          "p95_interval_order_ranks": [
+            116,
+            127
+          ]
+        },
+        "states": 128
+      },
+      "weak98": {
+        "legacy": {
+          "rms": [
+            0.0004937678394882,
+            0.3746557157813036,
+            0.6600328622121897
+          ],
+          "second_p95": 14.560753582696739,
+          "second_max": 21.126001962478473,
+          "worst_index": 7,
+          "minimum_direct_second": 1.3378296402135044e-10,
+          "fraction_above_five_percent": 0.9591836734693877,
+          "status": "unresolved"
+        },
+        "signed": {
+          "rms": [
+            0.0005751158568948774,
+            0.0010291651062116394,
+            0.0018950497935535415
+          ],
+          "second_p95": 0.005943174795402549,
+          "second_max": 0.006169929510355443,
+          "worst_index": 84,
+          "minimum_direct_second": 1.3378296402135044e-10,
+          "fraction_above_five_percent": 0.0,
+          "status": "passed"
+        },
+        "states": 98
+      }
+    },
+    "solver_refinements": [
+      {
+        "node": [
+          2.05861236936123,
+          0.8460086708290099,
+          0.6612113867018994,
+          5.059964783640165
+        ],
+        "status": "passed",
+        "second_relative_change": 1.3278820154560833e-08,
+        "mean_change_over_second_scale": 8.120325379320727e-10,
+        "ordinary_second": 2.488638448550155e-09,
+        "tight_second": 2.488638481596338e-09
+      },
+      {
+        "node": [
+          1.8803401847709527,
+          0.723160943739059,
+          0.48874606107712,
+          4.841823515718093
+        ],
+        "status": "passed",
+        "second_relative_change": 2.9680880975213597e-08,
+        "mean_change_over_second_scale": 2.388076944964253e-10,
+        "ordinary_second": 1.7984238292143885e-09,
+        "tight_second": 1.7984238825931936e-09
+      },
+      {
+        "node": [
+          1.8738935169334254,
+          0.7691068085436974,
+          0.3777782779950789,
+          4.96705129946044
+        ],
+        "status": "passed",
+        "second_relative_change": 1.5591046897966976e-08,
+        "mean_change_over_second_scale": 1.937602769835435e-10,
+        "ordinary_second": 3.9523252362952e-09,
+        "tight_second": 3.952325174674314e-09
+      },
+      {
+        "node": [
+          1.4842425922036782,
+          0.823677887419819,
+          0.7362411564811197,
+          2.6675781547300432
+        ],
+        "status": "passed",
+        "second_relative_change": 9.642043830027092e-10,
+        "mean_change_over_second_scale": 1.1663184258452761e-11,
+        "ordinary_second": 1.8158611329141036e-06,
+        "tight_second": 1.815861134664965e-06
+      },
+      {
+        "node": [
+          2.2833467671874543,
+          0.8022968655211182,
+          0.3007300263376783,
+          3.812531473258521
+        ],
+        "status": "passed",
+        "second_relative_change": 3.6112427492795973e-09,
+        "mean_change_over_second_scale": 3.2750959860190607e-10,
+        "ordinary_second": 7.879211022896479e-09,
+        "tight_second": 7.879211051350223e-09
+      },
+      {
+        "node": [
+          2.325337100716144,
+          0.878709555038312,
+          0.6627722165587511,
+          4.479082374376714
+        ],
+        "status": "passed",
+        "second_relative_change": 1.5003758124798594e-08,
+        "mean_change_over_second_scale": 4.2126979349227536e-10,
+        "ordinary_second": 6.9835328049124005e-09,
+        "tight_second": 6.983532909691639e-09
+      },
+      {
+        "node": [
+          1.4919348038760334,
+          0.7231009255569281,
+          0.27239441311038176,
+          2.534948855760463
+        ],
+        "status": "passed",
+        "second_relative_change": 9.216041263471197e-10,
+        "mean_change_over_second_scale": 1.4722465522461414e-11,
+        "ordinary_second": 4.748037575427072e-07,
+        "tight_second": 4.748037579802883e-07
+      },
+      {
+        "node": [
+          1.4823191100820765,
+          0.727699489696591,
+          0.5125595406053076,
+          2.5780499417697307
+        ],
+        "status": "passed",
+        "second_relative_change": 1.3473576698785905e-09,
+        "mean_change_over_second_scale": 6.0083530648838256e-12,
+        "ordinary_second": 8.503925461478903e-07,
+        "tight_second": 8.503925472936732e-07
+      },
+      {
+        "node": [
+          2.05861236936123,
+          0.8460086708290099,
+          0.6612113867018994,
+          4.8349647836401655
+        ],
+        "status": "passed",
+        "second_relative_change": 1.2978522556661432e-07,
+        "mean_change_over_second_scale": 2.7712906165228104e-09,
+        "ordinary_second": 1.3893029337056545e-10,
+        "tight_second": 1.3893031140166726e-10
+      },
+      {
+        "node": [
+          2.05861236936123,
+          0.8460086708290099,
+          0.6612113867018994,
+          4.847464783640165
+        ],
+        "status": "passed",
+        "second_relative_change": 1.370848372594935e-07,
+        "mean_change_over_second_scale": 2.8324992565912084e-09,
+        "ordinary_second": 1.3378296402135044e-10,
+        "tight_second": 1.337829823609688e-10
+      },
+      {
+        "node": [
+          2.05861236936123,
+          0.8460086708290099,
+          0.6612113867018994,
+          4.859964783640165
+        ],
+        "status": "passed",
+        "second_relative_change": 1.2954375305795907e-07,
+        "mean_change_over_second_scale": 2.855179154422877e-09,
+        "ordinary_second": 1.446600521391464e-10,
+        "tight_second": 1.446600708789549e-10
+      },
+      {
+        "node": [
+          1.8803401847709527,
+          0.723160943739059,
+          0.48874606107712,
+          4.966823515718093
+        ],
+        "status": "passed",
+        "second_relative_change": 3.7548944731291556e-08,
+        "mean_change_over_second_scale": 6.092668080788945e-10,
+        "ordinary_second": 1.359728072525525e-09,
+        "tight_second": 1.3597281235818812e-09
+      },
+      {
+        "node": [
+          1.8803401847709527,
+          0.723160943739059,
+          0.48874606107712,
+          4.979323515718093
+        ],
+        "status": "passed",
+        "second_relative_change": 3.6761367172566395e-08,
+        "mean_change_over_second_scale": 6.515579680942498e-10,
+        "ordinary_second": 1.3837942735971978e-09,
+        "tight_second": 1.383794324467369e-09
+      },
+      {
+        "node": [
+          1.8803401847709527,
+          0.723160943739059,
+          0.48874606107712,
+          4.991823515718093
+        ],
+        "status": "passed",
+        "second_relative_change": 3.5823388144784474e-08,
+        "mean_change_over_second_scale": 5.724449860527597e-10,
+        "ordinary_second": 1.4202160332081635e-09,
+        "tight_second": 1.4202160840851156e-09
+      }
+    ],
+    "table_second_reconstruction_max_relative": 5.437872374614017e-13,
+    "legacy_reproduction_relative_norm": [
+      0.0,
+      0.0
+    ],
+    "new_encounters": 240,
+    "table_states": 10976,
+    "limitations": [
+      "Finite samples and two phase neighborhoods; no supremum interpolation bound.",
+      "Reuses archived trajectory/table accuracy; tighter solves check selected states only.",
+      "No independent-encounter plasma closure, kinetic rate, or lifetime conclusion."
+    ]
+  },
+  "wall_s": 7.149609999964014,
+  "peak_rss_bytes": 310149120,
+  "timing_scope": "One process, archived loading/table construction plus new direct solves and plotting; no JIT compilation.",
+  "memory_scope": "Process lifetime peak; includes metadata/device initialization.",
+  "load_average_end": [
+    2.35205078125,
+    2.5634765625,
+    2.42041015625
+  ],
+  "experiment_dependency_sha256_end": {
+    "examples/38_scattering_interpolation.py": "285067ca52d19d65ebde5d13df4252e148d126eed821799b14e31c30be3c32ef",
+    "src/sato_morrison/controls.py": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "output_sha256": {
+    "declared_inputs.json": "a147dfc87fb60559c1705e7a1f50c3a953dc1d513cc0af4a24c3b7a3b6aaeec5",
+    "interpolation.png": "cc3d1f7073758d089ed5d0abdaf66bc8321083bd13fbb14efbec24a45347d535",
+    "attempts.json": "69e96863f479f58ad2799736e6f2adc10cef87f1eee91920f69103d8ab138e4b",
+    "tests.npz": "68d5adfe137c13115c084209d8293c16d70f60c3cecacd61eccdc4a1750ddb29",
+    "attempts_partial.json": "69e96863f479f58ad2799736e6f2adc10cef87f1eee91920f69103d8ab138e4b",
+    "table.npz": "175525d546a986e6c33c769b6e6f2808f52867d35e37a23f19a5e70005f38775"
+  }
+}

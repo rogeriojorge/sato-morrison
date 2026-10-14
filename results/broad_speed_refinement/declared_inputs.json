@@ -1,0 +1,59 @@
+{
+  "mass": 1.0,
+  "charge": 1.0,
+  "field": 2.0,
+  "strength": 0.03,
+  "screening": 3.0,
+  "theta": 0.5,
+  "bounds": [
+    [
+      1.2,
+      2.4
+    ],
+    [
+      0.35,
+      3.0
+    ],
+    [
+      0.0,
+      2.5
+    ]
+  ],
+  "sample_levels": [
+    256,
+    512
+  ],
+  "phase_levels": [
+    32,
+    64
+  ],
+  "seeds": [
+    3901,
+    3902
+  ],
+  "distances": [
+    24.0,
+    32.0
+  ],
+  "step_levels": [
+    0.1,
+    0.05,
+    0.025
+  ],
+  "rtol": 1e-12,
+  "flight_time_factor": 48.0,
+  "workers": 4,
+  "runtime_cap_s": 1800.0,
+  "expected_primary_paths": 98304,
+  "moment_target": 0.05,
+  "energy_target": 1e-09,
+  "boundary_target": 0.005,
+  "step_target": 0.001,
+  "control_count_each": 16,
+  "units": "normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+  "measure": "two-sided tagged plane crossing flux; b^2 uniform; squared speeds truncated exponential; periodic phase",
+  "error_scale": "mean: fine second/mu_reference; second and cross: fine second; GC kick: fine spatial second",
+  "controls": "full primary ensemble at both planes; 16 largest second-moment contributors and 16 fresh predetermined flux samples at all active steps",
+  "stop_rule": "fixed domains, levels, seeds and flight budget; cap checked between batches; no missing weights renormalized; failed gates exit nonzero",
+  "scope": "one bounded broad-speed annulus from example13; inner impacts, slow/fast and perpendicular tails, inverse-complete incident surface, screening closure, correlations and mixing time unresolved"
+}

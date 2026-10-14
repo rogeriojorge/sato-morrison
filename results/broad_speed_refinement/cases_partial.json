@@ -1,0 +1,112 @@
+[
+  {
+    "case": "primary512_phase64",
+    "seed": 3901,
+    "sample_count": 512,
+    "phase_count": 64,
+    "distance": 24.0,
+    "complete": true,
+    "missing_count": 0,
+    "flux_per_density": 9.622764018272528,
+    "integrals": [
+      -4.144528105897677e-05,
+      5.895567291728916e-05,
+      -9.378759227990587e-06,
+      0.0025674007982779508
+    ],
+    "drift_per_density": -4.144528105897677e-05,
+    "diffusion_per_density": 2.947783645864458e-05,
+    "cross_per_density": -9.378759227990587e-06,
+    "spatial_second_per_density": 0.0025674007982779508,
+    "max_energy_error": 8.913430424942275e-12,
+    "reflected_fraction": 0.0
+  },
+  {
+    "case": "primary256_phase64",
+    "seed": 3901,
+    "sample_count": 256,
+    "phase_count": 64,
+    "distance": 24.0,
+    "complete": true,
+    "missing_count": 0,
+    "flux_per_density": 9.622764018272528,
+    "integrals": [
+      -2.504291017872542e-05,
+      5.527681832405303e-05,
+      -6.94336809416531e-06,
+      0.0025449257838185304
+    ],
+    "drift_per_density": -2.504291017872542e-05,
+    "diffusion_per_density": 2.7638409162026514e-05,
+    "cross_per_density": -6.94336809416531e-06,
+    "spatial_second_per_density": 0.0025449257838185304,
+    "max_energy_error": 8.60874677554513e-12,
+    "reflected_fraction": 0.0
+  },
+  {
+    "case": "primary512_phase32",
+    "seed": 3901,
+    "sample_count": 512,
+    "phase_count": 32,
+    "distance": 24.0,
+    "complete": true,
+    "missing_count": 0,
+    "flux_per_density": 9.622764018272528,
+    "integrals": [
+      -4.256738152633299e-05,
+      5.830023281333835e-05,
+      -9.60669822264081e-06,
+      0.002566421715010976
+    ],
+    "drift_per_density": -4.256738152633299e-05,
+    "diffusion_per_density": 2.9150116406669176e-05,
+    "cross_per_density": -9.60669822264081e-06,
+    "spatial_second_per_density": 0.002566421715010976,
+    "max_energy_error": 8.60874677554513e-12,
+    "reflected_fraction": 0.0
+  },
+  {
+    "case": "replica512_phase64",
+    "seed": 3902,
+    "sample_count": 512,
+    "phase_count": 64,
+    "distance": 24.0,
+    "complete": true,
+    "missing_count": 0,
+    "flux_per_density": 9.622764018272528,
+    "integrals": [
+      -3.582230532424958e-05,
+      5.617267954004604e-05,
+      -9.360673844405628e-06,
+      0.002568408936685053
+    ],
+    "drift_per_density": -3.582230532424958e-05,
+    "diffusion_per_density": 2.808633977002302e-05,
+    "cross_per_density": -9.360673844405628e-06,
+    "spatial_second_per_density": 0.002568408936685053,
+    "max_energy_error": 9.705668751942926e-12,
+    "reflected_fraction": 0.0
+  },
+  {
+    "case": "primary512_phase64_L32",
+    "seed": 3901,
+    "sample_count": 512,
+    "phase_count": 64,
+    "distance": 32.0,
+    "complete": true,
+    "missing_count": 0,
+    "flux_per_density": 9.622764018272528,
+    "integrals": [
+      -4.14455941650678e-05,
+      5.895555895243246e-05,
+      -9.378582466150193e-06,
+      0.002567423336325951
+    ],
+    "drift_per_density": -4.14455941650678e-05,
+    "diffusion_per_density": 2.947777947621623e-05,
+    "cross_per_density": -9.378582466150193e-06,
+    "spatial_second_per_density": 0.002567423336325951,
+    "max_energy_error": 1.0099326222882877e-11,
+    "reflected_fraction": 0.0
+  }
+]

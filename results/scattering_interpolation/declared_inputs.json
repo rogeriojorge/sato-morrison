@@ -1,0 +1,124 @@
+{
+  "mass": 1.0,
+  "charge": 1.0,
+  "field": 2.0,
+  "theta": 0.5,
+  "strength": 0.03,
+  "screening": 3.0,
+  "start_distance": 24.0,
+  "table_bounds": [
+    [
+      1.2,
+      2.4
+    ],
+    [
+      0.7,
+      1.5
+    ],
+    [
+      0.2,
+      0.8
+    ]
+  ],
+  "table_orders": [
+    7,
+    7,
+    7,
+    32
+  ],
+  "table_axes": [
+    [
+      1.230535252594345,
+      1.3550812886403634,
+      1.5564929091735618,
+      1.7999999999999998,
+      2.0435070908264383,
+      2.2449187113596363,
+      2.369464747405655
+    ],
+    [
+      0.7203568350628966,
+      0.8033875257602422,
+      0.9376619394490411,
+      1.1,
+      1.2623380605509587,
+      1.3966124742397579,
+      1.4796431649371034
+    ],
+    [
+      0.21526762629717247,
+      0.27754064432018166,
+      0.37824645458678086,
+      0.5,
+      0.6217535454132193,
+      0.7224593556798184,
+      0.7847323737028276
+    ],
+    [
+      0.0,
+      0.19634954084936207,
+      0.39269908169872414,
+      0.5890486225480862,
+      0.7853981633974483,
+      0.9817477042468103,
+      1.1780972450961724,
+      1.3744467859455345,
+      1.5707963267948966,
+      1.7671458676442586,
+      1.9634954084936207,
+      2.1598449493429825,
+      2.356194490192345,
+      2.552544031041707,
+      2.748893571891069,
+      2.945243112740431,
+      3.141592653589793,
+      3.3379421944391554,
+      3.5342917352885173,
+      3.730641276137879,
+      3.9269908169872414,
+      4.123340357836604,
+      4.319689898685965,
+      4.516039439535327,
+      4.71238898038469,
+      4.908738521234052,
+      5.105088062083414,
+      5.301437602932776,
+      5.497787143782138,
+      5.6941366846315,
+      5.890486225480862,
+      6.086835766330224
+    ]
+  ],
+  "fresh_count": 128,
+  "fresh_seed": 3811,
+  "weak_anchors": [
+    [
+      "original128",
+      66
+    ],
+    [
+      "fresh128",
+      118
+    ]
+  ],
+  "weak_phase_count": 49,
+  "weak_phase_half_width": 0.3,
+  "rtol": 1e-12,
+  "max_step": 0.2,
+  "tight_rtol": 2e-13,
+  "tight_max_step": 0.1,
+  "second_rms_target": 0.02,
+  "second_p95_target": 0.05,
+  "sampled_max_target": 0.01,
+  "solver_refinement_target": 0.001,
+  "energy_target": 1e-09,
+  "runtime_cap_s": 180.0,
+  "frame": "delta_w0=R(-Omega*L/u)[R(+Omega*t)w_out-w_in]; w_in0=p(cos(phi),sin(phi))",
+  "methods": [
+    "signed c and log(COM variance)",
+    "signed Cartesian zero-plane velocity kicks"
+  ],
+  "scope": "Same finite B2 screened table; no new training solves, correction fit, physical rate, or supremum bound.",
+  "units": "m,q,velocity,length normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+  "stop_rule": "Fixed seed, anchors, neighborhoods and targets; retain failures and all planned sample counts."
+}

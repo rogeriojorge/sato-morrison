@@ -1,0 +1,634 @@
+{
+  "model": "bounded broad-speed screened encounter refinement",
+  "boundary": "first outgoing relative z=+/-L plane; reflected retained",
+  "units": "normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+  "inputs": {
+    "mass": 1.0,
+    "charge": 1.0,
+    "field": 2.0,
+    "strength": 0.03,
+    "screening": 3.0,
+    "theta": 0.5,
+    "bounds": [
+      [
+        1.2,
+        2.4
+      ],
+      [
+        0.35,
+        3.0
+      ],
+      [
+        0.0,
+        2.5
+      ]
+    ],
+    "sample_levels": [
+      256,
+      512
+    ],
+    "phase_levels": [
+      32,
+      64
+    ],
+    "seeds": [
+      3901,
+      3902
+    ],
+    "distances": [
+      24.0,
+      32.0
+    ],
+    "step_levels": [
+      0.1,
+      0.05,
+      0.025
+    ],
+    "rtol": 1e-12,
+    "flight_time_factor": 48.0,
+    "workers": 4,
+    "runtime_cap_s": 1800.0,
+    "expected_primary_paths": 98304,
+    "moment_target": 0.05,
+    "energy_target": 1e-09,
+    "boundary_target": 0.005,
+    "step_target": 0.001,
+    "control_count_each": 16,
+    "units": "normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+    "measure": "two-sided tagged plane crossing flux; b^2 uniform; squared speeds truncated exponential; periodic phase",
+    "error_scale": "mean: fine second/mu_reference; second and cross: fine second; GC kick: fine spatial second",
+    "controls": "full primary ensemble at both planes; 16 largest second-moment contributors and 16 fresh predetermined flux samples at all active steps",
+    "stop_rule": "fixed domains, levels, seeds and flight budget; cap checked between batches; no missing weights renormalized; failed gates exit nonzero",
+    "scope": "one bounded broad-speed annulus from example13; inner impacts, slow/fast and perpendicular tails, inverse-complete incident surface, screening closure, correlations and mixing time unresolved"
+  },
+  "commit": "38ffdbc5f6609e6803220b48a83aad91672db19d",
+  "working_tree": "M README.md\n?? examples/40_refinement_audit.py\n?? results/broad_speed_refinement/\n?? results/scattering_interpolation/",
+  "source_sha256": "e03bc14e56eb0cc9c1d38c7a37ce2b94a4ba157ccdd4fc61165d910ce163e38f",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "?? examples/40_refinement_audit.py",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": true,
+  "experiment_dependency_sha256": {
+    "examples/39_broad_speed_refinement.py": "8a860c06ab35247b876fbbfd0baad4d2bbea6b11311485695ae753b7427afade",
+    "src/sato_morrison/controls.py": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "prior_evidence_sha256": "c8f2626a09aa81e33d3826f5a4a6b80a892fe973b0d5cd5e33347997da193810",
+  "experiment_dependency_sha256_end": {
+    "examples/39_broad_speed_refinement.py": "8a860c06ab35247b876fbbfd0baad4d2bbea6b11311485695ae753b7427afade",
+    "src/sato_morrison/controls.py": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "results": {
+    "status": "unresolved",
+    "required_gates": {
+      "sample": false,
+      "phase": true,
+      "replica": true,
+      "boundary_ensemble": true,
+      "active_step": true,
+      "active_step_sizes": true,
+      "complete": true,
+      "energy": true,
+      "source_integrity": true
+    },
+    "comparisons": {
+      "sample": [
+        0.06955382776846078,
+        0.062400349469292224,
+        0.04130885143558562,
+        0.008753995275881785
+      ],
+      "phase": [
+        0.004758237892265464,
+        0.011117506959344617,
+        0.003866277550084213,
+        0.00038135193680376264
+      ],
+      "replica": [
+        0.02384408258139913,
+        0.04720484458124103,
+        0.0003067623977480655,
+        0.0003926688843357217
+      ],
+      "boundary_ensemble": [
+        1.3277208145938772e-06,
+        1.933063797907935e-06,
+        2.998221771365685e-06,
+        8.778469713776539e-06
+      ],
+      "active_step": [
+        7.885062119383145e-10,
+        5.269099436937687e-11,
+        5.266272153824021e-11,
+        8.505026720374822e-12
+      ]
+    },
+    "cases": [
+      {
+        "case": "primary512_phase64",
+        "seed": 3901,
+        "sample_count": 512,
+        "phase_count": 64,
+        "distance": 24.0,
+        "complete": true,
+        "missing_count": 0,
+        "flux_per_density": 9.622764018272528,
+        "integrals": [
+          -4.144528105897677e-05,
+          5.895567291728916e-05,
+          -9.378759227990587e-06,
+          0.0025674007982779508
+        ],
+        "drift_per_density": -4.144528105897677e-05,
+        "diffusion_per_density": 2.947783645864458e-05,
+        "cross_per_density": -9.378759227990587e-06,
+        "spatial_second_per_density": 0.0025674007982779508,
+        "max_energy_error": 8.913430424942275e-12,
+        "reflected_fraction": 0.0
+      },
+      {
+        "case": "primary256_phase64",
+        "seed": 3901,
+        "sample_count": 256,
+        "phase_count": 64,
+        "distance": 24.0,
+        "complete": true,
+        "missing_count": 0,
+        "flux_per_density": 9.622764018272528,
+        "integrals": [
+          -2.504291017872542e-05,
+          5.527681832405303e-05,
+          -6.94336809416531e-06,
+          0.0025449257838185304
+        ],
+        "drift_per_density": -2.504291017872542e-05,
+        "diffusion_per_density": 2.7638409162026514e-05,
+        "cross_per_density": -6.94336809416531e-06,
+        "spatial_second_per_density": 0.0025449257838185304,
+        "max_energy_error": 8.60874677554513e-12,
+        "reflected_fraction": 0.0
+      },
+      {
+        "case": "primary512_phase32",
+        "seed": 3901,
+        "sample_count": 512,
+        "phase_count": 32,
+        "distance": 24.0,
+        "complete": true,
+        "missing_count": 0,
+        "flux_per_density": 9.622764018272528,
+        "integrals": [
+          -4.256738152633299e-05,
+          5.830023281333835e-05,
+          -9.60669822264081e-06,
+          0.002566421715010976
+        ],
+        "drift_per_density": -4.256738152633299e-05,
+        "diffusion_per_density": 2.9150116406669176e-05,
+        "cross_per_density": -9.60669822264081e-06,
+        "spatial_second_per_density": 0.002566421715010976,
+        "max_energy_error": 8.60874677554513e-12,
+        "reflected_fraction": 0.0
+      },
+      {
+        "case": "replica512_phase64",
+        "seed": 3902,
+        "sample_count": 512,
+        "phase_count": 64,
+        "distance": 24.0,
+        "complete": true,
+        "missing_count": 0,
+        "flux_per_density": 9.622764018272528,
+        "integrals": [
+          -3.582230532424958e-05,
+          5.617267954004604e-05,
+          -9.360673844405628e-06,
+          0.002568408936685053
+        ],
+        "drift_per_density": -3.582230532424958e-05,
+        "diffusion_per_density": 2.808633977002302e-05,
+        "cross_per_density": -9.360673844405628e-06,
+        "spatial_second_per_density": 0.002568408936685053,
+        "max_energy_error": 9.705668751942926e-12,
+        "reflected_fraction": 0.0
+      },
+      {
+        "case": "primary512_phase64_L32",
+        "seed": 3901,
+        "sample_count": 512,
+        "phase_count": 64,
+        "distance": 32.0,
+        "complete": true,
+        "missing_count": 0,
+        "flux_per_density": 9.622764018272528,
+        "integrals": [
+          -4.14455941650678e-05,
+          5.895555895243246e-05,
+          -9.378582466150193e-06,
+          0.002567423336325951
+        ],
+        "drift_per_density": -4.14455941650678e-05,
+        "diffusion_per_density": 2.947777947621623e-05,
+        "cross_per_density": -9.378582466150193e-06,
+        "spatial_second_per_density": 0.002567423336325951,
+        "max_energy_error": 1.0099326222882877e-11,
+        "reflected_fraction": 0.0
+      }
+    ],
+    "controls": {
+      "nodes": [
+        [
+          1.2037198830339775,
+          1.8671586007210719,
+          2.2509675527227087,
+          1.9634954084936207
+        ],
+        [
+          1.2916484629850598,
+          0.9023636134801112,
+          2.4776095935111004,
+          1.3744467859455345
+        ],
+        [
+          1.2037198830339775,
+          1.8671586007210719,
+          2.2509675527227087,
+          1.2762720155208536
+        ],
+        [
+          1.2916484629850598,
+          0.9023636134801112,
+          2.4776095935111004,
+          2.061670178918302
+        ],
+        [
+          1.2037198830339775,
+          1.8671586007210719,
+          2.2509675527227087,
+          1.8653206380689396
+        ],
+        [
+          1.2916484629850598,
+          0.9023636134801112,
+          2.4776095935111004,
+          1.4726215563702154
+        ],
+        [
+          1.2037198830339775,
+          1.8671586007210719,
+          2.2509675527227087,
+          1.3744467859455345
+        ],
+        [
+          1.2916484629850598,
+          0.9023636134801112,
+          2.4776095935111004,
+          1.9634954084936207
+        ],
+        [
+          1.2037198830339775,
+          1.8671586007210719,
+          2.2509675527227087,
+          1.7671458676442586
+        ],
+        [
+          1.2916484629850598,
+          0.9023636134801112,
+          2.4776095935111004,
+          1.5707963267948966
+        ],
+        [
+          1.2037198830339775,
+          1.8671586007210719,
+          2.2509675527227087,
+          1.4726215563702154
+        ],
+        [
+          1.2037198830339775,
+          1.8671586007210719,
+          2.2509675527227087,
+          1.6689710972195777
+        ],
+        [
+          1.2037198830339775,
+          1.8671586007210719,
+          2.2509675527227087,
+          1.5707963267948966
+        ],
+        [
+          1.2916484629850598,
+          0.9023636134801112,
+          2.4776095935111004,
+          1.8653206380689396
+        ],
+        [
+          1.2916484629850598,
+          0.9023636134801112,
+          2.4776095935111004,
+          1.7671458676442586
+        ],
+        [
+          1.2916484629850598,
+          0.9023636134801112,
+          2.4776095935111004,
+          1.6689710972195777
+        ],
+        [
+          1.9719746261085846,
+          1.5262874981502323,
+          0.47011593808969504,
+          1.1610007827427489
+        ],
+        [
+          1.5555372430004002,
+          1.0985190845753865,
+          1.4363536414118354,
+          4.951167680578845
+        ],
+        [
+          1.7216503608616323,
+          2.0306669901192347,
+          1.0189779139534159,
+          4.419461186720585
+        ],
+        [
+          2.347655296547644,
+          0.6305946011090984,
+          1.8583211991878112,
+          2.0347801237081393
+        ],
+        [
+          2.194463504093245,
+          1.7751516924368478,
+          1.1982112656364405,
+          2.4335646578846717
+        ],
+        [
+          1.7642757071528545,
+          0.46066081147687776,
+          0.6950315782150023,
+          3.2842649330114755
+        ],
+        [
+          1.2226785596816971,
+          1.2642118993774825,
+          2.3134727584770483,
+          6.098536711778712
+        ],
+        [
+          2.0689565721463117,
+          0.8703472949206001,
+          0.7980922250266363,
+          0.7498453334508038
+        ],
+        [
+          2.117321177833742,
+          2.4498737070953664,
+          2.1091275070553714,
+          0.23052197299975463
+        ],
+        [
+          1.402644308444559,
+          0.7559030245702588,
+          0.9337388640826417,
+          5.880065286538355
+        ],
+        [
+          1.893463130624147,
+          1.6164118043931792,
+          1.340537324728969,
+          3.588882079961208
+        ],
+        [
+          2.2401349142223554,
+          1.1764442959388801,
+          0.6208380246336086,
+          2.8668444902316903
+        ],
+        [
+          2.3332281455246044,
+          1.3371836582218513,
+          1.1147786718456132,
+          1.6949300811440264
+        ],
+        [
+          1.6206627180809288,
+          0.946824649422496,
+          1.6915142333475504,
+          4.024579536577695
+        ],
+        [
+          1.4429935847150213,
+          2.020636049975859,
+          0.29754031433481104,
+          5.456732378417799
+        ],
+        [
+          1.9547935374746757,
+          0.6072861079858533,
+          1.5546162519481395,
+          1.3902572379771805
+        ]
+      ],
+      "selection": [
+        "largest_primary_second",
+        "largest_primary_second",
+        "largest_primary_second",
+        "largest_primary_second",
+        "largest_primary_second",
+        "largest_primary_second",
+        "largest_primary_second",
+        "largest_primary_second",
+        "largest_primary_second",
+        "largest_primary_second",
+        "largest_primary_second",
+        "largest_primary_second",
+        "largest_primary_second",
+        "largest_primary_second",
+        "largest_primary_second",
+        "largest_primary_second",
+        "fresh_predetermined_flux",
+        "fresh_predetermined_flux",
+        "fresh_predetermined_flux",
+        "fresh_predetermined_flux",
+        "fresh_predetermined_flux",
+        "fresh_predetermined_flux",
+        "fresh_predetermined_flux",
+        "fresh_predetermined_flux",
+        "fresh_predetermined_flux",
+        "fresh_predetermined_flux",
+        "fresh_predetermined_flux",
+        "fresh_predetermined_flux",
+        "fresh_predetermined_flux",
+        "fresh_predetermined_flux",
+        "fresh_predetermined_flux",
+        "fresh_predetermined_flux"
+      ],
+      "0.1": [
+        98304,
+        98305,
+        98306,
+        98307,
+        98308,
+        98309,
+        98310,
+        98311,
+        98312,
+        98313,
+        98314,
+        98315,
+        98316,
+        98317,
+        98318,
+        98319,
+        98320,
+        98321,
+        98322,
+        98323,
+        98324,
+        98325,
+        98326,
+        98327,
+        98328,
+        98329,
+        98330,
+        98331,
+        98332,
+        98333,
+        98334,
+        98335
+      ],
+      "0.05": [
+        98336,
+        98337,
+        98338,
+        98339,
+        98340,
+        98341,
+        98342,
+        98343,
+        98344,
+        98345,
+        98346,
+        98347,
+        98348,
+        98349,
+        98350,
+        98351,
+        98352,
+        98353,
+        98354,
+        98355,
+        98356,
+        98357,
+        98358,
+        98359,
+        98360,
+        98361,
+        98362,
+        98363,
+        98364,
+        98365,
+        98366,
+        98367
+      ],
+      "0.025": [
+        98368,
+        98369,
+        98370,
+        98371,
+        98372,
+        98373,
+        98374,
+        98375,
+        98376,
+        98377,
+        98378,
+        98379,
+        98380,
+        98381,
+        98382,
+        98383,
+        98384,
+        98385,
+        98386,
+        98387,
+        98388,
+        98389,
+        98390,
+        98391,
+        98392,
+        98393,
+        98394,
+        98395,
+        98396,
+        98397,
+        98398,
+        98399
+      ],
+      "actual_step_ratios": [
+        0.5,
+        0.5000000000001066,
+        0.5,
+        0.5000000000000355,
+        0.5,
+        0.5000000000001066,
+        0.5,
+        0.5000000000000355,
+        0.5,
+        0.5000000000001066,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5000000000000355,
+        0.5,
+        0.5,
+        0.5000000000000355,
+        0.5,
+        0.5000000000001066,
+        0.5,
+        0.500000000000071,
+        0.5000000000000355,
+        0.5,
+        0.5,
+        0.5000000000001066,
+        0.5,
+        0.5,
+        0.5000000000000355,
+        0.5000000000000355,
+        0.5,
+        0.5000000000001066
+      ]
+    },
+    "unique_encounters": 98400,
+    "failures": 0,
+    "cap_exhausted": false,
+    "wall_s": 733.5700538749807,
+    "parent_process_peak_rss_bytes": 637059072,
+    "max_worker_process_peak_rss_bytes": 105693184,
+    "memory_scope": "separate lifetime process peaks; not a simultaneous aggregate",
+    "velocity_flux_retained_fraction": 0.8886406067626148
+  }
+}
