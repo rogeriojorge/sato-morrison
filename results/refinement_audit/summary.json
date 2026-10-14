@@ -1,0 +1,1247 @@
+{
+  "status": "passed",
+  "failures": [],
+  "checks": [
+    {
+      "name": "table Cartesian COM reconstruction / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 3.6926017799032707e-13
+    },
+    {
+      "name": "table zero-plane signed kicks",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "table tensor-node order",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "table size",
+      "passed": true
+    },
+    {
+      "name": "table independently rebuilt coordinate 0",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "table independently rebuilt coordinate 1",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "table independently rebuilt coordinate 2",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "table uniform periodic phase",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "original128 unchanged archived nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "original128 unchanged direct moments",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "fresh128 unchanged archived nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "fresh128 unchanged direct moments",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "new independent seed and nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "weak fixed anchor neighborhoods",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "table algebra maximum relative second-moment discrepancy",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "original128 every planned row retained",
+      "passed": true
+    },
+    {
+      "name": "original128 direct Cartesian moments / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 4.135580766728708e-14
+    },
+    {
+      "name": "original128 direct zero-plane kicks",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "original128 signed separate tensor spline / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 4.492384242382741e-11
+    },
+    {
+      "name": "original128 signed rms",
+      "passed": true,
+      "maximum_absolute_error": 2.1587581982424053e-13
+    },
+    {
+      "name": "original128 signed second_p95",
+      "passed": true,
+      "maximum_absolute_error": 6.730338942412262e-13
+    },
+    {
+      "name": "original128 signed second_max",
+      "passed": true,
+      "maximum_absolute_error": 8.837375276016246e-14
+    },
+    {
+      "name": "original128 signed worst_index",
+      "passed": true
+    },
+    {
+      "name": "original128 signed minimum_direct_second",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "original128 signed fraction_above_five_percent",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "original128 signed acceptance status",
+      "passed": true
+    },
+    {
+      "name": "original128 legacy separate tensor spline / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 3.876376997169473e-11
+    },
+    {
+      "name": "original128 legacy rms",
+      "passed": true,
+      "maximum_absolute_error": 3.4267966068923794e-13
+    },
+    {
+      "name": "original128 legacy second_p95",
+      "passed": true,
+      "maximum_absolute_error": 3.767215706051985e-12
+    },
+    {
+      "name": "original128 legacy second_max",
+      "passed": true,
+      "maximum_absolute_error": 3.3158364942664775e-11
+    },
+    {
+      "name": "original128 legacy worst_index",
+      "passed": true
+    },
+    {
+      "name": "original128 legacy minimum_direct_second",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "original128 legacy fraction_above_five_percent",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "original128 legacy acceptance status",
+      "passed": true
+    },
+    {
+      "name": "fresh128 every planned row retained",
+      "passed": true
+    },
+    {
+      "name": "fresh128 direct Cartesian moments / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 4.4075854077618715e-14
+    },
+    {
+      "name": "fresh128 direct zero-plane kicks",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "fresh128 signed separate tensor spline / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 1.9747758983612584e-11
+    },
+    {
+      "name": "fresh128 signed rms",
+      "passed": true,
+      "maximum_absolute_error": 3.2779822693035365e-13
+    },
+    {
+      "name": "fresh128 signed second_p95",
+      "passed": true,
+      "maximum_absolute_error": 3.602673714908633e-13
+    },
+    {
+      "name": "fresh128 signed second_max",
+      "passed": true,
+      "maximum_absolute_error": 2.757793993168889e-13
+    },
+    {
+      "name": "fresh128 signed worst_index",
+      "passed": true
+    },
+    {
+      "name": "fresh128 signed minimum_direct_second",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "fresh128 signed fraction_above_five_percent",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "fresh128 signed acceptance status",
+      "passed": true
+    },
+    {
+      "name": "fresh128 legacy separate tensor spline / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 2.7180924178082932e-11
+    },
+    {
+      "name": "fresh128 legacy rms",
+      "passed": true,
+      "maximum_absolute_error": 4.683866142163318e-13
+    },
+    {
+      "name": "fresh128 legacy second_p95",
+      "passed": true,
+      "maximum_absolute_error": 1.5424800325902766e-11
+    },
+    {
+      "name": "fresh128 legacy second_max",
+      "passed": true,
+      "maximum_absolute_error": 9.126033262418787e-14
+    },
+    {
+      "name": "fresh128 legacy worst_index",
+      "passed": true
+    },
+    {
+      "name": "fresh128 legacy minimum_direct_second",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "fresh128 legacy fraction_above_five_percent",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "fresh128 legacy acceptance status",
+      "passed": true
+    },
+    {
+      "name": "new128 every planned row retained",
+      "passed": true
+    },
+    {
+      "name": "new128 direct Cartesian moments / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 3.5083047578154947e-14
+    },
+    {
+      "name": "new128 direct zero-plane kicks",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "new128 signed separate tensor spline / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 3.8475889141409425e-11
+    },
+    {
+      "name": "new128 signed rms",
+      "passed": true,
+      "maximum_absolute_error": 9.709778554106707e-14
+    },
+    {
+      "name": "new128 signed second_p95",
+      "passed": true,
+      "maximum_absolute_error": 1.691424778016426e-13
+    },
+    {
+      "name": "new128 signed second_max",
+      "passed": true,
+      "maximum_absolute_error": 2.2437607327674414e-13
+    },
+    {
+      "name": "new128 signed worst_index",
+      "passed": true
+    },
+    {
+      "name": "new128 signed minimum_direct_second",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "new128 signed fraction_above_five_percent",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "new128 signed acceptance status",
+      "passed": true
+    },
+    {
+      "name": "signed fresh percentile order-statistic interval",
+      "passed": true,
+      "maximum_absolute_error": 1.9876322809864178e-12
+    },
+    {
+      "name": "signed fresh interval order ranks",
+      "passed": true
+    },
+    {
+      "name": "new128 legacy separate tensor spline / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 2.8302915566769116e-11
+    },
+    {
+      "name": "new128 legacy rms",
+      "passed": true,
+      "maximum_absolute_error": 1.088725463949114e-13
+    },
+    {
+      "name": "new128 legacy second_p95",
+      "passed": true,
+      "maximum_absolute_error": 9.513549670270294e-12
+    },
+    {
+      "name": "new128 legacy second_max",
+      "passed": true,
+      "maximum_absolute_error": 4.851230528402084e-12
+    },
+    {
+      "name": "new128 legacy worst_index",
+      "passed": true
+    },
+    {
+      "name": "new128 legacy minimum_direct_second",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "new128 legacy fraction_above_five_percent",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "new128 legacy acceptance status",
+      "passed": true
+    },
+    {
+      "name": "legacy fresh percentile order-statistic interval",
+      "passed": true,
+      "maximum_absolute_error": 7.673861546209082e-13
+    },
+    {
+      "name": "legacy fresh interval order ranks",
+      "passed": true
+    },
+    {
+      "name": "weak98 every planned row retained",
+      "passed": true
+    },
+    {
+      "name": "weak98 direct Cartesian moments / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 4.737876757587856e-13
+    },
+    {
+      "name": "weak98 direct zero-plane kicks",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "weak98 signed separate tensor spline / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 1.0996525912077004e-10
+    },
+    {
+      "name": "weak98 signed rms",
+      "passed": true,
+      "maximum_absolute_error": 1.6459635304028053e-12
+    },
+    {
+      "name": "weak98 signed second_p95",
+      "passed": true,
+      "maximum_absolute_error": 7.432588398914586e-12
+    },
+    {
+      "name": "weak98 signed second_max",
+      "passed": true,
+      "maximum_absolute_error": 7.37232497272089e-12
+    },
+    {
+      "name": "weak98 signed worst_index",
+      "passed": true
+    },
+    {
+      "name": "weak98 signed minimum_direct_second",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "weak98 signed fraction_above_five_percent",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "weak98 signed acceptance status",
+      "passed": true
+    },
+    {
+      "name": "weak98 legacy separate tensor spline / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 2.4740542947654376e-11
+    },
+    {
+      "name": "weak98 legacy rms",
+      "passed": true,
+      "maximum_absolute_error": 1.70121694509362e-11
+    },
+    {
+      "name": "weak98 legacy second_p95",
+      "passed": true,
+      "maximum_absolute_error": 3.065458997753012e-11
+    },
+    {
+      "name": "weak98 legacy second_max",
+      "passed": true,
+      "maximum_absolute_error": 8.676437346366583e-11
+    },
+    {
+      "name": "weak98 legacy worst_index",
+      "passed": true
+    },
+    {
+      "name": "weak98 legacy minimum_direct_second",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "weak98 legacy fraction_above_five_percent",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "weak98 legacy acceptance status",
+      "passed": true
+    },
+    {
+      "name": "legacy unchanged archived predictions",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement planned count",
+      "passed": true
+    },
+    {
+      "name": "interpolation all independently rebuilt gates",
+      "passed": true
+    },
+    {
+      "name": "interpolation overall status retains every gate",
+      "passed": true
+    },
+    {
+      "name": "interpolation unique new encounter count",
+      "passed": true
+    },
+    {
+      "name": "broad Cartesian COM moments / positive scales",
+      "passed": true,
+      "maximum_absolute_error": 7.757017250753506e-12
+    },
+    {
+      "name": "broad incoming-frame kick",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad GC displacement",
+      "passed": true,
+      "maximum_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "name": "broad individual GC second moment",
+      "passed": true,
+      "maximum_absolute_error": 7.632783294297951e-17
+    },
+    {
+      "name": "broad no nonfinite accepted state",
+      "passed": true
+    },
+    {
+      "name": "primary512_phase64 expected population length",
+      "passed": true
+    },
+    {
+      "name": "primary512_phase64 ID range",
+      "passed": true
+    },
+    {
+      "name": "primary512_phase64 Sobol and phase nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase64 event distances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase64 active step limit",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase64 completeness status",
+      "passed": true
+    },
+    {
+      "name": "primary512_phase64 missing weights retained",
+      "passed": true
+    },
+    {
+      "name": "primary512_phase64 exact flux",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase64 integral",
+      "passed": true,
+      "maximum_absolute_error": 2.1141942363467336e-18
+    },
+    {
+      "name": "primary512_phase64 diffusion half factor",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "primary512_phase64 reflected fraction",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary256_phase64 expected population length",
+      "passed": true
+    },
+    {
+      "name": "primary256_phase64 ID range",
+      "passed": true
+    },
+    {
+      "name": "primary256_phase64 Sobol and phase nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary256_phase64 event distances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary256_phase64 active step limit",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary256_phase64 completeness status",
+      "passed": true
+    },
+    {
+      "name": "primary256_phase64 missing weights retained",
+      "passed": true
+    },
+    {
+      "name": "primary256_phase64 exact flux",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary256_phase64 integral",
+      "passed": true,
+      "maximum_absolute_error": 2.3818566476790926e-18
+    },
+    {
+      "name": "primary256_phase64 diffusion half factor",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "primary256_phase64 reflected fraction",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase32 expected population length",
+      "passed": true
+    },
+    {
+      "name": "primary512_phase32 ID range",
+      "passed": true
+    },
+    {
+      "name": "primary512_phase32 Sobol and phase nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase32 event distances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase32 active step limit",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase32 completeness status",
+      "passed": true
+    },
+    {
+      "name": "primary512_phase32 missing weights retained",
+      "passed": true
+    },
+    {
+      "name": "primary512_phase32 exact flux",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase32 integral",
+      "passed": true,
+      "maximum_absolute_error": 2.5139937874507634e-18
+    },
+    {
+      "name": "primary512_phase32 diffusion half factor",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "primary512_phase32 reflected fraction",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "replica512_phase64 expected population length",
+      "passed": true
+    },
+    {
+      "name": "replica512_phase64 ID range",
+      "passed": true
+    },
+    {
+      "name": "replica512_phase64 Sobol and phase nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "replica512_phase64 event distances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "replica512_phase64 active step limit",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "replica512_phase64 completeness status",
+      "passed": true
+    },
+    {
+      "name": "replica512_phase64 missing weights retained",
+      "passed": true
+    },
+    {
+      "name": "replica512_phase64 exact flux",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "replica512_phase64 integral",
+      "passed": true,
+      "maximum_absolute_error": 8.131516293641283e-19
+    },
+    {
+      "name": "replica512_phase64 diffusion half factor",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-21
+    },
+    {
+      "name": "replica512_phase64 reflected fraction",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase64_L32 expected population length",
+      "passed": true
+    },
+    {
+      "name": "primary512_phase64_L32 ID range",
+      "passed": true
+    },
+    {
+      "name": "primary512_phase64_L32 Sobol and phase nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase64_L32 event distances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase64_L32 active step limit",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase64_L32 completeness status",
+      "passed": true
+    },
+    {
+      "name": "primary512_phase64_L32 missing weights retained",
+      "passed": true
+    },
+    {
+      "name": "primary512_phase64_L32 exact flux",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase64_L32 integral",
+      "passed": true,
+      "maximum_absolute_error": 5.55653613398821e-19
+    },
+    {
+      "name": "primary512_phase64_L32 diffusion half factor",
+      "passed": true,
+      "maximum_absolute_error": 3.049318610115481e-20
+    },
+    {
+      "name": "primary512_phase64_L32 reflected fraction",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad thermal crossing flux retained fraction",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad sample scaled changes",
+      "passed": true,
+      "maximum_absolute_error": 1.1518563880486e-15
+    },
+    {
+      "name": "broad phase scaled changes",
+      "passed": true,
+      "maximum_absolute_error": 1.6939574742913521e-15
+    },
+    {
+      "name": "broad replica scaled changes",
+      "passed": true,
+      "maximum_absolute_error": 5.512951206654293e-15
+    },
+    {
+      "name": "broad boundary_ensemble scaled changes",
+      "passed": true,
+      "maximum_absolute_error": 6.608965041831022e-15
+    },
+    {
+      "name": "broad largest-contributor and fresh controls",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad control selection labels",
+      "passed": true
+    },
+    {
+      "name": "broad control nodes step 0.1",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad control step 0.1",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad control nodes step 0.05",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad control step 0.05",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad control nodes step 0.025",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad control step 0.025",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad active step changes",
+      "passed": true,
+      "maximum_absolute_error": 5.1068461668930694e-15
+    },
+    {
+      "name": "broad active actual-step ratios",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad independently rebuilt gates",
+      "passed": true
+    },
+    {
+      "name": "broad overall status retains every gate",
+      "passed": true
+    },
+    {
+      "name": "broad unique encounter count",
+      "passed": true
+    },
+    {
+      "name": "broad failure count",
+      "passed": true
+    },
+    {
+      "name": "broad independent Cartesian path 98351",
+      "passed": true
+    },
+    {
+      "name": "broad independent Cartesian path 98383",
+      "passed": true
+    },
+    {
+      "name": "broad independent Cartesian path 0",
+      "passed": true
+    },
+    {
+      "name": "scattering_interpolation historical producer source examples/38_scattering_interpolation.py",
+      "passed": true
+    },
+    {
+      "name": "scattering_interpolation historical producer source src/sato_morrison/controls.py",
+      "passed": true
+    },
+    {
+      "name": "scattering_interpolation historical producer source src/sato_morrison/reference.py",
+      "passed": true
+    },
+    {
+      "name": "scattering_interpolation immutable output declared_inputs.json",
+      "passed": true
+    },
+    {
+      "name": "scattering_interpolation immutable output interpolation.png",
+      "passed": true
+    },
+    {
+      "name": "scattering_interpolation immutable output attempts.json",
+      "passed": true
+    },
+    {
+      "name": "scattering_interpolation immutable output tests.npz",
+      "passed": true
+    },
+    {
+      "name": "scattering_interpolation immutable output attempts_partial.json",
+      "passed": true
+    },
+    {
+      "name": "scattering_interpolation immutable output table.npz",
+      "passed": true
+    },
+    {
+      "name": "broad_speed_refinement historical producer source examples/39_broad_speed_refinement.py",
+      "passed": true
+    },
+    {
+      "name": "broad_speed_refinement historical producer source src/sato_morrison/controls.py",
+      "passed": true
+    },
+    {
+      "name": "broad_speed_refinement historical producer source src/sato_morrison/reference.py",
+      "passed": true
+    }
+  ],
+  "interpolation": {
+    "producer_status": "passed",
+    "reconstructed_gates": {
+      "complete_new_states": true,
+      "signed_original_targets": true,
+      "fresh_p95_confidence": true,
+      "sampled_max": true,
+      "solver_refinement": true,
+      "energy": true,
+      "table_algebra": true,
+      "legacy_reproduction": true,
+      "source_integrity": true,
+      "dependency_integrity": true
+    },
+    "table_states": 10976,
+    "new_states": 240,
+    "independent_interpolation_route": "Sequential SciPy make_interp_spline, not-a-knot coordinates and periodic phase",
+    "sampled_maximum_signed_errors": {
+      "original128": 0.002391999877108919,
+      "fresh128": 0.003665756287622557,
+      "new128": 0.0030286626205749956,
+      "weak98": 0.006169929517727768
+    }
+  },
+  "broad_speed": {
+    "producer_status": "unresolved",
+    "reconstructed_gates": {
+      "sample": false,
+      "phase": true,
+      "replica": true,
+      "boundary_ensemble": true,
+      "active_step": true,
+      "active_step_sizes": true,
+      "complete": true,
+      "energy": true,
+      "source_integrity": true
+    },
+    "accepted_states": 98400,
+    "missing_or_failed_states": 0,
+    "exact_bounded_flux": 9.622764018272528,
+    "selected_cartesian_replays": [
+      {
+        "index": 98351,
+        "passed": true,
+        "position_max_absolute_error": 4.289990584993575e-11,
+        "velocity_max_absolute_error": 8.574985166376337e-11,
+        "exit_time_absolute_error": 2.1827872842550278e-11,
+        "exit": "transmitted",
+        "evaluations": 29597
+      },
+      {
+        "index": 98383,
+        "passed": true,
+        "position_max_absolute_error": 4.229239181086086e-11,
+        "velocity_max_absolute_error": 8.469869250404827e-11,
+        "exit_time_absolute_error": 2.155076117560384e-11,
+        "exit": "transmitted",
+        "evaluations": 29597
+      },
+      {
+        "index": 0,
+        "passed": true,
+        "position_max_absolute_error": 4.831690603168681e-12,
+        "velocity_max_absolute_error": 9.452216787053658e-12,
+        "exit_time_absolute_error": 4.618527782440651e-14,
+        "exit": "transmitted",
+        "evaluations": 10781
+      }
+    ],
+    "comparisons": {
+      "sample": [
+        0.06955382776846193,
+        0.06240034946929224,
+        0.04130885143558538,
+        0.008753995275882288
+      ],
+      "phase": [
+        0.00475823789226377,
+        0.01111750695934416,
+        0.0038662775500844723,
+        0.0003813519368044381
+      ],
+      "replica": [
+        0.023844082581393616,
+        0.0472048445812407,
+        0.00030676239774866904,
+        0.00039266888433521475
+      ],
+      "boundary_ensemble": [
+        1.3277208212028422e-06,
+        1.9330637987125063e-06,
+        2.9982217714231576e-06,
+        8.778469713100873e-06
+      ],
+      "active_step": [
+        7.885062119383108e-10,
+        5.269099436937693e-11,
+        5.266272153824027e-11,
+        8.510133566541715e-12
+      ]
+    }
+  },
+  "producer_source_identities": {
+    "scattering_interpolation": {
+      "examples/38_scattering_interpolation.py": {
+        "sha256": "285067ca52d19d65ebde5d13df4252e148d126eed821799b14e31c30be3c32ef",
+        "matching_git_revision": "1c32a8a0ecd6774389f163df193a37ffd9a0e2ef",
+        "matches_declared_producer_commit": true
+      },
+      "src/sato_morrison/controls.py": {
+        "sha256": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+        "matching_git_revision": "1c32a8a0ecd6774389f163df193a37ffd9a0e2ef",
+        "matches_declared_producer_commit": true
+      },
+      "src/sato_morrison/reference.py": {
+        "sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+        "matching_git_revision": "1c32a8a0ecd6774389f163df193a37ffd9a0e2ef",
+        "matches_declared_producer_commit": true
+      }
+    },
+    "broad_speed_refinement": {
+      "examples/39_broad_speed_refinement.py": {
+        "sha256": "8a860c06ab35247b876fbbfd0baad4d2bbea6b11311485695ae753b7427afade",
+        "matching_git_revision": "38ffdbc5f6609e6803220b48a83aad91672db19d",
+        "matches_declared_producer_commit": true
+      },
+      "src/sato_morrison/controls.py": {
+        "sha256": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+        "matching_git_revision": "38ffdbc5f6609e6803220b48a83aad91672db19d",
+        "matches_declared_producer_commit": true
+      },
+      "src/sato_morrison/reference.py": {
+        "sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+        "matching_git_revision": "38ffdbc5f6609e6803220b48a83aad91672db19d",
+        "matches_declared_producer_commit": true
+      }
+    }
+  },
+  "input_sha256": {
+    "results/scattering_interpolation/summary.json": "3deb978835372f06eade685963320769bbedfa0fb3e2b675a625d5443c3f75ee",
+    "results/scattering_interpolation/declared_inputs.json": "a147dfc87fb60559c1705e7a1f50c3a953dc1d513cc0af4a24c3b7a3b6aaeec5",
+    "results/scattering_interpolation/attempts.json": "69e96863f479f58ad2799736e6f2adc10cef87f1eee91920f69103d8ab138e4b",
+    "results/scattering_interpolation/tests.npz": "68d5adfe137c13115c084209d8293c16d70f60c3cecacd61eccdc4a1750ddb29",
+    "results/scattering_interpolation/table.npz": "175525d546a986e6c33c769b6e6f2808f52867d35e37a23f19a5e70005f38775",
+    "results/broad_speed_refinement/summary.json": "bb447ed1bd15208ad0497358faa2e80c20a57be289f398791d92963ba6a3d811",
+    "results/broad_speed_refinement/populations.npz": "dbfa1ab753de7c55e8f3028ccede82b3a4e1b63bcf6e53dd5a37c54e32d57722",
+    "results/broad_speed_refinement/states.npz": "399f4b513e0bd370441b0b76011fcc19f5f8956162ba4c587ab2bf8690cda328",
+    "results/broad_speed_refinement/declared_inputs.json": "17f68f5bdd7f4e09e883d2d7034f95af45d3ff6ff23ef7b150e7d13e8527e90c"
+  },
+  "audit_commit": "8f9e04068ebc3b8e5ed7b52281ead47494418f4f",
+  "audit_working_tree": "M README.md",
+  "audit_source_sha256": "e2ccad99b85172852536ced6bc5b20e610ce2bc3646d6c64b0bf05454df45903",
+  "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "wall_s": 2.4030394579749554,
+  "parent_peak_rss_bytes": 221396992,
+  "scope": "Saved Cartesian-state and sampling reconstruction; selected independent twelve-coordinate paths. No infinite-domain or plasma calibration inference."
+}
