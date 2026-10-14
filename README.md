@@ -256,7 +256,9 @@ Every refined pair increases **μ₁² + μ₂²**, with the signal exceeding it
 
 Define the moment-change measure **rμ = 2Dμμ/μ₀²** and the spatial measure **rR = ⟨|ΔR₁|²⟩ν/λ²**. Here ν weights incident pairs by their crossing flux, and R₁ is one particle's guiding center. Both quantities describe accumulated squared kicks in the stated band. Computing a kinetic mixing time additionally requires correlations and evolution of the population.
 
-![Field dependence of normalized kick measures, ratios to screened large-field references and analytic screening controls.](results/physical_final_figures/original_campaign/magnetic_scaling.svg)
+![Field dependence of normalized kick measures, ratios to screened large-field references and analytic screening controls. The right panel compares separate screening choices at equally spaced categorical positions.](results/physical_final_figures/original_campaign/magnetic_scaling.svg)
+
+The right panel compares separate analytical screening choices; its horizontal positions are equally spaced categories.
 
 Between **B = 16** and **32**, rμ and rR scale as **B<sup>−2.0004</sup>** and **B<sup>−1.99995</sup>**. Their ratio approaches **0.0283** on this band. The screened weak-force derivation predicts the same powers. The leading moment-exchange term cancels for unscreened Coulomb interactions, so this screened result cannot be transferred unchanged to that limit. The exchange mechanism is established in [Nersisyan & Zwicknagel (2009)](https://doi.org/10.1103/PhysRevE.79.066405).
 
@@ -276,13 +278,33 @@ The focused followup resolves both failed checks with finer sampling. It retains
 | B = 32 moment amplitude | κ = 0.003 → 0.0015 | Analytical discrepancy **0.702% → 0.348%** |
 | B = 32 spatial amplitude | Same weaker forces | Analytical discrepancy **0.374% → 0.187%** |
 
-![Focused quadrature and heldout-table refinements, with the independent weak-force amplitude comparison.](results/physical_final_figures/refinement/focused_refinement.svg)
+![Focused quadrature and heldout-table refinements, with the independent weak-force amplitude comparison. The middle panel uses a symmetric logarithmic error axis, linear close to zero.](results/physical_final_figures/refinement/focused_refinement.svg)
+
+The middle error axis is linear near zero and logarithmic above that range, so all sampled errors remain visible.
 
 Isolated relative table errors still reach **96.2%** and **67.2%** in the two samples. Those states have second moments about **0.03%** and **0.02%** of the largest sampled values. The full error distributions are visible above; the passing RMS and percentile criteria certify the declared statistics, while accuracy at every individual query remains open.
 
 The original κ = 0.03 calculation differs from the weak-force moment prediction by **7.51%** at B = 32. Reducing κ by factors of ten and twenty reduces this discrepancy roughly in proportion. Doubling B from 16 to 32 had left it nearly constant. The force dependence is consistent with a finite-strength correction to the screened prediction. The followup costs **439.49 s** for **18,736** encounters. [Inputs, gates, costs and all saved states](results/physical_refinement/summary.json)
 
-The physical conclusion is limited but concrete: the specified screened encounters allow individual-moment exchange, while the prototype enforces exact conservation of the full μ marginal. A calibrated plasma closure still needs complete incident-domain convergence, screening tied to plasma parameters, successive-encounter correlations and a measured mixing time. A constrained dipole lifetime remains open.
+### Resolving small velocity kicks
+
+A collision can leave a very small net perpendicular velocity change when different parts of the orbit nearly cancel. The logarithm of its squared magnitude then has a sharp minimum. Interpolating the two signed velocity components preserves that cancellation more accurately. We first remove free gyromotion, interpolate the kick in a common phase frame, and reconstruct the center-averaged moments from the equations above. A zero kick is allowed without a positive floor.
+
+![Fresh-state interpolation errors and two resolved weak-kick minima. Both methods use the same archived training trajectories; direct solves check the curves.](results/scattering_interpolation/interpolation.png)
+
+The same **7³ × 32** training states now give maximum second-moment errors of **0.239%** and **0.367%** on the two archived heldout samples. On **128 new states**, RMS error is **0.0910%**, the 95th percentile **0.182%**, and the maximum **0.303%**. The 95% order-statistic upper limit for that percentile is **0.283%**. These queries are uniform in impact, both speeds and phase within the training-node bounds; the error statistics use that query distribution.
+
+The lower panels resolve two small-kick neighborhoods with **98 direct solves**: the largest signed-kick error is **0.617%**, including moments as small as **1.34 × 10⁻¹⁰**. Fourteen tighter trajectory solves change the second moments by at most **1.37 × 10⁻⁷** relatively. These checks cover finite samples and selected neighborhoods; a uniform error bound remains open. [Example 38: inputs, arrays, retained old-method failures and costs](results/scattering_interpolation/summary.json)
+
+### Widening the incoming speed range
+
+The narrow table covers only **11.6%** of the thermal crossing flux in its impact annulus. Keeping **b ∈ [1.2, 2.4]** and widening relative speeds to **u ∈ [0.35, 3]**, **p ∈ [0, 2.5]** raises that coverage to **88.9%**. Faster perpendicular motion can bring the orbit closer to its partner, making a small set of incoming states contribute strongly to moment exchange. Flux coverage alone does not measure how much moment transport is retained.
+
+![Broad-speed contributions and concentration, with each numerical change divided by its own declared tolerance. The 512-state sampling criterion fails.](results/broad_speed_refinement/coverage.png)
+
+The first refinement uses two independent **512-state** samples with **64 phases**, repeats the full primary ensemble at a farther boundary, and checks the strongest contributions with smaller integration steps. All **98,400** encounters exit successfully. Phase, replica, boundary, timestep and energy checks pass, but **256 → 512** states changes the scaled mean and second moment by **6.96%** and **6.24%**, above the **5%** target. The run remains unresolved; the independent audit reproduces that failure. [Example 39: complete states, checks and costs](results/broad_speed_refinement/summary.json)
+
+The specified screened encounters allow individual-moment exchange, while the prototype enforces exact conservation of the full μ marginal. A calibrated plasma closure still needs complete incident-domain convergence, screening tied to plasma parameters, successive-encounter correlations and a measured mixing time. A constrained dipole lifetime remains open.
 
 Recorded costs on the shared Apple M4 are below. Parent and worker memory figures are separate process-lifetime peaks; aggregate job memory was not measured.
 
@@ -292,6 +314,9 @@ Recorded costs on the shared Apple M4 are below. Parent and worker memory figure
 | Original 21,524 encounters | 872.94 s | 1.086 GB | 0.114 GB |
 | Focused 18,736 encounters | 439.49 s | 1.025 GB | 0.0304 GB |
 | Independent audit of all three studies | 4.40 s | 0.269 GB | — |
+| Signed-kick interpolation; 240 new encounters | 7.15 s | 0.310 GB | — |
+| Broad-speed 512-state study; 98,400 encounters | 733.57 s | 0.637 GB | 0.106 GB |
+| Independent interpolation/broad-speed audit | 2.40 s | 0.221 GB | — |
 
 ## Runtime, memory and failure diagnostics
 
@@ -338,11 +363,17 @@ SM_ENCOUNTER_AUDIT_OUTPUT=results/encounter_audit_reproduction python examples/3
 # Render equations and original/refined evidence in fresh directories:
 PHYSICAL_FIGURE_OUTPUT=results/physical_figures_reproduction python examples/36_physical_figures.py
 PHYSICAL_FIGURE_MODE=refinement PHYSICAL_FIGURE_OUTPUT=results/physical_refinement_figures_reproduction python examples/36_physical_figures.py
+# Reuse the archived table and test signed kicks on fresh scattering states:
+SM_INTERPOLATION_OUTPUT=results/interpolation_reproduction python examples/38_scattering_interpolation.py
+# The 512-state broad-speed study saves its failed sampling check, then exits nonzero:
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 SM_BROAD_SPEED_OUTPUT=results/broad_speed_reproduction python examples/39_broad_speed_refinement.py
+# Independently reconstruct the archived interpolation and broad-speed studies:
+SM_REFINEMENT_AUDIT_OUTPUT=results/refinement_audit_reproduction python examples/40_refinement_audit.py
 ```
 
 Example 24 exits nonzero because the declared angular and Cartesian checks remain unresolved. It saves the results before raising the error.
 
-**268 tests pass on fresh Linux CI.** The encounter tests include free helices, exact finite-radius repulsive Coulomb orbits and a sensitive screened trajectory checked at high precision. Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
+**271 tests pass on fresh Linux CI.** The encounter tests include free helices, exact finite-radius repulsive Coulomb orbits, a sensitive screened trajectory checked at high precision, and signed-kick interpolation through zero with independent Gaussian center averaging. Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
 
 | Capability | Current evidence |
 |---|---|

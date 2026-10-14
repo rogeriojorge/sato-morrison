@@ -44,6 +44,9 @@ Prefix each command below with `MPLBACKEND=Agg python`.
 | `examples/35_encounter_audit.py` | Independent reconstruction of encounter moments, measures, gates, paths and high-precision provenance |
 | `examples/36_physical_figures.py` | Equations and saved-data figures for individual moment exchange, field scaling and accuracy checks |
 | `examples/37_physical_refinement.py` | Focused B = 4 quadrature, finer table with two heldout samples, and weak-force B = 32 amplitude checks |
+| `examples/38_scattering_interpolation.py` | Signed velocity-kick interpolation on the archived table, with fresh and weak-kick trajectory checks |
+| `examples/39_broad_speed_refinement.py` | Broad-speed annulus: independent incoming samples, phase refinement, matched boundaries and active timesteps |
+| `examples/40_refinement_audit.py` | Independent Cartesian-state, flux, interpolation and sampling reconstruction for examples 38 and 39 |
 
 Example 12 uses dense spatial blocks per velocity node and writes `results/nonuniform_spatial_blocks/`. A single predefined case can be run with:
 
@@ -80,3 +83,9 @@ Example 34 keeps κ = 0.03 and λ = 3 while scanning B = 2, 4, 8, 16, 32. It tes
 Example 37 reads the unchanged archived campaign, independently declares its focused refinements, and saves them in `results/physical_refinement`. `SM_PHYSICAL_REFINEMENT_OUTPUT=results/physical_refinement_reproduction` selects a fresh output. The new B = 32 weak-force check compares against a 2% analytical-amplitude target; it is separate from the original campaign's acceptance criteria.
 
 Example 35 audits historical scientific source hashes against their matching Git blobs, so later output-path changes do not relabel the producing revision. `SM_ENCOUNTER_AUDIT_OUTPUT=results/encounter_audit_reproduction` selects a fresh audit directory. Example 36 protects its output with `PHYSICAL_FIGURE_OUTPUT`; its figures use the original campaign's immutable input hashes and visibly retain that campaign's failed checks.
+
+Example 38 reuses the archived 7³ × 32 table without new training solves. It removes free gyromotion before interpolating the two signed perpendicular velocity changes, then reconstructs the center-averaged moments. Its 240 new solves include 128 independent heldout states, 98 states in two weak-kick neighborhoods, and 14 tighter solver checks. `SM_INTERPOLATION_OUTPUT` selects a fresh directory. The original logarithmic-variance errors remain in the comparison.
+
+Example 39 keeps the physical model and impact annulus fixed while widening the relative speeds to u ∈ [0.35, 3] and p ∈ [0, 2.5]. Its default `base` mode uses two 512-state samples and 64 phases, repeats the entire primary ensemble at L = 32, and exits nonzero for its failed sample-count check. `SM_BROAD_SPEED_MODE=extend` declares nested 512/1024/2048 samples for both seeds, reuses the unchanged archived states, and checks the strongest phase-averaged contributors at 128/256 phases. The extension retains the full original 512-state boundary comparison and adds boundary checks at selected new states; it does not repeat all 2048 states at the farther plane. Set `OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1`; `SM_BROAD_SPEED_OUTPUT` selects a fresh directory.
+
+Example 40 rebuilds the moments from Cartesian endpoint states, the flux from analytic integrals, and the spline predictions through separate sequential tensor splines. It retains each producer's passed or unresolved status. `SM_BROAD_AUDIT_INPUT` chooses the base or extended broad-speed result; `SM_REFINEMENT_AUDIT_OUTPUT` must be a fresh directory. Selected independent twelve-coordinate particle integrations check distinct incoming states.

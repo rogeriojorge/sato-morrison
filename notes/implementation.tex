@@ -18,7 +18,7 @@
 \newcommand{\norm}[1]{\left\lVert #1\right\rVert}
 \title{Magnetic-moment-constrained collisions\\\large Equations, numerical design and verification notes}
 \author{Project: \texttt{sato-morrison}}
-\date{12 October 2026}
+\date{14 October 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -3567,6 +3567,68 @@ The omitted impact and speed tails, reverse-complete incident statistics
 and successive-encounter correlations remain unchecked. No physical constrained
 coefficient, plasma relaxation time or dipole lifetime follows.
 
+\paragraph{Matched broad-speed ensemble and sampling failure.}
+Example 39 retains the single annulus $b\in[1.2,2.4]$ and broad speeds
+$u\in[0.35,3]$, $p\in[0,2.5]$ at $m=q=1$, $B=2$, $\theta=0.5$,
+$\kappa=0.03$, and $L_s=3$. Its tagged crossing flux per partner density is
+$9.6227640183$, or $88.8641\%$ of the full-velocity flux in this annulus.
+The latter fraction supplies no bound on omitted moment transport.
+Two independent scrambled Sobol sequences (seeds 3901 and 3902) each use
+512 incoming impact/speed states and 64 equally spaced phases. The primary
+sequence also supplies nested 256-state and 32-phase comparisons. Every
+primary 512-state, 64-phase encounter is repeated at $L=32$ after its
+$L=24$ solve, keeping its incoming free helix fixed. The flight budget is
+$48L/u$, the relative solver tolerance is $10^{-12}$, and the ordinary
+maximum step is $0.2$.
+
+Write the four integrated observables as
+\[
+ (I_1,I_2,I_{12},I_R)
+ =\int\left(c,c^2+\sigma_c^2,c^2-\sigma_c^2,
+             |\Delta\bm R_{\rm rel}|^2/4\right)\,\dd\nu/n.
+\]
+For a fine reference $I$, differences use the positive scales
+$(I_2/\mu_{\rm ref},I_2,I_2,I_R)$, with
+$\mu_{\rm ref}=m\theta/B=0.25$. Thus the mean and cross comparisons are
+not divided by a signed or nearly vanishing mean. The declared targets are
+$5\%$ for sample, phase and replica comparisons, $0.5\%$ for the matched
+boundary ensemble, and $0.1\%$ for selected active-step comparisons.
+The last check retains the 16 largest primary individual second-moment
+contributors and 16 separately prescribed incoming states, each at maximum
+steps $0.1,0.05,0.025$. Actual finest-to-middle maximum-step ratios are
+$0.5$; the bounds are active.
+
+All 98\,400 distinct encounters reach outgoing planes without failures or
+budget exhaustion. The primary $L=24$ values are
+\[
+ (I_1,I_2,I_{12},I_R)=
+ (-4.14452811\times10^{-5},\;5.89556729\times10^{-5},\;
+ -9.37875923\times10^{-6},\;2.56740080\times10^{-3}).
+\]
+The nested sample comparison changes the scaled mean by $6.9554\%$ and
+second moment by $6.2400\%$, failing the fixed $5\%$ criterion. Phase
+and independent-replica second-moment changes are $1.1118\%$ and $4.7205\%$.
+Across all four observables, the largest boundary change is
+$8.779\times10^{-6}$ and the largest selected timestep change is
+$7.886\times10^{-10}$. Energy errors remain below $1.01\times10^{-11}$.
+These smaller errors isolate the observed sampling limitation; they do not
+convert the finite sampled integral into a converged plasma coefficient.
+The $512$-state run remains explicitly unresolved and exits nonzero.
+
+The production revision is \texttt{38ffdbc}; the calculation takes
+$733.57$ seconds on the recorded shared Apple M4. Parent and largest worker
+process-lifetime peaks are $637.06$ MB and $105.69$ MB separately, not an
+aggregate job peak. Compact Cartesian endpoints, integration diagnostics,
+all population indices and the empty failure ledger are preserved under
+\path{results/broad_speed_refinement/}.
+The independent example-40 audit reproduces these moments, flux, sampling
+hierarchy and every acceptance gate from the saved states. Its initial
+236-check receipt also reconstructs the signed-kick study through separate
+tensor splines; three Cartesian replays cover two distinct incoming states,
+with maximum position and velocity discrepancies $4.29\times10^{-11}$ and
+$8.57\times10^{-11}$. This audit takes $2.40$ seconds with a $221.40$ MB
+process-lifetime peak. It confirms the original failed sampling criterion.
+
 \subsection*{Resolving the failed encounter's flight budget}
 Example 17 preserves the original broad-campaign metadata and replays its
 exact failed node. The declared flight factors $6,12,24,48$ vary only the
@@ -3760,6 +3822,129 @@ cost including concurrent machine load, not a matched-cost speedup over the
 older table. The successful bounded conditional interpolation test does not
 validate a physical kinetic closure, a calibrated collision coefficient,
 inter-encounter independence or accuracy outside the declared hull.
+
+\subsection*{Signed scattering increments near weak-kick cancellations}
+\label{sec:signed-scattering-interpolation}
+
+The conditional scattering table at $B=2$ uses the same archived
+$7^3\times32=10\,976$ trajectories as the focused bounded refinement.
+Its coordinates are guiding-center impact $b$, positive parallel speed $u$,
+relative perpendicular speed $p$, and the free incoming helix's phase $\phi$
+at $z=0$.  No training trajectories, correction factors, or error floors are
+added in the representation comparison.
+
+Let $R(\alpha)$ be the usual two-dimensional Cartesian rotation.  With
+$\Omega=qB/m$, free perpendicular Lorentz motion is $R(-\Omega t)$.
+The incoming velocity at the preparation plane $z=-L$ has angle
+$\phi+\Omega L/u$.  If an encounter exits at time $t_e$, define
+\begin{align}
+ \delta\boldsymbol w_{\rm in}
+   &=R(\Omega t_e)\boldsymbol w_{\perp,{\rm out}}
+          -\boldsymbol w_{\perp,{\rm in}},\\
+ \delta\boldsymbol w_0
+   &=R(-\Omega L/u)\delta\boldsymbol w_{\rm in},
+ \qquad \boldsymbol w_0=p(\cos\phi,\sin\phi).
+ \label{eq:zero-plane-kick}
+\end{align}
+Undoing the free rotation compares both endpoints in a common frame.  The
+second rotation removes the rapidly varying preparation-plane phase from the
+parallel-speed coordinate.  It changes neither the kick norm nor scalar
+products when the incoming velocity is transformed with it.
+
+The interpolated quantities are the two signed Cartesian components of
+$\delta\boldsymbol w_0$.  Interpolation in $b,u,p$ is cubic and gyrophase
+interpolation is a periodic cubic spline whose value and first two derivatives
+match at $0$ and $2\pi$.  The mean increment follows from the same vector:
+\begin{equation}
+ c=\frac{m}{8B}
+   \left(2\boldsymbol w_0\cdot\delta\boldsymbol w_0
+                   +|\delta\boldsymbol w_0|^2\right).
+ \label{eq:signed-kick-mean}
+\end{equation}
+This is the identity obtained by subtracting the initial and final squared
+relative perpendicular velocities, rather than an independently interpolated
+scalar mean.
+
+For equal thermal particles the independent center velocity obeys
+$\boldsymbol V_\perp\sim N(0,\theta I_2/2)$, where
+$\theta=k_BT/m$.  Since
+$\boldsymbol v_{1,2}=\boldsymbol V\pm\boldsymbol w/2$ and
+$\mu_i=m|\boldsymbol v_{i,\perp}|^2/(2B)$, the individual increments in
+this common frame are
+\begin{equation}
+ \Delta\mu_{1,2}
+   =c\pm\frac{m}{2B}\boldsymbol V_\perp\cdot\delta\boldsymbol w_0.
+\end{equation}
+Thus the exact conditional center average gives
+\begin{align}
+ \sigma_{\rm COM}^2
+   &=\frac{m^2\theta}{8B^2}|\delta\boldsymbol w_0|^2,\\
+ \langle\Delta\mu_1\rangle&=c,\\
+ \langle(\Delta\mu_1)^2\rangle&=c^2+\sigma_{\rm COM}^2,\\
+ \langle\Delta\mu_1\Delta\mu_2\rangle&=c^2-\sigma_{\rm COM}^2.
+ \label{eq:signed-kick-com}
+\end{align}
+Nonnegativity of the second moment and the pair-moment identity hold by
+construction, including a resolved zero kick.  The existing logarithmic-variance representation also preserves
+these scalar constraints; the comparison tests its accuracy near a minimum.
+Near a signed cancellation, $|\delta\boldsymbol w_0|^2$ can be much smaller
+than nearby values while the vector components remain smooth.  Consequently
+$\log\sigma_{\rm COM}^2$ has strong curvature and is singular at an exact
+zero.  Signed interpolation avoids that logarithm; it does not furnish a
+uniform error theorem.
+
+The physical and integration parameters are unchanged:
+$m=q=1$, $\theta=0.5$, $\kappa=0.03$, screening length $\lambda=3$,
+$L=24$, relative tolerance $10^{-12}$, and maximum step $0.2$, in normalized
+units.  The table spans
+$b\in[1.2,2.4]$, $u\in[0.7,1.5]$, and $p\in[0.2,0.8]$ through its
+Gauss nodes; queries remain within the bounds of the training nodes in
+$b,u,p$. The fresh sample is uniform in each of these three coordinates
+between the extreme Gauss nodes and uniform in phase. Its error percentiles
+refer to this query measure, rather than thermal incoming-flux weighting. Relative
+second-moment errors divide by each state's actual positive direct second
+moment, without a floor.  The normalized RMS divides by the direct RMS over
+the stated sample.
+
+\begin{center}
+\begin{tabular}{lrrr}
+\hline
+Sample & Signed RMS (\%) & Legacy max (\%) & Signed max (\%)\\
+\hline
+Archived original 128 & 0.07520 & 96.213 & 0.2392\\
+Archived fresh 128    & 0.05944 & 67.216 & 0.3666\\
+New seed-3811 128     & 0.09096 & 27.521 & 0.3029\\
+Phase neighborhoods, 98 & 0.10292 & 2112.600 & 0.6170\\
+\hline
+\end{tabular}
+\end{center}
+The new independent sample has signed p95 error $0.18187\%$ and a two-sided
+95\% order-statistic interval $[0.10155\%,0.28307\%]$ for the sampled-domain
+error distribution.  The legacy p95 is $5.38366\%$, failing the unchanged
+$5\%$ target; its neighborhood errors also fail.  Both failures are retained.
+The new representation passes the original $2\%$ RMS and $5\%$ p95 targets,
+the additional $1\%$ maximum-error check on all four finite samples, and the
+fresh-sample p95 interval check.  The neighborhoods hold the impact and speeds
+of two archived weak-kick outliers fixed and scan 49 phases over
+$\phi_{\rm anchor}\pm0.3$ each.  Their minimum direct second moment is
+$1.33783\times10^{-10}$.
+
+Fourteen selected difficult or weak-increment states were repeated with
+relative tolerance $2\times10^{-13}$ and maximum step $0.1$.  The largest
+second-moment change is $1.37085\times10^{-7}$ relative, below the declared
+$10^{-3}$ solver-refinement target.  The reconstructed training second moments
+agree with their archived values to $5.44\times10^{-13}$ relative, and the
+refactored legacy interpolation reproduces both archived prediction arrays
+bit for bit.  The complete experiment uses 240 new encounter solves and takes
+$7.15$ seconds, including loading, interpolation construction, and plotting,
+with a $310.15$ MB process-lifetime peak on the recorded Apple M4.
+
+These checks establish an improvement of conditional interpolation for the
+specified table and samples.  They do not bound the interpolation error at
+all incident states, replace domain and phase refinement, or establish an
+independent-encounter kinetic closure or physical collision coefficient.
+The original trajectories, large errors, and prior scientific limitations
+remain part of the evidence record.
 
 \subsection*{Reproducible evolution visualization}
 The README animation is a solution of the uniform linear surrogate at finite
