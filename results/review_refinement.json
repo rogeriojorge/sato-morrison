@@ -1,0 +1,900 @@
+{
+  "date": "2026-10-14",
+  "repository": "https://github.com/rogeriojorge/sato-morrison",
+  "reviewed_source_commit": "59b76bc553a4c92f57fbab3914db02573fcce57b",
+  "status": {
+    "implementation": "Staged constrained prototype, controls, physical-3V Landau reference, and direct screened encounters implemented.",
+    "numerical": "See individual fixed-gate outcomes below; failed original studies remain unchanged.",
+    "physical": "Finite screened two-particle model checked. A plasma collision closure, physical coefficient, and confinement lifetime remain unvalidated."
+  },
+  "studies": {
+    "scattering_interpolation": {
+      "path": "results/scattering_interpolation/summary.json",
+      "sha256": "3deb978835372f06eade685963320769bbedfa0fb3e2b675a625d5443c3f75ee",
+      "producer_commit": "1c32a8a0ecd6774389f163df193a37ffd9a0e2ef",
+      "status": "passed",
+      "required_gates": {
+        "complete_new_states": true,
+        "signed_original_targets": true,
+        "fresh_p95_confidence": true,
+        "sampled_max": true,
+        "solver_refinement": true,
+        "energy": true,
+        "table_algebra": true,
+        "legacy_reproduction": true,
+        "source_integrity": true,
+        "dependency_integrity": true
+      },
+      "comparisons": {
+        "original128": {
+          "legacy": {
+            "rms": [
+              0.00048023439150493054,
+              0.0008581780456516947,
+              0.0010946323438643683
+            ],
+            "second_p95": 0.018827904333747945,
+            "second_max": 0.9621319173139562,
+            "worst_index": 66,
+            "minimum_direct_second": 1.819722582410224e-09,
+            "fraction_above_five_percent": 0.03125,
+            "status": "passed"
+          },
+          "signed": {
+            "rms": [
+              0.00047575329479677394,
+              0.0007520002913799188,
+              0.0007057053082342748
+            ],
+            "second_p95": 0.0013552131920200382,
+            "second_max": 0.002391999877197293,
+            "worst_index": 3,
+            "minimum_direct_second": 1.819722582410224e-09,
+            "fraction_above_five_percent": 0.0,
+            "status": "passed"
+          },
+          "states": 128
+        },
+        "fresh128": {
+          "legacy": {
+            "rms": [
+              0.0004017288177846248,
+              0.001137386036214211,
+              0.001446611754405495
+            ],
+            "second_p95": 0.024498546586898023,
+            "second_max": 0.6721554264550581,
+            "worst_index": 118,
+            "minimum_direct_second": 1.7984238292143885e-09,
+            "fraction_above_five_percent": 0.0390625,
+            "status": "passed"
+          },
+          "signed": {
+            "rms": [
+              0.0004020174878942424,
+              0.0005943702291467396,
+              0.0005556254588790095
+            ],
+            "second_p95": 0.0016890701804305075,
+            "second_max": 0.0036657562873467775,
+            "worst_index": 104,
+            "minimum_direct_second": 1.7984238292143885e-09,
+            "fraction_above_five_percent": 0.0,
+            "status": "passed"
+          },
+          "states": 128
+        },
+        "new128": {
+          "legacy": {
+            "rms": [
+              0.0006099870137697615,
+              0.0016634107708872704,
+              0.0018981504469054585
+            ],
+            "second_p95": 0.053836564189716524,
+            "second_max": 0.2752099036402229,
+            "worst_index": 106,
+            "minimum_direct_second": 3.9523252362952e-09,
+            "fraction_above_five_percent": 0.0546875,
+            "status": "unresolved",
+            "p95_order_statistic_95_interval": [
+              0.011223903874842733,
+              0.22755110231579745
+            ],
+            "p95_interval_order_ranks": [
+              116,
+              127
+            ]
+          },
+          "signed": {
+            "rms": [
+              0.0006033795329894255,
+              0.0009096105991458749,
+              0.0007914388467598424
+            ],
+            "second_p95": 0.0018186711929157162,
+            "second_max": 0.0030286626203506195,
+            "worst_index": 122,
+            "minimum_direct_second": 3.9523252362952e-09,
+            "fraction_above_five_percent": 0.0,
+            "status": "passed",
+            "p95_order_statistic_95_interval": [
+              0.0010155316033434447,
+              0.0028307052754095174
+            ],
+            "p95_interval_order_ranks": [
+              116,
+              127
+            ]
+          },
+          "states": 128
+        },
+        "weak98": {
+          "legacy": {
+            "rms": [
+              0.0004937678394882,
+              0.3746557157813036,
+              0.6600328622121897
+            ],
+            "second_p95": 14.560753582696739,
+            "second_max": 21.126001962478473,
+            "worst_index": 7,
+            "minimum_direct_second": 1.3378296402135044e-10,
+            "fraction_above_five_percent": 0.9591836734693877,
+            "status": "unresolved"
+          },
+          "signed": {
+            "rms": [
+              0.0005751158568948774,
+              0.0010291651062116394,
+              0.0018950497935535415
+            ],
+            "second_p95": 0.005943174795402549,
+            "second_max": 0.006169929510355443,
+            "worst_index": 84,
+            "minimum_direct_second": 1.3378296402135044e-10,
+            "fraction_above_five_percent": 0.0,
+            "status": "passed"
+          },
+          "states": 98
+        }
+      },
+      "new_encounters": 240,
+      "wall_s": 7.149609999964014,
+      "peak_rss_bytes": 310149120,
+      "memory_scope": "Process lifetime peak; includes metadata/device initialization.",
+      "timing_scope": "One process, archived loading/table construction plus new direct solves and plotting; no JIT compilation.",
+      "inputs": {
+        "mass": 1.0,
+        "charge": 1.0,
+        "field": 2.0,
+        "theta": 0.5,
+        "strength": 0.03,
+        "screening": 3.0,
+        "start_distance": 24.0,
+        "table_bounds": [
+          [
+            1.2,
+            2.4
+          ],
+          [
+            0.7,
+            1.5
+          ],
+          [
+            0.2,
+            0.8
+          ]
+        ],
+        "table_orders": [
+          7,
+          7,
+          7,
+          32
+        ],
+        "table_axes": [
+          [
+            1.230535252594345,
+            1.3550812886403634,
+            1.5564929091735618,
+            1.7999999999999998,
+            2.0435070908264383,
+            2.2449187113596363,
+            2.369464747405655
+          ],
+          [
+            0.7203568350628966,
+            0.8033875257602422,
+            0.9376619394490411,
+            1.1,
+            1.2623380605509587,
+            1.3966124742397579,
+            1.4796431649371034
+          ],
+          [
+            0.21526762629717247,
+            0.27754064432018166,
+            0.37824645458678086,
+            0.5,
+            0.6217535454132193,
+            0.7224593556798184,
+            0.7847323737028276
+          ],
+          [
+            0.0,
+            0.19634954084936207,
+            0.39269908169872414,
+            0.5890486225480862,
+            0.7853981633974483,
+            0.9817477042468103,
+            1.1780972450961724,
+            1.3744467859455345,
+            1.5707963267948966,
+            1.7671458676442586,
+            1.9634954084936207,
+            2.1598449493429825,
+            2.356194490192345,
+            2.552544031041707,
+            2.748893571891069,
+            2.945243112740431,
+            3.141592653589793,
+            3.3379421944391554,
+            3.5342917352885173,
+            3.730641276137879,
+            3.9269908169872414,
+            4.123340357836604,
+            4.319689898685965,
+            4.516039439535327,
+            4.71238898038469,
+            4.908738521234052,
+            5.105088062083414,
+            5.301437602932776,
+            5.497787143782138,
+            5.6941366846315,
+            5.890486225480862,
+            6.086835766330224
+          ]
+        ],
+        "fresh_count": 128,
+        "fresh_seed": 3811,
+        "weak_anchors": [
+          [
+            "original128",
+            66
+          ],
+          [
+            "fresh128",
+            118
+          ]
+        ],
+        "weak_phase_count": 49,
+        "weak_phase_half_width": 0.3,
+        "rtol": 1e-12,
+        "max_step": 0.2,
+        "tight_rtol": 2e-13,
+        "tight_max_step": 0.1,
+        "second_rms_target": 0.02,
+        "second_p95_target": 0.05,
+        "sampled_max_target": 0.01,
+        "solver_refinement_target": 0.001,
+        "energy_target": 1e-09,
+        "runtime_cap_s": 180.0,
+        "frame": "delta_w0=R(-Omega*L/u)[R(+Omega*t)w_out-w_in]; w_in0=p(cos(phi),sin(phi))",
+        "methods": [
+          "signed c and log(COM variance)",
+          "signed Cartesian zero-plane velocity kicks"
+        ],
+        "scope": "Same finite B2 screened table; no new training solves, correction fit, physical rate, or supremum bound.",
+        "units": "m,q,velocity,length normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+        "stop_rule": "Fixed seed, anchors, neighborhoods and targets; retain failures and all planned sample counts."
+      },
+      "units": "m,q,velocity,length normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+      "versions": {
+        "sato-morrison": "0.1.0",
+        "jax": "0.11.2",
+        "jaxlib": "0.11.2",
+        "solvax": "0.28.2",
+        "numpy": "2.5.3",
+        "scipy": "1.18.1",
+        "matplotlib": "3.11.2"
+      },
+      "processor": "Apple M4",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "experiment_dependency_sha256": {
+        "examples/38_scattering_interpolation.py": "285067ca52d19d65ebde5d13df4252e148d126eed821799b14e31c30be3c32ef",
+        "src/sato_morrison/controls.py": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+        "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+      }
+    },
+    "broad_speed_refinement": {
+      "path": "results/broad_speed_refinement/summary.json",
+      "sha256": "bb447ed1bd15208ad0497358faa2e80c20a57be289f398791d92963ba6a3d811",
+      "producer_commit": "38ffdbc5f6609e6803220b48a83aad91672db19d",
+      "status": "unresolved",
+      "required_gates": {
+        "sample": false,
+        "phase": true,
+        "replica": true,
+        "boundary_ensemble": true,
+        "active_step": true,
+        "active_step_sizes": true,
+        "complete": true,
+        "energy": true,
+        "source_integrity": true
+      },
+      "comparisons": {
+        "sample": [
+          0.06955382776846078,
+          0.062400349469292224,
+          0.04130885143558562,
+          0.008753995275881785
+        ],
+        "phase": [
+          0.004758237892265464,
+          0.011117506959344617,
+          0.003866277550084213,
+          0.00038135193680376264
+        ],
+        "replica": [
+          0.02384408258139913,
+          0.04720484458124103,
+          0.0003067623977480655,
+          0.0003926688843357217
+        ],
+        "boundary_ensemble": [
+          1.3277208145938772e-06,
+          1.933063797907935e-06,
+          2.998221771365685e-06,
+          8.778469713776539e-06
+        ],
+        "active_step": [
+          7.885062119383145e-10,
+          5.269099436937687e-11,
+          5.266272153824021e-11,
+          8.505026720374822e-12
+        ]
+      },
+      "unique_encounters": 98400,
+      "failures": 0,
+      "wall_s": 733.5700538749807,
+      "parent_process_peak_rss_bytes": 637059072,
+      "max_worker_process_peak_rss_bytes": 105693184,
+      "memory_scope": "separate lifetime process peaks; not a simultaneous aggregate",
+      "inputs": {
+        "mass": 1.0,
+        "charge": 1.0,
+        "field": 2.0,
+        "strength": 0.03,
+        "screening": 3.0,
+        "theta": 0.5,
+        "bounds": [
+          [
+            1.2,
+            2.4
+          ],
+          [
+            0.35,
+            3.0
+          ],
+          [
+            0.0,
+            2.5
+          ]
+        ],
+        "sample_levels": [
+          256,
+          512
+        ],
+        "phase_levels": [
+          32,
+          64
+        ],
+        "seeds": [
+          3901,
+          3902
+        ],
+        "distances": [
+          24.0,
+          32.0
+        ],
+        "step_levels": [
+          0.1,
+          0.05,
+          0.025
+        ],
+        "rtol": 1e-12,
+        "flight_time_factor": 48.0,
+        "workers": 4,
+        "runtime_cap_s": 1800.0,
+        "expected_primary_paths": 98304,
+        "moment_target": 0.05,
+        "energy_target": 1e-09,
+        "boundary_target": 0.005,
+        "step_target": 0.001,
+        "control_count_each": 16,
+        "units": "normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+        "measure": "two-sided tagged plane crossing flux; b^2 uniform; squared speeds truncated exponential; periodic phase",
+        "error_scale": "mean: fine second/mu_reference; second and cross: fine second; GC kick: fine spatial second",
+        "controls": "full primary ensemble at both planes; 16 largest second-moment contributors and 16 fresh predetermined flux samples at all active steps",
+        "stop_rule": "fixed domains, levels, seeds and flight budget; cap checked between batches; no missing weights renormalized; failed gates exit nonzero",
+        "scope": "one bounded broad-speed annulus from example13; inner impacts, slow/fast and perpendicular tails, inverse-complete incident surface, screening closure, correlations and mixing time unresolved"
+      },
+      "units": "normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+      "versions": {
+        "sato-morrison": "0.1.0",
+        "jax": "0.11.2",
+        "jaxlib": "0.11.2",
+        "solvax": "0.28.2",
+        "numpy": "2.5.3",
+        "scipy": "1.18.1",
+        "matplotlib": "3.11.2"
+      },
+      "processor": "Apple M4",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "experiment_dependency_sha256": {
+        "examples/39_broad_speed_refinement.py": "8a860c06ab35247b876fbbfd0baad4d2bbea6b11311485695ae753b7427afade",
+        "src/sato_morrison/controls.py": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+        "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+      }
+    },
+    "broad_speed_extended": {
+      "path": "results/broad_speed_extended/summary.json",
+      "sha256": "eda29b54198fa123f92c92f2ace1db3501c8ddd251067faa887083f0c3252f64",
+      "producer_commit": "bf727b6d1dec367850d8e0965423cf4de57cd0b3",
+      "status": "unresolved",
+      "required_gates": {
+        "sample": true,
+        "phase": true,
+        "replica": true,
+        "boundary_ensemble": true,
+        "active_step": true,
+        "active_step_sizes": true,
+        "complete": true,
+        "energy": true,
+        "source_integrity": true,
+        "sample_replica": false,
+        "phase_influential": false,
+        "boundary_new_states": false,
+        "prior_integrity": true
+      },
+      "comparisons": {
+        "sample": [
+          0.0495566229073587,
+          0.043596516378367214,
+          0.014105789974223544,
+          0.006567549282810369
+        ],
+        "phase": [
+          0.02647332841690299,
+          0.00013167881977564337,
+          0.014465295883442603,
+          0.0008300362553850984
+        ],
+        "replica": [
+          0.04022708645862459,
+          0.04979938679840062,
+          0.016275986445186387,
+          0.001598533352231656
+        ],
+        "boundary_ensemble": [
+          1.3277208145938772e-06,
+          1.933063797907935e-06,
+          2.998221771365685e-06,
+          8.778469713776539e-06
+        ],
+        "sample_replica": [
+          0.020950795225483047,
+          0.06567148849204216,
+          0.022602636771835136,
+          0.005489461767569972
+        ],
+        "history_primary512_to1024": [
+          0.012791233757368044,
+          0.07231720462938755,
+          0.0021928162586792514,
+          0.0015218349256053301
+        ],
+        "history_replica512_to1024": [
+          0.044393618760159764,
+          0.003773598307463744,
+          0.024437658446733252,
+          0.0007683181282252371
+        ],
+        "boundary_new_states": [
+          0.015025912564462899,
+          0.000632501542301595,
+          0.0007191311827001028,
+          0.0006421694262594814
+        ],
+        "active_step": [
+          7.885062119383145e-10,
+          5.269099436937687e-11,
+          5.266272153824021e-11,
+          2.709674452719035e-12
+        ],
+        "phase_influential": [
+          0.2354225124266784,
+          0.09976011070318692,
+          0.2155464101154471,
+          0.2384453172942934
+        ]
+      },
+      "unique_encounters": 298176,
+      "new_encounters": 199776,
+      "reused_encounters": 98400,
+      "failures": 0,
+      "wall_s": 1358.4451821669936,
+      "parent_process_peak_rss_bytes": 1438138368,
+      "max_worker_process_peak_rss_bytes": 106348544,
+      "memory_scope": "separate lifetime process peaks; not a simultaneous aggregate",
+      "timing_scope": "this execution only; previously saved solves are reused and their costs are not added; figure rendering excluded",
+      "inputs": {
+        "mode": "extend",
+        "mass": 1.0,
+        "charge": 1.0,
+        "field": 2.0,
+        "strength": 0.03,
+        "screening": 3.0,
+        "theta": 0.5,
+        "bounds": [
+          [
+            1.2,
+            2.4
+          ],
+          [
+            0.35,
+            3.0
+          ],
+          [
+            0.0,
+            2.5
+          ]
+        ],
+        "sample_levels": [
+          512,
+          1024,
+          2048
+        ],
+        "phase_levels": [
+          32,
+          64
+        ],
+        "seeds": [
+          3901,
+          3902
+        ],
+        "distances": [
+          24.0,
+          32.0
+        ],
+        "step_levels": [
+          0.1,
+          0.05,
+          0.025
+        ],
+        "rtol": 1e-12,
+        "flight_time_factor": 48.0,
+        "workers": 4,
+        "runtime_cap_s": 2400.0,
+        "expected_new_bulk_paths": 196608,
+        "influential_phase_levels": [
+          128,
+          256
+        ],
+        "influential_per_seed": 8,
+        "moment_target": 0.05,
+        "energy_target": 1e-09,
+        "boundary_target": 0.005,
+        "step_target": 0.001,
+        "control_count_each": 16,
+        "units": "normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+        "measure": "two-sided tagged plane crossing flux; b^2 uniform; squared speeds truncated exponential; periodic phase",
+        "error_scale": "mean: fine second/mu_reference; second and cross: fine second; GC kick: fine spatial second",
+        "controls": "retained full 512-state plane comparison; 16 largest new primary individual second moments and 16 predetermined flux samples at both planes and active steps; top eight phase-averaged contributors per seed at 128/256 phases",
+        "acceptance": "final 1024 to 2048 sample comparison for each seed plus independent final replica and phase checks; 512 to 1024 history diagnostic only; influential 64 to 128 and 128 to 256 per-speed comparisons required",
+        "stop_rule": "fixed domains, levels, seeds and flight budget; cap checked between batches; no missing weights renormalized; failed gates exit nonzero",
+        "scope": "one bounded broad-speed annulus from example13; inner impacts, slow/fast and perpendicular tails, inverse-complete incident surface, screening closure, correlations and mixing time unresolved",
+        "prior_artifact_sha256": {
+          "summary.json": "bb447ed1bd15208ad0497358faa2e80c20a57be289f398791d92963ba6a3d811",
+          "states.npz": "399f4b513e0bd370441b0b76011fcc19f5f8956162ba4c587ab2bf8690cda328",
+          "populations.npz": "dbfa1ab753de7c55e8f3028ccede82b3a4e1b63bcf6e53dd5a37c54e32d57722"
+        }
+      },
+      "units": "normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+      "versions": {
+        "sato-morrison": "0.1.0",
+        "jax": "0.11.2",
+        "jaxlib": "0.11.2",
+        "solvax": "0.28.2",
+        "numpy": "2.5.3",
+        "scipy": "1.18.1",
+        "matplotlib": "3.11.2"
+      },
+      "processor": "Apple M4",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "experiment_dependency_sha256": {
+        "examples/39_broad_speed_refinement.py": "9c3a4e5e85fb7273fa7a32f906a1b8ef7f12350d1fb63940ffe136085d9e62a3",
+        "src/sato_morrison/controls.py": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+        "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+      }
+    },
+    "refinement_audit": {
+      "path": "results/refinement_audit/summary.json",
+      "sha256": "a1fef56bf46d8301d53b8e6e14229f9ad594b896d7b5ca01294c8a34fe4561d0",
+      "producer_commit": "8f9e04068ebc3b8e5ed7b52281ead47494418f4f",
+      "status": "passed",
+      "failures": [],
+      "wall_s": 2.4030394579749554,
+      "parent_peak_rss_bytes": 221396992,
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "independent_check_count": 236
+    },
+    "refinement_audit_extended": {
+      "path": "results/refinement_audit_extended/summary.json",
+      "sha256": "72bc1e19e9f5123f9146251ce7a3cc4ecffd74aef2d4602c70b0cc7c1cefea7d",
+      "producer_commit": "9d15e90637089d76197ec6eb2198b04c6cae3b37",
+      "status": "passed",
+      "failures": [],
+      "wall_s": 2.091847833013162,
+      "parent_peak_rss_bytes": 412336128,
+      "versions": {
+        "numpy": "2.5.3",
+        "scipy": "1.18.1"
+      },
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "independent_check_count": 600
+    },
+    "refinement_audit_extended_complete": {
+      "path": "results/refinement_audit_extended_complete/summary.json",
+      "sha256": "5ec3a68bb1d8769234710a7d0c5493f0e2afce39e67aee6f59d52cd8875aba26",
+      "producer_commit": "4d2ccb35707febaa7d7caf2adf6ce9e791c28f16",
+      "status": "failed",
+      "failures": [
+        "broad independent Cartesian path 237872"
+      ],
+      "wall_s": 3.347532916988712,
+      "parent_peak_rss_bytes": 417005568,
+      "versions": {
+        "numpy": "2.5.3",
+        "scipy": "1.18.1"
+      },
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "independent_check_count": 601
+    },
+    "encounter_peak_resolution": {
+      "path": "results/encounter_peak_resolution/summary.json",
+      "sha256": "0e46988dcfff5d81b14978146710f8108532944e6bb5b72c2ebc16ac680944da",
+      "producer_commit": "317993933504f654217f68ed8ab30ea245c62ba1",
+      "status": "passed",
+      "required_gates": {
+        "phase1024_to2048": true,
+        "phase2048_to4096": true,
+        "halfshift": true,
+        "final_plane_phase": true,
+        "final_plane_halfshift": true,
+        "boundary_integral": true,
+        "boundary_weak_state": true,
+        "active_step": true,
+        "active_step_sizes": true,
+        "cartesian": true,
+        "required_reflected_tight": true,
+        "complete": true,
+        "energy": true,
+        "source_integrity": true,
+        "prior_integrity": true,
+        "original_failure_integrity": true
+      },
+      "comparisons": {
+        "phase1024_to2048": [
+          0.008991578588706884,
+          1.215451520963853e-05,
+          0.014103658393227086,
+          0.013912195445742797
+        ],
+        "phase2048_to4096": [
+          0.0018354867873371977,
+          0.0006340487295193253,
+          0.0033277776463368704,
+          0.003876713994643196
+        ],
+        "halfshift": [
+          0.003670973574674568,
+          0.0012680974590430457,
+          0.006655555292673506,
+          0.007753427989279769
+        ],
+        "final_plane_phase": [
+          0.0015793806685411938,
+          0.0004453314153196882,
+          0.0029054985762454978,
+          0.0032538703691402807
+        ],
+        "final_plane_halfshift": [
+          0.0031587613370802525,
+          0.0008906628306299571,
+          0.005810997152491074,
+          0.006507740738281956
+        ],
+        "boundary_integral": [
+          4.087217626572862e-07,
+          5.26740314539064e-07,
+          8.373428957863925e-07,
+          1.3316720496044804e-06
+        ],
+        "boundary_weak_state": [
+          6.756256085237535e-05,
+          5.04190511855029e-07,
+          1.9341834775894767e-07,
+          6.323911476120563e-08
+        ],
+        "active_step": [
+          1.88787634930309e-10,
+          2.0524949052877202e-11,
+          1.4831341677120437e-11,
+          1.2719426482329455e-11
+        ]
+      },
+      "unique_encounters": 16420,
+      "new_encounters": 16164,
+      "reused_encounters": 256,
+      "failures": 0,
+      "wall_s": 121.83066804200644,
+      "parent_process_peak_rss_bytes": 299319296,
+      "max_worker_process_peak_rss_bytes": 30294016,
+      "memory_scope": "separate process lifetime peaks; not simultaneous aggregate",
+      "timing_scope": "this execution; old solves and figure rendering excluded",
+      "inputs": {
+        "seed": 3902,
+        "sample_index": 1155,
+        "speed": [
+          1.2161710500723555,
+          1.546221967601278,
+          2.406217687668966
+        ],
+        "weak_node": [
+          1.402644308444559,
+          0.7559030245702588,
+          0.9337388640826417,
+          5.880065286538355
+        ],
+        "required_reflected_prior_state_id": 237872,
+        "mass": 1.0,
+        "charge": 1.0,
+        "field": 2.0,
+        "strength": 0.03,
+        "screening": 3.0,
+        "theta": 0.5,
+        "phase_levels": [
+          512,
+          1024,
+          2048
+        ],
+        "halfshift_count": 2048,
+        "union_count": 4096,
+        "distances": [
+          32.0,
+          40.0,
+          48.0
+        ],
+        "steps": [
+          0.1,
+          0.05,
+          0.025
+        ],
+        "rtol": 1e-12,
+        "flight_time_factor": 48.0,
+        "base_step": 0.2,
+        "workers": 4,
+        "runtime_cap_s": 900.0,
+        "phase_target": 0.05,
+        "plane_target": 0.005,
+        "step_target": 0.001,
+        "energy_target": 1e-09,
+        "cartesian_absolute_target": 1e-08,
+        "cartesian_max_step": 0.0125,
+        "cartesian_rtol": 2e-13,
+        "required_reflected_tight_relative_step": 0.0125,
+        "required_reflected_tight_relative_rtol": 2e-13,
+        "controls": "largest four M2 phases, closest four sampled separations, longest two reflected exits if present, exact prior reflected state 237872 at pi/2, four fresh phases seed4101; deduplicated; independent Cartesian replay of largest M2, closest separation, longest reflected and required prior reflected control",
+        "normalization": "mean: fine M2/mu_reference; second and cross: fine M2; spatial: fine individual GC second",
+        "phase_measure": "uniform incoming gyrophase; each state has weight 1/N, reflected exits retain their original weights",
+        "halfshift_scope": "regular 2048 and half-step-shifted 2048 union equals regular 4096; a deterministic refinement, not independent statistical evidence",
+        "acceptance": "1024 to 2048,2048 to 4096 and regular-versus-shifted 2048 angular gates; same angular checks at L48; final L40 to L48 integral and weak-node gates; all active-step, energy, Cartesian and integrity gates",
+        "stop_rule": "fixed levels, distances and controls; no outcome-dependent refinement; cap between batches; missing weights invalidate their integral",
+        "scope": "conditional angular average at one fixed speed/impact and separate weak-state endpoint probe; preserves failed example 39 integral; no plasma rate, closure or lifetime",
+        "units": "normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+        "prior_artifact_sha256": {
+          "summary.json": "eda29b54198fa123f92c92f2ace1db3501c8ddd251067faa887083f0c3252f64",
+          "states.npz": "7c58f75c2acd17cd6e094b378e0cf849258d948e981dec83cfb7d0fe9882c28b"
+        },
+        "original_cartesian_audit": {
+          "path": "results/refinement_audit_extended_complete/summary.json",
+          "sha256": "5ec3a68bb1d8769234710a7d0c5493f0e2afce39e67aee6f59d52cd8875aba26",
+          "preserved_failed_comparison": {
+            "index": 237872,
+            "passed": false,
+            "position_max_absolute_error": 1.8382417865669964e-08,
+            "velocity_max_absolute_error": 3.664808390091423e-08,
+            "exit_time_absolute_error": 8.125354611365765e-09,
+            "exit": "reflected",
+            "evaluations": 44045,
+            "acceptance_targets": {
+              "position": 1e-08,
+              "velocity": 1e-08,
+              "time": 1e-08
+            }
+          }
+        }
+      },
+      "units": "normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+      "versions": {
+        "sato-morrison": "0.1.0",
+        "jax": "0.11.2",
+        "jaxlib": "0.11.2",
+        "solvax": "0.28.2",
+        "numpy": "2.5.3",
+        "scipy": "1.18.1",
+        "matplotlib": "3.11.2"
+      },
+      "processor": "Apple M4",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "experiment_dependency_sha256": {
+        "examples/41_encounter_peak_resolution.py": "9668b5a52f1c0aebd0e5a4bc8e59df6de049b0f4606b8715d246fa471f411d21",
+        "src/sato_morrison/controls.py": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+        "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+      }
+    }
+  },
+  "commands": [
+    "SM_INTERPOLATION_OUTPUT=results/scattering_interpolation .venv/bin/python examples/38_scattering_interpolation.py",
+    "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 .venv/bin/python examples/39_broad_speed_refinement.py",
+    "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 SM_BROAD_SPEED_MODE=extend .venv/bin/python examples/39_broad_speed_refinement.py",
+    "SM_BROAD_AUDIT_INPUT=results/broad_speed_extended SM_REFINEMENT_AUDIT_OUTPUT=results/refinement_audit_extended .venv/bin/python examples/40_refinement_audit.py",
+    "SM_ENCOUNTER_PEAK_OUTPUT=results/encounter_peak_resolution .venv/bin/python examples/41_encounter_peak_resolution.py",
+    "latexmk -cd -pdf -interaction=nonstopmode -halt-on-error notes/implementation.tex"
+  ],
+  "command_scope": "Equivalent explicit invocations for the executed studies; output directories must be changed for reproduction to preserve the published evidence.",
+  "tests": {
+    "count": 272,
+    "scope": "Full Linux CI after addition of signed-kick interpolation and reflected-replica selection tests.",
+    "ci_url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/38628059836"
+  },
+  "independent_findings": [
+    "Signed velocity-kick interpolation preserves zero crossings and reconstructs the second moment as a nonnegative sum without floors.",
+    "The Gaussian center-of-mass average independently gives mean c=m(2 w dot delta + |delta|^2)/(8B) and variance m^2 theta |delta|^2/(8B^2). Theta is a velocity variance.",
+    "The broader incoming-speed distribution includes gyroradii comparable with impact parameters, permitting close approach despite finite guiding-center separation.",
+    "Retained incoming probability or flux does not bound omitted collision moments."
+  ],
+  "limits": [
+    "Sobol refinement differences and two scrambles are empirical comparisons, not rigorous error bounds.",
+    "Selected influential-state phase checks can miss a narrow peak absent from the original phase grid.",
+    "Farther-plane coverage comprises the original 512-state ensemble and selected new states, not a full 2048-state ensemble.",
+    "Signed-kick accuracy is demonstrated on the declared query sets and does not bound supremum error over a continuous domain.",
+    "No collision rate or metastable lifetime follows from a freely prescribed coefficient."
+  ],
+  "remaining_work": [
+    "Resolve any remaining fixed-domain sample and phase failures before enlarging the incident domain.",
+    "Refine perpendicular-speed tails and small-impact contributions separately, including phase-offset or geometrically selected probes.",
+    "Test the same broader incident population at stronger fields.",
+    "Establish reverse-complete incident populations, physical screening, and inter-encounter correlations before kinetic closure or lifetime claims.",
+    "Complete nonuniform dipole/nonaxisymmetric trajectory refinements and longer-time Landau validation."
+  ],
+  "novelty_scope": "Numerical findings and bounded counterexamples extend the project evidence. The established magnetized exchange mechanism is not claimed as new.",
+  "upstream_pr": null,
+  "selected_peak_independent_audit": {
+    "path": "results/encounter_peak_resolution/independent_audit.json",
+    "sha256": "340da10c167d6d426c82529fac1ebe7412eddf8992b97566135e0e256d6e4f86",
+    "checks": 198,
+    "status": "passed",
+    "script": "results/encounter_peak_resolution/audit_saved_states.py",
+    "wall_s": 0.23407708300510421,
+    "peak_rss_bytes": 124108800
+  },
+  "selected_peak_conclusion": "All 16 fixed conditional angular, boundary, trajectory and integrity gates pass. This resolves the selected rare encounter; the broad speed/impact integral still fails its own fixed tests.",
+  "documentation_sha256": {
+    "README.md": "3a0c30ef0cad40a6bc7bd969f91578aebfbafaf15b1e8dc3dba4b6f2c1e101d9",
+    "notes/implementation.tex": "40a9245195cc56837f96fa1e62277de288abaadb95ce3a85807b4a5bbe9d55a9",
+    "notes/implementation.pdf": "7f0fda79ec148ea4c646bb6bfc43474f4ce2277e1ac9fc3bf9fbb75bd4585c37",
+    "results/validation.csv": "9cee328802af52d6f0881895b27f847fd5a9912c93e379710ad9ae7ca02139b4"
+  }
+}

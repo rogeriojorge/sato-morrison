@@ -302,7 +302,32 @@ The narrow table covers only **11.6%** of the thermal crossing flux in its impac
 
 ![Broad-speed contributions and concentration, with each numerical change divided by its own declared tolerance. The 512-state sampling criterion fails.](results/broad_speed_refinement/coverage.png)
 
-The first refinement uses two independent **512-state** samples with **64 phases**, repeats the full primary ensemble at a farther boundary, and checks the strongest contributions with smaller integration steps. All **98,400** encounters exit successfully. Phase, replica, boundary, timestep and energy checks pass, but **256 → 512** states changes the scaled mean and second moment by **6.96%** and **6.24%**, above the **5%** target. The run remains unresolved; the independent audit reproduces that failure. [Example 39: complete states, checks and costs](results/broad_speed_refinement/summary.json)
+The first refinement uses two independent **512-state** samples with **64 phases**, repeats the full primary ensemble at a farther boundary, and checks the strongest contributions with smaller integration steps. All **98,400** encounters exit successfully. Phase, replica, boundary, timestep and energy checks pass, but **256 → 512** states changes the scaled mean and second moment by **6.96%** and **6.24%**, above the **5%** target. Mean comparisons use the positive scale **I₂/μref**, where I₂ is the integrated squared increment and μref = mθ/B. The run remains unresolved; the independent audit reproduces that failure. [Example 39: complete states, checks and costs](results/broad_speed_refinement/summary.json)
+
+The fixed extension uses nested **512, 1,024 and 2,048 incoming states** for both seeds, reuses all original endpoints, and checks 16 strong phase-averaged contributors at **64, 128 and 256 phases**. It adds **199,776** encounters, with no integration failures or exhausted budgets. The largest contributions occur where the incoming relative gyroradius approaches the guiding-center impact distance.
+
+![Extended broad-speed sampling, relative orbit radius and concentration of squared kicks. The replica sampling, selected phase and new boundary checks fail their declared targets.](results/broad_speed_extended/coverage.png)
+
+| Failed comparison | Largest relevant scaled change | Target |
+|---|---:|---:|
+| Replica: 1,024 → 2,048 states, second moment | **6.57%** | 5% |
+| Strong contributors: 64 → 128 phases | **23.54%** | 5% |
+| Strong contributors: 128 → 256 phases | **23.84%** | 5% |
+| Selected new states: boundary L = 24 → 32, mean | **1.503%** | 0.5% |
+
+The final phase comparison also changes the second moment by **5.47%** and the cross moment by **21.55%**. These failures use positive reference scales: the mean is divided by the fine second moment divided by **μref = 0.25**, and the cross moment by the fine second moment. The full farther-boundary ensemble remains the original 512-state study; the new boundary checks cover selected states. The larger numerical average remains unresolved and exits nonzero. [Extended inputs, every state and failed gates](results/broad_speed_extended/summary.json)
+
+Independent reconstruction passes **600 of 601** checks. The additional reflected trajectory keeps the same reflected outcome, but its position and velocity differ by **1.84 × 10⁻⁸** and **3.66 × 10⁻⁸**, exceeding the unchanged **10⁻⁸** Cartesian target. Its exit-time difference is **8.13 × 10⁻⁹**. The failed audit remains available alongside the earlier, narrower audit. [Complete independent audit, including reflection](results/refinement_audit_extended_complete/summary.json)
+
+### Resolving one close-encounter peak
+
+The next fixed diagnostic isolates the strongest problematic speed/impact state and samples **4,096 phases**, including **eight reflected encounters** with their original weights. Two successive angular comparisons, a half-step-shifted grid, and repeated full angular averages at **L = 32, 40 and 48** pass their declared targets. The half-shifted grid is a deterministic refinement of the same phase integral.
+
+![One conditional scattering peak and its reflected phases, with the original signed moments and all fixed accuracy checks. N48 labels angular refinement at L = 48; planes and weak label the L = 40 → 48 angular integral and separate weak-state check.](results/encounter_peak_resolution/peak_resolution_readable.png)
+
+In the check panel, **N48** denotes angular refinement at **L = 48**; **planes** and **weak** denote the **L = 40 → 48** angular-integral and weak-state endpoint comparisons.
+
+The final **2,048 → 4,096** angular change is at most **0.388%** across the four scaled observables. The last **L = 40 → 48** change is **0.000133%** for the angular integral and **0.00676%** for the separate weak state's scaled mean. Smaller timesteps resolve the same reflected input: the Cartesian position and velocity differences become **3.18 × 10⁻¹¹** and **1.66 × 10⁻¹²**, while a tighter relative solve differs by at most **1.07 × 10⁻⁹**. All **16** checks pass for this conditional family. The broader ensemble and its original coarse Cartesian failure remain unresolved records. [Example 41: fixed methods, states, checks and costs](results/encounter_peak_resolution/summary.json) The separate saved-array audit passes **198** checks of the moments, phase grids, retained weights, source identities and all 16 gates. [Independent audit](results/encounter_peak_resolution/independent_audit.json)
 
 The specified screened encounters allow individual-moment exchange, while the prototype enforces exact conservation of the full μ marginal. A calibrated plasma closure still needs complete incident-domain convergence, screening tied to plasma parameters, successive-encounter correlations and a measured mixing time. A constrained dipole lifetime remains open.
 
@@ -317,6 +342,12 @@ Recorded costs on the shared Apple M4 are below. Parent and worker memory figure
 | Signed-kick interpolation; 240 new encounters | 7.15 s | 0.310 GB | — |
 | Broad-speed 512-state study; 98,400 encounters | 733.57 s | 0.637 GB | 0.106 GB |
 | Independent interpolation/broad-speed audit | 2.40 s | 0.221 GB | — |
+| Broad-speed extension; 199,776 new encounters | 1,358.45 s | 1.438 GB | 0.106 GB |
+| Complete extended audit, including reflection | 3.35 s | 0.417 GB | — |
+| One-state peak diagnostic; 16,164 new relative solves plus four controls | 121.83 s | 0.299 GB | 0.0303 GB |
+| Independent saved-array audit of the peak diagnostic | 0.234 s | 0.124 GB | — |
+
+The extension's measured time excludes the reused solves and figure rendering. The [review and reproducibility record](results/review_refinement.json) collects the source identities, tests and preserved failures.
 
 ## Runtime, memory and failure diagnostics
 
@@ -367,13 +398,21 @@ PHYSICAL_FIGURE_MODE=refinement PHYSICAL_FIGURE_OUTPUT=results/physical_refineme
 SM_INTERPOLATION_OUTPUT=results/interpolation_reproduction python examples/38_scattering_interpolation.py
 # The 512-state broad-speed study saves its failed sampling check, then exits nonzero:
 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 SM_BROAD_SPEED_OUTPUT=results/broad_speed_reproduction python examples/39_broad_speed_refinement.py
+# The fixed extension retains the original states and saves three unresolved gates:
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 SM_BROAD_SPEED_MODE=extend SM_BROAD_SPEED_OUTPUT=results/broad_speed_extended_reproduction python examples/39_broad_speed_refinement.py
 # Independently reconstruct the archived interpolation and broad-speed studies:
 SM_REFINEMENT_AUDIT_OUTPUT=results/refinement_audit_reproduction python examples/40_refinement_audit.py
+# Include the reflected trajectory; the saved Cartesian accuracy check fails:
+SM_BROAD_AUDIT_INPUT=results/broad_speed_extended SM_REFINEMENT_AUDIT_OUTPUT=results/refinement_audit_extended_reproduction python examples/40_refinement_audit.py
+# Resolve the selected angular peak and its endpoints; the broad average stays unresolved:
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 SM_ENCOUNTER_PEAK_OUTPUT=results/encounter_peak_reproduction python examples/41_encounter_peak_resolution.py
+# Independently reconstruct the published peak data, preserving the original receipt:
+SM_PEAK_AUDIT_OUTPUT=results/encounter_peak_audit_reproduction.json python results/encounter_peak_resolution/audit_saved_states.py
 ```
 
 Example 24 exits nonzero because the declared angular and Cartesian checks remain unresolved. It saves the results before raising the error.
 
-**271 tests pass on fresh Linux CI.** The encounter tests include free helices, exact finite-radius repulsive Coulomb orbits, a sensitive screened trajectory checked at high precision, and signed-kick interpolation through zero with independent Gaussian center averaging. Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
+**272 tests pass on fresh Linux CI.** The encounter tests include free helices, exact finite-radius repulsive Coulomb orbits, a sensitive screened trajectory checked at high precision, and signed-kick interpolation through zero with independent Gaussian center averaging. Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
 
 | Capability | Current evidence |
 |---|---|

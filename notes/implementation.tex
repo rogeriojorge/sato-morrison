@@ -3629,6 +3629,157 @@ with maximum position and velocity discrepancies $4.29\times10^{-11}$ and
 $8.57\times10^{-11}$. This audit takes $2.40$ seconds with a $221.40$ MB
 process-lifetime peak. It confirms the original failed sampling criterion.
 
+\paragraph{Fixed extension to 2048 incoming states and stronger controls.}
+The extended mode of example 39 keeps the physical inputs and incident bounds
+fixed, with the same $5\%$ sample/phase/replica, $0.5\%$ boundary and
+$0.1\%$ active-step targets. The energy limit is tightened from $10^{-8}$
+to $10^{-9}$; all records pass both limits. Both Sobol seeds use nested $512,1024,2048$
+impact/speed states with 64 phases. The existing 98\,400 endpoint records are
+reused bit for bit. Another 199\,776 encounters produce 298\,176 retained
+records in total, with no failed exits or exhausted flight budgets. Final
+$1024\to2048$ sample comparisons are required for both seeds; the earlier
+$512\to1024$ differences remain diagnostic history. The final primary
+64-phase integrals are
+\[
+ (I_1,I_2,I_{12},I_R)=
+ (-5.00274727\times10^{-5},\;5.74858791\times10^{-5},\;
+ -1.03102033\times10^{-5},\;2.58044679\times10^{-3}).
+\]
+The primary sample comparison and final independent replica comparison
+pass, but the second seed's sample comparison fails. This is not a
+converged broad-speed coefficient.
+
+The eight largest phase-averaged second-moment contributors from each
+seed are checked at $64,128,256$ phases. For each fixed incoming
+$(b,u,p)$, both successive differences use the final 256-phase positive
+scales $(M_2/\mu_{\rm ref},M_2,M_2,M_R)$. All four conditional moments
+enter the check. The original full 512-state $L=24\to32$ boundary
+comparison is retained. New boundary controls repeat the 16 largest
+individual second-moment contributors beyond the original primary prefix
+and 16 predetermined incoming states at both planes. There is no full
+2048-state ensemble at $L=32$. The active-step controls keep the same
+$0.1,0.05,0.025$ hierarchy.
+
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Failed comparison & Scaled change (\%) & Target (\%)\\
+\midrule
+Replica $1024\to2048$, second moment & 6.56715 & 5\\
+Selected $64\to128$ phases, largest change & 23.54225 & 5\\
+Selected $128\to256$ phases, largest change & 23.84453 & 5\\
+Selected new $L=24\to32$ mean & 1.50259 & 0.5\\
+\bottomrule
+\end{tabular}
+\end{center}
+The worst final phase comparison is seed 3902, speed index 1155, at
+\[
+ (b,u,p)=(1.21617105,1.54622197,2.40621769).
+\]
+Its
+$128\to256$ second, cross and spatial changes are $5.47252\%$,
+$21.55464\%$ and $23.84453\%$ respectively. The failure therefore
+persists in the final angular comparison. Large kicks occur when the
+incoming relative gyroradius $p/\Omega$ approaches the impact distance.
+Completion, energy and active-step gates pass, but replica sampling,
+selected phase refinement and selected new boundary gates fail. The
+experiment exits nonzero and retains all failures under
+\path{results/broad_speed_extended/}.
+
+The producer is revision \texttt{bf727b6}. This execution takes
+$1358.45$ seconds, excluding the reused solves and figure rendering.
+Parent and largest worker process-lifetime peaks are $1438.14$ MB and
+$106.35$ MB separately. The broader averages still require sample,
+phase and boundary refinement; a successful integration is not an
+accuracy certificate for their averages.
+
+The completed example-40 audit, revision \texttt{4d2ccb3}, reconstructs
+all Cartesian moment algebra, the incoming frames, Sobol prefixes,
+phase subsets, selected controls, source hashes and all failed gates.
+It passes 600 of 601 checks. The additional independent reflected
+trajectory, state 237872 at $\phi=\pi/2$, remains reflected, but
+its position and velocity discrepancies are $1.83824\times10^{-8}$ and
+$3.66481\times10^{-8}$. Both exceed the unchanged $10^{-8}$ target;
+the exit-time discrepancy $8.12535\times10^{-9}$ passes. The other two
+distinct Cartesian paths pass. The failed receipt is preserved under
+\path{results/refinement_audit_extended_complete/}, alongside the earlier
+narrower passing receipts. Its wall time and process peak are $3.35$ seconds
+and $417.01$ MB. Neither this selected trajectory failure nor the unresolved
+ensemble comparisons are discarded or relabeled.
+
+\subsection*{Resolving one conditional close-encounter peak}
+Example 41 fixes the problematic seed-3902 speed index 1155 above;
+it refines only the uniform incoming gyrophase and outgoing planes.
+The model, incident speed and impact are unchanged. The original
+256 states are reused bit for bit. Declared grids contain 512, 1024
+and 2048 phases at $L=24$, followed by a half-step-shifted 2048 grid;
+their union is the regular 4096-phase grid. This union is deterministic
+angular refinement, not an independent statistical sample. Every
+phase has weight $1/N$, including the eight reflected exits in the
+4096-phase family. Missing states would invalidate the average rather
+than change its normalization.
+
+The full 4096-phase average is repeated at $L=32,40,48$; regular and
+shifted 2048-phase averages are also checked at $L=48$. A separate
+weak-kick state from the prescribed boundary controls is repeated at
+$L=32,40,48$. Angular comparisons use the positive fine-grid scales
+$(M_2/\mu_{\rm ref},M_2,M_2,M_R)$, with $\mu_{\rm ref}=0.25$.
+The mean and cross moment are kept signed. The final $2048\to4096$
+maximum scaled change at $L=24$ is $0.38767\%$; the regular-versus-shifted
+2048 comparison is $0.77534\%$. Both successive angular comparisons,
+and their $L=48$ counterparts, pass the declared $5\%$ target.
+The last full-plane $L=40\to48$ change is $0.00013317\%$; the separate
+weak-state scaled mean changes by $0.0067563\%$. These pass the
+$0.5\%$ endpoint target. The $L=48$ conditional angular averages are
+\[
+\begin{aligned}
+ (\langle\Delta\mu\rangle,\langle(\Delta\mu)^2\rangle)
+   &=(-6.3530982\times10^{-4},1.7265933\times10^{-3}),\\
+ (\langle\Delta\mu_1\Delta\mu_2\rangle,\langle|\Delta\bm R_1|^2\rangle)
+   &=(1.1464358\times10^{-4},3.7311675\times10^{-3}).
+\end{aligned}
+\]
+They are angular averages at one fixed incoming state, not
+flux-integrated transport coefficients.
+
+The selected active controls include the largest four second-moment
+phases, the four closest sampled approaches, the two longest reflected
+paths, the exact original reflected state 237872, and four predetermined
+fresh phases; repeated choices are deduplicated. Maximum steps
+$0.1,0.05,0.025$ pass the unchanged $0.1\%$ moment target.
+Three independent twelve-coordinate Cartesian solves use relative
+tolerance $2\times10^{-13}$ and maximum step $0.0125$. In particular,
+the exact reflected input at $\phi=\pi/2$ agrees with the fine
+$0.025$ relative solve to $3.18288\times10^{-11}$ in position and
+$1.66200\times10^{-12}$ in velocity. A separate relative solve at
+step $0.0125$ and tolerance $2\times10^{-13}$ reaches the same reflected
+exit; its largest endpoint discrepancy is $1.06909\times10^{-9}$.
+These satisfy the unchanged $10^{-8}$ absolute targets. Energy
+errors satisfy $10^{-9}$. All 16 declared gates pass, including source,
+prior-state and original-failure integrity. The failed coarse
+Cartesian receipt and all unresolved broad-ensemble comparisons
+remain preserved; this conditional diagnosis does not repair the
+ensemble average.
+
+Revision \texttt{3179939} generates 16164 new relative solves, reuses
+256 states, and performs three separate Cartesian solves and one
+tighter relative solve. Execution takes $121.83$ seconds; parent and
+largest-worker process-lifetime peaks are $299.32$ MB and $30.29$ MB
+separately. Reused solves and figure rendering are excluded from this
+time. Results are saved under \path{results/encounter_peak_resolution/}.
+The independent saved-array audit reconstructs the Cartesian moments,
+all phase weights and grids, plane and step comparisons, reuse bits,
+historical source identities and all 16 gates: 198 checks pass in
+$0.234$ seconds with a $124.11$ MB process peak. It performs no new
+encounter integrations. Its published source is
+\path{results/encounter_peak_resolution/audit_saved_states.py};
+the receipt honestly retains its initially uncommitted audit-source
+status and hash. The readable figure is a cosmetic fixed-tick rendering
+from saved data with its own source and hash receipt; the original
+scientific figure is retained. Its $N_{48}$ entries denote angular
+refinement at $L=48$, while the plane and weak-state entries denote
+$L=40\to48$ endpoint checks.
+
 \subsection*{Resolving the failed encounter's flight budget}
 Example 17 preserves the original broad-campaign metadata and replays its
 exact failed node. The declared flight factors $6,12,24,48$ vary only the
