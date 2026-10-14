@@ -1,0 +1,72 @@
+{
+  "mode": "extend",
+  "mass": 1.0,
+  "charge": 1.0,
+  "field": 2.0,
+  "strength": 0.03,
+  "screening": 3.0,
+  "theta": 0.5,
+  "bounds": [
+    [
+      1.2,
+      2.4
+    ],
+    [
+      0.35,
+      3.0
+    ],
+    [
+      0.0,
+      2.5
+    ]
+  ],
+  "sample_levels": [
+    512,
+    1024,
+    2048
+  ],
+  "phase_levels": [
+    32,
+    64
+  ],
+  "seeds": [
+    3901,
+    3902
+  ],
+  "distances": [
+    24.0,
+    32.0
+  ],
+  "step_levels": [
+    0.1,
+    0.05,
+    0.025
+  ],
+  "rtol": 1e-12,
+  "flight_time_factor": 48.0,
+  "workers": 4,
+  "runtime_cap_s": 2400.0,
+  "expected_new_bulk_paths": 196608,
+  "influential_phase_levels": [
+    128,
+    256
+  ],
+  "influential_per_seed": 8,
+  "moment_target": 0.05,
+  "energy_target": 1e-09,
+  "boundary_target": 0.005,
+  "step_target": 0.001,
+  "control_count_each": 16,
+  "units": "normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+  "measure": "two-sided tagged plane crossing flux; b^2 uniform; squared speeds truncated exponential; periodic phase",
+  "error_scale": "mean: fine second/mu_reference; second and cross: fine second; GC kick: fine spatial second",
+  "controls": "retained full 512-state plane comparison; 16 largest new primary individual second moments and 16 predetermined flux samples at both planes and active steps; top eight phase-averaged contributors per seed at 128/256 phases",
+  "acceptance": "final 1024 to 2048 sample comparison for each seed plus independent final replica and phase checks; 512 to 1024 history diagnostic only; influential 64 to 128 and 128 to 256 per-speed comparisons required",
+  "stop_rule": "fixed domains, levels, seeds and flight budget; cap checked between batches; no missing weights renormalized; failed gates exit nonzero",
+  "scope": "one bounded broad-speed annulus from example13; inner impacts, slow/fast and perpendicular tails, inverse-complete incident surface, screening closure, correlations and mixing time unresolved",
+  "prior_artifact_sha256": {
+    "summary.json": "bb447ed1bd15208ad0497358faa2e80c20a57be289f398791d92963ba6a3d811",
+    "states.npz": "399f4b513e0bd370441b0b76011fcc19f5f8956162ba4c587ab2bf8690cda328",
+    "populations.npz": "dbfa1ab753de7c55e8f3028ccede82b3a4e1b63bcf6e53dd5a37c54e32d57722"
+  }
+}
