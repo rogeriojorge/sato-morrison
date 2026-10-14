@@ -7,6 +7,7 @@ preserved; select a fresh SM_REFINEMENT_AUDIT_OUTPUT for each replay.
 from pathlib import Path
 from time import perf_counter
 import hashlib
+import importlib.metadata
 import json
 import os
 import platform
@@ -22,6 +23,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INTERPOLATION = ROOT / os.environ.get('SM_INTERPOLATION_AUDIT_INPUT', 'results/scattering_interpolation')
 BROAD = ROOT / os.environ.get('SM_BROAD_AUDIT_INPUT', 'results/broad_speed_refinement')
 OUTPUT = ROOT / os.environ.get('SM_REFINEMENT_AUDIT_OUTPUT', 'results/refinement_audit')
+CARTESIAN_POSITION_TARGET = CARTESIAN_VELOCITY_TARGET = CARTESIAN_TIME_TARGET = 1e-8
 
 
 def digest(path):
@@ -81,6 +83,19 @@ def reconstruct(arrays, theta, mass, charge, field, distance):
     gc_kick = ro[..., :2]-ri[..., :2]+np.einsum('ij,...j->...i', quarter_turn, wo[..., :2]-wi[..., :2])/omega
     spatial = np.sum(gc_kick**2, axis=-1)/4
     return moments, zero_kick, incoming_kick, gc_kick, spatial
+
+
+def check_incoming_frame(label, arrays, mass, charge, field, distance, compare):
+    nodes = np.asarray(arrays['nodes'])
+    ri, wi = np.asarray(arrays['initial_relative_position']), np.asarray(arrays['initial_relative_velocity'])
+    omega = charge*field/mass
+    zero_velocity = np.einsum('...ij,...j->...i', rotation(-omega*np.asarray(distance)/nodes[:, 1]), wi[:, :2])
+    wanted = nodes[:, 2, None]*np.column_stack((np.cos(nodes[:, 3]), np.sin(nodes[:, 3])))
+    compare(label+' independently checked zero-plane incoming phase', zero_velocity, wanted, atol=2e-13)
+    compare(label+' incoming parallel speed', wi[:, 2], nodes[:, 1], atol=2e-13)
+    incoming_gc = ri[:, :2]+np.column_stack((wi[:, 1], -wi[:, 0]))/omega
+    compare(label+' guiding-center impact', incoming_gc, np.column_stack((nodes[:, 0], np.zeros(len(nodes)))), atol=2e-13)
+    compare(label+' incoming event plane', ri[:, 2], -np.broadcast_to(distance, len(nodes)), atol=2e-13)
 
 
 def bounded_flux(bounds, theta):
@@ -149,10 +164,11 @@ def fresh_cartesian_replay(states, index, inputs):
     velocity_error = float(np.max(abs(final[3:6]-final[9:12]-states['final_relative_velocity'][index])))
     time_error = float(abs(solve.t[-1]-states['time'][index]))
     exit_name = 'transmitted' if len(solve.t_events[0]) else 'reflected'
-    return {'index':int(index), 'passed':position_error<=1e-6 and velocity_error<=1e-6
-        and time_error<=1e-6 and exit_name==states['exit'][index],
+    return {'index':int(index), 'passed':position_error<=CARTESIAN_POSITION_TARGET and velocity_error<=CARTESIAN_VELOCITY_TARGET
+        and time_error<=CARTESIAN_TIME_TARGET and exit_name==states['exit'][index],
         'position_max_absolute_error':position_error, 'velocity_max_absolute_error':velocity_error,
-        'exit_time_absolute_error':time_error, 'exit':exit_name, 'evaluations':solve.nfev}
+        'exit_time_absolute_error':time_error, 'exit':exit_name, 'evaluations':solve.nfev,
+        'acceptance_targets':{'position':CARTESIAN_POSITION_TARGET, 'velocity':CARTESIAN_VELOCITY_TARGET, 'time':CARTESIAN_TIME_TARGET}}
 
 
 
@@ -165,6 +181,7 @@ def audit_interpolation(directory, compare, identity):
     theta, mass, charge, field, distance = (inputs[k] for k in ('theta', 'mass', 'charge', 'field', 'start_distance'))
     orders, axes = inputs['table_orders'], [np.asarray(a) for a in inputs['table_axes']]
     moments, kicks, _, _, _ = reconstruct(table, theta, mass, charge, field, distance)
+    check_incoming_frame('table', table, mass, charge, field, distance, compare)
     table_scales = np.column_stack((np.sqrt(moments[:, 1]), moments[:, 1], moments[:, 1]))
     compare('table Cartesian COM reconstruction / signal scales', moments/table_scales, table['moments']/table_scales, atol=2e-7)
     compare('table zero-plane signed kicks', kicks, table['kicks'], atol=2e-12)
@@ -218,6 +235,7 @@ def audit_interpolation(directory, compare, identity):
             raw = {k:np.asarray([r[k] for r, flag in zip(rows, good) if flag]) for k in
                 ('node', 'initial_relative_position', 'final_relative_position', 'initial_relative_velocity', 'final_relative_velocity', 'time')}
             raw['nodes'] = raw.pop('node')
+            check_incoming_frame(label, raw, mass, charge, field, distance, compare)
             actual, direct_kicks, _, _, _ = reconstruct(raw, theta, mass, charge, field, distance)
             scale = np.column_stack((np.sqrt(actual[:, 1]), actual[:, 1], actual[:, 1]))
             compare(label+' direct Cartesian moments / signal scales', actual/scale, direct[good]/scale, atol=2e-7)
@@ -302,6 +320,7 @@ def audit_broad(directory, compare, identity):
     theta, mass, charge, field = (inputs[k] for k in ('theta', 'mass', 'charge', 'field'))
     passed = arrays['status']=='passed'
     retained = {k:arrays[k][passed] for k in arrays.files}
+    check_incoming_frame('broad', retained, mass, charge, field, retained['distance'], compare)
     moments, _, incoming, gc, spatial = reconstruct(retained, theta, mass, charge, field, retained['distance'])
     # Signed means use a positive signal scale; a tiny absolute tolerance must
     # not swallow the second moment in a weak trajectory.
@@ -315,17 +334,18 @@ def audit_broad(directory, compare, identity):
     all_values[passed] = np.column_stack((moments, spatial))
     flux, mu_ref = bounded_flux(inputs['bounds'], theta), mass*theta/field
     nmax, pmax = max(inputs['sample_levels']), max(inputs['phase_levels'])
+    extended = inputs.get('mode', 'base')=='extend'
+    previous_count = sorted(inputs['sample_levels'])[-2]
+    fine_label, previous_label = f'primary{nmax}_phase{pmax}', f'primary{previous_count}_phase{pmax}'
+    phase_label, replica_label = f'primary{nmax}_phase{min(inputs["phase_levels"])}', f'replica{nmax}_phase{pmax}'
     phase = 2*np.pi*np.arange(pmax)/pmax
     sample_nodes = []
     for seed in inputs['seeds']:
         unit = qmc.Sobol(3, scramble=True, seed=seed).random_base2(int(np.log2(nmax)))
         sample = inverse_flux(unit, inputs['bounds'], theta)
         sample_nodes.append(np.column_stack((np.repeat(sample, pmax, axis=0), np.tile(phase, nmax))))
-    specs = [('primary512_phase64', 0, nmax, 1, inputs['distances'][0]),
-        ('primary256_phase64', 0, min(inputs['sample_levels']), 1, inputs['distances'][0]),
-        ('primary512_phase32', 0, nmax, pmax//min(inputs['phase_levels']), inputs['distances'][0]),
-        ('replica512_phase64', 1, nmax, 1, inputs['distances'][0]),
-        ('primary512_phase64_L32', 0, nmax, 1, inputs['distances'][-1])]
+    specs = [(case['case'], inputs['seeds'].index(case['seed']), case['sample_count'],
+        pmax//case['phase_count'], case['distance']) for case in saved['cases']]
     recomputed, completeness = {}, {}
     for label, seed_index, count, stride, distance in specs:
         ids = populations[label]
@@ -351,10 +371,13 @@ def audit_broad(directory, compare, identity):
             compare(label+' diffusion half factor', integral[1]/2, case['diffusion_per_density'], atol=2e-12)
             compare(label+' reflected fraction', np.mean(arrays['exit'][ids]=='reflected'), case['reflected_fraction'], atol=0)
     compare('broad thermal crossing flux retained fraction', flux/(2*np.pi*(inputs['bounds'][0][1]**2-inputs['bounds'][0][0]**2)*np.sqrt(theta/np.pi)), saved['velocity_flux_retained_fraction'])
-    relationships = {'sample':('primary512_phase64', 'primary256_phase64'),
-        'phase':('primary512_phase64', 'primary512_phase32'),
-        'replica':('primary512_phase64', 'replica512_phase64'),
-        'boundary_ensemble':('primary512_phase64_L32', 'primary512_phase64')}
+    relationships = {'sample':(fine_label, previous_label),
+        'phase':(fine_label, phase_label), 'replica':(fine_label, replica_label),
+        'boundary_ensemble':('primary512_phase64_L32', 'primary512_phase64' if extended else fine_label)}
+    if extended:
+        relationships.update(sample_replica=(replica_label, f'replica{previous_count}_phase{pmax}'),
+            history_primary512_to1024=(previous_label, 'primary512_phase64'),
+            history_replica512_to1024=(f'replica{previous_count}_phase{pmax}', 'replica512_phase64'))
     computed_checks = {}
     for name, (a, b) in relationships.items():
         computed_checks[name] = scaled_changes(recomputed[a], recomputed[b], mu_ref) if a in recomputed and b in recomputed else None
@@ -363,15 +386,35 @@ def audit_broad(directory, compare, identity):
         else:
             compare('broad '+name+' scaled changes', computed_checks[name], saved['comparisons'][name], atol=3e-10)
     control = saved['controls']
-    primary = populations['primary512_phase64']
-    if completeness['primary512_phase64']:
-        top = np.argsort(all_values[primary, 1])[-inputs['control_count_each']:]
+    primary = populations[fine_label]
+    if completeness[fine_label]:
+        eligible = np.arange(len(primary)) >= (512*pmax if extended else 0)
+        top = np.flatnonzero(eligible)[np.argsort(all_values[primary[eligible], 1])[-inputs['control_count_each']:]]
         fresh_unit = qmc.Sobol(3, scramble=True, seed=3903).random_base2(4)
         fresh = inverse_flux(fresh_unit, inputs['bounds'], theta)
         fresh_phase = 2*np.pi*qmc.Sobol(1, scramble=True, seed=3904).random_base2(4).ravel()
         wanted = np.vstack((sample_nodes[0][top], np.column_stack((fresh, fresh_phase))))
         compare('broad largest-contributor and fresh controls', wanted, control['nodes'], atol=2e-14)
-        identity('broad control selection labels', control['selection']==['largest_primary_second']*16+['fresh_predetermined_flux']*16)
+        identity('broad control selection labels', control['selection']==['largest_new_primary_second' if extended else 'largest_primary_second']*16+['fresh_predetermined_flux']*16)
+        if 'primary_indices' in control:
+            compare('broad contributor control indices', top, control['primary_indices'], atol=0)
+        if extended:
+            plane_values = []
+            for distance in inputs['distances']:
+                ids = np.asarray(control[f'plane_{distance:g}'])
+                valid = ids>=0
+                compare(f'broad new plane {distance} nodes', arrays['nodes'][ids[valid]], wanted[valid], atol=2e-14)
+                compare(f'broad new plane {distance} distance', arrays['distance'][ids[valid]], np.full(sum(valid), distance), atol=0)
+                compare(f'broad new plane {distance} step', arrays['step'][ids[valid]], np.full(sum(valid), .2), atol=0)
+                plane_values.append(all_values[ids] if np.all(valid) and np.all(passed[ids]) else None)
+            a, b = plane_values[-1], plane_values[-2]
+            if a is not None and b is not None:
+                scales = np.column_stack((a[:, 1]/mu_ref, a[:, 1], a[:, 1], a[:, 3]))
+                computed_checks['boundary_new_states'] = np.max(abs(a-b)/scales, axis=0)
+                compare('broad new contributor plane changes', computed_checks['boundary_new_states'], saved['comparisons']['boundary_new_states'], atol=3e-10)
+            else:
+                computed_checks['boundary_new_states'] = None
+                identity('broad missing new-plane comparison unresolved', saved['comparisons']['boundary_new_states'] is None)
         for step in inputs['step_levels']:
             ids = np.asarray(control[str(step)])
             valid = ids>=0
@@ -389,6 +432,68 @@ def audit_broad(directory, compare, identity):
             computed_checks['active_step'], ratios = None, None
     else:
         computed_checks['active_step'], ratios = None, None
+        if extended:
+            computed_checks['boundary_new_states'] = None
+    if extended:
+        phase_changes, expected_phase_controls = [], []
+        for seed_index, label in enumerate((fine_label, replica_label)):
+            ids = populations[label]
+            if not completeness[label]:
+                continue
+            averaged = all_values[ids, 1].reshape(nmax, pmax).mean(axis=1)
+            selected = np.argsort(averaged)[-inputs['influential_per_seed']:]
+            expected_phase_controls.extend((inputs['seeds'][seed_index], int(i)) for i in selected)
+        identity('broad influential speed selection and order', expected_phase_controls==[(r['seed'], r['sample_index']) for r in saved['phase_controls']])
+        for row in saved['phase_controls']:
+            seed_index = inputs['seeds'].index(row['seed'])
+            point = sample_nodes[seed_index].reshape(nmax, pmax, 4)[row['sample_index'], 0, :3]
+            compare('broad influential incoming speed', point, row['point'], atol=2e-14)
+            primary_or_replica = populations[fine_label if seed_index==0 else replica_label]
+            average = np.mean(all_values[primary_or_replica, 1].reshape(nmax, pmax)[row['sample_index']])
+            compare('broad influential original phase average', average, row['phase_average_second'], atol=2e-13)
+            values = []
+            for count in [pmax]+inputs['influential_phase_levels']:
+                ids = np.asarray(row[f'phase{count}_ids'])
+                if count==pmax:
+                    compare('broad influential original population IDs', ids,
+                        primary_or_replica.reshape(nmax, pmax)[row['sample_index']], atol=0)
+                wanted = np.column_stack((np.repeat(point[None], count, axis=0), 2*np.pi*np.arange(count)/count))
+                valid = ids>=0
+                compare(f'broad influential {count} phases', arrays['nodes'][ids[valid]], wanted[valid], atol=2e-14)
+                compare(f'broad influential {count} plane', arrays['distance'][ids[valid]], np.full(sum(valid), inputs['distances'][0]), atol=0)
+                compare(f'broad influential {count} step', arrays['step'][ids[valid]], np.full(sum(valid), .2), atol=0)
+                vector = np.mean(all_values[ids], axis=0) if np.all(valid) and np.all(passed[ids]) else None
+                if vector is None:
+                    identity(f'broad influential {count} missing vector unresolved', row[f'phase{count}_observables'] is None)
+                else:
+                    compare(f'broad influential {count} reconstructed observable', vector, row[f'phase{count}_observables'], atol=2e-13)
+                values.append(vector)
+            if all(v is not None for v in values):
+                final_scale = np.array([values[-1][1]/mu_ref, values[-1][1], values[-1][1], values[-1][3]])
+                change = abs(values[-1]-values[-2])/final_scale
+                early_change = abs(values[-2]-values[-3])/final_scale
+            else:
+                change, early_change = None, None
+            if change is None:
+                identity('broad influential missing change unresolved', row['changes'] is None)
+            else:
+                compare('broad influential per-speed convergence', change, row['changes'], atol=3e-10)
+            if early_change is None:
+                identity('broad influential missing earlier change unresolved', row['changes64_to128'] is None)
+            else:
+                compare('broad influential per-speed earlier convergence', early_change, row['changes64_to128'], atol=3e-10)
+            phase_changes.extend((early_change, change))
+        computed_checks['phase_influential'] = np.max(phase_changes, axis=0) if phase_changes and all(c is not None for c in phase_changes) and completeness[fine_label] and completeness[replica_label] else None
+        if computed_checks['phase_influential'] is None:
+            identity('broad influential unresolved global comparison', saved['comparisons']['phase_influential'] is None)
+        else:
+            compare('broad worst influential phase changes', computed_checks['phase_influential'], saved['comparisons']['phase_influential'], atol=3e-10)
+        prior = ROOT/'results/broad_speed_refinement'
+        prior_arrays = np.load(prior/'states.npz')
+        identity('broad retained state count', saved['reused_encounters']==len(prior_arrays['nodes']))
+        for key in prior_arrays.files:
+            identity('broad bit-identical prior state '+key, np.array_equal(arrays[key][:len(prior_arrays[key])], prior_arrays[key]))
+        identity('broad new-state count', saved['new_encounters']==len(passed)-saved['reused_encounters'])
     def gate(values, target):
         return values is not None and bool(np.all(np.isfinite(values)) and max(values)<=target)
     gates = {name:gate(computed_checks[name], inputs['moment_target']) for name in ('sample', 'phase', 'replica')}
@@ -398,6 +503,11 @@ def audit_broad(directory, compare, identity):
         complete=all(completeness.values()) and np.all(passed) and not saved['cap_exhausted'],
         energy=bool(len(passed)) and bool(np.all(passed) and np.all(arrays['energy_error']<=inputs['energy_target'])),
         source_integrity=summary['experiment_dependency_sha256']==summary['experiment_dependency_sha256_end'])
+    if extended:
+        gates.update(sample_replica=gate(computed_checks['sample_replica'], inputs['moment_target']),
+            phase_influential=gate(computed_checks['phase_influential'], inputs['moment_target']),
+            boundary_new_states=gate(computed_checks['boundary_new_states'], inputs['boundary_target']),
+            prior_integrity=all(digest(ROOT/'results/broad_speed_refinement'/name)==wanted for name, wanted in inputs['prior_artifact_sha256'].items()))
     gates = {k:bool(v) for k, v in gates.items()}
     identity('broad independently rebuilt gates', gates==saved['required_gates'])
     identity('broad overall status retains every gate', saved['status']==('passed' if all(gates.values()) else 'unresolved'))
@@ -406,7 +516,10 @@ def audit_broad(directory, compare, identity):
     # Select difficult actual paths and a reflected member when one is available.
     candidates = []
     if np.any(passed):
-        accepted = np.flatnonzero(passed)
+        # Check distinct members of the physical ensemble rather than repeated
+        # tighter-step copies of one contributor in the auxiliary controls.
+        accepted = primary[primary>=0]
+        accepted = accepted[passed[accepted]]
         candidates.extend([accepted[np.argmin(arrays['min_separation'][accepted])], accepted[np.argmax(all_values[accepted, 1])]])
         reflected = accepted[arrays['exit'][accepted]=='reflected']
         if len(reflected):
@@ -452,6 +565,7 @@ report = {'status':'passed' if not failures else 'failed', 'failures':failures,
     'audit_working_tree':subprocess.check_output(['git', 'status', '--short'], cwd=ROOT, text=True).strip(),
     'audit_source_sha256':digest(Path(__file__).resolve()), 'python':sys.version,
     'platform':platform.platform(), 'wall_s':perf_counter()-start,
+    'versions':{name:importlib.metadata.version(name) for name in ('numpy', 'scipy')},
     'parent_peak_rss_bytes':resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024),
     'scope':'Saved Cartesian-state and sampling reconstruction; selected independent twelve-coordinate paths. No infinite-domain or plasma calibration inference.'}
 (OUTPUT/'summary.json').write_text(json.dumps(report, indent=2, allow_nan=False)+'\n')
