@@ -171,6 +171,31 @@ def fresh_cartesian_replay(states, index, inputs):
         'acceptance_targets':{'position':CARTESIAN_POSITION_TARGET, 'velocity':CARTESIAN_VELOCITY_TARGET, 'time':CARTESIAN_TIME_TARGET}}
 
 
+def select_cartesian_replays(states, primary_ids, values, count=3):
+    """Include a reflected accepted state and avoid repeat incident-node copies."""
+    passed = np.asarray(states['status'])=='passed'
+    primary = np.asarray(primary_ids)
+    primary = primary[primary>=0]
+    primary = primary[passed[primary]]
+    candidates = []
+    if len(primary):
+        candidates.extend((primary[np.argmin(states['min_separation'][primary])],
+            primary[np.argmax(values[primary, 1])]))
+    reflected = np.flatnonzero(passed & (np.asarray(states['exit'])=='reflected'))
+    if len(reflected):
+        candidates.append(reflected[0])
+    candidates.extend(primary[:count])
+    selected, seen = [], set()
+    for index in candidates:
+        node = tuple(states['nodes'][index])
+        if node not in seen:
+            seen.add(node)
+            selected.append(int(index))
+        if len(selected)==count:
+            break
+    return selected
+
+
 
 
 def audit_interpolation(directory, compare, identity):
@@ -513,19 +538,8 @@ def audit_broad(directory, compare, identity):
     identity('broad overall status retains every gate', saved['status']==('passed' if all(gates.values()) else 'unresolved'))
     identity('broad unique encounter count', len(passed)==saved['unique_encounters'])
     identity('broad failure count', int(np.count_nonzero(~passed))==saved['failures'])
-    # Select difficult actual paths and a reflected member when one is available.
-    candidates = []
-    if np.any(passed):
-        # Check distinct members of the physical ensemble rather than repeated
-        # tighter-step copies of one contributor in the auxiliary controls.
-        accepted = primary[primary>=0]
-        accepted = accepted[passed[accepted]]
-        candidates.extend([accepted[np.argmin(arrays['min_separation'][accepted])], accepted[np.argmax(all_values[accepted, 1])]])
-        reflected = accepted[arrays['exit'][accepted]=='reflected']
-        if len(reflected):
-            candidates.append(reflected[0])
-        candidates.append(accepted[0])
-    replays = [fresh_cartesian_replay(arrays, i, inputs) for i in list(dict.fromkeys(candidates))[:3]]
+    candidates = select_cartesian_replays(arrays, primary, all_values)
+    replays = [fresh_cartesian_replay(arrays, i, inputs) for i in candidates]
     for row in replays:
         identity('broad independent Cartesian path '+str(row['index']), row['passed'])
     return {'producer_status':saved['status'], 'reconstructed_gates':gates,
