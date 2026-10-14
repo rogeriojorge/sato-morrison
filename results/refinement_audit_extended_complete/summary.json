@@ -1,0 +1,3091 @@
+{
+  "status": "failed",
+  "failures": [
+    "broad independent Cartesian path 237872"
+  ],
+  "checks": [
+    {
+      "name": "table independently checked zero-plane incoming phase",
+      "passed": true,
+      "maximum_absolute_error": 4.912736883966318e-15
+    },
+    {
+      "name": "table incoming parallel speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "table guiding-center impact",
+      "passed": true,
+      "maximum_absolute_error": 4.440892098500626e-16
+    },
+    {
+      "name": "table incoming event plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "table Cartesian COM reconstruction / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 3.6926017799032707e-13
+    },
+    {
+      "name": "table zero-plane signed kicks",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "table tensor-node order",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "table size",
+      "passed": true
+    },
+    {
+      "name": "table independently rebuilt coordinate 0",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "table independently rebuilt coordinate 1",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "table independently rebuilt coordinate 2",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "table uniform periodic phase",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "original128 unchanged archived nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "original128 unchanged direct moments",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "fresh128 unchanged archived nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "fresh128 unchanged direct moments",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "new independent seed and nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "weak fixed anchor neighborhoods",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "table algebra maximum relative second-moment discrepancy",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "original128 every planned row retained",
+      "passed": true
+    },
+    {
+      "name": "original128 independently checked zero-plane incoming phase",
+      "passed": true,
+      "maximum_absolute_error": 2.8033131371785203e-15
+    },
+    {
+      "name": "original128 incoming parallel speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "original128 guiding-center impact",
+      "passed": true,
+      "maximum_absolute_error": 4.440892098500626e-16
+    },
+    {
+      "name": "original128 incoming event plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "original128 direct Cartesian moments / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 4.135580766728708e-14
+    },
+    {
+      "name": "original128 direct zero-plane kicks",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "original128 signed separate tensor spline / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 4.492384242382741e-11
+    },
+    {
+      "name": "original128 signed rms",
+      "passed": true,
+      "maximum_absolute_error": 2.1587581982424053e-13
+    },
+    {
+      "name": "original128 signed second_p95",
+      "passed": true,
+      "maximum_absolute_error": 6.730338942412262e-13
+    },
+    {
+      "name": "original128 signed second_max",
+      "passed": true,
+      "maximum_absolute_error": 8.837375276016246e-14
+    },
+    {
+      "name": "original128 signed worst_index",
+      "passed": true
+    },
+    {
+      "name": "original128 signed minimum_direct_second",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "original128 signed fraction_above_five_percent",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "original128 signed acceptance status",
+      "passed": true
+    },
+    {
+      "name": "original128 legacy separate tensor spline / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 3.876376997169473e-11
+    },
+    {
+      "name": "original128 legacy rms",
+      "passed": true,
+      "maximum_absolute_error": 3.4267966068923794e-13
+    },
+    {
+      "name": "original128 legacy second_p95",
+      "passed": true,
+      "maximum_absolute_error": 3.767215706051985e-12
+    },
+    {
+      "name": "original128 legacy second_max",
+      "passed": true,
+      "maximum_absolute_error": 3.3158364942664775e-11
+    },
+    {
+      "name": "original128 legacy worst_index",
+      "passed": true
+    },
+    {
+      "name": "original128 legacy minimum_direct_second",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "original128 legacy fraction_above_five_percent",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "original128 legacy acceptance status",
+      "passed": true
+    },
+    {
+      "name": "fresh128 every planned row retained",
+      "passed": true
+    },
+    {
+      "name": "fresh128 independently checked zero-plane incoming phase",
+      "passed": true,
+      "maximum_absolute_error": 3.858025010572419e-15
+    },
+    {
+      "name": "fresh128 incoming parallel speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "fresh128 guiding-center impact",
+      "passed": true,
+      "maximum_absolute_error": 2.220446049250313e-16
+    },
+    {
+      "name": "fresh128 incoming event plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "fresh128 direct Cartesian moments / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 4.4075854077618715e-14
+    },
+    {
+      "name": "fresh128 direct zero-plane kicks",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "fresh128 signed separate tensor spline / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 1.9747758983612584e-11
+    },
+    {
+      "name": "fresh128 signed rms",
+      "passed": true,
+      "maximum_absolute_error": 3.2779822693035365e-13
+    },
+    {
+      "name": "fresh128 signed second_p95",
+      "passed": true,
+      "maximum_absolute_error": 3.602673714908633e-13
+    },
+    {
+      "name": "fresh128 signed second_max",
+      "passed": true,
+      "maximum_absolute_error": 2.757793993168889e-13
+    },
+    {
+      "name": "fresh128 signed worst_index",
+      "passed": true
+    },
+    {
+      "name": "fresh128 signed minimum_direct_second",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "fresh128 signed fraction_above_five_percent",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "fresh128 signed acceptance status",
+      "passed": true
+    },
+    {
+      "name": "fresh128 legacy separate tensor spline / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 2.7180924178082932e-11
+    },
+    {
+      "name": "fresh128 legacy rms",
+      "passed": true,
+      "maximum_absolute_error": 4.683866142163318e-13
+    },
+    {
+      "name": "fresh128 legacy second_p95",
+      "passed": true,
+      "maximum_absolute_error": 1.5424800325902766e-11
+    },
+    {
+      "name": "fresh128 legacy second_max",
+      "passed": true,
+      "maximum_absolute_error": 9.126033262418787e-14
+    },
+    {
+      "name": "fresh128 legacy worst_index",
+      "passed": true
+    },
+    {
+      "name": "fresh128 legacy minimum_direct_second",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "fresh128 legacy fraction_above_five_percent",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "fresh128 legacy acceptance status",
+      "passed": true
+    },
+    {
+      "name": "new128 every planned row retained",
+      "passed": true
+    },
+    {
+      "name": "new128 independently checked zero-plane incoming phase",
+      "passed": true,
+      "maximum_absolute_error": 2.55351295663786e-15
+    },
+    {
+      "name": "new128 incoming parallel speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "new128 guiding-center impact",
+      "passed": true,
+      "maximum_absolute_error": 4.440892098500626e-16
+    },
+    {
+      "name": "new128 incoming event plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "new128 direct Cartesian moments / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 3.5083047578154947e-14
+    },
+    {
+      "name": "new128 direct zero-plane kicks",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "new128 signed separate tensor spline / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 3.8475889141409425e-11
+    },
+    {
+      "name": "new128 signed rms",
+      "passed": true,
+      "maximum_absolute_error": 9.709778554106707e-14
+    },
+    {
+      "name": "new128 signed second_p95",
+      "passed": true,
+      "maximum_absolute_error": 1.691424778016426e-13
+    },
+    {
+      "name": "new128 signed second_max",
+      "passed": true,
+      "maximum_absolute_error": 2.2437607327674414e-13
+    },
+    {
+      "name": "new128 signed worst_index",
+      "passed": true
+    },
+    {
+      "name": "new128 signed minimum_direct_second",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "new128 signed fraction_above_five_percent",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "new128 signed acceptance status",
+      "passed": true
+    },
+    {
+      "name": "signed fresh percentile order-statistic interval",
+      "passed": true,
+      "maximum_absolute_error": 1.9876322809864178e-12
+    },
+    {
+      "name": "signed fresh interval order ranks",
+      "passed": true
+    },
+    {
+      "name": "new128 legacy separate tensor spline / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 2.8302915566769116e-11
+    },
+    {
+      "name": "new128 legacy rms",
+      "passed": true,
+      "maximum_absolute_error": 1.088725463949114e-13
+    },
+    {
+      "name": "new128 legacy second_p95",
+      "passed": true,
+      "maximum_absolute_error": 9.513549670270294e-12
+    },
+    {
+      "name": "new128 legacy second_max",
+      "passed": true,
+      "maximum_absolute_error": 4.851230528402084e-12
+    },
+    {
+      "name": "new128 legacy worst_index",
+      "passed": true
+    },
+    {
+      "name": "new128 legacy minimum_direct_second",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "new128 legacy fraction_above_five_percent",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "new128 legacy acceptance status",
+      "passed": true
+    },
+    {
+      "name": "legacy fresh percentile order-statistic interval",
+      "passed": true,
+      "maximum_absolute_error": 7.673861546209082e-13
+    },
+    {
+      "name": "legacy fresh interval order ranks",
+      "passed": true
+    },
+    {
+      "name": "weak98 every planned row retained",
+      "passed": true
+    },
+    {
+      "name": "weak98 independently checked zero-plane incoming phase",
+      "passed": true,
+      "maximum_absolute_error": 3.028827189055505e-15
+    },
+    {
+      "name": "weak98 incoming parallel speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "weak98 guiding-center impact",
+      "passed": true,
+      "maximum_absolute_error": 4.440892098500626e-16
+    },
+    {
+      "name": "weak98 incoming event plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "weak98 direct Cartesian moments / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 4.737876757587856e-13
+    },
+    {
+      "name": "weak98 direct zero-plane kicks",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "weak98 signed separate tensor spline / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 1.0996525912077004e-10
+    },
+    {
+      "name": "weak98 signed rms",
+      "passed": true,
+      "maximum_absolute_error": 1.6459635304028053e-12
+    },
+    {
+      "name": "weak98 signed second_p95",
+      "passed": true,
+      "maximum_absolute_error": 7.432588398914586e-12
+    },
+    {
+      "name": "weak98 signed second_max",
+      "passed": true,
+      "maximum_absolute_error": 7.37232497272089e-12
+    },
+    {
+      "name": "weak98 signed worst_index",
+      "passed": true
+    },
+    {
+      "name": "weak98 signed minimum_direct_second",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "weak98 signed fraction_above_five_percent",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "weak98 signed acceptance status",
+      "passed": true
+    },
+    {
+      "name": "weak98 legacy separate tensor spline / signal scales",
+      "passed": true,
+      "maximum_absolute_error": 2.4740542947654376e-11
+    },
+    {
+      "name": "weak98 legacy rms",
+      "passed": true,
+      "maximum_absolute_error": 1.70121694509362e-11
+    },
+    {
+      "name": "weak98 legacy second_p95",
+      "passed": true,
+      "maximum_absolute_error": 3.065458997753012e-11
+    },
+    {
+      "name": "weak98 legacy second_max",
+      "passed": true,
+      "maximum_absolute_error": 8.676437346366583e-11
+    },
+    {
+      "name": "weak98 legacy worst_index",
+      "passed": true
+    },
+    {
+      "name": "weak98 legacy minimum_direct_second",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "weak98 legacy fraction_above_five_percent",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "weak98 legacy acceptance status",
+      "passed": true
+    },
+    {
+      "name": "legacy unchanged archived predictions",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement node selection",
+      "passed": true
+    },
+    {
+      "name": "tight second-moment relative change",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "tight refinement status",
+      "passed": true
+    },
+    {
+      "name": "tight refinement planned count",
+      "passed": true
+    },
+    {
+      "name": "interpolation all independently rebuilt gates",
+      "passed": true
+    },
+    {
+      "name": "interpolation overall status retains every gate",
+      "passed": true
+    },
+    {
+      "name": "interpolation unique new encounter count",
+      "passed": true
+    },
+    {
+      "name": "broad independently checked zero-plane incoming phase",
+      "passed": true,
+      "maximum_absolute_error": 3.3861802251067274e-14
+    },
+    {
+      "name": "broad incoming parallel speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad guiding-center impact",
+      "passed": true,
+      "maximum_absolute_error": 4.440892098500626e-16
+    },
+    {
+      "name": "broad incoming event plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad Cartesian COM moments / positive scales",
+      "passed": true,
+      "maximum_absolute_error": 7.757017250753506e-12
+    },
+    {
+      "name": "broad incoming-frame kick",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad GC displacement",
+      "passed": true,
+      "maximum_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "name": "broad individual GC second moment",
+      "passed": true,
+      "maximum_absolute_error": 1.6653345369377348e-16
+    },
+    {
+      "name": "broad no nonfinite accepted state",
+      "passed": true
+    },
+    {
+      "name": "primary2048_phase64 expected population length",
+      "passed": true
+    },
+    {
+      "name": "primary2048_phase64 ID range",
+      "passed": true
+    },
+    {
+      "name": "primary2048_phase64 Sobol and phase nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary2048_phase64 event distances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary2048_phase64 active step limit",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary2048_phase64 completeness status",
+      "passed": true
+    },
+    {
+      "name": "primary2048_phase64 missing weights retained",
+      "passed": true
+    },
+    {
+      "name": "primary2048_phase64 exact flux",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary2048_phase64 integral",
+      "passed": true,
+      "maximum_absolute_error": 3.333921680392926e-18
+    },
+    {
+      "name": "primary2048_phase64 diffusion half factor",
+      "passed": true,
+      "maximum_absolute_error": 1.0164395367051604e-20
+    },
+    {
+      "name": "primary2048_phase64 reflected fraction",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary1024_phase64 expected population length",
+      "passed": true
+    },
+    {
+      "name": "primary1024_phase64 ID range",
+      "passed": true
+    },
+    {
+      "name": "primary1024_phase64 Sobol and phase nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary1024_phase64 event distances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary1024_phase64 active step limit",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary1024_phase64 completeness status",
+      "passed": true
+    },
+    {
+      "name": "primary1024_phase64 missing weights retained",
+      "passed": true
+    },
+    {
+      "name": "primary1024_phase64 exact flux",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary1024_phase64 integral",
+      "passed": true,
+      "maximum_absolute_error": 2.859583229930518e-18
+    },
+    {
+      "name": "primary1024_phase64 diffusion half factor",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "primary1024_phase64 reflected fraction",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary2048_phase32 expected population length",
+      "passed": true
+    },
+    {
+      "name": "primary2048_phase32 ID range",
+      "passed": true
+    },
+    {
+      "name": "primary2048_phase32 Sobol and phase nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary2048_phase32 event distances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary2048_phase32 active step limit",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary2048_phase32 completeness status",
+      "passed": true
+    },
+    {
+      "name": "primary2048_phase32 missing weights retained",
+      "passed": true
+    },
+    {
+      "name": "primary2048_phase32 exact flux",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary2048_phase32 integral",
+      "passed": true,
+      "maximum_absolute_error": 3.144186300207963e-18
+    },
+    {
+      "name": "primary2048_phase32 diffusion half factor",
+      "passed": true,
+      "maximum_absolute_error": 2.0328790734103208e-20
+    },
+    {
+      "name": "primary2048_phase32 reflected fraction",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "replica2048_phase64 expected population length",
+      "passed": true
+    },
+    {
+      "name": "replica2048_phase64 ID range",
+      "passed": true
+    },
+    {
+      "name": "replica2048_phase64 Sobol and phase nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "replica2048_phase64 event distances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "replica2048_phase64 active step limit",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "replica2048_phase64 completeness status",
+      "passed": true
+    },
+    {
+      "name": "replica2048_phase64 missing weights retained",
+      "passed": true
+    },
+    {
+      "name": "replica2048_phase64 exact flux",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "replica2048_phase64 integral",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-19
+    },
+    {
+      "name": "replica2048_phase64 diffusion half factor",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "replica2048_phase64 reflected fraction",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "replica1024_phase64 expected population length",
+      "passed": true
+    },
+    {
+      "name": "replica1024_phase64 ID range",
+      "passed": true
+    },
+    {
+      "name": "replica1024_phase64 Sobol and phase nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "replica1024_phase64 event distances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "replica1024_phase64 active step limit",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "replica1024_phase64 completeness status",
+      "passed": true
+    },
+    {
+      "name": "replica1024_phase64 missing weights retained",
+      "passed": true
+    },
+    {
+      "name": "replica1024_phase64 exact flux",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "replica1024_phase64 integral",
+      "passed": true,
+      "maximum_absolute_error": 1.8092623753351855e-18
+    },
+    {
+      "name": "replica1024_phase64 diffusion half factor",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "replica1024_phase64 reflected fraction",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase64 expected population length",
+      "passed": true
+    },
+    {
+      "name": "primary512_phase64 ID range",
+      "passed": true
+    },
+    {
+      "name": "primary512_phase64 Sobol and phase nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase64 event distances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase64 active step limit",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase64 completeness status",
+      "passed": true
+    },
+    {
+      "name": "primary512_phase64 missing weights retained",
+      "passed": true
+    },
+    {
+      "name": "primary512_phase64 exact flux",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase64 integral",
+      "passed": true,
+      "maximum_absolute_error": 2.1141942363467336e-18
+    },
+    {
+      "name": "primary512_phase64 diffusion half factor",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "primary512_phase64 reflected fraction",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "replica512_phase64 expected population length",
+      "passed": true
+    },
+    {
+      "name": "replica512_phase64 ID range",
+      "passed": true
+    },
+    {
+      "name": "replica512_phase64 Sobol and phase nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "replica512_phase64 event distances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "replica512_phase64 active step limit",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "replica512_phase64 completeness status",
+      "passed": true
+    },
+    {
+      "name": "replica512_phase64 missing weights retained",
+      "passed": true
+    },
+    {
+      "name": "replica512_phase64 exact flux",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "replica512_phase64 integral",
+      "passed": true,
+      "maximum_absolute_error": 8.131516293641283e-19
+    },
+    {
+      "name": "replica512_phase64 diffusion half factor",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-21
+    },
+    {
+      "name": "replica512_phase64 reflected fraction",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase64_L32 expected population length",
+      "passed": true
+    },
+    {
+      "name": "primary512_phase64_L32 ID range",
+      "passed": true
+    },
+    {
+      "name": "primary512_phase64_L32 Sobol and phase nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase64_L32 event distances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase64_L32 active step limit",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase64_L32 completeness status",
+      "passed": true
+    },
+    {
+      "name": "primary512_phase64_L32 missing weights retained",
+      "passed": true
+    },
+    {
+      "name": "primary512_phase64_L32 exact flux",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "primary512_phase64_L32 integral",
+      "passed": true,
+      "maximum_absolute_error": 5.55653613398821e-19
+    },
+    {
+      "name": "primary512_phase64_L32 diffusion half factor",
+      "passed": true,
+      "maximum_absolute_error": 3.049318610115481e-20
+    },
+    {
+      "name": "primary512_phase64_L32 reflected fraction",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad thermal crossing flux retained fraction",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad sample scaled changes",
+      "passed": true,
+      "maximum_absolute_error": 2.0816681711721685e-15
+    },
+    {
+      "name": "broad phase scaled changes",
+      "passed": true,
+      "maximum_absolute_error": 1.0609189308313782e-15
+    },
+    {
+      "name": "broad replica scaled changes",
+      "passed": true,
+      "maximum_absolute_error": 1.3128387266192476e-14
+    },
+    {
+      "name": "broad boundary_ensemble scaled changes",
+      "passed": true,
+      "maximum_absolute_error": 6.608965041831022e-15
+    },
+    {
+      "name": "broad sample_replica scaled changes",
+      "passed": true,
+      "maximum_absolute_error": 6.175615574477433e-15
+    },
+    {
+      "name": "broad history_primary512_to1024 scaled changes",
+      "passed": true,
+      "maximum_absolute_error": 2.261212050935768e-14
+    },
+    {
+      "name": "broad history_replica512_to1024 scaled changes",
+      "passed": true,
+      "maximum_absolute_error": 1.164346397075633e-14
+    },
+    {
+      "name": "broad largest-contributor and fresh controls",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad control selection labels",
+      "passed": true
+    },
+    {
+      "name": "broad contributor control indices",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad new plane 24.0 nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad new plane 24.0 distance",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad new plane 24.0 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad new plane 32.0 nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad new plane 32.0 distance",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad new plane 32.0 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad new contributor plane changes",
+      "passed": true,
+      "maximum_absolute_error": 1.3530843112619095e-16
+    },
+    {
+      "name": "broad control nodes step 0.1",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad control step 0.1",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad control nodes step 0.05",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad control step 0.05",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad control nodes step 0.025",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad control step 0.025",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad active step changes",
+      "passed": true,
+      "maximum_absolute_error": 1.4737705062946227e-16
+    },
+    {
+      "name": "broad active actual-step ratios",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential speed selection and order",
+      "passed": true
+    },
+    {
+      "name": "broad influential incoming speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential original phase average",
+      "passed": true,
+      "maximum_absolute_error": 8.131516293641283e-20
+    },
+    {
+      "name": "broad influential original population IDs",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.1275702593849246e-17
+    },
+    {
+      "name": "broad influential 128 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.3010426069826053e-17
+    },
+    {
+      "name": "broad influential 256 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-17
+    },
+    {
+      "name": "broad influential per-speed convergence",
+      "passed": true,
+      "maximum_absolute_error": 8.417185044741817e-15
+    },
+    {
+      "name": "broad influential per-speed earlier convergence",
+      "passed": true,
+      "maximum_absolute_error": 3.366874014898197e-15
+    },
+    {
+      "name": "broad influential incoming speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential original phase average",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "broad influential original population IDs",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.1275702593849246e-17
+    },
+    {
+      "name": "broad influential 128 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.951563910473908e-17
+    },
+    {
+      "name": "broad influential 256 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.951563910473908e-17
+    },
+    {
+      "name": "broad influential per-speed convergence",
+      "passed": true,
+      "maximum_absolute_error": 6.028498158786498e-16
+    },
+    {
+      "name": "broad influential per-speed earlier convergence",
+      "passed": true,
+      "maximum_absolute_error": 1.5272195309622437e-14
+    },
+    {
+      "name": "broad influential incoming speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential original phase average",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "broad influential original population IDs",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.1275702593849246e-17
+    },
+    {
+      "name": "broad influential 128 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.2576745200831851e-17
+    },
+    {
+      "name": "broad influential 256 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.5395670849294163e-17
+    },
+    {
+      "name": "broad influential per-speed convergence",
+      "passed": true,
+      "maximum_absolute_error": 3.225334063721606e-15
+    },
+    {
+      "name": "broad influential per-speed earlier convergence",
+      "passed": true,
+      "maximum_absolute_error": 1.4886180531520701e-15
+    },
+    {
+      "name": "broad influential incoming speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential original phase average",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "broad influential original population IDs",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 6.938893903907228e-18
+    },
+    {
+      "name": "broad influential 128 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 9.974659986866641e-18
+    },
+    {
+      "name": "broad influential 256 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.0408340855860843e-17
+    },
+    {
+      "name": "broad influential per-speed convergence",
+      "passed": true,
+      "maximum_absolute_error": 4.952974337092686e-16
+    },
+    {
+      "name": "broad influential per-speed earlier convergence",
+      "passed": true,
+      "maximum_absolute_error": 2.3115190317390955e-15
+    },
+    {
+      "name": "broad influential incoming speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential original phase average",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "broad influential original population IDs",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.0408340855860843e-17
+    },
+    {
+      "name": "broad influential 128 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 7.37257477290143e-18
+    },
+    {
+      "name": "broad influential 256 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 5.204170427930421e-18
+    },
+    {
+      "name": "broad influential per-speed convergence",
+      "passed": true,
+      "maximum_absolute_error": 1.4909157052949332e-15
+    },
+    {
+      "name": "broad influential per-speed earlier convergence",
+      "passed": true,
+      "maximum_absolute_error": 2.0872820077615495e-15
+    },
+    {
+      "name": "broad influential incoming speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential original phase average",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "broad influential original population IDs",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.214306433183765e-17
+    },
+    {
+      "name": "broad influential 128 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 8.673617379884035e-18
+    },
+    {
+      "name": "broad influential 256 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.0191500421363742e-17
+    },
+    {
+      "name": "broad influential per-speed convergence",
+      "passed": true,
+      "maximum_absolute_error": 7.41187710165403e-16
+    },
+    {
+      "name": "broad influential per-speed earlier convergence",
+      "passed": true,
+      "maximum_absolute_error": 1.693740633856855e-15
+    },
+    {
+      "name": "broad influential incoming speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential original phase average",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "broad influential original population IDs",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.5612511283791264e-17
+    },
+    {
+      "name": "broad influential 128 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.3010426069826053e-17
+    },
+    {
+      "name": "broad influential 256 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.2793585635328952e-17
+    },
+    {
+      "name": "broad influential per-speed convergence",
+      "passed": true,
+      "maximum_absolute_error": 7.451873997423378e-16
+    },
+    {
+      "name": "broad influential per-speed earlier convergence",
+      "passed": true,
+      "maximum_absolute_error": 1.1206313654810174e-15
+    },
+    {
+      "name": "broad influential incoming speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential original phase average",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "broad influential original population IDs",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.214306433183765e-17
+    },
+    {
+      "name": "broad influential 128 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.2576745200831851e-17
+    },
+    {
+      "name": "broad influential 256 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 9.324138683375338e-18
+    },
+    {
+      "name": "broad influential per-speed convergence",
+      "passed": true,
+      "maximum_absolute_error": 1.3673957799387182e-15
+    },
+    {
+      "name": "broad influential per-speed earlier convergence",
+      "passed": true,
+      "maximum_absolute_error": 5.134781488891349e-16
+    },
+    {
+      "name": "broad influential incoming speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential original phase average",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "broad influential original population IDs",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 2.2551405187698492e-17
+    },
+    {
+      "name": "broad influential 128 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 2.0383000842727483e-17
+    },
+    {
+      "name": "broad influential 256 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 8.890457814381136e-18
+    },
+    {
+      "name": "broad influential per-speed convergence",
+      "passed": true,
+      "maximum_absolute_error": 2.308398439121193e-14
+    },
+    {
+      "name": "broad influential per-speed earlier convergence",
+      "passed": true,
+      "maximum_absolute_error": 4.355468084616201e-15
+    },
+    {
+      "name": "broad influential incoming speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential original phase average",
+      "passed": true,
+      "maximum_absolute_error": 1.6263032587282567e-19
+    },
+    {
+      "name": "broad influential original population IDs",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 3.469446951953614e-18
+    },
+    {
+      "name": "broad influential 128 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.6263032587282567e-19
+    },
+    {
+      "name": "broad influential 256 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 5.637851296924623e-18
+    },
+    {
+      "name": "broad influential per-speed convergence",
+      "passed": true,
+      "maximum_absolute_error": 8.33195878766647e-15
+    },
+    {
+      "name": "broad influential per-speed earlier convergence",
+      "passed": true,
+      "maximum_absolute_error": 5.127422466645604e-15
+    },
+    {
+      "name": "broad influential incoming speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential original phase average",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "broad influential original population IDs",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-18
+    },
+    {
+      "name": "broad influential 128 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 3.469446951953614e-18
+    },
+    {
+      "name": "broad influential 256 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 5.204170427930421e-18
+    },
+    {
+      "name": "broad influential per-speed convergence",
+      "passed": true,
+      "maximum_absolute_error": 1.817729271181006e-15
+    },
+    {
+      "name": "broad influential per-speed earlier convergence",
+      "passed": true,
+      "maximum_absolute_error": 1.817637837117636e-15
+    },
+    {
+      "name": "broad influential incoming speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential original phase average",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "broad influential original population IDs",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 2.2551405187698492e-17
+    },
+    {
+      "name": "broad influential 128 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 2.949029909160572e-17
+    },
+    {
+      "name": "broad influential 256 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 3.1008182133085427e-17
+    },
+    {
+      "name": "broad influential per-speed convergence",
+      "passed": true,
+      "maximum_absolute_error": 1.4897158045429893e-15
+    },
+    {
+      "name": "broad influential per-speed earlier convergence",
+      "passed": true,
+      "maximum_absolute_error": 6.810129378016283e-15
+    },
+    {
+      "name": "broad influential incoming speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential original phase average",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "broad influential original population IDs",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 6.938893903907228e-18
+    },
+    {
+      "name": "broad influential 128 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 7.37257477290143e-18
+    },
+    {
+      "name": "broad influential 256 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.0625181290357943e-17
+    },
+    {
+      "name": "broad influential per-speed convergence",
+      "passed": true,
+      "maximum_absolute_error": 2.4405668868421747e-15
+    },
+    {
+      "name": "broad influential per-speed earlier convergence",
+      "passed": true,
+      "maximum_absolute_error": 1.789638316013198e-15
+    },
+    {
+      "name": "broad influential incoming speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential original phase average",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential original population IDs",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-18
+    },
+    {
+      "name": "broad influential 128 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.6263032587282567e-19
+    },
+    {
+      "name": "broad influential 256 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 7.15573433840433e-18
+    },
+    {
+      "name": "broad influential per-speed convergence",
+      "passed": true,
+      "maximum_absolute_error": 4.154943056474047e-15
+    },
+    {
+      "name": "broad influential per-speed earlier convergence",
+      "passed": true,
+      "maximum_absolute_error": 2.5181472929169637e-15
+    },
+    {
+      "name": "broad influential incoming speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential original phase average",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "broad influential original population IDs",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.3877787807814457e-17
+    },
+    {
+      "name": "broad influential 128 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.0408340855860843e-17
+    },
+    {
+      "name": "broad influential 256 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 6.071532165918825e-18
+    },
+    {
+      "name": "broad influential per-speed convergence",
+      "passed": true,
+      "maximum_absolute_error": 2.2670966005785805e-15
+    },
+    {
+      "name": "broad influential per-speed earlier convergence",
+      "passed": true,
+      "maximum_absolute_error": 1.8151712771752315e-15
+    },
+    {
+      "name": "broad influential incoming speed",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential original phase average",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-19
+    },
+    {
+      "name": "broad influential original population IDs",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 64 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.474514954580286e-17
+    },
+    {
+      "name": "broad influential 128 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 128 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 7.806255641895632e-18
+    },
+    {
+      "name": "broad influential 256 phases",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "broad influential 256 reconstructed observable",
+      "passed": true,
+      "maximum_absolute_error": 1.0408340855860843e-17
+    },
+    {
+      "name": "broad influential per-speed convergence",
+      "passed": true,
+      "maximum_absolute_error": 3.8163916471489756e-16
+    },
+    {
+      "name": "broad influential per-speed earlier convergence",
+      "passed": true,
+      "maximum_absolute_error": 1.0269562977782698e-15
+    },
+    {
+      "name": "broad worst influential phase changes",
+      "passed": true,
+      "maximum_absolute_error": 1.0269562977782698e-15
+    },
+    {
+      "name": "broad retained state count",
+      "passed": true
+    },
+    {
+      "name": "broad bit-identical prior state nodes",
+      "passed": true
+    },
+    {
+      "name": "broad bit-identical prior state distance",
+      "passed": true
+    },
+    {
+      "name": "broad bit-identical prior state step",
+      "passed": true
+    },
+    {
+      "name": "broad bit-identical prior state status",
+      "passed": true
+    },
+    {
+      "name": "broad bit-identical prior state moments",
+      "passed": true
+    },
+    {
+      "name": "broad bit-identical prior state initial_relative_position",
+      "passed": true
+    },
+    {
+      "name": "broad bit-identical prior state final_relative_position",
+      "passed": true
+    },
+    {
+      "name": "broad bit-identical prior state initial_relative_velocity",
+      "passed": true
+    },
+    {
+      "name": "broad bit-identical prior state final_relative_velocity",
+      "passed": true
+    },
+    {
+      "name": "broad bit-identical prior state delta_relative_perpendicular",
+      "passed": true
+    },
+    {
+      "name": "broad bit-identical prior state gc_relative_kick",
+      "passed": true
+    },
+    {
+      "name": "broad bit-identical prior state time",
+      "passed": true
+    },
+    {
+      "name": "broad bit-identical prior state energy_error",
+      "passed": true
+    },
+    {
+      "name": "broad bit-identical prior state min_separation",
+      "passed": true
+    },
+    {
+      "name": "broad bit-identical prior state max_actual_step",
+      "passed": true
+    },
+    {
+      "name": "broad bit-identical prior state evaluations",
+      "passed": true
+    },
+    {
+      "name": "broad bit-identical prior state parallel_turns",
+      "passed": true
+    },
+    {
+      "name": "broad bit-identical prior state individual_gc_second",
+      "passed": true
+    },
+    {
+      "name": "broad bit-identical prior state wall_s",
+      "passed": true
+    },
+    {
+      "name": "broad bit-identical prior state worker_peak_rss_bytes",
+      "passed": true
+    },
+    {
+      "name": "broad bit-identical prior state exit",
+      "passed": true
+    },
+    {
+      "name": "broad new-state count",
+      "passed": true
+    },
+    {
+      "name": "broad independently rebuilt gates",
+      "passed": true
+    },
+    {
+      "name": "broad overall status retains every gate",
+      "passed": true
+    },
+    {
+      "name": "broad unique encounter count",
+      "passed": true
+    },
+    {
+      "name": "broad failure count",
+      "passed": true
+    },
+    {
+      "name": "broad independent Cartesian path 151536",
+      "passed": true
+    },
+    {
+      "name": "broad independent Cartesian path 237872",
+      "passed": false
+    },
+    {
+      "name": "broad independent Cartesian path 0",
+      "passed": true
+    },
+    {
+      "name": "scattering_interpolation historical producer source examples/38_scattering_interpolation.py",
+      "passed": true
+    },
+    {
+      "name": "scattering_interpolation historical producer source src/sato_morrison/controls.py",
+      "passed": true
+    },
+    {
+      "name": "scattering_interpolation historical producer source src/sato_morrison/reference.py",
+      "passed": true
+    },
+    {
+      "name": "scattering_interpolation immutable output declared_inputs.json",
+      "passed": true
+    },
+    {
+      "name": "scattering_interpolation immutable output interpolation.png",
+      "passed": true
+    },
+    {
+      "name": "scattering_interpolation immutable output attempts.json",
+      "passed": true
+    },
+    {
+      "name": "scattering_interpolation immutable output tests.npz",
+      "passed": true
+    },
+    {
+      "name": "scattering_interpolation immutable output attempts_partial.json",
+      "passed": true
+    },
+    {
+      "name": "scattering_interpolation immutable output table.npz",
+      "passed": true
+    },
+    {
+      "name": "broad_speed_extended historical producer source examples/39_broad_speed_refinement.py",
+      "passed": true
+    },
+    {
+      "name": "broad_speed_extended historical producer source src/sato_morrison/controls.py",
+      "passed": true
+    },
+    {
+      "name": "broad_speed_extended historical producer source src/sato_morrison/reference.py",
+      "passed": true
+    }
+  ],
+  "interpolation": {
+    "producer_status": "passed",
+    "reconstructed_gates": {
+      "complete_new_states": true,
+      "signed_original_targets": true,
+      "fresh_p95_confidence": true,
+      "sampled_max": true,
+      "solver_refinement": true,
+      "energy": true,
+      "table_algebra": true,
+      "legacy_reproduction": true,
+      "source_integrity": true,
+      "dependency_integrity": true
+    },
+    "table_states": 10976,
+    "new_states": 240,
+    "independent_interpolation_route": "Sequential SciPy make_interp_spline, not-a-knot coordinates and periodic phase",
+    "sampled_maximum_signed_errors": {
+      "original128": 0.002391999877108919,
+      "fresh128": 0.003665756287622557,
+      "new128": 0.0030286626205749956,
+      "weak98": 0.006169929517727768
+    }
+  },
+  "broad_speed": {
+    "producer_status": "unresolved",
+    "reconstructed_gates": {
+      "sample": true,
+      "phase": true,
+      "replica": true,
+      "boundary_ensemble": true,
+      "active_step": true,
+      "active_step_sizes": true,
+      "complete": true,
+      "energy": true,
+      "source_integrity": true,
+      "sample_replica": false,
+      "phase_influential": false,
+      "boundary_new_states": false,
+      "prior_integrity": true
+    },
+    "accepted_states": 298176,
+    "missing_or_failed_states": 0,
+    "exact_bounded_flux": 9.622764018272528,
+    "selected_cartesian_replays": [
+      {
+        "index": 151536,
+        "passed": true,
+        "position_max_absolute_error": 8.328306932980922e-10,
+        "velocity_max_absolute_error": 1.6840787653293887e-09,
+        "exit_time_absolute_error": 3.310347551632731e-10,
+        "exit": "transmitted",
+        "evaluations": 16673,
+        "acceptance_targets": {
+          "position": 1e-08,
+          "velocity": 1e-08,
+          "time": 1e-08
+        }
+      },
+      {
+        "index": 237872,
+        "passed": false,
+        "position_max_absolute_error": 1.8382417865669964e-08,
+        "velocity_max_absolute_error": 3.664808390091423e-08,
+        "exit_time_absolute_error": 8.125354611365765e-09,
+        "exit": "reflected",
+        "evaluations": 44045,
+        "acceptance_targets": {
+          "position": 1e-08,
+          "velocity": 1e-08,
+          "time": 1e-08
+        }
+      },
+      {
+        "index": 0,
+        "passed": true,
+        "position_max_absolute_error": 4.831690603168681e-12,
+        "velocity_max_absolute_error": 9.452216787053658e-12,
+        "exit_time_absolute_error": 4.618527782440651e-14,
+        "exit": "transmitted",
+        "evaluations": 10781,
+        "acceptance_targets": {
+          "position": 1e-08,
+          "velocity": 1e-08,
+          "time": 1e-08
+        }
+      }
+    ],
+    "comparisons": {
+      "sample": [
+        0.04955662290736078,
+        0.04359651637836711,
+        0.014105789974223432,
+        0.006567549282810035
+      ],
+      "phase": [
+        0.02647332841690382,
+        0.0001316788197767043,
+        0.014465295883443228,
+        0.0008300362553856028
+      ],
+      "replica": [
+        0.04022708645863772,
+        0.04979938679840099,
+        0.01627598644518704,
+        0.0015985333522318245
+      ],
+      "boundary_ensemble": [
+        1.3277208212028422e-06,
+        1.9330637987125063e-06,
+        2.9982217714231576e-06,
+        8.778469713100873e-06
+      ],
+      "sample_replica": [
+        0.020950795225489222,
+        0.06567148849204239,
+        0.02260263677183522,
+        0.005489461767570141
+      ],
+      "history_primary512_to1024": [
+        0.012791233757345432,
+        0.07231720462938758,
+        0.0021928162586794366,
+        0.0015218349256058378
+      ],
+      "history_replica512_to1024": [
+        0.04439361876017141,
+        0.0037735983074633846,
+        0.024437658446733377,
+        0.0007683181282248999
+      ],
+      "boundary_new_states": [
+        0.015025912564462764,
+        0.000632501542301595,
+        0.0007191311827001028,
+        0.0006421694262594814
+      ],
+      "active_step": [
+        7.885062119383108e-10,
+        5.269099436937693e-11,
+        5.266272153824027e-11,
+        2.7095270756684056e-12
+      ],
+      "phase_influential": [
+        0.23542251242667736,
+        0.09976011070318692,
+        0.21554641011544712,
+        0.23844531729429372
+      ]
+    }
+  },
+  "producer_source_identities": {
+    "scattering_interpolation": {
+      "examples/38_scattering_interpolation.py": {
+        "sha256": "285067ca52d19d65ebde5d13df4252e148d126eed821799b14e31c30be3c32ef",
+        "matching_git_revision": "1c32a8a0ecd6774389f163df193a37ffd9a0e2ef",
+        "matches_declared_producer_commit": true
+      },
+      "src/sato_morrison/controls.py": {
+        "sha256": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+        "matching_git_revision": "1c32a8a0ecd6774389f163df193a37ffd9a0e2ef",
+        "matches_declared_producer_commit": true
+      },
+      "src/sato_morrison/reference.py": {
+        "sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+        "matching_git_revision": "1c32a8a0ecd6774389f163df193a37ffd9a0e2ef",
+        "matches_declared_producer_commit": true
+      }
+    },
+    "broad_speed_extended": {
+      "examples/39_broad_speed_refinement.py": {
+        "sha256": "9c3a4e5e85fb7273fa7a32f906a1b8ef7f12350d1fb63940ffe136085d9e62a3",
+        "matching_git_revision": "bf727b6d1dec367850d8e0965423cf4de57cd0b3",
+        "matches_declared_producer_commit": true
+      },
+      "src/sato_morrison/controls.py": {
+        "sha256": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+        "matching_git_revision": "bf727b6d1dec367850d8e0965423cf4de57cd0b3",
+        "matches_declared_producer_commit": true
+      },
+      "src/sato_morrison/reference.py": {
+        "sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+        "matching_git_revision": "bf727b6d1dec367850d8e0965423cf4de57cd0b3",
+        "matches_declared_producer_commit": true
+      }
+    }
+  },
+  "input_sha256": {
+    "results/scattering_interpolation/summary.json": "3deb978835372f06eade685963320769bbedfa0fb3e2b675a625d5443c3f75ee",
+    "results/scattering_interpolation/declared_inputs.json": "a147dfc87fb60559c1705e7a1f50c3a953dc1d513cc0af4a24c3b7a3b6aaeec5",
+    "results/scattering_interpolation/attempts.json": "69e96863f479f58ad2799736e6f2adc10cef87f1eee91920f69103d8ab138e4b",
+    "results/scattering_interpolation/tests.npz": "68d5adfe137c13115c084209d8293c16d70f60c3cecacd61eccdc4a1750ddb29",
+    "results/scattering_interpolation/table.npz": "175525d546a986e6c33c769b6e6f2808f52867d35e37a23f19a5e70005f38775",
+    "results/broad_speed_extended/summary.json": "eda29b54198fa123f92c92f2ace1db3501c8ddd251067faa887083f0c3252f64",
+    "results/broad_speed_extended/populations.npz": "48fc6b7fa0d09bd5ed112ff6d013adc09713b39b06368aeff7932b163146e5e7",
+    "results/broad_speed_extended/states.npz": "7c58f75c2acd17cd6e094b378e0cf849258d948e981dec83cfb7d0fe9882c28b",
+    "results/broad_speed_extended/declared_inputs.json": "a086156cd0cabf1308395a69f21d913f5cea6b17efb25c0d28978275c442fdb0"
+  },
+  "audit_commit": "4d2ccb35707febaa7d7caf2adf6ce9e791c28f16",
+  "audit_working_tree": "M README.md",
+  "audit_source_sha256": "8cfdce02aaafdffc0a99c0ebd2f5355ff2fc3caa6dd0a0e87da90e31c09e1d94",
+  "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "wall_s": 3.347532916988712,
+  "versions": {
+    "numpy": "2.5.3",
+    "scipy": "1.18.1"
+  },
+  "parent_peak_rss_bytes": 417005568,
+  "scope": "Saved Cartesian-state and sampling reconstruction; selected independent twelve-coordinate paths. No infinite-domain or plasma calibration inference."
+}
