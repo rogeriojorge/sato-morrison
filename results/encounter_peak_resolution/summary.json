@@ -1,0 +1,680 @@
+{
+  "model": "fixed-state close encounter phase and endpoint diagnosis",
+  "boundary": "first outgoing relative z=+/-L planes; reflected retained",
+  "units": "normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+  "inputs": {
+    "seed": 3902,
+    "sample_index": 1155,
+    "speed": [
+      1.2161710500723555,
+      1.546221967601278,
+      2.406217687668966
+    ],
+    "weak_node": [
+      1.402644308444559,
+      0.7559030245702588,
+      0.9337388640826417,
+      5.880065286538355
+    ],
+    "required_reflected_prior_state_id": 237872,
+    "mass": 1.0,
+    "charge": 1.0,
+    "field": 2.0,
+    "strength": 0.03,
+    "screening": 3.0,
+    "theta": 0.5,
+    "phase_levels": [
+      512,
+      1024,
+      2048
+    ],
+    "halfshift_count": 2048,
+    "union_count": 4096,
+    "distances": [
+      32.0,
+      40.0,
+      48.0
+    ],
+    "steps": [
+      0.1,
+      0.05,
+      0.025
+    ],
+    "rtol": 1e-12,
+    "flight_time_factor": 48.0,
+    "base_step": 0.2,
+    "workers": 4,
+    "runtime_cap_s": 900.0,
+    "phase_target": 0.05,
+    "plane_target": 0.005,
+    "step_target": 0.001,
+    "energy_target": 1e-09,
+    "cartesian_absolute_target": 1e-08,
+    "cartesian_max_step": 0.0125,
+    "cartesian_rtol": 2e-13,
+    "required_reflected_tight_relative_step": 0.0125,
+    "required_reflected_tight_relative_rtol": 2e-13,
+    "controls": "largest four M2 phases, closest four sampled separations, longest two reflected exits if present, exact prior reflected state 237872 at pi/2, four fresh phases seed4101; deduplicated; independent Cartesian replay of largest M2, closest separation, longest reflected and required prior reflected control",
+    "normalization": "mean: fine M2/mu_reference; second and cross: fine M2; spatial: fine individual GC second",
+    "phase_measure": "uniform incoming gyrophase; each state has weight 1/N, reflected exits retain their original weights",
+    "halfshift_scope": "regular 2048 and half-step-shifted 2048 union equals regular 4096; a deterministic refinement, not independent statistical evidence",
+    "acceptance": "1024 to 2048,2048 to 4096 and regular-versus-shifted 2048 angular gates; same angular checks at L48; final L40 to L48 integral and weak-node gates; all active-step, energy, Cartesian and integrity gates",
+    "stop_rule": "fixed levels, distances and controls; no outcome-dependent refinement; cap between batches; missing weights invalidate their integral",
+    "scope": "conditional angular average at one fixed speed/impact and separate weak-state endpoint probe; preserves failed example 39 integral; no plasma rate, closure or lifetime",
+    "units": "normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+    "prior_artifact_sha256": {
+      "summary.json": "eda29b54198fa123f92c92f2ace1db3501c8ddd251067faa887083f0c3252f64",
+      "states.npz": "7c58f75c2acd17cd6e094b378e0cf849258d948e981dec83cfb7d0fe9882c28b"
+    },
+    "original_cartesian_audit": {
+      "path": "results/refinement_audit_extended_complete/summary.json",
+      "sha256": "5ec3a68bb1d8769234710a7d0c5493f0e2afce39e67aee6f59d52cd8875aba26",
+      "preserved_failed_comparison": {
+        "index": 237872,
+        "passed": false,
+        "position_max_absolute_error": 1.8382417865669964e-08,
+        "velocity_max_absolute_error": 3.664808390091423e-08,
+        "exit_time_absolute_error": 8.125354611365765e-09,
+        "exit": "reflected",
+        "evaluations": 44045,
+        "acceptance_targets": {
+          "position": 1e-08,
+          "velocity": 1e-08,
+          "time": 1e-08
+        }
+      }
+    }
+  },
+  "commit": "317993933504f654217f68ed8ab30ea245c62ba1",
+  "working_tree": "M README.md\n M examples/README.md\n M notes/implementation.pdf\n M notes/implementation.tex\n M results/validation.csv\n?? results/encounter_peak_resolution/",
+  "source_sha256": "b3ca6aa62ad8fc53ea6078aa70fa30a1b3688b1562768113d89f9f84e62a3631",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "M examples/README.md",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": true,
+  "experiment_dependency_sha256": {
+    "examples/41_encounter_peak_resolution.py": "9668b5a52f1c0aebd0e5a4bc8e59df6de049b0f4606b8715d246fa471f411d21",
+    "src/sato_morrison/controls.py": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "experiment_dependency_sha256_end": {
+    "examples/41_encounter_peak_resolution.py": "9668b5a52f1c0aebd0e5a4bc8e59df6de049b0f4606b8715d246fa471f411d21",
+    "src/sato_morrison/controls.py": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "results": {
+    "status": "passed",
+    "required_gates": {
+      "phase1024_to2048": true,
+      "phase2048_to4096": true,
+      "halfshift": true,
+      "final_plane_phase": true,
+      "final_plane_halfshift": true,
+      "boundary_integral": true,
+      "boundary_weak_state": true,
+      "active_step": true,
+      "active_step_sizes": true,
+      "cartesian": true,
+      "required_reflected_tight": true,
+      "complete": true,
+      "energy": true,
+      "source_integrity": true,
+      "prior_integrity": true,
+      "original_failure_integrity": true
+    },
+    "comparisons": {
+      "phase1024_to2048": [
+        0.008991578588706884,
+        1.215451520963853e-05,
+        0.014103658393227086,
+        0.013912195445742797
+      ],
+      "phase2048_to4096": [
+        0.0018354867873371977,
+        0.0006340487295193253,
+        0.0033277776463368704,
+        0.003876713994643196
+      ],
+      "halfshift": [
+        0.003670973574674568,
+        0.0012680974590430457,
+        0.006655555292673506,
+        0.007753427989279769
+      ],
+      "final_plane_phase": [
+        0.0015793806685411938,
+        0.0004453314153196882,
+        0.0029054985762454978,
+        0.0032538703691402807
+      ],
+      "final_plane_halfshift": [
+        0.0031587613370802525,
+        0.0008906628306299571,
+        0.005810997152491074,
+        0.006507740738281956
+      ],
+      "boundary_integral": [
+        4.087217626572862e-07,
+        5.26740314539064e-07,
+        8.373428957863925e-07,
+        1.3316720496044804e-06
+      ],
+      "boundary_weak_state": [
+        6.756256085237535e-05,
+        5.04190511855029e-07,
+        1.9341834775894767e-07,
+        6.323911476120563e-08
+      ],
+      "active_step": [
+        1.88787634930309e-10,
+        2.0524949052877202e-11,
+        1.4831341677120437e-11,
+        1.2719426482329455e-11
+      ]
+    },
+    "cases": [
+      {
+        "case": "phase256_L24_retained",
+        "phase_count": 256,
+        "distance": 24.0,
+        "shifted": false,
+        "complete": true,
+        "missing_count": 0,
+        "observables": [
+          -0.0005702960741023923,
+          0.0017122123018500806,
+          9.620062638261587e-05,
+          0.003728258890831934
+        ],
+        "reflected_count": 1,
+        "max_energy_error": 4.262463805164494e-12,
+        "maximum_time": 87.98782981223262
+      },
+      {
+        "case": "phase512_L24",
+        "phase_count": 512,
+        "distance": 24.0,
+        "shifted": false,
+        "complete": true,
+        "missing_count": 0,
+        "observables": [
+          -0.0005774403944735779,
+          0.001729680473741078,
+          0.00013528289156032218,
+          0.0036879991041458737
+        ],
+        "reflected_count": 1,
+        "max_energy_error": 4.398393613341896e-12,
+        "maximum_time": 95.84112121198757
+      },
+      {
+        "case": "phase1024_L24",
+        "phase_count": 1024,
+        "distance": 24.0,
+        "shifted": false,
+        "complete": true,
+        "missing_count": 0,
+        "observables": [
+          -0.0007107813190438694,
+          0.0017279041150744497,
+          8.418521081306524e-05,
+          0.0037988175384032576
+        ],
+        "reflected_count": 2,
+        "max_energy_error": 5.841507949407738e-12,
+        "maximum_time": 95.84112121198757
+      },
+      {
+        "case": "phase2048_L24",
+        "phase_count": 2048,
+        "distance": 24.0,
+        "shifted": false,
+        "complete": true,
+        "missing_count": 0,
+        "observables": [
+          -0.0006486736008966814,
+          0.0017279251038584938,
+          0.00010853983418895747,
+          0.0037468913564938475
+        ],
+        "reflected_count": 4,
+        "max_energy_error": 5.841507949407738e-12,
+        "maximum_time": 95.84112121198757
+      },
+      {
+        "case": "phase2048_L24_shifted",
+        "phase_count": 2048,
+        "distance": 24.0,
+        "shifted": true,
+        "complete": true,
+        "missing_count": 0,
+        "observables": [
+          -0.0006233170086306672,
+          0.001725735314857808,
+          0.00012003284812839963,
+          0.0037179522926514075
+        ],
+        "reflected_count": 4,
+        "max_energy_error": 5.361845059876814e-12,
+        "maximum_time": 95.47721159548465
+      },
+      {
+        "case": "phase4096_L24_union",
+        "phase_count": 4096,
+        "distance": 24.0,
+        "shifted": false,
+        "complete": true,
+        "missing_count": 0,
+        "observables": [
+          -0.0006359953047636749,
+          0.0017268302093581547,
+          0.00011428634115867875,
+          0.003732421824572615
+        ],
+        "reflected_count": 8,
+        "max_energy_error": 5.841507949407738e-12,
+        "maximum_time": 95.84112121198757
+      },
+      {
+        "case": "phase4096_L32",
+        "phase_count": 4096,
+        "distance": 32.0,
+        "shifted": false,
+        "complete": true,
+        "missing_count": 0,
+        "observables": [
+          -0.0006353542380110353,
+          0.0017266076645693004,
+          0.00011462084969765399,
+          0.003731245702161748
+        ],
+        "reflected_count": 8,
+        "max_energy_error": 6.525066834816736e-12,
+        "maximum_time": 126.61688852148868
+      },
+      {
+        "case": "phase4096_L40",
+        "phase_count": 4096,
+        "distance": 40.0,
+        "shifted": false,
+        "complete": true,
+        "missing_count": 0,
+        "observables": [
+          -0.000635312647277369,
+          0.0017265942373102465,
+          0.00011464213007011839,
+          0.003731172482701735
+        ],
+        "reflected_count": 8,
+        "max_energy_error": 6.448416362299806e-12,
+        "maximum_time": 157.39878584399693
+      },
+      {
+        "case": "phase4096_L48",
+        "phase_count": 4096,
+        "distance": 48.0,
+        "shifted": false,
+        "complete": true,
+        "missing_count": 0,
+        "observables": [
+          -0.0006353098244922956,
+          0.0017265933278439339,
+          0.00011464357582077537,
+          0.003731167514010244
+        ],
+        "reflected_count": 8,
+        "max_energy_error": 6.9011539529212875e-12,
+        "maximum_time": 188.18117303088562
+      },
+      {
+        "case": "phase2048_L48",
+        "phase_count": 2048,
+        "distance": 48.0,
+        "shifted": false,
+        "complete": true,
+        "missing_count": 0,
+        "observables": [
+          -0.0006462176169900113,
+          0.0017273622340943041,
+          0.00010962696136496985,
+          0.003743308249426381
+        ],
+        "reflected_count": 4,
+        "max_energy_error": 6.715064690519531e-12,
+        "maximum_time": 188.18117303088562
+      },
+      {
+        "case": "phase2048_L48_shifted",
+        "phase_count": 2048,
+        "distance": 48.0,
+        "shifted": true,
+        "complete": true,
+        "missing_count": 0,
+        "observables": [
+          -0.0006244020319945947,
+          0.0017258244215935799,
+          0.00011966019027658103,
+          0.0037190267785941022
+        ],
+        "reflected_count": 4,
+        "max_energy_error": 6.9011539529212875e-12,
+        "maximum_time": 187.06591490247703
+      }
+    ],
+    "weak_boundary": [
+      {
+        "case": "weak_L32",
+        "complete": true,
+        "ids": [
+          16384
+        ],
+        "observables": [
+          0.0006453400107859428,
+          9.767510182654554e-07,
+          -1.4382355922305386e-07,
+          0.0005348704820591687
+        ]
+      },
+      {
+        "case": "weak_L40",
+        "complete": true,
+        "ids": [
+          16385
+        ],
+        "observables": [
+          0.0006453361462481211,
+          9.76743814745178e-07,
+          -1.4382633143642554e-07,
+          0.0005348700250251918
+        ]
+      },
+      {
+        "case": "weak_L48",
+        "complete": true,
+        "ids": [
+          16386
+        ],
+        "observables": [
+          0.0006453358822830005,
+          9.767433222804625e-07,
+          -1.4382652035650512e-07,
+          0.000534869991200487
+        ]
+      }
+    ],
+    "controls": {
+      "nodes": [
+        [
+          1.2161710500723555,
+          1.546221967601278,
+          2.406217687668966,
+          1.5922720578252956
+        ],
+        [
+          1.2161710500723555,
+          1.546221967601278,
+          2.406217687668966,
+          1.5876701154616386
+        ],
+        [
+          1.2161710500723555,
+          1.546221967601278,
+          2.406217687668966,
+          1.59073807703741
+        ],
+        [
+          1.2161710500723555,
+          1.546221967601278,
+          2.406217687668966,
+          1.5892040962495242
+        ],
+        [
+          1.2161710500723555,
+          1.546221967601278,
+          2.406217687668966,
+          1.586136134673753
+        ],
+        [
+          1.2161710500723555,
+          1.546221967601278,
+          2.406217687668966,
+          1.5707963267948966
+        ],
+        [
+          1.2161710500723555,
+          1.546221967601278,
+          2.406217687668966,
+          1.5723303075827821
+        ],
+        [
+          1.2161710500723555,
+          1.546221967601278,
+          2.406217687668966,
+          3.1386248132221253
+        ],
+        [
+          1.2161710500723555,
+          1.546221967601278,
+          2.406217687668966,
+          3.7348710952719233
+        ],
+        [
+          1.2161710500723555,
+          1.546221967601278,
+          2.406217687668966,
+          0.7838217978342263
+        ],
+        [
+          1.2161710500723555,
+          1.546221967601278,
+          2.406217687668966,
+          4.293884300362875
+        ]
+      ],
+      "ids": {
+        "0.1": [
+          16387,
+          16388,
+          16389,
+          16390,
+          16391,
+          16392,
+          16393,
+          16394,
+          16395,
+          16396,
+          16397
+        ],
+        "0.05": [
+          16398,
+          16399,
+          16400,
+          16401,
+          16402,
+          16403,
+          16404,
+          16405,
+          16406,
+          16407,
+          16408
+        ],
+        "0.025": [
+          16409,
+          16410,
+          16411,
+          16412,
+          16413,
+          16414,
+          16415,
+          16416,
+          16417,
+          16418,
+          16419
+        ]
+      },
+      "selected_phase_indices": [
+        1038,
+        1035,
+        1037,
+        1036,
+        1034,
+        1024,
+        1025
+      ],
+      "actual_step_ratios": [
+        0.5000000000000355,
+        0.5,
+        0.5000000000000355,
+        0.5,
+        0.5,
+        0.500000000000071,
+        0.5000000000001066,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "cartesian": [
+      {
+        "node": [
+          1.2161710500723555,
+          1.546221967601278,
+          2.406217687668966,
+          1.5892040962495242
+        ],
+        "relative_id": 16412,
+        "status": "passed",
+        "final_position": [
+          1.4418633924924116,
+          -0.15253404770731807,
+          23.999999999997126
+        ],
+        "final_velocity": [
+          2.170072877595785,
+          -1.6656540125388881,
+          0.8349050095045257
+        ],
+        "position_error": 2.8741453661496053e-12,
+        "velocity_error": 2.0798918143327683e-12,
+        "energy_error": 6.492494523691206e-14
+      },
+      {
+        "node": [
+          1.2161710500723555,
+          1.546221967601278,
+          2.406217687668966,
+          1.5707963267948966
+        ],
+        "relative_id": 16414,
+        "status": "passed",
+        "final_position": [
+          0.32499306173487397,
+          0.3254657956047507,
+          -23.99999999996817
+        ],
+        "final_velocity": [
+          2.2634456970085286,
+          1.713042150038499,
+          -0.3506937446947024
+        ],
+        "position_error": 3.182876184837369e-11,
+        "velocity_error": 1.6620038678638593e-12,
+        "energy_error": 5.341651012966318e-14
+      },
+      {
+        "node": [
+          1.2161710500723555,
+          1.546221967601278,
+          2.406217687668966,
+          1.5723303075827821
+        ],
+        "relative_id": 16415,
+        "status": "passed",
+        "final_position": [
+          2.5474165881646353,
+          -1.0938765493238054,
+          -23.99999999983641
+        ],
+        "final_velocity": [
+          -0.4806630596587811,
+          -2.798329111119017,
+          -0.34496845838517565
+        ],
+        "position_error": 1.6358825405404787e-10,
+        "velocity_error": 5.2388648974499574e-12,
+        "energy_error": 6.535922580888903e-14
+      }
+    ],
+    "tight_relative": [
+      {
+        "node": [
+          1.2161710500723555,
+          1.546221967601278,
+          2.406217687668966,
+          1.5707963267948966
+        ],
+        "original_coarse_prior_id": 237872,
+        "max_step": 0.0125,
+        "rtol": 2e-13,
+        "status": "passed",
+        "initial_state": [
+          0.09557888235479584,
+          0.4378859255134918,
+          -24.0,
+          0.8757718510269836,
+          2.2411843354351193,
+          1.546221967601278
+        ],
+        "final_position": [
+          0.32499306226914043,
+          0.32546579600827047,
+          -24.0
+        ],
+        "final_velocity": [
+          2.263445697818997,
+          1.7130421489677472,
+          -0.35069374469398645
+        ],
+        "exit": "reflected",
+        "time": 87.9878298207444,
+        "energy_error": 5.884501725666147e-14,
+        "position_error": 5.341819209192522e-10,
+        "velocity_error": 1.0690897056520043e-09,
+        "time_error": 2.3582913399877725e-10
+      }
+    ],
+    "separate_cartesian_solves": 3,
+    "separate_tight_relative_solves": 1,
+    "reused_encounters": 256,
+    "new_encounters": 16164,
+    "unique_encounters": 16420,
+    "failures": 0,
+    "cap_exhausted": false,
+    "wall_s": 121.83066804200644,
+    "parent_process_peak_rss_bytes": 299319296,
+    "max_worker_process_peak_rss_bytes": 30294016,
+    "memory_scope": "separate process lifetime peaks; not simultaneous aggregate",
+    "timing_scope": "this execution; old solves and figure rendering excluded"
+  }
+}

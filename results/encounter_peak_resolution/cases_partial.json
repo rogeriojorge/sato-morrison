@@ -1,0 +1,189 @@
+[
+  {
+    "case": "phase256_L24_retained",
+    "phase_count": 256,
+    "distance": 24.0,
+    "shifted": false,
+    "complete": true,
+    "missing_count": 0,
+    "observables": [
+      -0.0005702960741023923,
+      0.0017122123018500806,
+      9.620062638261587e-05,
+      0.003728258890831934
+    ],
+    "reflected_count": 1,
+    "max_energy_error": 4.262463805164494e-12,
+    "maximum_time": 87.98782981223262
+  },
+  {
+    "case": "phase512_L24",
+    "phase_count": 512,
+    "distance": 24.0,
+    "shifted": false,
+    "complete": true,
+    "missing_count": 0,
+    "observables": [
+      -0.0005774403944735779,
+      0.001729680473741078,
+      0.00013528289156032218,
+      0.0036879991041458737
+    ],
+    "reflected_count": 1,
+    "max_energy_error": 4.398393613341896e-12,
+    "maximum_time": 95.84112121198757
+  },
+  {
+    "case": "phase1024_L24",
+    "phase_count": 1024,
+    "distance": 24.0,
+    "shifted": false,
+    "complete": true,
+    "missing_count": 0,
+    "observables": [
+      -0.0007107813190438694,
+      0.0017279041150744497,
+      8.418521081306524e-05,
+      0.0037988175384032576
+    ],
+    "reflected_count": 2,
+    "max_energy_error": 5.841507949407738e-12,
+    "maximum_time": 95.84112121198757
+  },
+  {
+    "case": "phase2048_L24",
+    "phase_count": 2048,
+    "distance": 24.0,
+    "shifted": false,
+    "complete": true,
+    "missing_count": 0,
+    "observables": [
+      -0.0006486736008966814,
+      0.0017279251038584938,
+      0.00010853983418895747,
+      0.0037468913564938475
+    ],
+    "reflected_count": 4,
+    "max_energy_error": 5.841507949407738e-12,
+    "maximum_time": 95.84112121198757
+  },
+  {
+    "case": "phase2048_L24_shifted",
+    "phase_count": 2048,
+    "distance": 24.0,
+    "shifted": true,
+    "complete": true,
+    "missing_count": 0,
+    "observables": [
+      -0.0006233170086306672,
+      0.001725735314857808,
+      0.00012003284812839963,
+      0.0037179522926514075
+    ],
+    "reflected_count": 4,
+    "max_energy_error": 5.361845059876814e-12,
+    "maximum_time": 95.47721159548465
+  },
+  {
+    "case": "phase4096_L24_union",
+    "phase_count": 4096,
+    "distance": 24.0,
+    "shifted": false,
+    "complete": true,
+    "missing_count": 0,
+    "observables": [
+      -0.0006359953047636749,
+      0.0017268302093581547,
+      0.00011428634115867875,
+      0.003732421824572615
+    ],
+    "reflected_count": 8,
+    "max_energy_error": 5.841507949407738e-12,
+    "maximum_time": 95.84112121198757
+  },
+  {
+    "case": "phase4096_L32",
+    "phase_count": 4096,
+    "distance": 32.0,
+    "shifted": false,
+    "complete": true,
+    "missing_count": 0,
+    "observables": [
+      -0.0006353542380110353,
+      0.0017266076645693004,
+      0.00011462084969765399,
+      0.003731245702161748
+    ],
+    "reflected_count": 8,
+    "max_energy_error": 6.525066834816736e-12,
+    "maximum_time": 126.61688852148868
+  },
+  {
+    "case": "phase4096_L40",
+    "phase_count": 4096,
+    "distance": 40.0,
+    "shifted": false,
+    "complete": true,
+    "missing_count": 0,
+    "observables": [
+      -0.000635312647277369,
+      0.0017265942373102465,
+      0.00011464213007011839,
+      0.003731172482701735
+    ],
+    "reflected_count": 8,
+    "max_energy_error": 6.448416362299806e-12,
+    "maximum_time": 157.39878584399693
+  },
+  {
+    "case": "phase4096_L48",
+    "phase_count": 4096,
+    "distance": 48.0,
+    "shifted": false,
+    "complete": true,
+    "missing_count": 0,
+    "observables": [
+      -0.0006353098244922956,
+      0.0017265933278439339,
+      0.00011464357582077537,
+      0.003731167514010244
+    ],
+    "reflected_count": 8,
+    "max_energy_error": 6.9011539529212875e-12,
+    "maximum_time": 188.18117303088562
+  },
+  {
+    "case": "phase2048_L48",
+    "phase_count": 2048,
+    "distance": 48.0,
+    "shifted": false,
+    "complete": true,
+    "missing_count": 0,
+    "observables": [
+      -0.0006462176169900113,
+      0.0017273622340943041,
+      0.00010962696136496985,
+      0.003743308249426381
+    ],
+    "reflected_count": 4,
+    "max_energy_error": 6.715064690519531e-12,
+    "maximum_time": 188.18117303088562
+  },
+  {
+    "case": "phase2048_L48_shifted",
+    "phase_count": 2048,
+    "distance": 48.0,
+    "shifted": true,
+    "complete": true,
+    "missing_count": 0,
+    "observables": [
+      -0.0006244020319945947,
+      0.0017258244215935799,
+      0.00011966019027658103,
+      0.0037190267785941022
+    ],
+    "reflected_count": 4,
+    "max_energy_error": 6.9011539529212875e-12,
+    "maximum_time": 187.06591490247703
+  }
+]

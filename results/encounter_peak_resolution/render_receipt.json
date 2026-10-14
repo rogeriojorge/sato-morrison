@@ -1,0 +1,23 @@
+{
+  "scope": "Display-only fixed-tick variant; no scattering solve or scientific data change.",
+  "operations": [
+    "Set x ticks of the angular-average refinement panel to 256, 512, 1024, 2048, 4096.",
+    "Disable minor ticks on that panel; all plotted arrays and other styling are retained."
+  ],
+  "input_sha256": {
+    "summary.json": "0e46988dcfff5d81b14978146710f8108532944e6bb5b72c2ebc16ac680944da",
+    "states.npz": "38eaa24e5af075d94ba8001ce36ed9594b96046dd970724d806ae56f8d4f601e",
+    "populations.npz": "6adc9cd1953bb369974c72cb7562454f9d71bebcf82731379923397f8cc29716",
+    "peak_resolution.png": "9eb29d0bb5ec84f21a7aa43e93148d1ba1971f7adc77a6e3044410e6af7c418f"
+  },
+  "producer_source_sha256": "9668b5a52f1c0aebd0e5a4bc8e59df6de049b0f4606b8715d246fa471f411d21",
+  "render_script_sha256": "397e301a9652ba84530ed109de2b2c01a84e85df6c34b12123df651f9526551e",
+  "output": {
+    "path": "peak_resolution_readable.png",
+    "sha256": "4f8e7ada7b3374248b13ff03cafcc0c0c9f5f321ed72ad9d0f62481ecd34a416"
+  },
+  "matplotlib_version": "3.11.2",
+  "numpy_version": "2.5.3",
+  "python": "3.12.13",
+  "wall_s": 0.37886108399834484
+}

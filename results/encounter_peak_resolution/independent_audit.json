@@ -1,0 +1,1106 @@
+{
+  "status": "passed",
+  "producer_status": "passed",
+  "producer_commit": "317993933504f654217f68ed8ab30ea245c62ba1",
+  "producer_source_identities": {
+    "examples/41_encounter_peak_resolution.py": {
+      "git_commit": "317993933504f654217f68ed8ab30ea245c62ba1",
+      "sha256": "9668b5a52f1c0aebd0e5a4bc8e59df6de049b0f4606b8715d246fa471f411d21"
+    },
+    "src/sato_morrison/controls.py": {
+      "git_commit": "317993933504f654217f68ed8ab30ea245c62ba1",
+      "sha256": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412"
+    },
+    "src/sato_morrison/reference.py": {
+      "git_commit": "317993933504f654217f68ed8ab30ea245c62ba1",
+      "sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+    }
+  },
+  "audit_git_identity": "317993933504f654217f68ed8ab30ea245c62ba1",
+  "audit_script_path": "results/encounter_peak_resolution/audit_saved_states.py",
+  "audit_script_sha256": "8c8f550b87c1e733dee1ecc409f4a2b21bb2a16fd5ac60e5b7c084dc821ee23e",
+  "audit_source_uncommitted": true,
+  "audit_script_git_status": "?? results/encounter_peak_resolution/audit_saved_states.py",
+  "reproduction_command": "SM_PEAK_AUDIT_OUTPUT=results/encounter_peak_resolution/audit_reproduction.json .venv/bin/python results/encounter_peak_resolution/audit_saved_states.py",
+  "input_sha256": {
+    "summary.json": "0e46988dcfff5d81b14978146710f8108532944e6bb5b72c2ebc16ac680944da",
+    "states.npz": "38eaa24e5af075d94ba8001ce36ed9594b96046dd970724d806ae56f8d4f601e",
+    "populations.npz": "6adc9cd1953bb369974c72cb7562454f9d71bebcf82731379923397f8cc29716",
+    "declared_inputs.json": "13a01fc1a76ffe8272babbc89c184c9caed87094e18a548bf9105d60ce369c67",
+    "failures.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+  },
+  "formulas": {
+    "mean": "m*(|w_out_perp|^2-|w_in_perp|^2)/(8B)",
+    "variance": "m^2*theta*|R(+Omega*t)w_out_perp-w_in_perp|^2/(8B^2)",
+    "second": "mean^2+variance",
+    "cross": "mean^2-variance",
+    "spatial": "|GC_out-GC_in|^2/4",
+    "phase": "sum(all selected values)/N; no valid-only renormalization",
+    "comparison": "abs(a-b)/[fine_M2/mu_reference,fine_M2,fine_M2,fine_spatial]"
+  },
+  "array_selectors": {
+    "phase256_L24_retained": {
+      "population_key": "phase256_L24_retained",
+      "phase_count": 256,
+      "distance": 24.0,
+      "shifted": false
+    },
+    "phase512_L24": {
+      "population_key": "phase512_L24",
+      "phase_count": 512,
+      "distance": 24.0,
+      "shifted": false
+    },
+    "phase1024_L24": {
+      "population_key": "phase1024_L24",
+      "phase_count": 1024,
+      "distance": 24.0,
+      "shifted": false
+    },
+    "phase2048_L24": {
+      "population_key": "phase2048_L24",
+      "phase_count": 2048,
+      "distance": 24.0,
+      "shifted": false
+    },
+    "phase2048_L24_shifted": {
+      "population_key": "phase2048_L24_shifted",
+      "phase_count": 2048,
+      "distance": 24.0,
+      "shifted": true
+    },
+    "phase4096_L24_union": {
+      "population_key": "phase4096_L24_union",
+      "phase_count": 4096,
+      "distance": 24.0,
+      "shifted": false
+    },
+    "phase4096_L32": {
+      "population_key": "phase4096_L32",
+      "phase_count": 4096,
+      "distance": 32.0,
+      "shifted": false
+    },
+    "phase4096_L40": {
+      "population_key": "phase4096_L40",
+      "phase_count": 4096,
+      "distance": 40.0,
+      "shifted": false
+    },
+    "phase4096_L48": {
+      "population_key": "phase4096_L48",
+      "phase_count": 4096,
+      "distance": 48.0,
+      "shifted": false
+    },
+    "phase2048_L48": {
+      "population_key": "phase2048_L48",
+      "phase_count": 2048,
+      "distance": 48.0,
+      "shifted": false
+    },
+    "phase2048_L48_shifted": {
+      "population_key": "phase2048_L48_shifted",
+      "phase_count": 2048,
+      "distance": 48.0,
+      "shifted": true
+    }
+  },
+  "reconstructed_gates": {
+    "phase1024_to2048": true,
+    "phase2048_to4096": true,
+    "halfshift": true,
+    "final_plane_phase": true,
+    "final_plane_halfshift": true,
+    "boundary_integral": true,
+    "boundary_weak_state": true,
+    "active_step": true,
+    "active_step_sizes": true,
+    "cartesian": true,
+    "required_reflected_tight": true,
+    "complete": true,
+    "energy": true,
+    "source_integrity": true,
+    "prior_integrity": true,
+    "original_failure_integrity": true
+  },
+  "reconstructed_comparisons": {
+    "phase1024_to2048": [
+      0.008991578588706948,
+      1.2154515210266388e-05,
+      0.01410365839322711,
+      0.013912195445742797
+    ],
+    "phase2048_to4096": [
+      0.0018354867873376845,
+      0.0006340487295198277,
+      0.003327777646336855,
+      0.003876713994643196
+    ],
+    "halfshift": [
+      0.0036709735746749453,
+      0.001268097459043297,
+      0.006655555292673482,
+      0.007753427989279769
+    ],
+    "final_plane_phase": [
+      0.0015793806685413978,
+      0.00044533141531943697,
+      0.002905498576245537,
+      0.0032538703691402807
+    ],
+    "final_plane_halfshift": [
+      0.0031587613370813988,
+      0.0008906628306300828,
+      0.005810997152491278,
+      0.006507740738281956
+    ],
+    "boundary_integral": [
+      4.087217629712577e-07,
+      5.267403149158298e-07,
+      8.373428957235981e-07,
+      1.3316720496044804e-06
+    ],
+    "boundary_weak_state": [
+      6.756256262840273e-05,
+      5.041905211774369e-07,
+      1.9341835691875823e-07,
+      6.323911476120563e-08
+    ],
+    "active_step": [
+      1.887876349303076e-10,
+      2.0524949052877044e-11,
+      1.4831341677120328e-11,
+      1.2719426482329455e-11
+    ]
+  },
+  "all_check_count": 198,
+  "checks": [
+    {
+      "name": "all stored rows completed",
+      "passed": true
+    },
+    {
+      "name": "finite Cartesian states",
+      "passed": true
+    },
+    {
+      "name": "Cartesian COM moments / individual signal scales",
+      "passed": true,
+      "maximum_absolute_error": 6.128431095930864e-14
+    },
+    {
+      "name": "free-gyro velocity kick",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "actual GC coordinate kick",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "individual GC squared kick",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "nonnegative COM variance and second moment",
+      "passed": true
+    },
+    {
+      "name": "same free incoming helix velocity",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "same free incoming helix position",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "exit planes and signs",
+      "passed": true
+    },
+    {
+      "name": "endpoint energy bounded by saved path maximum",
+      "passed": true
+    },
+    {
+      "name": "energy acceptance",
+      "passed": true
+    },
+    {
+      "name": "phase256_L24_retained valid unique state selectors",
+      "passed": true
+    },
+    {
+      "name": "phase256_L24_retained exact incoming angular grid",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase256_L24_retained matched endpoint and integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase256_L24_retained bulk maximum step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase256_L24_retained all original phase weights retained",
+      "passed": true
+    },
+    {
+      "name": "phase256_L24_retained uniform weighted average",
+      "passed": true,
+      "maximum_absolute_error": 1.0408340855860843e-17
+    },
+    {
+      "name": "phase256_L24_retained reflection count",
+      "passed": true
+    },
+    {
+      "name": "phase256_L24_retained maximum integration time",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase256_L24_retained maximum path energy error",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase512_L24 valid unique state selectors",
+      "passed": true
+    },
+    {
+      "name": "phase512_L24 exact incoming angular grid",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase512_L24 matched endpoint and integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase512_L24 bulk maximum step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase512_L24 all original phase weights retained",
+      "passed": true
+    },
+    {
+      "name": "phase512_L24 uniform weighted average",
+      "passed": true,
+      "maximum_absolute_error": 8.023096076392733e-18
+    },
+    {
+      "name": "phase512_L24 reflection count",
+      "passed": true
+    },
+    {
+      "name": "phase512_L24 maximum integration time",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase512_L24 maximum path energy error",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase1024_L24 valid unique state selectors",
+      "passed": true
+    },
+    {
+      "name": "phase1024_L24 exact incoming angular grid",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase1024_L24 matched endpoint and integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase1024_L24 bulk maximum step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase1024_L24 all original phase weights retained",
+      "passed": true
+    },
+    {
+      "name": "phase1024_L24 uniform weighted average",
+      "passed": true,
+      "maximum_absolute_error": 7.914675859144182e-18
+    },
+    {
+      "name": "phase1024_L24 reflection count",
+      "passed": true
+    },
+    {
+      "name": "phase1024_L24 maximum integration time",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase1024_L24 maximum path energy error",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase2048_L24 valid unique state selectors",
+      "passed": true
+    },
+    {
+      "name": "phase2048_L24 exact incoming angular grid",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase2048_L24 matched endpoint and integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase2048_L24 bulk maximum step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase2048_L24 all original phase weights retained",
+      "passed": true
+    },
+    {
+      "name": "phase2048_L24 uniform weighted average",
+      "passed": true,
+      "maximum_absolute_error": 7.48099499014998e-18
+    },
+    {
+      "name": "phase2048_L24 reflection count",
+      "passed": true
+    },
+    {
+      "name": "phase2048_L24 maximum integration time",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase2048_L24 maximum path energy error",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase2048_L24_shifted valid unique state selectors",
+      "passed": true
+    },
+    {
+      "name": "phase2048_L24_shifted exact incoming angular grid",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase2048_L24_shifted matched endpoint and integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase2048_L24_shifted bulk maximum step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase2048_L24_shifted all original phase weights retained",
+      "passed": true
+    },
+    {
+      "name": "phase2048_L24_shifted uniform weighted average",
+      "passed": true,
+      "maximum_absolute_error": 4.87890977618477e-18
+    },
+    {
+      "name": "phase2048_L24_shifted reflection count",
+      "passed": true
+    },
+    {
+      "name": "phase2048_L24_shifted maximum integration time",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase2048_L24_shifted maximum path energy error",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase4096_L24_union valid unique state selectors",
+      "passed": true
+    },
+    {
+      "name": "phase4096_L24_union exact incoming angular grid",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase4096_L24_union matched endpoint and integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase4096_L24_union bulk maximum step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase4096_L24_union all original phase weights retained",
+      "passed": true
+    },
+    {
+      "name": "phase4096_L24_union uniform weighted average",
+      "passed": true,
+      "maximum_absolute_error": 4.119968255444917e-18
+    },
+    {
+      "name": "phase4096_L24_union reflection count",
+      "passed": true
+    },
+    {
+      "name": "phase4096_L24_union maximum integration time",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase4096_L24_union maximum path energy error",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase4096_L32 valid unique state selectors",
+      "passed": true
+    },
+    {
+      "name": "phase4096_L32 exact incoming angular grid",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase4096_L32 matched endpoint and integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase4096_L32 bulk maximum step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase4096_L32 all original phase weights retained",
+      "passed": true
+    },
+    {
+      "name": "phase4096_L32 uniform weighted average",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-18
+    },
+    {
+      "name": "phase4096_L32 reflection count",
+      "passed": true
+    },
+    {
+      "name": "phase4096_L32 maximum integration time",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase4096_L32 maximum path energy error",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase4096_L40 valid unique state selectors",
+      "passed": true
+    },
+    {
+      "name": "phase4096_L40 exact incoming angular grid",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase4096_L40 matched endpoint and integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase4096_L40 bulk maximum step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase4096_L40 all original phase weights retained",
+      "passed": true
+    },
+    {
+      "name": "phase4096_L40 uniform weighted average",
+      "passed": true,
+      "maximum_absolute_error": 1.0733601507606494e-17
+    },
+    {
+      "name": "phase4096_L40 reflection count",
+      "passed": true
+    },
+    {
+      "name": "phase4096_L40 maximum integration time",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase4096_L40 maximum path energy error",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase4096_L48 valid unique state selectors",
+      "passed": true
+    },
+    {
+      "name": "phase4096_L48 exact incoming angular grid",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase4096_L48 matched endpoint and integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase4096_L48 bulk maximum step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase4096_L48 all original phase weights retained",
+      "passed": true
+    },
+    {
+      "name": "phase4096_L48 uniform weighted average",
+      "passed": true,
+      "maximum_absolute_error": 8.565197162635485e-18
+    },
+    {
+      "name": "phase4096_L48 reflection count",
+      "passed": true
+    },
+    {
+      "name": "phase4096_L48 maximum integration time",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase4096_L48 maximum path energy error",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase2048_L48 valid unique state selectors",
+      "passed": true
+    },
+    {
+      "name": "phase2048_L48 exact incoming angular grid",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase2048_L48 matched endpoint and integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase2048_L48 bulk maximum step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase2048_L48 all original phase weights retained",
+      "passed": true
+    },
+    {
+      "name": "phase2048_L48 uniform weighted average",
+      "passed": true,
+      "maximum_absolute_error": 9.974659986866641e-18
+    },
+    {
+      "name": "phase2048_L48 reflection count",
+      "passed": true
+    },
+    {
+      "name": "phase2048_L48 maximum integration time",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase2048_L48 maximum path energy error",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase2048_L48_shifted valid unique state selectors",
+      "passed": true
+    },
+    {
+      "name": "phase2048_L48_shifted exact incoming angular grid",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase2048_L48_shifted matched endpoint and integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase2048_L48_shifted bulk maximum step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase2048_L48_shifted all original phase weights retained",
+      "passed": true
+    },
+    {
+      "name": "phase2048_L48_shifted uniform weighted average",
+      "passed": true,
+      "maximum_absolute_error": 2.0599841277224584e-18
+    },
+    {
+      "name": "phase2048_L48_shifted reflection count",
+      "passed": true
+    },
+    {
+      "name": "phase2048_L48_shifted maximum integration time",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase2048_L48_shifted maximum path energy error",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "regular and half-shift union average L24",
+      "passed": true,
+      "maximum_absolute_error": 1.2576745200831851e-17
+    },
+    {
+      "name": "regular and half-shift union average L48",
+      "passed": true,
+      "maximum_absolute_error": 7.589415207398531e-18
+    },
+    {
+      "name": "weak_L32 one retained state",
+      "passed": true
+    },
+    {
+      "name": "weak_L32 exact free incoming node",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "weak_L32 endpoint distance",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "weak_L32 independent moments",
+      "passed": true,
+      "maximum_absolute_error": 6.938893903907228e-18
+    },
+    {
+      "name": "weak_L40 one retained state",
+      "passed": true
+    },
+    {
+      "name": "weak_L40 exact free incoming node",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "weak_L40 endpoint distance",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "weak_L40 independent moments",
+      "passed": true,
+      "maximum_absolute_error": 1.3877787807814457e-17
+    },
+    {
+      "name": "weak_L48 one retained state",
+      "passed": true
+    },
+    {
+      "name": "weak_L48 exact free incoming node",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "weak_L48 endpoint distance",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "weak_L48 independent moments",
+      "passed": true,
+      "maximum_absolute_error": 6.938893903907228e-18
+    },
+    {
+      "name": "controls step0.1 exact incoming nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "controls step0.1 exact maximum step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "controls step0.1 endpoint distance",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "controls step0.05 exact incoming nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "controls step0.05 exact maximum step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "controls step0.05 endpoint distance",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "controls step0.025 exact incoming nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "controls step0.025 exact maximum step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "controls step0.025 endpoint distance",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "independent active maximum-step ratios",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "phase1024_to2048 independently reconstructed comparison",
+      "passed": true,
+      "maximum_absolute_error": 6.278580899545666e-16
+    },
+    {
+      "name": "phase2048_to4096 independently reconstructed comparison",
+      "passed": true,
+      "maximum_absolute_error": 5.024192867297828e-16
+    },
+    {
+      "name": "halfshift independently reconstructed comparison",
+      "passed": true,
+      "maximum_absolute_error": 3.7730235602495554e-16
+    },
+    {
+      "name": "final_plane_phase independently reconstructed comparison",
+      "passed": true,
+      "maximum_absolute_error": 2.512096433648914e-16
+    },
+    {
+      "name": "final_plane_halfshift independently reconstructed comparison",
+      "passed": true,
+      "maximum_absolute_error": 1.1462185367516753e-15
+    },
+    {
+      "name": "boundary_integral independently reconstructed comparison",
+      "passed": true,
+      "maximum_absolute_error": 3.7676576065286994e-16
+    },
+    {
+      "name": "boundary_weak_state independently reconstructed comparison",
+      "passed": true,
+      "maximum_absolute_error": 1.7760273774650864e-12
+    },
+    {
+      "name": "active_step independently reconstructed comparison",
+      "passed": true,
+      "maximum_absolute_error": 1.4217166778255163e-24
+    },
+    {
+      "name": "Cartesian replay same input",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "Cartesian raw endpoint discrepancies",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "Cartesian replay same input",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "Cartesian raw endpoint discrepancies",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "Cartesian replay same input",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "Cartesian raw endpoint discrepancies",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "mandatory tight initial bits",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "mandatory tight raw endpoint/time discrepancies",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "mandatory tight reflected first exit",
+      "passed": true
+    },
+    {
+      "name": "reused prior256 bits nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "reused prior256 bits distance",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "reused prior256 bits step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "reused prior256 bits status",
+      "passed": true
+    },
+    {
+      "name": "reused prior256 bits moments",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "reused prior256 bits initial_relative_position",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "reused prior256 bits final_relative_position",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "reused prior256 bits initial_relative_velocity",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "reused prior256 bits final_relative_velocity",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "reused prior256 bits delta_relative_perpendicular",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "reused prior256 bits gc_relative_kick",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "reused prior256 bits time",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "reused prior256 bits energy_error",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "reused prior256 bits min_separation",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "reused prior256 bits max_actual_step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "reused prior256 bits evaluations",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "reused prior256 bits parallel_turns",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "reused prior256 bits individual_gc_second",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "reused prior256 bits wall_s",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "reused prior256 bits worker_peak_rss_bytes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "reused prior256 bits exit",
+      "passed": true
+    },
+    {
+      "name": "stored rows and unique cache keys",
+      "passed": true
+    },
+    {
+      "name": "reuse/new counts",
+      "passed": true
+    },
+    {
+      "name": "separate replay counts",
+      "passed": true
+    },
+    {
+      "name": "historical committed producer examples/41_encounter_peak_resolution.py",
+      "passed": true
+    },
+    {
+      "name": "historical committed producer src/sato_morrison/controls.py",
+      "passed": true
+    },
+    {
+      "name": "historical committed producer src/sato_morrison/reference.py",
+      "passed": true
+    },
+    {
+      "name": "original failed Cartesian comparison retained",
+      "passed": true
+    },
+    {
+      "name": "phase1024_to2048 producer gate reproduced",
+      "passed": true
+    },
+    {
+      "name": "phase2048_to4096 producer gate reproduced",
+      "passed": true
+    },
+    {
+      "name": "halfshift producer gate reproduced",
+      "passed": true
+    },
+    {
+      "name": "final_plane_phase producer gate reproduced",
+      "passed": true
+    },
+    {
+      "name": "final_plane_halfshift producer gate reproduced",
+      "passed": true
+    },
+    {
+      "name": "boundary_integral producer gate reproduced",
+      "passed": true
+    },
+    {
+      "name": "boundary_weak_state producer gate reproduced",
+      "passed": true
+    },
+    {
+      "name": "active_step producer gate reproduced",
+      "passed": true
+    },
+    {
+      "name": "active_step_sizes producer gate reproduced",
+      "passed": true
+    },
+    {
+      "name": "cartesian producer gate reproduced",
+      "passed": true
+    },
+    {
+      "name": "required_reflected_tight producer gate reproduced",
+      "passed": true
+    },
+    {
+      "name": "complete producer gate reproduced",
+      "passed": true
+    },
+    {
+      "name": "energy producer gate reproduced",
+      "passed": true
+    },
+    {
+      "name": "source_integrity producer gate reproduced",
+      "passed": true
+    },
+    {
+      "name": "prior_integrity producer gate reproduced",
+      "passed": true
+    },
+    {
+      "name": "original_failure_integrity producer gate reproduced",
+      "passed": true
+    },
+    {
+      "name": "all declared producer gates reconstructed",
+      "passed": true
+    },
+    {
+      "name": "producer overall status reproduced",
+      "passed": true
+    }
+  ],
+  "wall_s": 0.23407708300510421,
+  "peak_rss_bytes": 124108800,
+  "python": "3.12.13",
+  "numpy": "2.5.3",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "scope": "Saved-array algebra, weights, grid hierarchy, source identities and acceptance replay. No new encounter integration, full-domain bound or plasma closure conclusion."
+}
