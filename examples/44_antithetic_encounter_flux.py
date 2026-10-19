@@ -20,6 +20,7 @@ from sato_morrison.reference import run_metadata
 ROOT = Path(__file__).resolve().parents[1]
 PRIOR = ROOT/'results/stratified_encounter_flux'
 OUTPUT = ROOT/os.environ.get('SM_ANTITHETIC_FLUX_OUTPUT','results/antithetic_encounter_flux')
+REPLAY = os.environ.get('SM_ANTITHETIC_RECEIPT_REPLAY','0')=='1'
 MASS,CHARGE,FIELD,STRENGTH,SCREENING,THETA = 1.,1.,2.,.03,3.,.5
 BASE_STEP,RTOL,FLIGHT_FACTOR = .2,1e-12,48.
 STEPS,DISTANCES = (.1,.05,.025),(40.,48.)
@@ -96,9 +97,37 @@ def save_states(path, rows):
     np.savez_compressed(path, **arrays)
 
 
-if OUTPUT.exists():
-    raise FileExistsError(f'Preserve existing evidence: {OUTPUT}; select a fresh destination')
-OUTPUT.mkdir(parents=True)
+if REPLAY:
+    if (OUTPUT/'summary.json').exists():
+        raise FileExistsError('Do not overwrite an existing recovered receipt')
+    original_attempt=json.loads((OUTPUT/'original_attempt.json').read_text())
+    preserved_hashes=original_attempt['saved_artifact_sha256']
+    original_manifest_hash=hashlib.sha256((OUTPUT/'original_attempt.json').read_bytes()).hexdigest()
+    def verify_original_artifacts():
+        absent=[]
+        for name,h in preserved_hashes.items():
+            path=OUTPUT/name
+            if not path.exists():
+                if name.startswith('checkpoint_') and name.endswith('.npz'):
+                    absent.append(name)
+                    continue
+                raise FileNotFoundError(f'Required original artifact missing: {name}')
+            if hashlib.sha256(path.read_bytes()).hexdigest()!=h:
+                raise ValueError(f'Original artifact changed: {name}')
+        for name,h in ((original_attempt['original_source_copy'],original_attempt['source_copy_sha256']),
+                (original_attempt['progress_log'],original_attempt['progress_log_sha256'])):
+            if hashlib.sha256((OUTPUT/name).read_bytes()).hexdigest()!=h:
+                raise ValueError(f'Original source or log changed: {name}')
+        if hashlib.sha256((OUTPUT/'original_attempt.json').read_bytes()).hexdigest()!=original_manifest_hash:
+            raise ValueError('Original artifact manifest changed')
+        return dict(verified_manifest_artifact_count=len(preserved_hashes)-len(absent),
+            absent_optional_checkpoint_count=len(absent),absent_optional_checkpoints=absent,
+            verified_original_source_and_log_count=2)
+    preservation_check=verify_original_artifacts()
+else:
+    if OUTPUT.exists():
+        raise FileExistsError(f'Preserve existing evidence: {OUTPUT}; select a fresh destination')
+    OUTPUT.mkdir(parents=True)
 with np.load(PRIOR/'states.npz') as saved:
     base={name:saved[name].copy() for name in saved.files}
 with np.load(PRIOR/'populations.npz') as saved:
@@ -107,12 +136,17 @@ base_count=len(base['nodes'])
 INPUTS['base_state_count']=base_count
 if not np.all(base['status']=='passed') or not all(c['complete'] for c in prior['results']['cases']):
     raise ValueError('Base contains missing or failed physical states; do not discard their weights')
-(OUTPUT/'declared_inputs.json').write_text(json.dumps(INPUTS,indent=2)+'\n')
+if REPLAY:
+    if json.loads((OUTPUT/'declared_inputs.json').read_text())!=json.loads(json.dumps(INPUTS)):
+        raise ValueError('Receipt replay changed the original declared scientific inputs')
+else:
+    (OUTPUT/'declared_inputs.json').write_text(json.dumps(INPUTS,indent=2)+'\n')
 from jax._src import xla_bridge
 if xla_bridge.backends_are_initialized():
     raise RuntimeError('Run in a fresh process before JAX backend initialization')
-pool=ProcessPoolExecutor(max_workers=WORKERS,mp_context=mp.get_context('fork'))
-list(pool.map(float,range(WORKERS)))
+pool=None if REPLAY else ProcessPoolExecutor(max_workers=WORKERS,mp_context=mp.get_context('fork'))
+if pool is not None:
+    list(pool.map(float,range(WORKERS)))
 import jax
 jax.config.update('jax_enable_x64',True)
 metadata=run_metadata(INPUTS,model='exact physical antithetic bounded encounter-flux extension',
@@ -120,10 +154,21 @@ metadata=run_metadata(INPUTS,model='exact physical antithetic bounded encounter-
 dependencies=[Path(__file__).resolve(),ROOT/'src/sato_morrison/controls.py',ROOT/'src/sato_morrison/reference.py']
 hashes={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in dependencies}
 metadata['experiment_dependency_sha256']=hashes
+metadata['execution_mode']='saved-state receipt replay; no ODE solves' if REPLAY else 'fresh physical partner integration'
+(OUTPUT/('recovery_run_context.json' if REPLAY else 'run_context.json')).write_text(json.dumps(metadata,indent=2,allow_nan=False)+'\n')
 started=perf_counter()
 attempts,cache,populations,cases,failures=[],{},{},[],[]
 for i,node in enumerate(base['nodes']):
     cache[(tuple(node),float(base['distance'][i]),float(base['step'][i]))]=i
+if REPLAY:
+    with np.load(OUTPUT/'states.npz') as saved:
+        for i in range(len(saved['nodes'])):
+            record={('node' if k=='nodes' else k):saved[k][i].tolist() for k in saved.files}
+            key=(tuple(record['node']),float(record['distance']),float(record['step']))
+            if key in cache:
+                raise ValueError('Saved new-state reference duplicates a base reference')
+            cache[key]=base_count+len(attempts)
+            attempts.append(record)
 cap_exhausted=False
 base_references_used=set()
 
@@ -150,6 +195,8 @@ def evaluate(nodes,distance=24.,step=BASE_STEP):
     global cap_exhausted
     specs=[(tuple(map(float,n)),float(distance),float(step)) for n in nodes]
     pending=list(dict.fromkeys(s for s in specs if s not in cache))
+    if REPLAY and pending:
+        raise RuntimeError('Receipt replay requires a missing solve; no ODE call is allowed')
     for offset in range(0,len(pending),CHECKPOINT):
         if perf_counter()-started>CAP:
             cap_exhausted=True
@@ -196,7 +243,7 @@ def integrate(original):
             reflected_flux_fraction=float(weights@(np.asarray(base['exit'][ids]=='reflected',dtype=float)+np.asarray([r['exit']=='reflected' for r in records]))/(2*INPUTS['bounded_flux_per_density'])),
             strata=[dict(stratum=int(k),count=int(np.sum(strata==k)),flux_per_density=float(weights[strata==k].sum()),integrals=np.sum(weights[strata==k,None]*values[strata==k],axis=0).tolist()) for k in np.unique(strata)])
     cases.append(case)
-    (OUTPUT/'cases_partial.json').write_text(json.dumps(cases,indent=2)+'\n')
+    (OUTPUT/('reconstructed_cases.json' if REPLAY else 'cases_partial.json')).write_text(json.dumps(cases,indent=2)+'\n')
     print(label,case.get('integrals'),flush=True)
     return case
 
@@ -281,7 +328,8 @@ for distance in DISTANCES:
     plane_vectors.append(values)
 checks['boundary_controls']=max_changes(plane_vectors[-1],plane_vectors[-2])
 checks['boundary_controls_members']=max_changes(member_vectors(controls['ids']['L48']),member_vectors(controls['ids']['L40']))
-pool.shutdown()
+if pool is not None:
+    pool.shutdown()
 
 
 def gate(values,target):
@@ -301,9 +349,16 @@ gates.update(phase_transform=all(c['same_cell'] and c['involution_max_phase_erro
 ending={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in dependencies}
 metadata['experiment_dependency_sha256_end']=ending
 gates['source_integrity']=hashes==ending
+gates={k:bool(v) for k,v in gates.items()}
 status='passed' if all(gates.values()) else 'unresolved'
-save_states(OUTPUT/'states.npz',attempts)
-np.savez_compressed(OUTPUT/'populations.npz',**populations)
+if REPLAY:
+    with np.load(OUTPUT/'populations.npz') as saved:
+        if set(saved.files)!=set(populations) or not all(np.array_equal(saved[k],populations[k]) for k in saved.files):
+            raise ValueError('Reconstructed population references or weights differ')
+    preservation_check=verify_original_artifacts()
+else:
+    save_states(OUTPUT/'states.npz',attempts)
+    np.savez_compressed(OUTPUT/'populations.npz',**populations)
 metadata['results']=dict(status=status,required_gates=gates,comparisons=checks,cases=cases,controls=controls,transform_checks=transform_checks,
     raw_campaign_status=prior['results']['status'],raw_campaign_required_gates=prior['results']['required_gates'],
     raw_campaign_comparisons=prior['results']['comparisons'],base_state_count=base_count,
@@ -315,6 +370,18 @@ metadata['results']=dict(status=status,required_gates=gates,comparisons=checks,c
     limits=['Pairing preserves the exact incoming measure but provides no rigorous error bound or QMC variance guarantee.',
         'Original raw and first-Born control failures remain intact; this is a distinct estimator using new physical trajectories.',
         'No omitted-domain, reverse-complete population, screening closure, physical coefficient or lifetime claim.'])
+if REPLAY:
+    result=metadata['results']
+    result.update(recovery_wall_s=result['wall_s'],recovery_parent_process_peak_rss_bytes=result['parent_process_peak_rss_bytes'],
+        wall_s=None,parent_process_peak_rss_bytes=None,new_solves_this_execution=0,
+        original_last_logged_elapsed_s=original_attempt['last_logged_elapsed_s'],
+        timing_scope='Original exact wall endpoint unavailable; last logged elapsed is a rounded lower bound. Recovery wall is separately measured.',
+        memory_scope='Original parent peak unavailable; original worker peaks persisted per state. Recovery parent peak is separately measured.')
+    metadata['original_producer']=original_attempt
+    metadata['receipt_scope']='Numerical gates reconstructed from immutable saved arrays; top-level code/commit/environment identify receipt recovery, not the original ODE execution.'
+    metadata['recovery_preserved_artifact_sha256']=preserved_hashes
+    metadata['original_manifest_sha256']=original_manifest_hash
+    metadata['recovery_preservation_check']=preservation_check
 (OUTPUT/'summary.json').write_text(json.dumps(metadata,indent=2,allow_nan=False)+'\n')
 import matplotlib
 matplotlib.use('Agg')
@@ -338,7 +405,8 @@ plt.close(fig)
 with np.load(OUTPUT/'states.npz') as saved:
     if len(saved['nodes'])!=len(attempts):
         raise RuntimeError('Final new-state archive incomplete; retain checkpoints')
-for checkpoint in OUTPUT.glob('checkpoint_*.npz'):
-    checkpoint.unlink()
+if not REPLAY:
+    for checkpoint in OUTPUT.glob('checkpoint_*.npz'):
+        checkpoint.unlink()
 print(f'Finished {status}; gates={gates}; elapsed {perf_counter()-started:.1f}s',flush=True)
 sys.exit(0 if status=='passed' else 1)
