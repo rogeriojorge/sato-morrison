@@ -1,0 +1,38 @@
+{
+  "impact": 1.2161710500723555,
+  "parallel_speed": 1.546221967601278,
+  "perpendicular_speed": 2.406217687668966,
+  "phases": [
+    1.5892040962495242,
+    1.552388557340269
+  ],
+  "mass": 1.0,
+  "charge": 1.0,
+  "field": 2.0,
+  "strength": 0.03,
+  "screening": 3.0,
+  "start_distance": 24.0,
+  "max_step": 0.0125,
+  "rtol": 2e-13,
+  "energy_target": 1e-09,
+  "endpoint_target": 1e-08,
+  "frames": 120,
+  "fps": 10,
+  "dpi": 120,
+  "camera": {
+    "elevation": 22,
+    "azimuth": -55,
+    "box_aspect": [
+      1,
+      1,
+      1.4
+    ]
+  },
+  "close_projection_half_width": 0.75,
+  "units": "normalized length, velocity, time and moment; mu=m*v_perp^2/(2B)",
+  "selection": "Fixed phase pair from archived example41 peak; no replacement based on outcomes.",
+  "COM": "Position and velocity center of mass zero in each independent physical experiment.",
+  "clock": "One shared physical clock. 84 of 120 frames span the two closest saved times plus/minus0.5; playback slows there. Only original Cartesian samples at or before each clock time are shown.",
+  "exit_rule": "Each Cartesian integration stops at its own relative-solver outgoing-event time; endpoint position and velocity must independently agree. No extrapolation or synthetic motion beyond exit.",
+  "scope": "Two individual zero-COM physical experiments; no thermal COM average, ensemble quadrature, flux reweighting, physical rate or lifetime."
+}

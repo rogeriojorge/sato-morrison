@@ -1,0 +1,55 @@
+{
+  "records": [
+    {
+      "index": 0,
+      "phase": 1.5892040962495242,
+      "exit": "transmitted",
+      "exit_time": 44.38469408681652,
+      "relative_energy_error": 7.339341635477016e-14,
+      "cartesian_energy_error": 6.492494523691206e-14,
+      "endpoint_position_error": 2.2149038159113843e-10,
+      "endpoint_velocity_error": 7.62745422377975e-12,
+      "sampled_minimum_separation": 0.022133513642684594,
+      "closest_sample_index": 1279,
+      "closest_sample_time": 15.541979330720382,
+      "initial_mu": 0.36186772252818666,
+      "final_mu": 0.46772622397273433,
+      "delta_mu": 0.10585850144454767,
+      "checks": {
+        "energy": true,
+        "relative_energy": true,
+        "endpoint_position": true,
+        "endpoint_velocity": true,
+        "outgoing_plane": true,
+        "COM": true,
+        "finite_ordered": true
+      }
+    },
+    {
+      "index": 1,
+      "phase": 1.552388557340269,
+      "exit": "transmitted",
+      "exit_time": 83.32845981878552,
+      "relative_energy_error": 3.7782409605120306e-14,
+      "cartesian_energy_error": 4.2342355591945167e-14,
+      "endpoint_position_error": 5.864109198228107e-11,
+      "endpoint_velocity_error": 8.908429549592256e-13,
+      "sampled_minimum_separation": 0.03529557696991617,
+      "closest_sample_index": 1270,
+      "closest_sample_time": 15.527580977353125,
+      "initial_mu": 0.36186772252818666,
+      "final_mu": 0.5030801112247552,
+      "delta_mu": 0.1412123886965685,
+      "checks": {
+        "energy": true,
+        "relative_energy": true,
+        "endpoint_position": true,
+        "endpoint_velocity": true,
+        "outgoing_plane": true,
+        "COM": true,
+        "finite_ordered": true
+      }
+    }
+  ],
+  "failures": []
+}

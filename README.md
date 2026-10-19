@@ -337,7 +337,7 @@ Let **b** be relative guiding-center impact, **u** parallel speed, **p** perpend
 
 Here **A** is a signed moment change, squared moment change or squared guiding-center displacement. Extra samples improve integration within a cell without changing its physical weight. Reflected encounters retain their weights.
 
-Four fresh independent scrambles use **7,680 → 15,360 → 30,720** joint incoming states each. A separate sample narrows the phase partition; the entire first fine replica is repeated at **L = 40 and 48**. All **215,218** trajectories exit successfully.
+A scramble is an independently randomized low-discrepancy sample. Four fresh independent scrambles use **7,680 → 15,360 → 30,720** joint incoming states each. A separate sample narrows the phase partition; the entire first fine replica is repeated at **L = 40 and 48**. All **215,218** trajectories exit successfully.
 
 ![Fresh joint incoming-flux refinement: second and signed-mean integrals in normalized units per partner density.](results/stratified_encounter_flux/sampling_readable.svg)
 
@@ -360,6 +360,18 @@ Outgoing inverse states leave the incoming impact or speed bands for **0.200–0
 Two marginal coarse Cartesian velocity checks remain recorded as failures. Smaller steps resolve both at the unchanged accuracy target; replacing those two contributions changes the ensemble by at most **9 × 10⁻¹²** on its positive reference scales. This trajectory refinement does not remove the sampling failures. [Original Cartesian checks](results/stratified_encounter_flux/cartesian_audit.json) · [Fixed finer-step followup](results/stratified_encounter_flux/cartesian_tight_refinement.json)
 
 
+### Two physical phase partners
+
+Reflecting the incoming phase around **π/2** preserves its uniform measure:
+
+![The phase involution leaves impact and incoming speeds fixed.](results/antithetic_encounter_movie/phase_map.svg)
+
+The movie follows the same fixed impact and speeds at **φ = 1.58920** and **1.55239 radians**. Each is an actual two-particle experiment with zero center-of-mass position and velocity. Both transmit, at normalized times **44.38** and **83.33**. Their individual magnetic-moment changes are both positive, **0.10586** and **0.14121**: the nonlinear responses need not cancel under this phase map.
+
+![Actual Cartesian phase-partner trajectories and individual magnetic moments on a shared physical clock.](results/antithetic_encounter_movie/phase_pair.gif)
+
+The clock slows near the closest approaches. Trails use original samples and stop at each path's exit; squares mark exits. The 3D view compresses z; close projections have equal spatial scales. These zero-COM moment curves differ from thermal-COM-averaged moments. The independent audit passes **48** checks of paths, energy, canonical angular momentum, moment histories, exits and every movie-frame hash. [Poster](results/antithetic_encounter_movie/poster.svg) · [Inputs, arrays, accuracy checks and costs](results/antithetic_encounter_movie/summary.json) · [Independent audit](results/antithetic_encounter_movie/independent_audit.json)
+
 The specified screened encounters allow individual-moment exchange, while the prototype enforces exact conservation of the full μ marginal. A calibrated plasma closure still needs complete incident-domain convergence, screening tied to plasma parameters, successive-encounter correlations and a measured mixing time. A constrained dipole lifetime remains open.
 
 Recorded costs on the shared Apple M4 are below. Parent and worker memory figures are separate process-lifetime peaks; aggregate job memory was not measured.
@@ -379,6 +391,7 @@ Recorded costs on the shared Apple M4 are below. Parent and worker memory figure
 | Independent saved-array audit of the peak diagnostic | 0.234 s | 0.124 GB | — |
 | Fresh stratified flux; 215,218 encounters | 1,808.48 s | 1.271 GB | 0.107 GB |
 | Known-zero control of the same saved encounters | 4.69 s | 0.543 GB | — |
+| Two phase-partner paths and 120-frame movie | 47.26 s | 0.900 GB | — |
 
 The extension's measured time excludes the reused solves and figure rendering. The [October 19 review](results/physical_review_2026_10_19.json) records the new studies and independent checks. The [earlier review and reproducibility record](results/review_refinement.json) collects the source identities, tests and preserved failures.
 
@@ -443,13 +456,15 @@ OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 SM_ENCOUNTER_PEAK_OUT
 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 SM_STRATIFIED_FLUX_OUTPUT=results/stratified_flux_reproduction python examples/42_stratified_encounter_flux.py
 # Reanalyse the saved encounters with the fixed known-zero control; also exits nonzero:
 SM_BORN_CONTROL_OUTPUT=results/born_control_reproduction python examples/43_encounter_born_control.py
+# Two fixed physical phase partners and their checked Cartesian movie:
+SM_ANTITHETIC_MOVIE_OUTPUT=results/phase_pair_movie_reproduction MPLBACKEND=Agg python examples/45_antithetic_encounter_movie.py
 # Independently reconstruct the published peak data, preserving the original receipt:
 SM_PEAK_AUDIT_OUTPUT=results/encounter_peak_audit_reproduction.json python results/encounter_peak_resolution/audit_saved_states.py
 ```
 
 Example 24 exits nonzero because the declared angular and Cartesian checks remain unresolved. It saves the results before raising the error.
 
-**274 tests pass locally** (113.07 s); the earlier 272-test suite passed Linux CI. The encounter tests include free helices, exact finite-radius repulsive Coulomb orbits, a sensitive screened trajectory checked at high precision, and signed-kick interpolation through zero with independent Gaussian center averaging. Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
+**274 tests pass locally** (113.07 s) and on [Linux CI](https://github.com/rogeriojorge/sato-morrison/actions/runs/39283055126) (143.28 s at revision `831d2eb`). The encounter tests include free helices, exact finite-radius repulsive Coulomb orbits, a sensitive screened trajectory checked at high precision, and signed-kick interpolation through zero with independent Gaussian center averaging. Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
 
 | Capability | Current evidence |
 |---|---|

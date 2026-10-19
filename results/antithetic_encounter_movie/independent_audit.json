@@ -1,0 +1,266 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "name": "fixed phase involution",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "fixed archived impact and speeds",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "path0 finite ordered stored samples",
+      "passed": true
+    },
+    {
+      "name": "path0 exact physical incoming velocities",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "path0 exact physical incoming positions",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "path0 zero position COM",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "path0 zero velocity COM",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "path0 stored individual moment",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "path0 symmetric zero-COM individual moments",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "path0 recorded moment values",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "path0 Cartesian energy target",
+      "passed": true,
+      "maximum_absolute_error": 6.494804694057166e-14
+    },
+    {
+      "name": "path0 saved Cartesian energy diagnostic",
+      "passed": true,
+      "maximum_absolute_error": 2.310170365959793e-17
+    },
+    {
+      "name": "path0 canonical angular momentum target",
+      "passed": true,
+      "maximum_absolute_error": 7.094094013528895e-15
+    },
+    {
+      "name": "path0 actual integration stop time",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "path0 outgoing plane and direction",
+      "passed": true
+    },
+    {
+      "name": "path0 closest saved sample",
+      "passed": true
+    },
+    {
+      "name": "path0 closest sample quantities",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "path0 original trajectory checks retained",
+      "passed": true
+    },
+    {
+      "name": "path1 finite ordered stored samples",
+      "passed": true
+    },
+    {
+      "name": "path1 exact physical incoming velocities",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "path1 exact physical incoming positions",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "path1 zero position COM",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "path1 zero velocity COM",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "path1 stored individual moment",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "path1 symmetric zero-COM individual moments",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "path1 recorded moment values",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "path1 Cartesian energy target",
+      "passed": true,
+      "maximum_absolute_error": 4.2299497238218464e-14
+    },
+    {
+      "name": "path1 saved Cartesian energy diagnostic",
+      "passed": true,
+      "maximum_absolute_error": 4.2858353726702345e-17
+    },
+    {
+      "name": "path1 canonical angular momentum target",
+      "passed": true,
+      "maximum_absolute_error": 9.246980833142611e-15
+    },
+    {
+      "name": "path1 actual integration stop time",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "path1 outgoing plane and direction",
+      "passed": true
+    },
+    {
+      "name": "path1 closest saved sample",
+      "passed": true
+    },
+    {
+      "name": "path1 closest sample quantities",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "path1 original trajectory checks retained",
+      "passed": true
+    },
+    {
+      "name": "shared physical movie clock",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "no movie clock beyond final integration",
+      "passed": true
+    },
+    {
+      "name": "canvas frame hashes cover declared clock",
+      "passed": true
+    },
+    {
+      "name": "decoded GIF frames match recorded bytes",
+      "passed": true
+    },
+    {
+      "name": "saved output hash results/antithetic_encounter_movie/paths.npz",
+      "passed": true
+    },
+    {
+      "name": "saved output hash results/antithetic_encounter_movie/trajectory_checks.json",
+      "passed": true
+    },
+    {
+      "name": "saved output hash results/antithetic_encounter_movie/phase_pair.gif",
+      "passed": true
+    },
+    {
+      "name": "saved output hash results/antithetic_encounter_movie/poster.png",
+      "passed": true
+    },
+    {
+      "name": "saved output hash results/antithetic_encounter_movie/poster.svg",
+      "passed": true
+    },
+    {
+      "name": "historical committed producer examples/45_antithetic_encounter_movie.py",
+      "passed": true
+    },
+    {
+      "name": "historical committed producer src/sato_morrison/controls.py",
+      "passed": true
+    },
+    {
+      "name": "historical committed producer src/sato_morrison/reference.py",
+      "passed": true
+    },
+    {
+      "name": "producer unchanged while integrating",
+      "passed": true
+    },
+    {
+      "name": "producer physical outcome status",
+      "passed": true
+    }
+  ],
+  "scope": "Saved physical zero-COM Cartesian arrays and media-clock/hash associations only. No fresh ODE, thermal COM averaging, ensemble convergence or physical rate claim.",
+  "energy_errors": {
+    "0": 6.494804694057166e-14,
+    "1": 4.2299497238218464e-14
+  },
+  "canonical_scaled_errors": {
+    "0": 7.094094013528895e-15,
+    "1": 9.246980833142611e-15
+  },
+  "producer_commit": "a770e4bb7a0456788a7fc5c5360f5ece643578c1",
+  "producer_source_identities": {
+    "examples/45_antithetic_encounter_movie.py": {
+      "commit": "a770e4bb7a0456788a7fc5c5360f5ece643578c1",
+      "expected_sha256": "0feb9e73ba4192ff3702c153c065f08160224de415e3293e7138ce7d498d7c50",
+      "actual_sha256": "0feb9e73ba4192ff3702c153c065f08160224de415e3293e7138ce7d498d7c50"
+    },
+    "src/sato_morrison/controls.py": {
+      "commit": "a770e4bb7a0456788a7fc5c5360f5ece643578c1",
+      "expected_sha256": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+      "actual_sha256": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412"
+    },
+    "src/sato_morrison/reference.py": {
+      "commit": "a770e4bb7a0456788a7fc5c5360f5ece643578c1",
+      "expected_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+      "actual_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+    }
+  },
+  "source_path": "results/antithetic_encounter_movie/audit_saved_paths.py",
+  "source_sha256": "0cd154990050b3ca49a92b11422654356cfff681943e26ba0e40a03d3b930531",
+  "audit_git_identity": "a770e4bb7a0456788a7fc5c5360f5ece643578c1",
+  "source_uncommitted": true,
+  "input_sha256": {
+    "results/antithetic_encounter_movie/summary.json": "dad2cfcadf4d074fec8aba71e45127da45f06e2739dd49b9db8cfbf5ac03d93b",
+    "results/antithetic_encounter_movie/paths.npz": "adae76b7033451e312292484d0e63ca72530f42a89b07a69971f3dc2eb70af94",
+    "results/antithetic_encounter_movie/phase_pair.gif": "2ac3c4cd77ca28c23b0cd4354f54bb638b58b90aa9972f3001500498e8e783b8",
+    "results/encounter_peak_resolution/summary.json": "0e46988dcfff5d81b14978146710f8108532944e6bb5b72c2ebc16ac680944da"
+  },
+  "versions": {
+    "numpy": "2.5.3",
+    "pillow": "12.3.0"
+  },
+  "wall_s": 1.3006973339943215
+}

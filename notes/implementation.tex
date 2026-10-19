@@ -3975,6 +3975,58 @@ This resolves those trajectory comparisons without changing the saved
 production data or any sampling gate. The followup is recorded in
 \path{results/stratified_encounter_flux/cartesian_tight_refinement.json}.
 
+
+\subsection*{Two fixed physical phase partners}
+Example 45 illustrates the phase involution
+\[
+ T(b,u,p,\varphi)=(b,u,p,(\pi-\varphi)\bmod 2\pi),\qquad T^2=I.
+\]
+It preserves the uniform phase measure and each central or complementary
+phase interval used above. An odd first-Born contribution cancels under
+this map; the actual nonlinear trajectories and moment changes need not
+cancel. The fixed archived impact and speeds are
+$(b,u,p)=(1.2161710500723555,1.546221967601278,2.406217687668966)$.
+Phases are $1.5892040962495242$ and $1.552388557340269$ radians.
+Each is a separate two-particle physical experiment with zero center-of-mass
+position and velocity. It is not a thermal-center average. Consequently
+$\mu_1=\mu_2$ along each path; the movie displays the individual nonlinear
+pair-total correction rather than the thermal-center exchange variance.
+
+The six-coordinate relative solve determines its own first outgoing plane
+at $L=24$. An independent twelve-coordinate Cartesian solve runs to that
+physical time. Both use maximum step $0.0125$ and relative tolerance
+$2\times10^{-13}$. The endpoint position and velocity target is $10^{-8}$;
+the relative energy target is $10^{-9}$. Both partners transmit, at times
+$44.3846941$ and $83.3284598$. Maximum endpoint position and velocity
+differences are $2.215\times10^{-10}$ and $7.628\times10^{-12}$;
+maximum relative energy error across the four solves is
+$7.340\times10^{-14}$. Initial individual magnetic moment is $0.36186772$.
+The changes are both positive, $0.10585850$ and $0.14121239$.
+These fixed examples demonstrate no nonlinear cancellation or ensemble
+convergence.
+
+The 120-frame, 10-frame-per-second animation reveals only original Cartesian
+samples at or before one shared physical clock. It allocates 84 frames
+between the two closest sampled times enlarged by $0.5$ on each side;
+playback therefore slows near close approach. Each trace stops at its own
+checked exit; a square marks the endpoint. No motion is interpolated or
+extrapolated beyond an exit. The three-dimensional view compresses $z$;
+the close $x$--$z$ projections have equal spatial scales. The poster and
+movie remain readable at an 823-pixel article width.
+
+Revision \texttt{a770e4b} saves the actual paths, inputs, provenance,
+trajectory checks, frame times and frame hashes under
+\path{results/antithetic_encounter_movie/}. Two relative and two Cartesian
+solves take $2.590$ seconds; rendering takes $44.671$ seconds, for
+$47.261$ seconds total and a single-process lifetime peak of $0.9002$ GB.
+The separate independent saved-path/media audit passes 48 checks of the
+free incoming helices, energy, zero center of mass, equal individual moments,
+canonical angular momentum, outgoing planes and signs, clock mapping,
+source/output associations and every decoded GIF frame hash. Its energy
+error is at most $6.50\times10^{-14}$ and scaled canonical residual at most
+$9.25\times10^{-15}$. These checks validate the selected movie paths;
+they supply no thermal-COM-averaged integral, plasma rate or lifetime.
+
 \subsection*{Resolving the failed encounter's flight budget}
 Example 17 preserves the original broad-campaign metadata and replays its
 exact failed node. The declared flight factors $6,12,24,48$ vary only the

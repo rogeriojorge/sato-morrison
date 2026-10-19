@@ -50,6 +50,7 @@ Prefix each command below with `MPLBACKEND=Agg python`.
 | `examples/41_encounter_peak_resolution.py` | Fixed angular and endpoint diagnosis of one close-encounter state; the broad ensemble remains unresolved |
 | `examples/42_stratified_encounter_flux.py` | Fresh joint incoming-flux quadrature with exact cell weights, independent scrambles and full matched primary boundaries; signed-mean checks fail |
 | `examples/43_encounter_born_control.py` | Fixed known-zero-control reanalysis of the same trajectories; replica spread worsens and fixed gates fail |
+| `examples/45_antithetic_encounter_movie.py` | Two fixed physical phase-partner paths: independent relative/Cartesian endpoint checks, 120-frame shared-clock movie and original trajectory arrays |
 
 Example 12 uses dense spatial blocks per velocity node and writes `results/nonuniform_spatial_blocks/`. A single predefined case can be run with:
 
@@ -98,3 +99,5 @@ Example 41 isolates seed 3902, speed index 1155, with fixed 512/1024/2048 phases
 The separate saved-array source `results/encounter_peak_resolution/audit_saved_states.py` passes 198 independent checks of the example-41 moments, phase grids, weights, reused bits, source identities and all 16 gates. Set `SM_PEAK_AUDIT_OUTPUT` to a fresh JSON path when reproducing it; the original receipt and its audit-source hash remain preserved.
 
 Example 42 retains the same bounded impact and speed domain as example 39. Eight exact-flux cells and four independent scrambles concentrate work near the narrow scattering region without changing physical weights. It saves all 215,218 successful trajectories but exits nonzero because three signed-mean gates fail. Example 43 adds no trajectories: its analytically known-zero control reanalyses the same samples. Ten gates fail, including control-order sensitivity; the raw result is preserved. Both scripts require fresh output directories for reproduction. Set `SM_STRATIFIED_FLUX_OUTPUT` or `SM_BORN_CONTROL_OUTPUT` respectively. The latter reads the published example-42 directory.
+
+Example 45 fixes the archived example-41 impact and speeds and phases 1.5892040962495242 and π minus that value. Both individual zero-COM paths transmit; their nonlinear magnetic-moment changes are positive. The shared physical clock slows near the two closest saved samples. Original Cartesian samples stop at each independently checked outgoing time; 3D z is compressed and close projections use equal spatial scales. Set `SM_ANTITHETIC_MOVIE_OUTPUT` to a fresh directory. The separate saved-path/media audit verifies 48 checks, including every decoded GIF frame hash; this movie supplies no thermal-COM ensemble or phase-integral claim.

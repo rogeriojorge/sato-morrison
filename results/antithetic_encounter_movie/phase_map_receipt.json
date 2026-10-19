@@ -1,0 +1,11 @@
+{
+  "scope": "Phase-map equation only; no trajectory recomputation.",
+  "input_sha256": {
+    "summary.json": "dad2cfcadf4d074fec8aba71e45127da45f06e2739dd49b9db8cfbf5ac03d93b"
+  },
+  "source_sha256": "de55464533f170e545b4ed41ca23f1551b76a61ab69c69e928a786ac5dd0938f",
+  "outputs_sha256": {
+    "phase_map.svg": "9936c451cf2ae0e6699dfb0426ef8d62b1b9fcd93a522bbb7a4a7b3c2e4ef292",
+    "phase_map.png": "2dd4fd90efc0776aba92782065cccb1bda0e379851c04d5a78c400947b75fa30"
+  }
+}
