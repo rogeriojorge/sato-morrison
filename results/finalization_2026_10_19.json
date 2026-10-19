@@ -1,7 +1,7 @@
 {
   "date": "2026-10-19",
   "repository": "https://github.com/rogeriojorge/sato-morrison",
-  "reviewed_commit": "cafa3b6c53f0edda271704e87963a11057117bd7",
+  "reviewed_commit": "35f5accb57be6bb3e1cbce090a886b2e0a44ff93",
   "previous_review": {
     "path": "results/physical_review_2026_10_19.json",
     "sha256": "4e3024cee3d52c603f3ad01af5a00e22f226a476de833a92f396e5e3b56c24ec"
@@ -1731,10 +1731,13 @@
     "process_peak_rss_bytes": 1487765504,
     "timing_scope": "Shared M4; documentation rendering and independent saved-data replays occurred concurrently. Whole-suite costs are not matched-error physics benchmarks.",
     "linux_ci": {
-      "conclusion": "",
+      "conclusion": "success",
       "headSha": "cafa3b6c53f0edda271704e87963a11057117bd7",
-      "status": "in_progress",
-      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/39323257695"
+      "status": "completed",
+      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/39323257695",
+      "command": "python -m pytest -q",
+      "completion": "299 passed in 268.53s (0:04:28)",
+      "log_sha256": "aa94e361ed218346fe7b6f65f953d4f63170759e347bb3c4907af533c34ae376"
     }
   },
   "analytical_findings": [
@@ -1745,6 +1748,17 @@
     "Two close encounters miss endpoint accuracy although energy and moment checks pass; conserved moments alone do not certify a trajectory."
   ],
   "novelty_scope": "A tested model-specific reciprocity benchmark and finite-box diagnostic. No priority claim for reciprocity, magnetic-moment exchange or variance reduction. JB20 arXiv:2008.06080v1 printed p.6 Eq.(20) and following discussion distinguishes ordinary time reversal in an external magnetic field from general postulated detailed balance; printed p.3 Eqs.(1)-(2) motivates equilibrium correlations and potential of mean force.",
+  "publication_review": {
+    "hosted_commit": "35f5accb57be6bb3e1cbce090a886b2e0a44ff93",
+    "url": "https://github.com/rogeriojorge/sato-morrison#reciprocal-encounters-at-the-same-field",
+    "findings": "Hosted equations and both scientific plots visually checked in the README; no clipped equation or unreadable plot was observed. All 118 local links resolve; no collapsed content sections.",
+    "notes_pages": 85,
+    "notes_qa": "Successful compilation; no warnings, overfull boxes or undefined references; latest pages 59-61 rendered and inspected.",
+    "public_pdf_inventory": [
+      "notes/implementation.pdf"
+    ],
+    "branch_state": "main is the only local and remote branch; historical detached reproduction worktree retained."
+  },
   "remaining_work": [
     "Resolve the two fixed endpoint accuracy failures before calling the 128-control reciprocal campaign fully trajectory-verified; retain original failures in any followup.",
     "Resolve all three reciprocal-core sampling comparisons before treating the retrospective core quadrature as converged. Its zero-oracle residual alone is insufficient.",
@@ -1765,7 +1779,7 @@
     "Full-history clean clone saved-data audit commands are recorded in clean_clone_replay."
   ],
   "documentation_sha256": {
-    "README.md": "750d88534807453c8110371eadb44db6c81bd3d22ee2fb9baf6c1ef5e6661589",
+    "README.md": "0255a2ed6f15786cd7317c7463cd086ad26e6d44f2fad4e9d7046282c5d69a6a",
     "examples/README.md": "0ab31ea9c9ad712caa5f3946913a64114770ddad14c76087a05f1f7c85f27fd9",
     "notes/implementation.tex": "44c74ea1ca75e4d3893f83f9b9f70f0d9dcf4582d14a0c288080020857ba87fd",
     "notes/implementation.pdf": "f87e0b6d40513a2464754a79526c6510e062b0738a6956daa0fde0fc3c90835f",

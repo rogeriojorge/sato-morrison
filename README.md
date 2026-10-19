@@ -529,7 +529,7 @@ SM_PEAK_AUDIT_OUTPUT=results/encounter_peak_audit_reproduction.json python resul
 
 Example 24 exits nonzero because the declared angular and Cartesian checks remain unresolved. It saves the results before raising the error.
 
-**299 tests pass locally** (97.66 s). The encounter tests include free helices, exact finite-radius repulsive Coulomb orbits, a sensitive screened trajectory checked at high precision, and signed-kick interpolation through zero with independent Gaussian center averaging. Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
+**299 tests pass locally** (97.66 s) and on [Linux CI](https://github.com/rogeriojorge/sato-morrison/actions/runs/39323257695) (268.53 s at revision `cafa3b6`). The encounter tests include free helices, exact finite-radius repulsive Coulomb orbits, a sensitive screened trajectory checked at high precision, and signed-kick interpolation through zero with independent Gaussian center averaging. Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
 
 | Capability | Current evidence |
 |---|---|
