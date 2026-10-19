@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "scope": "Independent endpoint reconstruction of second moments and explicit integer-bin accumulation, with actual original and partner locations and positive halfweights. Fixed rho/b threshold .8 is descriptive concentration, not a convergence gate.",
+  "checks_passed": 15,
+  "check_count": 15,
+  "maximum_bin_absolute_errors": {
+    "b_ratio_mean_second": 4.764560328305439e-22,
+    "phase_ratio_mean_second": 3.3087224502121107e-22
+  },
+  "cases": [
+    {
+      "case": "seed4201_N2048",
+      "second_integral": 6.190719901275497e-05,
+      "rho_over_b_at_least_point8_incoming_flux_fraction": 0.011042511586170234,
+      "rho_over_b_at_least_point8_second_share": 0.38198664723742415
+    },
+    {
+      "case": "seed4202_N2048",
+      "second_integral": 6.193817535999388e-05,
+      "rho_over_b_at_least_point8_incoming_flux_fraction": 0.01104537634056811,
+      "rho_over_b_at_least_point8_second_share": 0.3836451503495636
+    },
+    {
+      "case": "seed4203_N2048",
+      "second_integral": 6.112337318447397e-05,
+      "rho_over_b_at_least_point8_incoming_flux_fraction": 0.010984211140458024,
+      "rho_over_b_at_least_point8_second_share": 0.3723660960728577
+    },
+    {
+      "case": "seed4204_N2048",
+      "second_integral": 6.129895141051799e-05,
+      "rho_over_b_at_least_point8_incoming_flux_fraction": 0.010976431900529571,
+      "rho_over_b_at_least_point8_second_share": 0.37742167348837663
+    }
+  ],
+  "input_sha256": {
+    "summary.json": "067303ebf92edd9d5b9b4233ba852c78be5f0faf7620b8e414074b79089c764f",
+    "states.npz": "8eae5382da317a9eaa0989fb456b582553f9af5d05b000b88dcf67639b340098",
+    "populations.npz": "460dc4a9632fb782a03ea4b521be930e7107d26d881cdc9a3163327acfbb27d4",
+    "contribution_maps.npz": "b24957c43a4876040e50d25c1f8ea40c97b47cddb4282a415d334d57afffe8b5"
+  },
+  "source_sha256": "a5295634468f708dc7c9a4a78ebef840a8b4bbfd9ad8e0df466bf1c51461a226",
+  "source_uncommitted": true
+}

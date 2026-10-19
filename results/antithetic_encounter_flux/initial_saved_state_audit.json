@@ -1,0 +1,6662 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "name": "immutable base reference count",
+      "passed": true
+    },
+    {
+      "name": "all accessible physical states complete",
+      "passed": true
+    },
+    {
+      "name": "new archive contains no duplicated old or new solver keys",
+      "passed": true
+    },
+    {
+      "name": "all member COM moments before pairing",
+      "passed": true,
+      "maximum_absolute_error": 1.6653345369377348e-16
+    },
+    {
+      "name": "all member free-gyro kicks",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "all actual guiding-center kicks",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "all individual spatial seconds before pairing",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "all incoming free-helix velocities",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "all incoming free-helix positions",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "all outgoing planes and directions",
+      "passed": true
+    },
+    {
+      "name": "all endpoint energies bounded by saved path errors",
+      "passed": true
+    },
+    {
+      "name": "all axial canonical invariants",
+      "passed": true,
+      "maximum_absolute_error": 4.991563510507383e-12
+    },
+    {
+      "name": "all canonical radius identities",
+      "passed": true,
+      "maximum_absolute_error": 4.99148895392022e-12
+    },
+    {
+      "name": "seed4201_N512 original selector bits",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 unchanged strata",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 unchanged pair masses",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 valid unique member references",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 exact physical partner transform",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 matched member planes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 all bulk member steps",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 reconstructed physical pair integral",
+      "passed": true,
+      "maximum_absolute_error": 3.903127820947816e-18
+    },
+    {
+      "name": "seed4201_N512 original failed estimator integral retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 cell0 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 cell0 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 cell0 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.7755575615628914e-17
+    },
+    {
+      "name": "seed4201_N512 cell0 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 cell0 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.0164395367051604e-19
+    },
+    {
+      "name": "seed4201_N512 cell1 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 cell1 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 cell1 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.220446049250313e-16
+    },
+    {
+      "name": "seed4201_N512 cell1 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 cell1 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 4.404571325722362e-19
+    },
+    {
+      "name": "seed4201_N512 cell2 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 cell2 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 cell2 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-18
+    },
+    {
+      "name": "seed4201_N512 cell2 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 4.235164736271502e-22
+    },
+    {
+      "name": "seed4201_N512 cell2 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.4230153513872246e-19
+    },
+    {
+      "name": "seed4201_N512 cell3 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 cell3 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 cell3 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 5.551115123125783e-17
+    },
+    {
+      "name": "seed4201_N512 cell3 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "seed4201_N512 cell3 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 3.7947076036992655e-19
+    },
+    {
+      "name": "seed4201_N512 cell4 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 cell4 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 cell4 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 cell4 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "seed4201_N512 cell4 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-20
+    },
+    {
+      "name": "seed4201_N512 cell5 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 cell5 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 cell5 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "name": "seed4201_N512 cell5 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 8.673617379884035e-19
+    },
+    {
+      "name": "seed4201_N512 cell5 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 5.624298769768554e-19
+    },
+    {
+      "name": "seed4201_N512 cell6 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 cell6 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 cell6 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 3.469446951953614e-17
+    },
+    {
+      "name": "seed4201_N512 cell6 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "seed4201_N512 cell6 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 8.300922883092143e-20
+    },
+    {
+      "name": "seed4201_N512 cell7 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 cell7 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 cell7 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    {
+      "name": "seed4201_N512 cell7 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "seed4201_N512 cell7 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.1553529400548657e-18
+    },
+    {
+      "name": "seed4201_N512 complete member mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4201_N512 recorded member mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 reflected incoming half-masses",
+      "passed": true,
+      "maximum_absolute_error": 4.235164736271502e-22
+    },
+    {
+      "name": "seed4201_N512 physical member counts",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 original selector bits",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 unchanged strata",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 unchanged pair masses",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 valid unique member references",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 exact physical partner transform",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 matched member planes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 all bulk member steps",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 reconstructed physical pair integral",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-18
+    },
+    {
+      "name": "seed4201_N1024 original failed estimator integral retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 cell0 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 cell0 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 cell0 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.7755575615628914e-17
+    },
+    {
+      "name": "seed4201_N1024 cell0 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 cell0 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 7.453889935837843e-20
+    },
+    {
+      "name": "seed4201_N1024 cell1 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 cell1 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 cell1 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.220446049250313e-16
+    },
+    {
+      "name": "seed4201_N1024 cell1 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 cell1 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.1519648082658485e-19
+    },
+    {
+      "name": "seed4201_N1024 cell2 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 cell2 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 cell2 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-18
+    },
+    {
+      "name": "seed4201_N1024 cell2 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.117582368135751e-22
+    },
+    {
+      "name": "seed4201_N1024 cell2 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.4230153513872246e-19
+    },
+    {
+      "name": "seed4201_N1024 cell3 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 cell3 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 cell3 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 5.551115123125783e-17
+    },
+    {
+      "name": "seed4201_N1024 cell3 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-20
+    },
+    {
+      "name": "seed4201_N1024 cell3 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 2.439454888092385e-19
+    },
+    {
+      "name": "seed4201_N1024 cell4 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 cell4 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 cell4 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 cell4 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4201_N1024 cell4 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-20
+    },
+    {
+      "name": "seed4201_N1024 cell5 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 cell5 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 cell5 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "name": "seed4201_N1024 cell5 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-19
+    },
+    {
+      "name": "seed4201_N1024 cell5 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 2.608861477543245e-19
+    },
+    {
+      "name": "seed4201_N1024 cell6 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 cell6 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 cell6 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 3.469446951953614e-17
+    },
+    {
+      "name": "seed4201_N1024 cell6 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-21
+    },
+    {
+      "name": "seed4201_N1024 cell6 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 3.8963515573697816e-20
+    },
+    {
+      "name": "seed4201_N1024 cell7 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 cell7 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 cell7 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    {
+      "name": "seed4201_N1024 cell7 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4201_N1024 cell7 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.1045309632196076e-18
+    },
+    {
+      "name": "seed4201_N1024 complete member mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4201_N1024 recorded member mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 reflected incoming half-masses",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 physical member counts",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 original selector bits",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 unchanged strata",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 unchanged pair masses",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 valid unique member references",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 exact physical partner transform",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 matched member planes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 all bulk member steps",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 reconstructed physical pair integral",
+      "passed": true,
+      "maximum_absolute_error": 1.3010426069826053e-18
+    },
+    {
+      "name": "seed4201_N2048 original failed estimator integral retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 cell0 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 cell0 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 cell0 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.7755575615628914e-17
+    },
+    {
+      "name": "seed4201_N2048 cell0 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 cell0 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 9.486769009248164e-20
+    },
+    {
+      "name": "seed4201_N2048 cell1 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 cell1 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 cell1 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.220446049250313e-16
+    },
+    {
+      "name": "seed4201_N2048 cell1 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 cell1 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 6.505213034913027e-19
+    },
+    {
+      "name": "seed4201_N2048 cell2 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 cell2 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 cell2 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-18
+    },
+    {
+      "name": "seed4201_N2048 cell2 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0587911840678754e-22
+    },
+    {
+      "name": "seed4201_N2048 cell2 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-19
+    },
+    {
+      "name": "seed4201_N2048 cell3 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 cell3 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 cell3 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 5.551115123125783e-17
+    },
+    {
+      "name": "seed4201_N2048 cell3 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "seed4201_N2048 cell3 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.2197274440461925e-19
+    },
+    {
+      "name": "seed4201_N2048 cell4 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 cell4 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 cell4 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 cell4 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "seed4201_N2048 cell4 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 7.792703114739563e-20
+    },
+    {
+      "name": "seed4201_N2048 cell5 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 cell5 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 cell5 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "name": "seed4201_N2048 cell5 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "seed4201_N2048 cell5 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "seed4201_N2048 cell6 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 cell6 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 cell6 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 3.469446951953614e-17
+    },
+    {
+      "name": "seed4201_N2048 cell6 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.6940658945086007e-21
+    },
+    {
+      "name": "seed4201_N2048 cell6 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "seed4201_N2048 cell7 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 cell7 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 cell7 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    {
+      "name": "seed4201_N2048 cell7 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "seed4201_N2048 cell7 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 7.928228386300251e-19
+    },
+    {
+      "name": "seed4201_N2048 complete member mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4201_N2048 recorded member mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 reflected incoming half-masses",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-21
+    },
+    {
+      "name": "seed4201_N2048 physical member counts",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 original selector bits",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 unchanged strata",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 unchanged pair masses",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 valid unique member references",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 exact physical partner transform",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 matched member planes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 all bulk member steps",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 reconstructed physical pair integral",
+      "passed": true,
+      "maximum_absolute_error": 8.239936510889834e-18
+    },
+    {
+      "name": "seed4202_N512 original failed estimator integral retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 cell0 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 cell0 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 cell0 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.7755575615628914e-17
+    },
+    {
+      "name": "seed4202_N512 cell0 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 cell0 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 4.743384504624082e-20
+    },
+    {
+      "name": "seed4202_N512 cell1 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 cell1 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 cell1 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.220446049250313e-16
+    },
+    {
+      "name": "seed4202_N512 cell1 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 cell1 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 4.607859233063394e-19
+    },
+    {
+      "name": "seed4202_N512 cell2 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 cell2 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 cell2 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-18
+    },
+    {
+      "name": "seed4202_N512 cell2 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 4.235164736271502e-22
+    },
+    {
+      "name": "seed4202_N512 cell2 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 8.131516293641283e-20
+    },
+    {
+      "name": "seed4202_N512 cell3 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 cell3 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 cell3 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 5.551115123125783e-17
+    },
+    {
+      "name": "seed4202_N512 cell3 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "seed4202_N512 cell3 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-19
+    },
+    {
+      "name": "seed4202_N512 cell4 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 cell4 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 cell4 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 cell4 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "seed4202_N512 cell4 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.7279472123987727e-19
+    },
+    {
+      "name": "seed4202_N512 cell5 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 cell5 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 cell5 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "name": "seed4202_N512 cell5 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 8.673617379884035e-19
+    },
+    {
+      "name": "seed4202_N512 cell5 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 8.673617379884035e-19
+    },
+    {
+      "name": "seed4202_N512 cell6 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 cell6 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 cell6 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 3.469446951953614e-17
+    },
+    {
+      "name": "seed4202_N512 cell6 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "seed4202_N512 cell6 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 7.962109704190423e-20
+    },
+    {
+      "name": "seed4202_N512 cell7 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 cell7 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 cell7 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    {
+      "name": "seed4202_N512 cell7 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "seed4202_N512 cell7 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 4.2012834183813297e-19
+    },
+    {
+      "name": "seed4202_N512 complete member mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4202_N512 recorded member mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 reflected incoming half-masses",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 physical member counts",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 original selector bits",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 unchanged strata",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 unchanged pair masses",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 valid unique member references",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 exact physical partner transform",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 matched member planes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 all bulk member steps",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 reconstructed physical pair integral",
+      "passed": true,
+      "maximum_absolute_error": 1.6059744679941534e-18
+    },
+    {
+      "name": "seed4202_N1024 original failed estimator integral retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 cell0 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 cell0 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 cell0 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.7755575615628914e-17
+    },
+    {
+      "name": "seed4202_N1024 cell0 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 cell0 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.2197274440461925e-19
+    },
+    {
+      "name": "seed4202_N1024 cell1 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 cell1 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 cell1 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.220446049250313e-16
+    },
+    {
+      "name": "seed4202_N1024 cell1 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 cell1 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 3.049318610115481e-19
+    },
+    {
+      "name": "seed4202_N1024 cell2 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 cell2 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 cell2 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-18
+    },
+    {
+      "name": "seed4202_N1024 cell2 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.117582368135751e-22
+    },
+    {
+      "name": "seed4202_N1024 cell2 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.8295911660692887e-19
+    },
+    {
+      "name": "seed4202_N1024 cell3 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 cell3 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 cell3 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 5.551115123125783e-17
+    },
+    {
+      "name": "seed4202_N1024 cell3 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-20
+    },
+    {
+      "name": "seed4202_N1024 cell3 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.2197274440461925e-19
+    },
+    {
+      "name": "seed4202_N1024 cell4 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 cell4 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 cell4 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 cell4 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4202_N1024 cell4 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.8973538018496328e-19
+    },
+    {
+      "name": "seed4202_N1024 cell5 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 cell5 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 cell5 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "name": "seed4202_N1024 cell5 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-19
+    },
+    {
+      "name": "seed4202_N1024 cell5 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.9075181972166844e-18
+    },
+    {
+      "name": "seed4202_N1024 cell6 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 cell6 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 cell6 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 3.469446951953614e-17
+    },
+    {
+      "name": "seed4202_N1024 cell6 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-21
+    },
+    {
+      "name": "seed4202_N1024 cell6 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 3.218725199566341e-20
+    },
+    {
+      "name": "seed4202_N1024 cell7 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 cell7 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 cell7 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    {
+      "name": "seed4202_N1024 cell7 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4202_N1024 cell7 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 4.743384504624082e-20
+    },
+    {
+      "name": "seed4202_N1024 complete member mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4202_N1024 recorded member mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 reflected incoming half-masses",
+      "passed": true,
+      "maximum_absolute_error": 1.6940658945086007e-21
+    },
+    {
+      "name": "seed4202_N1024 physical member counts",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 original selector bits",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 unchanged strata",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 unchanged pair masses",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 valid unique member references",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 exact physical partner transform",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 matched member planes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 all bulk member steps",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 reconstructed physical pair integral",
+      "passed": true,
+      "maximum_absolute_error": 8.239936510889834e-18
+    },
+    {
+      "name": "seed4202_N2048 original failed estimator integral retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 cell0 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 cell0 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 cell0 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.7755575615628914e-17
+    },
+    {
+      "name": "seed4202_N2048 cell0 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 cell0 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.5585406229479126e-19
+    },
+    {
+      "name": "seed4202_N2048 cell1 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 cell1 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 cell1 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.220446049250313e-16
+    },
+    {
+      "name": "seed4202_N2048 cell1 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 cell1 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 3.9979955110402976e-19
+    },
+    {
+      "name": "seed4202_N2048 cell2 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 cell2 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 cell2 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-18
+    },
+    {
+      "name": "seed4202_N2048 cell2 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0587911840678754e-22
+    },
+    {
+      "name": "seed4202_N2048 cell2 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 2.371692252312041e-20
+    },
+    {
+      "name": "seed4202_N2048 cell3 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 cell3 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 cell3 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 5.551115123125783e-17
+    },
+    {
+      "name": "seed4202_N2048 cell3 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "seed4202_N2048 cell3 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4202_N2048 cell4 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 cell4 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 cell4 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 cell4 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "seed4202_N2048 cell4 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 7.792703114739563e-20
+    },
+    {
+      "name": "seed4202_N2048 cell5 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 cell5 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 cell5 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "name": "seed4202_N2048 cell5 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "seed4202_N2048 cell5 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 2.337810934421869e-18
+    },
+    {
+      "name": "seed4202_N2048 cell6 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 cell6 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 cell6 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 3.469446951953614e-17
+    },
+    {
+      "name": "seed4202_N2048 cell6 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.6940658945086007e-21
+    },
+    {
+      "name": "seed4202_N2048 cell6 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "seed4202_N2048 cell7 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 cell7 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 cell7 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    {
+      "name": "seed4202_N2048 cell7 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "seed4202_N2048 cell7 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 7.115076756936123e-19
+    },
+    {
+      "name": "seed4202_N2048 complete member mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4202_N2048 recorded member mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 reflected incoming half-masses",
+      "passed": true,
+      "maximum_absolute_error": 1.6940658945086007e-21
+    },
+    {
+      "name": "seed4202_N2048 physical member counts",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 original selector bits",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 unchanged strata",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 unchanged pair masses",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 valid unique member references",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 exact physical partner transform",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 matched member planes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 all bulk member steps",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 reconstructed physical pair integral",
+      "passed": true,
+      "maximum_absolute_error": 7.37257477290143e-18
+    },
+    {
+      "name": "seed4203_N512 original failed estimator integral retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 cell0 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 cell0 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 cell0 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.7755575615628914e-17
+    },
+    {
+      "name": "seed4203_N512 cell0 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 cell0 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 8.131516293641283e-20
+    },
+    {
+      "name": "seed4203_N512 cell1 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 cell1 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 cell1 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.220446049250313e-16
+    },
+    {
+      "name": "seed4203_N512 cell1 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 cell1 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.3213713977167085e-18
+    },
+    {
+      "name": "seed4203_N512 cell2 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 cell2 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 cell2 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-18
+    },
+    {
+      "name": "seed4203_N512 cell2 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 4.235164736271502e-22
+    },
+    {
+      "name": "seed4203_N512 cell2 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.4907779871675686e-19
+    },
+    {
+      "name": "seed4203_N512 cell3 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 cell3 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 cell3 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 5.551115123125783e-17
+    },
+    {
+      "name": "seed4203_N512 cell3 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "seed4203_N512 cell3 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-20
+    },
+    {
+      "name": "seed4203_N512 cell4 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 cell4 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 cell4 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 cell4 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "seed4203_N512 cell4 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.7618285302889447e-19
+    },
+    {
+      "name": "seed4203_N512 cell5 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 cell5 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 cell5 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "name": "seed4203_N512 cell5 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 8.673617379884035e-19
+    },
+    {
+      "name": "seed4203_N512 cell5 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 2.388632911257127e-18
+    },
+    {
+      "name": "seed4203_N512 cell6 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 cell6 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 cell6 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 3.469446951953614e-17
+    },
+    {
+      "name": "seed4203_N512 cell6 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "seed4203_N512 cell6 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 7.623296525288703e-20
+    },
+    {
+      "name": "seed4203_N512 cell7 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 cell7 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 cell7 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    {
+      "name": "seed4203_N512 cell7 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "seed4203_N512 cell7 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 9.690056916589196e-19
+    },
+    {
+      "name": "seed4203_N512 complete member mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4203_N512 recorded member mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 reflected incoming half-masses",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 physical member counts",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 original selector bits",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 unchanged strata",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 unchanged pair masses",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 valid unique member references",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 exact physical partner transform",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 matched member planes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 all bulk member steps",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 reconstructed physical pair integral",
+      "passed": true,
+      "maximum_absolute_error": 9.974659986866641e-18
+    },
+    {
+      "name": "seed4203_N1024 original failed estimator integral retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 cell0 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 cell0 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 cell0 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.7755575615628914e-17
+    },
+    {
+      "name": "seed4203_N1024 cell0 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 cell0 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 2.0328790734103208e-20
+    },
+    {
+      "name": "seed4203_N1024 cell1 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 cell1 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 cell1 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.220446049250313e-16
+    },
+    {
+      "name": "seed4203_N1024 cell1 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 cell1 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 7.860465750519907e-19
+    },
+    {
+      "name": "seed4203_N1024 cell2 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 cell2 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 cell2 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-18
+    },
+    {
+      "name": "seed4203_N1024 cell2 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.117582368135751e-22
+    },
+    {
+      "name": "seed4203_N1024 cell2 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-20
+    },
+    {
+      "name": "seed4203_N1024 cell3 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 cell3 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 cell3 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 5.551115123125783e-17
+    },
+    {
+      "name": "seed4203_N1024 cell3 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-20
+    },
+    {
+      "name": "seed4203_N1024 cell3 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "seed4203_N1024 cell4 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 cell4 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 cell4 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 cell4 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4203_N1024 cell4 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 3.5575383784680614e-19
+    },
+    {
+      "name": "seed4203_N1024 cell5 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 cell5 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 cell5 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "name": "seed4203_N1024 cell5 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-19
+    },
+    {
+      "name": "seed4203_N1024 cell5 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.294266343404571e-18
+    },
+    {
+      "name": "seed4203_N1024 cell6 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 cell6 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 cell6 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 3.469446951953614e-17
+    },
+    {
+      "name": "seed4203_N1024 cell6 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-21
+    },
+    {
+      "name": "seed4203_N1024 cell6 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.6432439176733427e-19
+    },
+    {
+      "name": "seed4203_N1024 cell7 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 cell7 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 cell7 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    {
+      "name": "seed4203_N1024 cell7 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4203_N1024 cell7 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.5517643593698782e-18
+    },
+    {
+      "name": "seed4203_N1024 complete member mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4203_N1024 recorded member mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 reflected incoming half-masses",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-21
+    },
+    {
+      "name": "seed4203_N1024 physical member counts",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 original selector bits",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 unchanged strata",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 unchanged pair masses",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 valid unique member references",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 exact physical partner transform",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 matched member planes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 all bulk member steps",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 reconstructed physical pair integral",
+      "passed": true,
+      "maximum_absolute_error": 9.107298248878237e-18
+    },
+    {
+      "name": "seed4203_N2048 original failed estimator integral retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 cell0 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 cell0 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 cell0 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.7755575615628914e-17
+    },
+    {
+      "name": "seed4203_N2048 cell0 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 cell0 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 4.743384504624082e-20
+    },
+    {
+      "name": "seed4203_N2048 cell1 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 cell1 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 cell1 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.220446049250313e-16
+    },
+    {
+      "name": "seed4203_N2048 cell1 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 cell1 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 6.911788849595091e-19
+    },
+    {
+      "name": "seed4203_N2048 cell2 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 cell2 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 cell2 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-18
+    },
+    {
+      "name": "seed4203_N2048 cell2 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0587911840678754e-22
+    },
+    {
+      "name": "seed4203_N2048 cell2 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.4230153513872246e-19
+    },
+    {
+      "name": "seed4203_N2048 cell3 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 cell3 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 cell3 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 5.551115123125783e-17
+    },
+    {
+      "name": "seed4203_N2048 cell3 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "seed4203_N2048 cell3 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 2.439454888092385e-19
+    },
+    {
+      "name": "seed4203_N2048 cell4 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 cell4 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 cell4 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 cell4 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "seed4203_N2048 cell4 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 2.202285662861181e-19
+    },
+    {
+      "name": "seed4203_N2048 cell5 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 cell5 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 cell5 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "name": "seed4203_N2048 cell5 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "seed4203_N2048 cell5 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 2.2971533529536625e-18
+    },
+    {
+      "name": "seed4203_N2048 cell6 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 cell6 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 cell6 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 3.469446951953614e-17
+    },
+    {
+      "name": "seed4203_N2048 cell6 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.6940658945086007e-21
+    },
+    {
+      "name": "seed4203_N2048 cell6 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.0672615135404184e-19
+    },
+    {
+      "name": "seed4203_N2048 cell7 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 cell7 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 cell7 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    {
+      "name": "seed4203_N2048 cell7 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "seed4203_N2048 cell7 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 7.047314121155779e-19
+    },
+    {
+      "name": "seed4203_N2048 complete member mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4203_N2048 recorded member mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 reflected incoming half-masses",
+      "passed": true,
+      "maximum_absolute_error": 1.6940658945086007e-21
+    },
+    {
+      "name": "seed4203_N2048 physical member counts",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 original selector bits",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 unchanged strata",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 unchanged pair masses",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 valid unique member references",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 exact physical partner transform",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 matched member planes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 all bulk member steps",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 reconstructed physical pair integral",
+      "passed": true,
+      "maximum_absolute_error": 6.5052130349130266e-18
+    },
+    {
+      "name": "seed4204_N512 original failed estimator integral retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 cell0 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 cell0 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 cell0 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.7755575615628914e-17
+    },
+    {
+      "name": "seed4204_N512 cell0 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 cell0 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "seed4204_N512 cell1 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 cell1 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 cell1 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.220446049250313e-16
+    },
+    {
+      "name": "seed4204_N512 cell1 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 cell1 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 5.353248226647178e-19
+    },
+    {
+      "name": "seed4204_N512 cell2 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 cell2 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 cell2 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-18
+    },
+    {
+      "name": "seed4204_N512 cell2 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 4.235164736271502e-22
+    },
+    {
+      "name": "seed4204_N512 cell2 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 2.439454888092385e-19
+    },
+    {
+      "name": "seed4204_N512 cell3 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 cell3 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 cell3 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 5.551115123125783e-17
+    },
+    {
+      "name": "seed4204_N512 cell3 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "seed4204_N512 cell3 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 2.0328790734103208e-19
+    },
+    {
+      "name": "seed4204_N512 cell4 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 cell4 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 cell4 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 cell4 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "seed4204_N512 cell4 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 3.015437292225309e-19
+    },
+    {
+      "name": "seed4204_N512 cell5 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 cell5 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 cell5 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "name": "seed4204_N512 cell5 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 8.673617379884035e-19
+    },
+    {
+      "name": "seed4204_N512 cell5 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.3891340334970526e-19
+    },
+    {
+      "name": "seed4204_N512 cell6 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 cell6 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 cell6 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 3.469446951953614e-17
+    },
+    {
+      "name": "seed4204_N512 cell6 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "seed4204_N512 cell6 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 4.404571325722362e-20
+    },
+    {
+      "name": "seed4204_N512 cell7 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 cell7 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 cell7 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    {
+      "name": "seed4204_N512 cell7 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "seed4204_N512 cell7 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 5.55653613398821e-19
+    },
+    {
+      "name": "seed4204_N512 complete member mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4204_N512 recorded member mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 reflected incoming half-masses",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "seed4204_N512 physical member counts",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 original selector bits",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 unchanged strata",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 unchanged pair masses",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 valid unique member references",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 exact physical partner transform",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 matched member planes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 all bulk member steps",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 reconstructed physical pair integral",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-17
+    },
+    {
+      "name": "seed4204_N1024 original failed estimator integral retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 cell0 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 cell0 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 cell0 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.7755575615628914e-17
+    },
+    {
+      "name": "seed4204_N1024 cell0 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 cell0 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.4907779871675686e-19
+    },
+    {
+      "name": "seed4204_N1024 cell1 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 cell1 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 cell1 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.220446049250313e-16
+    },
+    {
+      "name": "seed4204_N1024 cell1 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 cell1 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 7.199780051661553e-21
+    },
+    {
+      "name": "seed4204_N1024 cell2 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 cell2 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 cell2 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-18
+    },
+    {
+      "name": "seed4204_N1024 cell2 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.117582368135751e-22
+    },
+    {
+      "name": "seed4204_N1024 cell2 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.7618285302889447e-19
+    },
+    {
+      "name": "seed4204_N1024 cell3 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 cell3 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 cell3 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 5.551115123125783e-17
+    },
+    {
+      "name": "seed4204_N1024 cell3 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-20
+    },
+    {
+      "name": "seed4204_N1024 cell3 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-20
+    },
+    {
+      "name": "seed4204_N1024 cell4 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 cell4 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 cell4 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 cell4 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4204_N1024 cell4 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 8.131516293641283e-20
+    },
+    {
+      "name": "seed4204_N1024 cell5 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 cell5 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 cell5 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "name": "seed4204_N1024 cell5 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-19
+    },
+    {
+      "name": "seed4204_N1024 cell5 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.1993986533120893e-18
+    },
+    {
+      "name": "seed4204_N1024 cell6 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 cell6 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 cell6 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 3.469446951953614e-17
+    },
+    {
+      "name": "seed4204_N1024 cell6 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-21
+    },
+    {
+      "name": "seed4204_N1024 cell6 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-20
+    },
+    {
+      "name": "seed4204_N1024 cell7 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 cell7 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 cell7 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    {
+      "name": "seed4204_N1024 cell7 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4204_N1024 cell7 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 8.639736061993863e-19
+    },
+    {
+      "name": "seed4204_N1024 complete member mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4204_N1024 recorded member mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 reflected incoming half-masses",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 physical member counts",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 original selector bits",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 unchanged strata",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 unchanged pair masses",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 valid unique member references",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 exact physical partner transform",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 matched member planes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 all bulk member steps",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 reconstructed physical pair integral",
+      "passed": true,
+      "maximum_absolute_error": 3.903127820947816e-18
+    },
+    {
+      "name": "seed4204_N2048 original failed estimator integral retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 cell0 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 cell0 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 cell0 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.7755575615628914e-17
+    },
+    {
+      "name": "seed4204_N2048 cell0 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 cell0 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.8295911660692887e-19
+    },
+    {
+      "name": "seed4204_N2048 cell1 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 cell1 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 cell1 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.220446049250313e-16
+    },
+    {
+      "name": "seed4204_N2048 cell1 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 cell1 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "seed4204_N2048 cell2 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 cell2 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 cell2 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-18
+    },
+    {
+      "name": "seed4204_N2048 cell2 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0587911840678754e-22
+    },
+    {
+      "name": "seed4204_N2048 cell2 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.0164395367051604e-19
+    },
+    {
+      "name": "seed4204_N2048 cell3 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 cell3 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 cell3 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 5.551115123125783e-17
+    },
+    {
+      "name": "seed4204_N2048 cell3 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "seed4204_N2048 cell3 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-19
+    },
+    {
+      "name": "seed4204_N2048 cell4 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 cell4 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 cell4 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 cell4 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "seed4204_N2048 cell4 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 7.453889935837843e-20
+    },
+    {
+      "name": "seed4204_N2048 cell5 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 cell5 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 cell5 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "name": "seed4204_N2048 cell5 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "seed4204_N2048 cell5 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.1418004128987969e-18
+    },
+    {
+      "name": "seed4204_N2048 cell6 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 cell6 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 cell6 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 3.469446951953614e-17
+    },
+    {
+      "name": "seed4204_N2048 cell6 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.6940658945086007e-21
+    },
+    {
+      "name": "seed4204_N2048 cell6 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 6.098637220230962e-20
+    },
+    {
+      "name": "seed4204_N2048 cell7 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 cell7 recorded count",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 cell7 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    {
+      "name": "seed4204_N2048 cell7 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "seed4204_N2048 cell7 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 4.743384504624082e-19
+    },
+    {
+      "name": "seed4204_N2048 complete member mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4204_N2048 recorded member mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 reflected incoming half-masses",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-21
+    },
+    {
+      "name": "seed4204_N2048 physical member counts",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition original selector bits",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition unchanged strata",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition unchanged pair masses",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition valid unique member references",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition exact physical partner transform",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition matched member planes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition all bulk member steps",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition reconstructed physical pair integral",
+      "passed": true,
+      "maximum_absolute_error": 1.260385025514399e-18
+    },
+    {
+      "name": "alternate_partition original failed estimator integral retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition cell0 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition cell0 recorded count",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition cell0 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition cell0 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition cell0 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-20
+    },
+    {
+      "name": "alternate_partition cell1 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition cell1 recorded count",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition cell1 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition cell1 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition cell1 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 7.453889935837843e-20
+    },
+    {
+      "name": "alternate_partition cell2 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition cell2 recorded count",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition cell2 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 3.469446951953614e-18
+    },
+    {
+      "name": "alternate_partition cell2 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 5.293955920339377e-23
+    },
+    {
+      "name": "alternate_partition cell2 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 4.0657581468206416e-20
+    },
+    {
+      "name": "alternate_partition cell3 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition cell3 recorded count",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition cell3 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.7755575615628914e-17
+    },
+    {
+      "name": "alternate_partition cell3 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition cell3 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "alternate_partition cell4 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition cell4 recorded count",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition cell4 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    {
+      "name": "alternate_partition cell4 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "alternate_partition cell4 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 2.0328790734103208e-20
+    },
+    {
+      "name": "alternate_partition cell5 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition cell5 recorded count",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition cell5 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "alternate_partition cell5 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "alternate_partition cell5 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.7618285302889447e-18
+    },
+    {
+      "name": "alternate_partition cell6 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition cell6 recorded count",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition cell6 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 6.938893903907228e-18
+    },
+    {
+      "name": "alternate_partition cell6 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.6940658945086007e-21
+    },
+    {
+      "name": "alternate_partition cell6 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 3.7269449679189215e-20
+    },
+    {
+      "name": "alternate_partition cell7 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition cell7 recorded count",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition cell7 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.220446049250313e-16
+    },
+    {
+      "name": "alternate_partition cell7 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "alternate_partition cell7 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 5.89534931288993e-19
+    },
+    {
+      "name": "alternate_partition complete member mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition recorded member mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition reflected incoming half-masses",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition physical member counts",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 original selector bits",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 unchanged strata",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 unchanged pair masses",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 valid unique member references",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 exact physical partner transform",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 matched member planes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 all bulk member steps",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 reconstructed physical pair integral",
+      "passed": true,
+      "maximum_absolute_error": 6.071532165918825e-18
+    },
+    {
+      "name": "boundary_L40 original failed estimator integral retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 cell0 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 cell0 recorded count",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 cell0 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.7755575615628914e-17
+    },
+    {
+      "name": "boundary_L40 cell0 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 cell0 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 7.453889935837843e-20
+    },
+    {
+      "name": "boundary_L40 cell1 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 cell1 recorded count",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 cell1 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.220446049250313e-16
+    },
+    {
+      "name": "boundary_L40 cell1 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 cell1 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-19
+    },
+    {
+      "name": "boundary_L40 cell2 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 cell2 recorded count",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 cell2 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-18
+    },
+    {
+      "name": "boundary_L40 cell2 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0587911840678754e-22
+    },
+    {
+      "name": "boundary_L40 cell2 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-19
+    },
+    {
+      "name": "boundary_L40 cell3 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 cell3 recorded count",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 cell3 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 5.551115123125783e-17
+    },
+    {
+      "name": "boundary_L40 cell3 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "boundary_L40 cell3 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-20
+    },
+    {
+      "name": "boundary_L40 cell4 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 cell4 recorded count",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 cell4 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 cell4 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "boundary_L40 cell4 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 9.147955830346444e-20
+    },
+    {
+      "name": "boundary_L40 cell5 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 cell5 recorded count",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 cell5 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "name": "boundary_L40 cell5 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "boundary_L40 cell5 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 9.452887691357992e-19
+    },
+    {
+      "name": "boundary_L40 cell6 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 cell6 recorded count",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 cell6 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 3.469446951953614e-17
+    },
+    {
+      "name": "boundary_L40 cell6 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.6940658945086007e-21
+    },
+    {
+      "name": "boundary_L40 cell6 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.6940658945086007e-20
+    },
+    {
+      "name": "boundary_L40 cell7 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 cell7 recorded count",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 cell7 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    {
+      "name": "boundary_L40 cell7 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "boundary_L40 cell7 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 2.608861477543245e-19
+    },
+    {
+      "name": "boundary_L40 complete member mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "boundary_L40 recorded member mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 reflected incoming half-masses",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-21
+    },
+    {
+      "name": "boundary_L40 physical member counts",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 original selector bits",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 unchanged strata",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 unchanged pair masses",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 valid unique member references",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 exact physical partner transform",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 matched member planes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 all bulk member steps",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 reconstructed physical pair integral",
+      "passed": true,
+      "maximum_absolute_error": 1.6046192152785466e-17
+    },
+    {
+      "name": "boundary_L48 original failed estimator integral retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 cell0 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 cell0 recorded count",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 cell0 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.7755575615628914e-17
+    },
+    {
+      "name": "boundary_L48 cell0 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 cell0 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.2197274440461925e-19
+    },
+    {
+      "name": "boundary_L48 cell1 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 cell1 recorded count",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 cell1 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 2.220446049250313e-16
+    },
+    {
+      "name": "boundary_L48 cell1 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 cell1 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 3.9979955110402976e-19
+    },
+    {
+      "name": "boundary_L48 cell2 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 cell2 recorded count",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 cell2 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-18
+    },
+    {
+      "name": "boundary_L48 cell2 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0587911840678754e-22
+    },
+    {
+      "name": "boundary_L48 cell2 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.5585406229479126e-19
+    },
+    {
+      "name": "boundary_L48 cell3 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 cell3 recorded count",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 cell3 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 5.551115123125783e-17
+    },
+    {
+      "name": "boundary_L48 cell3 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "boundary_L48 cell3 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 1.6263032587282567e-19
+    },
+    {
+      "name": "boundary_L48 cell4 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 cell4 recorded count",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 cell4 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 cell4 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "boundary_L48 cell4 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 8.131516293641283e-20
+    },
+    {
+      "name": "boundary_L48 cell5 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 cell5 recorded count",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 cell5 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "name": "boundary_L48 cell5 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "boundary_L48 cell5 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 8.097634975751111e-19
+    },
+    {
+      "name": "boundary_L48 cell6 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 cell6 recorded count",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 cell6 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 3.469446951953614e-17
+    },
+    {
+      "name": "boundary_L48 cell6 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 1.6940658945086007e-21
+    },
+    {
+      "name": "boundary_L48 cell6 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 6.945670167485263e-20
+    },
+    {
+      "name": "boundary_L48 cell7 unchanged allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 cell7 recorded count",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 cell7 recorded mass",
+      "passed": true,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    {
+      "name": "boundary_L48 cell7 positive half-weights",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "boundary_L48 cell7 paired component integral",
+      "passed": true,
+      "maximum_absolute_error": 5.624298769768554e-19
+    },
+    {
+      "name": "boundary_L48 complete member mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "boundary_L48 recorded member mass",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 reflected incoming half-masses",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-21
+    },
+    {
+      "name": "boundary_L48 physical member counts",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 transform receipt",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 involution roundoff receipt",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 transform receipt",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 involution roundoff receipt",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 transform receipt",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 involution roundoff receipt",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 transform receipt",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 involution roundoff receipt",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 transform receipt",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 involution roundoff receipt",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 transform receipt",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 involution roundoff receipt",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 transform receipt",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 involution roundoff receipt",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 transform receipt",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 involution roundoff receipt",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 transform receipt",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 involution roundoff receipt",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 transform receipt",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 involution roundoff receipt",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 transform receipt",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 involution roundoff receipt",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 transform receipt",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 involution roundoff receipt",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition transform receipt",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition involution roundoff receipt",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 transform receipt",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 involution roundoff receipt",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 transform receipt",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 involution roundoff receipt",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.1 original nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.1 actual partner nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.1 original boundary",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.1 original step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.1 partner boundary",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.1 partner step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.05 original nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.05 actual partner nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.05 original boundary",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.05 original step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.05 partner boundary",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.05 partner step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.025 original nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.025 actual partner nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.025 original boundary",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.025 original step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.025 partner boundary",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.025 partner step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control L40 original nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control L40 actual partner nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control L40 original boundary",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control L40 original step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control L40 partner boundary",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control L40 partner step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control L48 original nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control L48 actual partner nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control L48 original boundary",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control L48 original step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control L48 partner boundary",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control L48 partner step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "both member active-step ratios",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "sample_4201 fixed comparison",
+      "passed": true,
+      "maximum_absolute_error": 9.58955137519979e-15
+    },
+    {
+      "name": "sample_4202 fixed comparison",
+      "passed": true,
+      "maximum_absolute_error": 8.052586375484339e-15
+    },
+    {
+      "name": "sample_4203 fixed comparison",
+      "passed": true,
+      "maximum_absolute_error": 2.7096380694757727e-15
+    },
+    {
+      "name": "sample_4204 fixed comparison",
+      "passed": true,
+      "maximum_absolute_error": 8.2293655397081e-15
+    },
+    {
+      "name": "replica_4201_4202 fixed comparison",
+      "passed": true,
+      "maximum_absolute_error": 1.1384990172835785e-14
+    },
+    {
+      "name": "replica_4201_4203 fixed comparison",
+      "passed": true,
+      "maximum_absolute_error": 1.1837753000065732e-14
+    },
+    {
+      "name": "replica_4201_4204 fixed comparison",
+      "passed": true,
+      "maximum_absolute_error": 9.886189089591824e-15
+    },
+    {
+      "name": "replica_4202_4203 fixed comparison",
+      "passed": true,
+      "maximum_absolute_error": 1.1043249648068354e-14
+    },
+    {
+      "name": "replica_4202_4204 fixed comparison",
+      "passed": true,
+      "maximum_absolute_error": 1.608034452121876e-14
+    },
+    {
+      "name": "replica_4203_4204 fixed comparison",
+      "passed": true,
+      "maximum_absolute_error": 2.1999763122337868e-14
+    },
+    {
+      "name": "partition_4201 fixed comparison",
+      "passed": true,
+      "maximum_absolute_error": 3.2747242417752176e-15
+    },
+    {
+      "name": "partition_4202 fixed comparison",
+      "passed": true,
+      "maximum_absolute_error": 8.061693673733217e-15
+    },
+    {
+      "name": "partition_4203 fixed comparison",
+      "passed": true,
+      "maximum_absolute_error": 1.2101430968414206e-14
+    },
+    {
+      "name": "partition_4204 fixed comparison",
+      "passed": true,
+      "maximum_absolute_error": 9.864396625924865e-15
+    },
+    {
+      "name": "boundary_ensemble fixed comparison",
+      "passed": true,
+      "maximum_absolute_error": 3.849638537361654e-15
+    },
+    {
+      "name": "boundary_L24_to40 fixed comparison",
+      "passed": true,
+      "maximum_absolute_error": 3.7365943672540425e-15
+    },
+    {
+      "name": "active_step fixed comparison",
+      "passed": true,
+      "maximum_absolute_error": 2.895132143935597e-24
+    },
+    {
+      "name": "active_step_members fixed comparison",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_controls fixed comparison",
+      "passed": true,
+      "maximum_absolute_error": 8.858202799749693e-15
+    },
+    {
+      "name": "boundary_controls_members fixed comparison",
+      "passed": true,
+      "maximum_absolute_error": 6.822992691668528e-15
+    },
+    {
+      "name": "all declared gate names reconstructed",
+      "passed": true
+    },
+    {
+      "name": "sample_4201 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "sample_4202 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "sample_4203 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "sample_4204 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "replica_4201_4202 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "replica_4201_4203 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "replica_4201_4204 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "replica_4202_4203 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "replica_4202_4204 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "replica_4203_4204 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "partition_4201 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "partition_4202 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "partition_4203 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "partition_4204 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "boundary_ensemble decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "boundary_L24_to40 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "active_step decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "active_step_members decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "boundary_controls decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "boundary_controls_members decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "phase_transform decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "preserved_born_control decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "complete decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "exact_flux_mass decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "energy decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "active_step_sizes decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "prior_integrity decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "prior_prior_integrity decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "prior_source_integrity decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "source_integrity decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "old failed-gate evidence unchanged",
+      "passed": true
+    },
+    {
+      "name": "overall status reconstructed",
+      "passed": true
+    },
+    {
+      "name": "new-only archive and actual reference counts",
+      "passed": true
+    },
+    {
+      "name": "original producer exact timing and parent memory unavailable",
+      "passed": true
+    },
+    {
+      "name": "receipt replay performed no new solves",
+      "passed": true
+    },
+    {
+      "name": "original source copy immutable",
+      "passed": true
+    },
+    {
+      "name": "original failure log immutable",
+      "passed": true
+    },
+    {
+      "name": "original physics producer examples/44_antithetic_encounter_flux.py",
+      "passed": true
+    },
+    {
+      "name": "original physics producer src/sato_morrison/controls.py",
+      "passed": true
+    },
+    {
+      "name": "original physics producer src/sato_morrison/reference.py",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact cases_partial.json",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_000512.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_001024.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_001536.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_002048.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_002560.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_003072.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_003584.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_004096.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_004608.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_005120.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_005632.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_006144.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_006656.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_007168.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_007680.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_008192.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_008704.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_009216.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_009728.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_010240.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_010752.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_011264.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_011776.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_012288.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_012800.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_013312.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_013824.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_014336.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_014848.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_015360.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_015872.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_016384.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_016896.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_017408.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_017920.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_018432.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_018944.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_019456.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_019968.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_020480.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_020992.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_021504.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_022016.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_022528.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_023040.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_023552.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_024064.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_024576.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_025088.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_025600.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_026112.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_026624.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_027136.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_027648.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_028160.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_028672.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_029184.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_029696.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_030208.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_030720.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_031232.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_031744.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_032256.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_032768.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_033280.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_033792.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_034304.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_034816.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_035328.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_035840.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_036352.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_036864.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_037376.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_037888.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_038400.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_038912.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_039424.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_039936.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_040448.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_040960.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_041472.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_041984.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_042496.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_043008.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_043520.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_044032.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_044544.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_045056.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_045568.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_046080.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_046592.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_047104.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_047616.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_048128.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_048640.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_049152.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_049664.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_050176.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_050688.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_051200.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_051712.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_052224.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_052736.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_053248.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_053760.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_054272.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_054784.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_055296.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_055808.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_056320.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_056832.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_057344.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_057856.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_058368.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_058880.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_059392.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_059904.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_060416.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_060928.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_061440.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_061952.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_062464.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_062976.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_063488.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_064000.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_064512.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_065024.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_065536.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_066048.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_066560.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_067072.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_067584.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_068096.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_068608.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_069120.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_069632.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_070144.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_070656.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_071168.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_071680.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_072192.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_072704.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_073216.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_073728.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_074240.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_074752.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_075264.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_075776.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_076288.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_076800.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_077312.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_077824.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_078336.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_078848.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_079360.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_079872.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_080384.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_080896.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_081408.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_081920.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_082432.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_082944.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_083456.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_083968.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_084480.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_084992.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_085504.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_086016.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_086528.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_087040.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_087552.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_088064.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_088576.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_089088.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_089600.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_090112.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_090624.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_091136.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_091648.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_092160.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_092672.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_093184.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_093696.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_094208.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_094720.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_095232.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_095744.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_096256.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_096768.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_097280.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_097792.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_098304.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_098816.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_099328.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_099840.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_100352.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_100864.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_101376.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_101888.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_102400.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_102912.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_103424.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_103936.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_104448.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_104960.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_105472.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_105984.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_106496.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_107008.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_107520.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_108032.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_108544.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_109056.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_109568.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_110080.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_110592.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_111104.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_111616.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_112128.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_112640.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_113152.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_113664.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_114176.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_114688.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_115200.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_115712.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_116224.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_116736.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_117248.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_117760.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_118272.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_118784.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_119296.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_119808.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_120320.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_120832.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_121344.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_121856.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_122368.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_122880.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_123392.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_123904.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_124416.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_124928.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_125440.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_125952.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_126464.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_126976.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_127488.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_128000.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_128512.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_129024.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_129536.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_130048.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_130560.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_131072.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_131584.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_132096.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_132608.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_133120.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_133632.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_134144.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_134656.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_135168.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_135680.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_136192.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_136704.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_137216.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_137728.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_138240.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_138752.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_139264.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_139776.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_140288.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_140800.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_141312.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_141824.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_142336.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_142848.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_143360.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_143872.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_144384.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_144896.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_145408.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_145920.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_146432.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_146944.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_147456.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_147968.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_148480.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_148992.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_149504.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_150016.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_150528.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_151040.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_151552.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_152064.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_152576.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_153088.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_153600.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_154112.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_154624.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_155136.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_155648.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_156160.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_156672.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_157184.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_157696.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_158208.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_158720.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_159232.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_159744.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_160256.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_160768.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_161280.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_161792.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_162304.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_162816.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_163328.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_163840.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_164352.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_164864.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_165376.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_165888.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_166400.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_166912.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_167424.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_167936.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_168448.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_168960.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_169472.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_169984.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_170496.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_171008.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_171520.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_172032.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_172544.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_173056.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_173568.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_174080.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_174592.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_175104.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_175616.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_176128.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_176640.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_177152.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_177664.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_178176.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_178688.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_179200.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_179712.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_180224.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_180736.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_181248.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_181760.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_182272.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_182784.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_183296.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_183808.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_184320.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_184832.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_185344.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_185856.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_186368.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_186880.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_187392.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_187904.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_188416.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_188928.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_189440.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_189952.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_190464.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_190976.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_191488.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_192000.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_192512.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_193024.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_193536.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_194048.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_194560.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_195072.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_195584.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_196096.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_196608.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_197120.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_197632.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_198144.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_198656.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_199168.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_199680.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_200192.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_200704.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_201216.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_201728.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_202240.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_202752.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_203264.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_203776.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_204288.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_204800.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_205312.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_205824.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_206336.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_206848.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_207360.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_207872.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_208384.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_208896.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_209408.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_209920.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_210432.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_210944.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_211456.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_211968.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_212480.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_212992.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_213504.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_214016.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_214528.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_215040.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_215062.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_215106.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_215128.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_215172.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_215194.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_215238.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_215257.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_215297.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_215316.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact checkpoint_215356.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact declared_inputs.json",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact failures.json",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact populations.npz",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact render_publication.py",
+      "passed": true
+    },
+    {
+      "name": "immutable original artifact states.npz",
+      "passed": true
+    },
+    {
+      "name": "recovery scientific cases reproduce saved cases",
+      "passed": true
+    },
+    {
+      "name": "historical receipt writer examples/44_antithetic_encounter_flux.py",
+      "passed": true
+    },
+    {
+      "name": "historical receipt writer src/sato_morrison/controls.py",
+      "passed": true
+    },
+    {
+      "name": "historical receipt writer src/sato_morrison/reference.py",
+      "passed": true
+    }
+  ],
+  "scope": "Independent all-member Cartesian reconstruction, exact positive half-weights, physical partner mapping, no duplicated old archive, and all fixed gate decisions. No producer physics imports or fresh ODE solves.",
+  "comparison_normalization": {
+    "formula": "abs(I_fine-I_other)/[I2_fine/mu_reference,I2_fine,I2_fine,I_R_fine]",
+    "interpretation": "All scales are positive. A 5% gate does not mean 5% relative accuracy in a small signed mean or cross moment. Fixed sample, scramble and partition comparisons are empirical; no confidence interval or continuous-domain bound follows."
+  },
+  "reconstructed_gates": {
+    "sample_4201": true,
+    "sample_4202": true,
+    "sample_4203": true,
+    "sample_4204": true,
+    "replica_4201_4202": true,
+    "replica_4201_4203": true,
+    "replica_4201_4204": true,
+    "replica_4202_4203": true,
+    "replica_4202_4204": true,
+    "replica_4203_4204": true,
+    "partition_4201": true,
+    "partition_4202": true,
+    "partition_4203": true,
+    "partition_4204": true,
+    "boundary_ensemble": true,
+    "boundary_L24_to40": true,
+    "active_step": true,
+    "active_step_members": true,
+    "boundary_controls": true,
+    "boundary_controls_members": true,
+    "phase_transform": true,
+    "preserved_born_control": true,
+    "complete": true,
+    "exact_flux_mass": true,
+    "energy": true,
+    "active_step_sizes": true,
+    "prior_integrity": true,
+    "prior_prior_integrity": true,
+    "prior_source_integrity": true,
+    "source_integrity": true
+  },
+  "reconstructed_comparisons": {
+    "sample_4201": [
+      0.01592265593746488,
+      0.016327756442726545,
+      0.022886313990092378,
+      0.0038230130136124914
+    ],
+    "sample_4202": [
+      0.0026253210365311964,
+      0.004943262142629456,
+      0.01293752255236328,
+      0.00041174546645510185
+    ],
+    "sample_4203": [
+      0.0047915396922131965,
+      0.020471303120127262,
+      0.017307981413678637,
+      0.0028618494733672166
+    ],
+    "sample_4204": [
+      0.013300374234081973,
+      0.007532981759703675,
+      0.0033592596335756514,
+      0.00047739405665324635
+    ],
+    "replica_4201_4202": [
+      0.007677993978128487,
+      0.000500367448906334,
+      0.01319112128940311,
+      0.00186877450224285
+    ],
+    "replica_4201_4203": [
+      0.026957765578173653,
+      0.012661303382817412,
+      0.019389980208280807,
+      0.004250740081823362
+    ],
+    "replica_4201_4204": [
+      0.007450705695896919,
+      0.00982515138686197,
+      0.017180186940937633,
+      0.0037120328053135165
+    ],
+    "replica_4202_4203": [
+      0.019270129454529907,
+      0.013155088453674043,
+      0.0061957587628714795,
+      0.0023864252702771134
+    ],
+    "replica_4202_4204": [
+      0.0002271746114507804,
+      0.01032035486613213,
+      0.003987070651164192,
+      0.0018467093864851824
+    ],
+    "replica_4203_4204": [
+      0.019757211936604707,
+      0.002872521866784577,
+      0.00223813092195653,
+      0.0005410069564642327
+    ],
+    "partition_4201": [
+      0.008405165848147133,
+      0.003397657818077154,
+      0.018297836930636968,
+      0.003731062601804229
+    ],
+    "partition_4202": [
+      0.0007268081988543407,
+      0.003896075797475959,
+      0.005104161684872792,
+      0.001865774811956891
+    ],
+    "partition_4203": [
+      0.0187905121045001,
+      0.009382439477434985,
+      0.00110614856015037,
+      0.000521895923941571
+    ],
+    "partition_4204": [
+      0.0009639309194603893,
+      0.006491271291921133,
+      0.0011287400313840937,
+      1.9100698911677207e-05
+    ],
+    "boundary_ensemble": [
+      2.4310703217087253e-06,
+      7.4400048229505995e-06,
+      7.087996964696138e-06,
+      9.99841448100803e-07
+    ],
+    "boundary_L24_to40": [
+      0.0006996122318027344,
+      0.003157187491143349,
+      0.003070161034999311,
+      0.0004025541261226469
+    ],
+    "active_step": [
+      1.1634055333689405e-09,
+      4.518453353013458e-10,
+      4.491188229632366e-10,
+      3.2884046365607333e-10
+    ],
+    "active_step_members": [
+      2.473956945332081e-09,
+      4.536165736623288e-10,
+      4.508671414234921e-10,
+      3.3056476761661027e-10
+    ],
+    "boundary_controls": [
+      0.0003250470145757796,
+      0.0007609336196213053,
+      0.0007596784449640279,
+      0.0005259501907408435
+    ],
+    "boundary_controls_members": [
+      0.00033406742676936525,
+      0.0007648263013343416,
+      0.0007635663061889936,
+      0.0005291993314993414
+    ]
+  },
+  "transform_checks": [
+    {
+      "case": "seed4201_N512",
+      "same_cell": true,
+      "involution_max_phase_error": 4.440892098500626e-16
+    },
+    {
+      "case": "seed4201_N1024",
+      "same_cell": true,
+      "involution_max_phase_error": 4.440892098500626e-16
+    },
+    {
+      "case": "seed4201_N2048",
+      "same_cell": true,
+      "involution_max_phase_error": 4.440892098500626e-16
+    },
+    {
+      "case": "seed4202_N512",
+      "same_cell": true,
+      "involution_max_phase_error": 4.440892098500626e-16
+    },
+    {
+      "case": "seed4202_N1024",
+      "same_cell": true,
+      "involution_max_phase_error": 4.440892098500626e-16
+    },
+    {
+      "case": "seed4202_N2048",
+      "same_cell": true,
+      "involution_max_phase_error": 4.440892098500626e-16
+    },
+    {
+      "case": "seed4203_N512",
+      "same_cell": true,
+      "involution_max_phase_error": 4.440892098500626e-16
+    },
+    {
+      "case": "seed4203_N1024",
+      "same_cell": true,
+      "involution_max_phase_error": 4.440892098500626e-16
+    },
+    {
+      "case": "seed4203_N2048",
+      "same_cell": true,
+      "involution_max_phase_error": 4.440892098500626e-16
+    },
+    {
+      "case": "seed4204_N512",
+      "same_cell": true,
+      "involution_max_phase_error": 4.440892098500626e-16
+    },
+    {
+      "case": "seed4204_N1024",
+      "same_cell": true,
+      "involution_max_phase_error": 4.440892098500626e-16
+    },
+    {
+      "case": "seed4204_N2048",
+      "same_cell": true,
+      "involution_max_phase_error": 4.440892098500626e-16
+    },
+    {
+      "case": "alternate_partition",
+      "same_cell": true,
+      "involution_max_phase_error": 4.440892098500626e-16
+    },
+    {
+      "case": "boundary_L40",
+      "same_cell": true,
+      "involution_max_phase_error": 4.440892098500626e-16
+    },
+    {
+      "case": "boundary_L48",
+      "same_cell": true,
+      "involution_max_phase_error": 4.440892098500626e-16
+    }
+  ],
+  "normalized_kick_ratio": {
+    "formula": "lambda^2 I2/(mu_reference^2 I_R)",
+    "cases": {
+      "seed4201_N512": 3.4946564117442382,
+      "seed4201_N1024": 3.3959672333073385,
+      "seed4201_N2048": 3.4391378109304473,
+      "seed4202_N512": 3.2836674152058105,
+      "seed4202_N1024": 3.431672935394682,
+      "seed4202_N2048": 3.4473008715135833,
+      "seed4203_N512": 3.3646232724097884,
+      "seed4203_N1024": 3.3498670915090702,
+      "seed4203_N2048": 3.410089246774798,
+      "seed4204_N512": 3.4685753680808946,
+      "seed4204_N1024": 3.3906689364647957,
+      "seed4204_N2048": 3.4180356216550885,
+      "alternate_partition": 3.440288730079904,
+      "boundary_L40": 3.4296940628528536,
+      "boundary_L48": 3.429671975227095
+    },
+    "fine_range": [
+      3.410089246774798,
+      3.4473008715135833
+    ],
+    "scope": "Finite-band normalized squared-kick ratio only; no relaxation/mixing time or plasma closure."
+  },
+  "inverse_cutoff_diagnostic": {
+    "scope": "Each physical original and partner retains half its exact incoming mass, including reflected exits; no extra outgoing flux factor or detailed-balance claim.",
+    "cases": {
+      "seed4201_N512": {
+        "impact": {
+          "incoming_flux_fraction": 0.001081658376995994,
+          "incoming_second_integral_fraction": 0.14265912593880625
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 9.298496490803154e-05,
+          "incoming_second_integral_fraction": 0.010143708203733188
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.0003690884766976266,
+          "incoming_second_integral_fraction": 0.05844713210812663
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.0015416423563822154,
+          "incoming_second_integral_fraction": 0.20308713893291455
+        }
+      },
+      "seed4201_N1024": {
+        "impact": {
+          "incoming_flux_fraction": 0.001437802738801903,
+          "incoming_second_integral_fraction": 0.1110738488318498
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 7.266237816234634e-05,
+          "incoming_second_integral_fraction": 0.013099149921832124
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.00039344550172963735,
+          "incoming_second_integral_fraction": 0.05986409464560452
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.0019014729127712106,
+          "incoming_second_integral_fraction": 0.17335394574824498
+        }
+      },
+      "seed4201_N2048": {
+        "impact": {
+          "incoming_flux_fraction": 0.0012861901173420393,
+          "incoming_second_integral_fraction": 0.10898244333657621
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 7.172543298804666e-05,
+          "incoming_second_integral_fraction": 0.01297869026630479
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.00045992357510441103,
+          "incoming_second_integral_fraction": 0.05821898877329618
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.0018155320109005358,
+          "incoming_second_integral_fraction": 0.1723848970198354
+        }
+      },
+      "seed4202_N512": {
+        "impact": {
+          "incoming_flux_fraction": 0.0011272074161994866,
+          "incoming_second_integral_fraction": 0.09821267675616839
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 3.5879884770285756e-05,
+          "incoming_second_integral_fraction": 0.0046851668378684545
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.000601302800239995,
+          "incoming_second_integral_fraction": 0.05597660550627806
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.0017614300297322321,
+          "incoming_second_integral_fraction": 0.15497572756359604
+        }
+      },
+      "seed4202_N1024": {
+        "impact": {
+          "incoming_flux_fraction": 0.0011041717138203107,
+          "incoming_second_integral_fraction": 0.13555898150451715
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 0.0003928948558342934,
+          "incoming_second_integral_fraction": 0.003656022725096324
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.000487563489454135,
+          "incoming_second_integral_fraction": 0.05186168571273377
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.001982105292260253,
+          "incoming_second_integral_fraction": 0.18830501505154276
+        }
+      },
+      "seed4202_N2048": {
+        "impact": {
+          "incoming_flux_fraction": 0.0013312560263200315,
+          "incoming_second_integral_fraction": 0.13156429208244963
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 0.000275099179323107,
+          "incoming_second_integral_fraction": 0.007680815304844852
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.00048092194872128435,
+          "incoming_second_integral_fraction": 0.06139611070751676
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.002084578265664317,
+          "incoming_second_integral_fraction": 0.19462425005854012
+        }
+      },
+      "seed4203_N512": {
+        "impact": {
+          "incoming_flux_fraction": 0.0014814583921093913,
+          "incoming_second_integral_fraction": 0.11034348980172462
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 6.862557621141678e-05,
+          "incoming_second_integral_fraction": 0.01023863809719624
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.0005549992330128171,
+          "incoming_second_integral_fraction": 0.0627313941862148
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.0021024713735593296,
+          "incoming_second_integral_fraction": 0.17475404477896636
+        }
+      },
+      "seed4203_N1024": {
+        "impact": {
+          "incoming_flux_fraction": 0.0012833576436860961,
+          "incoming_second_integral_fraction": 0.10408518206548827
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 6.879969806303648e-05,
+          "incoming_second_integral_fraction": 0.013102477185080709
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.000535821434455107,
+          "incoming_second_integral_fraction": 0.06434717790904455
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.0018852798875041345,
+          "incoming_second_integral_fraction": 0.17129253973705771
+        }
+      },
+      "seed4203_N2048": {
+        "impact": {
+          "incoming_flux_fraction": 0.001395277588176879,
+          "incoming_second_integral_fraction": 0.11382387388695218
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 0.0002775311578694679,
+          "incoming_second_integral_fraction": 0.011470684964191772
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.0004553809981966115,
+          "incoming_second_integral_fraction": 0.06565051383558321
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.002125447325079948,
+          "incoming_second_integral_fraction": 0.18246436298715576
+        }
+      },
+      "seed4204_N512": {
+        "impact": {
+          "incoming_flux_fraction": 0.0009908963435651189,
+          "incoming_second_integral_fraction": 0.08943329614443912
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 3.640225032514488e-05,
+          "incoming_second_integral_fraction": 0.021664784829432387
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.00039736504061385175,
+          "incoming_second_integral_fraction": 0.06374588794330634
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.0014218776848782004,
+          "incoming_second_integral_fraction": 0.16194656377036035
+        }
+      },
+      "seed4204_N1024": {
+        "impact": {
+          "incoming_flux_fraction": 0.0012235216379757113,
+          "incoming_second_integral_fraction": 0.09260205280883185
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 7.893138021112478e-05,
+          "incoming_second_integral_fraction": 0.013675062554258335
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.0004307936079185455,
+          "incoming_second_integral_fraction": 0.0648337543917224
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.0017308959811085157,
+          "incoming_second_integral_fraction": 0.16226433505941062
+        }
+      },
+      "seed4204_N2048": {
+        "impact": {
+          "incoming_flux_fraction": 0.0014705749960283849,
+          "incoming_second_integral_fraction": 0.10619379152256077
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 6.02931531967321e-05,
+          "incoming_second_integral_fraction": 0.01612962614727937
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.00043728144411415065,
+          "incoming_second_integral_fraction": 0.06494057898922048
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.001965798948342401,
+          "incoming_second_integral_fraction": 0.17754475088517477
+        }
+      },
+      "alternate_partition": {
+        "impact": {
+          "incoming_flux_fraction": 0.0013061175593330721,
+          "incoming_second_integral_fraction": 0.1261472866983639
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 6.553791847437921e-05,
+          "incoming_second_integral_fraction": 0.012376631224481054
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.0005202055032973278,
+          "incoming_second_integral_fraction": 0.06124231494868501
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.001889536454385656,
+          "incoming_second_integral_fraction": 0.19094451724422865
+        }
+      },
+      "boundary_L40": {
+        "impact": {
+          "incoming_flux_fraction": 0.0012861465868791342,
+          "incoming_second_integral_fraction": 0.10861470319611125
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 7.176896345095158e-05,
+          "incoming_second_integral_fraction": 0.013473444515941107
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.00045992357510441103,
+          "incoming_second_integral_fraction": 0.058767482580506354
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.0018155320109005358,
+          "incoming_second_integral_fraction": 0.1730408745014519
+        }
+      },
+      "boundary_L48": {
+        "impact": {
+          "incoming_flux_fraction": 0.0012861465868791342,
+          "incoming_second_integral_fraction": 0.108616058343052
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 7.176896345095158e-05,
+          "incoming_second_integral_fraction": 0.013473501606809402
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.00045992357510441103,
+          "incoming_second_integral_fraction": 0.0587679377793766
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.0018155320109005358,
+          "incoming_second_integral_fraction": 0.17304270610010303
+        }
+      }
+    }
+  },
+  "invariant_scales": {
+    "canonical": "|Omega|b_in^2/2+p_in^2/(2|Omega|), length*velocity",
+    "radius": "b_in^2+(p_in/Omega)^2, length^2",
+    "target": 1e-09
+  },
+  "original_physics_producer_commit": "0c1aaa3",
+  "receipt_writer_commit": "f25557173832017f74053877d85d38bfa6362fe9",
+  "receipt_writer_source_identities": {
+    "examples/44_antithetic_encounter_flux.py": {
+      "commit": "f25557173832017f74053877d85d38bfa6362fe9",
+      "expected_sha256": "0516ceaaaa06c18a63e94718af6156bfe34c4e6103f75773c3f4f44b767fc190",
+      "actual_sha256": "0516ceaaaa06c18a63e94718af6156bfe34c4e6103f75773c3f4f44b767fc190"
+    },
+    "src/sato_morrison/controls.py": {
+      "commit": "f25557173832017f74053877d85d38bfa6362fe9",
+      "expected_sha256": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+      "actual_sha256": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412"
+    },
+    "src/sato_morrison/reference.py": {
+      "commit": "f25557173832017f74053877d85d38bfa6362fe9",
+      "expected_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+      "actual_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+    }
+  },
+  "source_path": "results/antithetic_encounter_flux/audit_saved_states.py",
+  "source_sha256": "e5c81f0fc65e5e83757fb27aa46ef6f6cec94983f74277ec65f7ca29c093f00b",
+  "audit_git_identity": "f25557173832017f74053877d85d38bfa6362fe9",
+  "source_uncommitted": true,
+  "input_sha256": {
+    "results/antithetic_encounter_flux/summary.json": "067303ebf92edd9d5b9b4233ba852c78be5f0faf7620b8e414074b79089c764f",
+    "results/antithetic_encounter_flux/states.npz": "8eae5382da317a9eaa0989fb456b582553f9af5d05b000b88dcf67639b340098",
+    "results/antithetic_encounter_flux/populations.npz": "460dc4a9632fb782a03ea4b521be930e7107d26d881cdc9a3163327acfbb27d4",
+    "results/stratified_encounter_flux/states.npz": "aa340fe03e5c44bdae3e8de197a3e3a89a9992b86f6032c388f31fa00e52bd66",
+    "results/stratified_encounter_flux/populations.npz": "a59d2f67aa3786c72a1ce584bafb2045f3d5338ff5e811fe9c17e569bb06ab9d"
+  },
+  "wall_s": 0.8083498750347644,
+  "peak_rss_bytes": 653967360,
+  "versions": {
+    "numpy": "2.5.3",
+    "python": "3.12.13"
+  },
+  "platform": "macOS-26.6.2-arm64-arm-64bit"
+}

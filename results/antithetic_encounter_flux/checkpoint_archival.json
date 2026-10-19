@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "timestamp_utc": "2026-10-19T17:22:51.133009+00:00",
+  "checkpoint_count": 430,
+  "bytes_archived": 46292916,
+  "scope": "Duplicate temporary checkpoints moved outside the public checkout after independent bitwise consolidation verification; original bytes and names preserved. Complete public state/population arrays remain sufficient for scientific reproduction and no-ODE receipt replay.",
+  "checkpoint_hash_manifest": "results/antithetic_encounter_flux/original_attempt.json",
+  "checkpoint_hash_manifest_sha256": "df0aa46c80145c5c15b3f0c233689081ced6215938d2fe58a0cecc06cee5a1f7",
+  "consolidation_receipt": "results/antithetic_encounter_flux/checkpoint_manifest.json",
+  "consolidation_receipt_sha256": "9834b8a57494db4ca54ec16bbefe8f83f68fdc26f3261c46478cb6f4c43bb31c",
+  "public_combined_archive": "results/antithetic_encounter_flux/states.npz",
+  "public_combined_archive_sha256": "8eae5382da317a9eaa0989fb456b582553f9af5d05b000b88dcf67639b340098",
+  "private_archive_required_for_scientific_reproduction": false
+}

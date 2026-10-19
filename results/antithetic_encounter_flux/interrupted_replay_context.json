@@ -1,0 +1,434 @@
+{
+  "model": "exact physical antithetic bounded encounter-flux extension",
+  "boundary": "first outgoing relative z=+/-L plane; reflected retained",
+  "units": "normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+  "inputs": {
+    "mass": 1.0,
+    "charge": 1.0,
+    "field": 2.0,
+    "strength": 0.03,
+    "screening": 3.0,
+    "theta": 0.5,
+    "base_step": 0.2,
+    "rtol": 1e-12,
+    "flight_time_factor": 48.0,
+    "steps": [
+      0.1,
+      0.05,
+      0.025
+    ],
+    "distances": [
+      40.0,
+      48.0
+    ],
+    "workers": 4,
+    "runtime_cap_s": 3000.0,
+    "quadrature_target": 0.05,
+    "plane_target": 0.005,
+    "step_target": 0.001,
+    "energy_target": 1e-09,
+    "phase_transform_tolerance": 1e-13,
+    "units": "normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+    "base_levels": [
+      512,
+      1024,
+      2048
+    ],
+    "seeds": [
+      4201,
+      4202,
+      4203,
+      4204
+    ],
+    "alternate_seed": 4205,
+    "bounded_flux_per_density": 9.622764018272528,
+    "main_strata": [
+      {
+        "index": 0,
+        "impact": [
+          1.2,
+          1.5
+        ],
+        "parallel": [
+          0.35,
+          3.0
+        ],
+        "perpendicular": [
+          0.0,
+          2.0
+        ],
+        "phase": [
+          1.3207963267948966,
+          1.8207963267948966
+        ],
+        "flux_per_density": 0.1298531352599795,
+        "multiplier": 1
+      },
+      {
+        "index": 1,
+        "impact": [
+          1.2,
+          1.5
+        ],
+        "parallel": [
+          0.35,
+          3.0
+        ],
+        "perpendicular": [
+          0.0,
+          2.0
+        ],
+        "phase": [
+          1.8207963267948966,
+          7.603981633974483
+        ],
+        "flux_per_density": 1.5019294878534335,
+        "multiplier": 1
+      },
+      {
+        "index": 2,
+        "impact": [
+          1.2,
+          1.5
+        ],
+        "parallel": [
+          0.35,
+          3.0
+        ],
+        "perpendicular": [
+          2.0,
+          2.5
+        ],
+        "phase": [
+          1.3207963267948966,
+          1.8207963267948966
+        ],
+        "flux_per_density": 0.013725970338292613,
+        "multiplier": 8
+      },
+      {
+        "index": 3,
+        "impact": [
+          1.2,
+          1.5
+        ],
+        "parallel": [
+          0.35,
+          3.0
+        ],
+        "perpendicular": [
+          2.0,
+          2.5
+        ],
+        "phase": [
+          1.8207963267948966,
+          7.603981633974483
+        ],
+        "flux_per_density": 0.1587596599743933,
+        "multiplier": 1
+      },
+      {
+        "index": 4,
+        "impact": [
+          1.5,
+          2.4
+        ],
+        "parallel": [
+          0.35,
+          3.0
+        ],
+        "perpendicular": [
+          0.0,
+          2.0
+        ],
+        "phase": [
+          1.3207963267948966,
+          1.8207963267948966
+        ],
+        "flux_per_density": 0.5626969194599111,
+        "multiplier": 1
+      },
+      {
+        "index": 5,
+        "impact": [
+          1.5,
+          2.4
+        ],
+        "parallel": [
+          0.35,
+          3.0
+        ],
+        "perpendicular": [
+          0.0,
+          2.0
+        ],
+        "phase": [
+          1.8207963267948966,
+          7.603981633974483
+        ],
+        "flux_per_density": 6.508361114031545,
+        "multiplier": 1
+      },
+      {
+        "index": 6,
+        "impact": [
+          1.5,
+          2.4
+        ],
+        "parallel": [
+          0.35,
+          3.0
+        ],
+        "perpendicular": [
+          2.0,
+          2.5
+        ],
+        "phase": [
+          1.3207963267948966,
+          1.8207963267948966
+        ],
+        "flux_per_density": 0.05947920479926799,
+        "multiplier": 1
+      },
+      {
+        "index": 7,
+        "impact": [
+          1.5,
+          2.4
+        ],
+        "parallel": [
+          0.35,
+          3.0
+        ],
+        "perpendicular": [
+          2.0,
+          2.5
+        ],
+        "phase": [
+          1.8207963267948966,
+          7.603981633974483
+        ],
+        "flux_per_density": 0.6879585265557043,
+        "multiplier": 1
+      }
+    ],
+    "alternate_strata": [
+      {
+        "index": 0,
+        "impact": [
+          1.2,
+          1.5
+        ],
+        "parallel": [
+          0.35,
+          3.0
+        ],
+        "perpendicular": [
+          0.0,
+          2.0
+        ],
+        "phase": [
+          1.4207963267948966,
+          1.7207963267948965
+        ],
+        "flux_per_density": 0.07791188115598764,
+        "multiplier": 1
+      },
+      {
+        "index": 1,
+        "impact": [
+          1.2,
+          1.5
+        ],
+        "parallel": [
+          0.35,
+          3.0
+        ],
+        "perpendicular": [
+          0.0,
+          2.0
+        ],
+        "phase": [
+          1.7207963267948965,
+          7.703981633974482
+        ],
+        "flux_per_density": 1.5538707419574251,
+        "multiplier": 1
+      },
+      {
+        "index": 2,
+        "impact": [
+          1.2,
+          1.5
+        ],
+        "parallel": [
+          0.35,
+          3.0
+        ],
+        "perpendicular": [
+          2.0,
+          2.5
+        ],
+        "phase": [
+          1.4207963267948966,
+          1.7207963267948965
+        ],
+        "flux_per_density": 0.008235582202975563,
+        "multiplier": 8
+      },
+      {
+        "index": 3,
+        "impact": [
+          1.2,
+          1.5
+        ],
+        "parallel": [
+          0.35,
+          3.0
+        ],
+        "perpendicular": [
+          2.0,
+          2.5
+        ],
+        "phase": [
+          1.7207963267948965,
+          7.703981633974482
+        ],
+        "flux_per_density": 0.16425004810971036,
+        "multiplier": 1
+      },
+      {
+        "index": 4,
+        "impact": [
+          1.5,
+          2.4
+        ],
+        "parallel": [
+          0.35,
+          3.0
+        ],
+        "perpendicular": [
+          0.0,
+          2.0
+        ],
+        "phase": [
+          1.4207963267948966,
+          1.7207963267948965
+        ],
+        "flux_per_density": 0.3376181516759465,
+        "multiplier": 1
+      },
+      {
+        "index": 5,
+        "impact": [
+          1.5,
+          2.4
+        ],
+        "parallel": [
+          0.35,
+          3.0
+        ],
+        "perpendicular": [
+          0.0,
+          2.0
+        ],
+        "phase": [
+          1.7207963267948965,
+          7.703981633974482
+        ],
+        "flux_per_density": 6.733439881815509,
+        "multiplier": 1
+      },
+      {
+        "index": 6,
+        "impact": [
+          1.5,
+          2.4
+        ],
+        "parallel": [
+          0.35,
+          3.0
+        ],
+        "perpendicular": [
+          2.0,
+          2.5
+        ],
+        "phase": [
+          1.4207963267948966,
+          1.7207963267948965
+        ],
+        "flux_per_density": 0.03568752287956078,
+        "multiplier": 1
+      },
+      {
+        "index": 7,
+        "impact": [
+          1.5,
+          2.4
+        ],
+        "parallel": [
+          0.35,
+          3.0
+        ],
+        "perpendicular": [
+          2.0,
+          2.5
+        ],
+        "phase": [
+          1.7207963267948965,
+          7.703981633974482
+        ],
+        "flux_per_density": 0.7117502084754116,
+        "multiplier": 1
+      }
+    ],
+    "transform": "T(b,u,p,phi)=(b,u,p,(pi-phi) modulo2pi)",
+    "measure": "T preserves every phase cell and uniform phase mass; each original/partner receives Ws/(2Ns), pair mean receives Ws/Ns; all reflected exits and failed weights retained",
+    "theory": "For the symmetric free helix the first-Born magnetic-moment work is odd under T with z->-z, so pairing cancels that component. Actual nonlinear observables are solved for both members; no variance or QMC convergence guarantee follows.",
+    "controls": "top four weighted paired second moments from each of four main scrambles and alternate; closest four and longest four reflected new partners; sixteen predetermined fresh controls and historical weak boundary control from base experiment; both members at every active step and farther plane",
+    "acceptance": "same four sample, six independent-replica, four alternate-partition, two full matched boundary, selected paired and memberwise boundary, paired and memberwise active-step, energy and integrity gates as base; no failed criterion relaxed",
+    "stop_rule": "one fixed physical antithetic extension; all original inputs and weights frozen; cap between batches; no outcome-dependent continuation or failure renormalization",
+    "archive": "states.npz stores new partners and missing refined original/control states only; global reference ids <base_state_count address immutable base states, ids >=base_state_count address new states at id-base_state_count",
+    "scope": "bounded incident-domain empirical quadrature; no omitted-domain moment bound, reverse-complete incident population, physical screening closure, plasma coefficient or lifetime",
+    "prior_artifact_sha256": {
+      "results/stratified_encounter_flux/summary.json": "5a8699d470dce7553ed14b7669b6228953c7bda30d817ca9d541c8f619e565e0",
+      "results/stratified_encounter_flux/states.npz": "aa340fe03e5c44bdae3e8de197a3e3a89a9992b86f6032c388f31fa00e52bd66",
+      "results/stratified_encounter_flux/populations.npz": "a59d2f67aa3786c72a1ce584bafb2045f3d5338ff5e811fe9c17e569bb06ab9d"
+    },
+    "preserved_born_control_summary_sha256": "f82789d1999064172704fef5c9e0f5f436eff72badc0a49fa085e2d95b91673f",
+    "base_state_count": 215218
+  },
+  "commit": "1d73de31987967ac46f3ce8fb935c7e7016e6178",
+  "working_tree": "?? results/antithetic_encounter_flux/cases_partial.json\n?? results/antithetic_encounter_flux/checkpoint_000512.npz\n?? results/antithetic_encounter_flux/checkpoint_001024.npz\n?? results/antithetic_encounter_flux/checkpoint_001536.npz\n?? results/antithetic_encounter_flux/checkpoint_002048.npz\n?? results/antithetic_encounter_flux/checkpoint_002560.npz\n?? results/antithetic_encounter_flux/checkpoint_003072.npz\n?? results/antithetic_encounter_flux/checkpoint_003584.npz\n?? results/antithetic_encounter_flux/checkpoint_004096.npz\n?? results/antithetic_encounter_flux/checkpoint_004608.npz\n?? results/antithetic_encounter_flux/checkpoint_005120.npz\n?? results/antithetic_encounter_flux/checkpoint_005632.npz\n?? results/antithetic_encounter_flux/checkpoint_006144.npz\n?? results/antithetic_encounter_flux/checkpoint_006656.npz\n?? results/antithetic_encounter_flux/checkpoint_007168.npz\n?? results/antithetic_encounter_flux/checkpoint_007680.npz\n?? results/antithetic_encounter_flux/checkpoint_008192.npz\n?? results/antithetic_encounter_flux/checkpoint_008704.npz\n?? results/antithetic_encounter_flux/checkpoint_009216.npz\n?? results/antithetic_encounter_flux/checkpoint_009728.npz\n?? results/antithetic_encounter_flux/checkpoint_010240.npz\n?? results/antithetic_encounter_flux/checkpoint_010752.npz\n?? results/antithetic_encounter_flux/checkpoint_011264.npz\n?? results/antithetic_encounter_flux/checkpoint_011776.npz\n?? results/antithetic_encounter_flux/checkpoint_012288.npz\n?? results/antithetic_encounter_flux/checkpoint_012800.npz\n?? results/antithetic_encounter_flux/checkpoint_013312.npz\n?? results/antithetic_encounter_flux/checkpoint_013824.npz\n?? results/antithetic_encounter_flux/checkpoint_014336.npz\n?? results/antithetic_encounter_flux/checkpoint_014848.npz\n?? results/antithetic_encounter_flux/checkpoint_015360.npz\n?? results/antithetic_encounter_flux/checkpoint_015872.npz\n?? results/antithetic_encounter_flux/checkpoint_016384.npz\n?? results/antithetic_encounter_flux/checkpoint_016896.npz\n?? results/antithetic_encounter_flux/checkpoint_017408.npz\n?? results/antithetic_encounter_flux/checkpoint_017920.npz\n?? results/antithetic_encounter_flux/checkpoint_018432.npz\n?? results/antithetic_encounter_flux/checkpoint_018944.npz\n?? results/antithetic_encounter_flux/checkpoint_019456.npz\n?? results/antithetic_encounter_flux/checkpoint_019968.npz\n?? results/antithetic_encounter_flux/checkpoint_020480.npz\n?? results/antithetic_encounter_flux/checkpoint_020992.npz\n?? results/antithetic_encounter_flux/checkpoint_021504.npz\n?? results/antithetic_encounter_flux/checkpoint_022016.npz\n?? results/antithetic_encounter_flux/checkpoint_022528.npz\n?? results/antithetic_encounter_flux/checkpoint_023040.npz\n?? results/antithetic_encounter_flux/checkpoint_023552.npz\n?? results/antithetic_encounter_flux/checkpoint_024064.npz\n?? results/antithetic_encounter_flux/checkpoint_024576.npz\n?? results/antithetic_encounter_flux/checkpoint_025088.npz\n?? results/antithetic_encounter_flux/checkpoint_025600.npz\n?? results/antithetic_encounter_flux/checkpoint_026112.npz\n?? results/antithetic_encounter_flux/checkpoint_026624.npz\n?? results/antithetic_encounter_flux/checkpoint_027136.npz\n?? results/antithetic_encounter_flux/checkpoint_027648.npz\n?? results/antithetic_encounter_flux/checkpoint_028160.npz\n?? results/antithetic_encounter_flux/checkpoint_028672.npz\n?? results/antithetic_encounter_flux/checkpoint_029184.npz\n?? results/antithetic_encounter_flux/checkpoint_029696.npz\n?? results/antithetic_encounter_flux/checkpoint_030208.npz\n?? results/antithetic_encounter_flux/checkpoint_030720.npz\n?? results/antithetic_encounter_flux/checkpoint_031232.npz\n?? results/antithetic_encounter_flux/checkpoint_031744.npz\n?? results/antithetic_encounter_flux/checkpoint_032256.npz\n?? results/antithetic_encounter_flux/checkpoint_032768.npz\n?? results/antithetic_encounter_flux/checkpoint_033280.npz\n?? results/antithetic_encounter_flux/checkpoint_033792.npz\n?? results/antithetic_encounter_flux/checkpoint_034304.npz\n?? results/antithetic_encounter_flux/checkpoint_034816.npz\n?? results/antithetic_encounter_flux/checkpoint_035328.npz\n?? results/antithetic_encounter_flux/checkpoint_035840.npz\n?? results/antithetic_encounter_flux/checkpoint_036352.npz\n?? results/antithetic_encounter_flux/checkpoint_036864.npz\n?? results/antithetic_encounter_flux/checkpoint_037376.npz\n?? results/antithetic_encounter_flux/checkpoint_037888.npz\n?? results/antithetic_encounter_flux/checkpoint_038400.npz\n?? results/antithetic_encounter_flux/checkpoint_038912.npz\n?? results/antithetic_encounter_flux/checkpoint_039424.npz\n?? results/antithetic_encounter_flux/checkpoint_039936.npz\n?? results/antithetic_encounter_flux/checkpoint_040448.npz\n?? results/antithetic_encounter_flux/checkpoint_040960.npz\n?? results/antithetic_encounter_flux/checkpoint_041472.npz\n?? results/antithetic_encounter_flux/checkpoint_041984.npz\n?? results/antithetic_encounter_flux/checkpoint_042496.npz\n?? results/antithetic_encounter_flux/checkpoint_043008.npz\n?? results/antithetic_encounter_flux/checkpoint_043520.npz\n?? results/antithetic_encounter_flux/checkpoint_044032.npz\n?? results/antithetic_encounter_flux/checkpoint_044544.npz\n?? results/antithetic_encounter_flux/checkpoint_045056.npz\n?? results/antithetic_encounter_flux/checkpoint_045568.npz\n?? results/antithetic_encounter_flux/checkpoint_046080.npz\n?? results/antithetic_encounter_flux/checkpoint_046592.npz\n?? results/antithetic_encounter_flux/checkpoint_047104.npz\n?? results/antithetic_encounter_flux/checkpoint_047616.npz\n?? results/antithetic_encounter_flux/checkpoint_048128.npz\n?? results/antithetic_encounter_flux/checkpoint_048640.npz\n?? results/antithetic_encounter_flux/checkpoint_049152.npz\n?? results/antithetic_encounter_flux/checkpoint_049664.npz\n?? results/antithetic_encounter_flux/checkpoint_050176.npz\n?? results/antithetic_encounter_flux/checkpoint_050688.npz\n?? results/antithetic_encounter_flux/checkpoint_051200.npz\n?? results/antithetic_encounter_flux/checkpoint_051712.npz\n?? results/antithetic_encounter_flux/checkpoint_052224.npz\n?? results/antithetic_encounter_flux/checkpoint_052736.npz\n?? results/antithetic_encounter_flux/checkpoint_053248.npz\n?? results/antithetic_encounter_flux/checkpoint_053760.npz\n?? results/antithetic_encounter_flux/checkpoint_054272.npz\n?? results/antithetic_encounter_flux/checkpoint_054784.npz\n?? results/antithetic_encounter_flux/checkpoint_055296.npz\n?? results/antithetic_encounter_flux/checkpoint_055808.npz\n?? results/antithetic_encounter_flux/checkpoint_056320.npz\n?? results/antithetic_encounter_flux/checkpoint_056832.npz\n?? results/antithetic_encounter_flux/checkpoint_057344.npz\n?? results/antithetic_encounter_flux/checkpoint_057856.npz\n?? results/antithetic_encounter_flux/checkpoint_058368.npz\n?? results/antithetic_encounter_flux/checkpoint_058880.npz\n?? results/antithetic_encounter_flux/checkpoint_059392.npz\n?? results/antithetic_encounter_flux/checkpoint_059904.npz\n?? results/antithetic_encounter_flux/checkpoint_060416.npz\n?? results/antithetic_encounter_flux/checkpoint_060928.npz\n?? results/antithetic_encounter_flux/checkpoint_061440.npz\n?? results/antithetic_encounter_flux/checkpoint_061952.npz\n?? results/antithetic_encounter_flux/checkpoint_062464.npz\n?? results/antithetic_encounter_flux/checkpoint_062976.npz\n?? results/antithetic_encounter_flux/checkpoint_063488.npz\n?? results/antithetic_encounter_flux/checkpoint_064000.npz\n?? results/antithetic_encounter_flux/checkpoint_064512.npz\n?? results/antithetic_encounter_flux/checkpoint_065024.npz\n?? results/antithetic_encounter_flux/checkpoint_065536.npz\n?? results/antithetic_encounter_flux/checkpoint_066048.npz\n?? results/antithetic_encounter_flux/checkpoint_066560.npz\n?? results/antithetic_encounter_flux/checkpoint_067072.npz\n?? results/antithetic_encounter_flux/checkpoint_067584.npz\n?? results/antithetic_encounter_flux/checkpoint_068096.npz\n?? results/antithetic_encounter_flux/checkpoint_068608.npz\n?? results/antithetic_encounter_flux/checkpoint_069120.npz\n?? results/antithetic_encounter_flux/checkpoint_069632.npz\n?? results/antithetic_encounter_flux/checkpoint_070144.npz\n?? results/antithetic_encounter_flux/checkpoint_070656.npz\n?? results/antithetic_encounter_flux/checkpoint_071168.npz\n?? results/antithetic_encounter_flux/checkpoint_071680.npz\n?? results/antithetic_encounter_flux/checkpoint_072192.npz\n?? results/antithetic_encounter_flux/checkpoint_072704.npz\n?? results/antithetic_encounter_flux/checkpoint_073216.npz\n?? results/antithetic_encounter_flux/checkpoint_073728.npz\n?? results/antithetic_encounter_flux/checkpoint_074240.npz\n?? results/antithetic_encounter_flux/checkpoint_074752.npz\n?? results/antithetic_encounter_flux/checkpoint_075264.npz\n?? results/antithetic_encounter_flux/checkpoint_075776.npz\n?? results/antithetic_encounter_flux/checkpoint_076288.npz\n?? results/antithetic_encounter_flux/checkpoint_076800.npz\n?? results/antithetic_encounter_flux/checkpoint_077312.npz\n?? results/antithetic_encounter_flux/checkpoint_077824.npz\n?? results/antithetic_encounter_flux/checkpoint_078336.npz\n?? results/antithetic_encounter_flux/checkpoint_078848.npz\n?? results/antithetic_encounter_flux/checkpoint_079360.npz\n?? results/antithetic_encounter_flux/checkpoint_079872.npz\n?? results/antithetic_encounter_flux/checkpoint_080384.npz\n?? results/antithetic_encounter_flux/checkpoint_080896.npz\n?? results/antithetic_encounter_flux/checkpoint_081408.npz\n?? results/antithetic_encounter_flux/checkpoint_081920.npz\n?? results/antithetic_encounter_flux/checkpoint_082432.npz\n?? results/antithetic_encounter_flux/checkpoint_082944.npz\n?? results/antithetic_encounter_flux/checkpoint_083456.npz\n?? results/antithetic_encounter_flux/checkpoint_083968.npz\n?? results/antithetic_encounter_flux/checkpoint_084480.npz\n?? results/antithetic_encounter_flux/checkpoint_084992.npz\n?? results/antithetic_encounter_flux/checkpoint_085504.npz\n?? results/antithetic_encounter_flux/checkpoint_086016.npz\n?? results/antithetic_encounter_flux/checkpoint_086528.npz\n?? results/antithetic_encounter_flux/checkpoint_087040.npz\n?? results/antithetic_encounter_flux/checkpoint_087552.npz\n?? results/antithetic_encounter_flux/checkpoint_088064.npz\n?? results/antithetic_encounter_flux/checkpoint_088576.npz\n?? results/antithetic_encounter_flux/checkpoint_089088.npz\n?? results/antithetic_encounter_flux/checkpoint_089600.npz\n?? results/antithetic_encounter_flux/checkpoint_090112.npz\n?? results/antithetic_encounter_flux/checkpoint_090624.npz\n?? results/antithetic_encounter_flux/checkpoint_091136.npz\n?? results/antithetic_encounter_flux/checkpoint_091648.npz\n?? results/antithetic_encounter_flux/checkpoint_092160.npz\n?? results/antithetic_encounter_flux/checkpoint_092672.npz\n?? results/antithetic_encounter_flux/checkpoint_093184.npz\n?? results/antithetic_encounter_flux/checkpoint_093696.npz\n?? results/antithetic_encounter_flux/checkpoint_094208.npz\n?? results/antithetic_encounter_flux/checkpoint_094720.npz\n?? results/antithetic_encounter_flux/checkpoint_095232.npz\n?? results/antithetic_encounter_flux/checkpoint_095744.npz\n?? results/antithetic_encounter_flux/checkpoint_096256.npz\n?? results/antithetic_encounter_flux/checkpoint_096768.npz\n?? results/antithetic_encounter_flux/checkpoint_097280.npz\n?? results/antithetic_encounter_flux/checkpoint_097792.npz\n?? results/antithetic_encounter_flux/checkpoint_098304.npz\n?? results/antithetic_encounter_flux/checkpoint_098816.npz\n?? results/antithetic_encounter_flux/checkpoint_099328.npz\n?? results/antithetic_encounter_flux/checkpoint_099840.npz\n?? results/antithetic_encounter_flux/checkpoint_100352.npz\n?? results/antithetic_encounter_flux/checkpoint_100864.npz\n?? results/antithetic_encounter_flux/checkpoint_101376.npz\n?? results/antithetic_encounter_flux/checkpoint_101888.npz\n?? results/antithetic_encounter_flux/checkpoint_102400.npz\n?? results/antithetic_encounter_flux/checkpoint_102912.npz\n?? results/antithetic_encounter_flux/checkpoint_103424.npz\n?? results/antithetic_encounter_flux/checkpoint_103936.npz\n?? results/antithetic_encounter_flux/checkpoint_104448.npz\n?? results/antithetic_encounter_flux/checkpoint_104960.npz\n?? results/antithetic_encounter_flux/checkpoint_105472.npz\n?? results/antithetic_encounter_flux/checkpoint_105984.npz\n?? results/antithetic_encounter_flux/checkpoint_106496.npz\n?? results/antithetic_encounter_flux/checkpoint_107008.npz\n?? results/antithetic_encounter_flux/checkpoint_107520.npz\n?? results/antithetic_encounter_flux/checkpoint_108032.npz\n?? results/antithetic_encounter_flux/checkpoint_108544.npz\n?? results/antithetic_encounter_flux/checkpoint_109056.npz\n?? results/antithetic_encounter_flux/checkpoint_109568.npz\n?? results/antithetic_encounter_flux/checkpoint_110080.npz\n?? results/antithetic_encounter_flux/checkpoint_110592.npz\n?? results/antithetic_encounter_flux/checkpoint_111104.npz\n?? results/antithetic_encounter_flux/checkpoint_111616.npz\n?? results/antithetic_encounter_flux/checkpoint_112128.npz\n?? results/antithetic_encounter_flux/checkpoint_112640.npz\n?? results/antithetic_encounter_flux/checkpoint_113152.npz\n?? results/antithetic_encounter_flux/checkpoint_113664.npz\n?? results/antithetic_encounter_flux/checkpoint_114176.npz\n?? results/antithetic_encounter_flux/checkpoint_114688.npz\n?? results/antithetic_encounter_flux/checkpoint_115200.npz\n?? results/antithetic_encounter_flux/checkpoint_115712.npz\n?? results/antithetic_encounter_flux/checkpoint_116224.npz\n?? results/antithetic_encounter_flux/checkpoint_116736.npz\n?? results/antithetic_encounter_flux/checkpoint_117248.npz\n?? results/antithetic_encounter_flux/checkpoint_117760.npz\n?? results/antithetic_encounter_flux/checkpoint_118272.npz\n?? results/antithetic_encounter_flux/checkpoint_118784.npz\n?? results/antithetic_encounter_flux/checkpoint_119296.npz\n?? results/antithetic_encounter_flux/checkpoint_119808.npz\n?? results/antithetic_encounter_flux/checkpoint_120320.npz\n?? results/antithetic_encounter_flux/checkpoint_120832.npz\n?? results/antithetic_encounter_flux/checkpoint_121344.npz\n?? results/antithetic_encounter_flux/checkpoint_121856.npz\n?? results/antithetic_encounter_flux/checkpoint_122368.npz\n?? results/antithetic_encounter_flux/checkpoint_122880.npz\n?? results/antithetic_encounter_flux/checkpoint_123392.npz\n?? results/antithetic_encounter_flux/checkpoint_123904.npz\n?? results/antithetic_encounter_flux/checkpoint_124416.npz\n?? results/antithetic_encounter_flux/checkpoint_124928.npz\n?? results/antithetic_encounter_flux/checkpoint_125440.npz\n?? results/antithetic_encounter_flux/checkpoint_125952.npz\n?? results/antithetic_encounter_flux/checkpoint_126464.npz\n?? results/antithetic_encounter_flux/checkpoint_126976.npz\n?? results/antithetic_encounter_flux/checkpoint_127488.npz\n?? results/antithetic_encounter_flux/checkpoint_128000.npz\n?? results/antithetic_encounter_flux/checkpoint_128512.npz\n?? results/antithetic_encounter_flux/checkpoint_129024.npz\n?? results/antithetic_encounter_flux/checkpoint_129536.npz\n?? results/antithetic_encounter_flux/checkpoint_130048.npz\n?? results/antithetic_encounter_flux/checkpoint_130560.npz\n?? results/antithetic_encounter_flux/checkpoint_131072.npz\n?? results/antithetic_encounter_flux/checkpoint_131584.npz\n?? results/antithetic_encounter_flux/checkpoint_132096.npz\n?? results/antithetic_encounter_flux/checkpoint_132608.npz\n?? results/antithetic_encounter_flux/checkpoint_133120.npz\n?? results/antithetic_encounter_flux/checkpoint_133632.npz\n?? results/antithetic_encounter_flux/checkpoint_134144.npz\n?? results/antithetic_encounter_flux/checkpoint_134656.npz\n?? results/antithetic_encounter_flux/checkpoint_135168.npz\n?? results/antithetic_encounter_flux/checkpoint_135680.npz\n?? results/antithetic_encounter_flux/checkpoint_136192.npz\n?? results/antithetic_encounter_flux/checkpoint_136704.npz\n?? results/antithetic_encounter_flux/checkpoint_137216.npz\n?? results/antithetic_encounter_flux/checkpoint_137728.npz\n?? results/antithetic_encounter_flux/checkpoint_138240.npz\n?? results/antithetic_encounter_flux/checkpoint_138752.npz\n?? results/antithetic_encounter_flux/checkpoint_139264.npz\n?? results/antithetic_encounter_flux/checkpoint_139776.npz\n?? results/antithetic_encounter_flux/checkpoint_140288.npz\n?? results/antithetic_encounter_flux/checkpoint_140800.npz\n?? results/antithetic_encounter_flux/checkpoint_141312.npz\n?? results/antithetic_encounter_flux/checkpoint_141824.npz\n?? results/antithetic_encounter_flux/checkpoint_142336.npz\n?? results/antithetic_encounter_flux/checkpoint_142848.npz\n?? results/antithetic_encounter_flux/checkpoint_143360.npz\n?? results/antithetic_encounter_flux/checkpoint_143872.npz\n?? results/antithetic_encounter_flux/checkpoint_144384.npz\n?? results/antithetic_encounter_flux/checkpoint_144896.npz\n?? results/antithetic_encounter_flux/checkpoint_145408.npz\n?? results/antithetic_encounter_flux/checkpoint_145920.npz\n?? results/antithetic_encounter_flux/checkpoint_146432.npz\n?? results/antithetic_encounter_flux/checkpoint_146944.npz\n?? results/antithetic_encounter_flux/checkpoint_147456.npz\n?? results/antithetic_encounter_flux/checkpoint_147968.npz\n?? results/antithetic_encounter_flux/checkpoint_148480.npz\n?? results/antithetic_encounter_flux/checkpoint_148992.npz\n?? results/antithetic_encounter_flux/checkpoint_149504.npz\n?? results/antithetic_encounter_flux/checkpoint_150016.npz\n?? results/antithetic_encounter_flux/checkpoint_150528.npz\n?? results/antithetic_encounter_flux/checkpoint_151040.npz\n?? results/antithetic_encounter_flux/checkpoint_151552.npz\n?? results/antithetic_encounter_flux/checkpoint_152064.npz\n?? results/antithetic_encounter_flux/checkpoint_152576.npz\n?? results/antithetic_encounter_flux/checkpoint_153088.npz\n?? results/antithetic_encounter_flux/checkpoint_153600.npz\n?? results/antithetic_encounter_flux/checkpoint_154112.npz\n?? results/antithetic_encounter_flux/checkpoint_154624.npz\n?? results/antithetic_encounter_flux/checkpoint_155136.npz\n?? results/antithetic_encounter_flux/checkpoint_155648.npz\n?? results/antithetic_encounter_flux/checkpoint_156160.npz\n?? results/antithetic_encounter_flux/checkpoint_156672.npz\n?? results/antithetic_encounter_flux/checkpoint_157184.npz\n?? results/antithetic_encounter_flux/checkpoint_157696.npz\n?? results/antithetic_encounter_flux/checkpoint_158208.npz\n?? results/antithetic_encounter_flux/checkpoint_158720.npz\n?? results/antithetic_encounter_flux/checkpoint_159232.npz\n?? results/antithetic_encounter_flux/checkpoint_159744.npz\n?? results/antithetic_encounter_flux/checkpoint_160256.npz\n?? results/antithetic_encounter_flux/checkpoint_160768.npz\n?? results/antithetic_encounter_flux/checkpoint_161280.npz\n?? results/antithetic_encounter_flux/checkpoint_161792.npz\n?? results/antithetic_encounter_flux/checkpoint_162304.npz\n?? results/antithetic_encounter_flux/checkpoint_162816.npz\n?? results/antithetic_encounter_flux/checkpoint_163328.npz\n?? results/antithetic_encounter_flux/checkpoint_163840.npz\n?? results/antithetic_encounter_flux/checkpoint_164352.npz\n?? results/antithetic_encounter_flux/checkpoint_164864.npz\n?? results/antithetic_encounter_flux/checkpoint_165376.npz\n?? results/antithetic_encounter_flux/checkpoint_165888.npz\n?? results/antithetic_encounter_flux/checkpoint_166400.npz\n?? results/antithetic_encounter_flux/checkpoint_166912.npz\n?? results/antithetic_encounter_flux/checkpoint_167424.npz\n?? results/antithetic_encounter_flux/checkpoint_167936.npz\n?? results/antithetic_encounter_flux/checkpoint_168448.npz\n?? results/antithetic_encounter_flux/checkpoint_168960.npz\n?? results/antithetic_encounter_flux/checkpoint_169472.npz\n?? results/antithetic_encounter_flux/checkpoint_169984.npz\n?? results/antithetic_encounter_flux/checkpoint_170496.npz\n?? results/antithetic_encounter_flux/checkpoint_171008.npz\n?? results/antithetic_encounter_flux/checkpoint_171520.npz\n?? results/antithetic_encounter_flux/checkpoint_172032.npz\n?? results/antithetic_encounter_flux/checkpoint_172544.npz\n?? results/antithetic_encounter_flux/checkpoint_173056.npz\n?? results/antithetic_encounter_flux/checkpoint_173568.npz\n?? results/antithetic_encounter_flux/checkpoint_174080.npz\n?? results/antithetic_encounter_flux/checkpoint_174592.npz\n?? results/antithetic_encounter_flux/checkpoint_175104.npz\n?? results/antithetic_encounter_flux/checkpoint_175616.npz\n?? results/antithetic_encounter_flux/checkpoint_176128.npz\n?? results/antithetic_encounter_flux/checkpoint_176640.npz\n?? results/antithetic_encounter_flux/checkpoint_177152.npz\n?? results/antithetic_encounter_flux/checkpoint_177664.npz\n?? results/antithetic_encounter_flux/checkpoint_178176.npz\n?? results/antithetic_encounter_flux/checkpoint_178688.npz\n?? results/antithetic_encounter_flux/checkpoint_179200.npz\n?? results/antithetic_encounter_flux/checkpoint_179712.npz\n?? results/antithetic_encounter_flux/checkpoint_180224.npz\n?? results/antithetic_encounter_flux/checkpoint_180736.npz\n?? results/antithetic_encounter_flux/checkpoint_181248.npz\n?? results/antithetic_encounter_flux/checkpoint_181760.npz\n?? results/antithetic_encounter_flux/checkpoint_182272.npz\n?? results/antithetic_encounter_flux/checkpoint_182784.npz\n?? results/antithetic_encounter_flux/checkpoint_183296.npz\n?? results/antithetic_encounter_flux/checkpoint_183808.npz\n?? results/antithetic_encounter_flux/checkpoint_184320.npz\n?? results/antithetic_encounter_flux/checkpoint_184832.npz\n?? results/antithetic_encounter_flux/checkpoint_185344.npz\n?? results/antithetic_encounter_flux/checkpoint_185856.npz\n?? results/antithetic_encounter_flux/checkpoint_186368.npz\n?? results/antithetic_encounter_flux/checkpoint_186880.npz\n?? results/antithetic_encounter_flux/checkpoint_187392.npz\n?? results/antithetic_encounter_flux/checkpoint_187904.npz\n?? results/antithetic_encounter_flux/checkpoint_188416.npz\n?? results/antithetic_encounter_flux/checkpoint_188928.npz\n?? results/antithetic_encounter_flux/checkpoint_189440.npz\n?? results/antithetic_encounter_flux/checkpoint_189952.npz\n?? results/antithetic_encounter_flux/checkpoint_190464.npz\n?? results/antithetic_encounter_flux/checkpoint_190976.npz\n?? results/antithetic_encounter_flux/checkpoint_191488.npz\n?? results/antithetic_encounter_flux/checkpoint_192000.npz\n?? results/antithetic_encounter_flux/checkpoint_192512.npz\n?? results/antithetic_encounter_flux/checkpoint_193024.npz\n?? results/antithetic_encounter_flux/checkpoint_193536.npz\n?? results/antithetic_encounter_flux/checkpoint_194048.npz\n?? results/antithetic_encounter_flux/checkpoint_194560.npz\n?? results/antithetic_encounter_flux/checkpoint_195072.npz\n?? results/antithetic_encounter_flux/checkpoint_195584.npz\n?? results/antithetic_encounter_flux/checkpoint_196096.npz\n?? results/antithetic_encounter_flux/checkpoint_196608.npz\n?? results/antithetic_encounter_flux/checkpoint_197120.npz\n?? results/antithetic_encounter_flux/checkpoint_197632.npz\n?? results/antithetic_encounter_flux/checkpoint_198144.npz\n?? results/antithetic_encounter_flux/checkpoint_198656.npz\n?? results/antithetic_encounter_flux/checkpoint_199168.npz\n?? results/antithetic_encounter_flux/checkpoint_199680.npz\n?? results/antithetic_encounter_flux/checkpoint_200192.npz\n?? results/antithetic_encounter_flux/checkpoint_200704.npz\n?? results/antithetic_encounter_flux/checkpoint_201216.npz\n?? results/antithetic_encounter_flux/checkpoint_201728.npz\n?? results/antithetic_encounter_flux/checkpoint_202240.npz\n?? results/antithetic_encounter_flux/checkpoint_202752.npz\n?? results/antithetic_encounter_flux/checkpoint_203264.npz\n?? results/antithetic_encounter_flux/checkpoint_203776.npz\n?? results/antithetic_encounter_flux/checkpoint_204288.npz\n?? results/antithetic_encounter_flux/checkpoint_204800.npz\n?? results/antithetic_encounter_flux/checkpoint_205312.npz\n?? results/antithetic_encounter_flux/checkpoint_205824.npz\n?? results/antithetic_encounter_flux/checkpoint_206336.npz\n?? results/antithetic_encounter_flux/checkpoint_206848.npz\n?? results/antithetic_encounter_flux/checkpoint_207360.npz\n?? results/antithetic_encounter_flux/checkpoint_207872.npz\n?? results/antithetic_encounter_flux/checkpoint_208384.npz\n?? results/antithetic_encounter_flux/checkpoint_208896.npz\n?? results/antithetic_encounter_flux/checkpoint_209408.npz\n?? results/antithetic_encounter_flux/checkpoint_209920.npz\n?? results/antithetic_encounter_flux/checkpoint_210432.npz\n?? results/antithetic_encounter_flux/checkpoint_210944.npz\n?? results/antithetic_encounter_flux/checkpoint_211456.npz\n?? results/antithetic_encounter_flux/checkpoint_211968.npz\n?? results/antithetic_encounter_flux/checkpoint_212480.npz\n?? results/antithetic_encounter_flux/checkpoint_212992.npz\n?? results/antithetic_encounter_flux/checkpoint_213504.npz\n?? results/antithetic_encounter_flux/checkpoint_214016.npz\n?? results/antithetic_encounter_flux/checkpoint_214528.npz\n?? results/antithetic_encounter_flux/checkpoint_215040.npz\n?? results/antithetic_encounter_flux/checkpoint_215062.npz\n?? results/antithetic_encounter_flux/checkpoint_215106.npz\n?? results/antithetic_encounter_flux/checkpoint_215128.npz\n?? results/antithetic_encounter_flux/checkpoint_215172.npz\n?? results/antithetic_encounter_flux/checkpoint_215194.npz\n?? results/antithetic_encounter_flux/checkpoint_215238.npz\n?? results/antithetic_encounter_flux/checkpoint_215257.npz\n?? results/antithetic_encounter_flux/checkpoint_215297.npz\n?? results/antithetic_encounter_flux/checkpoint_215316.npz\n?? results/antithetic_encounter_flux/checkpoint_215356.npz\n?? results/antithetic_encounter_flux/declared_inputs.json\n?? results/antithetic_encounter_flux/failures.json\n?? results/antithetic_encounter_flux/original_attempt.json\n?? results/antithetic_encounter_flux/original_producer.py\n?? results/antithetic_encounter_flux/populations.npz\n?? results/antithetic_encounter_flux/states.npz",
+  "source_sha256": "9dbb44d32e5b39bc6e74ff7c4d29b6302d2d7e961b92c2e4d77c30def355c2a6",
+  "versions": {
+    "sato-morrison": "0.1.0",
+    "jax": "0.11.2",
+    "jaxlib": "0.11.2",
+    "solvax": "0.28.2",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_changes": "",
+  "logical_cpus": 10,
+  "thread_environment": {
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "XLA_FLAGS": "unset"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "Apple M4",
+  "devices": [
+    "cpu:0"
+  ],
+  "x64": true,
+  "experiment_dependency_sha256": {
+    "examples/44_antithetic_encounter_flux.py": "3baad36f79ce285083902fc85ea3bcb3884abc4026c477ec247c6939ef7b683c",
+    "src/sato_morrison/controls.py": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+    "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+  },
+  "execution_mode": "saved-state receipt replay; no ODE solves"
+}

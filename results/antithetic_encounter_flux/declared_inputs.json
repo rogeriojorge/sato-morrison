@@ -1,0 +1,396 @@
+{
+  "mass": 1.0,
+  "charge": 1.0,
+  "field": 2.0,
+  "strength": 0.03,
+  "screening": 3.0,
+  "theta": 0.5,
+  "base_step": 0.2,
+  "rtol": 1e-12,
+  "flight_time_factor": 48.0,
+  "steps": [
+    0.1,
+    0.05,
+    0.025
+  ],
+  "distances": [
+    40.0,
+    48.0
+  ],
+  "workers": 4,
+  "runtime_cap_s": 3000.0,
+  "quadrature_target": 0.05,
+  "plane_target": 0.005,
+  "step_target": 0.001,
+  "energy_target": 1e-09,
+  "phase_transform_tolerance": 1e-13,
+  "units": "normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+  "base_levels": [
+    512,
+    1024,
+    2048
+  ],
+  "seeds": [
+    4201,
+    4202,
+    4203,
+    4204
+  ],
+  "alternate_seed": 4205,
+  "bounded_flux_per_density": 9.622764018272528,
+  "main_strata": [
+    {
+      "index": 0,
+      "impact": [
+        1.2,
+        1.5
+      ],
+      "parallel": [
+        0.35,
+        3.0
+      ],
+      "perpendicular": [
+        0.0,
+        2.0
+      ],
+      "phase": [
+        1.3207963267948966,
+        1.8207963267948966
+      ],
+      "flux_per_density": 0.1298531352599795,
+      "multiplier": 1
+    },
+    {
+      "index": 1,
+      "impact": [
+        1.2,
+        1.5
+      ],
+      "parallel": [
+        0.35,
+        3.0
+      ],
+      "perpendicular": [
+        0.0,
+        2.0
+      ],
+      "phase": [
+        1.8207963267948966,
+        7.603981633974483
+      ],
+      "flux_per_density": 1.5019294878534335,
+      "multiplier": 1
+    },
+    {
+      "index": 2,
+      "impact": [
+        1.2,
+        1.5
+      ],
+      "parallel": [
+        0.35,
+        3.0
+      ],
+      "perpendicular": [
+        2.0,
+        2.5
+      ],
+      "phase": [
+        1.3207963267948966,
+        1.8207963267948966
+      ],
+      "flux_per_density": 0.013725970338292613,
+      "multiplier": 8
+    },
+    {
+      "index": 3,
+      "impact": [
+        1.2,
+        1.5
+      ],
+      "parallel": [
+        0.35,
+        3.0
+      ],
+      "perpendicular": [
+        2.0,
+        2.5
+      ],
+      "phase": [
+        1.8207963267948966,
+        7.603981633974483
+      ],
+      "flux_per_density": 0.1587596599743933,
+      "multiplier": 1
+    },
+    {
+      "index": 4,
+      "impact": [
+        1.5,
+        2.4
+      ],
+      "parallel": [
+        0.35,
+        3.0
+      ],
+      "perpendicular": [
+        0.0,
+        2.0
+      ],
+      "phase": [
+        1.3207963267948966,
+        1.8207963267948966
+      ],
+      "flux_per_density": 0.5626969194599111,
+      "multiplier": 1
+    },
+    {
+      "index": 5,
+      "impact": [
+        1.5,
+        2.4
+      ],
+      "parallel": [
+        0.35,
+        3.0
+      ],
+      "perpendicular": [
+        0.0,
+        2.0
+      ],
+      "phase": [
+        1.8207963267948966,
+        7.603981633974483
+      ],
+      "flux_per_density": 6.508361114031545,
+      "multiplier": 1
+    },
+    {
+      "index": 6,
+      "impact": [
+        1.5,
+        2.4
+      ],
+      "parallel": [
+        0.35,
+        3.0
+      ],
+      "perpendicular": [
+        2.0,
+        2.5
+      ],
+      "phase": [
+        1.3207963267948966,
+        1.8207963267948966
+      ],
+      "flux_per_density": 0.05947920479926799,
+      "multiplier": 1
+    },
+    {
+      "index": 7,
+      "impact": [
+        1.5,
+        2.4
+      ],
+      "parallel": [
+        0.35,
+        3.0
+      ],
+      "perpendicular": [
+        2.0,
+        2.5
+      ],
+      "phase": [
+        1.8207963267948966,
+        7.603981633974483
+      ],
+      "flux_per_density": 0.6879585265557043,
+      "multiplier": 1
+    }
+  ],
+  "alternate_strata": [
+    {
+      "index": 0,
+      "impact": [
+        1.2,
+        1.5
+      ],
+      "parallel": [
+        0.35,
+        3.0
+      ],
+      "perpendicular": [
+        0.0,
+        2.0
+      ],
+      "phase": [
+        1.4207963267948966,
+        1.7207963267948965
+      ],
+      "flux_per_density": 0.07791188115598764,
+      "multiplier": 1
+    },
+    {
+      "index": 1,
+      "impact": [
+        1.2,
+        1.5
+      ],
+      "parallel": [
+        0.35,
+        3.0
+      ],
+      "perpendicular": [
+        0.0,
+        2.0
+      ],
+      "phase": [
+        1.7207963267948965,
+        7.703981633974482
+      ],
+      "flux_per_density": 1.5538707419574251,
+      "multiplier": 1
+    },
+    {
+      "index": 2,
+      "impact": [
+        1.2,
+        1.5
+      ],
+      "parallel": [
+        0.35,
+        3.0
+      ],
+      "perpendicular": [
+        2.0,
+        2.5
+      ],
+      "phase": [
+        1.4207963267948966,
+        1.7207963267948965
+      ],
+      "flux_per_density": 0.008235582202975563,
+      "multiplier": 8
+    },
+    {
+      "index": 3,
+      "impact": [
+        1.2,
+        1.5
+      ],
+      "parallel": [
+        0.35,
+        3.0
+      ],
+      "perpendicular": [
+        2.0,
+        2.5
+      ],
+      "phase": [
+        1.7207963267948965,
+        7.703981633974482
+      ],
+      "flux_per_density": 0.16425004810971036,
+      "multiplier": 1
+    },
+    {
+      "index": 4,
+      "impact": [
+        1.5,
+        2.4
+      ],
+      "parallel": [
+        0.35,
+        3.0
+      ],
+      "perpendicular": [
+        0.0,
+        2.0
+      ],
+      "phase": [
+        1.4207963267948966,
+        1.7207963267948965
+      ],
+      "flux_per_density": 0.3376181516759465,
+      "multiplier": 1
+    },
+    {
+      "index": 5,
+      "impact": [
+        1.5,
+        2.4
+      ],
+      "parallel": [
+        0.35,
+        3.0
+      ],
+      "perpendicular": [
+        0.0,
+        2.0
+      ],
+      "phase": [
+        1.7207963267948965,
+        7.703981633974482
+      ],
+      "flux_per_density": 6.733439881815509,
+      "multiplier": 1
+    },
+    {
+      "index": 6,
+      "impact": [
+        1.5,
+        2.4
+      ],
+      "parallel": [
+        0.35,
+        3.0
+      ],
+      "perpendicular": [
+        2.0,
+        2.5
+      ],
+      "phase": [
+        1.4207963267948966,
+        1.7207963267948965
+      ],
+      "flux_per_density": 0.03568752287956078,
+      "multiplier": 1
+    },
+    {
+      "index": 7,
+      "impact": [
+        1.5,
+        2.4
+      ],
+      "parallel": [
+        0.35,
+        3.0
+      ],
+      "perpendicular": [
+        2.0,
+        2.5
+      ],
+      "phase": [
+        1.7207963267948965,
+        7.703981633974482
+      ],
+      "flux_per_density": 0.7117502084754116,
+      "multiplier": 1
+    }
+  ],
+  "transform": "T(b,u,p,phi)=(b,u,p,(pi-phi) modulo2pi)",
+  "measure": "T preserves every phase cell and uniform phase mass; each original/partner receives Ws/(2Ns), pair mean receives Ws/Ns; all reflected exits and failed weights retained",
+  "theory": "For the symmetric free helix the first-Born magnetic-moment work is odd under T with z->-z, so pairing cancels that component. Actual nonlinear observables are solved for both members; no variance or QMC convergence guarantee follows.",
+  "controls": "top four weighted paired second moments from each of four main scrambles and alternate; closest four and longest four reflected new partners; sixteen predetermined fresh controls and historical weak boundary control from base experiment; both members at every active step and farther plane",
+  "acceptance": "same four sample, six independent-replica, four alternate-partition, two full matched boundary, selected paired and memberwise boundary, paired and memberwise active-step, energy and integrity gates as base; no failed criterion relaxed",
+  "stop_rule": "one fixed physical antithetic extension; all original inputs and weights frozen; cap between batches; no outcome-dependent continuation or failure renormalization",
+  "archive": "states.npz stores new partners and missing refined original/control states only; global reference ids <base_state_count address immutable base states, ids >=base_state_count address new states at id-base_state_count",
+  "scope": "bounded incident-domain empirical quadrature; no omitted-domain moment bound, reverse-complete incident population, physical screening closure, plasma coefficient or lifetime",
+  "prior_artifact_sha256": {
+    "results/stratified_encounter_flux/summary.json": "5a8699d470dce7553ed14b7669b6228953c7bda30d817ca9d541c8f619e565e0",
+    "results/stratified_encounter_flux/states.npz": "aa340fe03e5c44bdae3e8de197a3e3a89a9992b86f6032c388f31fa00e52bd66",
+    "results/stratified_encounter_flux/populations.npz": "a59d2f67aa3786c72a1ce584bafb2045f3d5338ff5e811fe9c17e569bb06ab9d"
+  },
+  "preserved_born_control_summary_sha256": "f82789d1999064172704fef5c9e0f5f436eff72badc0a49fa085e2d95b91673f",
+  "base_state_count": 215218
+}
