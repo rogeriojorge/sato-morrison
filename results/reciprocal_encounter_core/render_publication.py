@@ -98,7 +98,7 @@ for index, row in enumerate(results['finite_difference']):
                  'o-', label=f'fixed node {index + 1}')
 axes[1].axhline(inputs['fd_target'], color='#9e3d3d', linestyle='--', label='declared target')
 axes[1].set(xscale='log', yscale='log', xlabel=r'central-difference scale $\epsilon$',
-            ylabel=r'$\left||\det D\mathcal{R}|/(bup/b^{*}u^{*}p^{*})-1\right|$',
+            ylabel=r'$\left|\frac{|\det D\mathcal{R}|\,b^{*}u^{*}p^{*}}{bup}-1\right|$',
             title='Independent finite-difference Jacobian')
 axes[1].invert_xaxis()
 axes[1].legend()
