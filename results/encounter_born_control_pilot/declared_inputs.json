@@ -1,0 +1,22 @@
+{
+  "source": "results/broad_speed_extended",
+  "population_keys": [
+    "primary2048_phase64",
+    "replica2048_phase64"
+  ],
+  "incident_prefix_each": 512,
+  "phases_each": 64,
+  "coefficient": 1.0,
+  "gap_mask_min": 0.3,
+  "start_distance": 24.0,
+  "quadrature_orders": [
+    256,
+    512,
+    1024
+  ],
+  "batch_size": 256,
+  "phase_half_width": 0.25,
+  "impact_split": 1.5,
+  "perpendicular_split": 2.0,
+  "scope": "Historical descriptive variance only; no fresh campaign inspection or tuning, no convergence or physical closure claim."
+}

@@ -1,0 +1,268 @@
+{
+  "status": "passed",
+  "declared": {
+    "source": "results/broad_speed_extended",
+    "population_keys": [
+      "primary2048_phase64",
+      "replica2048_phase64"
+    ],
+    "incident_prefix_each": 512,
+    "phases_each": 64,
+    "coefficient": 1.0,
+    "gap_mask_min": 0.3,
+    "start_distance": 24.0,
+    "quadrature_orders": [
+      256,
+      512,
+      1024
+    ],
+    "batch_size": 256,
+    "phase_half_width": 0.25,
+    "impact_split": 1.5,
+    "perpendicular_split": 2.0,
+    "scope": "Historical descriptive variance only; no fresh campaign inspection or tuning, no convergence or physical closure claim."
+  },
+  "rows": 65536,
+  "controlled_rows": 64640,
+  "formula": "c_B=kappa*b*p/(2*B*u) integral[-L,L] cos(phi-Omega*z/u)*exp(-r/lambda)*(1+r/lambda)/r^3 dz; r^2=b^2+(p/Omega)^2-2b(p/Omega)sin(phi-Omega*z/u)+z^2",
+  "units": "magnetic moment, m*v^2/B; coefficient fixed one",
+  "symmetry": "c_B(pi-phi)=-c_B(phi) for symmetric z bounds/quadrature; both fixed phase strata invariant under this involution, hence each has exact zero conditional phase expectation.",
+  "checks": {
+    "maximum_antithetic_odd_residual": 4.2500725161431774e-17,
+    "maximum_historical_incident_control_mean": 1.81603863891322e-18,
+    "maximum_finite_phase_derivative_error": 2.5143136270916466e-13
+  },
+  "derivative_probes": [
+    {
+      "index": 0,
+      "node": [
+        2.233240665255717,
+        2.1445474186919227,
+        2.4846384018917176,
+        0.0
+      ],
+      "analytic": 0.0019566214286052892,
+      "finite_phase_derivative": 0.0019566214285934858,
+      "absolute_error": 1.180349221141519e-14
+    },
+    {
+      "index": 17,
+      "node": [
+        2.233240665255717,
+        2.1445474186919227,
+        2.4846384018917176,
+        1.6689710972195777
+      ],
+      "analytic": -0.0005054137557600555,
+      "finite_phase_derivative": -0.0005054137555086241,
+      "absolute_error": 2.5143136270916466e-13
+    },
+    {
+      "index": 65,
+      "node": [
+        1.2142422373660786,
+        0.8328497091688901,
+        0.9337370989423537,
+        0.09817477042468103
+      ],
+      "analytic": 0.0020555272140292723,
+      "finite_phase_derivative": 0.002055527213891406,
+      "absolute_error": 1.3786628089151876e-13
+    },
+    {
+      "index": 127,
+      "node": [
+        1.2142422373660786,
+        0.8328497091688901,
+        0.9337370989423537,
+        6.1850105367549055
+      ],
+      "analytic": 0.0019522019408731535,
+      "finite_phase_derivative": 0.0019522019409010103,
+      "absolute_error": 2.785684009853906e-14
+    },
+    {
+      "index": 2048,
+      "node": [
+        2.2603699699462547,
+        1.4484999514746641,
+        1.0009760308038302,
+        0.0
+      ],
+      "analytic": 0.0004881430433271985,
+      "finite_phase_derivative": 0.00048814304330450914,
+      "absolute_error": 2.2689369914147273e-14
+    },
+    {
+      "index": 8191,
+      "node": [
+        2.2275970832061587,
+        1.1563018794128324,
+        0.8900955383825998,
+        6.1850105367549055
+      ],
+      "analytic": 0.000295371166488632,
+      "finite_phase_derivative": 0.0002953711665011627,
+      "absolute_error": 1.2530666608501217e-14
+    }
+  ],
+  "quadrature": {
+    "256_to1024": {
+      "maximum_absolute_error": 0.036991428274098424,
+      "rms_error": 0.0010094644740917232,
+      "residual_variance": 2.1507800892929183e-06
+    },
+    "512_to1024": {
+      "maximum_absolute_error": 0.016711734297384123,
+      "rms_error": 0.0002783422624812165,
+      "residual_variance": 1.2129040566169879e-06
+    }
+  },
+  "stratum_variance": [
+    {
+      "impact_bin": 0,
+      "perpendicular_bin": 0,
+      "phase_bin": 0,
+      "count": 870,
+      "controlled_count": 860,
+      "original_variance": 1.7191233023393293e-06,
+      "residual_variance": 7.411128392289087e-07,
+      "variance_ratio": 0.4310992924244733,
+      "original_mean": 0.00033861710023947063,
+      "residual_mean": 0.0003386171002394703,
+      "sample_control_mean": 3.147924928388947e-19
+    },
+    {
+      "impact_bin": 0,
+      "perpendicular_bin": 0,
+      "phase_bin": 1,
+      "count": 10266,
+      "controlled_count": 10148,
+      "original_variance": 4.501710285271894e-06,
+      "residual_variance": 5.270480129071692e-07,
+      "variance_ratio": 0.1170772838562037,
+      "original_mean": -3.297716218835096e-05,
+      "residual_mean": -3.297716218835082e-05,
+      "sample_control_mean": -1.2369156286918203e-19
+    },
+    {
+      "impact_bin": 0,
+      "perpendicular_bin": 1,
+      "phase_bin": 0,
+      "count": 90,
+      "controlled_count": 30,
+      "original_variance": 0.00024773635214070324,
+      "residual_variance": 0.0002460435433218133,
+      "variance_ratio": 0.993166893739,
+      "original_mean": 0.0029397781455260718,
+      "residual_mean": 0.0029397781455260705,
+      "sample_control_mean": 1.0408340855860842e-18
+    },
+    {
+      "impact_bin": 0,
+      "perpendicular_bin": 1,
+      "phase_bin": 1,
+      "count": 1062,
+      "controlled_count": 354,
+      "original_variance": 4.687915117682225e-05,
+      "residual_variance": 4.263221857468068e-05,
+      "variance_ratio": 0.9094067939472139,
+      "original_mean": -0.0004112788418243615,
+      "residual_mean": -0.00041127884182436147,
+      "sample_control_mean": -4.2469689619017874e-20
+    },
+    {
+      "impact_bin": 1,
+      "perpendicular_bin": 0,
+      "phase_bin": 0,
+      "count": 3760,
+      "controlled_count": 3760,
+      "original_variance": 6.981036547569319e-08,
+      "residual_variance": 4.1115355348394435e-09,
+      "variance_ratio": 0.05889577438569652,
+      "original_mean": 4.347879660781353e-05,
+      "residual_mean": 4.347879660781348e-05,
+      "sample_control_mean": 5.85930535768762e-20
+    },
+    {
+      "impact_bin": 1,
+      "perpendicular_bin": 0,
+      "phase_bin": 1,
+      "count": 44368,
+      "controlled_count": 44368,
+      "original_variance": 5.981003828768334e-07,
+      "residual_variance": 2.698132030089516e-09,
+      "variance_ratio": 0.004511169207268575,
+      "original_mean": -3.5246424257495104e-06,
+      "residual_mean": -3.524642425749467e-06,
+      "sample_control_mean": -4.2734690751051435e-20
+    },
+    {
+      "impact_bin": 1,
+      "perpendicular_bin": 1,
+      "phase_bin": 0,
+      "count": 400,
+      "controlled_count": 400,
+      "original_variance": 1.2796613716890517e-06,
+      "residual_variance": 7.038287375792423e-08,
+      "variance_ratio": 0.05500117086837153,
+      "original_mean": 0.00019183741882082328,
+      "residual_mean": 0.00019183741882082303,
+      "sample_control_mean": 2.5587171270657903e-19
+    },
+    {
+      "impact_bin": 1,
+      "perpendicular_bin": 1,
+      "phase_bin": 1,
+      "count": 4720,
+      "controlled_count": 4720,
+      "original_variance": 3.43717297880692e-06,
+      "residual_variance": 4.579168157053869e-08,
+      "variance_ratio": 0.013322483870577115,
+      "original_mean": -2.7712977646937098e-05,
+      "residual_mean": -2.771297764693698e-05,
+      "sample_control_mean": -1.2018105437381694e-19
+    }
+  ],
+  "overall_original_variance": 2.504212135934016e-06,
+  "overall_residual_variance": 1.1392001755858293e-06,
+  "overall_variance_ratio": 0.4549136070538739,
+  "wall_s": 2.2532491250894964,
+  "source_sha256": "1f5e9e49f0eb716362d6e89b73c2f8a6010b8c80e5630bf1abcf7b5fa82f47ba",
+  "input_sha256": {
+    "summary.json": "eda29b54198fa123f92c92f2ace1db3501c8ddd251067faa887083f0c3252f64",
+    "states.npz": "7c58f75c2acd17cd6e094b378e0cf849258d948e981dec83cfb7d0fe9882c28b",
+    "populations.npz": "48fc6b7fa0d09bd5ed112ff6d013adc09713b39b06368aeff7932b163146e5e7"
+  },
+  "historical_variance_proxy": {
+    "formula": "sum_s W_s^2 Var_s(c)/N_s versus sum_s W_s^2 Var_s(c-c_B)/N_s",
+    "original": 1.8730229340295804e-08,
+    "residual": 1.181271463251831e-09,
+    "variance_ratio": 0.06306764545111412,
+    "standard_deviation_ratio": 0.2511327247714127,
+    "scope": "Independent-sampling diagnostic from historical finite phase grids and fixed cell masses/allocations; not a Sobol variance estimate, confidence interval, or convergence claim."
+  },
+  "proof": {
+    "force": "F=-grad U; partial_phi r_perp=-w_perp/Omega; F dot w_perp=Omega partial_phi U",
+    "mean": "c_B=m Delta(p^2)_B/(8B)=(1/(2B)) integral F dot w_perp dt=(Omega/(2B)) partial_phi integral U dt",
+    "expectation": "For symmetric z bounds and Gauss nodes, c_B(pi-phi)=-c_B(phi). Each central interval and its wrapped complement is invariant under this map; each conditional phase expectation is exactly zero. The phi-independent gap mask preserves zero.",
+    "quadrature": "Any fixed quadrature defines a known-zero control. Finite quadrature differences measure its efficiency approximation, not a bias in the corrected moment."
+  },
+  "git_head_at_execution": "01618f74f0cd621518d30938fcb444ac221566ca",
+  "source_path": "results/encounter_born_control_pilot/pilot_script.py",
+  "source_uncommitted": true,
+  "versions": {
+    "python": "3.12.13",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1"
+  },
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "processor": "arm",
+  "cost_scope": "Read-only historical Cartesian samples and fixed scalar/quadrature computations; no new physical trajectory integrations.",
+  "limitations": [
+    "The historical conditional phase grid is finite; the central interval contains five regular phase nodes.",
+    "The 1024-node global Gauss approximation is not declared quadrature-converged.",
+    "No fresh incident data enter this pilot; variance reduction requires a frozen independent validation.",
+    "No plasma rate, screening closure, reverse-complete population, or lifetime claim."
+  ]
+}
