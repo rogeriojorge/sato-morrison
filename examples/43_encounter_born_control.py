@@ -1,8 +1,7 @@
 """Known-zero first-Born control for a saved bounded encounter ensemble.
 
-The physical trajectories and nonlinear moments remain unchanged. Subtracting
-an analytically zero phase expectation tests a control intended to reduce
-signed-mean estimator noise.
+The physical trajectories and nonlinear moments remain unchanged. This tests
+subtracting a term with a known zero phase average to reduce estimator noise.
 """
 from pathlib import Path
 from itertools import combinations
