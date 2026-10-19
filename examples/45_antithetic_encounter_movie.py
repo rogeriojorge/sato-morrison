@@ -71,6 +71,7 @@ for index,phase in enumerate(PHASES):
             outgoing_plane=abs(abs(final_r[2])-DISTANCE)<=ENDPOINT_TARGET,
             COM=bool(np.max(abs(positions.sum(axis=1)))<=ENDPOINT_TARGET and np.max(abs(velocities.sum(axis=1)))<=ENDPOINT_TARGET),
             finite_ordered=bool(t[0]==0 and np.all(np.diff(t)>0) and np.all(np.isfinite(positions)) and np.all(np.isfinite(velocities))))
+        checks={name:bool(value) for name,value in checks.items()}
         record=dict(index=index,phase=phase,exit=relative['exit'],exit_time=float(t[-1]),
             relative_energy_error=relative['energy_error'],cartesian_energy_error=path['energy_error'],
             endpoint_position_error=float(np.max(abs(final_r-relative['final_relative_position']))),
