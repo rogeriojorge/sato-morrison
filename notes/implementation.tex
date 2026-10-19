@@ -4142,6 +4142,123 @@ error is at most $6.50\times10^{-14}$ and scaled canonical residual at most
 $9.25\times10^{-15}$. These checks validate the selected movie paths;
 they supply no thermal-COM-averaged integral, plasma rate or lifetime.
 
+\subsection*{A same-field reciprocal scattering map}
+Ordinary time reversal changes the magnetic field. For the present
+uniform field, identical particles and central pair potential, an orthogonal
+spatial transformation restores a reciprocal experiment at the same $qB$. Write
+$s=\operatorname{sign}(w_{z,\rm out})$ and
+$S_s=\diag(1,-1,-s)$. If a completed first-plane orbit has duration $\tau$,
+then
+\[
+ \bm r^*(t)=S_s\bm r(\tau-t),\qquad
+ \bm w^*(t)=-S_s\bm w(\tau-t)
+\]
+solves the same equations. The transverse reflection, with the axial sign
+chosen for the exit branch, anticommutes with
+the Lorentz rotation matrix, while a central force transforms as a
+vector. Both transmitted ($s=1$) and reflected ($s=-1$) outgoing states
+therefore map to an incoming state at $z=-L$ with positive parallel
+velocity. Rotate its transverse guiding center to the positive $x$ axis
+to obtain reduced incoming coordinates
+$\mathcal R(b,u,p,\varphi)=(b^*,u^*,p^*,\varphi^*)$.
+The map is an involution modulo this axial gauge on completed,
+nongrazing first-plane orbits. Zero impact and zero perpendicular speed
+are coordinate degeneracies; the sampled measure gives these sets zero
+mass. Finite-budget completion of the sampled states does not prove
+completion of every continuum orbit.
+
+The invariant plane-crossing volume is
+$|w_z|\,\dd^2r_\perp\,\dd^3w$. The guiding-center shift has unit
+Jacobian. Polar coordinates in transverse guiding-center position and
+velocity give $bup\,\dd b\,\dd u\,\dd p\,\dd\alpha\,\dd\beta$.
+Suppressing the axial angle and shearing
+$\varphi=\beta-\Omega L/u$ gives
+\[
+ |\det D\mathcal R|=\frac{bup}{b^*u^*p^*}.
+\]
+The combined reflection and reversal is axially anti-equivariant:
+$\alpha^*=-\alpha+a(b,u,p,\varphi)$. Its suppressed angular Jacobian
+has absolute value one; no assumption of axial equivariance is needed.
+
+At a finite incident plane the bare Maxwellian velocity factor alone
+is not invariant. Conservation of
+$E_{\rm rel}=m|\bm w|^2/4+U(r)$ instead gives the Gibbs factor
+and invariant thermal crossing measure
+\[
+ g(z)=\exp\!\left[-\frac{U(r_{\rm in}(z))}{m\theta}\right],\qquad
+ g\,\dd\mathcal F\ \propto\
+ g\,bup\,e^{-(u^2+p^2)/(4\theta)}
+ \dd b\,\dd u\,\dd p\,\dd\varphi.
+\]
+This is a separate finite-plane two-particle equilibrium benchmark;
+the bare incoming target of examples 42--44 remains unchanged.
+For $U=\kappa e^{-r/\lambda}/r$ and $r\geq L$,
+$0\leq1-g\leq1-\exp[-\kappa e^{-L/\lambda}/(Lm\theta)]$.
+At $L=24$ the largest saved correction is $8.38656\times10^{-7}$.
+These pair correlations and this special uniform-field symmetry do not
+establish a general plasma collision operator's detailed balance or a
+screening closure; compare the distinct kinetic assumptions in
+Ref.~\cite{JB20}.
+
+\subsection*{Reciprocal core, numerical residuals and retained failures}
+For the exact identities below, let $D$ be the original incident band
+restricted to completed, nongrazing first-plane orbits, and let
+$C=D\cap\mathcal R(D)$ be its reciprocal core. Since $\mathcal R^2=1$,
+$\mathcal R(C)=C$. The thermal-center-averaged individual signed moment
+increment is
+\[
+ c(z)=\frac{m}{8B}\bigl(|\bm w_{\perp,\rm out}|^2
+                   -|\bm w_{\perp,\rm in}|^2\bigr),\qquad
+ c\circ\mathcal R=-c.
+\]
+Consequently the exact integrals obey
+\[
+ \int_C gc\,\dd\mathcal F=0,\qquad
+ \int_D gc\,\dd\mathcal F=
+ \int_{D\setminus C}gc\,\dd\mathcal F.
+\]
+Example 46 evaluates the existing saved physical members with their
+unchanged positive half weights, the factor $g$, and the core indicator.
+It adds no constructed reciprocal partners to those sums. The diagnostic
+is retrospective: core residuals were inspected before implementation.
+Its exact zero identity supplies a benchmark rather than a cancellation
+imposed on the numerical population.
+
+All five finest core residuals lie between $0.63670\%$ and $3.05307\%$
+on the positive scale $I_{2,C}/\mu_{\rm ref}$, below the declared $5\%$
+zero target. Nevertheless three of 19 core gates fail: the seed-4204
+sample change is $5.12631\%$, and replica pairs 4201--4202 and
+4202--4203 differ by $5.35765\%$ and $5.38764\%$. The core quadrature
+therefore remains unresolved. The full, core and escaping signed
+contributions are retained separately in
+\path{results/reciprocal_encounter_core/saved_balance.json}.
+
+The fixed fresh control campaign saves 843 completed encounters with no
+integration failure. It checks 128 selected physical incoming states,
+both exit branches and inverse-cutoff classes, forward and reverse
+steps, and central-difference Jacobians at three fixed nodes and three
+step sizes. Eleven of 12 trajectory gates pass. Two finest reciprocal
+endpoint comparisons exceed the unchanged $10^{-8}$ target, with errors
+$2.00100\times10^{-8}$ and $1.16800\times10^{-8}$; the remaining 126 pass.
+Maximum reciprocal time error is $4.04778\times10^{-9}$.
+The largest final Jacobian relative error is $3.41642\times10^{-9}$,
+against $10^{-5}$; the last finite-difference changes are also below
+that target. The saved endpoint Gibbs log identity has maximum error
+$3.77263\times10^{-11}$, against $10^{-9}$. The run retains both
+unresolved statuses and exits nonzero, without threshold changes or
+replacement trajectories.
+
+The new controls take $24.635$ seconds, with separate parent and largest
+worker lifetime peaks of $769.606$ and $25.674$ MB. Aggregate job memory
+was not measured. Inputs, every new endpoint, comparisons and immutable
+source identities are in \path{results/reciprocal_encounter_core/}; its
+saved-data figures expose the failed endpoint and quadrature checks.
+The independent saved-array audit passes 8102 checks and reproduces
+both unresolved outcomes without new ODE solves; its committed source
+and receipt remain beside the campaign data.
+Selected reciprocal checks and a finite-domain core identity supply
+no calibrated plasma rate, mixing time or confinement lifetime.
+
 \subsection*{Resolving the failed encounter's flight budget}
 Example 17 preserves the original broad-campaign metadata and replays its
 exact failed node. The declared flight factors $6,12,24,48$ vary only the

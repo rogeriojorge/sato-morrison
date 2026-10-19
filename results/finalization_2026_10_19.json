@@ -1,0 +1,1775 @@
+{
+  "date": "2026-10-19",
+  "repository": "https://github.com/rogeriojorge/sato-morrison",
+  "reviewed_commit": "cafa3b6c53f0edda271704e87963a11057117bd7",
+  "previous_review": {
+    "path": "results/physical_review_2026_10_19.json",
+    "sha256": "4e3024cee3d52c603f3ad01af5a00e22f226a476de833a92f396e5e3b56c24ec"
+  },
+  "scope": "Final bounded reciprocal-encounter check, independent reconstruction, actionable audit failures and publication review. The broader physical-validation stage remains incomplete.",
+  "status": {
+    "implemented": "Same-field reciprocal preparation; finite-plane Gibbs-weighted reciprocal-core diagnostic; 843 fixed fresh controls; independent reconstruction and corruption tests.",
+    "verified": "Independent symmetry derivation and 8,102 saved-data checks; unit/regression suite; all original producer/input hashes preserved. Scientific failed gates remain authoritative.",
+    "physically_validated": "Selected microscopic screened encounters in the declared normalized uniform-field central-potential model. A calibrated plasma collision rate or constrained dipole lifetime is not established."
+  },
+  "reciprocal_campaign": {
+    "summary": {
+      "path": "results/reciprocal_encounter_core/summary.json",
+      "sha256": "6198ca0c0e19ff12e7a38b4c0009ffd69379a5cb6660f429c0aa14db8e574e9c"
+    },
+    "producer_commit": "88915fbd603594233a47991a8a452964fafe88f4",
+    "source_sha256": {
+      "examples/46_reciprocal_encounter_core.py": "f5728ee66caf0f832547ec64ec0d541f9339dfab306de01a715598e896fdbcaa",
+      "src/sato_morrison/controls.py": "f38f4e6da16c129011ee7a4242af978de7909e7340165f1d693450f075eba055",
+      "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+    },
+    "input_sha256": {
+      "results/antithetic_encounter_flux/summary.json": "067303ebf92edd9d5b9b4233ba852c78be5f0faf7620b8e414074b79089c764f",
+      "results/antithetic_encounter_flux/states.npz": "8eae5382da317a9eaa0989fb456b582553f9af5d05b000b88dcf67639b340098",
+      "results/antithetic_encounter_flux/populations.npz": "460dc4a9632fb782a03ea4b521be930e7107d26d881cdc9a3163327acfbb27d4",
+      "results/stratified_encounter_flux/states.npz": "aa340fe03e5c44bdae3e8de197a3e3a89a9992b86f6032c388f31fa00e52bd66"
+    },
+    "inputs": {
+      "mass": 1.0,
+      "charge": 1.0,
+      "field": 2.0,
+      "strength": 0.03,
+      "screening": 3.0,
+      "theta": 0.5,
+      "distance": 24.0,
+      "bounds": [
+        [
+          1.2,
+          2.4
+        ],
+        [
+          0.35,
+          3.0
+        ],
+        [
+          0.0,
+          2.5
+        ]
+      ],
+      "gibbs_log_identity_target": 1e-09,
+      "steps": [
+        0.2,
+        0.05,
+        0.025
+      ],
+      "rtol": 2e-13,
+      "flight_time_factor": 48.0,
+      "workers": 4,
+      "batch_size": 32,
+      "runtime_cap_s": 600.0,
+      "control_count": 128,
+      "endpoint_target": 1e-08,
+      "step_target": 0.001,
+      "energy_target": 1e-09,
+      "quadrature_target": 0.05,
+      "fd_target": 1e-05,
+      "fd_levels": [
+        0.0001,
+        5e-05,
+        2.5e-05
+      ],
+      "fd_nodes": [
+        [
+          1.7,
+          1.1,
+          0.4,
+          0.6
+        ],
+        [
+          2.0,
+          1.4,
+          2.7,
+          2.2
+        ],
+        [
+          1.4,
+          0.9,
+          0.6,
+          5.3
+        ]
+      ],
+      "fd_rule": "central difference of four incoming coordinates; h=epsilon*max(1,abs(coordinate)); wrapped phase differences; maxstep .025",
+      "selection": "unique fine L24 physical members; up to16 largest weighted M2 in each exit/cutoff class,16 closest,16 longest reflected,16 nearest cutoff,then weighted M2 fill; no selection replacement after execution",
+      "reciprocity": "S=diag(1,-1,-s); reciprocal endpoint is (S*rout,-S*wout); rotate guiding center to+x at unchanged qB",
+      "gibbs": "g=exp(-U_in/(m*theta)); surface flux g*b*u*p*exp(-(u^2+p^2)/(4theta)) invariant",
+      "core": "C=D intersect R(D); saved original and antithetic members keep original half-weights; inverse partners are never added to this population",
+      "retrospective": "Core residuals were inspected before implementation, including approximately5.50% core replica failure; no preregistered or independent quadrature claim",
+      "stop_rule": "fixed controls and FD nodes; runtime cap between batches; preserve all failed/missing weights; no adaptive rescue",
+      "scope": "Finite-plane reversible scattering and finite-box core balance only; no global plasma coefficient, screening closure, mixing time or lifetime"
+    },
+    "units": "normalized",
+    "metadata": {
+      "versions": {
+        "sato-morrison": "0.1.0",
+        "jax": "0.11.2",
+        "jaxlib": "0.11.2",
+        "solvax": "0.28.2",
+        "numpy": "2.5.3",
+        "scipy": "1.18.1",
+        "matplotlib": "3.11.2"
+      },
+      "python": "3.12.13",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "processor": "Apple M4",
+      "devices": [
+        "cpu:0"
+      ],
+      "logical_cpus": 10,
+      "x64": true,
+      "thread_environment": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "XLA_FLAGS": "unset"
+      }
+    },
+    "trajectory_status": "unresolved",
+    "trajectory_gates": {
+      "complete": true,
+      "endpoints": false,
+      "reciprocal_times": true,
+      "reciprocal_moments": true,
+      "active_step": true,
+      "actual_step_sizes": true,
+      "energy": true,
+      "saved_gibbs_identity": true,
+      "fresh_gibbs_identity": true,
+      "jacobian": true,
+      "input_integrity": true,
+      "source_integrity": true
+    },
+    "core_status": "unresolved",
+    "core_gates": {
+      "sample_4201": true,
+      "partition_4201": true,
+      "sample_4202": true,
+      "partition_4202": true,
+      "sample_4203": true,
+      "partition_4203": true,
+      "sample_4204": false,
+      "partition_4204": true,
+      "replica_4201_4202": false,
+      "replica_4201_4203": true,
+      "replica_4201_4204": true,
+      "replica_4202_4203": false,
+      "replica_4202_4204": true,
+      "replica_4203_4204": true,
+      "seed4201_N2048_zero": true,
+      "seed4202_N2048_zero": true,
+      "seed4203_N2048_zero": true,
+      "seed4204_N2048_zero": true,
+      "alternate_partition_zero": true
+    },
+    "failed_core_comparisons": {
+      "sample_4204": [
+        0.05126310030459583,
+        0.010906086983597827,
+        0.0005526706628202127,
+        0.00047698991703945683
+      ],
+      "replica_4201_4202": [
+        0.05357646979947895,
+        0.026384691202009675,
+        0.024032537933326287,
+        0.0025505290332788325
+      ],
+      "replica_4202_4203": [
+        0.053876443135312875,
+        0.0017446931297843895,
+        0.003997293415050911,
+        0.004701810478491252
+      ]
+    },
+    "fine_core": [
+      {
+        "case": "seed4201_N2048",
+        "core": [
+          -4.888123234724904e-06,
+          5.1235290897580357e-05,
+          -1.1560160092467714e-05,
+          0.0025527382532967934
+        ],
+        "escaping": [
+          -4.6179410064795955e-05,
+          1.0671857389159141e-05,
+          -5.385907922964655e-07,
+          3.937345036387698e-05
+        ],
+        "total": [
+          -5.106753329952062e-05,
+          6.190714828673955e-05,
+          -1.2098750884764201e-05,
+          0.002592111703660674
+        ],
+        "core_zero_residual": 0.023851349085224727,
+        "escaping_second_fraction": 0.17238489713222732,
+        "escaping_signed_mean_fraction": 0.9042811955287735,
+        "escaping_flux_fraction": 0.0018155320015231535
+      },
+      {
+        "case": "seed4202_N2048",
+        "core": [
+          6.091900827042026e-06,
+          4.988346356860256e-05,
+          -1.0328846020446607e-05,
+          0.0025462274202673984
+        ],
+        "escaping": [
+          -5.906072514719691e-05,
+          1.2054661029700077e-05,
+          -9.532801596137279e-07,
+          4.104021199023281e-05
+        ],
+        "total": [
+          -5.296882432015477e-05,
+          6.193812459830292e-05,
+          -1.1282126180060364e-05,
+          0.0025872676322576363
+        ],
+        "core_zero_residual": 0.03053066282508681,
+        "escaping_second_fraction": 0.19462424973116427,
+        "escaping_signed_mean_fraction": 1.1150091757789715,
+        "escaping_flux_fraction": 0.002084578255088882
+      },
+      {
+        "case": "seed4203_N2048",
+        "core": [
+          -4.658273526343043e-06,
+          4.997049490478055e-05,
+          -1.01294471800039e-05,
+          0.0025342555415021634
+        ],
+        "escaping": [
+          -5.3084774190908066e-05,
+          1.1152828202898012e-05,
+          -7.689253220325209e-07,
+          4.683776981064383e-05
+        ],
+        "total": [
+          -5.774304771725058e-05,
+          6.112332310767864e-05,
+          -1.0898372502036349e-05,
+          0.002581093311312814
+        ],
+        "core_zero_residual": 0.02330512002742541,
+        "escaping_second_fraction": 0.18246436279733186,
+        "escaping_signed_mean_fraction": 0.9193275431329395,
+        "escaping_flux_fraction": 0.0021254473093365598
+      },
+      {
+        "case": "seed4204_N2048",
+        "core": [
+          1.4355580912936746e-06,
+          5.04156030609168e-05,
+          -1.0602477550106909e-05,
+          0.0025454532344822323
+        ],
+        "escaping": [
+          -5.434809960229853e-05,
+          1.088329813514672e-05,
+          -4.326969681025712e-07,
+          3.703646626463005e-05
+        ],
+        "total": [
+          -5.291254151100524e-05,
+          6.129890119606333e-05,
+          -1.1035174518209468e-05,
+          0.002582489700746861
+        ],
+        "core_zero_residual": 0.0071186200508159166,
+        "escaping_second_fraction": 0.1775447507670114,
+        "escaping_signed_mean_fraction": 1.0271307718415816,
+        "escaping_flux_fraction": 0.0019657989387949523
+      },
+      {
+        "case": "alternate_partition",
+        "core": [
+          1.2712703263676838e-06,
+          4.9916141582959625e-05,
+          -1.0086448234926059e-05,
+          0.0025444902832698403
+        ],
+        "escaping": [
+          -5.442016364756534e-05,
+          1.1780667412891921e-05,
+          -8.795357640615908e-07,
+          3.795008985082004e-05
+        ],
+        "total": [
+          -5.3148893321197885e-05,
+          6.169680899585116e-05,
+          -1.0965983998987661e-05,
+          0.0025824403731206625
+        ],
+        "core_zero_residual": 0.0063670302133371935,
+        "escaping_second_fraction": 0.19094451730370884,
+        "escaping_signed_mean_fraction": 1.0239190366332693,
+        "escaping_flux_fraction": 0.001889536439043077
+      }
+    ],
+    "endpoint_diagnosis": [
+      {
+        "archive_reference": 241502,
+        "control_index": 0,
+        "incoming_node": [
+          1.2938729287720563,
+          0.4493498657219331,
+          2.4876420026044976,
+          2.4157802183706707
+        ],
+        "exit": "transmitted",
+        "forward_attempt_index": 1,
+        "forward_time": 107.60278968687865,
+        "minimum_separation": 0.058986689963109074,
+        "forward_energy_error": 5.795840221779867e-14,
+        "fixed_reverse_step_endpoint_errors": [
+          {
+            "max_step": 0.2,
+            "endpoint_error": 5.124910021359064e-08
+          },
+          {
+            "max_step": 0.05,
+            "endpoint_error": 3.5192329661537514e-08
+          },
+          {
+            "max_step": 0.025,
+            "endpoint_error": 2.0010034629258655e-08
+          }
+        ],
+        "finest_endpoint_error": 2.0010034629258655e-08,
+        "finest_time_error": 4.047777224513993e-09
+      },
+      {
+        "archive_reference": 11211,
+        "control_index": 35,
+        "incoming_node": [
+          1.2251132807299732,
+          0.7870231073723594,
+          2.4179512130328256,
+          1.7644531787980835
+        ],
+        "exit": "reflected",
+        "forward_attempt_index": 71,
+        "forward_time": 70.59999010919798,
+        "minimum_separation": 0.027871806432269865,
+        "forward_energy_error": 1.155227609118574e-13,
+        "fixed_reverse_step_endpoint_errors": [
+          {
+            "max_step": 0.2,
+            "endpoint_error": 1.0853258847198788e-07
+          },
+          {
+            "max_step": 0.05,
+            "endpoint_error": 3.332474962647325e-08
+          },
+          {
+            "max_step": 0.025,
+            "endpoint_error": 1.1679959666111017e-08
+          }
+        ],
+        "finest_endpoint_error": 1.1679959666111017e-08,
+        "finest_time_error": 2.834369183801755e-09
+      }
+    ],
+    "new_encounters": 843,
+    "failed_integrations": 0,
+    "cap_exhausted": false,
+    "wall_s": 24.635101667023264,
+    "parent_peak_rss_bytes": 769605632,
+    "max_worker_peak_rss_bytes": 25673728,
+    "memory_scope": "Separate lifetime process peaks; no simultaneous aggregate memory measurement.",
+    "maxima": {
+      "maximum_finest_endpoint_error": 2.0010034629258655e-08,
+      "maximum_finest_time_error": 4.047777224513993e-09,
+      "maximum_finest_moment_changes": [
+        1.3047785217578193e-09,
+        1.5885219199925975e-10,
+        1.6651358228460495e-10,
+        1.3545495952353606e-10
+      ],
+      "maximum_forward_step_changes": [
+        1.7880515745870873e-09,
+        7.972931690903847e-11,
+        7.931109432804305e-11,
+        8.02661460113875e-11
+      ],
+      "maximum_forward_baseline_changes": [
+        3.320859430238041e-08,
+        8.627519968486102e-09,
+        8.620897217154345e-09,
+        3.821064620819223e-09
+      ],
+      "maximum_reverse_step_changes": [
+        2.851318607001921e-09,
+        1.4768980694460315e-10,
+        1.5476245516242626e-10,
+        1.2560247317396395e-10
+      ],
+      "maximum_reverse_baseline_changes": [
+        7.999532758533168e-08,
+        1.685739717728734e-09,
+        1.6916538629714295e-09,
+        7.192454531389295e-10
+      ],
+      "maximum_actual_step_ratio": 0.5000000000001066,
+      "maximum_fresh_energy_error": 1.2537081899983347e-12,
+      "maximum_fresh_gibbs_log_error": 4.198990198543504e-12,
+      "maximum_saved_gibbs_log_error": 3.772626655518252e-11,
+      "maximum_saved_gibbs_correction": 8.386555180317501e-07,
+      "maximum_partition_error": 6.816921159502609e-18
+    },
+    "finite_difference": [
+      {
+        "node": [
+          1.7,
+          1.1,
+          0.4,
+          0.6
+        ],
+        "last_relative_change": 5.42151301630156e-09,
+        "level_relative_errors": [
+          1.2664025383912758e-10,
+          2.0050985316544256e-09,
+          3.4164144846471345e-09
+        ],
+        "exit_branch_stable": true
+      },
+      {
+        "node": [
+          2.0,
+          1.4,
+          2.7,
+          2.2
+        ],
+        "last_relative_change": 4.5989878572072485e-11,
+        "level_relative_errors": [
+          1.3162706480329689e-09,
+          9.360467956298635e-10,
+          8.900571391023959e-10
+        ],
+        "exit_branch_stable": true
+      },
+      {
+        "node": [
+          1.4,
+          0.9,
+          0.6,
+          5.3
+        ],
+        "last_relative_change": 2.378279795323124e-10,
+        "level_relative_errors": [
+          1.6128187674269157e-10,
+          1.4442003148928961e-10,
+          9.340783702072031e-11
+        ],
+        "exit_branch_stable": true
+      }
+    ]
+  },
+  "independent_audit": {
+    "receipt": {
+      "path": "results/reciprocal_encounter_core/independent_audit.json",
+      "sha256": "63aed91ce21bd371adaf4571949cc0cbf54a225e948deea728c7f896e5233041"
+    },
+    "result": {
+      "status": "passed",
+      "checks": 8102,
+      "failed_checks": 0,
+      "failed_check_details": [],
+      "metrics": {
+        "accessible_saved_states": 430574,
+        "fresh_states": 843,
+        "selected_controls": 128,
+        "max_endpoint_log_Gibbs_error": 3.772626655518252e-11,
+        "max_Gibbs_correction": 8.386555180317501e-07,
+        "max_finest_roundtrip_endpoint": 2.0010034629258655e-08,
+        "max_finest_roundtrip_time": 4.047777224513993e-09,
+        "failed_core_gates": [
+          "sample_4204",
+          "replica_4201_4202",
+          "replica_4202_4203"
+        ],
+        "failed_trajectory_gates": [
+          "endpoints"
+        ],
+        "max_core_replica_comparison": 0.05387644313531292
+      },
+      "wall_s": 0.6112548749661073,
+      "peak_rss_bytes": 496238592,
+      "scope": "Independent saved-array and endpoint algebra audit; faithful reproduction of failed scientific gates is an audit success; zero ODE calls.",
+      "source_sha256": "890f8f178f88d9c6ec75a37b97d4713bd22fe8f33b22e4babeb72d5b4816fb85",
+      "summary_sha256": "6198ca0c0e19ff12e7a38b4c0009ffd69379a5cb6660f429c0aa14db8e574e9c",
+      "audit_commit": "77a591a407a9a4473cd25da6a732016d34f5199a",
+      "source_uncommitted": false
+    },
+    "exact_source_snapshot_commit": "77a591a407a9a4473cd25da6a732016d34f5199a",
+    "source_path": "results/reciprocal_encounter_core/audit_saved_states.py"
+  },
+  "figure_render": {
+    "path": "results/reciprocal_encounter_core/publication/publication_render_receipt.json",
+    "sha256": "a83b2a24d4ec02328504fa5002b90191e7fcbae62e7227912d92f593c2b5abd7"
+  },
+  "figure_scope": "The README and notes use publication/. Earlier top-level preliminary renders remain preserved; no campaign integral, gate or trajectory was changed by figure corrections.",
+  "audit_failure_regressions": {
+    "count": 9,
+    "previous_audits": 7,
+    "reciprocal_audit": 2,
+    "scope": "Corrupted isolated inputs must produce failed receipts and nonzero exits without modifying original data."
+  },
+  "postcommit_legacy_audits": {
+    "commit": "5d71b7a9a6fba13ce6497836a323c83ea4cb8bdc",
+    "scope": "Fresh postcommit receipts; saved-array audits perform no new ODE solves, Cartesian replay uses new solves and is expected to retain the coarse failure.",
+    "replays": [
+      {
+        "label": "42",
+        "returncode": 0,
+        "status": "passed",
+        "checks": 697,
+        "source_uncommitted": false,
+        "source_sha256": "1abe7a041bbaa2e51899f3607c5be0d6f4b04ae188ba465e7f1d4e14c21cdb88",
+        "receipt_sha256": "5c2e3198177b8b3ec4f3a5fa0cd0b7b13be8e0c2064a08227d2f74ac4ecf7f28"
+      },
+      {
+        "label": "43",
+        "returncode": 0,
+        "status": "passed",
+        "checks": 253,
+        "source_uncommitted": false,
+        "source_sha256": "4a778d88504c29125ae939ea1f4b7f97f3878dadc6b0e80471a235e14ab5b928",
+        "receipt_sha256": "b5fbc3d4c21f6b72ce769a616a2e2a32e9dea4ce0b901a0e9d3875fb2e6940f9"
+      },
+      {
+        "label": "44",
+        "returncode": 0,
+        "status": "passed",
+        "checks": 1371,
+        "source_uncommitted": false,
+        "source_sha256": "4e5a1376d063802c67596bdf209d21bdd52c2826b2b1e4035a000be2060d53a7",
+        "receipt_sha256": "a01443d409d746ae042a63b4bd76aef3dcc6fa7a19257b9098bfeb976aea978a"
+      },
+      {
+        "label": "map44",
+        "returncode": 0,
+        "status": "passed",
+        "checks": 15,
+        "source_uncommitted": false,
+        "source_sha256": "55adfa0df5a7867ef4c599320c2dfa1df02ccc51a26b743ad67966420400d6f8",
+        "receipt_sha256": "b61b0c95bdda8dd60e2e2992ba88e51286caf522819037880c1baf42ede9f3d9"
+      },
+      {
+        "label": "45",
+        "returncode": 0,
+        "status": "passed",
+        "checks": 48,
+        "source_uncommitted": false,
+        "source_sha256": "30e92a512fd083b1c03d58b183b0e1fcb30594943a9c9609117c54f1ef77b745",
+        "receipt_sha256": "8964be4812037c27eaa3158c036474c19cc42688ca276345a45b65a92e049bc8"
+      },
+      {
+        "label": "fine44",
+        "returncode": 0,
+        "status": "passed",
+        "checks": 0,
+        "source_uncommitted": false,
+        "source_sha256": "0ca4489a660f6e161705501cb16eda4e06407f56626ad1525aa275848d763f1a",
+        "receipt_sha256": "0bdc83e83e8d74dad2422c1b262e17a1b3cf6d511e5c25bca2e8bc67058c5b37"
+      },
+      {
+        "label": "cartesian44",
+        "returncode": 1,
+        "status": "failed",
+        "checks": 0,
+        "source_uncommitted": false,
+        "source_sha256": "71f74106b78c551a143b4ff6cd8a4318e99c8cc0ebd84ee0c90613125507f987",
+        "receipt_sha256": "25f30b0dd2b7f5c1189ee77a49c6ebf1e97fc0b22e73291e8edc481397a07832"
+      }
+    ]
+  },
+  "clean_clone_replay": {
+    "start_utc": "2026-10-19T20:54:55.269032+00:00",
+    "clone_command": [
+      "git",
+      "clone",
+      "--no-hardlinks",
+      "/Users/rogerio/local/sato-morrison",
+      "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_9f8d380"
+    ],
+    "clone_root": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_9f8d380",
+    "clone_head": "9f8d3807f6aa1945b6d3deec4760bf19b88c4275",
+    "full_history": {
+      "is_shallow_repository": "false",
+      "commit_count": 157
+    },
+    "initial_working_tree": "",
+    "no_hardlinks": {
+      "object_files_checked": 196,
+      "shared_object_inodes": []
+    },
+    "interpreter": "/Users/rogerio/local/sato-morrison/.venv/bin/python",
+    "environment_scope": "Existing repository .venv reused explicitly; no fresh dependency installation or isolated dependency-environment claim.",
+    "zero_ode_calls": true,
+    "shared_load": {
+      "note": "Root pytest work may run concurrently on this machine; wall times are shared-load timings.",
+      "initial_load_average": [
+        3.80615234375,
+        3.54443359375,
+        2.9951171875
+      ],
+      "final_load_average": [
+        5.13916015625,
+        3.8388671875,
+        3.10595703125
+      ]
+    },
+    "artifact_hashes_before": {
+      "results/antithetic_encounter_flux/audit_cartesian.py": "71f74106b78c551a143b4ff6cd8a4318e99c8cc0ebd84ee0c90613125507f987",
+      "results/antithetic_encounter_flux/audit_checkpoints.py": "1ea3d22ee7c867095c85cf29cb9f316ce3b7893cdc36a527989463ea02b7a9a1",
+      "results/antithetic_encounter_flux/audit_contribution_maps.py": "55adfa0df5a7867ef4c599320c2dfa1df02ccc51a26b743ad67966420400d6f8",
+      "results/antithetic_encounter_flux/audit_saved_refinement.py": "0ca4489a660f6e161705501cb16eda4e06407f56626ad1525aa275848d763f1a",
+      "results/antithetic_encounter_flux/audit_saved_states.py": "4e5a1376d063802c67596bdf209d21bdd52c2826b2b1e4035a000be2060d53a7",
+      "results/antithetic_encounter_flux/cartesian_audit.json": "7ce5486283bf9e853d00cafc4d455eb3925e4535753592cf61bdebcb3b29dd67",
+      "results/antithetic_encounter_flux/cases_partial.json": "7d828227a4f3456b8a79c49fc5096353296cf774e21fb3db7352631ac0c7ebc3",
+      "results/antithetic_encounter_flux/checkpoint_archival.json": "db3b2e4d6560cee9acaf4102dd5ab1750f76bfe0562239cfbb3be85757151576",
+      "results/antithetic_encounter_flux/checkpoint_manifest.json": "9834b8a57494db4ca54ec16bbefe8f83f68fdc26f3261c46478cb6f4c43bb31c",
+      "results/antithetic_encounter_flux/contribution_map_audit.json": "b1cc79acf379e533293ce0f08a20244724b70145b8469f8fff8623013ea0efc7",
+      "results/antithetic_encounter_flux/contribution_maps.npz": "b24957c43a4876040e50d25c1f8ea40c97b47cddb4282a415d334d57afffe8b5",
+      "results/antithetic_encounter_flux/contribution_maps.png": "95ccfc98785ffe4bd4ef069e73b04fe978279af7437ab397a495035d4010fa01",
+      "results/antithetic_encounter_flux/contribution_maps.svg": "09ff202b65113fe5df0f82d87de2a860aa5495db622a1dffa18e832718f4a023",
+      "results/antithetic_encounter_flux/convergence.png": "1139c7a007248482f00a98d2a6efe65810a0dcf62175ccc3222809906aa567b7",
+      "results/antithetic_encounter_flux/declared_inputs.json": "baa1841d0b25f24c4128146b220c8d4c2752c9126b49d2592e5a8b6ed946f75c",
+      "results/antithetic_encounter_flux/failed_original_attempt.log": "e603de7e0509e3c2c6c9af714e55cb28d27e7d4a18b56f83fd797438e9881f22",
+      "results/antithetic_encounter_flux/failures.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "results/antithetic_encounter_flux/independent_audit.json": "d05cc20d3f74a440106d0e930ad081796917daa3e0b14748121eab4754d26694",
+      "results/antithetic_encounter_flux/initial_audit_saved_states.py": "e5c81f0fc65e5e83757fb27aa46ef6f6cec94983f74277ec65f7ca29c093f00b",
+      "results/antithetic_encounter_flux/initial_saved_state_audit.json": "e722e70d78a7a63c052c0ea0392227952011581561404d7f54ed8f4e7620b3fb",
+      "results/antithetic_encounter_flux/interrupted_replay.log": "54557abdc6a354739450b735ee3703d0faf742458124ac21a601eda4f4e8db6b",
+      "results/antithetic_encounter_flux/interrupted_replay_context.json": "3e02b170af096813a2f8a77898e22a02c8947b6662acecc024d9ba4427b8bdd8",
+      "results/antithetic_encounter_flux/original_attempt.json": "df0aa46c80145c5c15b3f0c233689081ced6215938d2fe58a0cecc06cee5a1f7",
+      "results/antithetic_encounter_flux/original_producer.py": "12d8e3e84edfa515cc702e65edd1626b99df00b8e7a46e2961070a1be63cbca9",
+      "results/antithetic_encounter_flux/pair_weights.png": "50bbb0f0853ab993e60e41fb7aedfc67c2e24376cd076b383fb486bc03a0b0cc",
+      "results/antithetic_encounter_flux/pair_weights.svg": "1f7a29e7b9b5ee1d45bb022ffbe65d67630e87743d45240e04dc3b251c41a054",
+      "results/antithetic_encounter_flux/populations.npz": "460dc4a9632fb782a03ea4b521be930e7107d26d881cdc9a3163327acfbb27d4",
+      "results/antithetic_encounter_flux/publication_render_receipt.json": "bbf08c15f4206a97a6218be6a4077fac0d1650591e1d28d9b35aae1cb56b7780",
+      "results/antithetic_encounter_flux/reconstructed_cases.json": "7d828227a4f3456b8a79c49fc5096353296cf774e21fb3db7352631ac0c7ebc3",
+      "results/antithetic_encounter_flux/recovery_run_context.json": "202b0b4e2fcf0a79d1bea3c28cde6e1d1bee9ccef11dccd9d7c718f422198867",
+      "results/antithetic_encounter_flux/render_publication.py": "df58252d74916139a49544375a9101607d3c87fac7b467b612c68cf270bffb81",
+      "results/antithetic_encounter_flux/sampling_readable.png": "29e8addf863e3cfad0c6a646fb154597da1692539aafc333d85d9312c78ef631",
+      "results/antithetic_encounter_flux/sampling_readable.svg": "7490506a3b60914c5c0625203bdf36c6be8aff590918142b41b9fe7dce34c764",
+      "results/antithetic_encounter_flux/saved_refinement_audit.json": "f42336d20aaf1ba15e3ec9272c131b5ee7f5c5a02ae3d06af6e742519a3d9ad8",
+      "results/antithetic_encounter_flux/states.npz": "8eae5382da317a9eaa0989fb456b582553f9af5d05b000b88dcf67639b340098",
+      "results/antithetic_encounter_flux/summary.json": "067303ebf92edd9d5b9b4233ba852c78be5f0faf7620b8e414074b79089c764f",
+      "results/antithetic_encounter_movie/audit_saved_paths.py": "30e92a512fd083b1c03d58b183b0e1fcb30594943a9c9609117c54f1ef77b745",
+      "results/antithetic_encounter_movie/declared_inputs.json": "d0ac27de1b34f53e02b91b98774fd008df6bebb81d66c171790886c359619dee",
+      "results/antithetic_encounter_movie/independent_audit.json": "c1dc24f0041c0842331da2faae4d27331e9e1fe3956b79b64c2f3c37fa0809f7",
+      "results/antithetic_encounter_movie/paths.npz": "adae76b7033451e312292484d0e63ca72530f42a89b07a69971f3dc2eb70af94",
+      "results/antithetic_encounter_movie/phase_map.png": "2dd4fd90efc0776aba92782065cccb1bda0e379851c04d5a78c400947b75fa30",
+      "results/antithetic_encounter_movie/phase_map.svg": "9936c451cf2ae0e6699dfb0426ef8d62b1b9fcd93a522bbb7a4a7b3c2e4ef292",
+      "results/antithetic_encounter_movie/phase_map_receipt.json": "6781d426db4ce571b2ba5c698242de02e5c4d01b3217f262961937ed4a70e126",
+      "results/antithetic_encounter_movie/phase_pair.gif": "2ac3c4cd77ca28c23b0cd4354f54bb638b58b90aa9972f3001500498e8e783b8",
+      "results/antithetic_encounter_movie/poster.png": "879af1368d5ef271b6910dc473b79ef5c3c0eb7b309f358144870efccb8b670c",
+      "results/antithetic_encounter_movie/poster.svg": "9eb12d06ed301394b1a953188a8c29f7ca6a5b014e252100f16f59025cc19c1f",
+      "results/antithetic_encounter_movie/render_phase_map.py": "de55464533f170e545b4ed41ca23f1551b76a61ab69c69e928a786ac5dd0938f",
+      "results/antithetic_encounter_movie/summary.json": "dad2cfcadf4d074fec8aba71e45127da45f06e2739dd49b9db8cfbf5ac03d93b",
+      "results/antithetic_encounter_movie/trajectory_checks.json": "b87cacae19c3b1c3083c7c6f46002fdca6ea8d1a4b15b93131ea1d420cce32ad",
+      "results/encounter_born_control/audit_saved_states.py": "4a778d88504c29125ae939ea1f4b7f97f3878dadc6b0e80471a235e14ab5b928",
+      "results/encounter_born_control/control_GL1024.npy": "c48ea6ddd316922eac55708a830b96d56712cde6b4cb37d60c7f634b76c51984",
+      "results/encounter_born_control/control_GL2048.npy": "70a4f79dac4d05f2d15f00b935ba4b40cc10a538580edb5e6f14ed8238ad898e",
+      "results/encounter_born_control/control_readable.png": "caa6ea3a0fdf8f28f14b033dc36b37dce6f1904a0d69122d171f73e6f61df705",
+      "results/encounter_born_control/control_readable.svg": "6dd4009b920045b7dfc665bda59db240e25b591dc8d72ef03f556ecf90b458d7",
+      "results/encounter_born_control/convergence.png": "928d008b0a6f7d8c7733ea929fabff23f992e779d6df4822c8655755d0653bf5",
+      "results/encounter_born_control/declared_inputs.json": "20993e754af5f36ab136baba8f35aa4ae6e4d340094e70a381fdc9f418293eef",
+      "results/encounter_born_control/independent_audit.json": "a5ec3905de087944f4c4b7cd3665a5059834baabf5664e41f94e6c2b2d4aab85",
+      "results/encounter_born_control/summary.json": "f82789d1999064172704fef5c9e0f5f436eff72badc0a49fa085e2d95b91673f",
+      "results/reciprocal_encounter_core/attempts.json": "bcf24549ca28136ee7fceab77aa832973ab3277abe56b7257fd79af796b916b3",
+      "results/reciprocal_encounter_core/audit_saved_states.py": "890f8f178f88d9c6ec75a37b97d4713bd22fe8f33b22e4babeb72d5b4816fb85",
+      "results/reciprocal_encounter_core/checkpoint_0032.json": "fc4c3785f1b00ded27c22f24e99766e4780f777eb374b3b426b2f6510d53c444",
+      "results/reciprocal_encounter_core/checkpoint_0064.json": "3b48f1edce6a9e200e16abc36023d6211be65b2f3f2639406e84e843c030bf29",
+      "results/reciprocal_encounter_core/checkpoint_0096.json": "6b291ac5adcf999b39ab98976fc18fc6e86103dbe5a2e944a6939a22a413a2ff",
+      "results/reciprocal_encounter_core/checkpoint_0128.json": "a1a03ec9b80486f8ad0d70d9aa1efe23625ef6b4e55f63b106ed549a9ec972ad",
+      "results/reciprocal_encounter_core/checkpoint_0160.json": "d941a91e95480db0908d5e9bfe6be9cce1c520bba72fe3947f30848a17c1bd21",
+      "results/reciprocal_encounter_core/checkpoint_0192.json": "a70f746eee684cf5a18f81c16d5afe0403bfb1af268c197ad00025db51bac86f",
+      "results/reciprocal_encounter_core/checkpoint_0224.json": "90d032dd54ec977a7a972c06ed04723ecf2bdd95b8f342d137eddfb4d9bb4253",
+      "results/reciprocal_encounter_core/checkpoint_0256.json": "d5f5af64f4caa1e86bba654b0620fec221568764983e1e38d4c278ab1186cf0f",
+      "results/reciprocal_encounter_core/checkpoint_0288.json": "395ef8ae144fdf28091c0411c1055b7ac361039d006557003dcfb09d89c3c5ec",
+      "results/reciprocal_encounter_core/checkpoint_0320.json": "06c50c858012608a298cff20c39df6d97022f9dcc88a4085c1d3a92fb3cb64e5",
+      "results/reciprocal_encounter_core/checkpoint_0352.json": "cf24884d7ad14a6e4235093e741f141dc81ca97c6f2893d53756e05d26697190",
+      "results/reciprocal_encounter_core/checkpoint_0384.json": "a8dedd668c4d0c8918f503976358a33c5b8775a127ac1c18bda0f5e5d10c5a1f",
+      "results/reciprocal_encounter_core/checkpoint_0416.json": "1a4f5f19ff1a8116698a155a1ff2ec6b7bf0b0beaa659da47ac77b95490d866a",
+      "results/reciprocal_encounter_core/checkpoint_0448.json": "286b5ebfaa2bf31fdb81a3ba39d2521cdcc55967d8983026813feef15987f5cb",
+      "results/reciprocal_encounter_core/checkpoint_0480.json": "795afff4aa1f179f0d538f9e23d136cb6b2396daf203a5172083b7af8c8aac2f",
+      "results/reciprocal_encounter_core/checkpoint_0512.json": "48adf2dc4ddb0db6eae1795ebf1f3f564234327b956ea9fdfeb9075234c70c59",
+      "results/reciprocal_encounter_core/checkpoint_0544.json": "6fa9c261177f9bf1a541a12c2a7dfba04cc6b82eb1917e941a07e341b76c5921",
+      "results/reciprocal_encounter_core/checkpoint_0576.json": "0e127c00db667aad6fce08a95fe83b21351c871acb1a8781d0c1bbbcda954584",
+      "results/reciprocal_encounter_core/checkpoint_0608.json": "ed323f41529f5bbecdbe19e735d38318eb9629f084dc0ca367eb4cd983a1aad2",
+      "results/reciprocal_encounter_core/checkpoint_0640.json": "0a397e9dba49950dd28231d02d83f9dfa2dfb648dd87a8d58f509c0900100f63",
+      "results/reciprocal_encounter_core/checkpoint_0672.json": "91ecce1933dc98fb6c9095aff5cfa1c91e25359454c1456b3da5c335e0bdbff8",
+      "results/reciprocal_encounter_core/checkpoint_0704.json": "4387885497e11950a861425e7217a22dc07a3ac3aacc0f094781da02b140f3fb",
+      "results/reciprocal_encounter_core/checkpoint_0736.json": "a1c159deb7ad2c0eedd43e88c03efd3e7bb039f09dd342e489630f02ca4e46ce",
+      "results/reciprocal_encounter_core/checkpoint_0768.json": "dd154930b6c135143abaf3451a3cd35c173fd757a7a017b9128a6bb4f5d0eec2",
+      "results/reciprocal_encounter_core/checkpoint_0769.json": "e7d1ece36cebb502b6a8e8241f65336ed55f8b4d46b5b4f14ad8350361f1c807",
+      "results/reciprocal_encounter_core/checkpoint_0777.json": "e2a356c793d95de9c87d335fbb1dc81c5b8d8be82212bec5c1baf83ff79fd454",
+      "results/reciprocal_encounter_core/checkpoint_0785.json": "d11c9505514af70ba2ff15dcdf0d35bf343b9bac309a2e670a47c197c42a1c96",
+      "results/reciprocal_encounter_core/checkpoint_0793.json": "49a008041307069142fcfa9ba1aa783f097e406b9f49143b5593cba694b31871",
+      "results/reciprocal_encounter_core/checkpoint_0794.json": "cf53f86247a0039f30075031f7a7cb9bd45b1f98a179c03e7c337bc21a11c177",
+      "results/reciprocal_encounter_core/checkpoint_0802.json": "4c080fd981bc96ce9df55be23961571ca8a161f1c55f3ac1206d0e3e29acdd9c",
+      "results/reciprocal_encounter_core/checkpoint_0810.json": "ec792ba932c0d80b28df902ce17e4145f018e2d034471ce866f86ac1f384012f",
+      "results/reciprocal_encounter_core/checkpoint_0818.json": "8bf5f7626b859df1f8495764db3d4df83da36b2f8cfa8a8b3855eaad4b4e1a9a",
+      "results/reciprocal_encounter_core/checkpoint_0819.json": "c4100daf0a119c1a9c06e1a7a58da6dda9b38f1e82353a0f7764e912cd162f9f",
+      "results/reciprocal_encounter_core/checkpoint_0827.json": "8e86856e4a6b46845d839329a0539fdf4694c28f49b1832e93f13271d79e40de",
+      "results/reciprocal_encounter_core/checkpoint_0835.json": "c07c395d34e3410ae715d83dd44091dbe17e959a87679a37d9b23bd03ca01358",
+      "results/reciprocal_encounter_core/checkpoint_0843.json": "2300245a2db4ccbee1064a955537103ecb12290f662cd09f0869135fb6f6c2a9",
+      "results/reciprocal_encounter_core/core_balance.png": "a85eddeff17348abf6489472566cc68c1d5b32ceabb4a2cf61d55a8e54fe704b",
+      "results/reciprocal_encounter_core/core_balance.svg": "6949ee206884282c13abab7c2a83919f8d842a6a5396dfbcc51fbf1759f22362",
+      "results/reciprocal_encounter_core/declared_inputs.json": "de84d6d53d386317d3b71a28acab36a0a3b6052980010f5a70f797db0a52ca2d",
+      "results/reciprocal_encounter_core/independent_audit.json": "63aed91ce21bd371adaf4571949cc0cbf54a225e948deea728c7f896e5233041",
+      "results/reciprocal_encounter_core/progress.json": "78a6bcaaf2f64fd8d65beee30dbc7207e80d76278d1691080a8e906ccc1c0982",
+      "results/reciprocal_encounter_core/publication_render_receipt.json": "d697dbaa786dc5d5140a6c3c99e63b9407550c9bb5b8b44c9a5dd1be2fa6a85d",
+      "results/reciprocal_encounter_core/reciprocal_equations.png": "12cd8b4dd2982f9e91579eaf103c268ecf70563475612a185720a7a16ca396ee",
+      "results/reciprocal_encounter_core/reciprocal_equations.svg": "e6d0e06191d966bead0439a348d6fc5b10105c91ae0127138751cc8572edb07d",
+      "results/reciprocal_encounter_core/reciprocal_validation.png": "1307db5df531e87d539f920250554981896db51924f755888a628e64b284090b",
+      "results/reciprocal_encounter_core/reciprocal_validation.svg": "db95f138e1a808286796112f07834c224cc3b3fbbe8051e1a692dce5df3a7451",
+      "results/reciprocal_encounter_core/render_publication.py": "31916bc9eccc88211d69a72ba55c90b9eb167a2e253623d7be572d3a5d6bbe4a",
+      "results/reciprocal_encounter_core/run_context.json": "fa68c041849045bc2bd3c6f48ea5def8b141165ac75b7d35da2382ba42e97650",
+      "results/reciprocal_encounter_core/saved_balance.json": "ab7c861531b2493672280f56acdf6fa1f6972553dbc6c373153044896f914eeb",
+      "results/reciprocal_encounter_core/saved_population_diagnostics.npz": "6afa63bd0294f4bc0ba1411f66e081f18521f3464e68ea6c637f03d1522afc13",
+      "results/reciprocal_encounter_core/selection.json": "a67af2f7f44bb0e03072660e2d8f68465558c808c20680bc55aafda9cde6af41",
+      "results/reciprocal_encounter_core/summary.json": "6198ca0c0e19ff12e7a38b4c0009ffd69379a5cb6660f429c0aa14db8e574e9c",
+      "results/stratified_encounter_flux/audit_cartesian.py": "30306dc3b46ac10c10ae5837777b996e59acf24d321d0384a3abcc647149eafe",
+      "results/stratified_encounter_flux/audit_saved_states.py": "1abe7a041bbaa2e51899f3607c5be0d6f4b04ae188ba465e7f1d4e14c21cdb88",
+      "results/stratified_encounter_flux/audit_tight_refinement.py": "fc82ccb1ebeeff4c2b69976d192319ea0f08363b12763de99e4d897862dcc70b",
+      "results/stratified_encounter_flux/cartesian_audit.json": "a4506dda0892513189ab0ef569ab2d4f82bf68bfd0fcd3d7b1f1b37e76985cb6",
+      "results/stratified_encounter_flux/cartesian_tight_refinement.json": "fb35f3ac84fcdcb5ab73792780ae6be24305c7432afa6ccb53b524c6fa49c669",
+      "results/stratified_encounter_flux/cases_partial.json": "ead44c593afb0384f6b938f5fea441bf95d6a93b47e9df5355b6c79104589923",
+      "results/stratified_encounter_flux/convergence.png": "f0e2904a1696f9008872031bfa5eac568db9ede2134c72cffb6224d39f322aff",
+      "results/stratified_encounter_flux/declared_inputs.json": "292a081482f78bbaa5ca18aab79f21c9302b3179f6d88314890d23ed8f3b0134",
+      "results/stratified_encounter_flux/evidence_readable.png": "168403f5850f2c973c11f8347493d8b9cd4d1a4bac629b0e5564e16616beb3ec",
+      "results/stratified_encounter_flux/evidence_readable.svg": "de84120112c4f2a43d8e0879a21c533ee1be7739b6639a4b79282065ec53f98c",
+      "results/stratified_encounter_flux/failures.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "results/stratified_encounter_flux/independent_audit.json": "a2a51e0c21b12398886406f94aa78eb0e19b5c77683439f8aa0f2b215b01a88b",
+      "results/stratified_encounter_flux/populations.npz": "a59d2f67aa3786c72a1ce584bafb2045f3d5338ff5e811fe9c17e569bb06ab9d",
+      "results/stratified_encounter_flux/publication_render_receipt.json": "766a4ef839a790ba060328aeda06243317cc22490bda50751dc8fb42c6e89546",
+      "results/stratified_encounter_flux/render_publication.py": "889ec90dce72bfa36b2dc7bd97edad4ce5819aa2270792afed377ff121687230",
+      "results/stratified_encounter_flux/sampling_readable.png": "39ef1bef5420eae91a740f58c7c8caf55c1fd902ff266254787af37c08f2b3ab",
+      "results/stratified_encounter_flux/sampling_readable.svg": "5584b137e8539dab53425b7a9015ae01a2c8987940eb9e23508e861f6e2c9ad0",
+      "results/stratified_encounter_flux/states.npz": "aa340fe03e5c44bdae3e8de197a3e3a89a9992b86f6032c388f31fa00e52bd66",
+      "results/stratified_encounter_flux/summary.json": "5a8699d470dce7553ed14b7669b6228953c7bda30d817ca9d541c8f619e565e0",
+      "results/stratified_encounter_flux/weights.png": "8d484046e21cdc760f9a3b5271c1a044ab1958d6fbd360a23bb09d1db81c5662",
+      "results/stratified_encounter_flux/weights.svg": "1def3562a0a57ab326c327a5bee37386aaa5f1bf9798e66dfced2f135a3d12d8"
+    },
+    "public_vs_clone_initial_hashes_match": false,
+    "replays": [
+      {
+        "argv": [
+          "/Users/rogerio/local/sato-morrison/.venv/bin/python",
+          "results/stratified_encounter_flux/audit_saved_states.py"
+        ],
+        "cwd": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_9f8d380",
+        "returncode": 0,
+        "wall_s": 0.9305788329802454,
+        "name": "raw42",
+        "environment_overrides": {
+          "OMP_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "SM_AUDIT_ROOT": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_9f8d380",
+          "SM_STRATIFIED_AUDIT_OUTPUT": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_receipts_9f8d380/raw42.json"
+        },
+        "receipt": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_receipts_9f8d380/raw42.json",
+        "load_average": [
+          3.80615234375,
+          3.54443359375,
+          2.9951171875
+        ],
+        "source_sha256": "1abe7a041bbaa2e51899f3607c5be0d6f4b04ae188ba465e7f1d4e14c21cdb88",
+        "status": "passed",
+        "check_count": 697,
+        "checks_passed": null,
+        "source_uncommitted": false,
+        "receipt_sha256": "a9f72683b5e876a4fc5dbdc678a1d552b76ee1a0cf448b30dca0e10a5bc64a32",
+        "audit_commit": "9f8d3807f6aa1945b6d3deec4760bf19b88c4275",
+        "refinement_count": 0,
+        "reconstructed_gates": {
+          "sample_4201": false,
+          "sample_4202": true,
+          "sample_4203": false,
+          "sample_4204": true,
+          "replica_4201_4202": true,
+          "replica_4201_4203": false,
+          "replica_4201_4204": true,
+          "replica_4202_4203": true,
+          "replica_4202_4204": true,
+          "replica_4203_4204": true,
+          "partition_4201": true,
+          "partition_4202": true,
+          "partition_4203": true,
+          "partition_4204": true,
+          "boundary_ensemble": true,
+          "boundary_L24_to40": true,
+          "active_step": true,
+          "boundary_controls": true,
+          "complete": true,
+          "exact_flux_mass": true,
+          "energy": true,
+          "active_step_sizes": true,
+          "source_integrity": true,
+          "prior_integrity": true
+        },
+        "input_hash_provenance": {
+          "source_sha256": "1abe7a041bbaa2e51899f3607c5be0d6f4b04ae188ba465e7f1d4e14c21cdb88",
+          "input_sha256": {
+            "summary.json": "5a8699d470dce7553ed14b7669b6228953c7bda30d817ca9d541c8f619e565e0",
+            "states.npz": "aa340fe03e5c44bdae3e8de197a3e3a89a9992b86f6032c388f31fa00e52bd66",
+            "populations.npz": "a59d2f67aa3786c72a1ce584bafb2045f3d5338ff5e811fe9c17e569bb06ab9d"
+          }
+        },
+        "original_scientific_status": "unresolved",
+        "original_failed_scientific_gates": [
+          "sample_4201",
+          "sample_4203",
+          "replica_4201_4203"
+        ]
+      },
+      {
+        "argv": [
+          "/Users/rogerio/local/sato-morrison/.venv/bin/python",
+          "results/encounter_born_control/audit_saved_states.py"
+        ],
+        "cwd": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_9f8d380",
+        "returncode": 0,
+        "wall_s": 6.302549250074662,
+        "name": "born43",
+        "environment_overrides": {
+          "OMP_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "SM_AUDIT_ROOT": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_9f8d380",
+          "SM_BORN_AUDIT_OUTPUT": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_receipts_9f8d380/born43.json"
+        },
+        "receipt": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_receipts_9f8d380/born43.json",
+        "load_average": [
+          5.13916015625,
+          3.8388671875,
+          3.10595703125
+        ],
+        "source_sha256": "4a778d88504c29125ae939ea1f4b7f97f3878dadc6b0e80471a235e14ab5b928",
+        "status": "passed",
+        "check_count": 253,
+        "checks_passed": null,
+        "source_uncommitted": false,
+        "receipt_sha256": "bd324e4b579769a9661a2a1931bde02ab1e4c0e1f98880af65bb5446027cb4e2",
+        "audit_commit": "9f8d3807f6aa1945b6d3deec4760bf19b88c4275",
+        "refinement_count": 0,
+        "reconstructed_gates": {
+          "sample_4201": true,
+          "sample_4202": false,
+          "sample_4203": true,
+          "sample_4204": true,
+          "replica_4201_4202": false,
+          "replica_4201_4203": false,
+          "replica_4201_4204": true,
+          "replica_4202_4203": false,
+          "replica_4202_4204": false,
+          "replica_4203_4204": false,
+          "partition_4201": false,
+          "partition_4202": false,
+          "partition_4203": true,
+          "partition_4204": false,
+          "boundary_ensemble": true,
+          "boundary_L24_to40": true,
+          "active_step": true,
+          "boundary_controls": true,
+          "complete": true,
+          "exact_flux_mass": true,
+          "energy": true,
+          "active_step_sizes": true,
+          "control_order_stability": false,
+          "control_symmetry": true,
+          "finite_controls": true,
+          "prior_source_integrity": true,
+          "prior_prior_integrity": true,
+          "source_integrity": true,
+          "prior_integrity": true,
+          "historical_pilot_integrity": true
+        },
+        "input_hash_provenance": {
+          "source_sha256": "4a778d88504c29125ae939ea1f4b7f97f3878dadc6b0e80471a235e14ab5b928",
+          "input_sha256": {
+            "results/encounter_born_control/summary.json": "f82789d1999064172704fef5c9e0f5f436eff72badc0a49fa085e2d95b91673f",
+            "results/encounter_born_control/control_GL1024.npy": "c48ea6ddd316922eac55708a830b96d56712cde6b4cb37d60c7f634b76c51984",
+            "results/encounter_born_control/control_GL2048.npy": "70a4f79dac4d05f2d15f00b935ba4b40cc10a538580edb5e6f14ed8238ad898e",
+            "results/stratified_encounter_flux/states.npz": "aa340fe03e5c44bdae3e8de197a3e3a89a9992b86f6032c388f31fa00e52bd66",
+            "results/stratified_encounter_flux/populations.npz": "a59d2f67aa3786c72a1ce584bafb2045f3d5338ff5e811fe9c17e569bb06ab9d"
+          }
+        },
+        "original_scientific_status": "unresolved",
+        "original_failed_scientific_gates": [
+          "sample_4202",
+          "replica_4201_4202",
+          "replica_4201_4203",
+          "replica_4202_4203",
+          "replica_4202_4204",
+          "replica_4203_4204",
+          "partition_4201",
+          "partition_4202",
+          "partition_4204",
+          "control_order_stability"
+        ]
+      },
+      {
+        "argv": [
+          "/Users/rogerio/local/sato-morrison/.venv/bin/python",
+          "results/antithetic_encounter_flux/audit_saved_states.py"
+        ],
+        "cwd": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_9f8d380",
+        "returncode": 0,
+        "wall_s": 1.0782640000106767,
+        "name": "paired44",
+        "environment_overrides": {
+          "OMP_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "SM_AUDIT_ROOT": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_9f8d380",
+          "SM_ANTITHETIC_AUDIT_OUTPUT": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_receipts_9f8d380/paired44.json"
+        },
+        "receipt": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_receipts_9f8d380/paired44.json",
+        "load_average": [
+          5.13916015625,
+          3.8388671875,
+          3.10595703125
+        ],
+        "source_sha256": "4e5a1376d063802c67596bdf209d21bdd52c2826b2b1e4035a000be2060d53a7",
+        "status": "passed",
+        "check_count": 1371,
+        "checks_passed": null,
+        "source_uncommitted": false,
+        "receipt_sha256": "831d680b0ad3141171286e86a0c0f38ac4ad9818cc313d0b739645b0c257c674",
+        "audit_commit": "9f8d3807f6aa1945b6d3deec4760bf19b88c4275",
+        "refinement_count": 0,
+        "reconstructed_gates": {
+          "sample_4201": true,
+          "sample_4202": true,
+          "sample_4203": true,
+          "sample_4204": true,
+          "replica_4201_4202": true,
+          "replica_4201_4203": true,
+          "replica_4201_4204": true,
+          "replica_4202_4203": true,
+          "replica_4202_4204": true,
+          "replica_4203_4204": true,
+          "partition_4201": true,
+          "partition_4202": true,
+          "partition_4203": true,
+          "partition_4204": true,
+          "boundary_ensemble": true,
+          "boundary_L24_to40": true,
+          "active_step": true,
+          "active_step_members": true,
+          "boundary_controls": true,
+          "boundary_controls_members": true,
+          "phase_transform": true,
+          "preserved_born_control": true,
+          "complete": true,
+          "exact_flux_mass": true,
+          "energy": true,
+          "active_step_sizes": true,
+          "prior_integrity": true,
+          "prior_prior_integrity": true,
+          "prior_source_integrity": true,
+          "source_integrity": true
+        },
+        "input_hash_provenance": {
+          "source_sha256": "4e5a1376d063802c67596bdf209d21bdd52c2826b2b1e4035a000be2060d53a7",
+          "input_sha256": {
+            "results/antithetic_encounter_flux/summary.json": "067303ebf92edd9d5b9b4233ba852c78be5f0faf7620b8e414074b79089c764f",
+            "results/antithetic_encounter_flux/states.npz": "8eae5382da317a9eaa0989fb456b582553f9af5d05b000b88dcf67639b340098",
+            "results/antithetic_encounter_flux/populations.npz": "460dc4a9632fb782a03ea4b521be930e7107d26d881cdc9a3163327acfbb27d4",
+            "results/stratified_encounter_flux/states.npz": "aa340fe03e5c44bdae3e8de197a3e3a89a9992b86f6032c388f31fa00e52bd66",
+            "results/stratified_encounter_flux/populations.npz": "a59d2f67aa3786c72a1ce584bafb2045f3d5338ff5e811fe9c17e569bb06ab9d"
+          }
+        }
+      },
+      {
+        "argv": [
+          "/Users/rogerio/local/sato-morrison/.venv/bin/python",
+          "results/antithetic_encounter_flux/audit_contribution_maps.py"
+        ],
+        "cwd": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_9f8d380",
+        "returncode": 0,
+        "wall_s": 0.24313316692132503,
+        "name": "contribution_maps44",
+        "environment_overrides": {
+          "OMP_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "SM_AUDIT_ROOT": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_9f8d380",
+          "SM_ANTITHETIC_MAP_AUDIT_OUTPUT": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_receipts_9f8d380/contribution_maps44.json"
+        },
+        "receipt": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_receipts_9f8d380/contribution_maps44.json",
+        "load_average": [
+          5.13916015625,
+          3.8388671875,
+          3.10595703125
+        ],
+        "source_sha256": "55adfa0df5a7867ef4c599320c2dfa1df02ccc51a26b743ad67966420400d6f8",
+        "status": "passed",
+        "check_count": 15,
+        "checks_passed": 15,
+        "source_uncommitted": false,
+        "receipt_sha256": "3163fa1793b042997fcb021e6ca4c6552b6cb219e688c543ae6a918fa6c752a2",
+        "audit_commit": "9f8d3807f6aa1945b6d3deec4760bf19b88c4275",
+        "refinement_count": 0,
+        "input_hash_provenance": {
+          "input_sha256": {
+            "summary.json": "067303ebf92edd9d5b9b4233ba852c78be5f0faf7620b8e414074b79089c764f",
+            "states.npz": "8eae5382da317a9eaa0989fb456b582553f9af5d05b000b88dcf67639b340098",
+            "populations.npz": "460dc4a9632fb782a03ea4b521be930e7107d26d881cdc9a3163327acfbb27d4",
+            "contribution_maps.npz": "b24957c43a4876040e50d25c1f8ea40c97b47cddb4282a415d334d57afffe8b5"
+          },
+          "source_sha256": "55adfa0df5a7867ef4c599320c2dfa1df02ccc51a26b743ad67966420400d6f8"
+        }
+      },
+      {
+        "argv": [
+          "/Users/rogerio/local/sato-morrison/.venv/bin/python",
+          "results/antithetic_encounter_movie/audit_saved_paths.py"
+        ],
+        "cwd": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_9f8d380",
+        "returncode": 0,
+        "wall_s": 0.8574274169513956,
+        "name": "movie45",
+        "environment_overrides": {
+          "OMP_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "SM_AUDIT_ROOT": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_9f8d380",
+          "SM_PHASE_MOVIE_AUDIT_OUTPUT": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_receipts_9f8d380/movie45.json"
+        },
+        "receipt": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_receipts_9f8d380/movie45.json",
+        "load_average": [
+          5.13916015625,
+          3.8388671875,
+          3.10595703125
+        ],
+        "source_sha256": "30e92a512fd083b1c03d58b183b0e1fcb30594943a9c9609117c54f1ef77b745",
+        "status": "passed",
+        "check_count": 48,
+        "checks_passed": null,
+        "source_uncommitted": false,
+        "receipt_sha256": "66a3c70e0166a6f828855397f67315cea5c897ec301c21c417324e50750ac87f",
+        "audit_commit": "9f8d3807f6aa1945b6d3deec4760bf19b88c4275",
+        "refinement_count": 0,
+        "input_hash_provenance": {
+          "source_sha256": "30e92a512fd083b1c03d58b183b0e1fcb30594943a9c9609117c54f1ef77b745",
+          "input_sha256": {
+            "results/antithetic_encounter_movie/summary.json": "dad2cfcadf4d074fec8aba71e45127da45f06e2739dd49b9db8cfbf5ac03d93b",
+            "results/antithetic_encounter_movie/paths.npz": "adae76b7033451e312292484d0e63ca72530f42a89b07a69971f3dc2eb70af94",
+            "results/antithetic_encounter_movie/phase_pair.gif": "2ac3c4cd77ca28c23b0cd4354f54bb638b58b90aa9972f3001500498e8e783b8",
+            "results/encounter_peak_resolution/summary.json": "0e46988dcfff5d81b14978146710f8108532944e6bb5b72c2ebc16ac680944da"
+          }
+        }
+      },
+      {
+        "argv": [
+          "/Users/rogerio/local/sato-morrison/.venv/bin/python",
+          "results/antithetic_encounter_flux/audit_saved_refinement.py"
+        ],
+        "cwd": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_9f8d380",
+        "returncode": 0,
+        "wall_s": 0.2040733330650255,
+        "name": "saved_refinement44",
+        "environment_overrides": {
+          "OMP_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "SM_AUDIT_ROOT": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_9f8d380",
+          "SM_ANTITHETIC_REFINEMENT_AUDIT_OUTPUT": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_receipts_9f8d380/saved_refinement44.json"
+        },
+        "receipt": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_receipts_9f8d380/saved_refinement44.json",
+        "load_average": [
+          5.13916015625,
+          3.8388671875,
+          3.10595703125
+        ],
+        "source_sha256": "0ca4489a660f6e161705501cb16eda4e06407f56626ad1525aa275848d763f1a",
+        "status": "passed",
+        "check_count": null,
+        "checks_passed": null,
+        "source_uncommitted": false,
+        "receipt_sha256": "0bdc83e83e8d74dad2422c1b262e17a1b3cf6d511e5c25bca2e8bc67058c5b37",
+        "audit_commit": null,
+        "refinement_count": 1,
+        "input_hash_provenance": {
+          "input_sha256": {
+            "summary.json": "067303ebf92edd9d5b9b4233ba852c78be5f0faf7620b8e414074b79089c764f",
+            "states.npz": "8eae5382da317a9eaa0989fb456b582553f9af5d05b000b88dcf67639b340098",
+            "populations.npz": "460dc4a9632fb782a03ea4b521be930e7107d26d881cdc9a3163327acfbb27d4",
+            "cartesian_audit.json": "7ce5486283bf9e853d00cafc4d455eb3925e4535753592cf61bdebcb3b29dd67"
+          },
+          "source_sha256": "0ca4489a660f6e161705501cb16eda4e06407f56626ad1525aa275848d763f1a"
+        },
+        "original_cartesian_status_reconstructed": "failed"
+      },
+      {
+        "argv": [
+          "/Users/rogerio/local/sato-morrison/.venv/bin/python",
+          "results/reciprocal_encounter_core/audit_saved_states.py"
+        ],
+        "cwd": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_9f8d380",
+        "returncode": 0,
+        "wall_s": 0.7136938340263441,
+        "name": "reciprocal46",
+        "environment_overrides": {
+          "OMP_NUM_THREADS": "1",
+          "OPENBLAS_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "VECLIB_MAXIMUM_THREADS": "1",
+          "SM_AUDIT_ROOT": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_9f8d380",
+          "SM_RECIPROCAL_AUDIT_OUTPUT": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_receipts_9f8d380/reciprocal46.json"
+        },
+        "receipt": "/Users/rogerio/local/sato_morrison_handoff/verification/finalization_2026_10_19/clean_replay_receipts_9f8d380/reciprocal46.json",
+        "load_average": [
+          5.13916015625,
+          3.8388671875,
+          3.10595703125
+        ],
+        "source_sha256": "890f8f178f88d9c6ec75a37b97d4713bd22fe8f33b22e4babeb72d5b4816fb85",
+        "status": "passed",
+        "check_count": 8102,
+        "checks_passed": null,
+        "source_uncommitted": false,
+        "receipt_sha256": "976939d7af4045e066112e7a557d612cd73e013aae6987ed98c5d8e3ebf2e74a",
+        "audit_commit": "9f8d3807f6aa1945b6d3deec4760bf19b88c4275",
+        "refinement_count": 0,
+        "scientific_failures_reconstructed": {
+          "core": [
+            "sample_4204",
+            "replica_4201_4202",
+            "replica_4202_4203"
+          ],
+          "trajectory": [
+            "endpoints"
+          ]
+        },
+        "input_hash_provenance": {
+          "source_sha256": "890f8f178f88d9c6ec75a37b97d4713bd22fe8f33b22e4babeb72d5b4816fb85",
+          "summary_sha256": "6198ca0c0e19ff12e7a38b4c0009ffd69379a5cb6660f429c0aa14db8e574e9c"
+        }
+      }
+    ],
+    "producer_history": [
+      {
+        "receipt": "results/stratified_encounter_flux/summary.json",
+        "field": "commit",
+        "commit": "01618f74f0cd621518d30938fcb444ac221566ca",
+        "commit_resolves": true,
+        "source_blob": "01618f74f0cd621518d30938fcb444ac221566ca:examples/42_stratified_encounter_flux.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "5a704c4b97b86dc30380de8588cdfbdaa9c7482264dbf7b2ddcd61d6879989ad"
+      },
+      {
+        "receipt": "results/stratified_encounter_flux/independent_audit.json",
+        "field": "producer_commit",
+        "commit": "01618f74f0cd621518d30938fcb444ac221566ca",
+        "commit_resolves": true,
+        "source_blob": "01618f74f0cd621518d30938fcb444ac221566ca:examples/42_stratified_encounter_flux.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "5a704c4b97b86dc30380de8588cdfbdaa9c7482264dbf7b2ddcd61d6879989ad"
+      },
+      {
+        "receipt": "results/stratified_encounter_flux/independent_audit.json",
+        "field": "producer_source_identities.examples/42_stratified_encounter_flux.py.commit",
+        "commit": "01618f74f0cd621518d30938fcb444ac221566ca",
+        "commit_resolves": true,
+        "source_blob": "01618f74f0cd621518d30938fcb444ac221566ca:examples/42_stratified_encounter_flux.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "5a704c4b97b86dc30380de8588cdfbdaa9c7482264dbf7b2ddcd61d6879989ad"
+      },
+      {
+        "receipt": "results/stratified_encounter_flux/independent_audit.json",
+        "field": "producer_source_identities.src/sato_morrison/controls.py.commit",
+        "commit": "01618f74f0cd621518d30938fcb444ac221566ca",
+        "commit_resolves": true,
+        "source_blob": "01618f74f0cd621518d30938fcb444ac221566ca:examples/42_stratified_encounter_flux.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "5a704c4b97b86dc30380de8588cdfbdaa9c7482264dbf7b2ddcd61d6879989ad"
+      },
+      {
+        "receipt": "results/stratified_encounter_flux/independent_audit.json",
+        "field": "producer_source_identities.src/sato_morrison/reference.py.commit",
+        "commit": "01618f74f0cd621518d30938fcb444ac221566ca",
+        "commit_resolves": true,
+        "source_blob": "01618f74f0cd621518d30938fcb444ac221566ca:examples/42_stratified_encounter_flux.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "5a704c4b97b86dc30380de8588cdfbdaa9c7482264dbf7b2ddcd61d6879989ad"
+      },
+      {
+        "receipt": "results/stratified_encounter_flux/independent_audit.json",
+        "field": "audit_git_identity",
+        "commit": "831d2ebec582c40667fc157e516a90c4077e7484",
+        "commit_resolves": true,
+        "source_blob": "831d2ebec582c40667fc157e516a90c4077e7484:examples/42_stratified_encounter_flux.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "5a704c4b97b86dc30380de8588cdfbdaa9c7482264dbf7b2ddcd61d6879989ad"
+      },
+      {
+        "receipt": "results/encounter_born_control/summary.json",
+        "field": "commit",
+        "commit": "831d2ebec582c40667fc157e516a90c4077e7484",
+        "commit_resolves": true,
+        "source_blob": "831d2ebec582c40667fc157e516a90c4077e7484:examples/43_encounter_born_control.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "10f4b5210bd41030204a3e04ca23fc2f7c75f7ff4789af5dfcc942aa8694b3e4"
+      },
+      {
+        "receipt": "results/encounter_born_control/independent_audit.json",
+        "field": "producer_commit",
+        "commit": "831d2ebec582c40667fc157e516a90c4077e7484",
+        "commit_resolves": true,
+        "source_blob": "831d2ebec582c40667fc157e516a90c4077e7484:examples/43_encounter_born_control.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "10f4b5210bd41030204a3e04ca23fc2f7c75f7ff4789af5dfcc942aa8694b3e4"
+      },
+      {
+        "receipt": "results/encounter_born_control/independent_audit.json",
+        "field": "producer_source_identities.examples/43_encounter_born_control.py.commit",
+        "commit": "831d2ebec582c40667fc157e516a90c4077e7484",
+        "commit_resolves": true,
+        "source_blob": "831d2ebec582c40667fc157e516a90c4077e7484:examples/43_encounter_born_control.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "10f4b5210bd41030204a3e04ca23fc2f7c75f7ff4789af5dfcc942aa8694b3e4"
+      },
+      {
+        "receipt": "results/encounter_born_control/independent_audit.json",
+        "field": "producer_source_identities.src/sato_morrison/reference.py.commit",
+        "commit": "831d2ebec582c40667fc157e516a90c4077e7484",
+        "commit_resolves": true,
+        "source_blob": "831d2ebec582c40667fc157e516a90c4077e7484:examples/43_encounter_born_control.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "10f4b5210bd41030204a3e04ca23fc2f7c75f7ff4789af5dfcc942aa8694b3e4"
+      },
+      {
+        "receipt": "results/encounter_born_control/independent_audit.json",
+        "field": "audit_git_identity",
+        "commit": "831d2ebec582c40667fc157e516a90c4077e7484",
+        "commit_resolves": true,
+        "source_blob": "831d2ebec582c40667fc157e516a90c4077e7484:examples/43_encounter_born_control.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "10f4b5210bd41030204a3e04ca23fc2f7c75f7ff4789af5dfcc942aa8694b3e4"
+      },
+      {
+        "receipt": "results/antithetic_encounter_flux/summary.json",
+        "field": "commit",
+        "commit": "f25557173832017f74053877d85d38bfa6362fe9",
+        "commit_resolves": true,
+        "source_blob": "f25557173832017f74053877d85d38bfa6362fe9:examples/44_antithetic_encounter_flux.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "0516ceaaaa06c18a63e94718af6156bfe34c4e6103f75773c3f4f44b767fc190"
+      },
+      {
+        "receipt": "results/antithetic_encounter_flux/summary.json",
+        "field": "original_producer.producer_commit",
+        "commit": "0c1aaa3",
+        "commit_resolves": true,
+        "source_blob": "0c1aaa3:examples/44_antithetic_encounter_flux.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "12d8e3e84edfa515cc702e65edd1626b99df00b8e7a46e2961070a1be63cbca9"
+      },
+      {
+        "receipt": "results/antithetic_encounter_flux/original_attempt.json",
+        "field": "producer_commit",
+        "commit": "0c1aaa3",
+        "commit_resolves": true,
+        "source_blob": "0c1aaa3:examples/44_antithetic_encounter_flux.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "12d8e3e84edfa515cc702e65edd1626b99df00b8e7a46e2961070a1be63cbca9"
+      },
+      {
+        "receipt": "results/antithetic_encounter_flux/independent_audit.json",
+        "field": "original_physics_producer_commit",
+        "commit": "0c1aaa3",
+        "commit_resolves": true,
+        "source_blob": "0c1aaa3:examples/44_antithetic_encounter_flux.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "12d8e3e84edfa515cc702e65edd1626b99df00b8e7a46e2961070a1be63cbca9"
+      },
+      {
+        "receipt": "results/antithetic_encounter_flux/independent_audit.json",
+        "field": "receipt_writer_commit",
+        "commit": "f25557173832017f74053877d85d38bfa6362fe9",
+        "commit_resolves": true,
+        "source_blob": "f25557173832017f74053877d85d38bfa6362fe9:examples/44_antithetic_encounter_flux.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "0516ceaaaa06c18a63e94718af6156bfe34c4e6103f75773c3f4f44b767fc190"
+      },
+      {
+        "receipt": "results/antithetic_encounter_flux/independent_audit.json",
+        "field": "receipt_writer_source_identities.examples/44_antithetic_encounter_flux.py.commit",
+        "commit": "f25557173832017f74053877d85d38bfa6362fe9",
+        "commit_resolves": true,
+        "source_blob": "f25557173832017f74053877d85d38bfa6362fe9:examples/44_antithetic_encounter_flux.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "0516ceaaaa06c18a63e94718af6156bfe34c4e6103f75773c3f4f44b767fc190"
+      },
+      {
+        "receipt": "results/antithetic_encounter_flux/independent_audit.json",
+        "field": "receipt_writer_source_identities.src/sato_morrison/controls.py.commit",
+        "commit": "f25557173832017f74053877d85d38bfa6362fe9",
+        "commit_resolves": true,
+        "source_blob": "f25557173832017f74053877d85d38bfa6362fe9:examples/44_antithetic_encounter_flux.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "0516ceaaaa06c18a63e94718af6156bfe34c4e6103f75773c3f4f44b767fc190"
+      },
+      {
+        "receipt": "results/antithetic_encounter_flux/independent_audit.json",
+        "field": "receipt_writer_source_identities.src/sato_morrison/reference.py.commit",
+        "commit": "f25557173832017f74053877d85d38bfa6362fe9",
+        "commit_resolves": true,
+        "source_blob": "f25557173832017f74053877d85d38bfa6362fe9:examples/44_antithetic_encounter_flux.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "0516ceaaaa06c18a63e94718af6156bfe34c4e6103f75773c3f4f44b767fc190"
+      },
+      {
+        "receipt": "results/antithetic_encounter_flux/independent_audit.json",
+        "field": "audit_git_identity",
+        "commit": "f25557173832017f74053877d85d38bfa6362fe9",
+        "commit_resolves": true,
+        "source_blob": "f25557173832017f74053877d85d38bfa6362fe9:examples/44_antithetic_encounter_flux.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "0516ceaaaa06c18a63e94718af6156bfe34c4e6103f75773c3f4f44b767fc190"
+      },
+      {
+        "receipt": "results/antithetic_encounter_movie/summary.json",
+        "field": "commit",
+        "commit": "a770e4bb7a0456788a7fc5c5360f5ece643578c1",
+        "commit_resolves": true,
+        "source_blob": "a770e4bb7a0456788a7fc5c5360f5ece643578c1:examples/45_antithetic_encounter_movie.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "0feb9e73ba4192ff3702c153c065f08160224de415e3293e7138ce7d498d7c50"
+      },
+      {
+        "receipt": "results/antithetic_encounter_movie/independent_audit.json",
+        "field": "producer_commit",
+        "commit": "a770e4bb7a0456788a7fc5c5360f5ece643578c1",
+        "commit_resolves": true,
+        "source_blob": "a770e4bb7a0456788a7fc5c5360f5ece643578c1:examples/45_antithetic_encounter_movie.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "0feb9e73ba4192ff3702c153c065f08160224de415e3293e7138ce7d498d7c50"
+      },
+      {
+        "receipt": "results/antithetic_encounter_movie/independent_audit.json",
+        "field": "producer_source_identities.examples/45_antithetic_encounter_movie.py.commit",
+        "commit": "a770e4bb7a0456788a7fc5c5360f5ece643578c1",
+        "commit_resolves": true,
+        "source_blob": "a770e4bb7a0456788a7fc5c5360f5ece643578c1:examples/45_antithetic_encounter_movie.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "0feb9e73ba4192ff3702c153c065f08160224de415e3293e7138ce7d498d7c50"
+      },
+      {
+        "receipt": "results/antithetic_encounter_movie/independent_audit.json",
+        "field": "producer_source_identities.src/sato_morrison/controls.py.commit",
+        "commit": "a770e4bb7a0456788a7fc5c5360f5ece643578c1",
+        "commit_resolves": true,
+        "source_blob": "a770e4bb7a0456788a7fc5c5360f5ece643578c1:examples/45_antithetic_encounter_movie.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "0feb9e73ba4192ff3702c153c065f08160224de415e3293e7138ce7d498d7c50"
+      },
+      {
+        "receipt": "results/antithetic_encounter_movie/independent_audit.json",
+        "field": "producer_source_identities.src/sato_morrison/reference.py.commit",
+        "commit": "a770e4bb7a0456788a7fc5c5360f5ece643578c1",
+        "commit_resolves": true,
+        "source_blob": "a770e4bb7a0456788a7fc5c5360f5ece643578c1:examples/45_antithetic_encounter_movie.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "0feb9e73ba4192ff3702c153c065f08160224de415e3293e7138ce7d498d7c50"
+      },
+      {
+        "receipt": "results/antithetic_encounter_movie/independent_audit.json",
+        "field": "audit_git_identity",
+        "commit": "a770e4bb7a0456788a7fc5c5360f5ece643578c1",
+        "commit_resolves": true,
+        "source_blob": "a770e4bb7a0456788a7fc5c5360f5ece643578c1:examples/45_antithetic_encounter_movie.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "0feb9e73ba4192ff3702c153c065f08160224de415e3293e7138ce7d498d7c50"
+      },
+      {
+        "receipt": "results/reciprocal_encounter_core/summary.json",
+        "field": "commit",
+        "commit": "88915fbd603594233a47991a8a452964fafe88f4",
+        "commit_resolves": true,
+        "source_blob": "88915fbd603594233a47991a8a452964fafe88f4:examples/46_reciprocal_encounter_core.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "f5728ee66caf0f832547ec64ec0d541f9339dfab306de01a715598e896fdbcaa"
+      },
+      {
+        "receipt": "results/reciprocal_encounter_core/independent_audit.json",
+        "field": "audit_commit",
+        "commit": "77a591a407a9a4473cd25da6a732016d34f5199a",
+        "commit_resolves": true,
+        "source_blob": "77a591a407a9a4473cd25da6a732016d34f5199a:examples/46_reciprocal_encounter_core.py",
+        "source_blob_resolves": true,
+        "source_blob_sha256": "f5728ee66caf0f832547ec64ec0d541f9339dfab306de01a715598e896fdbcaa"
+      }
+    ],
+    "final_working_tree": "",
+    "artifact_hashes_after": {
+      "results/antithetic_encounter_flux/audit_cartesian.py": "71f74106b78c551a143b4ff6cd8a4318e99c8cc0ebd84ee0c90613125507f987",
+      "results/antithetic_encounter_flux/audit_checkpoints.py": "1ea3d22ee7c867095c85cf29cb9f316ce3b7893cdc36a527989463ea02b7a9a1",
+      "results/antithetic_encounter_flux/audit_contribution_maps.py": "55adfa0df5a7867ef4c599320c2dfa1df02ccc51a26b743ad67966420400d6f8",
+      "results/antithetic_encounter_flux/audit_saved_refinement.py": "0ca4489a660f6e161705501cb16eda4e06407f56626ad1525aa275848d763f1a",
+      "results/antithetic_encounter_flux/audit_saved_states.py": "4e5a1376d063802c67596bdf209d21bdd52c2826b2b1e4035a000be2060d53a7",
+      "results/antithetic_encounter_flux/cartesian_audit.json": "7ce5486283bf9e853d00cafc4d455eb3925e4535753592cf61bdebcb3b29dd67",
+      "results/antithetic_encounter_flux/cases_partial.json": "7d828227a4f3456b8a79c49fc5096353296cf774e21fb3db7352631ac0c7ebc3",
+      "results/antithetic_encounter_flux/checkpoint_archival.json": "db3b2e4d6560cee9acaf4102dd5ab1750f76bfe0562239cfbb3be85757151576",
+      "results/antithetic_encounter_flux/checkpoint_manifest.json": "9834b8a57494db4ca54ec16bbefe8f83f68fdc26f3261c46478cb6f4c43bb31c",
+      "results/antithetic_encounter_flux/contribution_map_audit.json": "b1cc79acf379e533293ce0f08a20244724b70145b8469f8fff8623013ea0efc7",
+      "results/antithetic_encounter_flux/contribution_maps.npz": "b24957c43a4876040e50d25c1f8ea40c97b47cddb4282a415d334d57afffe8b5",
+      "results/antithetic_encounter_flux/contribution_maps.png": "95ccfc98785ffe4bd4ef069e73b04fe978279af7437ab397a495035d4010fa01",
+      "results/antithetic_encounter_flux/contribution_maps.svg": "09ff202b65113fe5df0f82d87de2a860aa5495db622a1dffa18e832718f4a023",
+      "results/antithetic_encounter_flux/convergence.png": "1139c7a007248482f00a98d2a6efe65810a0dcf62175ccc3222809906aa567b7",
+      "results/antithetic_encounter_flux/declared_inputs.json": "baa1841d0b25f24c4128146b220c8d4c2752c9126b49d2592e5a8b6ed946f75c",
+      "results/antithetic_encounter_flux/failed_original_attempt.log": "e603de7e0509e3c2c6c9af714e55cb28d27e7d4a18b56f83fd797438e9881f22",
+      "results/antithetic_encounter_flux/failures.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "results/antithetic_encounter_flux/independent_audit.json": "d05cc20d3f74a440106d0e930ad081796917daa3e0b14748121eab4754d26694",
+      "results/antithetic_encounter_flux/initial_audit_saved_states.py": "e5c81f0fc65e5e83757fb27aa46ef6f6cec94983f74277ec65f7ca29c093f00b",
+      "results/antithetic_encounter_flux/initial_saved_state_audit.json": "e722e70d78a7a63c052c0ea0392227952011581561404d7f54ed8f4e7620b3fb",
+      "results/antithetic_encounter_flux/interrupted_replay.log": "54557abdc6a354739450b735ee3703d0faf742458124ac21a601eda4f4e8db6b",
+      "results/antithetic_encounter_flux/interrupted_replay_context.json": "3e02b170af096813a2f8a77898e22a02c8947b6662acecc024d9ba4427b8bdd8",
+      "results/antithetic_encounter_flux/original_attempt.json": "df0aa46c80145c5c15b3f0c233689081ced6215938d2fe58a0cecc06cee5a1f7",
+      "results/antithetic_encounter_flux/original_producer.py": "12d8e3e84edfa515cc702e65edd1626b99df00b8e7a46e2961070a1be63cbca9",
+      "results/antithetic_encounter_flux/pair_weights.png": "50bbb0f0853ab993e60e41fb7aedfc67c2e24376cd076b383fb486bc03a0b0cc",
+      "results/antithetic_encounter_flux/pair_weights.svg": "1f7a29e7b9b5ee1d45bb022ffbe65d67630e87743d45240e04dc3b251c41a054",
+      "results/antithetic_encounter_flux/populations.npz": "460dc4a9632fb782a03ea4b521be930e7107d26d881cdc9a3163327acfbb27d4",
+      "results/antithetic_encounter_flux/publication_render_receipt.json": "bbf08c15f4206a97a6218be6a4077fac0d1650591e1d28d9b35aae1cb56b7780",
+      "results/antithetic_encounter_flux/reconstructed_cases.json": "7d828227a4f3456b8a79c49fc5096353296cf774e21fb3db7352631ac0c7ebc3",
+      "results/antithetic_encounter_flux/recovery_run_context.json": "202b0b4e2fcf0a79d1bea3c28cde6e1d1bee9ccef11dccd9d7c718f422198867",
+      "results/antithetic_encounter_flux/render_publication.py": "df58252d74916139a49544375a9101607d3c87fac7b467b612c68cf270bffb81",
+      "results/antithetic_encounter_flux/sampling_readable.png": "29e8addf863e3cfad0c6a646fb154597da1692539aafc333d85d9312c78ef631",
+      "results/antithetic_encounter_flux/sampling_readable.svg": "7490506a3b60914c5c0625203bdf36c6be8aff590918142b41b9fe7dce34c764",
+      "results/antithetic_encounter_flux/saved_refinement_audit.json": "f42336d20aaf1ba15e3ec9272c131b5ee7f5c5a02ae3d06af6e742519a3d9ad8",
+      "results/antithetic_encounter_flux/states.npz": "8eae5382da317a9eaa0989fb456b582553f9af5d05b000b88dcf67639b340098",
+      "results/antithetic_encounter_flux/summary.json": "067303ebf92edd9d5b9b4233ba852c78be5f0faf7620b8e414074b79089c764f",
+      "results/antithetic_encounter_movie/audit_saved_paths.py": "30e92a512fd083b1c03d58b183b0e1fcb30594943a9c9609117c54f1ef77b745",
+      "results/antithetic_encounter_movie/declared_inputs.json": "d0ac27de1b34f53e02b91b98774fd008df6bebb81d66c171790886c359619dee",
+      "results/antithetic_encounter_movie/independent_audit.json": "c1dc24f0041c0842331da2faae4d27331e9e1fe3956b79b64c2f3c37fa0809f7",
+      "results/antithetic_encounter_movie/paths.npz": "adae76b7033451e312292484d0e63ca72530f42a89b07a69971f3dc2eb70af94",
+      "results/antithetic_encounter_movie/phase_map.png": "2dd4fd90efc0776aba92782065cccb1bda0e379851c04d5a78c400947b75fa30",
+      "results/antithetic_encounter_movie/phase_map.svg": "9936c451cf2ae0e6699dfb0426ef8d62b1b9fcd93a522bbb7a4a7b3c2e4ef292",
+      "results/antithetic_encounter_movie/phase_map_receipt.json": "6781d426db4ce571b2ba5c698242de02e5c4d01b3217f262961937ed4a70e126",
+      "results/antithetic_encounter_movie/phase_pair.gif": "2ac3c4cd77ca28c23b0cd4354f54bb638b58b90aa9972f3001500498e8e783b8",
+      "results/antithetic_encounter_movie/poster.png": "879af1368d5ef271b6910dc473b79ef5c3c0eb7b309f358144870efccb8b670c",
+      "results/antithetic_encounter_movie/poster.svg": "9eb12d06ed301394b1a953188a8c29f7ca6a5b014e252100f16f59025cc19c1f",
+      "results/antithetic_encounter_movie/render_phase_map.py": "de55464533f170e545b4ed41ca23f1551b76a61ab69c69e928a786ac5dd0938f",
+      "results/antithetic_encounter_movie/summary.json": "dad2cfcadf4d074fec8aba71e45127da45f06e2739dd49b9db8cfbf5ac03d93b",
+      "results/antithetic_encounter_movie/trajectory_checks.json": "b87cacae19c3b1c3083c7c6f46002fdca6ea8d1a4b15b93131ea1d420cce32ad",
+      "results/encounter_born_control/audit_saved_states.py": "4a778d88504c29125ae939ea1f4b7f97f3878dadc6b0e80471a235e14ab5b928",
+      "results/encounter_born_control/control_GL1024.npy": "c48ea6ddd316922eac55708a830b96d56712cde6b4cb37d60c7f634b76c51984",
+      "results/encounter_born_control/control_GL2048.npy": "70a4f79dac4d05f2d15f00b935ba4b40cc10a538580edb5e6f14ed8238ad898e",
+      "results/encounter_born_control/control_readable.png": "caa6ea3a0fdf8f28f14b033dc36b37dce6f1904a0d69122d171f73e6f61df705",
+      "results/encounter_born_control/control_readable.svg": "6dd4009b920045b7dfc665bda59db240e25b591dc8d72ef03f556ecf90b458d7",
+      "results/encounter_born_control/convergence.png": "928d008b0a6f7d8c7733ea929fabff23f992e779d6df4822c8655755d0653bf5",
+      "results/encounter_born_control/declared_inputs.json": "20993e754af5f36ab136baba8f35aa4ae6e4d340094e70a381fdc9f418293eef",
+      "results/encounter_born_control/independent_audit.json": "a5ec3905de087944f4c4b7cd3665a5059834baabf5664e41f94e6c2b2d4aab85",
+      "results/encounter_born_control/summary.json": "f82789d1999064172704fef5c9e0f5f436eff72badc0a49fa085e2d95b91673f",
+      "results/reciprocal_encounter_core/attempts.json": "bcf24549ca28136ee7fceab77aa832973ab3277abe56b7257fd79af796b916b3",
+      "results/reciprocal_encounter_core/audit_saved_states.py": "890f8f178f88d9c6ec75a37b97d4713bd22fe8f33b22e4babeb72d5b4816fb85",
+      "results/reciprocal_encounter_core/checkpoint_0032.json": "fc4c3785f1b00ded27c22f24e99766e4780f777eb374b3b426b2f6510d53c444",
+      "results/reciprocal_encounter_core/checkpoint_0064.json": "3b48f1edce6a9e200e16abc36023d6211be65b2f3f2639406e84e843c030bf29",
+      "results/reciprocal_encounter_core/checkpoint_0096.json": "6b291ac5adcf999b39ab98976fc18fc6e86103dbe5a2e944a6939a22a413a2ff",
+      "results/reciprocal_encounter_core/checkpoint_0128.json": "a1a03ec9b80486f8ad0d70d9aa1efe23625ef6b4e55f63b106ed549a9ec972ad",
+      "results/reciprocal_encounter_core/checkpoint_0160.json": "d941a91e95480db0908d5e9bfe6be9cce1c520bba72fe3947f30848a17c1bd21",
+      "results/reciprocal_encounter_core/checkpoint_0192.json": "a70f746eee684cf5a18f81c16d5afe0403bfb1af268c197ad00025db51bac86f",
+      "results/reciprocal_encounter_core/checkpoint_0224.json": "90d032dd54ec977a7a972c06ed04723ecf2bdd95b8f342d137eddfb4d9bb4253",
+      "results/reciprocal_encounter_core/checkpoint_0256.json": "d5f5af64f4caa1e86bba654b0620fec221568764983e1e38d4c278ab1186cf0f",
+      "results/reciprocal_encounter_core/checkpoint_0288.json": "395ef8ae144fdf28091c0411c1055b7ac361039d006557003dcfb09d89c3c5ec",
+      "results/reciprocal_encounter_core/checkpoint_0320.json": "06c50c858012608a298cff20c39df6d97022f9dcc88a4085c1d3a92fb3cb64e5",
+      "results/reciprocal_encounter_core/checkpoint_0352.json": "cf24884d7ad14a6e4235093e741f141dc81ca97c6f2893d53756e05d26697190",
+      "results/reciprocal_encounter_core/checkpoint_0384.json": "a8dedd668c4d0c8918f503976358a33c5b8775a127ac1c18bda0f5e5d10c5a1f",
+      "results/reciprocal_encounter_core/checkpoint_0416.json": "1a4f5f19ff1a8116698a155a1ff2ec6b7bf0b0beaa659da47ac77b95490d866a",
+      "results/reciprocal_encounter_core/checkpoint_0448.json": "286b5ebfaa2bf31fdb81a3ba39d2521cdcc55967d8983026813feef15987f5cb",
+      "results/reciprocal_encounter_core/checkpoint_0480.json": "795afff4aa1f179f0d538f9e23d136cb6b2396daf203a5172083b7af8c8aac2f",
+      "results/reciprocal_encounter_core/checkpoint_0512.json": "48adf2dc4ddb0db6eae1795ebf1f3f564234327b956ea9fdfeb9075234c70c59",
+      "results/reciprocal_encounter_core/checkpoint_0544.json": "6fa9c261177f9bf1a541a12c2a7dfba04cc6b82eb1917e941a07e341b76c5921",
+      "results/reciprocal_encounter_core/checkpoint_0576.json": "0e127c00db667aad6fce08a95fe83b21351c871acb1a8781d0c1bbbcda954584",
+      "results/reciprocal_encounter_core/checkpoint_0608.json": "ed323f41529f5bbecdbe19e735d38318eb9629f084dc0ca367eb4cd983a1aad2",
+      "results/reciprocal_encounter_core/checkpoint_0640.json": "0a397e9dba49950dd28231d02d83f9dfa2dfb648dd87a8d58f509c0900100f63",
+      "results/reciprocal_encounter_core/checkpoint_0672.json": "91ecce1933dc98fb6c9095aff5cfa1c91e25359454c1456b3da5c335e0bdbff8",
+      "results/reciprocal_encounter_core/checkpoint_0704.json": "4387885497e11950a861425e7217a22dc07a3ac3aacc0f094781da02b140f3fb",
+      "results/reciprocal_encounter_core/checkpoint_0736.json": "a1c159deb7ad2c0eedd43e88c03efd3e7bb039f09dd342e489630f02ca4e46ce",
+      "results/reciprocal_encounter_core/checkpoint_0768.json": "dd154930b6c135143abaf3451a3cd35c173fd757a7a017b9128a6bb4f5d0eec2",
+      "results/reciprocal_encounter_core/checkpoint_0769.json": "e7d1ece36cebb502b6a8e8241f65336ed55f8b4d46b5b4f14ad8350361f1c807",
+      "results/reciprocal_encounter_core/checkpoint_0777.json": "e2a356c793d95de9c87d335fbb1dc81c5b8d8be82212bec5c1baf83ff79fd454",
+      "results/reciprocal_encounter_core/checkpoint_0785.json": "d11c9505514af70ba2ff15dcdf0d35bf343b9bac309a2e670a47c197c42a1c96",
+      "results/reciprocal_encounter_core/checkpoint_0793.json": "49a008041307069142fcfa9ba1aa783f097e406b9f49143b5593cba694b31871",
+      "results/reciprocal_encounter_core/checkpoint_0794.json": "cf53f86247a0039f30075031f7a7cb9bd45b1f98a179c03e7c337bc21a11c177",
+      "results/reciprocal_encounter_core/checkpoint_0802.json": "4c080fd981bc96ce9df55be23961571ca8a161f1c55f3ac1206d0e3e29acdd9c",
+      "results/reciprocal_encounter_core/checkpoint_0810.json": "ec792ba932c0d80b28df902ce17e4145f018e2d034471ce866f86ac1f384012f",
+      "results/reciprocal_encounter_core/checkpoint_0818.json": "8bf5f7626b859df1f8495764db3d4df83da36b2f8cfa8a8b3855eaad4b4e1a9a",
+      "results/reciprocal_encounter_core/checkpoint_0819.json": "c4100daf0a119c1a9c06e1a7a58da6dda9b38f1e82353a0f7764e912cd162f9f",
+      "results/reciprocal_encounter_core/checkpoint_0827.json": "8e86856e4a6b46845d839329a0539fdf4694c28f49b1832e93f13271d79e40de",
+      "results/reciprocal_encounter_core/checkpoint_0835.json": "c07c395d34e3410ae715d83dd44091dbe17e959a87679a37d9b23bd03ca01358",
+      "results/reciprocal_encounter_core/checkpoint_0843.json": "2300245a2db4ccbee1064a955537103ecb12290f662cd09f0869135fb6f6c2a9",
+      "results/reciprocal_encounter_core/core_balance.png": "a85eddeff17348abf6489472566cc68c1d5b32ceabb4a2cf61d55a8e54fe704b",
+      "results/reciprocal_encounter_core/core_balance.svg": "6949ee206884282c13abab7c2a83919f8d842a6a5396dfbcc51fbf1759f22362",
+      "results/reciprocal_encounter_core/declared_inputs.json": "de84d6d53d386317d3b71a28acab36a0a3b6052980010f5a70f797db0a52ca2d",
+      "results/reciprocal_encounter_core/independent_audit.json": "63aed91ce21bd371adaf4571949cc0cbf54a225e948deea728c7f896e5233041",
+      "results/reciprocal_encounter_core/progress.json": "78a6bcaaf2f64fd8d65beee30dbc7207e80d76278d1691080a8e906ccc1c0982",
+      "results/reciprocal_encounter_core/publication_render_receipt.json": "d697dbaa786dc5d5140a6c3c99e63b9407550c9bb5b8b44c9a5dd1be2fa6a85d",
+      "results/reciprocal_encounter_core/reciprocal_equations.png": "12cd8b4dd2982f9e91579eaf103c268ecf70563475612a185720a7a16ca396ee",
+      "results/reciprocal_encounter_core/reciprocal_equations.svg": "e6d0e06191d966bead0439a348d6fc5b10105c91ae0127138751cc8572edb07d",
+      "results/reciprocal_encounter_core/reciprocal_validation.png": "1307db5df531e87d539f920250554981896db51924f755888a628e64b284090b",
+      "results/reciprocal_encounter_core/reciprocal_validation.svg": "db95f138e1a808286796112f07834c224cc3b3fbbe8051e1a692dce5df3a7451",
+      "results/reciprocal_encounter_core/render_publication.py": "31916bc9eccc88211d69a72ba55c90b9eb167a2e253623d7be572d3a5d6bbe4a",
+      "results/reciprocal_encounter_core/run_context.json": "fa68c041849045bc2bd3c6f48ea5def8b141165ac75b7d35da2382ba42e97650",
+      "results/reciprocal_encounter_core/saved_balance.json": "ab7c861531b2493672280f56acdf6fa1f6972553dbc6c373153044896f914eeb",
+      "results/reciprocal_encounter_core/saved_population_diagnostics.npz": "6afa63bd0294f4bc0ba1411f66e081f18521f3464e68ea6c637f03d1522afc13",
+      "results/reciprocal_encounter_core/selection.json": "a67af2f7f44bb0e03072660e2d8f68465558c808c20680bc55aafda9cde6af41",
+      "results/reciprocal_encounter_core/summary.json": "6198ca0c0e19ff12e7a38b4c0009ffd69379a5cb6660f429c0aa14db8e574e9c",
+      "results/stratified_encounter_flux/audit_cartesian.py": "30306dc3b46ac10c10ae5837777b996e59acf24d321d0384a3abcc647149eafe",
+      "results/stratified_encounter_flux/audit_saved_states.py": "1abe7a041bbaa2e51899f3607c5be0d6f4b04ae188ba465e7f1d4e14c21cdb88",
+      "results/stratified_encounter_flux/audit_tight_refinement.py": "fc82ccb1ebeeff4c2b69976d192319ea0f08363b12763de99e4d897862dcc70b",
+      "results/stratified_encounter_flux/cartesian_audit.json": "a4506dda0892513189ab0ef569ab2d4f82bf68bfd0fcd3d7b1f1b37e76985cb6",
+      "results/stratified_encounter_flux/cartesian_tight_refinement.json": "fb35f3ac84fcdcb5ab73792780ae6be24305c7432afa6ccb53b524c6fa49c669",
+      "results/stratified_encounter_flux/cases_partial.json": "ead44c593afb0384f6b938f5fea441bf95d6a93b47e9df5355b6c79104589923",
+      "results/stratified_encounter_flux/convergence.png": "f0e2904a1696f9008872031bfa5eac568db9ede2134c72cffb6224d39f322aff",
+      "results/stratified_encounter_flux/declared_inputs.json": "292a081482f78bbaa5ca18aab79f21c9302b3179f6d88314890d23ed8f3b0134",
+      "results/stratified_encounter_flux/evidence_readable.png": "168403f5850f2c973c11f8347493d8b9cd4d1a4bac629b0e5564e16616beb3ec",
+      "results/stratified_encounter_flux/evidence_readable.svg": "de84120112c4f2a43d8e0879a21c533ee1be7739b6639a4b79282065ec53f98c",
+      "results/stratified_encounter_flux/failures.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "results/stratified_encounter_flux/independent_audit.json": "a2a51e0c21b12398886406f94aa78eb0e19b5c77683439f8aa0f2b215b01a88b",
+      "results/stratified_encounter_flux/populations.npz": "a59d2f67aa3786c72a1ce584bafb2045f3d5338ff5e811fe9c17e569bb06ab9d",
+      "results/stratified_encounter_flux/publication_render_receipt.json": "766a4ef839a790ba060328aeda06243317cc22490bda50751dc8fb42c6e89546",
+      "results/stratified_encounter_flux/render_publication.py": "889ec90dce72bfa36b2dc7bd97edad4ce5819aa2270792afed377ff121687230",
+      "results/stratified_encounter_flux/sampling_readable.png": "39ef1bef5420eae91a740f58c7c8caf55c1fd902ff266254787af37c08f2b3ab",
+      "results/stratified_encounter_flux/sampling_readable.svg": "5584b137e8539dab53425b7a9015ae01a2c8987940eb9e23508e861f6e2c9ad0",
+      "results/stratified_encounter_flux/states.npz": "aa340fe03e5c44bdae3e8de197a3e3a89a9992b86f6032c388f31fa00e52bd66",
+      "results/stratified_encounter_flux/summary.json": "5a8699d470dce7553ed14b7669b6228953c7bda30d817ca9d541c8f619e565e0",
+      "results/stratified_encounter_flux/weights.png": "8d484046e21cdc760f9a3b5271c1a044ab1958d6fbd360a23bb09d1db81c5662",
+      "results/stratified_encounter_flux/weights.svg": "1def3562a0a57ab326c327a5bee37386aaa5f1bf9798e66dfced2f135a3d12d8"
+    },
+    "public_artifact_hashes_unchanged": true,
+    "clone_artifact_hashes_unchanged": true,
+    "end_utc": "2026-10-19T20:55:06.065547+00:00",
+    "status": "passed",
+    "public_vs_clone_initial_differences": [
+      {
+        "path": "results/reciprocal_encounter_core/render_publication.py",
+        "clone_sha256": "31916bc9eccc88211d69a72ba55c90b9eb167a2e253623d7be572d3a5d6bbe4a",
+        "public_working_tree_sha256": "12a0942954ccfb57beb8a1401324f4eead81f08ddfe3f45c872ade151574e7da",
+        "classification": "Publication renderer working-tree difference; outside original scientific receipts/inputs and outside replayed audit source files."
+      }
+    ],
+    "public_vs_clone_scientific_artifacts_match": true,
+    "provenance_note": "Frozen clean clone is committed9f8d380. Public working tree contains ongoing publication edits. The only initial tracked result-directory difference is the publication renderer listed explicitly; no original scientific receipt/input or replayed audit source differs. Broad comparison remains false as recorded, while scientific-input verification passes.",
+    "existing_environment_runtime": {
+      "python_executable": "/Users/rogerio/local/sato-morrison/.venv/bin/python",
+      "python_version": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
+      "load_average_at_report": [
+        3.56689453125,
+        3.60498046875,
+        3.052734375
+      ]
+    },
+    "producer_dependency_blob_hashes": [
+      {
+        "receipt": "results/stratified_encounter_flux/summary.json",
+        "commit": "01618f74f0cd621518d30938fcb444ac221566ca",
+        "source": "examples/42_stratified_encounter_flux.py",
+        "expected_sha256": "5a704c4b97b86dc30380de8588cdfbdaa9c7482264dbf7b2ddcd61d6879989ad",
+        "actual_blob_sha256": "5a704c4b97b86dc30380de8588cdfbdaa9c7482264dbf7b2ddcd61d6879989ad",
+        "passed": true
+      },
+      {
+        "receipt": "results/stratified_encounter_flux/summary.json",
+        "commit": "01618f74f0cd621518d30938fcb444ac221566ca",
+        "source": "src/sato_morrison/controls.py",
+        "expected_sha256": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+        "actual_blob_sha256": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+        "passed": true
+      },
+      {
+        "receipt": "results/stratified_encounter_flux/summary.json",
+        "commit": "01618f74f0cd621518d30938fcb444ac221566ca",
+        "source": "src/sato_morrison/reference.py",
+        "expected_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+        "actual_blob_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+        "passed": true
+      },
+      {
+        "receipt": "results/encounter_born_control/summary.json",
+        "commit": "831d2ebec582c40667fc157e516a90c4077e7484",
+        "source": "examples/43_encounter_born_control.py",
+        "expected_sha256": "10f4b5210bd41030204a3e04ca23fc2f7c75f7ff4789af5dfcc942aa8694b3e4",
+        "actual_blob_sha256": "10f4b5210bd41030204a3e04ca23fc2f7c75f7ff4789af5dfcc942aa8694b3e4",
+        "passed": true
+      },
+      {
+        "receipt": "results/encounter_born_control/summary.json",
+        "commit": "831d2ebec582c40667fc157e516a90c4077e7484",
+        "source": "src/sato_morrison/reference.py",
+        "expected_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+        "actual_blob_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+        "passed": true
+      },
+      {
+        "receipt": "results/antithetic_encounter_flux/summary.json",
+        "commit": "f25557173832017f74053877d85d38bfa6362fe9",
+        "source": "examples/44_antithetic_encounter_flux.py",
+        "expected_sha256": "0516ceaaaa06c18a63e94718af6156bfe34c4e6103f75773c3f4f44b767fc190",
+        "actual_blob_sha256": "0516ceaaaa06c18a63e94718af6156bfe34c4e6103f75773c3f4f44b767fc190",
+        "passed": true
+      },
+      {
+        "receipt": "results/antithetic_encounter_flux/summary.json",
+        "commit": "f25557173832017f74053877d85d38bfa6362fe9",
+        "source": "src/sato_morrison/controls.py",
+        "expected_sha256": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+        "actual_blob_sha256": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+        "passed": true
+      },
+      {
+        "receipt": "results/antithetic_encounter_flux/summary.json",
+        "commit": "f25557173832017f74053877d85d38bfa6362fe9",
+        "source": "src/sato_morrison/reference.py",
+        "expected_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+        "actual_blob_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+        "passed": true
+      },
+      {
+        "receipt": "results/antithetic_encounter_flux/original_attempt.json",
+        "commit": "0c1aaa3",
+        "source": "examples/44_antithetic_encounter_flux.py",
+        "expected_sha256": "12d8e3e84edfa515cc702e65edd1626b99df00b8e7a46e2961070a1be63cbca9",
+        "actual_blob_sha256": "12d8e3e84edfa515cc702e65edd1626b99df00b8e7a46e2961070a1be63cbca9",
+        "passed": true
+      },
+      {
+        "receipt": "results/antithetic_encounter_flux/original_attempt.json",
+        "commit": "0c1aaa3",
+        "source": "src/sato_morrison/controls.py",
+        "expected_sha256": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+        "actual_blob_sha256": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+        "passed": true
+      },
+      {
+        "receipt": "results/antithetic_encounter_flux/original_attempt.json",
+        "commit": "0c1aaa3",
+        "source": "src/sato_morrison/reference.py",
+        "expected_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+        "actual_blob_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+        "passed": true
+      },
+      {
+        "receipt": "results/antithetic_encounter_movie/summary.json",
+        "commit": "a770e4bb7a0456788a7fc5c5360f5ece643578c1",
+        "source": "examples/45_antithetic_encounter_movie.py",
+        "expected_sha256": "0feb9e73ba4192ff3702c153c065f08160224de415e3293e7138ce7d498d7c50",
+        "actual_blob_sha256": "0feb9e73ba4192ff3702c153c065f08160224de415e3293e7138ce7d498d7c50",
+        "passed": true
+      },
+      {
+        "receipt": "results/antithetic_encounter_movie/summary.json",
+        "commit": "a770e4bb7a0456788a7fc5c5360f5ece643578c1",
+        "source": "src/sato_morrison/controls.py",
+        "expected_sha256": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+        "actual_blob_sha256": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+        "passed": true
+      },
+      {
+        "receipt": "results/antithetic_encounter_movie/summary.json",
+        "commit": "a770e4bb7a0456788a7fc5c5360f5ece643578c1",
+        "source": "src/sato_morrison/reference.py",
+        "expected_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+        "actual_blob_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+        "passed": true
+      },
+      {
+        "receipt": "results/reciprocal_encounter_core/summary.json",
+        "commit": "88915fbd603594233a47991a8a452964fafe88f4",
+        "source": "examples/46_reciprocal_encounter_core.py",
+        "expected_sha256": "f5728ee66caf0f832547ec64ec0d541f9339dfab306de01a715598e896fdbcaa",
+        "actual_blob_sha256": "f5728ee66caf0f832547ec64ec0d541f9339dfab306de01a715598e896fdbcaa",
+        "passed": true
+      },
+      {
+        "receipt": "results/reciprocal_encounter_core/summary.json",
+        "commit": "88915fbd603594233a47991a8a452964fafe88f4",
+        "source": "src/sato_morrison/controls.py",
+        "expected_sha256": "f38f4e6da16c129011ee7a4242af978de7909e7340165f1d693450f075eba055",
+        "actual_blob_sha256": "f38f4e6da16c129011ee7a4242af978de7909e7340165f1d693450f075eba055",
+        "passed": true
+      },
+      {
+        "receipt": "results/reciprocal_encounter_core/summary.json",
+        "commit": "88915fbd603594233a47991a8a452964fafe88f4",
+        "source": "src/sato_morrison/reference.py",
+        "expected_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+        "actual_blob_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+        "passed": true
+      }
+    ],
+    "producer_dependency_blob_hashes_passed": true
+  },
+  "tests": {
+    "command": ".venv/bin/python -m pytest -q",
+    "completion": "299 passed in 97.66s (0:01:37)",
+    "source_commit": "9f8d3807f6aa1945b6d3deec4760bf19b88c4275",
+    "log_sha256": "d80a4e6a2791df5527ca01eb0591ac12b73983cf3f666e0d1a43bb94acd069c6",
+    "wall_s": 98.37,
+    "user_s": 157.79,
+    "sys_s": 8.44,
+    "process_peak_rss_bytes": 1487765504,
+    "timing_scope": "Shared M4; documentation rendering and independent saved-data replays occurred concurrently. Whole-suite costs are not matched-error physics benchmarks.",
+    "linux_ci": {
+      "conclusion": "",
+      "headSha": "cafa3b6c53f0edda271704e87963a11057117bd7",
+      "status": "in_progress",
+      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/39323257695"
+    }
+  },
+  "analytical_findings": [
+    "For completed nongrazing identical-particle central-potential encounters in a uniform field, the branch-dependent transverse reflection combined with time reversal leaves qB unchanged and defines an involution modulo axial rotation.",
+    "The reciprocal map preserves Gibbs-weighted incoming crossing flux; its reduced absolute Jacobian is b*u*p/(b_star*u_star*p_star). The removed impact angle has absolute Jacobian one, including its anti-equivariant sign.",
+    "On the completed reciprocal core C=D intersect R(D), the exact conditional mean magnetic-moment increment integrates to zero. Adding constructed reverse partners to enforce numerical cancellation was not used.",
+    "The bounded band contains a small flux subset whose inverse is outside the band. Its large contribution to the signed drift prevents interpreting that drift as full-equilibrium plasma cooling.",
+    "Two close encounters miss endpoint accuracy although energy and moment checks pass; conserved moments alone do not certify a trajectory."
+  ],
+  "novelty_scope": "A tested model-specific reciprocity benchmark and finite-box diagnostic. No priority claim for reciprocity, magnetic-moment exchange or variance reduction. JB20 arXiv:2008.06080v1 printed p.6 Eq.(20) and following discussion distinguishes ordinary time reversal in an external magnetic field from general postulated detailed balance; printed p.3 Eqs.(1)-(2) motivates equilibrium correlations and potential of mean force.",
+  "remaining_work": [
+    "Resolve the two fixed endpoint accuracy failures before calling the 128-control reciprocal campaign fully trajectory-verified; retain original failures in any followup.",
+    "Resolve all three reciprocal-core sampling comparisons before treating the retrospective core quadrature as converged. Its zero-oracle residual alone is insufficient.",
+    "Converge the complete impact and velocity domains with moment-tail tests; establish completed scattering coverage and boundary limits.",
+    "Test matched broader populations at stronger fields; close plasma screening, successive-encounter correlations and evolving populations before physical rates or lifetimes.",
+    "Complete long-time/infinite-domain Landau and full dipole/nonaxisymmetric evolution refinements."
+  ],
+  "upstream_pr": null,
+  "executed_commands": [
+    "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 .venv/bin/python examples/46_reciprocal_encounter_core.py  # exit 1 after saving unresolved gates",
+    ".venv/bin/python results/reciprocal_encounter_core/audit_saved_states.py",
+    ".venv/bin/python -m pytest tests/test_encounter_reciprocity.py -q",
+    ".venv/bin/python -m pytest tests/test_public_audit_failures.py -q",
+    ".venv/bin/python -m pytest tests/test_reciprocal_audit_failures.py -q",
+    ".venv/bin/python -m pytest -q",
+    "SM_RECIPROCAL_FIGURE_OUTPUT=results/reciprocal_encounter_core/publication MPLBACKEND=Agg .venv/bin/python results/reciprocal_encounter_core/render_publication.py",
+    "latexmk -cd -pdf -interaction=nonstopmode -halt-on-error notes/implementation.tex",
+    "Full-history clean clone saved-data audit commands are recorded in clean_clone_replay."
+  ],
+  "documentation_sha256": {
+    "README.md": "750d88534807453c8110371eadb44db6c81bd3d22ee2fb9baf6c1ef5e6661589",
+    "examples/README.md": "0ab31ea9c9ad712caa5f3946913a64114770ddad14c76087a05f1f7c85f27fd9",
+    "notes/implementation.tex": "44c74ea1ca75e4d3893f83f9b9f70f0d9dcf4582d14a0c288080020857ba87fd",
+    "notes/implementation.pdf": "f87e0b6d40513a2464754a79526c6510e062b0738a6956daa0fde0fc3c90835f",
+    "notes/references.bib": "3908e53200e343007c09808a271b80520d7ac23abfa209056c3ce15a42faaa41",
+    "results/validation.csv": "2dbf0141c9669caedd8fab7b341d82ea90d009016a9d64c3fac8d2ec898990b2"
+  }
+}

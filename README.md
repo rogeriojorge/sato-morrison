@@ -386,6 +386,27 @@ The movie follows the same fixed impact and speeds at **φ = 1.58920** and **1.5
 
 The clock slows near the closest approaches. Trails use original samples and stop at each path's exit; squares mark exits. The 3D view compresses z; close projections have equal spatial scales. These zero-COM moment curves differ from thermal-COM-averaged moments. The independent audit passes **48** checks of paths, energy, canonical angular momentum, moment histories, exits and every movie-frame hash. [Poster](results/antithetic_encounter_movie/poster.svg) · [Inputs, arrays, accuracy checks and costs](results/antithetic_encounter_movie/summary.json) · [Independent audit](results/antithetic_encounter_movie/independent_audit.json)
 
+### Reciprocal encounters at the same field
+
+For these uniform-field, identical-particle central-force encounters, combining time reversal with a transverse reflection and an exit-dependent axial sign gives a physical reciprocal experiment at the same **B**. The map **ℛ** differs from the phase map T above and includes both transmitted and reflected exits. At the finite incoming plane, the equilibrium crossing measure includes **g = exp[−Uin/(mθ)]**. For completed, nongrazing paths, its reciprocal core **C = D ∩ ℛ(D)** stays inside the incident band in both directions; the exact core integral of the signed moment increment **c** vanishes.
+
+![Same-field reflection and velocity reversal, the reciprocal flux Jacobian, finite-plane Gibbs factor and exact core balance.](results/reciprocal_encounter_core/publication/reciprocal_equations.svg)
+
+The retrospective calculation keeps the existing physical members and their positive half weights; it adds no inverse partners to force cancellation. The finite core quadrature remains unresolved in three comparisons. A fixed campaign of **843 new solves** also retains **two of 128** fine reciprocal endpoint failures, one transmitted and one reflected. The other eleven trajectory gates pass. These checks test this finite-plane pair model; the earlier bare-Maxwellian incoming results retain their original measure.
+
+![Actual saved signed integrals in the full band, reciprocal core and escaping component, with all core quadrature gate groups.](results/reciprocal_encounter_core/publication/core_balance.svg)
+
+![Selected physical reciprocal endpoint, time, moment and timestep errors, including both endpoint failures, alongside three-level finite-difference Jacobians.](results/reciprocal_encounter_core/publication/reciprocal_validation.svg)
+
+| Check | Largest measured discrepancy | Target |
+|---|---:|---:|
+| Core sampling / replica comparisons | **5.39%**; three failures | 5% |
+| Fine reciprocal endpoints | **2.00 × 10⁻⁸**; two failures | 10⁻⁸ |
+| Final flux-Jacobian comparison | 3.42 × 10⁻⁹ | 10⁻⁵ |
+| Saved endpoint Gibbs log identity | 3.77 × 10⁻¹¹ | 10⁻⁹ |
+
+[Inputs, every new endpoint, gates and costs](results/reciprocal_encounter_core/summary.json) · [Saved core integrals](results/reciprocal_encounter_core/saved_balance.json) · [Independent audit: 8,102 checks](results/reciprocal_encounter_core/independent_audit.json) · [Figure inputs and hashes](results/reciprocal_encounter_core/publication/publication_render_receipt.json)
+
 The specified screened encounters allow individual-moment exchange, while the prototype enforces exact conservation of the full μ marginal. A calibrated plasma closure still needs complete incident-domain convergence, screening tied to plasma parameters, successive-encounter correlations and a measured mixing time. A constrained dipole lifetime remains open.
 
 Recorded costs on the shared Apple M4 are below. Parent and worker memory figures are separate process-lifetime peaks; aggregate job memory was not measured.
@@ -408,8 +429,9 @@ Recorded costs on the shared Apple M4 are below. Parent and worker memory figure
 | Physical-pair extension; 215,356 new encounters | ≥2,362.5 s | Unavailable | 0.0295 GB |
 | Saved-array receipt recovery; no ODE solves | 2.819 s | 1.129 GB | — |
 | Two phase-partner paths and 120-frame movie | 47.26 s | 0.900 GB | — |
+| Reciprocal-core diagnostic; 843 new encounters | 24.64 s | 0.770 GB | 0.0257 GB |
 
-The physical-pair extension's logged time excludes reused runs and figure rendering; its exact final wall time was lost. Receipt recovery is separate. The movie time includes rendering. The earlier broad-speed extension also excludes reused solves and figure rendering. The [October 19 review](results/physical_review_2026_10_19.json) records the new studies and independent checks. The [earlier review and reproducibility record](results/review_refinement.json) collects the source identities, tests and preserved failures.
+The physical-pair extension's logged time excludes reused runs and figure rendering; its exact final wall time was lost. Receipt recovery is separate. The movie time includes rendering. The earlier broad-speed extension also excludes reused solves and figure rendering. The [finalization review](results/finalization_2026_10_19.json) records the reciprocal-core diagnostic and public audit checks. The [October 19 review](results/physical_review_2026_10_19.json) records the preceding studies; the [earlier reproduction record](results/review_refinement.json) collects their source identities, tests and preserved failures.
 
 ## Runtime, memory and failure diagnostics
 
@@ -435,9 +457,10 @@ SM_ANTITHETIC_AUDIT_OUTPUT="$audit_output/physical_pairs.json" python results/an
 SM_ANTITHETIC_MAP_AUDIT_OUTPUT="$audit_output/maps.json" python results/antithetic_encounter_flux/audit_contribution_maps.py
 SM_PHASE_MOVIE_AUDIT_OUTPUT="$audit_output/movie.json" python results/antithetic_encounter_movie/audit_saved_paths.py
 SM_ANTITHETIC_REFINEMENT_AUDIT_OUTPUT="$audit_output/saved_refinement.json" python results/antithetic_encounter_flux/audit_saved_refinement.py
+SM_RECIPROCAL_AUDIT_OUTPUT="$audit_output/reciprocal_core.json" python results/reciprocal_encounter_core/audit_saved_states.py
 ```
 
-The first five expected saved-array check counts are **697, 253, 1,371, 15 and 48**, respectively; the last audit verifies the saved finer control. Each command saves its receipt before returning a nonzero exit if its audit fails. A passing audit reconstructs the published outcomes, including the raw and control estimators' failed convergence gates. The coarse Cartesian failures and their finer controls are separate records. Use a full Git clone: historical source checks read the recorded producer commits.
+The first five expected saved-array check counts are **697, 253, 1,371, 15 and 48**, respectively; the next audit verifies the saved finer control, and the reciprocal-core audit passes **8,102 checks**. Each command saves its receipt before returning a nonzero exit if its audit fails. A passing audit reconstructs the published outcomes, including the raw and control estimators' failed convergence gates and the reciprocal study's unresolved checks. Use a full Git clone: historical source checks read the recorded producer commits.
 
 To repeat the independent Cartesian controls with new trajectory solves, run the command below. It saves the original coarse failure alongside its passing finer control and exits nonzero:
 
@@ -496,13 +519,17 @@ SM_BORN_CONTROL_OUTPUT=results/born_control_reproduction python examples/43_enco
 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 SM_ANTITHETIC_FLUX_OUTPUT=results/physical_pair_reproduction python examples/44_antithetic_encounter_flux.py
 # Two fixed physical phase partners and their checked Cartesian movie:
 SM_ANTITHETIC_MOVIE_OUTPUT=results/phase_pair_movie_reproduction MPLBACKEND=Agg python examples/45_antithetic_encounter_movie.py
+# Same-field reciprocal controls and retrospective core balance; retains failed gates and exits nonzero:
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 SM_RECIPROCAL_OUTPUT=results/reciprocal_reproduction python examples/46_reciprocal_encounter_core.py
+# Render the archived reciprocal diagnostic without new solves:
+SM_RECIPROCAL_FIGURE_OUTPUT=results/reciprocal_figures_reproduction MPLBACKEND=Agg python results/reciprocal_encounter_core/render_publication.py
 # Independently reconstruct the published peak data, preserving the original receipt:
 SM_PEAK_AUDIT_OUTPUT=results/encounter_peak_audit_reproduction.json python results/encounter_peak_resolution/audit_saved_states.py
 ```
 
 Example 24 exits nonzero because the declared angular and Cartesian checks remain unresolved. It saves the results before raising the error.
 
-**274 tests pass locally** (113.07 s) and on [Linux CI](https://github.com/rogeriojorge/sato-morrison/actions/runs/39293130808) (259.54 s at revision `f255571`). The encounter tests include free helices, exact finite-radius repulsive Coulomb orbits, a sensitive screened trajectory checked at high precision, and signed-kick interpolation through zero with independent Gaussian center averaging. Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
+**299 tests pass locally** (97.66 s). The encounter tests include free helices, exact finite-radius repulsive Coulomb orbits, a sensitive screened trajectory checked at high precision, and signed-kick interpolation through zero with independent Gaussian center averaging. Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
 
 | Capability | Current evidence |
 |---|---|
@@ -512,7 +539,7 @@ Example 24 exits nonzero because the declared angular and Cartesian checks remai
 | Nonuniform evolution | Completed three-field pilots and mirror refinement; dipole/nonaxisymmetric refinements remain open |
 | Collision-model comparison | Four operators from shared initial data; independently checked short-time Landau trajectories and analytical controls |
 | Landau evolution | 12 trajectories and 100 independent stage checks; required refinement changes below 1% of relaxation increments through t = 0.2; long-time and infinite-domain limits remain open |
-| Microscopic screened encounters | High-precision selected paths; physical-pair bounded quadrature passes 30 empirical gates; separate coarse Cartesian failure and passing fine control retained |
+| Microscopic screened encounters | Physical-pair bounded quadrature passes 30 empirical gates; reciprocal study retains two endpoint and three core quadrature failures; independent audits reproduce these outcomes |
 | Physical rates and lifetimes | Uncalibrated; no metastable regime or dipole lifetime established |
 
 The [example catalogue](examples/README.md), [validation ledger](results/validation.csv), [current physical review](results/physical_review_2026_10_19.json), [earlier reproduction record](results/deep_reproduction.json) and [technical notes](notes/implementation.pdf) contain the complete commands and derivations. [LaTeX source](notes/implementation.tex) · [Bibliography](notes/references.bib). Original project material is [MIT](LICENSE); third-party papers are stored outside the public repository.
