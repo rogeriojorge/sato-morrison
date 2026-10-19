@@ -2,11 +2,17 @@
 from pathlib import Path
 import hashlib
 import json
+import os
+import platform
+import resource
 import subprocess
+import sys
+from time import perf_counter
 import numpy as np
 ROOT=Path(__file__).resolve().parents[2];D=Path(__file__).resolve().parent
-OUT=D/'contribution_map_audit.json'
+OUT=Path(os.environ.get('SM_ANTITHETIC_MAP_AUDIT_OUTPUT',D/'contribution_map_audit.json'))
 if OUT.exists():raise FileExistsError(OUT)
+started=perf_counter()
 s=json.loads((D/'summary.json').read_text());inp=s['inputs']
 with np.load(ROOT/'results/stratified_encounter_flux/states.npz') as f:b={k:f[k] for k in ('nodes','initial_relative_velocity','final_relative_velocity','time')}
 with np.load(D/'states.npz') as f:a={k:np.concatenate((b[k],f[k])) for k in b}
@@ -41,4 +47,7 @@ def sha(f):return hashlib.sha256(f.read_bytes()).hexdigest()
 receipt=dict(status='passed' if all(checks) else 'failed',scope='Independent endpoint reconstruction of second moments and explicit integer-bin accumulation, with actual original and partner locations and positive halfweights. Fixed rho/b threshold .8 is descriptive concentration, not a convergence gate.',
     checks_passed=sum(checks),check_count=len(checks),maximum_bin_absolute_errors=errors,cases=cases,
     input_sha256={f.name:sha(f) for f in (D/'summary.json',D/'states.npz',D/'populations.npz',D/'contribution_maps.npz')},source_sha256=sha(Path(__file__)),source_uncommitted=bool(subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain','--',str(Path(__file__).relative_to(ROOT))],text=True).strip()))
+receipt.update(audit_commit=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip(),
+    versions=dict(numpy=np.__version__,python=platform.python_version()),platform=platform.platform(),processor=s.get('processor'),
+    wall_s=perf_counter()-started,peak_rss_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024))
 OUT.write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps(receipt,indent=2))

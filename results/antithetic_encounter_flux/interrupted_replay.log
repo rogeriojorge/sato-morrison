@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/Users/rogerio/local/sato-morrison/examples/44_antithetic_encounter_flux.py", line 166, in <module>
+    record={('node' if k=='nodes' else k):saved[k][i].tolist() for k in saved.files}
+                                          ~~~~~^^^
+  File "/Users/rogerio/local/sato-morrison/.venv/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py", line 257, in __getitem__
+    return format.read_array(
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/rogerio/local/sato-morrison/.venv/lib/python3.12/site-packages/numpy/lib/_format_impl.py", line 871, in read_array
+    data = _read_bytes(fp, read_size, "array data")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rogerio/local/sato-morrison/.venv/lib/python3.12/site-packages/numpy/lib/_format_impl.py", line 1015, in _read_bytes
+    r = fp.read(size - len(data))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.13_2/Frameworks/Python.framework/Versions/3.12/lib/python3.12/zipfile/__init__.py", line 1008, in read
+    data = self._read1(n)
+           ^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.13_2/Frameworks/Python.framework/Versions/3.12/lib/python3.12/zipfile/__init__.py", line 1084, in _read1
+    data = self._decompressor.decompress(data, n)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
