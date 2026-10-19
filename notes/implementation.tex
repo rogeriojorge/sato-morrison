@@ -3976,15 +3976,130 @@ production data or any sampling gate. The followup is recorded in
 \path{results/stratified_encounter_flux/cartesian_tight_refinement.json}.
 
 
-\subsection*{Two fixed physical phase partners}
-Example 45 illustrates the phase involution
+
+\subsection*{Exact physical phase pairing of the bounded integral}
+The phase map $T(b,u,p,\varphi)=(b,u,p,(\pi-\varphi)\bmod 2\pi)$ is
+an involution. It preserves uniform phase mass and each phase cell of
+example 42. Thus $\int A\circ T\,\dd\mathcal F=\int A\,\dd\mathcal F$.
+Writing the even observable and finite estimator gives
 \[
- T(b,u,p,\varphi)=(b,u,p,(\pi-\varphi)\bmod 2\pi),\qquad T^2=I.
+ A_{\rm even}(z)=\frac{A(z)+A(Tz)}{2},\qquad
+ \widehat I_A^{\rm pair}=\sum_s\frac{W_s}{N_s}
+                    \sum_{j=1}^{N_s}A_{\rm even}(z_{sj}).
 \]
-It preserves the uniform phase measure and each central or complementary
-phase interval used above. An odd first-Born contribution cancels under
-this map; the actual nonlinear trajectories and moment changes need not
-cancel. The fixed archived impact and speeds are
+Each physical member has the positive weight $W_s/(2N_s)$; no state or
+probability is removed. The entire $T$-odd part of any observable cancels
+exactly in the pair average. First-Born work is the leading weak-force odd
+term; the actual nonlinear even response need not vanish. Only the four
+original randomized low-discrepancy samples are independent. The members
+of each phase pair are correlated. This identity supplies no fixed Sobol
+convergence, variance or cost-efficiency guarantee.
+
+Example 44 preserves the incident domain, seeds, nested original sample
+counts, exact cell masses and targets. It adds actual nonlinear physical
+partners rather than an approximate control, with matched primary
+$L=24,40,48$ populations and both paired and memberwise selected endpoint
+and active-step checks. Fine replicas contain 30720 original--partner pairs,
+or 61440 physical members each. The production saves 215356 new states,
+reuses 215148 base references, and has no trajectory failure. All 30
+reconstructed campaign gates pass. The largest quadrature comparison is
+$2.69578\%$, for the signed mean between seeds 4201 and 4203, against $5\%$.
+The largest full-primary $L=24\to40$ and $L=40\to48$ changes are
+$0.31572\%$ and $0.0007440\%$, against $0.5\%$. Selected boundary and
+active-step checks also pass for each member, so cancellation between
+partners cannot hide those selected trajectory errors.
+
+As above, positive fine-reference scales are
+$(I_2/\mu_{\rm ref},I_2,I_2,I_R)$ with $\mu_{\rm ref}=m\theta/B$.
+The $5\%$ mean or cross criterion is therefore not $5\%$ relative error
+in a small signed integral. The four fine signed means range from
+$-5.77431\times10^{-5}$ to $-5.10676\times10^{-5}$, and second integrals
+from $6.11234\times10^{-5}$ to $6.19382\times10^{-5}$, per partner density
+in normalized units. The alternate phase partition gives
+$(-5.31489\times10^{-5},6.16969\times10^{-5})$ for these two entries.
+The earlier raw and first-Born-control failures remain unchanged.
+
+\subsection*{Physical contribution maps and remaining cutoffs}
+Define relative gyroradius $\rho=p/|\Omega|$, $\Omega=qB/m$.
+In a zero-COM state, either individual orbit has radius $\rho/2$.
+For free relative motion, $\rho/b=1$ and $\varphi=\pi/2$ give zero
+separation at the encounter plane $z=0$. Repulsion changes the actual
+trajectories. The descriptive region
+$\rho/b\geq0.8$ carries $1.09764$--$1.10454\%$ of incoming flux and
+$37.2366$--$38.3645\%$ of the second integral across the four fine samples.
+The actual screened paths deflect; this free-orbit geometry identifies
+where large physical weighted contributions occur, not an unmodified
+trajectory or kinetic collision rate.
+
+The saved-data maps use every finest $L=24$ physical member, including
+reflected exits, from all four main independent samples. Each member
+contributes its exact incoming half weight times its thermal-center-averaged
+individual squared moment increment. Fixed bins are 32 uniform impact
+bins on $[1.2,2.4]$, 32 uniform ratio bins on $[0,2.5/(2\times1.2)]$,
+and 48 uniform phase bins on $[0,2\pi]$. Each sample's full histogram sums
+to its own $I_2$. The four unnormalized histograms are averaged
+arithmetically; displayed color is the percentage of the arithmetic mean
+full $I_2$ in each bin. The two projections use $32\times32$ and
+$48\times32$ bins and a shared logarithmic color scale. White bins have
+zero saved contribution. These are contribution sums, not densities or
+point counts. The independent map audit passes 15 checks, with maximum
+per-bin reconstruction difference $4.77\times10^{-22}$; it does not
+establish per-bin quadrature convergence.
+
+For the four main samples and alternate partition, the normalized
+squared-kick ratio $Q=\lambda^2I_2/(\mu_{\rm ref}^2I_R)$ ranges from
+$3.410089$ to $3.447301$, versus the same-field narrow-band value
+$1.004140$. Incoming-weighted inverse states outside any original band
+carry $0.18155$--$0.21254\%$ of main-sample flux and
+$17.2385$--$19.4624\%$ of its second integral. The alternate partition
+gives $0.188954\%$ and $19.09445\%$. As before, these are finite-plane
+kinematic cutoff and normalized squared-kick diagnostics, not measured
+kinetic mixing, full-Maxwellian cooling or lifetime results.
+
+\subsection*{Receipt recovery and independent physical checks}
+The physical producer at revision \texttt{0c1aaa3} saved every new state,
+checkpoint, population and case before a NumPy boolean prevented final
+JSON serialization. A strict deterministic saved-state replay at
+\texttt{f255571} reconstructs the 30 gates without any new ODE solve.
+All 436 original artifact hashes are preserved; reconstructed populations
+are exact and cases are byte-identical. After exact concatenation checks,
+redundant checkpoints were archived outside the public tree; the combined
+arrays remain public, with archival identities recorded in
+\path{results/antithetic_encounter_flux/checkpoint_archival.json}. The top-level recovered receipt's
+commit, versions and environment describe recovery, while its
+\texttt{original\_producer} entry identifies the physical source. The
+original source, traceback and lost-field disclosure remain in
+\path{results/antithetic_encounter_flux/original_attempt.json} and the
+associated original source/log files. The independent saved-array audit
+passes 1371 checks, with the initial 1370-check receipt also retained.
+
+The physical run's last logged elapsed time is $2362.5$ seconds, a lower
+bound excluding later archive writing. Its exact final wall time and
+parent-process peak were not persisted and remain unavailable. The
+persisted maximum worker-process peak is 29523968 bytes. This time covers
+new partner and refined-control solves, excluding reused runs and figure
+rendering. Receipt recovery separately takes $2.819$ seconds and peaks at
+1129037824 bytes, with zero ODE solves. These recovery costs are not
+substituted for the physical run's missing costs.
+
+The separate selected Cartesian audit retains a failed coarse comparison:
+member 331625, integrated with step $0.2$, differs in position by
+$3.424\times10^{-8}$, velocity by $6.808\times10^{-8}$ and time by
+$1.163\times10^{-8}$, beyond the unchanged $10^{-8}$ targets. The other
+three selected coarse paths pass. Its already-saved step-$0.025$ control,
+member 430424, passes the same targets (position $2.777\times10^{-10}$,
+velocity $5.536\times10^{-10}$, time $9.495\times10^{-11}$).
+The Cartesian receipt remains failed, with a separate passing finest-control
+status. Hypothetically replacing the coarse contribution by its saved fine
+control changes any positive-scaled ensemble integral by at most
+$8.85\times10^{-13}$; production arrays remain unchanged. These accuracy
+checks are distinct from the 30 passing campaign gates and from empirical
+quadrature convergence.
+
+\subsection*{Two fixed physical phase partners}
+Example 45 illustrates the same phase involution with two actual Cartesian
+experiments. Their nonlinear even responses remain nonzero.
+The fixed archived impact and speeds are
 $(b,u,p)=(1.2161710500723555,1.546221967601278,2.406217687668966)$.
 Phases are $1.5892040962495242$ and $1.552388557340269$ radians.
 Each is a separate two-particle physical experiment with zero center-of-mass
@@ -4002,8 +4117,8 @@ differences are $2.215\times10^{-10}$ and $7.628\times10^{-12}$;
 maximum relative energy error across the four solves is
 $7.340\times10^{-14}$. Initial individual magnetic moment is $0.36186772$.
 The changes are both positive, $0.10585850$ and $0.14121239$.
-These fixed examples demonstrate no nonlinear cancellation or ensemble
-convergence.
+The nonlinear even response remains nonzero. These two paths do not
+establish an ensemble integral.
 
 The 120-frame, 10-frame-per-second animation reveals only original Cartesian
 samples at or before one shared physical clock. It allocates 84 frames

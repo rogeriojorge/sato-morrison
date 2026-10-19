@@ -353,18 +353,32 @@ A subsequent **known-zero-control reanalysis uses these same trajectories**. A f
 
 [Control equations, fixed choices and every failed gate](results/encounter_born_control/summary.json)
 
-The bounded squared-kick ratio **Q = λ²I₂/(μref²IR)** compares moment kicks with spatial kicks; **I₂** and **IR** are their flux-weighted squared increments and **μref = mθ/B**. At the same **B = 2**, Q is **3.354–3.389** across the four broad replicas (**3.503** with the alternate partition), versus **1.004** for the earlier narrow speed band. Incoming-population choice materially changes this diagnostic. Q measures no kinetic mixing time or lifetime.
-
-Outgoing inverse states leave the incoming impact or speed bands for **0.200–0.239%** of incoming flux, carrying **16.86–17.72%** of the second integral across the four replicas. The alternate partition gives **0.188%** and **20.04%**. These use the original incoming weights at finite exit planes. The bounded negative mean therefore establishes no net perpendicular cooling of a full Maxwellian plasma. [Independent flux, axial-invariant and cutoff audit: 697 checks](results/stratified_encounter_flux/independent_audit.json) · [Independent control audit: 253 checks](results/encounter_born_control/independent_audit.json)
+[Independent raw-flux audit: 697 checks](results/stratified_encounter_flux/independent_audit.json) · [Independent control audit: 253 checks](results/encounter_born_control/independent_audit.json)
 
 Two marginal coarse Cartesian velocity checks remain recorded as failures. Smaller steps resolve both at the unchanged accuracy target; replacing those two contributions changes the ensemble by at most **9 × 10⁻¹²** on its positive reference scales. This trajectory refinement does not remove the sampling failures. [Original Cartesian checks](results/stratified_encounter_flux/cartesian_audit.json) · [Fixed finer-step followup](results/stratified_encounter_flux/cartesian_tight_refinement.json)
 
 
+### Pairing actual nonlinear encounters
+
+The phase map **T** preserves every cell's incoming measure. Averaging each observable with its actual physical partner removes its entire T-odd part. The leading weak-force work is one such odd contribution; the nonlinear even response can remain nonzero.
+
+![The phase map, even observable and exact positive half-weight estimator.](results/antithetic_encounter_flux/pair_weights.svg)
+
+Each member receives **Wₛ/(2Nₛ)**. Partners are correlated; only the four original randomized samples are independent. The study adds **215,356** physical solves and reuses **215,148** saved states. All trajectories exit, and all **30** reconstructed campaign gates pass. The largest sampling, replica or partition change is **2.70%** against **5%**. Signed-mean differences use the positive scale **I₂/μref**; cross differences use **I₂**. This is not 5% relative accuracy in a small signed integral, a confidence interval or a guarantee of efficiency.
+
+![Four independent physical-pair samples and every grouped fixed check, divided by its own declared target.](results/antithetic_encounter_flux/sampling_readable.svg)
+
+![Physical flux-weighted squared-moment contributions across the full bounded incident domain.](results/antithetic_encounter_flux/contribution_maps.svg)
+
+Here the relative gyroradius is **ρ = p/|Ω|**, with **Ω = qB/m**. For free relative motion, **ρ/b = 1** and **φ = π/2** give zero separation at the encounter plane **z = 0**. Repulsion changes the actual trajectories. The region **ρ/b ≥ 0.8** carries about **1.10%** of incoming flux but **37.24–38.36%** of the squared-moment integral across the four samples. The maps average four **unnormalized flux × squared-kick histograms**, then show each bin's percentage of the mean total. Bins are **32 × 32** in impact versus **ρ/b** and **48 × 32** in phase versus **ρ/b**; color is logarithmic and white means zero saved contribution. These are contribution sums, with no per-bin convergence claim. [Arrays, bins and render receipt](results/antithetic_encounter_flux/publication_render_receipt.json) · [Independent map audit: 15 checks](results/antithetic_encounter_flux/contribution_map_audit.json)
+
+At the same **B = 2**, the bounded squared-kick ratio **Q = λ²I₂/(μref²IR)** is **3.410–3.447**, versus **1.004** for the earlier narrow speed band. Here **IR** is the flux-weighted squared guiding-center displacement and **μref = mθ/B**. Q measures no kinetic mixing time or lifetime. Inverse states outside the incident bands carry **0.182–0.213%** of incoming flux and **17.24–19.46%** of its second integral; the alternate partition gives **0.189%** and **19.09%**. These finite-plane, incoming-weight diagnostics establish no net cooling of a full Maxwellian plasma. [Independent saved-array audit: 1,371 checks](results/antithetic_encounter_flux/independent_audit.json)
+
+A separate coarse Cartesian check still fails; its already-saved smaller-step control passes the unchanged target. Hypothetically replacing that one contribution changes any scaled ensemble integral by at most **8.85 × 10⁻¹³**. Production arrays remain unchanged. [Failed coarse and passing finer controls](results/antithetic_encounter_flux/cartesian_audit.json) · [Saved-refinement audit](results/antithetic_encounter_flux/saved_refinement_audit.json)
+
+The original run saved every trajectory before its final JSON receipt failed. A deterministic replay recovered the gates without new ODE solves and preserved all **436** original artifact hashes. The original exact wall time and parent memory peak are unavailable; logged elapsed time is at least **2,362.5 s**. [Original attempt](results/antithetic_encounter_flux/original_attempt.json) · [Recovered receipt and scope](results/antithetic_encounter_flux/summary.json)
+
 ### Two physical phase partners
-
-Reflecting the incoming phase around **π/2** preserves its uniform measure:
-
-![The phase involution leaves impact and incoming speeds fixed.](results/antithetic_encounter_movie/phase_map.svg)
 
 The movie follows the same fixed impact and speeds at **φ = 1.58920** and **1.55239 radians**. Each is an actual two-particle experiment with zero center-of-mass position and velocity. Both transmit, at normalized times **44.38** and **83.33**. Their individual magnetic-moment changes are both positive, **0.10586** and **0.14121**: the nonlinear responses need not cancel under this phase map.
 
@@ -391,9 +405,11 @@ Recorded costs on the shared Apple M4 are below. Parent and worker memory figure
 | Independent saved-array audit of the peak diagnostic | 0.234 s | 0.124 GB | — |
 | Fresh stratified flux; 215,218 encounters | 1,808.48 s | 1.271 GB | 0.107 GB |
 | Known-zero control of the same saved encounters | 4.69 s | 0.543 GB | — |
+| Physical-pair extension; 215,356 new encounters | ≥2,362.5 s | Unavailable | 0.0295 GB |
+| Saved-array receipt recovery; no ODE solves | 2.819 s | 1.129 GB | — |
 | Two phase-partner paths and 120-frame movie | 47.26 s | 0.900 GB | — |
 
-The extension's measured time excludes the reused solves and figure rendering. The [October 19 review](results/physical_review_2026_10_19.json) records the new studies and independent checks. The [earlier review and reproducibility record](results/review_refinement.json) collects the source identities, tests and preserved failures.
+The physical-pair extension's logged time excludes reused runs and figure rendering; its exact final wall time was lost. Receipt recovery is separate. The movie time includes rendering. The earlier broad-speed extension also excludes reused solves and figure rendering. The [October 19 review](results/physical_review_2026_10_19.json) records the new studies and independent checks. The [earlier review and reproducibility record](results/review_refinement.json) collects the source identities, tests and preserved failures.
 
 ## Runtime, memory and failure diagnostics
 
@@ -456,6 +472,8 @@ OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 SM_ENCOUNTER_PEAK_OUT
 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 SM_STRATIFIED_FLUX_OUTPUT=results/stratified_flux_reproduction python examples/42_stratified_encounter_flux.py
 # Reanalyse the saved encounters with the fixed known-zero control; also exits nonzero:
 SM_BORN_CONTROL_OUTPUT=results/born_control_reproduction python examples/43_encounter_born_control.py
+# Exact physical phase pairing in the same bounded domain:
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 SM_ANTITHETIC_FLUX_OUTPUT=results/physical_pair_reproduction python examples/44_antithetic_encounter_flux.py
 # Two fixed physical phase partners and their checked Cartesian movie:
 SM_ANTITHETIC_MOVIE_OUTPUT=results/phase_pair_movie_reproduction MPLBACKEND=Agg python examples/45_antithetic_encounter_movie.py
 # Independently reconstruct the published peak data, preserving the original receipt:
@@ -464,7 +482,7 @@ SM_PEAK_AUDIT_OUTPUT=results/encounter_peak_audit_reproduction.json python resul
 
 Example 24 exits nonzero because the declared angular and Cartesian checks remain unresolved. It saves the results before raising the error.
 
-**274 tests pass locally** (113.07 s) and on [Linux CI](https://github.com/rogeriojorge/sato-morrison/actions/runs/39283055126) (143.28 s at revision `831d2eb`). The encounter tests include free helices, exact finite-radius repulsive Coulomb orbits, a sensitive screened trajectory checked at high precision, and signed-kick interpolation through zero with independent Gaussian center averaging. Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
+**274 tests pass locally** (113.07 s) and on [Linux CI](https://github.com/rogeriojorge/sato-morrison/actions/runs/39293130808) (259.54 s at revision `f255571`). The encounter tests include free helices, exact finite-radius repulsive Coulomb orbits, a sensitive screened trajectory checked at high precision, and signed-kick interpolation through zero with independent Gaussian center averaging. Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
 
 | Capability | Current evidence |
 |---|---|
@@ -474,7 +492,7 @@ Example 24 exits nonzero because the declared angular and Cartesian checks remai
 | Nonuniform evolution | Completed three-field pilots and mirror refinement; dipole/nonaxisymmetric refinements remain open |
 | Collision-model comparison | Four operators from shared initial data; independently checked short-time Landau trajectories and analytical controls |
 | Landau evolution | 12 trajectories and 100 independent stage checks; required refinement changes below 1% of relaxation increments through t = 0.2; long-time and infinite-domain limits remain open |
-| Microscopic screened encounters | High-precision selected paths; refined bounded field/force comparisons; individual μ-marginal exchange checked independently |
+| Microscopic screened encounters | High-precision selected paths; physical-pair bounded quadrature passes 30 empirical gates; separate coarse Cartesian failure and passing fine control retained |
 | Physical rates and lifetimes | Uncalibrated; no metastable regime or dipole lifetime established |
 
-The [example catalogue](examples/README.md), [validation ledger](results/validation.csv), [physical-validation record](results/final_physical_validation.json), [earlier reproduction record](results/deep_reproduction.json) and [technical notes](notes/implementation.pdf) contain the complete commands and derivations. [LaTeX source](notes/implementation.tex) · [Bibliography](notes/references.bib). Original project material is [MIT](LICENSE); third-party papers are stored outside the public repository.
+The [example catalogue](examples/README.md), [validation ledger](results/validation.csv), [current physical review](results/physical_review_2026_10_19.json), [earlier reproduction record](results/deep_reproduction.json) and [technical notes](notes/implementation.pdf) contain the complete commands and derivations. [LaTeX source](notes/implementation.tex) · [Bibliography](notes/references.bib). Original project material is [MIT](LICENSE); third-party papers are stored outside the public repository.

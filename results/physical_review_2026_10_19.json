@@ -1,7 +1,7 @@
 {
   "date": "2026-10-19",
   "repository": "https://github.com/rogeriojorge/sato-morrison",
-  "reviewed_source_commit": "a770e4bb7a0456788a7fc5c5360f5ece643578c1",
+  "reviewed_source_commit": "e938afe32bc7df116c499328ca5f4efced5e4e79",
   "previous_review": "results/review_refinement.json",
   "status": {
     "implementation": "Existing constrained prototype, controls and physical-3V Landau reference retained; fresh exact-weight stratification, a known-zero signed-mean control, exact physical phase pairing and actual Cartesian phase-partner movies implemented.",
@@ -13,6 +13,7 @@
       "path": "results/stratified_encounter_flux/summary.json",
       "sha256": "5a8699d470dce7553ed14b7669b6228953c7bda30d817ca9d541c8f619e565e0",
       "producer_commit": "01618f74f0cd621518d30938fcb444ac221566ca",
+      "receipt_commit": "01618f74f0cd621518d30938fcb444ac221566ca",
       "status": "unresolved",
       "required_gates": {
         "sample_4201": false,
@@ -40,6 +41,116 @@
         "source_integrity": true,
         "prior_integrity": true
       },
+      "comparisons": {
+        "sample_4201": [
+          0.053390050311666305,
+          0.006788751133761897,
+          0.002470133967311623,
+          0.0009890200793788405
+        ],
+        "sample_4202": [
+          0.03534773775219588,
+          0.0240421451354454,
+          0.01401243891362783,
+          0.0024572075111987655
+        ],
+        "sample_4203": [
+          0.09667667173568305,
+          0.023413493319872317,
+          0.026273154127779773,
+          0.0032198304455069034
+        ],
+        "sample_4204": [
+          0.004995129983724487,
+          0.0015057792303730356,
+          0.011011165526075959,
+          0.00010786618540947851
+        ],
+        "replica_4201_4202": [
+          0.021195174048122642,
+          0.010272097188520925,
+          0.0029830914947431768,
+          0.0005697657084965962
+        ],
+        "replica_4201_4203": [
+          0.052303397533574075,
+          0.0018153748539676679,
+          0.00847190971257803,
+          0.0009558092561379999
+        ],
+        "replica_4201_4204": [
+          0.01639078981639867,
+          0.003534698667362333,
+          0.003540621291616253,
+          0.0027285685597471764
+        ],
+        "replica_4202_4203": [
+          0.030791925830696794,
+          0.008370737307392148,
+          0.005433009813009432,
+          0.0015247062393039098
+        ],
+        "replica_4202_4204": [
+          0.004755534914894767,
+          0.013666413131973152,
+          0.0064573819315748935,
+          0.003296456060620865
+        ],
+        "replica_4203_4204": [
+          0.03584753101080157,
+          0.005340378732069139,
+          0.011990763274066663,
+          0.0017744553444520072
+        ],
+        "partition_4201": [
+          0.01075746575127431,
+          0.045308843884155466,
+          0.036132501232656336,
+          0.0017087217226438637
+        ],
+        "partition_4202": [
+          0.01033158128972913,
+          0.03468050517592048,
+          0.032812358007475825,
+          0.0011383074455990386
+        ],
+        "partition_4203": [
+          0.041470647012535444,
+          0.04341465515692224,
+          0.02761046817045539,
+          0.0026670801987226647
+        ],
+        "partition_4204": [
+          0.005653306801140543,
+          0.04901680217685067,
+          0.03981385249563146,
+          0.004449430859543158
+        ],
+        "boundary_ensemble": [
+          4.5754017492943597e-07,
+          8.843454702085784e-07,
+          1.7143016578877441e-06,
+          1.1931914247394789e-07
+        ],
+        "boundary_L24_to40": [
+          8.699970802583765e-05,
+          0.0001899030238160022,
+          0.00032926410500864263,
+          2.8248282698940027e-05
+        ],
+        "active_step": [
+          1.5631785715908197e-09,
+          6.926728455338249e-11,
+          6.925744984095959e-11,
+          1.586121058851209e-11
+        ],
+        "boundary_controls": [
+          0.0003085372016659479,
+          7.996707191415581e-05,
+          7.92254322654304e-05,
+          1.7296169338066073e-05
+        ]
+      },
       "wall_s": 1808.4763463330455,
       "parent_process_peak_rss_bytes": 1271431168,
       "max_worker_process_peak_rss_bytes": 106971136,
@@ -47,6 +158,13 @@
       "timing_scope": "this execution; includes all fresh solves and excludes figure rendering",
       "new_encounters": 215218,
       "reused_encounters": 0,
+      "unique_accessible_encounters": null,
+      "failures": 0,
+      "cap_exhausted": false,
+      "original_last_logged_elapsed_s": null,
+      "recovery_wall_s": null,
+      "recovery_parent_process_peak_rss_bytes": null,
+      "new_solves_this_execution": null,
       "inputs": {
         "mass": 1.0,
         "charge": 1.0,
@@ -485,12 +603,20 @@
         "examples/42_stratified_encounter_flux.py": "5a704c4b97b86dc30380de8588cdfbdaa9c7482264dbf7b2ddcd61d6879989ad",
         "src/sato_morrison/controls.py": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
         "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
-      }
+      },
+      "receipt_source_sha256": {
+        "examples/42_stratified_encounter_flux.py": "5a704c4b97b86dc30380de8588cdfbdaa9c7482264dbf7b2ddcd61d6879989ad",
+        "src/sato_morrison/controls.py": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+        "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+      },
+      "receipt_scope": null,
+      "original_receipt_status": null
     },
     "known_zero_control": {
       "path": "results/encounter_born_control/summary.json",
       "sha256": "f82789d1999064172704fef5c9e0f5f436eff72badc0a49fa085e2d95b91673f",
       "producer_commit": "831d2ebec582c40667fc157e516a90c4077e7484",
+      "receipt_commit": "831d2ebec582c40667fc157e516a90c4077e7484",
       "status": "unresolved",
       "required_gates": {
         "sample_4201": true,
@@ -524,6 +650,116 @@
         "prior_integrity": true,
         "historical_pilot_integrity": true
       },
+      "comparisons": {
+        "sample_4201": [
+          0.03728784818248663,
+          0.006788751133761897,
+          0.002470133967311623,
+          0.0009890200793788405
+        ],
+        "sample_4202": [
+          0.05144267818088696,
+          0.0240421451354454,
+          0.01401243891362783,
+          0.0024572075111987655
+        ],
+        "sample_4203": [
+          0.04808820964839345,
+          0.023413493319872317,
+          0.026273154127779773,
+          0.0032198304455069034
+        ],
+        "sample_4204": [
+          0.010486793050535792,
+          0.0015057792303730356,
+          0.011011165526075959,
+          0.00010786618540947851
+        ],
+        "replica_4201_4202": [
+          0.15250567255018246,
+          0.010272097188520925,
+          0.0029830914947431768,
+          0.0005697657084965962
+        ],
+        "replica_4201_4203": [
+          0.06937644270316118,
+          0.0018153748539676679,
+          0.00847190971257803,
+          0.0009558092561379999
+        ],
+        "replica_4201_4204": [
+          0.007184710389194408,
+          0.003534698667362333,
+          0.003540621291616253,
+          0.0027285685597471764
+        ],
+        "replica_4202_4203": [
+          0.08228400059584047,
+          0.008370737307392148,
+          0.005433009813009432,
+          0.0015247062393039098
+        ],
+        "replica_4202_4204": [
+          0.14384338889037984,
+          0.013666413131973152,
+          0.0064573819315748935,
+          0.003296456060620865
+        ],
+        "replica_4203_4204": [
+          0.062079035593791236,
+          0.005340378732069139,
+          0.011990763274066663,
+          0.0017744553444520072
+        ],
+        "partition_4201": [
+          0.08648274775228543,
+          0.045308843884155466,
+          0.036132501232656336,
+          0.0017087217226438637
+        ],
+        "partition_4202": [
+          0.06535162653866394,
+          0.03468050517592048,
+          0.032812358007475825,
+          0.0011383074455990386
+        ],
+        "partition_4203": [
+          0.017075306966233966,
+          0.04341465515692224,
+          0.02761046817045539,
+          0.0026670801987226647
+        ],
+        "partition_4204": [
+          0.0795793263017193,
+          0.04901680217685067,
+          0.03981385249563146,
+          0.004449430859543158
+        ],
+        "boundary_ensemble": [
+          4.575401756326867e-07,
+          8.843454702085784e-07,
+          1.7143016578877441e-06,
+          1.1931914247394789e-07
+        ],
+        "boundary_L24_to40": [
+          8.699970802848188e-05,
+          0.0001899030238160022,
+          0.00032926410500864263,
+          2.8248282698940027e-05
+        ],
+        "active_step": [
+          1.5631785715908197e-09,
+          6.926728455338249e-11,
+          6.925744984095959e-11,
+          1.586121058851209e-11
+        ],
+        "boundary_controls": [
+          0.0003085372016659479,
+          7.996707191415581e-05,
+          7.92254322654304e-05,
+          1.7296169338066073e-05
+        ]
+      },
       "wall_s": 4.693092499976046,
       "parent_process_peak_rss_bytes": 543244288,
       "max_worker_process_peak_rss_bytes": null,
@@ -531,6 +767,13 @@
       "timing_scope": "postprocessing saved states only; all historical and fresh ODE solves excluded; plotting excluded",
       "new_encounters": 0,
       "reused_encounters": 215218,
+      "unique_accessible_encounters": null,
+      "failures": null,
+      "cap_exhausted": null,
+      "original_last_logged_elapsed_s": null,
+      "recovery_wall_s": null,
+      "recovery_parent_process_peak_rss_bytes": null,
+      "new_solves_this_execution": null,
       "inputs": {
         "mass": 1.0,
         "charge": 1.0,
@@ -578,7 +821,596 @@
       "source_sha256": {
         "examples/43_encounter_born_control.py": "10f4b5210bd41030204a3e04ca23fc2f7c75f7ff4789af5dfcc942aa8694b3e4",
         "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
-      }
+      },
+      "receipt_source_sha256": {
+        "examples/43_encounter_born_control.py": "10f4b5210bd41030204a3e04ca23fc2f7c75f7ff4789af5dfcc942aa8694b3e4",
+        "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+      },
+      "receipt_scope": null,
+      "original_receipt_status": null
+    },
+    "physical_phase_pairs": {
+      "path": "results/antithetic_encounter_flux/summary.json",
+      "sha256": "067303ebf92edd9d5b9b4233ba852c78be5f0faf7620b8e414074b79089c764f",
+      "producer_commit": "0c1aaa3",
+      "receipt_commit": "f25557173832017f74053877d85d38bfa6362fe9",
+      "status": "passed",
+      "required_gates": {
+        "sample_4201": true,
+        "sample_4202": true,
+        "sample_4203": true,
+        "sample_4204": true,
+        "replica_4201_4202": true,
+        "replica_4201_4203": true,
+        "replica_4201_4204": true,
+        "replica_4202_4203": true,
+        "replica_4202_4204": true,
+        "replica_4203_4204": true,
+        "partition_4201": true,
+        "partition_4202": true,
+        "partition_4203": true,
+        "partition_4204": true,
+        "boundary_ensemble": true,
+        "boundary_L24_to40": true,
+        "active_step": true,
+        "active_step_members": true,
+        "boundary_controls": true,
+        "boundary_controls_members": true,
+        "phase_transform": true,
+        "preserved_born_control": true,
+        "complete": true,
+        "exact_flux_mass": true,
+        "energy": true,
+        "active_step_sizes": true,
+        "prior_integrity": true,
+        "prior_prior_integrity": true,
+        "prior_source_integrity": true,
+        "source_integrity": true
+      },
+      "comparisons": {
+        "sample_4201": [
+          0.015922655937465852,
+          0.016327756442736135,
+          0.022886313990096534,
+          0.0038230130136146646
+        ],
+        "sample_4202": [
+          0.002625321036526296,
+          0.004943262142621404,
+          0.012937522552364569,
+          0.0004117454664581177
+        ],
+        "sample_4203": [
+          0.004791539692211909,
+          0.020471303120124552,
+          0.017307981413679067,
+          0.002861849473367563
+        ],
+        "sample_4204": [
+          0.013300374234077492,
+          0.007532981759703136,
+          0.0033592596335749667,
+          0.000477394056645017
+        ],
+        "replica_4201_4202": [
+          0.007677993978122283,
+          0.000500367448894949,
+          0.013191121289404936,
+          0.0018687745022401723
+        ],
+        "replica_4201_4203": [
+          0.026957765578161815,
+          0.012661303382817598,
+          0.01938998020828136,
+          0.004250740081827375
+        ],
+        "replica_4201_4204": [
+          0.0074507056959068054,
+          0.009825151386866323,
+          0.01718018694093904,
+          0.0037120328053125108
+        ],
+        "replica_4202_4203": [
+          0.019270129454524495,
+          0.013155088453663,
+          0.006195758762870276,
+          0.0023864252702838103
+        ],
+        "replica_4202_4204": [
+          0.00022717461143470006,
+          0.010320354866125219,
+          0.003987070651163816,
+          0.0018467093864868527
+        ],
+        "replica_4203_4204": [
+          0.019757211936582707,
+          0.0028725218667803574,
+          0.002238130921955665,
+          0.0005410069564692753
+        ],
+        "partition_4201": [
+          0.008405165848147248,
+          0.0033976578180804286,
+          0.018297836930637686,
+          0.0037310626018045617
+        ],
+        "partition_4202": [
+          0.000726808198860665,
+          0.0038960757974678974,
+          0.005104161684871743,
+          0.0018657748119599023
+        ],
+        "partition_4203": [
+          0.018790512104487997,
+          0.009382439477431857,
+          0.0011061485601502011,
+          0.0005218959239452693
+        ],
+        "partition_4204": [
+          0.0009639309194505249,
+          0.00649127129192225,
+          0.0011287400313834048,
+          1.910069891302063e-05
+        ],
+        "boundary_ensemble": [
+          2.431070322367552e-06,
+          7.440004820974106e-06,
+          7.08799696488829e-06,
+          9.998414519504415e-07
+        ],
+        "boundary_L24_to40": [
+          0.0006996122318047391,
+          0.0031571874911470858,
+          0.0030701610350007415,
+          0.0004025541261254932
+        ],
+        "active_step": [
+          1.1634055333689376e-09,
+          4.518453353013458e-10,
+          4.491188229632366e-10,
+          3.2884046365607333e-10
+        ],
+        "active_step_members": [
+          2.473956945332081e-09,
+          4.536165736623288e-10,
+          4.508671414234921e-10,
+          3.3056476761661027e-10
+        ],
+        "boundary_controls": [
+          0.0003250470145846378,
+          0.0007609336196213053,
+          0.0007596784449640279,
+          0.0005259501907408435
+        ],
+        "boundary_controls_members": [
+          0.00033406742677618824,
+          0.0007648263013343416,
+          0.0007635663061889936,
+          0.0005291993314993414
+        ]
+      },
+      "wall_s": null,
+      "parent_process_peak_rss_bytes": null,
+      "max_worker_process_peak_rss_bytes": 29523968,
+      "memory_scope": "Original parent peak unavailable; original worker peaks persisted per state. Recovery parent peak is separately measured.",
+      "timing_scope": "Original exact wall endpoint unavailable; last logged elapsed is a rounded lower bound. Recovery wall is separately measured.",
+      "new_encounters": 215356,
+      "reused_encounters": 215148,
+      "unique_accessible_encounters": 430574,
+      "failures": 0,
+      "cap_exhausted": false,
+      "original_last_logged_elapsed_s": 2362.5,
+      "recovery_wall_s": 2.8191434589680284,
+      "recovery_parent_process_peak_rss_bytes": 1129037824,
+      "new_solves_this_execution": 0,
+      "inputs": {
+        "mass": 1.0,
+        "charge": 1.0,
+        "field": 2.0,
+        "strength": 0.03,
+        "screening": 3.0,
+        "theta": 0.5,
+        "base_step": 0.2,
+        "rtol": 1e-12,
+        "flight_time_factor": 48.0,
+        "steps": [
+          0.1,
+          0.05,
+          0.025
+        ],
+        "distances": [
+          40.0,
+          48.0
+        ],
+        "workers": 4,
+        "runtime_cap_s": 3000.0,
+        "quadrature_target": 0.05,
+        "plane_target": 0.005,
+        "step_target": 0.001,
+        "energy_target": 1e-09,
+        "phase_transform_tolerance": 1e-13,
+        "units": "normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+        "base_levels": [
+          512,
+          1024,
+          2048
+        ],
+        "seeds": [
+          4201,
+          4202,
+          4203,
+          4204
+        ],
+        "alternate_seed": 4205,
+        "bounded_flux_per_density": 9.622764018272528,
+        "main_strata": [
+          {
+            "index": 0,
+            "impact": [
+              1.2,
+              1.5
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              0.0,
+              2.0
+            ],
+            "phase": [
+              1.3207963267948966,
+              1.8207963267948966
+            ],
+            "flux_per_density": 0.1298531352599795,
+            "multiplier": 1
+          },
+          {
+            "index": 1,
+            "impact": [
+              1.2,
+              1.5
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              0.0,
+              2.0
+            ],
+            "phase": [
+              1.8207963267948966,
+              7.603981633974483
+            ],
+            "flux_per_density": 1.5019294878534335,
+            "multiplier": 1
+          },
+          {
+            "index": 2,
+            "impact": [
+              1.2,
+              1.5
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              2.0,
+              2.5
+            ],
+            "phase": [
+              1.3207963267948966,
+              1.8207963267948966
+            ],
+            "flux_per_density": 0.013725970338292613,
+            "multiplier": 8
+          },
+          {
+            "index": 3,
+            "impact": [
+              1.2,
+              1.5
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              2.0,
+              2.5
+            ],
+            "phase": [
+              1.8207963267948966,
+              7.603981633974483
+            ],
+            "flux_per_density": 0.1587596599743933,
+            "multiplier": 1
+          },
+          {
+            "index": 4,
+            "impact": [
+              1.5,
+              2.4
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              0.0,
+              2.0
+            ],
+            "phase": [
+              1.3207963267948966,
+              1.8207963267948966
+            ],
+            "flux_per_density": 0.5626969194599111,
+            "multiplier": 1
+          },
+          {
+            "index": 5,
+            "impact": [
+              1.5,
+              2.4
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              0.0,
+              2.0
+            ],
+            "phase": [
+              1.8207963267948966,
+              7.603981633974483
+            ],
+            "flux_per_density": 6.508361114031545,
+            "multiplier": 1
+          },
+          {
+            "index": 6,
+            "impact": [
+              1.5,
+              2.4
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              2.0,
+              2.5
+            ],
+            "phase": [
+              1.3207963267948966,
+              1.8207963267948966
+            ],
+            "flux_per_density": 0.05947920479926799,
+            "multiplier": 1
+          },
+          {
+            "index": 7,
+            "impact": [
+              1.5,
+              2.4
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              2.0,
+              2.5
+            ],
+            "phase": [
+              1.8207963267948966,
+              7.603981633974483
+            ],
+            "flux_per_density": 0.6879585265557043,
+            "multiplier": 1
+          }
+        ],
+        "alternate_strata": [
+          {
+            "index": 0,
+            "impact": [
+              1.2,
+              1.5
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              0.0,
+              2.0
+            ],
+            "phase": [
+              1.4207963267948966,
+              1.7207963267948965
+            ],
+            "flux_per_density": 0.07791188115598764,
+            "multiplier": 1
+          },
+          {
+            "index": 1,
+            "impact": [
+              1.2,
+              1.5
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              0.0,
+              2.0
+            ],
+            "phase": [
+              1.7207963267948965,
+              7.703981633974482
+            ],
+            "flux_per_density": 1.5538707419574251,
+            "multiplier": 1
+          },
+          {
+            "index": 2,
+            "impact": [
+              1.2,
+              1.5
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              2.0,
+              2.5
+            ],
+            "phase": [
+              1.4207963267948966,
+              1.7207963267948965
+            ],
+            "flux_per_density": 0.008235582202975563,
+            "multiplier": 8
+          },
+          {
+            "index": 3,
+            "impact": [
+              1.2,
+              1.5
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              2.0,
+              2.5
+            ],
+            "phase": [
+              1.7207963267948965,
+              7.703981633974482
+            ],
+            "flux_per_density": 0.16425004810971036,
+            "multiplier": 1
+          },
+          {
+            "index": 4,
+            "impact": [
+              1.5,
+              2.4
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              0.0,
+              2.0
+            ],
+            "phase": [
+              1.4207963267948966,
+              1.7207963267948965
+            ],
+            "flux_per_density": 0.3376181516759465,
+            "multiplier": 1
+          },
+          {
+            "index": 5,
+            "impact": [
+              1.5,
+              2.4
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              0.0,
+              2.0
+            ],
+            "phase": [
+              1.7207963267948965,
+              7.703981633974482
+            ],
+            "flux_per_density": 6.733439881815509,
+            "multiplier": 1
+          },
+          {
+            "index": 6,
+            "impact": [
+              1.5,
+              2.4
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              2.0,
+              2.5
+            ],
+            "phase": [
+              1.4207963267948966,
+              1.7207963267948965
+            ],
+            "flux_per_density": 0.03568752287956078,
+            "multiplier": 1
+          },
+          {
+            "index": 7,
+            "impact": [
+              1.5,
+              2.4
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              2.0,
+              2.5
+            ],
+            "phase": [
+              1.7207963267948965,
+              7.703981633974482
+            ],
+            "flux_per_density": 0.7117502084754116,
+            "multiplier": 1
+          }
+        ],
+        "transform": "T(b,u,p,phi)=(b,u,p,(pi-phi) modulo2pi)",
+        "measure": "T preserves every phase cell and uniform phase mass; each original/partner receives Ws/(2Ns), pair mean receives Ws/Ns; all reflected exits and failed weights retained",
+        "theory": "For the symmetric free helix the first-Born magnetic-moment work is odd under T with z->-z, so pairing cancels that component. Actual nonlinear observables are solved for both members; no variance or QMC convergence guarantee follows.",
+        "controls": "top four weighted paired second moments from each of four main scrambles and alternate; closest four and longest four reflected new partners; sixteen predetermined fresh controls and historical weak boundary control from base experiment; both members at every active step and farther plane",
+        "acceptance": "same four sample, six independent-replica, four alternate-partition, two full matched boundary, selected paired and memberwise boundary, paired and memberwise active-step, energy and integrity gates as base; no failed criterion relaxed",
+        "stop_rule": "one fixed physical antithetic extension; all original inputs and weights frozen; cap between batches; no outcome-dependent continuation or failure renormalization",
+        "archive": "states.npz stores new partners and missing refined original/control states only; global reference ids <base_state_count address immutable base states, ids >=base_state_count address new states at id-base_state_count",
+        "scope": "bounded incident-domain empirical quadrature; no omitted-domain moment bound, reverse-complete incident population, physical screening closure, plasma coefficient or lifetime",
+        "prior_artifact_sha256": {
+          "results/stratified_encounter_flux/summary.json": "5a8699d470dce7553ed14b7669b6228953c7bda30d817ca9d541c8f619e565e0",
+          "results/stratified_encounter_flux/states.npz": "aa340fe03e5c44bdae3e8de197a3e3a89a9992b86f6032c388f31fa00e52bd66",
+          "results/stratified_encounter_flux/populations.npz": "a59d2f67aa3786c72a1ce584bafb2045f3d5338ff5e811fe9c17e569bb06ab9d"
+        },
+        "preserved_born_control_summary_sha256": "f82789d1999064172704fef5c9e0f5f436eff72badc0a49fa085e2d95b91673f",
+        "base_state_count": 215218
+      },
+      "source_sha256": {
+        "examples/44_antithetic_encounter_flux.py": "12d8e3e84edfa515cc702e65edd1626b99df00b8e7a46e2961070a1be63cbca9",
+        "src/sato_morrison/controls.py": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+        "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+      },
+      "receipt_source_sha256": {
+        "examples/44_antithetic_encounter_flux.py": "0516ceaaaa06c18a63e94718af6156bfe34c4e6103f75773c3f4f44b767fc190",
+        "src/sato_morrison/controls.py": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+        "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+      },
+      "receipt_scope": "Numerical gates reconstructed from immutable saved arrays; top-level code/commit/environment identify receipt recovery, not the original ODE execution.",
+      "original_receipt_status": "receipt_serialization_failed_after_all_saved_solves"
     },
     "fixed_physical_pair_movie": {
       "path": "results/antithetic_encounter_movie/summary.json",
@@ -1073,35 +1905,99 @@
       "status": "passed",
       "checks": 697,
       "wall_s": 0.26968879194464535,
-      "scope": "Independent saved-state and exact-measure reconstruction; no producer imports or new trajectory solves. Scramble comparisons are empirical, not rigorous error bounds."
+      "scope": "Independent saved-state and exact-measure reconstruction; no producer imports or new trajectory solves. Scramble comparisons are empirical, not rigorous error bounds.",
+      "exact_audit_source_snapshot_commit": "72ae992ae1f65072990b48d9b20be121de1239b2",
+      "exact_audit_source_path": "results/stratified_encounter_flux/audit_saved_states.py"
     },
     "results/stratified_encounter_flux/cartesian_audit.json": {
       "sha256": "a4506dda0892513189ab0ef569ab2d4f82bf68bfd0fcd3d7b1f1b37e76985cb6",
       "status": "failed",
       "checks": 0,
       "wall_s": 7.221962125040591,
-      "scope": "Fresh twelve-coordinate solves with exact saved incoming bits; each original coarse comparison retained."
+      "scope": "Fresh twelve-coordinate solves with exact saved incoming bits; each original coarse comparison retained.",
+      "exact_audit_source_snapshot_commit": "72ae992ae1f65072990b48d9b20be121de1239b2",
+      "exact_audit_source_path": "results/stratified_encounter_flux/audit_cartesian.py"
     },
     "results/stratified_encounter_flux/cartesian_tight_refinement.json": {
       "sha256": "fb35f3ac84fcdcb5ab73792780ae6be24305c7432afa6ccb53b524c6fa49c669",
       "status": "passed",
       "checks": 0,
       "wall_s": 2.5651458750944585,
-      "scope": "Selected fixed smaller-step follow-up only. The original coarse Cartesian failures are retained verbatim and remain failed. No ensemble probabilities or original results are replaced."
+      "scope": "Selected fixed smaller-step follow-up only. The original coarse Cartesian failures are retained verbatim and remain failed. No ensemble probabilities or original results are replaced.",
+      "exact_audit_source_snapshot_commit": "72ae992ae1f65072990b48d9b20be121de1239b2",
+      "exact_audit_source_path": "results/stratified_encounter_flux/audit_tight_refinement.py"
     },
     "results/encounter_born_control/independent_audit.json": {
       "sha256": "a5ec3905de087944f4c4b7cd3665a5059834baabf5664e41f94e6c2b2d4aab85",
       "status": "passed",
       "checks": 253,
       "wall_s": 5.306293708039448,
-      "scope": "Independent Cartesian force-work control calculation, all saved weighted integrals and fixed-gate reconstruction; no producer physics imports or new ODE solves."
+      "scope": "Independent Cartesian force-work control calculation, all saved weighted integrals and fixed-gate reconstruction; no producer physics imports or new ODE solves.",
+      "exact_audit_source_snapshot_commit": "72ae992ae1f65072990b48d9b20be121de1239b2",
+      "exact_audit_source_path": "results/encounter_born_control/audit_saved_states.py"
+    },
+    "results/antithetic_encounter_flux/independent_audit.json": {
+      "sha256": "d05cc20d3f74a440106d0e930ad081796917daa3e0b14748121eab4754d26694",
+      "status": "passed",
+      "checks": 1371,
+      "wall_s": 0.8288957920158282,
+      "scope": "Independent all-member Cartesian reconstruction, exact positive half-weights, physical partner mapping, no duplicated old archive, and all fixed gate decisions. No producer physics imports or fresh ODE solves.",
+      "exact_audit_source_snapshot_commit": "72ae992ae1f65072990b48d9b20be121de1239b2",
+      "exact_audit_source_path": "results/antithetic_encounter_flux/audit_saved_states.py"
+    },
+    "results/antithetic_encounter_flux/cartesian_audit.json": {
+      "sha256": "7ce5486283bf9e853d00cafc4d455eb3925e4535753592cf61bdebcb3b29dd67",
+      "status": "failed",
+      "checks": 0,
+      "wall_s": 6.771732583059929,
+      "scope": "Fresh twelve-coordinate solves with exact saved incoming bits; each original coarse comparison retained.",
+      "finest_available_control_status": "passed",
+      "exact_audit_source_snapshot_commit": "72ae992ae1f65072990b48d9b20be121de1239b2",
+      "exact_audit_source_path": "results/antithetic_encounter_flux/audit_cartesian.py"
+    },
+    "results/antithetic_encounter_flux/saved_refinement_audit.json": {
+      "sha256": "f42336d20aaf1ba15e3ec9272c131b5ee7f5c5a02ae3d06af6e742519a3d9ad8",
+      "status": "passed",
+      "checks": 0,
+      "wall_s": null,
+      "scope": "Separate saved-refinement receipt; the original coarse Cartesian failure remains unchanged. Hypothetical single-member replacement is an error-size diagnostic, not a replacement of production results or a whole-domain trajectory bound."
+    },
+    "results/antithetic_encounter_flux/contribution_map_audit.json": {
+      "sha256": "b1cc79acf379e533293ce0f08a20244724b70145b8469f8fff8623013ea0efc7",
+      "status": "passed",
+      "checks": 15,
+      "wall_s": null,
+      "scope": "Independent endpoint reconstruction of second moments and explicit integer-bin accumulation, with actual original and partner locations and positive halfweights. Fixed rho/b threshold .8 is descriptive concentration, not a convergence gate.",
+      "exact_audit_source_snapshot_commit": "72ae992ae1f65072990b48d9b20be121de1239b2",
+      "exact_audit_source_path": "results/antithetic_encounter_flux/audit_contribution_maps.py"
+    },
+    "results/antithetic_encounter_flux/checkpoint_manifest.json": {
+      "sha256": "9834b8a57494db4ca54ec16bbefe8f83f68fdc26f3261c46478cb6f4c43bb31c",
+      "status": "passed",
+      "checks": 0,
+      "wall_s": 0.5836892919614911,
+      "scope": "Original compressed checkpoint hashes and ordered concatenation of every saved column exactly reconstruct states.npz; comparison is bitwise after the dtype promotion used by concatenation. No original artifact is rewritten or removed.",
+      "checkpoint_count": 430,
+      "row_count": 215356,
+      "exact_audit_source_snapshot_commit": "72ae992ae1f65072990b48d9b20be121de1239b2",
+      "exact_audit_source_path": "results/antithetic_encounter_flux/audit_checkpoints.py"
+    },
+    "results/antithetic_encounter_flux/checkpoint_archival.json": {
+      "sha256": "db3b2e4d6560cee9acaf4102dd5ab1750f76bfe0562239cfbb3be85757151576",
+      "status": "passed",
+      "checks": 0,
+      "wall_s": null,
+      "scope": "Duplicate temporary checkpoints moved outside the public checkout after independent bitwise consolidation verification; original bytes and names preserved. Complete public state/population arrays remain sufficient for scientific reproduction and no-ODE receipt replay.",
+      "checkpoint_count": 430
     },
     "results/antithetic_encounter_movie/independent_audit.json": {
       "sha256": "c1dc24f0041c0842331da2faae4d27331e9e1fe3956b79b64c2f3c37fa0809f7",
       "status": "passed",
       "checks": 48,
       "wall_s": 1.3006973339943215,
-      "scope": "Saved physical zero-COM Cartesian arrays and media-clock/hash associations only. No fresh ODE, thermal COM averaging, ensemble convergence or physical rate claim."
+      "scope": "Saved physical zero-COM Cartesian arrays and media-clock/hash associations only. No fresh ODE, thermal COM averaging, ensemble convergence or physical rate claim.",
+      "exact_audit_source_snapshot_commit": "72ae992ae1f65072990b48d9b20be121de1239b2",
+      "exact_audit_source_path": "results/antithetic_encounter_movie/audit_saved_paths.py"
     }
   },
   "tests": {
@@ -1118,10 +2014,10 @@
       "completion": "274 passed in 113.07s (0:01:53)"
     },
     "linux_ci": {
-      "commit": "831d2ebec582c40667fc157e516a90c4077e7484",
-      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/39283055126",
+      "commit": "f25557173832017f74053877d85d38bfa6362fe9",
+      "url": "https://github.com/rogeriojorge/sato-morrison/actions/runs/39293130808",
       "status": "success",
-      "completion": "274 passed in 143.28s (0:02:23)",
+      "completion": "274 passed in 259.54s (0:04:19)",
       "command": "python -m pytest -q"
     }
   },
@@ -1157,6 +2053,7 @@
     ".venv/bin/python -m pytest -q",
     "Independent saved-array and Cartesian audit scripts archived beside their input results; use a fresh output receipt.",
     "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 .venv/bin/python examples/44_antithetic_encounter_flux.py",
+    "SM_ANTITHETIC_RECEIPT_REPLAY=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 .venv/bin/python examples/44_antithetic_encounter_flux.py",
     ".venv/bin/python examples/45_antithetic_encounter_movie.py",
     "latexmk -cd -pdf -interaction=nonstopmode -halt-on-error notes/implementation.tex"
   ],
@@ -1168,6 +2065,7 @@
     "Partners are correlated; the four independent randomized low-discrepancy samples retain their original independent randomizations. The alternate-partition sample is separate.",
     "The fixed-pair movie shows two zero-center-of-mass physical experiments, not a thermal center-of-mass average. Its nonuniform playback clock and original saved sample times are recorded.",
     "Sample, scramble, alternate-partition and control-order differences are empirical convergence comparisons, not confidence intervals or rigorous error bounds.",
+    "The four comparison denominators are [I2/mu_ref,I2,I2,IR] from the designated fine/reference case. Passing a 5 percent signed-mean or cross gate does not establish 5 percent relative accuracy in that small signed integral.",
     "Negative signed drift in the cropped incoming band does not imply net cooling of a complete equilibrium plasma.",
     "Outgoing inverse-cutoff violations are kinematic finite-plane diagnostics, not a validation of detailed balance.",
     "The normalized magnetic-moment to guiding-center squared-kick ratio is density independent within this bounded model; it is not a measured kinetic mixing-time ratio."
@@ -1181,6 +2079,65 @@
   ],
   "novelty_scope": "New numerical evidence within the declared screened-pair model. Established magnetized exchange and control-variate principles carry no priority claim.",
   "upstream_pr": null,
+  "physical_pair_findings": {
+    "numerical_gate_count": 30,
+    "maximum_sample_replica_partition_scaled_change": 0.026957765578161815,
+    "main_fine_integrals": {
+      "seed4201_N2048": [
+        -5.106757610407085e-05,
+        6.19071990127551e-05,
+        -1.2098760819131449e-05,
+        0.002592113822686533
+      ],
+      "seed4202_N2048": [
+        -5.296886850896026e-05,
+        6.193817535999335e-05,
+        -1.1282135448266867e-05,
+        0.002587269746467792
+      ],
+      "seed4203_N2048": [
+        -5.77430951384167e-05,
+        6.112337318447414e-05,
+        -1.0898381455523992e-05,
+        0.0025810954205637807
+      ],
+      "seed4204_N2048": [
+        -5.2912585385278734e-05,
+        6.129895141051792e-05,
+        -1.10351835671024e-05,
+        0.0025824918111416167
+      ]
+    },
+    "integral_order": [
+      "signed_mu_increment",
+      "squared_mu_increment",
+      "cross_mu_increment",
+      "squared_individual_guiding_center_displacement"
+    ],
+    "normalized_squared_kick_ratio_range": [
+      3.410089246774798,
+      3.4473008715135833
+    ],
+    "inverse_cutoff_incoming_flux_fraction_range": [
+      0.0018155320109005358,
+      0.002125447325079948
+    ],
+    "inverse_cutoff_squared_moment_fraction_range": [
+      0.1723848970198354,
+      0.19462425005854012
+    ],
+    "map_threshold_rho_over_b": 0.8,
+    "map_threshold_incoming_flux_fraction_range": [
+      0.010976431900529571,
+      0.01104537634056811
+    ],
+    "map_threshold_squared_moment_share_range": [
+      0.3723660960728577,
+      0.3836451503495636
+    ],
+    "scope": "Threshold and inverse-cutoff statistics describe the saved samples; they have no separate convergence gate. The four samples are not confidence bounds. Q is a bounded squared-kick diagnostic, not a kinetic mixing-time ratio.",
+    "cartesian_scope": "One of four independent coarse partner comparisons fails. Its already-saved finer control passes. The separate saved-refinement audit bounds hypothetical ensemble replacement on the declared positive scales; production arrays are unchanged."
+  },
   "core_review": {
     "source_commit": "01618f74f0cd621518d30938fcb444ac221566ca",
     "scope": "Independent finite-grid analytic vacuum geometry, NumPy ordered-pair Gram contraction and one lagged step per field; not continuum or long-time validation.",
@@ -1229,11 +2186,63 @@
       }
     }
   },
+  "postcommit_audit_replays": {
+    "42": {
+      "command": "SM_STRATIFIED_AUDIT_OUTPUT=FRESH_RECEIPT .venv/bin/python results/stratified_encounter_flux/audit_saved_states.py",
+      "receipt_sha256": "f7695d63b125fd51ebc5f0d8b433a6e33c900e2b053426af1a8cfa0077f35f0e",
+      "status": "passed",
+      "checks": 697,
+      "audit_git_identity": "133d3df70d79bb52dae516ad0fd572d03e77923a",
+      "source_sha256": "a361969f844b5e69e2adf503d6286e89d49c6ac229d3b1eec361f4b10265cc03",
+      "source_uncommitted": false,
+      "wall_s": 0.47514191700611264
+    },
+    "43": {
+      "command": "SM_BORN_AUDIT_OUTPUT=FRESH_RECEIPT .venv/bin/python results/encounter_born_control/audit_saved_states.py",
+      "receipt_sha256": "da1878b91cce010a876e81dba90985fb600e92167b476dc6ac43a938dd921eb8",
+      "status": "passed",
+      "checks": 253,
+      "audit_git_identity": "133d3df70d79bb52dae516ad0fd572d03e77923a",
+      "source_sha256": "c4a4bcf982233e03260ca20b6e0f32cb5459fd44fe2c6112698c982da73c289a",
+      "source_uncommitted": false,
+      "wall_s": 7.902278332971036
+    },
+    "44": {
+      "command": "SM_ANTITHETIC_AUDIT_OUTPUT=FRESH_RECEIPT .venv/bin/python results/antithetic_encounter_flux/audit_saved_states.py",
+      "receipt_sha256": "d46bc35d410a210c4d43927227bc88021053316c05b98164c139c5dc83347996",
+      "status": "passed",
+      "checks": 1371,
+      "audit_git_identity": "f25557173832017f74053877d85d38bfa6362fe9",
+      "source_sha256": "92164cf4389f4ed4a97372ae897489a2831862a25a071edcac06465253b5b31f",
+      "source_uncommitted": true,
+      "wall_s": 0.8723970829742029
+    },
+    "map_44": {
+      "command": "SM_ANTITHETIC_MAP_AUDIT_OUTPUT=FRESH_RECEIPT .venv/bin/python results/antithetic_encounter_flux/audit_contribution_maps.py",
+      "receipt_sha256": "34e56fc92b47f2a5aadb4b06ed472faaa23e9a14f87b4d73d9838433863d5081",
+      "status": "passed",
+      "checks": 15,
+      "audit_git_identity": "e938afe32bc7df116c499328ca5f4efced5e4e79",
+      "source_sha256": "92614d6a39aa046e6bb8795795f7e53f5c158796f828c346acee011a88e1be57",
+      "source_uncommitted": false,
+      "wall_s": 0.16195887501817197
+    },
+    "45": {
+      "command": "SM_PHASE_MOVIE_AUDIT_OUTPUT=FRESH_RECEIPT .venv/bin/python results/antithetic_encounter_movie/audit_saved_paths.py",
+      "receipt_sha256": "08b06834af04ec7521656dfcb34d5f1b763aa5216e6ec75aec22bda485852663",
+      "status": "passed",
+      "checks": 48,
+      "audit_git_identity": "133d3df70d79bb52dae516ad0fd572d03e77923a",
+      "source_sha256": "0cd154990050b3ca49a92b11422654356cfff681943e26ba0e40a03d3b930531",
+      "source_uncommitted": false,
+      "wall_s": 1.107095708954148
+    }
+  },
   "documentation_sha256": {
-    "README.md": "e5e0f460c78ba0bd47a4a025133735d9d37d1d564143f1deb2837a4b834470db",
-    "examples/README.md": "7d14faefbc081fe7296f89319bd1f1dda624720032ef3a6359c208ea5c96cac4",
-    "notes/implementation.tex": "0fe5c9430eec36ae2d90a5ef6e5e60c637617ae25652ba94297b6153f0c52241",
-    "notes/implementation.pdf": "e03734ba0795bd7392416bac21ea3360722b104d3315316e53915c69e75c59ba",
-    "results/validation.csv": "66f16f4f6f309cf5633dbad3ed6d895fb069b8b05fec0c9f4a486f53511af353"
+    "README.md": "d39346f0f4038233810f7e6ee9763b3928dd022ad66e5a44a99f533081329d43",
+    "examples/README.md": "429ec704e8fa31ffafb8e10f498bad79180785f2225e84319d80b6ec47f2db9f",
+    "notes/implementation.tex": "5943b6490453670c7d23a285650c5de9313417379d99503a7b86c1b0bafba093",
+    "notes/implementation.pdf": "0e9019bf32262e7ee7d9cfb4743832cb455b9a2fdb31d500d6e18edb1a2e0e97",
+    "results/validation.csv": "f47232b9d04a9fb4f6fde3f01f5dea7b3565531d567b2d1d928fc851ace1c5bb"
   }
 }
