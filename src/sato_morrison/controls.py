@@ -639,6 +639,39 @@ def encounter_reverse_incoming(result, *, field, mass=1., charge=1., start_dista
     return np.array([impact,parallel,perpendicular,phase]),float(angle)
 
 
+def encounter_same_field_reverse_incoming(result, *, field, mass=1., charge=1., start_distance):
+    """Prepare a reciprocal first-plane encounter at unchanged magnetic field.
+
+    For exit sign s, reflect coordinates by S=diag(1,-1,-s) and reverse
+    velocity: (r*,w*)=(S r_out,-S w_out). Rotate the transverse guiding
+    center to +x. Returns incoming coordinates and that rotation angle.
+    Both transmitted and reflected exits are supported. The inverse flux
+    measure includes the finite-plane interaction Gibbs factor; this map
+    alone does not close any bounded incoming population.
+    """
+    if not np.all(np.isfinite([field,mass,charge,start_distance])) or field<=0 or mass<=0 or charge==0 or start_distance<=0:
+        raise ValueError('Finite positive scales and nonzero charge required.')
+    if result['exit'] not in ('transmitted','reflected'):
+        raise ValueError('A completed first outgoing plane is required.')
+    sign=1. if result['exit']=='transmitted' else -1.
+    reflection=np.array([1.,-1.,-sign])
+    position=reflection*np.asarray(result['final_relative_position'],float)
+    velocity=-reflection*np.asarray(result['final_relative_velocity'],float)
+    if position.shape!=(3,) or velocity.shape!=(3,) or not np.all(np.isfinite(position+velocity)) or velocity[2]<=0 or not np.isclose(position[2],-start_distance,rtol=0,atol=1e-9*max(1.,start_distance)):
+        raise ValueError('Endpoint does not match the outgoing plane and direction.')
+    omega=charge*field/mass
+    gc=position[:2]+np.array([velocity[1],-velocity[0]])/omega
+    impact=float(np.linalg.norm(gc))
+    if impact==0:
+        raise ValueError('Zero guiding-center impact has no axial gauge.')
+    angle=float(np.arctan2(gc[1],gc[0]))
+    cosine,sine=np.cos(angle),np.sin(angle)
+    transverse=np.array([cosine*velocity[0]+sine*velocity[1],-sine*velocity[0]+cosine*velocity[1]])
+    parallel=float(velocity[2]);perpendicular=float(np.linalg.norm(transverse))
+    phase=float((np.arctan2(transverse[1],transverse[0])-omega*start_distance/parallel)%(2*np.pi))
+    return np.array([impact,parallel,perpendicular,phase]),angle
+
+
 @dataclass(frozen=True,eq=False)
 class LandauVelocityGrid:
     shape:tuple
