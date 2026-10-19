@@ -162,13 +162,14 @@ for i,node in enumerate(base['nodes']):
     cache[(tuple(node),float(base['distance'][i]),float(base['step'][i]))]=i
 if REPLAY:
     with np.load(OUTPUT/'states.npz') as saved:
-        for i in range(len(saved['nodes'])):
-            record={('node' if k=='nodes' else k):saved[k][i].tolist() for k in saved.files}
-            key=(tuple(record['node']),float(record['distance']),float(record['step']))
-            if key in cache:
-                raise ValueError('Saved new-state reference duplicates a base reference')
-            cache[key]=base_count+len(attempts)
-            attempts.append(record)
+        replay_states={k:saved[k].copy() for k in saved.files}
+    for i in range(len(replay_states['nodes'])):
+        record={('node' if k=='nodes' else k):v[i].tolist() for k,v in replay_states.items()}
+        key=(tuple(record['node']),float(record['distance']),float(record['step']))
+        if key in cache:
+            raise ValueError('Saved new-state reference duplicates a base reference')
+        cache[key]=base_count+len(attempts)
+        attempts.append(record)
 cap_exhausted=False
 base_references_used=set()
 
