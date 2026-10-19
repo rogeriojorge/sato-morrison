@@ -1,0 +1,1548 @@
+{
+  "controls": [
+    {
+      "reference": 241502,
+      "reason": "transmitted_inverse_inside",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 312875,
+      "reason": "transmitted_inverse_inside",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 241194,
+      "reason": "transmitted_inverse_inside",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 87539,
+      "reason": "transmitted_inverse_inside",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 144628,
+      "reason": "transmitted_inverse_inside",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 57338,
+      "reason": "transmitted_inverse_inside",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 333523,
+      "reason": "transmitted_inverse_inside",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 302953,
+      "reason": "transmitted_inverse_inside",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 289849,
+      "reason": "transmitted_inverse_inside",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 259076,
+      "reason": "transmitted_inverse_inside",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 251084,
+      "reason": "transmitted_inverse_inside",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 13068,
+      "reason": "transmitted_inverse_inside",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 228430,
+      "reason": "transmitted_inverse_inside",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 340247,
+      "reason": "transmitted_inverse_inside",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 320575,
+      "reason": "transmitted_inverse_inside",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 125029,
+      "reason": "transmitted_inverse_inside",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 259132,
+      "reason": "transmitted_inverse_outside",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 303061,
+      "reason": "transmitted_inverse_outside",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 359158,
+      "reason": "transmitted_inverse_outside",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 144556,
+      "reason": "transmitted_inverse_outside",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 302885,
+      "reason": "transmitted_inverse_outside",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 56830,
+      "reason": "transmitted_inverse_outside",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 359550,
+      "reason": "transmitted_inverse_outside",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 220410,
+      "reason": "transmitted_inverse_outside",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 271788,
+      "reason": "transmitted_inverse_outside",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 26304,
+      "reason": "transmitted_inverse_outside",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 333339,
+      "reason": "transmitted_inverse_outside",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 25688,
+      "reason": "transmitted_inverse_outside",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 289589,
+      "reason": "transmitted_inverse_outside",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 360094,
+      "reason": "transmitted_inverse_outside",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 278271,
+      "reason": "transmitted_inverse_outside",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 43722,
+      "reason": "transmitted_inverse_outside",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 278572,
+      "reason": "reflected_inverse_inside",
+      "exit": "reflected",
+      "inverse_inside": true
+    },
+    {
+      "reference": 97657,
+      "reason": "reflected_inverse_inside",
+      "exit": "reflected",
+      "inverse_inside": true
+    },
+    {
+      "reference": 241378,
+      "reason": "reflected_inverse_inside",
+      "exit": "reflected",
+      "inverse_inside": true
+    },
+    {
+      "reference": 11211,
+      "reason": "reflected_inverse_inside",
+      "exit": "reflected",
+      "inverse_inside": true
+    },
+    {
+      "reference": 217133,
+      "reason": "reflected_inverse_inside",
+      "exit": "reflected",
+      "inverse_inside": true
+    },
+    {
+      "reference": 131108,
+      "reason": "reflected_inverse_inside",
+      "exit": "reflected",
+      "inverse_inside": true
+    },
+    {
+      "reference": 33183,
+      "reason": "reflected_inverse_inside",
+      "exit": "reflected",
+      "inverse_inside": true
+    },
+    {
+      "reference": 329194,
+      "reason": "reflected_inverse_inside",
+      "exit": "reflected",
+      "inverse_inside": true
+    },
+    {
+      "reference": 134132,
+      "reason": "reflected_inverse_inside",
+      "exit": "reflected",
+      "inverse_inside": true
+    },
+    {
+      "reference": 12475,
+      "reason": "reflected_inverse_inside",
+      "exit": "reflected",
+      "inverse_inside": true
+    },
+    {
+      "reference": 236941,
+      "reason": "reflected_inverse_inside",
+      "exit": "reflected",
+      "inverse_inside": true
+    },
+    {
+      "reference": 358806,
+      "reason": "reflected_inverse_inside",
+      "exit": "reflected",
+      "inverse_inside": true
+    },
+    {
+      "reference": 66026,
+      "reason": "reflected_inverse_inside",
+      "exit": "reflected",
+      "inverse_inside": true
+    },
+    {
+      "reference": 36186,
+      "reason": "reflected_inverse_inside",
+      "exit": "reflected",
+      "inverse_inside": true
+    },
+    {
+      "reference": 266561,
+      "reason": "reflected_inverse_inside",
+      "exit": "reflected",
+      "inverse_inside": true
+    },
+    {
+      "reference": 26136,
+      "reason": "reflected_inverse_inside",
+      "exit": "reflected",
+      "inverse_inside": true
+    },
+    {
+      "reference": 144428,
+      "reason": "reflected_inverse_outside",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 333411,
+      "reason": "reflected_inverse_outside",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 102808,
+      "reason": "reflected_inverse_outside",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 331625,
+      "reason": "reflected_inverse_outside",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 240093,
+      "reason": "reflected_inverse_outside",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 80050,
+      "reason": "reflected_inverse_outside",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 312723,
+      "reason": "reflected_inverse_outside",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 255338,
+      "reason": "reflected_inverse_outside",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 3291,
+      "reason": "reflected_inverse_outside",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 278940,
+      "reason": "reflected_inverse_outside",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 51847,
+      "reason": "reflected_inverse_outside",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 110984,
+      "reason": "reflected_inverse_outside",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 116407,
+      "reason": "reflected_inverse_outside",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 49159,
+      "reason": "reflected_inverse_outside",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 220141,
+      "reason": "reflected_inverse_outside",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 95336,
+      "reason": "reflected_inverse_outside",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 255458,
+      "reason": "closest",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 357645,
+      "reason": "closest",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 345853,
+      "reason": "closest",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 130635,
+      "reason": "closest",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 101583,
+      "reason": "closest",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 142427,
+      "reason": "closest",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 128187,
+      "reason": "closest",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 40240,
+      "reason": "closest",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 135787,
+      "reason": "closest",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 352381,
+      "reason": "closest",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 132699,
+      "reason": "closest",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 50816,
+      "reason": "closest",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 82693,
+      "reason": "closest",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 135547,
+      "reason": "closest",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 220182,
+      "reason": "closest",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 110480,
+      "reason": "closest",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 74371,
+      "reason": "longest_reflected",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 56330,
+      "reason": "longest_reflected",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 302845,
+      "reason": "longest_reflected",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 144908,
+      "reason": "longest_reflected",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 358974,
+      "reason": "longest_reflected",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 360366,
+      "reason": "longest_reflected",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 22907,
+      "reason": "longest_reflected",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 110808,
+      "reason": "longest_reflected",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 65146,
+      "reason": "longest_reflected",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 346374,
+      "reason": "longest_reflected",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 18427,
+      "reason": "longest_reflected",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 232925,
+      "reason": "longest_reflected",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 9195,
+      "reason": "longest_reflected",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 54495,
+      "reason": "longest_reflected",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 294564,
+      "reason": "longest_reflected",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 248537,
+      "reason": "longest_reflected",
+      "exit": "reflected",
+      "inverse_inside": false
+    },
+    {
+      "reference": 65079,
+      "reason": "nearest_inverse_cutoff",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 81051,
+      "reason": "nearest_inverse_cutoff",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 326702,
+      "reason": "nearest_inverse_cutoff",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 295655,
+      "reason": "nearest_inverse_cutoff",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 111968,
+      "reason": "nearest_inverse_cutoff",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 227505,
+      "reason": "nearest_inverse_cutoff",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 73781,
+      "reason": "nearest_inverse_cutoff",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 296175,
+      "reason": "nearest_inverse_cutoff",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 95625,
+      "reason": "nearest_inverse_cutoff",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 91679,
+      "reason": "nearest_inverse_cutoff",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 60307,
+      "reason": "nearest_inverse_cutoff",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 4283,
+      "reason": "nearest_inverse_cutoff",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 232223,
+      "reason": "nearest_inverse_cutoff",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 337052,
+      "reason": "nearest_inverse_cutoff",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 11312,
+      "reason": "nearest_inverse_cutoff",
+      "exit": "transmitted",
+      "inverse_inside": true
+    },
+    {
+      "reference": 275525,
+      "reason": "nearest_inverse_cutoff",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 220578,
+      "reason": "largest_weighted_second_fill",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 144764,
+      "reason": "largest_weighted_second_fill",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 251124,
+      "reason": "largest_weighted_second_fill",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 360150,
+      "reason": "largest_weighted_second_fill",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 97297,
+      "reason": "largest_weighted_second_fill",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 240701,
+      "reason": "largest_weighted_second_fill",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 360613,
+      "reason": "largest_weighted_second_fill",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 145251,
+      "reason": "largest_weighted_second_fill",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 271572,
+      "reason": "largest_weighted_second_fill",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 104008,
+      "reason": "largest_weighted_second_fill",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 271137,
+      "reason": "largest_weighted_second_fill",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 298524,
+      "reason": "largest_weighted_second_fill",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 241058,
+      "reason": "largest_weighted_second_fill",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 272540,
+      "reason": "largest_weighted_second_fill",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 145004,
+      "reason": "largest_weighted_second_fill",
+      "exit": "transmitted",
+      "inverse_inside": false
+    },
+    {
+      "reference": 258594,
+      "reason": "largest_weighted_second_fill",
+      "exit": "transmitted",
+      "inverse_inside": false
+    }
+  ],
+  "nodes": [
+    [
+      1.2938729287720563,
+      0.4493498657219331,
+      2.4876420026044976,
+      2.4157802183706707
+    ],
+    [
+      1.2480138091287412,
+      0.3646060315915698,
+      2.4114719870832264,
+      4.962366996477016
+    ],
+    [
+      1.2595120211876303,
+      0.6093425253255034,
+      2.4232491106202785,
+      2.0420435826708374
+    ],
+    [
+      1.2271211915510682,
+      0.39296152564745324,
+      2.3608253611077843,
+      4.000617879507834
+    ],
+    [
+      1.26618494932133,
+      0.6089120348245943,
+      2.4349522487358675,
+      1.997699014233039
+    ],
+    [
+      1.2291548496325029,
+      0.6812029119270492,
+      2.3211791215534294,
+      1.8524150391953838
+    ],
+    [
+      1.2177709402702686,
+      0.5413616835600261,
+      2.2828606905274658,
+      2.3540888211057345
+    ],
+    [
+      1.2882734195488315,
+      0.6873365754408302,
+      2.425506492429018,
+      1.9711296379294758
+    ],
+    [
+      1.304393461537849,
+      0.6122309768214839,
+      2.495556741043262,
+      2.226429232201613
+    ],
+    [
+      1.2717051216635062,
+      0.5402232671933573,
+      2.3801985321934165,
+      2.3497695418764835
+    ],
+    [
+      1.2358815216706733,
+      0.5750935572217671,
+      2.309779485631336,
+      2.1156863445144163
+    ],
+    [
+      1.287209877137341,
+      0.3835903383575248,
+      2.389469346160734,
+      3.4204891826553205
+    ],
+    [
+      1.3069435565301957,
+      0.7608062069068542,
+      2.4479107806529257,
+      1.8793095736014465
+    ],
+    [
+      1.237214681193869,
+      1.7847151329275064,
+      1.9738968263652354,
+      1.918073982837278
+    ],
+    [
+      1.2973563996334567,
+      0.640584003266731,
+      2.4162032370030353,
+      1.9420131100590963
+    ],
+    [
+      1.237214681193869,
+      1.7847151329275064,
+      1.9738968263652354,
+      1.2235186707525152
+    ],
+    [
+      1.2031657316578632,
+      0.48095047681476166,
+      2.344395768157916,
+      2.8207038453708897
+    ],
+    [
+      1.2180533011285115,
+      0.46423061289216117,
+      2.3734675699287386,
+      3.065444617444107
+    ],
+    [
+      1.2586320515950253,
+      0.8701930228300628,
+      2.436219351528718,
+      1.784150787243604
+    ],
+    [
+      1.2095575862591088,
+      0.8478100724152153,
+      2.3210811876753503,
+      1.7748129071927097
+    ],
+    [
+      1.2294001788161817,
+      0.8377623200501102,
+      2.3819701534850153,
+      1.8417056295140828
+    ],
+    [
+      1.2949753081616437,
+      0.533729031069899,
+      2.4892257248148257,
+      2.3278665255083175
+    ],
+    [
+      1.2105160977013791,
+      0.7198378795045255,
+      2.463365804775853,
+      2.02981256756323
+    ],
+    [
+      1.2654725760161436,
+      0.6250143415738915,
+      2.4666458053389575,
+      2.205747887013251
+    ],
+    [
+      1.2301588195050241,
+      0.4468961143849734,
+      2.4589477066390613,
+      2.2544799762094243
+    ],
+    [
+      1.2324372094850773,
+      0.5633904690697599,
+      2.362972804562337,
+      2.375896268094188
+    ],
+    [
+      1.2736131140079607,
+      0.5906813369805237,
+      2.441546350310544,
+      2.029127141863861
+    ],
+    [
+      1.242159822938387,
+      0.8205708425597551,
+      2.4925721653555706,
+      1.9610301724532515
+    ],
+    [
+      1.2053814359995572,
+      0.3649546149434123,
+      2.4700266948369425,
+      5.5922353813111165
+    ],
+    [
+      1.2005834344513857,
+      1.0033986721653356,
+      2.4037957403981305,
+      1.867537695293235
+    ],
+    [
+      1.243081567826008,
+      1.663983692284801,
+      2.4899998964564816,
+      1.5887941783901791
+    ],
+    [
+      1.2073813086584293,
+      0.5612081703010742,
+      2.289171371859593,
+      2.4004324083066058
+    ],
+    [
+      1.2411035140865323,
+      0.74111810191217,
+      2.4927119011117402,
+      1.8142373185281198
+    ],
+    [
+      1.2480138091287412,
+      0.3646060315915698,
+      2.4114719870832264,
+      4.4624109642923635
+    ],
+    [
+      1.2011254590649678,
+      0.5056329226794843,
+      2.3087011361239624,
+      2.2456348911579873
+    ],
+    [
+      1.2251132807299732,
+      0.7870231073723594,
+      2.4179512130328256,
+      1.7644531787980835
+    ],
+    [
+      1.215888601510965,
+      0.787623412825136,
+      2.479568078928218,
+      1.6365510118801634
+    ],
+    [
+      1.2373550957743835,
+      1.0662047071769887,
+      2.4577863144521275,
+      1.6277928908963244
+    ],
+    [
+      1.2057615102114474,
+      0.7768806742994204,
+      2.3770105847969423,
+      1.7605749304082732
+    ],
+    [
+      1.2073718557167943,
+      0.8253247906462747,
+      2.383710537416778,
+      1.7126330538329224
+    ],
+    [
+      1.2154659548805293,
+      0.9066906954994125,
+      2.4550081713048266,
+      1.6679071595568695
+    ],
+    [
+      1.2125806659472231,
+      0.8154508099468846,
+      2.3728536365802344,
+      1.7123838430878262
+    ],
+    [
+      1.2098613516186894,
+      0.6957992469495562,
+      2.347974862203048,
+      1.7872457788933556
+    ],
+    [
+      1.2500501194867493,
+      0.36994451669242484,
+      2.4084242814289563,
+      3.290111284540812
+    ],
+    [
+      1.2139719954769381,
+      0.8310993138504594,
+      2.4744005711948973,
+      1.6232749010112624
+    ],
+    [
+      1.2368707534304275,
+      0.3912464008788212,
+      2.364849679519504,
+      3.1061778608698174
+    ],
+    [
+      1.2256182172635368,
+      0.7292605159351658,
+      2.4790367700932103,
+      1.7572554844107966
+    ],
+    [
+      1.2514834018020398,
+      0.39450604341062506,
+      2.4022503670815682,
+      3.036731830346529
+    ],
+    [
+      1.205554330864985,
+      0.37658144110821357,
+      2.459190421075111,
+      2.9494283535073174
+    ],
+    [
+      1.2240375898263443,
+      0.37657804814121504,
+      2.472019813372919,
+      2.9503638580175844
+    ],
+    [
+      1.2167811305656222,
+      0.8615647820447794,
+      2.441328568319482,
+      1.7201666352946798
+    ],
+    [
+      1.2250397347387927,
+      2.5428953612396263,
+      2.4415866146982768,
+      1.571675097164933
+    ],
+    [
+      1.2399753826872009,
+      0.8967483306662313,
+      2.481674034612941,
+      1.6894562803816537
+    ],
+    [
+      1.2420483432503684,
+      1.042563886219982,
+      2.4940635312400183,
+      1.6436974928390722
+    ],
+    [
+      1.21076162377732,
+      0.39094928565982373,
+      2.3209865747969505,
+      3.855630108916138
+    ],
+    [
+      1.2492321356106328,
+      1.5044096171912444,
+      2.492403258806557,
+      1.5883010002460818
+    ],
+    [
+      1.21012923582683,
+      1.1740555666940942,
+      2.416963178696095,
+      1.6145652328294258
+    ],
+    [
+      1.2150967756294875,
+      1.119755297137814,
+      2.4256791656266734,
+      1.6240454647366445
+    ],
+    [
+      1.2421990904289806,
+      0.7586450401962949,
+      2.493456121566225,
+      1.7900406146098415
+    ],
+    [
+      1.226681739905599,
+      0.8367684003650288,
+      2.45176555661174,
+      1.7172546638783555
+    ],
+    [
+      1.2250397347387927,
+      2.5428953612396263,
+      2.4415866146982768,
+      1.5699175564248602
+    ],
+    [
+      1.2465407028362636,
+      0.9590425079276281,
+      2.479664338004878,
+      1.6675664373349885
+    ],
+    [
+      1.2150736677223803,
+      0.9195090980199837,
+      2.4144925619422666,
+      1.6861632746320705
+    ],
+    [
+      1.232022883822834,
+      0.7669906984666622,
+      2.4823025098252645,
+      1.7873855736714344
+    ],
+    [
+      1.2307381399084896,
+      2.7740389383708655,
+      2.448678480350237,
+      1.5776022486996393
+    ],
+    [
+      1.2403216213679704,
+      2.9271379997162223,
+      2.4655367052407358,
+      1.5760761155423264
+    ],
+    [
+      1.215901356202082,
+      2.666248691329392,
+      2.4162242667685705,
+      1.572585200672273
+    ],
+    [
+      1.215901356202082,
+      2.666248691329392,
+      2.4162242667685705,
+      1.5690074529175202
+    ],
+    [
+      1.2550540900066118,
+      2.246106768031885,
+      2.499822237656131,
+      1.5824365262549858
+    ],
+    [
+      1.2403216213679704,
+      2.9271379997162223,
+      2.4655367052407358,
+      1.5655165380474667
+    ],
+    [
+      1.2310619327367367,
+      2.2937435488952627,
+      2.470703986517158,
+      1.5831525677491467
+    ],
+    [
+      1.2307381399084896,
+      2.7740389383708655,
+      2.448678480350237,
+      1.5639904048901538
+    ],
+    [
+      1.201512252113662,
+      1.8064330473876777,
+      2.39062603147095,
+      1.5815416894529502
+    ],
+    [
+      1.2202311221063875,
+      1.6915616436792198,
+      2.4538309235650693,
+      1.5816933323305586
+    ],
+    [
+      1.240883379663021,
+      1.652894209390898,
+      2.4780624728726584,
+      1.5750764936816435
+    ],
+    [
+      1.2195919866400875,
+      1.5055760014285378,
+      2.4388581100233915,
+      1.582035836824451
+    ],
+    [
+      1.2372349004025225,
+      1.257372459875654,
+      2.479912891029382,
+      1.6148375538785498
+    ],
+    [
+      1.2257597808571536,
+      1.3588550128729404,
+      2.4513240792996287,
+      1.5909521599907914
+    ],
+    [
+      1.2003818224304246,
+      1.8863978313340637,
+      2.3942201880912957,
+      1.5902046166036765
+    ],
+    [
+      1.246323189954152,
+      0.9167388308339919,
+      2.4927398386627533,
+      1.6917458442647497
+    ],
+    [
+      1.2053814359995572,
+      0.3649546149434123,
+      2.4700266948369425,
+      3.8325425794582624
+    ],
+    [
+      1.201016301198511,
+      0.3737918816439612,
+      2.2959041496230492,
+      3.6070165202259594
+    ],
+    [
+      1.26948531970055,
+      0.3820466202994501,
+      2.409349805711113,
+      3.6313688789700196
+    ],
+    [
+      1.2157651021555396,
+      0.40556243748296555,
+      2.3047715284573083,
+      3.3070781113171748
+    ],
+    [
+      1.2183820203694335,
+      0.43286512920368836,
+      2.33160763984206,
+      2.829403393842581
+    ],
+    [
+      1.2265550183755947,
+      0.49088629752376844,
+      2.444892184175491,
+      2.2076690602042124
+    ],
+    [
+      1.2164656177060034,
+      0.6255547712438668,
+      2.4341668457002696,
+      1.798507005968366
+    ],
+    [
+      1.212147590878872,
+      0.6438106493608076,
+      2.4746632617769935,
+      1.7920706384491663
+    ],
+    [
+      1.2396933056559527,
+      0.6088869211046887,
+      2.4421055181647904,
+      1.8153741034355502
+    ],
+    [
+      1.2071199570276179,
+      0.6788944919914907,
+      2.4146032547100074,
+      1.7152272687901298
+    ],
+    [
+      1.219743112004373,
+      0.683667116814044,
+      2.4572868200694487,
+      1.7094078516264002
+    ],
+    [
+      1.239720123510301,
+      0.6644506090094005,
+      2.422346938138708,
+      1.8049637550164501
+    ],
+    [
+      1.2341799638414022,
+      0.7119981290002971,
+      2.4367935591733367,
+      1.6980663636375706
+    ],
+    [
+      1.2025735377583122,
+      0.684279121935745,
+      2.466893138863747,
+      1.7853059778597693
+    ],
+    [
+      1.2478340374769359,
+      0.7300639138460417,
+      2.470136616113543,
+      1.6803493733194212
+    ],
+    [
+      1.2592362932441827,
+      0.7374359715671477,
+      2.4781936206080446,
+      1.6828204980727772
+    ],
+    [
+      1.3872442058629497,
+      1.4832924339898097,
+      2.4449115797157774,
+      1.4356838558476905
+    ],
+    [
+      1.4767874166927846,
+      1.2483798836463988,
+      2.4711708457185924,
+      1.3993843631495277
+    ],
+    [
+      1.2817885568404326,
+      1.1878392643730105,
+      2.4548327657125486,
+      1.7815397419643144
+    ],
+    [
+      1.2102543234910985,
+      1.3260493053883362,
+      2.0729677608004815,
+      1.6657880298469703
+    ],
+    [
+      1.2696242573671104,
+      0.9984882093394815,
+      2.412316854450909,
+      1.359646585365061
+    ],
+    [
+      1.3043544302564765,
+      0.5920961687490157,
+      2.4867942956312103,
+      1.747447839998875
+    ],
+    [
+      1.2104485588295057,
+      1.8427533340130275,
+      2.013011704847397,
+      1.642661758759294
+    ],
+    [
+      1.2814497243480847,
+      1.591381608594332,
+      2.429964851091985,
+      1.7041104031403105
+    ],
+    [
+      1.460258277580261,
+      1.4374195116098853,
+      2.483276531925689,
+      1.5305304849196713
+    ],
+    [
+      2.399557672716276,
+      0.9012397020400067,
+      2.487198631463783,
+      0.5593426942855002
+    ],
+    [
+      2.399992693221948,
+      0.48792188479047177,
+      2.329745577795186,
+      1.6114088036727647
+    ],
+    [
+      1.212316571922275,
+      0.5852447182115817,
+      2.4559550308042604,
+      1.66232181672496
+    ],
+    [
+      1.2017578076874553,
+      0.6399424266712516,
+      1.245305858699254,
+      4.574862563978753
+    ],
+    [
+      2.3998037607797857,
+      1.2743399684930452,
+      2.2086867666673506,
+      1.3754846077088754
+    ],
+    [
+      1.2991537652047094,
+      1.7573990165328888,
+      2.393005517049694,
+      1.477680327897195
+    ],
+    [
+      2.399992693221948,
+      0.48792188479047177,
+      2.329745577795186,
+      1.5301838499170284
+    ],
+    [
+      1.2053187650151036,
+      0.38794344102873585,
+      2.267942991976327,
+      4.403158675982365
+    ],
+    [
+      1.2288018467566404,
+      1.1580575827913988,
+      2.4681530141054893,
+      1.821970161274181
+    ],
+    [
+      1.244648187236565,
+      0.9789447800593891,
+      2.468131155979384,
+      1.8763935387558348
+    ],
+    [
+      1.246492371668728,
+      0.5214281560156409,
+      2.4700701014543416,
+      2.740052278675556
+    ],
+    [
+      1.234872827289378,
+      0.4582455559645269,
+      2.353968340647079,
+      3.186540915641571
+    ],
+    [
+      1.2265619460829014,
+      0.7940704668155366,
+      2.4546394216675753,
+      1.7729893215608339
+    ],
+    [
+      1.216999587843264,
+      1.537969689036607,
+      2.3504749108152008,
+      1.7594092151521412
+    ],
+    [
+      1.2345570652952116,
+      1.2440796689830314,
+      2.407537705748023,
+      1.807487293339646
+    ],
+    [
+      1.258309039753823,
+      0.5117374111201741,
+      2.414695453869615,
+      2.7268811705798077
+    ],
+    [
+      1.2242998690285878,
+      1.1370132642658166,
+      2.448743316374818,
+      1.636308820513312
+    ],
+    [
+      1.2337046424696485,
+      0.8426092538788377,
+      2.4635229480667538,
+      1.7406027396817247
+    ],
+    [
+      1.2107268368615092,
+      0.7688322637502896,
+      2.4241668242740606,
+      1.8060001587171595
+    ],
+    [
+      1.2056683977862683,
+      1.0769623757208864,
+      2.4514837746573823,
+      1.874987973001442
+    ],
+    [
+      1.217449540286758,
+      0.8596905123270363,
+      2.3676438367279773,
+      1.960482614413933
+    ],
+    [
+      1.2029175219940302,
+      0.6513039775324553,
+      2.337107081843772,
+      2.2531994940126885
+    ],
+    [
+      1.225976042901598,
+      1.2489524658396656,
+      2.4542046306505303,
+      1.6236488852326314
+    ]
+  ],
+  "input_sha256": {
+    "results/antithetic_encounter_flux/summary.json": "067303ebf92edd9d5b9b4233ba852c78be5f0faf7620b8e414074b79089c764f",
+    "results/antithetic_encounter_flux/states.npz": "8eae5382da317a9eaa0989fb456b582553f9af5d05b000b88dcf67639b340098",
+    "results/antithetic_encounter_flux/populations.npz": "460dc4a9632fb782a03ea4b521be930e7107d26d881cdc9a3163327acfbb27d4",
+    "results/stratified_encounter_flux/states.npz": "aa340fe03e5c44bdae3e8de197a3e3a89a9992b86f6032c388f31fa00e52bd66"
+  }
+}

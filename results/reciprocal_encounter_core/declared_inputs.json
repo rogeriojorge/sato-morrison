@@ -1,0 +1,73 @@
+{
+  "mass": 1.0,
+  "charge": 1.0,
+  "field": 2.0,
+  "strength": 0.03,
+  "screening": 3.0,
+  "theta": 0.5,
+  "distance": 24.0,
+  "bounds": [
+    [
+      1.2,
+      2.4
+    ],
+    [
+      0.35,
+      3.0
+    ],
+    [
+      0.0,
+      2.5
+    ]
+  ],
+  "gibbs_log_identity_target": 1e-09,
+  "steps": [
+    0.2,
+    0.05,
+    0.025
+  ],
+  "rtol": 2e-13,
+  "flight_time_factor": 48.0,
+  "workers": 4,
+  "batch_size": 32,
+  "runtime_cap_s": 600.0,
+  "control_count": 128,
+  "endpoint_target": 1e-08,
+  "step_target": 0.001,
+  "energy_target": 1e-09,
+  "quadrature_target": 0.05,
+  "fd_target": 1e-05,
+  "fd_levels": [
+    0.0001,
+    5e-05,
+    2.5e-05
+  ],
+  "fd_nodes": [
+    [
+      1.7,
+      1.1,
+      0.4,
+      0.6
+    ],
+    [
+      2.0,
+      1.4,
+      2.7,
+      2.2
+    ],
+    [
+      1.4,
+      0.9,
+      0.6,
+      5.3
+    ]
+  ],
+  "fd_rule": "central difference of four incoming coordinates; h=epsilon*max(1,abs(coordinate)); wrapped phase differences; maxstep .025",
+  "selection": "unique fine L24 physical members; up to16 largest weighted M2 in each exit/cutoff class,16 closest,16 longest reflected,16 nearest cutoff,then weighted M2 fill; no selection replacement after execution",
+  "reciprocity": "S=diag(1,-1,-s); reciprocal endpoint is (S*rout,-S*wout); rotate guiding center to+x at unchanged qB",
+  "gibbs": "g=exp(-U_in/(m*theta)); surface flux g*b*u*p*exp(-(u^2+p^2)/(4theta)) invariant",
+  "core": "C=D intersect R(D); saved original and antithetic members keep original half-weights; inverse partners are never added to this population",
+  "retrospective": "Core residuals were inspected before implementation, including approximately5.50% core replica failure; no preregistered or independent quadrature claim",
+  "stop_rule": "fixed controls and FD nodes; runtime cap between batches; preserve all failed/missing weights; no adaptive rescue",
+  "scope": "Finite-plane reversible scattering and finite-box core balance only; no global plasma coefficient, screening closure, mixing time or lifetime"
+}
