@@ -329,6 +329,37 @@ In the check panel, **N48** denotes angular refinement at **L = 48**; **planes**
 
 The final **2,048 → 4,096** angular change is at most **0.388%** across the four scaled observables. The last **L = 40 → 48** change is **0.000133%** for the angular integral and **0.00676%** for the separate weak state's scaled mean. Smaller timesteps resolve the same reflected input: the Cartesian position and velocity differences become **3.18 × 10⁻¹¹** and **1.66 × 10⁻¹²**, while a tighter relative solve differs by at most **1.07 × 10⁻⁹**. All **16** checks pass for this conditional family. The broader ensemble and its original coarse Cartesian failure remain unresolved records. [Example 41: fixed methods, states, checks and costs](results/encounter_peak_resolution/summary.json) The separate saved-array audit passes **198** checks of the moments, phase grids, retained weights, source identities and all 16 gates. [Independent audit](results/encounter_peak_resolution/independent_audit.json)
 
+### Sampling the bounded incident flux
+
+Let **b** be relative guiding-center impact, **u** parallel speed, **p** perpendicular speed and **φ** the incoming phase. Divide their previous bounded domain into eight disjoint cells. Each cell has an exact incoming flux **Wₛ**; its **Nₛ** samples share that weight:
+
+![Exact cell fluxes and the stratified estimator.](results/stratified_encounter_flux/weights.svg)
+
+Here **A** is a signed moment change, squared moment change or squared guiding-center displacement. Extra samples improve integration within a cell without changing its physical weight. Reflected encounters retain their weights.
+
+Four fresh independent scrambles use **7,680 → 15,360 → 30,720** joint incoming states each. A separate sample narrows the phase partition; the entire first fine replica is repeated at **L = 40 and 48**. All **215,218** trajectories exit successfully.
+
+![Fresh joint incoming-flux refinement: second and signed-mean integrals in normalized units per partner density.](results/stratified_encounter_flux/sampling_readable.svg)
+
+The small-impact, large-perpendicular-speed central cell carries only **0.1426%** of incoming flux, yet **20.82–21.94%** of the squared-moment integral. All second, cross and spatial checks pass; the raw signed mean still fails two sampling checks (**5.34%, 9.67%**) and one replica check (**5.23%**) against **5%**. The run remains unresolved.
+
+![Exact flux fractions, four independent estimates of second-moment contributions, and fixed checks divided by their own tolerances.](results/stratified_encounter_flux/evidence_readable.svg)
+
+Cell labels give impact L/H (**b < 1.5 / b ≥ 1.5**), perpendicular speed L/H (**p < 2 / p ≥ 2**) and phase C/W (**π/2 ± 0.25 radians / wrapped complement**). The fractions use a logarithmic axis. Sampling, replica and partition targets are **5%**; plane and step targets are **0.5%** and **0.1%**. Mean and cross differences use positive second-moment scales. These empirical comparisons provide no confidence interval. [All inputs, weights, states, gates and costs](results/stratified_encounter_flux/summary.json)
+
+A subsequent **known-zero-control reanalysis uses these same trajectories**. A fixed weak-force expression has exactly zero phase average, so subtracting it preserves the target signed integral. Its choices came from a historical pilot, after early failures motivated the reanalysis. It adds no trajectories and does not improve convergence: the largest replica difference becomes **15.25%**, replica spread increases **3.24-fold**, and the fixed control-order test also fails. Both unsuccessful estimators remain recorded.
+
+![The known-zero control increases empirical replica spread; raw estimates are dotted and controlled estimates solid.](results/encounter_born_control/control_readable.svg)
+
+[Control equations, fixed choices and every failed gate](results/encounter_born_control/summary.json)
+
+The bounded squared-kick ratio **Q = λ²I₂/(μref²IR)** compares moment kicks with spatial kicks; **I₂** and **IR** are their flux-weighted squared increments and **μref = mθ/B**. At the same **B = 2**, Q is **3.354–3.389** across the four broad replicas (**3.503** with the alternate partition), versus **1.004** for the earlier narrow speed band. Incoming-population choice materially changes this diagnostic. Q measures no kinetic mixing time or lifetime.
+
+Outgoing inverse states leave the incoming impact or speed bands for **0.200–0.239%** of incoming flux, carrying **16.86–17.72%** of the second integral across the four replicas. The alternate partition gives **0.188%** and **20.04%**. These use the original incoming weights at finite exit planes. The bounded negative mean therefore establishes no net perpendicular cooling of a full Maxwellian plasma. [Independent flux, axial-invariant and cutoff audit: 697 checks](results/stratified_encounter_flux/independent_audit.json) · [Independent control audit: 253 checks](results/encounter_born_control/independent_audit.json)
+
+Two marginal coarse Cartesian velocity checks remain recorded as failures. Smaller steps resolve both at the unchanged accuracy target; replacing those two contributions changes the ensemble by at most **9 × 10⁻¹²** on its positive reference scales. This trajectory refinement does not remove the sampling failures. [Original Cartesian checks](results/stratified_encounter_flux/cartesian_audit.json) · [Fixed finer-step followup](results/stratified_encounter_flux/cartesian_tight_refinement.json)
+
+
 The specified screened encounters allow individual-moment exchange, while the prototype enforces exact conservation of the full μ marginal. A calibrated plasma closure still needs complete incident-domain convergence, screening tied to plasma parameters, successive-encounter correlations and a measured mixing time. A constrained dipole lifetime remains open.
 
 Recorded costs on the shared Apple M4 are below. Parent and worker memory figures are separate process-lifetime peaks; aggregate job memory was not measured.
@@ -346,8 +377,10 @@ Recorded costs on the shared Apple M4 are below. Parent and worker memory figure
 | Complete extended audit, including reflection | 3.35 s | 0.417 GB | — |
 | One-state peak diagnostic; 16,164 new relative solves plus four controls | 121.83 s | 0.299 GB | 0.0303 GB |
 | Independent saved-array audit of the peak diagnostic | 0.234 s | 0.124 GB | — |
+| Fresh stratified flux; 215,218 encounters | 1,808.48 s | 1.271 GB | 0.107 GB |
+| Known-zero control of the same saved encounters | 4.69 s | 0.543 GB | — |
 
-The extension's measured time excludes the reused solves and figure rendering. The [review and reproducibility record](results/review_refinement.json) collects the source identities, tests and preserved failures.
+The extension's measured time excludes the reused solves and figure rendering. The [October 19 review](results/physical_review_2026_10_19.json) records the new studies and independent checks. The [earlier review and reproducibility record](results/review_refinement.json) collects the source identities, tests and preserved failures.
 
 ## Runtime, memory and failure diagnostics
 
@@ -406,13 +439,17 @@ SM_REFINEMENT_AUDIT_OUTPUT=results/refinement_audit_reproduction python examples
 SM_BROAD_AUDIT_INPUT=results/broad_speed_extended SM_REFINEMENT_AUDIT_OUTPUT=results/refinement_audit_extended_reproduction python examples/40_refinement_audit.py
 # Resolve the selected angular peak and its endpoints; the broad average stays unresolved:
 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 SM_ENCOUNTER_PEAK_OUTPUT=results/encounter_peak_reproduction python examples/41_encounter_peak_resolution.py
+# Fresh stratified bounded flux; saves three failed signed-mean checks and exits nonzero:
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 SM_STRATIFIED_FLUX_OUTPUT=results/stratified_flux_reproduction python examples/42_stratified_encounter_flux.py
+# Reanalyse the saved encounters with the fixed known-zero control; also exits nonzero:
+SM_BORN_CONTROL_OUTPUT=results/born_control_reproduction python examples/43_encounter_born_control.py
 # Independently reconstruct the published peak data, preserving the original receipt:
 SM_PEAK_AUDIT_OUTPUT=results/encounter_peak_audit_reproduction.json python results/encounter_peak_resolution/audit_saved_states.py
 ```
 
 Example 24 exits nonzero because the declared angular and Cartesian checks remain unresolved. It saves the results before raising the error.
 
-**272 tests pass on fresh Linux CI.** The encounter tests include free helices, exact finite-radius repulsive Coulomb orbits, a sensitive screened trajectory checked at high precision, and signed-kick interpolation through zero with independent Gaussian center averaging. Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
+**274 tests pass locally** (113.07 s); the earlier 272-test suite passed Linux CI. The encounter tests include free helices, exact finite-radius repulsive Coulomb orbits, a sensitive screened trajectory checked at high precision, and signed-kick interpolation through zero with independent Gaussian center averaging. Examples expose their inputs, print progress and fail visibly when a declared check fails. Saved results record inputs, units, producer commit, versions and hardware. Computation uses JAX and SOLVAX with independent NumPy/SciPy controls; no other UW Plasma physics package is required.
 
 | Capability | Current evidence |
 |---|---|

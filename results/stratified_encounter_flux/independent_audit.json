@@ -1,0 +1,3845 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "name": "all attempted states complete",
+      "passed": true
+    },
+    {
+      "name": "COM moments from Cartesian velocities",
+      "passed": true,
+      "maximum_absolute_error": 1.6653345369377348e-16
+    },
+    {
+      "name": "free gyro unwinding",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "actual endpoint guiding-center kick",
+      "passed": true,
+      "maximum_absolute_error": 8.881784197001252e-16
+    },
+    {
+      "name": "individual spatial second",
+      "passed": true,
+      "maximum_absolute_error": 6.661338147750939e-16
+    },
+    {
+      "name": "incoming free-helix velocity",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "incoming free-helix position",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "first exit plane and direction",
+      "passed": true
+    },
+    {
+      "name": "endpoint energy bounded by path maximum",
+      "passed": true
+    },
+    {
+      "name": "endpoint axial canonical angular momentum",
+      "passed": true,
+      "maximum_absolute_error": 4.963984882125266e-12
+    },
+    {
+      "name": "canonical guiding-center radius identity",
+      "passed": true,
+      "maximum_absolute_error": 4.964128865907669e-12
+    },
+    {
+      "name": "analytic original flux",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 complete unique selectors",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 matched boundary plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 base integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 stratum0 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 stratum0 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 stratum0 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 stratum0 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.4907779871675686e-19
+    },
+    {
+      "name": "seed4201_N512 stratum1 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 stratum1 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 stratum1 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 stratum1 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 7.724940478959219e-19
+    },
+    {
+      "name": "seed4201_N512 stratum2 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 stratum2 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 8.470329472543003e-22
+    },
+    {
+      "name": "seed4201_N512 stratum2 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 stratum2 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.846030702774449e-19
+    },
+    {
+      "name": "seed4201_N512 stratum3 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 stratum3 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4201_N512 stratum3 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 stratum3 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 5.285485590866834e-19
+    },
+    {
+      "name": "seed4201_N512 stratum4 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 stratum4 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "seed4201_N512 stratum4 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 stratum4 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.574980159653073e-19
+    },
+    {
+      "name": "seed4201_N512 stratum5 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 stratum5 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-18
+    },
+    {
+      "name": "seed4201_N512 stratum5 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 stratum5 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.4560496363301423e-18
+    },
+    {
+      "name": "seed4201_N512 stratum6 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 stratum6 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-20
+    },
+    {
+      "name": "seed4201_N512 stratum6 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 stratum6 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 8.470329472543003e-20
+    },
+    {
+      "name": "seed4201_N512 stratum7 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N512 stratum7 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "seed4201_N512 stratum7 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N512 stratum7 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 9.147955830346444e-19
+    },
+    {
+      "name": "seed4201_N512 exact partition mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4201_N512 retained full incoming weight",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4201_N512 recorded incoming mass",
+      "passed": true,
+      "maximum_absolute_error": 3.517186542012496e-13
+    },
+    {
+      "name": "seed4201_N512 complete weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 6.071532165918825e-18
+    },
+    {
+      "name": "seed4201_N512 reported moment prefactors",
+      "passed": true,
+      "maximum_absolute_error": 6.071532165918825e-18
+    },
+    {
+      "name": "seed4201_N512 reflected flux retained",
+      "passed": true,
+      "maximum_absolute_error": 8.470329472543003e-22
+    },
+    {
+      "name": "seed4201_N1024 complete unique selectors",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 matched boundary plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 base integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 stratum0 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 stratum0 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 stratum0 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 stratum0 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 9.486769009248164e-20
+    },
+    {
+      "name": "seed4201_N1024 stratum1 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 stratum1 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 stratum1 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 stratum1 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 7.589415207398531e-19
+    },
+    {
+      "name": "seed4201_N1024 stratum2 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 stratum2 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 4.235164736271502e-22
+    },
+    {
+      "name": "seed4201_N1024 stratum2 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 stratum2 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.981555974335137e-19
+    },
+    {
+      "name": "seed4201_N1024 stratum3 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 stratum3 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "seed4201_N1024 stratum3 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 stratum3 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 8.809142651444724e-20
+    },
+    {
+      "name": "seed4201_N1024 stratum4 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 stratum4 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "seed4201_N1024 stratum4 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 stratum4 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.8973538018496328e-19
+    },
+    {
+      "name": "seed4201_N1024 stratum5 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 stratum5 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 8.673617379884035e-19
+    },
+    {
+      "name": "seed4201_N1024 stratum5 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 stratum5 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.388632911257127e-18
+    },
+    {
+      "name": "seed4201_N1024 stratum6 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 stratum6 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "seed4201_N1024 stratum6 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 stratum6 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 4.404571325722362e-20
+    },
+    {
+      "name": "seed4201_N1024 stratum7 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N1024 stratum7 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "seed4201_N1024 stratum7 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N1024 stratum7 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 9.859463506040056e-19
+    },
+    {
+      "name": "seed4201_N1024 exact partition mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4201_N1024 retained full incoming weight",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4201_N1024 recorded incoming mass",
+      "passed": true,
+      "maximum_absolute_error": 1.1226575225009583e-12
+    },
+    {
+      "name": "seed4201_N1024 complete weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.9544509200229996e-18
+    },
+    {
+      "name": "seed4201_N1024 reported moment prefactors",
+      "passed": true,
+      "maximum_absolute_error": 2.9544509200229996e-18
+    },
+    {
+      "name": "seed4201_N1024 reflected flux retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 complete unique selectors",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 matched boundary plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 base integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 stratum0 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 stratum0 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 stratum0 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 stratum0 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.303929616531697e-19
+    },
+    {
+      "name": "seed4201_N2048 stratum1 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 stratum1 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 stratum1 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 stratum1 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 7.589415207398531e-19
+    },
+    {
+      "name": "seed4201_N2048 stratum2 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 stratum2 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 2.117582368135751e-22
+    },
+    {
+      "name": "seed4201_N2048 stratum2 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 stratum2 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-20
+    },
+    {
+      "name": "seed4201_N2048 stratum3 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 stratum3 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-20
+    },
+    {
+      "name": "seed4201_N2048 stratum3 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 stratum3 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.8973538018496328e-19
+    },
+    {
+      "name": "seed4201_N2048 stratum4 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 stratum4 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4201_N2048 stratum4 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 stratum4 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.8973538018496328e-19
+    },
+    {
+      "name": "seed4201_N2048 stratum5 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 stratum5 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-19
+    },
+    {
+      "name": "seed4201_N2048 stratum5 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 stratum5 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.3852447794681098e-18
+    },
+    {
+      "name": "seed4201_N2048 stratum6 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 stratum6 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-21
+    },
+    {
+      "name": "seed4201_N2048 stratum6 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 stratum6 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.541098841762901e-20
+    },
+    {
+      "name": "seed4201_N2048 stratum7 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4201_N2048 stratum7 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4201_N2048 stratum7 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 stratum7 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 8.74138001566438e-19
+    },
+    {
+      "name": "seed4201_N2048 exact partition mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4201_N2048 retained full incoming weight",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4201_N2048 recorded incoming mass",
+      "passed": true,
+      "maximum_absolute_error": 1.0054179711005418e-12
+    },
+    {
+      "name": "seed4201_N2048 complete weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 6.938893903907228e-18
+    },
+    {
+      "name": "seed4201_N2048 reported moment prefactors",
+      "passed": true,
+      "maximum_absolute_error": 6.938893903907228e-18
+    },
+    {
+      "name": "seed4201_N2048 reflected flux retained",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-21
+    },
+    {
+      "name": "seed4202_N512 complete unique selectors",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 matched boundary plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 base integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 stratum0 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 stratum0 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 stratum0 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 stratum0 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4202_N512 stratum1 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 stratum1 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 stratum1 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 stratum1 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "seed4202_N512 stratum2 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 stratum2 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 8.470329472543003e-22
+    },
+    {
+      "name": "seed4202_N512 stratum2 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 stratum2 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 8.131516293641283e-20
+    },
+    {
+      "name": "seed4202_N512 stratum3 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 stratum3 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4202_N512 stratum3 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 stratum3 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.6263032587282567e-19
+    },
+    {
+      "name": "seed4202_N512 stratum4 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 stratum4 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "seed4202_N512 stratum4 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 stratum4 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.608861477543245e-19
+    },
+    {
+      "name": "seed4202_N512 stratum5 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 stratum5 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-18
+    },
+    {
+      "name": "seed4202_N512 stratum5 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 stratum5 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 3.113693114106808e-18
+    },
+    {
+      "name": "seed4202_N512 stratum6 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 stratum6 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-20
+    },
+    {
+      "name": "seed4202_N512 stratum6 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 stratum6 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 6.606856988583543e-20
+    },
+    {
+      "name": "seed4202_N512 stratum7 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N512 stratum7 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "seed4202_N512 stratum7 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N512 stratum7 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 3.6591823321385775e-19
+    },
+    {
+      "name": "seed4202_N512 exact partition mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4202_N512 retained full incoming weight",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4202_N512 recorded incoming mass",
+      "passed": true,
+      "maximum_absolute_error": 3.517186542012496e-13
+    },
+    {
+      "name": "seed4202_N512 complete weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 3.381355525439167e-18
+    },
+    {
+      "name": "seed4202_N512 reported moment prefactors",
+      "passed": true,
+      "maximum_absolute_error": 3.381355525439167e-18
+    },
+    {
+      "name": "seed4202_N512 reflected flux retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 complete unique selectors",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 matched boundary plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 base integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 stratum0 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 stratum0 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 stratum0 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 stratum0 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.0164395367051604e-19
+    },
+    {
+      "name": "seed4202_N1024 stratum1 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 stratum1 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 stratum1 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 stratum1 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.8431436932253575e-18
+    },
+    {
+      "name": "seed4202_N1024 stratum2 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 stratum2 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 4.235164736271502e-22
+    },
+    {
+      "name": "seed4202_N1024 stratum2 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 stratum2 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.303929616531697e-19
+    },
+    {
+      "name": "seed4202_N1024 stratum3 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 stratum3 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "seed4202_N1024 stratum3 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 stratum3 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.6263032587282567e-19
+    },
+    {
+      "name": "seed4202_N1024 stratum4 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 stratum4 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "seed4202_N1024 stratum4 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 stratum4 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.846030702774449e-19
+    },
+    {
+      "name": "seed4202_N1024 stratum5 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 stratum5 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 8.673617379884035e-19
+    },
+    {
+      "name": "seed4202_N1024 stratum5 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 stratum5 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 8.809142651444724e-19
+    },
+    {
+      "name": "seed4202_N1024 stratum6 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 stratum6 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "seed4202_N1024 stratum6 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 stratum6 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 4.404571325722362e-20
+    },
+    {
+      "name": "seed4202_N1024 stratum7 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N1024 stratum7 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "seed4202_N1024 stratum7 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N1024 stratum7 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.439454888092385e-19
+    },
+    {
+      "name": "seed4202_N1024 exact partition mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4202_N1024 retained full incoming weight",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4202_N1024 recorded incoming mass",
+      "passed": true,
+      "maximum_absolute_error": 1.1226575225009583e-12
+    },
+    {
+      "name": "seed4202_N1024 complete weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.5517643593698782e-18
+    },
+    {
+      "name": "seed4202_N1024 reported moment prefactors",
+      "passed": true,
+      "maximum_absolute_error": 1.5517643593698782e-18
+    },
+    {
+      "name": "seed4202_N1024 reflected flux retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 complete unique selectors",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 matched boundary plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 base integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 stratum0 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 stratum0 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 stratum0 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 stratum0 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.2874900798265365e-19
+    },
+    {
+      "name": "seed4202_N2048 stratum1 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 stratum1 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 stratum1 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 stratum1 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-18
+    },
+    {
+      "name": "seed4202_N2048 stratum2 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 stratum2 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 2.117582368135751e-22
+    },
+    {
+      "name": "seed4202_N2048 stratum2 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 stratum2 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.4230153513872246e-19
+    },
+    {
+      "name": "seed4202_N2048 stratum3 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 stratum3 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-20
+    },
+    {
+      "name": "seed4202_N2048 stratum3 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 stratum3 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 3.1170812458958252e-19
+    },
+    {
+      "name": "seed4202_N2048 stratum4 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 stratum4 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4202_N2048 stratum4 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 stratum4 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.8295911660692887e-19
+    },
+    {
+      "name": "seed4202_N2048 stratum5 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 stratum5 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-19
+    },
+    {
+      "name": "seed4202_N2048 stratum5 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 stratum5 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.951563910473908e-18
+    },
+    {
+      "name": "seed4202_N2048 stratum6 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 stratum6 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-21
+    },
+    {
+      "name": "seed4202_N2048 stratum6 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 stratum6 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 8.809142651444724e-20
+    },
+    {
+      "name": "seed4202_N2048 stratum7 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4202_N2048 stratum7 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4202_N2048 stratum7 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 stratum7 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 8.131516293641283e-20
+    },
+    {
+      "name": "seed4202_N2048 exact partition mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4202_N2048 retained full incoming weight",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4202_N2048 recorded incoming mass",
+      "passed": true,
+      "maximum_absolute_error": 1.0054179711005418e-12
+    },
+    {
+      "name": "seed4202_N2048 complete weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 7.806255641895632e-18
+    },
+    {
+      "name": "seed4202_N2048 reported moment prefactors",
+      "passed": true,
+      "maximum_absolute_error": 7.806255641895632e-18
+    },
+    {
+      "name": "seed4202_N2048 reflected flux retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 complete unique selectors",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 matched boundary plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 base integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 stratum0 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 stratum0 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 stratum0 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 stratum0 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.6263032587282567e-19
+    },
+    {
+      "name": "seed4203_N512 stratum1 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 stratum1 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 stratum1 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 stratum1 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.6601845766184287e-18
+    },
+    {
+      "name": "seed4203_N512 stratum2 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 stratum2 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 8.470329472543003e-22
+    },
+    {
+      "name": "seed4203_N512 stratum2 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 stratum2 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 9.486769009248164e-20
+    },
+    {
+      "name": "seed4203_N512 stratum3 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 stratum3 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4203_N512 stratum3 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 stratum3 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-20
+    },
+    {
+      "name": "seed4203_N512 stratum4 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 stratum4 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "seed4203_N512 stratum4 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 stratum4 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 8.131516293641283e-20
+    },
+    {
+      "name": "seed4203_N512 stratum5 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 stratum5 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-18
+    },
+    {
+      "name": "seed4203_N512 stratum5 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 stratum5 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.15485181781494e-18
+    },
+    {
+      "name": "seed4203_N512 stratum6 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 stratum6 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-20
+    },
+    {
+      "name": "seed4203_N512 stratum6 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 stratum6 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 8.978549240895584e-20
+    },
+    {
+      "name": "seed4203_N512 stratum7 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N512 stratum7 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "seed4203_N512 stratum7 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N512 stratum7 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.4738373282224826e-18
+    },
+    {
+      "name": "seed4203_N512 exact partition mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4203_N512 retained full incoming weight",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4203_N512 recorded incoming mass",
+      "passed": true,
+      "maximum_absolute_error": 3.517186542012496e-13
+    },
+    {
+      "name": "seed4203_N512 complete weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-18
+    },
+    {
+      "name": "seed4203_N512 reported moment prefactors",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-18
+    },
+    {
+      "name": "seed4203_N512 reflected flux retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 complete unique selectors",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 matched boundary plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 base integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 stratum0 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 stratum0 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 stratum0 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 stratum0 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 9.486769009248164e-20
+    },
+    {
+      "name": "seed4203_N1024 stratum1 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 stratum1 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 stratum1 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 stratum1 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.1993986533120893e-18
+    },
+    {
+      "name": "seed4203_N1024 stratum2 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 stratum2 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 4.235164736271502e-22
+    },
+    {
+      "name": "seed4203_N1024 stratum2 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 stratum2 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.9651164376299768e-19
+    },
+    {
+      "name": "seed4203_N1024 stratum3 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 stratum3 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "seed4203_N1024 stratum3 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 stratum3 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-19
+    },
+    {
+      "name": "seed4203_N1024 stratum4 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 stratum4 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "seed4203_N1024 stratum4 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 stratum4 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 3.2864878353466853e-19
+    },
+    {
+      "name": "seed4203_N1024 stratum5 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 stratum5 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 8.673617379884035e-19
+    },
+    {
+      "name": "seed4203_N1024 stratum5 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 stratum5 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 8.334804200982315e-19
+    },
+    {
+      "name": "seed4203_N1024 stratum6 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 stratum6 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "seed4203_N1024 stratum6 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 stratum6 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.202285662861181e-19
+    },
+    {
+      "name": "seed4203_N1024 stratum7 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N1024 stratum7 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "seed4203_N1024 stratum7 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N1024 stratum7 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.558039500707987e-18
+    },
+    {
+      "name": "seed4203_N1024 exact partition mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4203_N1024 retained full incoming weight",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4203_N1024 recorded incoming mass",
+      "passed": true,
+      "maximum_absolute_error": 1.1226575225009583e-12
+    },
+    {
+      "name": "seed4203_N1024 complete weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-17
+    },
+    {
+      "name": "seed4203_N1024 reported moment prefactors",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-17
+    },
+    {
+      "name": "seed4203_N1024 reflected flux retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 complete unique selectors",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 matched boundary plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 base integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 stratum0 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 stratum0 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 stratum0 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 stratum0 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.2197274440461925e-19
+    },
+    {
+      "name": "seed4203_N2048 stratum1 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 stratum1 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 stratum1 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 stratum1 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 6.098637220230962e-19
+    },
+    {
+      "name": "seed4203_N2048 stratum2 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 stratum2 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 2.117582368135751e-22
+    },
+    {
+      "name": "seed4203_N2048 stratum2 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 stratum2 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.6263032587282567e-19
+    },
+    {
+      "name": "seed4203_N2048 stratum3 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 stratum3 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-20
+    },
+    {
+      "name": "seed4203_N2048 stratum3 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 stratum3 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 3.1170812458958252e-19
+    },
+    {
+      "name": "seed4203_N2048 stratum4 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 stratum4 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4203_N2048 stratum4 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 stratum4 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.981555974335137e-19
+    },
+    {
+      "name": "seed4203_N2048 stratum5 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 stratum5 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-19
+    },
+    {
+      "name": "seed4203_N2048 stratum5 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 stratum5 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-18
+    },
+    {
+      "name": "seed4203_N2048 stratum6 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 stratum6 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-21
+    },
+    {
+      "name": "seed4203_N2048 stratum6 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 stratum6 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.1011428314305904e-19
+    },
+    {
+      "name": "seed4203_N2048 stratum7 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4203_N2048 stratum7 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4203_N2048 stratum7 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 stratum7 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.328147661294743e-18
+    },
+    {
+      "name": "seed4203_N2048 exact partition mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4203_N2048 retained full incoming weight",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4203_N2048 recorded incoming mass",
+      "passed": true,
+      "maximum_absolute_error": 1.0054179711005418e-12
+    },
+    {
+      "name": "seed4203_N2048 complete weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 8.673617379884035e-18
+    },
+    {
+      "name": "seed4203_N2048 reported moment prefactors",
+      "passed": true,
+      "maximum_absolute_error": 8.673617379884035e-18
+    },
+    {
+      "name": "seed4203_N2048 reflected flux retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 complete unique selectors",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 matched boundary plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 base integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 stratum0 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 stratum0 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 stratum0 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 stratum0 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 8.131516293641283e-20
+    },
+    {
+      "name": "seed4204_N512 stratum1 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 stratum1 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 stratum1 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 stratum1 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-19
+    },
+    {
+      "name": "seed4204_N512 stratum2 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 stratum2 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 8.470329472543003e-22
+    },
+    {
+      "name": "seed4204_N512 stratum2 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 stratum2 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-20
+    },
+    {
+      "name": "seed4204_N512 stratum3 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 stratum3 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4204_N512 stratum3 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 stratum3 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.0328790734103208e-19
+    },
+    {
+      "name": "seed4204_N512 stratum4 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 stratum4 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "seed4204_N512 stratum4 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 stratum4 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 5.522654816098038e-19
+    },
+    {
+      "name": "seed4204_N512 stratum5 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 stratum5 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-18
+    },
+    {
+      "name": "seed4204_N512 stratum5 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 stratum5 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.2158381900172497e-18
+    },
+    {
+      "name": "seed4204_N512 stratum6 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 stratum6 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-20
+    },
+    {
+      "name": "seed4204_N512 stratum6 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 stratum6 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.371692252312041e-20
+    },
+    {
+      "name": "seed4204_N512 stratum7 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N512 stratum7 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "seed4204_N512 stratum7 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N512 stratum7 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 7.623296525288703e-19
+    },
+    {
+      "name": "seed4204_N512 exact partition mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4204_N512 retained full incoming weight",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4204_N512 recorded incoming mass",
+      "passed": true,
+      "maximum_absolute_error": 3.517186542012496e-13
+    },
+    {
+      "name": "seed4204_N512 complete weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 6.938893903907228e-18
+    },
+    {
+      "name": "seed4204_N512 reported moment prefactors",
+      "passed": true,
+      "maximum_absolute_error": 6.938893903907228e-18
+    },
+    {
+      "name": "seed4204_N512 reflected flux retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 complete unique selectors",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 matched boundary plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 base integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 stratum0 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 stratum0 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 stratum0 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 stratum0 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-20
+    },
+    {
+      "name": "seed4204_N1024 stratum1 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 stratum1 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 stratum1 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 stratum1 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 9.622294280808852e-19
+    },
+    {
+      "name": "seed4204_N1024 stratum2 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 stratum2 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 4.235164736271502e-22
+    },
+    {
+      "name": "seed4204_N1024 stratum2 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 stratum2 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-19
+    },
+    {
+      "name": "seed4204_N1024 stratum3 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 stratum3 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "seed4204_N1024 stratum3 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 stratum3 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "seed4204_N1024 stratum4 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 stratum4 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "seed4204_N1024 stratum4 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 stratum4 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.0503208545953324e-19
+    },
+    {
+      "name": "seed4204_N1024 stratum5 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 stratum5 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 8.673617379884035e-19
+    },
+    {
+      "name": "seed4204_N1024 stratum5 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 stratum5 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.1412992906588713e-18
+    },
+    {
+      "name": "seed4204_N1024 stratum6 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 stratum6 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "seed4204_N1024 stratum6 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 stratum6 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 5.590417451878382e-20
+    },
+    {
+      "name": "seed4204_N1024 stratum7 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N1024 stratum7 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "seed4204_N1024 stratum7 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N1024 stratum7 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 3.5914196963582334e-19
+    },
+    {
+      "name": "seed4204_N1024 exact partition mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4204_N1024 retained full incoming weight",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4204_N1024 recorded incoming mass",
+      "passed": true,
+      "maximum_absolute_error": 1.1226575225009583e-12
+    },
+    {
+      "name": "seed4204_N1024 complete weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 9.974659986866641e-18
+    },
+    {
+      "name": "seed4204_N1024 reported moment prefactors",
+      "passed": true,
+      "maximum_absolute_error": 9.974659986866641e-18
+    },
+    {
+      "name": "seed4204_N1024 reflected flux retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 complete unique selectors",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 matched boundary plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 base integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 stratum0 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 stratum0 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 stratum0 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 stratum0 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.5585406229479126e-19
+    },
+    {
+      "name": "seed4204_N2048 stratum1 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 stratum1 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 stratum1 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 stratum1 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.8431436932253575e-18
+    },
+    {
+      "name": "seed4204_N2048 stratum2 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 stratum2 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 2.117582368135751e-22
+    },
+    {
+      "name": "seed4204_N2048 stratum2 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 stratum2 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 3.9979955110402976e-19
+    },
+    {
+      "name": "seed4204_N2048 stratum3 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 stratum3 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-20
+    },
+    {
+      "name": "seed4204_N2048 stratum3 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 stratum3 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 8.131516293641283e-20
+    },
+    {
+      "name": "seed4204_N2048 stratum4 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 stratum4 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4204_N2048 stratum4 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 stratum4 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "seed4204_N2048 stratum5 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 stratum5 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-19
+    },
+    {
+      "name": "seed4204_N2048 stratum5 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 stratum5 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-18
+    },
+    {
+      "name": "seed4204_N2048 stratum6 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 stratum6 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-21
+    },
+    {
+      "name": "seed4204_N2048 stratum6 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 stratum6 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.541098841762901e-20
+    },
+    {
+      "name": "seed4204_N2048 stratum7 allocation",
+      "passed": true
+    },
+    {
+      "name": "seed4204_N2048 stratum7 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "seed4204_N2048 stratum7 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 stratum7 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "seed4204_N2048 exact partition mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4204_N2048 retained full incoming weight",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "seed4204_N2048 recorded incoming mass",
+      "passed": true,
+      "maximum_absolute_error": 1.0054179711005418e-12
+    },
+    {
+      "name": "seed4204_N2048 complete weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.3010426069826053e-18
+    },
+    {
+      "name": "seed4204_N2048 reported moment prefactors",
+      "passed": true,
+      "maximum_absolute_error": 1.3010426069826053e-18
+    },
+    {
+      "name": "seed4204_N2048 reflected flux retained",
+      "passed": true,
+      "maximum_absolute_error": 1.6940658945086007e-21
+    },
+    {
+      "name": "alternate_partition complete unique selectors",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition matched boundary plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition base integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition stratum0 allocation",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition stratum0 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition stratum0 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition stratum0 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-20
+    },
+    {
+      "name": "alternate_partition stratum1 allocation",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition stratum1 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition stratum1 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition stratum1 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.0599841277224584e-18
+    },
+    {
+      "name": "alternate_partition stratum2 allocation",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition stratum2 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0587911840678754e-22
+    },
+    {
+      "name": "alternate_partition stratum2 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition stratum2 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.7618285302889447e-19
+    },
+    {
+      "name": "alternate_partition stratum3 allocation",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition stratum3 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition stratum3 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition stratum3 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-19
+    },
+    {
+      "name": "alternate_partition stratum4 allocation",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition stratum4 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "alternate_partition stratum4 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition stratum4 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 8.131516293641283e-20
+    },
+    {
+      "name": "alternate_partition stratum5 allocation",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition stratum5 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-19
+    },
+    {
+      "name": "alternate_partition stratum5 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition stratum5 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.6567964448294115e-18
+    },
+    {
+      "name": "alternate_partition stratum6 allocation",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition stratum6 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-21
+    },
+    {
+      "name": "alternate_partition stratum6 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition stratum6 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "alternate_partition stratum7 allocation",
+      "passed": true
+    },
+    {
+      "name": "alternate_partition stratum7 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "alternate_partition stratum7 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition stratum7 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 5.624298769768554e-19
+    },
+    {
+      "name": "alternate_partition exact partition mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "alternate_partition retained full incoming weight",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition recorded incoming mass",
+      "passed": true,
+      "maximum_absolute_error": 1.0658141036401503e-12
+    },
+    {
+      "name": "alternate_partition complete weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-18
+    },
+    {
+      "name": "alternate_partition reported moment prefactors",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-18
+    },
+    {
+      "name": "alternate_partition reflected flux retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 complete unique selectors",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 matched boundary plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 base integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 stratum0 allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 stratum0 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 stratum0 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 stratum0 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 4.743384504624082e-20
+    },
+    {
+      "name": "boundary_L40 stratum1 allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 stratum1 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 stratum1 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 stratum1 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-18
+    },
+    {
+      "name": "boundary_L40 stratum2 allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 stratum2 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 2.117582368135751e-22
+    },
+    {
+      "name": "boundary_L40 stratum2 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 stratum2 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.8295911660692887e-19
+    },
+    {
+      "name": "boundary_L40 stratum3 allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 stratum3 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-20
+    },
+    {
+      "name": "boundary_L40 stratum3 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 stratum3 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 2.846030702774449e-19
+    },
+    {
+      "name": "boundary_L40 stratum4 allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 stratum4 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "boundary_L40 stratum4 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 stratum4 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.4568966692773966e-19
+    },
+    {
+      "name": "boundary_L40 stratum5 allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 stratum5 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-19
+    },
+    {
+      "name": "boundary_L40 stratum5 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 stratum5 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 3.2526065174565133e-18
+    },
+    {
+      "name": "boundary_L40 stratum6 allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 stratum6 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-21
+    },
+    {
+      "name": "boundary_L40 stratum6 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 stratum6 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-20
+    },
+    {
+      "name": "boundary_L40 stratum7 allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L40 stratum7 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "boundary_L40 stratum7 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L40 stratum7 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 8.775261333554552e-19
+    },
+    {
+      "name": "boundary_L40 exact partition mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "boundary_L40 retained full incoming weight",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "boundary_L40 recorded incoming mass",
+      "passed": true,
+      "maximum_absolute_error": 1.0054179711005418e-12
+    },
+    {
+      "name": "boundary_L40 complete weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.0408340855860843e-17
+    },
+    {
+      "name": "boundary_L40 reported moment prefactors",
+      "passed": true,
+      "maximum_absolute_error": 1.0408340855860843e-17
+    },
+    {
+      "name": "boundary_L40 reflected flux retained",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-21
+    },
+    {
+      "name": "boundary_L48 complete unique selectors",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 matched boundary plane",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 base integration step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 stratum0 allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 stratum0 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 stratum0 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 stratum0 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 8.893845946170154e-21
+    },
+    {
+      "name": "boundary_L48 stratum1 allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 stratum1 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 stratum1 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 stratum1 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-18
+    },
+    {
+      "name": "boundary_L48 stratum2 allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 stratum2 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 2.117582368135751e-22
+    },
+    {
+      "name": "boundary_L48 stratum2 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 stratum2 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-20
+    },
+    {
+      "name": "boundary_L48 stratum3 allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 stratum3 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 1.3552527156068805e-20
+    },
+    {
+      "name": "boundary_L48 stratum3 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 stratum3 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 4.0657581468206416e-20
+    },
+    {
+      "name": "boundary_L48 stratum4 allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 stratum4 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "boundary_L48 stratum4 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 stratum4 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "boundary_L48 stratum5 allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 stratum5 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-19
+    },
+    {
+      "name": "boundary_L48 stratum5 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 stratum5 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 3.0527067419044984e-18
+    },
+    {
+      "name": "boundary_L48 stratum6 allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 stratum6 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-21
+    },
+    {
+      "name": "boundary_L48 stratum6 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 stratum6 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.0503208545953324e-19
+    },
+    {
+      "name": "boundary_L48 stratum7 allocation",
+      "passed": true
+    },
+    {
+      "name": "boundary_L48 stratum7 exact weights",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "boundary_L48 stratum7 independent exact incoming map",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "boundary_L48 stratum7 weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 1.0367683274392636e-18
+    },
+    {
+      "name": "boundary_L48 exact partition mass",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "boundary_L48 retained full incoming weight",
+      "passed": true,
+      "maximum_absolute_error": 1.7763568394002505e-15
+    },
+    {
+      "name": "boundary_L48 recorded incoming mass",
+      "passed": true,
+      "maximum_absolute_error": 1.0054179711005418e-12
+    },
+    {
+      "name": "boundary_L48 complete weighted integral",
+      "passed": true,
+      "maximum_absolute_error": 7.806255641895632e-18
+    },
+    {
+      "name": "boundary_L48 reported moment prefactors",
+      "passed": true,
+      "maximum_absolute_error": 7.806255641895632e-18
+    },
+    {
+      "name": "boundary_L48 reflected flux retained",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-21
+    },
+    {
+      "name": "control 0.1 exact incident nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.1 exact boundary",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.1 exact step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.05 exact incident nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.05 exact boundary",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.05 exact step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.025 exact incident nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.025 exact boundary",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control 0.025 exact step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control L40 exact incident nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control L40 exact boundary",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control L40 exact step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control L48 exact incident nodes",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control L48 exact boundary",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "control L48 exact step",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "active maximum step ratios",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "sample_4201 gate comparison",
+      "passed": true,
+      "maximum_absolute_error": 3.187337546672886e-15
+    },
+    {
+      "name": "sample_4202 gate comparison",
+      "passed": true,
+      "maximum_absolute_error": 5.738465258531278e-15
+    },
+    {
+      "name": "sample_4203 gate comparison",
+      "passed": true,
+      "maximum_absolute_error": 1.007267186325933e-14
+    },
+    {
+      "name": "sample_4204 gate comparison",
+      "passed": true,
+      "maximum_absolute_error": 7.115835698456863e-15
+    },
+    {
+      "name": "replica_4201_4202 gate comparison",
+      "passed": true,
+      "maximum_absolute_error": 1.231653667943533e-14
+    },
+    {
+      "name": "replica_4201_4203 gate comparison",
+      "passed": true,
+      "maximum_absolute_error": 2.8119867545584043e-15
+    },
+    {
+      "name": "replica_4201_4204 gate comparison",
+      "passed": true,
+      "maximum_absolute_error": 1.164346397075633e-14
+    },
+    {
+      "name": "replica_4202_4203 gate comparison",
+      "passed": true,
+      "maximum_absolute_error": 1.3513495877859327e-14
+    },
+    {
+      "name": "replica_4202_4204 gate comparison",
+      "passed": true,
+      "maximum_absolute_error": 3.5136824005910228e-15
+    },
+    {
+      "name": "replica_4203_4204 gate comparison",
+      "passed": true,
+      "maximum_absolute_error": 1.3010426069826053e-14
+    },
+    {
+      "name": "partition_4201 gate comparison",
+      "passed": true,
+      "maximum_absolute_error": 8.071668333720083e-15
+    },
+    {
+      "name": "partition_4202 gate comparison",
+      "passed": true,
+      "maximum_absolute_error": 4.2223169405275485e-15
+    },
+    {
+      "name": "partition_4203 gate comparison",
+      "passed": true,
+      "maximum_absolute_error": 9.450773497121645e-15
+    },
+    {
+      "name": "partition_4204 gate comparison",
+      "passed": true,
+      "maximum_absolute_error": 4.066191827689636e-15
+    },
+    {
+      "name": "boundary_ensemble gate comparison",
+      "passed": true,
+      "maximum_absolute_error": 6.272996834840892e-15
+    },
+    {
+      "name": "boundary_L24_to40 gate comparison",
+      "passed": true,
+      "maximum_absolute_error": 2.8968797846640193e-15
+    },
+    {
+      "name": "active_step gate comparison",
+      "passed": true,
+      "maximum_absolute_error": 1.4116295323388832e-16
+    },
+    {
+      "name": "boundary_controls gate comparison",
+      "passed": true,
+      "maximum_absolute_error": 2.6807944969800546e-13
+    },
+    {
+      "name": "sample_4201_early history diagnostic",
+      "passed": true,
+      "maximum_absolute_error": 5.224987109642143e-15
+    },
+    {
+      "name": "sample_4202_early history diagnostic",
+      "passed": true,
+      "maximum_absolute_error": 7.466249840604178e-15
+    },
+    {
+      "name": "sample_4203_early history diagnostic",
+      "passed": true,
+      "maximum_absolute_error": 8.403542618717896e-15
+    },
+    {
+      "name": "sample_4204_early history diagnostic",
+      "passed": true,
+      "maximum_absolute_error": 7.28583859910259e-15
+    },
+    {
+      "name": "all declared gates present",
+      "passed": true
+    },
+    {
+      "name": "sample_4201 decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "sample_4202 decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "sample_4203 decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "sample_4204 decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "replica_4201_4202 decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "replica_4201_4203 decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "replica_4201_4204 decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "replica_4202_4203 decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "replica_4202_4204 decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "replica_4203_4204 decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "partition_4201 decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "partition_4202 decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "partition_4203 decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "partition_4204 decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "boundary_ensemble decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "boundary_L24_to40 decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "active_step decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "boundary_controls decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "complete decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "exact_flux_mass decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "energy decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "active_step_sizes decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "source_integrity decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "prior_integrity decision reproduced",
+      "passed": true
+    },
+    {
+      "name": "overall producer status reproduced",
+      "passed": true
+    },
+    {
+      "name": "archived narrow comparison same physical parameters",
+      "passed": true
+    },
+    {
+      "name": "archived narrow same-field normalized kick ratio",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "archive attempt count",
+      "passed": true
+    },
+    {
+      "name": "historical committed source examples/42_stratified_encounter_flux.py",
+      "passed": true
+    },
+    {
+      "name": "historical committed source src/sato_morrison/controls.py",
+      "passed": true
+    },
+    {
+      "name": "historical committed source src/sato_morrison/reference.py",
+      "passed": true
+    }
+  ],
+  "wall_s": 0.26968879194464535,
+  "peak_rss_bytes": 311820288,
+  "scope": "Independent saved-state and exact-measure reconstruction; no producer imports or new trajectory solves. Scramble comparisons are empirical, not rigorous error bounds.",
+  "invariant_formulas": {
+    "canonical": "J=(r cross w)_z+Omega*|r_perp|^2/2, units length*velocity",
+    "canonical_scale": "|Omega|*b_in^2/2+p_in^2/(2*|Omega|), positive on bounded domain",
+    "radius": "|Rgc_out|^2-|Rgc_in|^2=(p_out^2-p_in^2)/Omega^2=8B*c/(m*Omega^2)",
+    "radius_scale": "b_in^2+(p_in/Omega)^2, units length^2",
+    "residual_target": 1e-09
+  },
+  "producer_commit": "01618f74f0cd621518d30938fcb444ac221566ca",
+  "producer_source_identities": {
+    "examples/42_stratified_encounter_flux.py": {
+      "commit": "01618f74f0cd621518d30938fcb444ac221566ca",
+      "expected_sha256": "5a704c4b97b86dc30380de8588cdfbdaa9c7482264dbf7b2ddcd61d6879989ad",
+      "actual_sha256": "5a704c4b97b86dc30380de8588cdfbdaa9c7482264dbf7b2ddcd61d6879989ad"
+    },
+    "src/sato_morrison/controls.py": {
+      "commit": "01618f74f0cd621518d30938fcb444ac221566ca",
+      "expected_sha256": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+      "actual_sha256": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412"
+    },
+    "src/sato_morrison/reference.py": {
+      "commit": "01618f74f0cd621518d30938fcb444ac221566ca",
+      "expected_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+      "actual_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+    }
+  },
+  "versions": {
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "python": "3.12.13"
+  },
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "audit_git_identity": "831d2ebec582c40667fc157e516a90c4077e7484",
+  "source_path": "results/stratified_encounter_flux/audit_saved_states.py",
+  "source_uncommitted": true,
+  "inverse_cutoff_diagnostic": {
+    "scope": "Kinematic cutoff-closure diagnostic: magnitudes of inverse incident data at outgoing finite planes; includes transmitted and reflected exits with exact original incoming flux weights. No detailed-balance or physical-rate claim.",
+    "outgoing_coordinates": "(|r_perp+(w_y,-w_x)/Omega|, |w_z|, |w_perp|)",
+    "cases": {
+      "seed4201_N512": {
+        "impact": {
+          "incoming_flux_fraction": 0.0009107127765034805,
+          "incoming_second_integral_fraction": 0.12382770546793065
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 0.00018248749278366894,
+          "incoming_second_integral_fraction": 0.016762493894650163
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.00037898979359965966,
+          "incoming_second_integral_fraction": 0.05877358803154146
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.0014697523569641333,
+          "incoming_second_integral_fraction": 0.18612036196758136
+        }
+      },
+      "seed4201_N1024": {
+        "impact": {
+          "incoming_flux_fraction": 0.001779228412477634,
+          "incoming_second_integral_fraction": 0.0949881194681018
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 0.00012555653449754285,
+          "incoming_second_integral_fraction": 0.018290644893502496
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.00043960217019102787,
+          "incoming_second_integral_fraction": 0.06150215375489303
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.002341775289391909,
+          "incoming_second_integral_fraction": 0.16045725283311088
+        }
+      },
+      "seed4201_N2048": {
+        "impact": {
+          "incoming_flux_fraction": 0.0014441306037326748,
+          "incoming_second_integral_fraction": 0.10624027726816006
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 0.00011580093452899524,
+          "incoming_second_integral_fraction": 0.019279778957917087
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.0004444657677162344,
+          "incoming_second_integral_fraction": 0.05666629531060691
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.002001959600055229,
+          "incoming_second_integral_fraction": 0.17168286062849158
+        }
+      },
+      "seed4202_N512": {
+        "impact": {
+          "incoming_flux_fraction": 0.0013083975445816695,
+          "incoming_second_integral_fraction": 0.07666108182239348
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 3.5357519215426635e-05,
+          "incoming_second_integral_fraction": 0.004624696609390635
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.0007999824923406309,
+          "incoming_second_integral_fraction": 0.06007282590058927
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.0021409516065118116,
+          "incoming_second_integral_fraction": 0.1373648990375299
+        }
+      },
+      "seed4202_N1024": {
+        "impact": {
+          "incoming_flux_fraction": 0.0012933306127482517,
+          "incoming_second_integral_fraction": 0.09822346260193175
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 1.9768221827149807e-05,
+          "incoming_second_integral_fraction": 0.003582090875756511
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.0005846687717419999,
+          "incoming_second_integral_fraction": 0.058022661045255344
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.0018955040222463455,
+          "incoming_second_integral_fraction": 0.15663570925265585
+        }
+      },
+      "seed4202_N2048": {
+        "impact": {
+          "incoming_flux_fraction": 0.0015116613048035024,
+          "incoming_second_integral_fraction": 0.10462638126986747
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 0.0001490735494887329,
+          "incoming_second_integral_fraction": 0.010468793441513954
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.0004908427843263061,
+          "incoming_second_integral_fraction": 0.07091445879064193
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.002148704628066817,
+          "incoming_second_integral_fraction": 0.17721872557799276
+        }
+      },
+      "seed4203_N512": {
+        "impact": {
+          "incoming_flux_fraction": 0.0016825636410845114,
+          "incoming_second_integral_fraction": 0.09595952690285
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 6.827733250817736e-05,
+          "incoming_second_integral_fraction": 0.013888220205751268
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.0006447931947554254,
+          "incoming_second_integral_fraction": 0.060143265581850125
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.0023928482187221987,
+          "incoming_second_integral_fraction": 0.15735118572177895
+        }
+      },
+      "seed4203_N1024": {
+        "impact": {
+          "incoming_flux_fraction": 0.001609408740555501,
+          "incoming_second_integral_fraction": 0.09667363549368385
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 5.286215697152024e-05,
+          "incoming_second_integral_fraction": 0.014528196856863544
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.0006204906158950791,
+          "incoming_second_integral_fraction": 0.06829801268810079
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.0022798014419445657,
+          "incoming_second_integral_fraction": 0.16859396383239553
+        }
+      },
+      "seed4203_N2048": {
+        "impact": {
+          "incoming_flux_fraction": 0.0014105892774614452,
+          "incoming_second_integral_fraction": 0.09569908859209107
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 0.0004782067862043313,
+          "incoming_second_integral_fraction": 0.013680904368985655
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.0005057355943081042,
+          "incoming_second_integral_fraction": 0.06915990858243663
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.0023917457083479656,
+          "incoming_second_integral_fraction": 0.16860287076091288
+        }
+      },
+      "seed4204_N512": {
+        "impact": {
+          "incoming_flux_fraction": 0.000730581684454688,
+          "incoming_second_integral_fraction": 0.09565409200628147
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 3.744698143486312e-05,
+          "incoming_second_integral_fraction": 0.009057501263898102
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.0004008818896231622,
+          "incoming_second_integral_fraction": 0.07454073733433043
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.0011661246058867981,
+          "incoming_second_integral_fraction": 0.17265016203865632
+        }
+      },
+      "seed4204_N1024": {
+        "impact": {
+          "incoming_flux_fraction": 0.0011438414446974814,
+          "incoming_second_integral_fraction": 0.10095141601764318
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 0.00010604533456044763,
+          "incoming_second_integral_fraction": 0.005266212412568284
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.0004597530476983333,
+          "incoming_second_integral_fraction": 0.07507704625037553
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.0017075503647368258,
+          "incoming_second_integral_fraction": 0.1776439906049107
+        }
+      },
+      "seed4204_N2048": {
+        "impact": {
+          "incoming_flux_fraction": 0.0016931151323209166,
+          "incoming_second_integral_fraction": 0.10063804885272058
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 7.371953898267872e-05,
+          "incoming_second_integral_fraction": 0.009946068102912254
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.00045410590184083796,
+          "incoming_second_integral_fraction": 0.07175719721328495
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.002218851110924997,
+          "incoming_second_integral_fraction": 0.17348198938739634
+        }
+      },
+      "alternate_partition": {
+        "impact": {
+          "incoming_flux_fraction": 0.001299198322249015,
+          "incoming_second_integral_fraction": 0.1319322475430828
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 5.308851537862586e-05,
+          "incoming_second_integral_fraction": 0.013987725839564353
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.0005323501931527466,
+          "incoming_second_integral_fraction": 0.06569961405232638
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.0018821819126725499,
+          "incoming_second_integral_fraction": 0.20041910805810634
+        }
+      },
+      "boundary_L40": {
+        "impact": {
+          "incoming_flux_fraction": 0.0014441306037326748,
+          "incoming_second_integral_fraction": 0.10647872079221811
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 0.00011580093452899524,
+          "incoming_second_integral_fraction": 0.019256506578870316
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.0004444657677162344,
+          "incoming_second_integral_fraction": 0.05663237332762258
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.002001959600055229,
+          "incoming_second_integral_fraction": 0.17187453436625144
+        }
+      },
+      "boundary_L48": {
+        "impact": {
+          "incoming_flux_fraction": 0.0014441306037326748,
+          "incoming_second_integral_fraction": 0.10647979237773002
+        },
+        "parallel_speed": {
+          "incoming_flux_fraction": 0.00011580093452899524,
+          "incoming_second_integral_fraction": 0.019256403492755248
+        },
+        "perpendicular_speed": {
+          "incoming_flux_fraction": 0.0004444657677162344,
+          "incoming_second_integral_fraction": 0.05663222173468518
+        },
+        "any_band": {
+          "incoming_flux_fraction": 0.002001959600055229,
+          "incoming_second_integral_fraction": 0.17187539762150095
+        }
+      }
+    }
+  },
+  "normalized_kick_ratio": {
+    "formula": "Q=lambda^2*I2/(mu_reference^2*I_R)=r_mu/r_R; partner density cancels",
+    "scope": "Ratio of normalized accumulated squared kicks on the bounded incoming band; not an actual relaxation/mixing-time ratio or a kinetic closure. Born mean control leaves this ratio unchanged.",
+    "cases": {
+      "seed4201_N512": 3.410385471982839,
+      "seed4201_N1024": 3.337164506813862,
+      "seed4201_N2048": 3.3566514554824742,
+      "seed4202_N512": 3.215487303650711,
+      "seed4202_N1024": 3.3158643777988526,
+      "seed4202_N2048": 3.3892002553764518,
+      "seed4203_N512": 3.2679414931452415,
+      "seed4203_N1024": 3.2977715846078244,
+      "seed4203_N2048": 3.365962254006479,
+      "seed4204_N512": 3.3762628762383438,
+      "seed4204_N1024": 3.3593508050244516,
+      "seed4204_N2048": 3.353938154255024,
+      "alternate_partition": 3.502752223439221,
+      "boundary_L40": 3.3571941771690197,
+      "boundary_L48": 3.3571967455132246
+    },
+    "fine_four_replica_and_partition_range": [
+      3.353938154255024,
+      3.502752223439221
+    ],
+    "empirical_relative_changes": {
+      "sample_4201": 0.005805472783533682,
+      "sample_4202": 0.021638106943153608,
+      "sample_4203": 0.020258893075074703,
+      "sample_4204": 0.0016138194923363714,
+      "replica_4201_4202": 0.009696806572161381,
+      "replica_4201_4203": 0.0027738353676242935,
+      "replica_4201_4204": 0.000808335707008954,
+      "replica_4202_4203": 0.00685648519384746,
+      "replica_4202_4204": 0.010404254238294008,
+      "replica_4203_4204": 0.003572262207379989,
+      "partition_4201": 0.04352574876909485,
+      "partition_4202": 0.03350405980957787,
+      "partition_4203": 0.04063918698729371,
+      "partition_4204": 0.04436995029124243
+    },
+    "narrow_same_B2_reference": {
+      "source": "results/physical_final_campaign/cases.json",
+      "source_sha256": "5f103c9375fc4da5a8b7d45122b2ee9e2e8d36ea57bba59020421401fdc1e988",
+      "case": "B2_final",
+      "bounds": [
+        [
+          1.2,
+          2.4
+        ],
+        [
+          0.7,
+          1.5
+        ],
+        [
+          0.2,
+          0.8
+        ]
+      ],
+      "field": 2.0,
+      "orders": [
+        5,
+        5,
+        5,
+        32
+      ],
+      "ratio": 1.004139501685015,
+      "scope": "Same B2 and impact band with narrower parallel/perpendicular speed bands; this is a domain comparison, not a stronger-field comparison."
+    }
+  },
+  "source_sha256": "a361969f844b5e69e2adf503d6286e89d49c6ac229d3b1eec361f4b10265cc03",
+  "input_sha256": {
+    "summary.json": "5a8699d470dce7553ed14b7669b6228953c7bda30d817ca9d541c8f619e565e0",
+    "states.npz": "aa340fe03e5c44bdae3e8de197a3e3a89a9992b86f6032c388f31fa00e52bd66",
+    "populations.npz": "a59d2f67aa3786c72a1ce584bafb2045f3d5338ff5e811fe9c17e569bb06ab9d"
+  },
+  "reconstructed_gates": {
+    "sample_4201": false,
+    "sample_4202": true,
+    "sample_4203": false,
+    "sample_4204": true,
+    "replica_4201_4202": true,
+    "replica_4201_4203": false,
+    "replica_4201_4204": true,
+    "replica_4202_4203": true,
+    "replica_4202_4204": true,
+    "replica_4203_4204": true,
+    "partition_4201": true,
+    "partition_4202": true,
+    "partition_4203": true,
+    "partition_4204": true,
+    "boundary_ensemble": true,
+    "boundary_L24_to40": true,
+    "active_step": true,
+    "boundary_controls": true,
+    "complete": true,
+    "exact_flux_mass": true,
+    "energy": true,
+    "active_step_sizes": true,
+    "source_integrity": true,
+    "prior_integrity": true
+  },
+  "reconstructed_comparisons": {
+    "sample_4201": [
+      0.053390050311665646,
+      0.006788751133762571,
+      0.0024701339673128325,
+      0.0009890200793820278
+    ],
+    "sample_4202": [
+      0.03534773775220162,
+      0.024042145135440982,
+      0.014012438913627882,
+      0.0024572075111962558
+    ],
+    "sample_4203": [
+      0.09667667173568155,
+      0.02341349331987624,
+      0.026273154127782458,
+      0.003219830445516976
+    ],
+    "sample_4204": [
+      0.004995129983731603,
+      0.0015057792303700991,
+      0.011011165526075931,
+      0.00010786618541385566
+    ],
+    "replica_4201_4202": [
+      0.02119517404813496,
+      0.01027209718851901,
+      0.002983091494744189,
+      0.0005697657084908863
+    ],
+    "replica_4201_4203": [
+      0.05230339753357269,
+      0.00181537485396778,
+      0.008471909712580841,
+      0.0009558092561373257
+    ],
+    "replica_4201_4204": [
+      0.016390789816410314,
+      0.0035346986673625573,
+      0.0035406212916159144,
+      0.0027285685597493517
+    ],
+    "replica_4202_4203": [
+      0.03079192583068328,
+      0.008370737307390156,
+      0.005433009813011223,
+      0.0015247062392975382
+    ],
+    "replica_4202_4204": [
+      0.004755534914895443,
+      0.013666413131971504,
+      0.006457381931575573,
+      0.003296456060617351
+    ],
+    "replica_4203_4204": [
+      0.03584753101078856,
+      0.005340378732069474,
+      0.01199076327406913,
+      0.0017744553444548582
+    ],
+    "partition_4201": [
+      0.01075746575128238,
+      0.04530884388415118,
+      0.036132501232655316,
+      0.0017087217226403333
+    ],
+    "partition_4202": [
+      0.010331581289733353,
+      0.0346805051759182,
+      0.032812358007473875,
+      0.0011383074456012235
+    ],
+    "partition_4203": [
+      0.041470647012525994,
+      0.04341465515691784,
+      0.02761046817045156,
+      0.0026670801987184545
+    ],
+    "partition_4204": [
+      0.005653306801144129,
+      0.049016802176846605,
+      0.0398138524956301,
+      0.004449430859541809
+    ],
+    "boundary_ensemble": [
+      4.5754016865643913e-07,
+      8.843454693084168e-07,
+      1.7143016568469316e-06,
+      1.1931914146660842e-07
+    ],
+    "boundary_L24_to40": [
+      8.699970802685019e-05,
+      0.00018990302381746463,
+      0.0003292641050115395,
+      2.824828270028303e-05
+    ],
+    "active_step": [
+      1.5631785715908197e-09,
+      6.926728455338283e-11,
+      6.925744984095993e-11,
+      1.5861069425558857e-11
+    ],
+    "boundary_controls": [
+      0.00030853720139786844,
+      7.996707191389402e-05,
+      7.922543226569221e-05,
+      1.729616933792435e-05
+    ]
+  }
+}

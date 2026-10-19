@@ -18,7 +18,7 @@
 \newcommand{\norm}[1]{\left\lVert #1\right\rVert}
 \title{Magnetic-moment-constrained collisions\\\large Equations, numerical design and verification notes}
 \author{Project: \texttt{sato-morrison}}
-\date{14 October 2026}
+\date{19 October 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -3779,6 +3779,201 @@ from saved data with its own source and hash receipt; the original
 scientific figure is retained. Its $N_{48}$ entries denote angular
 refinement at $L=48$, while the plane and weak-state entries denote
 $L=40\to48$ endpoint checks.
+
+\subsection*{A stratified estimator of bounded encounter flux}
+The incoming variables are $z=(b,u,p,\varphi)$: relative guiding-center
+impact $b$, positive relative parallel speed $u$, relative perpendicular
+speed $p$, and incoming zero-plane phase $\varphi$. For relative Maxwellian
+velocities of variance $2\theta$, the two-sided tagged crossing measure per
+partner density is
+\[
+ \dd\mathcal F=
+ \frac{4\pi bup}{(4\pi\theta)^{3/2}}
+ \exp\!\left[-\frac{u^2+p^2}{4\theta}\right]
+ \dd b\,\dd u\,\dd p\,\dd\varphi.
+\]
+The factor two for the signs of parallel crossing and the impact orientation
+integral $2\pi$ are included. This is the same finite incoming measure as
+in the earlier broad-speed calculation, with no additional plasma closure.
+For disjoint rectangular cells $\mathcal D_s$, their exact masses and the
+finite quadrature estimator are
+\[
+ W_s=\int_{\mathcal D_s}\dd\mathcal F,\qquad
+ \widehat I_A=\sum_s\frac{W_s}{N_s}
+                  \sum_{j=1}^{N_s}A(z_{sj}),\qquad
+ \sum_sW_s=\mathcal F(\mathcal D).
+\]
+Each scrambled Sobol point is mapped through the conditional flux inverse
+CDF in its cell. Increasing $N_s$ changes its integration effort; it does
+not change $W_s$. Reflected exits retain their original weights. A missing
+endpoint invalidates the corresponding integral.
+
+The moment vector is
+$A=(\langle\Delta\mu\rangle_V,
+\langle(\Delta\mu)^2\rangle_V,
+\langle\Delta\mu_1\Delta\mu_2\rangle_V,
+|\Delta\bm R_1|^2)$, where the thermal center velocity $V$ is averaged
+analytically in the first three entries. The mean and cross entries retain
+their signs. Refinement differences use the positive fine-reference scales
+$(I_2/\mu_{\rm ref},I_2,I_2,I_R)$, with
+$\mu_{\rm ref}=m\theta/B$. These scales avoid division by a signed moment
+close to zero. The fixed comparisons remain empirical quadrature evidence;
+independent scrambles and a changed partition do not supply a rigorous error
+bound or a bound on omitted incident domains.
+
+Example 42 retains $b\in[1.2,2.4]$, $u\in[0.35,3]$, $p\in[0,2.5]$,
+$B=2$, $\theta=0.5$, $\kappa=0.03$ and $\lambda=3$.
+Impact is split at $1.5$, perpendicular speed at $2$, and phase into
+$[\pi/2-0.25,\pi/2+0.25]$ and its wrapped complement. The resulting eight
+cells cover the original bounded flux exactly. The low-impact,
+high-perpendicular-speed central cell has eight times the base node count;
+it carries $0.1426406\%$ of the flux but $20.818$--$21.936\%$ of the second
+integral across the four fine replicas.
+
+Each cell uses an independent scrambled four-dimensional Sobol sequence,
+with seeds fixed before the fresh trajectories. Nested base counts
+$512,1024,2048$ correspond to $7680,15360,30720$ total nodes per replica.
+The four independent fine replicas use seeds $4201$--$4204$. A fifth fresh
+sample uses a central phase half-width $0.15$ instead of $0.25$.
+All primary fine nodes are repeated at $L=40,48$, matched to their $L=24$
+inputs. No missing or reflected probability is removed. Selected strong,
+close, long reflected and predetermined fresh paths also have active-step
+and boundary controls. The fixed quadrature, endpoint and active-step
+thresholds are respectively $5\%$, $0.5\%$ and $0.1\%$.
+
+All $215218$ fresh encounters reach an outgoing plane. Twenty-one of the
+24 declared gates pass. The signed mean fails two final nested comparisons
+($5.339\%$, $9.668\%$) and one independent replica comparison
+($5.230\%$); their unchanged target is $5\%$. All second, cross and spatial
+comparisons pass, including the narrower phase partition. Its largest
+second-moment change is $4.902\%$. The largest scaled changes for full
+$L=24\to40$ and $L=40\to48$ comparisons are respectively $0.03293\%$ and
+$0.0001714\%$. These endpoint checks cover the complete first replica;
+the other replicas remain at $L=24$. The raw estimator remains unresolved
+and exits nonzero. The four fine second integrals lie between
+$5.99984\times10^{-5}$ and $6.08297\times10^{-5}$ in normalized units per
+partner density; the signed means lie between $-5.47299\times10^{-5}$ and
+$-4.21329\times10^{-5}$. Neither empirical range is a confidence interval.
+
+The source at revision \texttt{01618f7} and all states are retained under
+\path{results/stratified_encounter_flux/}. Wall time is $1808.476$ seconds,
+excluding figure rendering. Parent and largest-worker process-lifetime
+peaks are $1.2714$ GB and $0.1070$ GB separately, not aggregate memory.
+
+\subsection*{A failed known-zero control of the same trajectories}
+Example 43 reanalyses the same saved trajectories, adding no encounter
+solve. Its fixed first-Born signed-mean control is
+\[
+ c_B=\frac{\kappa bp}{2Bu}\int_{-L_c}^{L_c}
+ \frac{\cos(\varphi-\Omega z/u)\,e^{-r/\lambda}(1+r/\lambda)}{r^3}
+ \,\dd z,
+\]
+where $r^2=b^2+(p/\Omega)^2-2b(p/\Omega)\sin(\varphi-\Omega z/u)+z^2$.
+It is used only for $b-p/\Omega\geq0.3$, with $L_c=24$ and coefficient one.
+The transformation $\varphi\mapsto\pi-\varphi$, $z\mapsto-z$ leaves the
+radius invariant and reverses the cosine. Both phase cells are invariant
+under this involution; thus the control has exactly zero expectation in
+each cell. A symmetric finite Gauss--Legendre rule preserves that oddness
+apart from rounding. The gap mask is phase independent. Replacing the mean
+observable by $\langle\Delta\mu\rangle_V-c_B$ changes the estimator while
+preserving the exact target integral. All other observables and physical
+weights are unchanged. The same $L_c$ is used for every outgoing plane,
+so paired boundary differences are unchanged.
+
+This reanalysis was motivated by the early signed-mean failures of example
+42. Its coefficient, mask, integration distance and 1024-point control rule
+were fixed from a historical-only pilot before the example-43 evaluation;
+they were not fitted to the fresh trajectory values. It is not a second
+independent physical campaign or a fully preregistered statistical study.
+A fixed 2048-point rule tests estimator sensitivity, with a separate $1\%$
+scaled target; both finite rules retain the exact zero expectation.
+
+The control fails to improve the declared evidence. Ten gates fail:
+one nested sample comparison, five replica pairs, three alternate-partition
+comparisons, and control-order stability. The largest signed-mean replica
+change is $15.251\%$ against $5\%$. The largest control-order change is
+$1.486\%$ against $1\%$. The empirical standard deviation across the four
+fine replica means increases from $5.26475\times10^{-6}$ to
+$1.70330\times10^{-5}$, a factor $3.235$. Reduced within-cell sample
+variances do not establish a lower error for the complete scrambled
+quadrature. These descriptive spreads are not confidence intervals.
+The raw failures and this unsuccessful control remain separate records.
+Revision \texttt{831d2eb} writes \path{results/encounter_born_control/};
+postprocessing takes $4.693$ seconds, excluding all trajectory solves and
+figure rendering, with a single-process peak of $0.5432$ GB.
+
+
+\subsection*{Axial angular momentum, incident cutoffs and squared kicks}
+For relative position $\bm r$ and velocity $\bm w$ in a uniform field,
+$\dot{\bm w}=\Omega\bm w\times\hat{\bm z}+a(r)\bm r$ with
+$\Omega=qB/m$. Central forces give the exact specific canonical invariant
+\[
+ J=(\bm r\times\bm w)_z+\frac{\Omega}{2}|\bm r_\perp|^2,
+ \qquad \dot J=0.
+\]
+Indeed, the Lorentz term gives
+$\dd(\bm r\times\bm w)_z/\dd t=-\Omega\bm r_\perp\cdot\bm w_\perp$,
+which cancels the derivative of the second term. Physical relative
+canonical angular momentum is $(m/2)J$. Defining
+$\bm b=\bm r_\perp+(w_y,-w_x)/\Omega$ gives
+\[
+ |\bm b|^2=\frac{2J}{\Omega}+\frac{p^2}{\Omega^2},\qquad
+ b_{\rm out}^2-b_{\rm in}^2=
+ \frac{p_{\rm out}^2-p_{\rm in}^2}{\Omega^2}.
+\]
+Thus a change in perpendicular speed also changes the guiding-center
+impact of the inverse incident state. A fixed impact annulus need not be
+closed under microscopic inversion even before parallel and perpendicular
+speed cutoffs are imposed. The independent saved-state audit checks both
+identities, with scaled residuals at most $4.965\times10^{-12}$. Positive
+scales are $|\Omega|b_{\rm in}^2/2+p_{\rm in}^2/(2|\Omega|)$ for $J$
+(length times velocity), and $b_{\rm in}^2+(p_{\rm in}/\Omega)^2$ for the
+radius identity (length squared).
+
+The outgoing inverse magnitudes are
+$(|\bm b_{\rm out}|,|w_{z,\rm out}|,|\bm w_{\perp,\rm out}|)$.
+For the four fine replicas, states outside any original impact or speed
+band carry $0.20020$--$0.23917\%$ of the original incoming flux but
+$16.8603$--$17.7219\%$ of the incoming-weighted second integral.
+The alternate phase partition gives $0.18822\%$ and $20.0419\%$;
+the primary $L=48$ values are $0.200196\%$ and $17.18754\%$.
+Both transmitted and reflected states keep their original incoming weights;
+no extra outgoing flux factor is applied. This is a kinematic finite-plane
+cutoff diagnostic, not a detailed-balance calculation. The bounded negative
+signed mean does not imply net perpendicular cooling of a complete
+Maxwellian plasma: inverse partners leave the selected bands and incoming
+potential correlations remain unvalidated.
+
+Let $I_2$ and $I_R$ denote the bounded flux integrals of the individual
+squared magnetic-moment increment and squared guiding-center displacement.
+The dimensionless squared-kick ratio
+\[
+ Q=\frac{\lambda^2 I_2}{\mu_{\rm ref}^2 I_R},\qquad
+ \mu_{\rm ref}=\frac{m\theta}{B},
+\]
+is $3.353938$--$3.389200$ in the four fine broad-speed replicas and
+$3.502752$ in the alternate partition; the primary $L=48$ value is
+$3.357197$. At the same $B=2$, $\lambda=3$, $\theta=0.5$, $\kappa=0.03$
+and impact annulus, the archived narrow-band calculation gives $Q=1.004140$.
+Its speed bands are $u\in[0.7,1.5]$, $p\in[0.2,0.8]$. This comparison
+isolates a change of incoming population without changing field strength.
+It is a normalized ratio of finite-band squared kicks, not a measured
+mixing time, collision rate or confinement lifetime. The signed-mean
+control of example 43 leaves $Q$ unchanged.
+
+The independent example-42 audit passes 697 saved-state, weight, moment,
+source, gate and invariant checks. The independent example-43 audit passes
+253 checks, including a Cartesian force--velocity reconstruction of the
+control and all unsuccessful-estimator comparisons. Original coarse
+Cartesian controls have two marginal velocity failures; their receipts
+remain at \path{results/stratified_encounter_flux/cartesian_audit.json}.
+The fixed finer-step followup uses relative steps $0.025$ and $0.0125$
+against independent twelve-coordinate Cartesian paths and passes the
+unchanged accuracy targets. Replacing the two affected ensemble
+contributions changes any scaled integral by at most $9\times10^{-12}$.
+This resolves those trajectory comparisons without changing the saved
+production data or any sampling gate. The followup is recorded in
+\path{results/stratified_encounter_flux/cartesian_tight_refinement.json}.
 
 \subsection*{Resolving the failed encounter's flight budget}
 Example 17 preserves the original broad-campaign metadata and replays its

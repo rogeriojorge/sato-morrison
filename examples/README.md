@@ -48,6 +48,8 @@ Prefix each command below with `MPLBACKEND=Agg python`.
 | `examples/39_broad_speed_refinement.py` | Broad-speed annulus: independent incoming samples, phase refinement, matched boundaries and active timesteps |
 | `examples/40_refinement_audit.py` | Independent Cartesian-state, flux, interpolation and sampling reconstruction for examples 38 and 39 |
 | `examples/41_encounter_peak_resolution.py` | Fixed angular and endpoint diagnosis of one close-encounter state; the broad ensemble remains unresolved |
+| `examples/42_stratified_encounter_flux.py` | Fresh joint incoming-flux quadrature with exact cell weights, independent scrambles and full matched primary boundaries; signed-mean checks fail |
+| `examples/43_encounter_born_control.py` | Fixed known-zero-control reanalysis of the same trajectories; replica spread worsens and fixed gates fail |
 
 Example 12 uses dense spatial blocks per velocity node and writes `results/nonuniform_spatial_blocks/`. A single predefined case can be run with:
 
@@ -94,3 +96,5 @@ Example 40 rebuilds the moments from Cartesian endpoint states, the flux from an
 Example 41 isolates seed 3902, speed index 1155, with fixed 512/1024/2048 phases, a half-shifted 2048 grid, and their 4096-phase union. It repeats the full phase average at L = 32, 40 and 48, adds a weak-state boundary check and active timesteps, and independently checks the exact reflected input that failed the coarse example-40 comparison. All 16 conditional gates pass. Its 16,164 new relative solves, three Cartesian solves and one tighter relative solve take 121.83 s; 256 original states are reused unchanged. It leaves the broad-speed ensemble and old audit failure intact. `SM_ENCOUNTER_PEAK_OUTPUT` selects a fresh directory. The displayed fixed-tick image has its own saved-data render script and receipt; the original figure and scientific source remain preserved.
 
 The separate saved-array source `results/encounter_peak_resolution/audit_saved_states.py` passes 198 independent checks of the example-41 moments, phase grids, weights, reused bits, source identities and all 16 gates. Set `SM_PEAK_AUDIT_OUTPUT` to a fresh JSON path when reproducing it; the original receipt and its audit-source hash remain preserved.
+
+Example 42 retains the same bounded impact and speed domain as example 39. Eight exact-flux cells and four independent scrambles concentrate work near the narrow scattering region without changing physical weights. It saves all 215,218 successful trajectories but exits nonzero because three signed-mean gates fail. Example 43 adds no trajectories: its analytically known-zero control reanalyses the same samples. Ten gates fail, including control-order sensitivity; the raw result is preserved. Both scripts require fresh output directories for reproduction. Set `SM_STRATIFIED_FLUX_OUTPUT` or `SM_BORN_CONTROL_OUTPUT` respectively. The latter reads the published example-42 directory.

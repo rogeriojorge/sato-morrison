@@ -1,0 +1,1305 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "name": "GL1024 independent Cartesian force-work definition",
+      "passed": true,
+      "maximum_absolute_error": 7.806255641895632e-17
+    },
+    {
+      "name": "GL1024 antithetic symmetry",
+      "passed": true,
+      "maximum_absolute_error": 1.3660947373317356e-17
+    },
+    {
+      "name": "GL1024 saved symmetry diagnostic",
+      "passed": true,
+      "maximum_absolute_error": 6.938893903907228e-18
+    },
+    {
+      "name": "GL2048 independent Cartesian force-work definition",
+      "passed": true,
+      "maximum_absolute_error": 5.572799166575493e-17
+    },
+    {
+      "name": "GL2048 antithetic symmetry",
+      "passed": true,
+      "maximum_absolute_error": 9.540979117872439e-18
+    },
+    {
+      "name": "GL2048 saved symmetry diagnostic",
+      "passed": true,
+      "maximum_absolute_error": 3.0140820395097023e-17
+    },
+    {
+      "name": "GL1024 seed4201_N512 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 5.204170427930421e-18
+    },
+    {
+      "name": "GL1024 seed4201_N512 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 2.710505431213761e-20
+    },
+    {
+      "name": "GL1024 seed4201_N512 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL1024 seed4201_N512 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 5.204170427930421e-18
+    },
+    {
+      "name": "GL1024 seed4201_N1024 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 1.3010426069826053e-18
+    },
+    {
+      "name": "GL1024 seed4201_N1024 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-20
+    },
+    {
+      "name": "GL1024 seed4201_N1024 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL1024 seed4201_N1024 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 1.3010426069826053e-18
+    },
+    {
+      "name": "GL1024 seed4201_N2048 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 7.37257477290143e-18
+    },
+    {
+      "name": "GL1024 seed4201_N2048 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 7.792703114739563e-20
+    },
+    {
+      "name": "GL1024 seed4201_N2048 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL1024 seed4201_N2048 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 7.37257477290143e-18
+    },
+    {
+      "name": "GL1024 seed4202_N512 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-18
+    },
+    {
+      "name": "GL1024 seed4202_N512 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 1.7618285302889447e-19
+    },
+    {
+      "name": "GL1024 seed4202_N512 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL1024 seed4202_N512 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-18
+    },
+    {
+      "name": "GL1024 seed4202_N1024 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-18
+    },
+    {
+      "name": "GL1024 seed4202_N1024 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 2.0328790734103208e-20
+    },
+    {
+      "name": "GL1024 seed4202_N1024 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL1024 seed4202_N1024 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-18
+    },
+    {
+      "name": "GL1024 seed4202_N2048 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 8.673617379884035e-18
+    },
+    {
+      "name": "GL1024 seed4202_N2048 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 7.453889935837843e-20
+    },
+    {
+      "name": "GL1024 seed4202_N2048 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL1024 seed4202_N2048 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 8.673617379884035e-18
+    },
+    {
+      "name": "GL1024 seed4203_N512 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 3.903127820947816e-18
+    },
+    {
+      "name": "GL1024 seed4203_N512 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 1.0842021724855044e-19
+    },
+    {
+      "name": "GL1024 seed4203_N512 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL1024 seed4203_N512 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 3.903127820947816e-18
+    },
+    {
+      "name": "GL1024 seed4203_N1024 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 1.8214596497756474e-17
+    },
+    {
+      "name": "GL1024 seed4203_N1024 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 7.792703114739563e-20
+    },
+    {
+      "name": "GL1024 seed4203_N1024 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL1024 seed4203_N1024 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 1.8214596497756474e-17
+    },
+    {
+      "name": "GL1024 seed4203_N2048 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 8.239936510889834e-18
+    },
+    {
+      "name": "GL1024 seed4203_N2048 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 1.5246593050577406e-20
+    },
+    {
+      "name": "GL1024 seed4203_N2048 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL1024 seed4203_N2048 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 8.239936510889834e-18
+    },
+    {
+      "name": "GL1024 seed4204_N512 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 6.938893903907228e-18
+    },
+    {
+      "name": "GL1024 seed4204_N512 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 5.421010862427522e-20
+    },
+    {
+      "name": "GL1024 seed4204_N512 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL1024 seed4204_N512 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 6.938893903907228e-18
+    },
+    {
+      "name": "GL1024 seed4204_N1024 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 9.974659986866641e-18
+    },
+    {
+      "name": "GL1024 seed4204_N1024 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 8.131516293641283e-20
+    },
+    {
+      "name": "GL1024 seed4204_N1024 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL1024 seed4204_N1024 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 9.974659986866641e-18
+    },
+    {
+      "name": "GL1024 seed4204_N2048 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-19
+    },
+    {
+      "name": "GL1024 seed4204_N2048 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 3.3881317890172014e-20
+    },
+    {
+      "name": "GL1024 seed4204_N2048 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL1024 seed4204_N2048 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-19
+    },
+    {
+      "name": "GL1024 alternate_partition corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-18
+    },
+    {
+      "name": "GL1024 alternate_partition control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 6.606856988583543e-20
+    },
+    {
+      "name": "GL1024 alternate_partition raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL1024 alternate_partition nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-18
+    },
+    {
+      "name": "GL1024 boundary_L40 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 1.0408340855860843e-17
+    },
+    {
+      "name": "GL1024 boundary_L40 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 7.792703114739563e-20
+    },
+    {
+      "name": "GL1024 boundary_L40 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL1024 boundary_L40 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 1.0408340855860843e-17
+    },
+    {
+      "name": "GL1024 boundary_L48 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 6.938893903907228e-18
+    },
+    {
+      "name": "GL1024 boundary_L48 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 7.792703114739563e-20
+    },
+    {
+      "name": "GL1024 boundary_L48 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL1024 boundary_L48 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 6.938893903907228e-18
+    },
+    {
+      "name": "GL1024 sample_4201 comparison",
+      "passed": true,
+      "maximum_absolute_error": 3.354955202539145e-15
+    },
+    {
+      "name": "GL1024 sample_4202 comparison",
+      "passed": true,
+      "maximum_absolute_error": 4.746203430272544e-15
+    },
+    {
+      "name": "GL1024 sample_4203 comparison",
+      "passed": true,
+      "maximum_absolute_error": 1.0241373721298075e-14
+    },
+    {
+      "name": "GL1024 sample_4204 comparison",
+      "passed": true,
+      "maximum_absolute_error": 4.040469131147417e-15
+    },
+    {
+      "name": "GL1024 replica_4201_4202 comparison",
+      "passed": true,
+      "maximum_absolute_error": 6.213779490948923e-15
+    },
+    {
+      "name": "GL1024 replica_4201_4203 comparison",
+      "passed": true,
+      "maximum_absolute_error": 2.7547408798511697e-15
+    },
+    {
+      "name": "GL1024 replica_4201_4204 comparison",
+      "passed": true,
+      "maximum_absolute_error": 2.67841304690819e-15
+    },
+    {
+      "name": "GL1024 replica_4202_4203 comparison",
+      "passed": true,
+      "maximum_absolute_error": 6.539040142694574e-15
+    },
+    {
+      "name": "GL1024 replica_4202_4204 comparison",
+      "passed": true,
+      "maximum_absolute_error": 3.5128150388530344e-15
+    },
+    {
+      "name": "GL1024 replica_4203_4204 comparison",
+      "passed": true,
+      "maximum_absolute_error": 3.0192862099376327e-15
+    },
+    {
+      "name": "GL1024 partition_4201 comparison",
+      "passed": true,
+      "maximum_absolute_error": 4.184153024056059e-15
+    },
+    {
+      "name": "GL1024 partition_4202 comparison",
+      "passed": true,
+      "maximum_absolute_error": 2.520770051028798e-15
+    },
+    {
+      "name": "GL1024 partition_4203 comparison",
+      "passed": true,
+      "maximum_absolute_error": 4.170275236248244e-15
+    },
+    {
+      "name": "GL1024 partition_4204 comparison",
+      "passed": true,
+      "maximum_absolute_error": 3.4833247397614286e-15
+    },
+    {
+      "name": "GL1024 boundary_ensemble comparison",
+      "passed": true,
+      "maximum_absolute_error": 1.3431191274561403e-15
+    },
+    {
+      "name": "GL1024 boundary_L24_to40 comparison",
+      "passed": true,
+      "maximum_absolute_error": 2.868853158505269e-15
+    },
+    {
+      "name": "GL1024 active_step comparison",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL1024 boundary_controls comparison",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL2048 seed4201_N512 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 5.204170427930421e-18
+    },
+    {
+      "name": "GL2048 seed4201_N512 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 4.0657581468206416e-19
+    },
+    {
+      "name": "GL2048 seed4201_N512 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL2048 seed4201_N512 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 5.204170427930421e-18
+    },
+    {
+      "name": "GL2048 seed4201_N1024 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 1.3010426069826053e-18
+    },
+    {
+      "name": "GL2048 seed4201_N1024 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 2.0328790734103208e-20
+    },
+    {
+      "name": "GL2048 seed4201_N1024 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL2048 seed4201_N1024 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 1.3010426069826053e-18
+    },
+    {
+      "name": "GL2048 seed4201_N2048 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 7.37257477290143e-18
+    },
+    {
+      "name": "GL2048 seed4201_N2048 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 8.470329472543003e-20
+    },
+    {
+      "name": "GL2048 seed4201_N2048 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL2048 seed4201_N2048 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 7.37257477290143e-18
+    },
+    {
+      "name": "GL2048 seed4202_N512 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-18
+    },
+    {
+      "name": "GL2048 seed4202_N512 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-20
+    },
+    {
+      "name": "GL2048 seed4202_N512 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL2048 seed4202_N512 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-18
+    },
+    {
+      "name": "GL2048 seed4202_N1024 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-18
+    },
+    {
+      "name": "GL2048 seed4202_N1024 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL2048 seed4202_N1024 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL2048 seed4202_N1024 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-18
+    },
+    {
+      "name": "GL2048 seed4202_N2048 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 8.673617379884035e-18
+    },
+    {
+      "name": "GL2048 seed4202_N2048 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 8.131516293641283e-20
+    },
+    {
+      "name": "GL2048 seed4202_N2048 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL2048 seed4202_N2048 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 8.673617379884035e-18
+    },
+    {
+      "name": "GL2048 seed4203_N512 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 3.903127820947816e-18
+    },
+    {
+      "name": "GL2048 seed4203_N512 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 1.1519648082658485e-19
+    },
+    {
+      "name": "GL2048 seed4203_N512 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL2048 seed4203_N512 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 3.903127820947816e-18
+    },
+    {
+      "name": "GL2048 seed4203_N1024 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 1.8214596497756474e-17
+    },
+    {
+      "name": "GL2048 seed4203_N1024 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 9.486769009248164e-20
+    },
+    {
+      "name": "GL2048 seed4203_N1024 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL2048 seed4203_N1024 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 1.8214596497756474e-17
+    },
+    {
+      "name": "GL2048 seed4203_N2048 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 8.239936510889834e-18
+    },
+    {
+      "name": "GL2048 seed4203_N2048 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 1.0333801956502464e-19
+    },
+    {
+      "name": "GL2048 seed4203_N2048 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL2048 seed4203_N2048 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 8.239936510889834e-18
+    },
+    {
+      "name": "GL2048 seed4204_N512 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 6.938893903907228e-18
+    },
+    {
+      "name": "GL2048 seed4204_N512 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 4.0657581468206416e-20
+    },
+    {
+      "name": "GL2048 seed4204_N512 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL2048 seed4204_N512 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 6.938893903907228e-18
+    },
+    {
+      "name": "GL2048 seed4204_N1024 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 9.974659986866641e-18
+    },
+    {
+      "name": "GL2048 seed4204_N1024 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 3.7269449679189215e-20
+    },
+    {
+      "name": "GL2048 seed4204_N1024 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL2048 seed4204_N1024 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 9.974659986866641e-18
+    },
+    {
+      "name": "GL2048 seed4204_N2048 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-19
+    },
+    {
+      "name": "GL2048 seed4204_N2048 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 6.776263578034403e-21
+    },
+    {
+      "name": "GL2048 seed4204_N2048 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL2048 seed4204_N2048 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-19
+    },
+    {
+      "name": "GL2048 alternate_partition corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-18
+    },
+    {
+      "name": "GL2048 alternate_partition control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 8.470329472543003e-21
+    },
+    {
+      "name": "GL2048 alternate_partition raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL2048 alternate_partition nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 2.168404344971009e-18
+    },
+    {
+      "name": "GL2048 boundary_L40 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 1.0408340855860843e-17
+    },
+    {
+      "name": "GL2048 boundary_L40 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 8.470329472543003e-20
+    },
+    {
+      "name": "GL2048 boundary_L40 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL2048 boundary_L40 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 1.0408340855860843e-17
+    },
+    {
+      "name": "GL2048 boundary_L48 corrected integral",
+      "passed": true,
+      "maximum_absolute_error": 6.938893903907228e-18
+    },
+    {
+      "name": "GL2048 boundary_L48 control weighted sum",
+      "passed": true,
+      "maximum_absolute_error": 8.470329472543003e-20
+    },
+    {
+      "name": "GL2048 boundary_L48 raw receipt retained",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL2048 boundary_L48 nonmean moments unchanged",
+      "passed": true,
+      "maximum_absolute_error": 6.938893903907228e-18
+    },
+    {
+      "name": "GL2048 sample_4201 comparison",
+      "passed": true,
+      "maximum_absolute_error": 3.354955202539145e-15
+    },
+    {
+      "name": "GL2048 sample_4202 comparison",
+      "passed": true,
+      "maximum_absolute_error": 4.746203430272544e-15
+    },
+    {
+      "name": "GL2048 sample_4203 comparison",
+      "passed": true,
+      "maximum_absolute_error": 1.0241373721298075e-14
+    },
+    {
+      "name": "GL2048 sample_4204 comparison",
+      "passed": true,
+      "maximum_absolute_error": 4.040469131147417e-15
+    },
+    {
+      "name": "GL2048 replica_4201_4202 comparison",
+      "passed": true,
+      "maximum_absolute_error": 6.213779490948923e-15
+    },
+    {
+      "name": "GL2048 replica_4201_4203 comparison",
+      "passed": true,
+      "maximum_absolute_error": 2.7547408798511697e-15
+    },
+    {
+      "name": "GL2048 replica_4201_4204 comparison",
+      "passed": true,
+      "maximum_absolute_error": 2.67841304690819e-15
+    },
+    {
+      "name": "GL2048 replica_4202_4203 comparison",
+      "passed": true,
+      "maximum_absolute_error": 6.539040142694574e-15
+    },
+    {
+      "name": "GL2048 replica_4202_4204 comparison",
+      "passed": true,
+      "maximum_absolute_error": 3.5128150388530344e-15
+    },
+    {
+      "name": "GL2048 replica_4203_4204 comparison",
+      "passed": true,
+      "maximum_absolute_error": 3.0192862099376327e-15
+    },
+    {
+      "name": "GL2048 partition_4201 comparison",
+      "passed": true,
+      "maximum_absolute_error": 4.184153024056059e-15
+    },
+    {
+      "name": "GL2048 partition_4202 comparison",
+      "passed": true,
+      "maximum_absolute_error": 2.520770051028798e-15
+    },
+    {
+      "name": "GL2048 partition_4203 comparison",
+      "passed": true,
+      "maximum_absolute_error": 4.170275236248244e-15
+    },
+    {
+      "name": "GL2048 partition_4204 comparison",
+      "passed": true,
+      "maximum_absolute_error": 3.4833247397614286e-15
+    },
+    {
+      "name": "GL2048 boundary_ensemble comparison",
+      "passed": true,
+      "maximum_absolute_error": 1.3431191274561403e-15
+    },
+    {
+      "name": "GL2048 boundary_L24_to40 comparison",
+      "passed": true,
+      "maximum_absolute_error": 2.868853158505269e-15
+    },
+    {
+      "name": "GL2048 active_step comparison",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "GL2048 boundary_controls comparison",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 stratum0 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 5.293955920339377e-23
+    },
+    {
+      "name": "seed4201_N2048 stratum1 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 1.3877787807814457e-17
+    },
+    {
+      "name": "seed4201_N2048 stratum2 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 stratum3 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4201_N2048 stratum4 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 4.163336342344337e-17
+    },
+    {
+      "name": "seed4201_N2048 stratum5 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 8.673617379884035e-19
+    },
+    {
+      "name": "seed4201_N2048 stratum6 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 8.326672684688674e-17
+    },
+    {
+      "name": "seed4201_N2048 stratum7 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 1.3877787807814457e-17
+    },
+    {
+      "name": "seed4202_N2048 stratum0 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 5.551115123125783e-17
+    },
+    {
+      "name": "seed4202_N2048 stratum1 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 1.3877787807814457e-17
+    },
+    {
+      "name": "seed4202_N2048 stratum2 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 stratum3 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4202_N2048 stratum4 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 1.3877787807814457e-17
+    },
+    {
+      "name": "seed4202_N2048 stratum5 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 2.6020852139652106e-18
+    },
+    {
+      "name": "seed4202_N2048 stratum6 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 1.3877787807814457e-17
+    },
+    {
+      "name": "seed4202_N2048 stratum7 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 1.3877787807814457e-17
+    },
+    {
+      "name": "seed4203_N2048 stratum0 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 1.1102230246251565e-16
+    },
+    {
+      "name": "seed4203_N2048 stratum1 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 2.7755575615628914e-17
+    },
+    {
+      "name": "seed4203_N2048 stratum2 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 stratum3 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 stratum4 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 stratum5 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 3.469446951953614e-18
+    },
+    {
+      "name": "seed4203_N2048 stratum6 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4203_N2048 stratum7 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-17
+    },
+    {
+      "name": "seed4204_N2048 stratum0 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 8.326672684688674e-17
+    },
+    {
+      "name": "seed4204_N2048 stratum1 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 stratum2 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 stratum3 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "seed4204_N2048 stratum4 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 6.938893903907228e-18
+    },
+    {
+      "name": "seed4204_N2048 stratum5 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 4.336808689942018e-18
+    },
+    {
+      "name": "seed4204_N2048 stratum6 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 9.71445146547012e-17
+    },
+    {
+      "name": "seed4204_N2048 stratum7 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 1.3877787807814457e-17
+    },
+    {
+      "name": "alternate_partition stratum0 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition stratum1 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition stratum2 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition stratum3 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "alternate_partition stratum4 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 1.942890293094024e-16
+    },
+    {
+      "name": "alternate_partition stratum5 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 1.734723475976807e-18
+    },
+    {
+      "name": "alternate_partition stratum6 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 2.7755575615628914e-16
+    },
+    {
+      "name": "alternate_partition stratum7 descriptive variances",
+      "passed": true,
+      "maximum_absolute_error": 2.0816681711721685e-17
+    },
+    {
+      "name": "descriptive four-replica signed-mean spread",
+      "passed": true,
+      "maximum_absolute_error": 1.554312234475219e-14
+    },
+    {
+      "name": "seed4201_N512 control-definition sensitivity",
+      "passed": true,
+      "maximum_absolute_error": 9.939965517347105e-16
+    },
+    {
+      "name": "seed4201_N1024 control-definition sensitivity",
+      "passed": true,
+      "maximum_absolute_error": 6.804452834519026e-16
+    },
+    {
+      "name": "seed4201_N2048 control-definition sensitivity",
+      "passed": true,
+      "maximum_absolute_error": 6.751326928067236e-16
+    },
+    {
+      "name": "seed4202_N512 control-definition sensitivity",
+      "passed": true,
+      "maximum_absolute_error": 8.478460988836645e-17
+    },
+    {
+      "name": "seed4202_N1024 control-definition sensitivity",
+      "passed": true,
+      "maximum_absolute_error": 1.366962099069724e-15
+    },
+    {
+      "name": "seed4202_N2048 control-definition sensitivity",
+      "passed": true,
+      "maximum_absolute_error": 1.061650767297806e-15
+    },
+    {
+      "name": "seed4203_N512 control-definition sensitivity",
+      "passed": true,
+      "maximum_absolute_error": 8.144526719711109e-16
+    },
+    {
+      "name": "seed4203_N1024 control-definition sensitivity",
+      "passed": true,
+      "maximum_absolute_error": 5.440526501532261e-16
+    },
+    {
+      "name": "seed4203_N2048 control-definition sensitivity",
+      "passed": true,
+      "maximum_absolute_error": 1.6562272386888566e-15
+    },
+    {
+      "name": "seed4204_N512 control-definition sensitivity",
+      "passed": true,
+      "maximum_absolute_error": 2.338407245616736e-15
+    },
+    {
+      "name": "seed4204_N1024 control-definition sensitivity",
+      "passed": true,
+      "maximum_absolute_error": 1.9394208461420703e-15
+    },
+    {
+      "name": "seed4204_N2048 control-definition sensitivity",
+      "passed": true,
+      "maximum_absolute_error": 3.0505112325052153e-15
+    },
+    {
+      "name": "alternate_partition control-definition sensitivity",
+      "passed": true,
+      "maximum_absolute_error": 6.771926769344461e-16
+    },
+    {
+      "name": "boundary_L40 control-definition sensitivity",
+      "passed": true,
+      "maximum_absolute_error": 1.1210650463500116e-16
+    },
+    {
+      "name": "boundary_L48 control-definition sensitivity",
+      "passed": true,
+      "maximum_absolute_error": 3.3724108575161615e-16
+    },
+    {
+      "name": "all declared gate names reconstructed",
+      "passed": true
+    },
+    {
+      "name": "sample_4201 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "sample_4202 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "sample_4203 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "sample_4204 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "replica_4201_4202 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "replica_4201_4203 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "replica_4201_4204 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "replica_4202_4203 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "replica_4202_4204 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "replica_4203_4204 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "partition_4201 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "partition_4202 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "partition_4203 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "partition_4204 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "boundary_ensemble decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "boundary_L24_to40 decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "active_step decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "boundary_controls decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "complete decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "exact_flux_mass decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "energy decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "active_step_sizes decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "control_order_stability decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "control_symmetry decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "finite_controls decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "prior_source_integrity decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "prior_prior_integrity decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "source_integrity decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "prior_integrity decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "historical_pilot_integrity decision reconstructed",
+      "passed": true
+    },
+    {
+      "name": "raw failed-gate receipt unchanged",
+      "passed": true
+    },
+    {
+      "name": "overall producer status reconstructed",
+      "passed": true
+    },
+    {
+      "name": "historical committed producer examples/43_encounter_born_control.py",
+      "passed": true
+    },
+    {
+      "name": "historical committed producer src/sato_morrison/reference.py",
+      "passed": true
+    }
+  ],
+  "producer_commit": "831d2ebec582c40667fc157e516a90c4077e7484",
+  "producer_source_identities": {
+    "examples/43_encounter_born_control.py": {
+      "commit": "831d2ebec582c40667fc157e516a90c4077e7484",
+      "expected_sha256": "10f4b5210bd41030204a3e04ca23fc2f7c75f7ff4789af5dfcc942aa8694b3e4",
+      "actual_sha256": "10f4b5210bd41030204a3e04ca23fc2f7c75f7ff4789af5dfcc942aa8694b3e4"
+    },
+    "src/sato_morrison/reference.py": {
+      "commit": "831d2ebec582c40667fc157e516a90c4077e7484",
+      "expected_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+      "actual_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+    }
+  },
+  "versions": {
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "python": "3.12.13"
+  },
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "audit_git_identity": "831d2ebec582c40667fc157e516a90c4077e7484",
+  "source_path": "results/encounter_born_control/audit_saved_states.py",
+  "source_uncommitted": true,
+  "scope": "Independent Cartesian force-work control calculation, all saved weighted integrals and fixed-gate reconstruction; no producer physics imports or new ODE solves.",
+  "formulas": {
+    "control": "(coefficient/(2B*u)) integral F(r_free(z)) dot w_perp_free(z) dz; same fixed symmetric Gauss-Legendre rule as the declared control definition",
+    "force": "kappa exp(-r/lambda)(1+r/lambda) r/r^3",
+    "zero_expectation": "Each fixed symmetric phase cell is invariant under phi->pi-phi, while symmetric z quadrature makes the control odd."
+  },
+  "reconstructed_gates": {
+    "sample_4201": true,
+    "sample_4202": false,
+    "sample_4203": true,
+    "sample_4204": true,
+    "replica_4201_4202": false,
+    "replica_4201_4203": false,
+    "replica_4201_4204": true,
+    "replica_4202_4203": false,
+    "replica_4202_4204": false,
+    "replica_4203_4204": false,
+    "partition_4201": false,
+    "partition_4202": false,
+    "partition_4203": true,
+    "partition_4204": false,
+    "boundary_ensemble": true,
+    "boundary_L24_to40": true,
+    "active_step": true,
+    "boundary_controls": true,
+    "complete": true,
+    "exact_flux_mass": true,
+    "energy": true,
+    "active_step_sizes": true,
+    "control_order_stability": false,
+    "control_symmetry": true,
+    "finite_controls": true,
+    "prior_source_integrity": true,
+    "prior_prior_integrity": true,
+    "source_integrity": true,
+    "prior_integrity": true,
+    "historical_pilot_integrity": true
+  },
+  "wall_s": 5.306293708039448,
+  "peak_rss_bytes": 488079360,
+  "source_sha256": "c4a4bcf982233e03260ca20b6e0f32cb5459fd44fe2c6112698c982da73c289a",
+  "input_sha256": {
+    "results/encounter_born_control/summary.json": "f82789d1999064172704fef5c9e0f5f436eff72badc0a49fa085e2d95b91673f",
+    "results/encounter_born_control/control_GL1024.npy": "c48ea6ddd316922eac55708a830b96d56712cde6b4cb37d60c7f634b76c51984",
+    "results/encounter_born_control/control_GL2048.npy": "70a4f79dac4d05f2d15f00b935ba4b40cc10a538580edb5e6f14ed8238ad898e",
+    "results/stratified_encounter_flux/states.npz": "aa340fe03e5c44bdae3e8de197a3e3a89a9992b86f6032c388f31fa00e52bd66",
+    "results/stratified_encounter_flux/populations.npz": "a59d2f67aa3786c72a1ce584bafb2045f3d5338ff5e811fe9c17e569bb06ab9d"
+  }
+}

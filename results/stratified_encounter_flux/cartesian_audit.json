@@ -1,0 +1,288 @@
+{
+  "status": "failed",
+  "scope": "Fresh twelve-coordinate solves with exact saved incoming bits; each original coarse comparison retained.",
+  "targets": {
+    "position": 1e-08,
+    "velocity": 1e-08,
+    "time": 1e-08,
+    "energy": 1e-09
+  },
+  "producer_commit": "01618f74f0cd621518d30938fcb444ac221566ca",
+  "producer_source_identities": {
+    "examples/42_stratified_encounter_flux.py": {
+      "commit": "01618f74f0cd621518d30938fcb444ac221566ca",
+      "expected_sha256": "5a704c4b97b86dc30380de8588cdfbdaa9c7482264dbf7b2ddcd61d6879989ad",
+      "actual_sha256": "5a704c4b97b86dc30380de8588cdfbdaa9c7482264dbf7b2ddcd61d6879989ad"
+    },
+    "src/sato_morrison/controls.py": {
+      "commit": "01618f74f0cd621518d30938fcb444ac221566ca",
+      "expected_sha256": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+      "actual_sha256": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412"
+    },
+    "src/sato_morrison/reference.py": {
+      "commit": "01618f74f0cd621518d30938fcb444ac221566ca",
+      "expected_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd",
+      "actual_sha256": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+    }
+  },
+  "producer_source_integrity": true,
+  "versions": {
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "python": "3.12.13"
+  },
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "wall_s": 7.221962125040591,
+  "peak_rss_bytes": 174718976,
+  "audit_git_identity": "831d2ebec582c40667fc157e516a90c4077e7484",
+  "source_path": "results/stratified_encounter_flux/audit_cartesian.py",
+  "source_uncommitted": true,
+  "source_sha256": "30306dc3b46ac10c10ae5837777b996e59acf24d321d0384a3abcc647149eafe",
+  "input_sha256": {
+    "summary.json": "5a8699d470dce7553ed14b7669b6228953c7bda30d817ca9d541c8f619e565e0",
+    "states.npz": "aa340fe03e5c44bdae3e8de197a3e3a89a9992b86f6032c388f31fa00e52bd66",
+    "populations.npz": "a59d2f67aa3786c72a1ce584bafb2045f3d5338ff5e811fe9c17e569bb06ab9d"
+  },
+  "replays": [
+    {
+      "selection": "largest_weighted_second",
+      "selections": [
+        "largest_weighted_second"
+      ],
+      "index": 144428,
+      "node": [
+        1.205554330864985,
+        0.37658144110821357,
+        2.459190421075111,
+        2.9494283535073174
+      ],
+      "initial_state": [
+        1.217180804495765,
+        0.022005993502490974,
+        -12.0,
+        0.04401198700498195,
+        -1.2288072781265453,
+        0.18829072055410678,
+        -1.217180804495765,
+        -0.022005993502490974,
+        12.0,
+        -0.04401198700498195,
+        1.2288072781265453,
+        -0.18829072055410678
+      ],
+      "rtol": 2e-13,
+      "atol": 2e-15,
+      "max_step": 0.0125,
+      "solver_success": true,
+      "solver_status": 1,
+      "evaluations": 91709,
+      "wall_s": 2.1302770409965888,
+      "final_position": [
+        2.1949615072387765,
+        0.46779726639399755,
+        -24.0
+      ],
+      "final_velocity": [
+        -0.0032544595489720054,
+        -2.322025169137218,
+        -0.8930955268881381
+      ],
+      "time": 94.54509429898724,
+      "exit": "reflected",
+      "position_error": 5.394670266056778e-09,
+      "velocity_error": 1.0973346215199797e-08,
+      "time_error": 2.3969164431036916e-09,
+      "energy_error": 4.218847493575595e-14,
+      "passed": false,
+      "stored_step_comparisons": [
+        {
+          "index": 144428,
+          "step": 0.2,
+          "position_error": 5.394670266056778e-09,
+          "velocity_error": 1.0973346215199797e-08,
+          "time_error": 2.3969164431036916e-09
+        }
+      ]
+    },
+    {
+      "selection": "closest_saved_separation",
+      "selections": [
+        "closest_saved_separation"
+      ],
+      "index": 116407,
+      "node": [
+        1.2250397347387927,
+        2.5428953612396263,
+        2.4415866146982768,
+        1.5699175564248602
+      ],
+      "initial_state": [
+        0.002324565074109497,
+        -0.015676985484315224,
+        -12.0,
+        -0.03135397096863045,
+        1.2203906045905737,
+        1.2714476806198132,
+        -0.002324565074109497,
+        0.015676985484315224,
+        12.0,
+        0.03135397096863045,
+        -1.2203906045905737,
+        -1.2714476806198132
+      ],
+      "rtol": 2e-13,
+      "atol": 2e-15,
+      "max_step": 0.0125,
+      "solver_success": true,
+      "solver_status": 1,
+      "evaluations": 29297,
+      "wall_s": 0.6780642080120742,
+      "final_position": [
+        2.3388597097825565,
+        -0.6069131573828854,
+        -24.0
+      ],
+      "final_velocity": [
+        1.5840865656169463,
+        -2.9029638763437373,
+        -1.2211193942996437
+      ],
+      "time": 29.121274518568846,
+      "exit": "reflected",
+      "position_error": 7.2328820710509945e-09,
+      "velocity_error": 1.3917310415223483e-08,
+      "time_error": 2.259930909076502e-09,
+      "energy_error": 1.3367085216486885e-13,
+      "passed": false,
+      "stored_step_comparisons": [
+        {
+          "index": 116407,
+          "step": 0.2,
+          "position_error": 7.2328820710509945e-09,
+          "velocity_error": 1.3917310415223483e-08,
+          "time_error": 2.259930909076502e-09
+        }
+      ]
+    },
+    {
+      "selection": "longest_reflected",
+      "selections": [
+        "longest_reflected"
+      ],
+      "index": 74371,
+      "node": [
+        1.2053814359995572,
+        0.3649546149434123,
+        2.4700266948369425,
+        3.8325425794582624
+      ],
+      "initial_state": [
+        0.7657689045418556,
+        -0.5955837448668255,
+        -12.0,
+        -1.191167489733651,
+        -0.326156373084154,
+        0.18247730747170615,
+        -0.7657689045418556,
+        0.5955837448668255,
+        12.0,
+        1.191167489733651,
+        0.326156373084154,
+        -0.18247730747170615
+      ],
+      "rtol": 2e-13,
+      "atol": 2e-15,
+      "max_step": 0.0125,
+      "solver_success": true,
+      "solver_status": 1,
+      "evaluations": 144509,
+      "wall_s": 3.3237853749888018,
+      "final_position": [
+        2.430379465450931,
+        0.17872860073174607,
+        -23.999999999999996
+      ],
+      "final_velocity": [
+        0.42168695480886575,
+        -2.4422664797216815,
+        -0.3028833532135826
+      ],
+      "time": 150.11262338290098,
+      "exit": "reflected",
+      "position_error": 7.802097856668411e-11,
+      "velocity_error": 1.5715428958174016e-10,
+      "time_error": 2.1401547201094218e-11,
+      "energy_error": 1.2434497875801753e-14,
+      "passed": true,
+      "stored_step_comparisons": [
+        {
+          "index": 74371,
+          "step": 0.2,
+          "position_error": 7.802097856668411e-11,
+          "velocity_error": 1.5715428958174016e-10,
+          "time_error": 2.1401547201094218e-11
+        }
+      ]
+    },
+    {
+      "selection": "predetermined_primary_first_node",
+      "selections": [
+        "predetermined_primary_first_node"
+      ],
+      "index": 0,
+      "node": [
+        1.262195588497187,
+        1.161046245320594,
+        0.5961097397213995,
+        1.4050383032907288
+      ],
+      "initial_state": [
+        0.7718133814850572,
+        0.04907443194390383,
+        -12.0,
+        0.09814886388780766,
+        -0.2814311744729273,
+        0.580523122660297,
+        -0.7718133814850572,
+        -0.04907443194390383,
+        12.0,
+        -0.09814886388780766,
+        0.2814311744729273,
+        -0.580523122660297
+      ],
+      "rtol": 2e-13,
+      "atol": 2e-15,
+      "max_step": 0.0125,
+      "solver_success": true,
+      "solver_status": 1,
+      "evaluations": 39833,
+      "wall_s": 0.9493799170013517,
+      "final_position": [
+        1.429988787804471,
+        -0.2928526238415541,
+        23.999999999999996
+      ],
+      "final_velocity": [
+        -0.49992608878267064,
+        -0.3356144688891639,
+        1.157934383385934
+      ],
+      "time": 41.477905167977895,
+      "exit": "transmitted",
+      "position_error": 3.008260307524324e-12,
+      "velocity_error": 5.996814156361552e-12,
+      "time_error": 2.0961010704922955e-12,
+      "energy_error": 6.439293542825908e-15,
+      "passed": true,
+      "stored_step_comparisons": [
+        {
+          "index": 0,
+          "step": 0.2,
+          "position_error": 3.008260307524324e-12,
+          "velocity_error": 5.996814156361552e-12,
+          "time_error": 2.0961010704922955e-12
+        }
+      ]
+    }
+  ]
+}

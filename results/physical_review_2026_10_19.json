@@ -1,0 +1,679 @@
+{
+  "date": "2026-10-19",
+  "repository": "https://github.com/rogeriojorge/sato-morrison",
+  "reviewed_source_commit": "831d2ebec582c40667fc157e516a90c4077e7484",
+  "previous_review": "results/review_refinement.json",
+  "status": {
+    "implementation": "Existing constrained prototype, controls and physical-3V Landau reference retained; fresh exact-weight stratification and a known-zero signed-mean control implemented.",
+    "numerical": "Individual campaign and independent audit outcomes below are authoritative; raw failed comparisons are preserved.",
+    "physical": "Specified screened-pair finite-domain statistics only. A complete plasma collision coefficient, closure, mixing time and constrained lifetime remain unvalidated."
+  },
+  "experiments": {
+    "raw_stratified": {
+      "path": "results/stratified_encounter_flux/summary.json",
+      "sha256": "5a8699d470dce7553ed14b7669b6228953c7bda30d817ca9d541c8f619e565e0",
+      "producer_commit": "01618f74f0cd621518d30938fcb444ac221566ca",
+      "status": "unresolved",
+      "required_gates": {
+        "sample_4201": false,
+        "sample_4202": true,
+        "sample_4203": false,
+        "sample_4204": true,
+        "replica_4201_4202": true,
+        "replica_4201_4203": false,
+        "replica_4201_4204": true,
+        "replica_4202_4203": true,
+        "replica_4202_4204": true,
+        "replica_4203_4204": true,
+        "partition_4201": true,
+        "partition_4202": true,
+        "partition_4203": true,
+        "partition_4204": true,
+        "boundary_ensemble": true,
+        "boundary_L24_to40": true,
+        "active_step": true,
+        "boundary_controls": true,
+        "complete": true,
+        "exact_flux_mass": true,
+        "energy": true,
+        "active_step_sizes": true,
+        "source_integrity": true,
+        "prior_integrity": true
+      },
+      "wall_s": 1808.4763463330455,
+      "parent_process_peak_rss_bytes": 1271431168,
+      "max_worker_process_peak_rss_bytes": 106971136,
+      "memory_scope": "separate process lifetime peaks; not simultaneous aggregate",
+      "timing_scope": "this execution; includes all fresh solves and excludes figure rendering",
+      "new_encounters": 215218,
+      "reused_encounters": 0,
+      "inputs": {
+        "mass": 1.0,
+        "charge": 1.0,
+        "field": 2.0,
+        "strength": 0.03,
+        "screening": 3.0,
+        "theta": 0.5,
+        "bounds": [
+          [
+            1.2,
+            2.4
+          ],
+          [
+            0.35,
+            3.0
+          ],
+          [
+            0.0,
+            2.5
+          ]
+        ],
+        "impact_bins": [
+          [
+            1.2,
+            1.5
+          ],
+          [
+            1.5,
+            2.4
+          ]
+        ],
+        "perpendicular_bins": [
+          [
+            0.0,
+            2.0
+          ],
+          [
+            2.0,
+            2.5
+          ]
+        ],
+        "base_levels": [
+          512,
+          1024,
+          2048
+        ],
+        "seeds": [
+          4201,
+          4202,
+          4203,
+          4204
+        ],
+        "alternate_seed": 4205,
+        "phase_half_width": 0.25,
+        "alternate_half_width": 0.15,
+        "risk_multiplier": 8,
+        "risk_stratum": "low impact, high perpendicular speed, central phase interval",
+        "phase_intervals": "central [pi/2-h,pi/2+h]; complement [pi/2+h,pi/2-h+2pi] modulo2pi",
+        "stratum_seed_rule": "100*replica_seed+stratum_index; independent scrambled Sobol4 engines",
+        "distances": [
+          40.0,
+          48.0
+        ],
+        "steps": [
+          0.1,
+          0.05,
+          0.025
+        ],
+        "rtol": 1e-12,
+        "flight_time_factor": 48.0,
+        "base_step": 0.2,
+        "workers": 4,
+        "runtime_cap_s": 3000.0,
+        "quadrature_target": 0.05,
+        "plane_target": 0.005,
+        "step_target": 0.001,
+        "energy_target": 1e-09,
+        "units": "normalized; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+        "measure": "two-sided bounded tagged plane-crossing flux; exact stratum flux times uniform phase fraction; each node has stratum_flux/Nstratum; reflected exits retain weights",
+        "design": "rectangular bins and phase window fixed from archived example39/41 diagnosis before fresh independent samples; no result-dependent allocations",
+        "normalization": "mean: fine second/mu_reference; second and cross: fine second; spatial: fine individual GC second",
+        "controls": "top four weighted M2 nodes from each fresh replica; closest four separations and longest four reflected exits from primary; sixteen fresh predetermined flux/phase nodes; historical weak signed-mean boundary node",
+        "acceptance": "each replica final nested sample comparison, all six replica pairs, alternate phase partition versus every main replica, full matched primary L24/L40/L48 boundary, selected boundary and active-step/energy/integrity gates",
+        "stop_rule": "fixed levels, seeds, allocations, boundary and controls; cap between batches; missing states invalidate integrals; no failed-weight renormalization",
+        "scope": "one finite bounded incident domain; empirical quadrature checks only; no physical screening, reverse-complete population, collision closure or lifetime",
+        "prior_artifact_sha256": {
+          "results/broad_speed_extended/summary.json": "eda29b54198fa123f92c92f2ace1db3501c8ddd251067faa887083f0c3252f64",
+          "results/broad_speed_extended/states.npz": "7c58f75c2acd17cd6e094b378e0cf849258d948e981dec83cfb7d0fe9882c28b",
+          "results/encounter_peak_resolution/summary.json": "0e46988dcfff5d81b14978146710f8108532944e6bb5b72c2ebc16ac680944da",
+          "results/encounter_peak_resolution/states.npz": "38eaa24e5af075d94ba8001ce36ed9594b96046dd970724d806ae56f8d4f601e"
+        },
+        "main_strata": [
+          {
+            "index": 0,
+            "impact": [
+              1.2,
+              1.5
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              0.0,
+              2.0
+            ],
+            "phase": [
+              1.3207963267948966,
+              1.8207963267948966
+            ],
+            "flux_per_density": 0.1298531352599795,
+            "multiplier": 1
+          },
+          {
+            "index": 1,
+            "impact": [
+              1.2,
+              1.5
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              0.0,
+              2.0
+            ],
+            "phase": [
+              1.8207963267948966,
+              7.603981633974483
+            ],
+            "flux_per_density": 1.5019294878534335,
+            "multiplier": 1
+          },
+          {
+            "index": 2,
+            "impact": [
+              1.2,
+              1.5
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              2.0,
+              2.5
+            ],
+            "phase": [
+              1.3207963267948966,
+              1.8207963267948966
+            ],
+            "flux_per_density": 0.013725970338292613,
+            "multiplier": 8
+          },
+          {
+            "index": 3,
+            "impact": [
+              1.2,
+              1.5
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              2.0,
+              2.5
+            ],
+            "phase": [
+              1.8207963267948966,
+              7.603981633974483
+            ],
+            "flux_per_density": 0.1587596599743933,
+            "multiplier": 1
+          },
+          {
+            "index": 4,
+            "impact": [
+              1.5,
+              2.4
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              0.0,
+              2.0
+            ],
+            "phase": [
+              1.3207963267948966,
+              1.8207963267948966
+            ],
+            "flux_per_density": 0.5626969194599111,
+            "multiplier": 1
+          },
+          {
+            "index": 5,
+            "impact": [
+              1.5,
+              2.4
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              0.0,
+              2.0
+            ],
+            "phase": [
+              1.8207963267948966,
+              7.603981633974483
+            ],
+            "flux_per_density": 6.508361114031545,
+            "multiplier": 1
+          },
+          {
+            "index": 6,
+            "impact": [
+              1.5,
+              2.4
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              2.0,
+              2.5
+            ],
+            "phase": [
+              1.3207963267948966,
+              1.8207963267948966
+            ],
+            "flux_per_density": 0.05947920479926799,
+            "multiplier": 1
+          },
+          {
+            "index": 7,
+            "impact": [
+              1.5,
+              2.4
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              2.0,
+              2.5
+            ],
+            "phase": [
+              1.8207963267948966,
+              7.603981633974483
+            ],
+            "flux_per_density": 0.6879585265557043,
+            "multiplier": 1
+          }
+        ],
+        "alternate_strata": [
+          {
+            "index": 0,
+            "impact": [
+              1.2,
+              1.5
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              0.0,
+              2.0
+            ],
+            "phase": [
+              1.4207963267948966,
+              1.7207963267948965
+            ],
+            "flux_per_density": 0.07791188115598764,
+            "multiplier": 1
+          },
+          {
+            "index": 1,
+            "impact": [
+              1.2,
+              1.5
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              0.0,
+              2.0
+            ],
+            "phase": [
+              1.7207963267948965,
+              7.703981633974482
+            ],
+            "flux_per_density": 1.5538707419574251,
+            "multiplier": 1
+          },
+          {
+            "index": 2,
+            "impact": [
+              1.2,
+              1.5
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              2.0,
+              2.5
+            ],
+            "phase": [
+              1.4207963267948966,
+              1.7207963267948965
+            ],
+            "flux_per_density": 0.008235582202975563,
+            "multiplier": 8
+          },
+          {
+            "index": 3,
+            "impact": [
+              1.2,
+              1.5
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              2.0,
+              2.5
+            ],
+            "phase": [
+              1.7207963267948965,
+              7.703981633974482
+            ],
+            "flux_per_density": 0.16425004810971036,
+            "multiplier": 1
+          },
+          {
+            "index": 4,
+            "impact": [
+              1.5,
+              2.4
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              0.0,
+              2.0
+            ],
+            "phase": [
+              1.4207963267948966,
+              1.7207963267948965
+            ],
+            "flux_per_density": 0.3376181516759465,
+            "multiplier": 1
+          },
+          {
+            "index": 5,
+            "impact": [
+              1.5,
+              2.4
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              0.0,
+              2.0
+            ],
+            "phase": [
+              1.7207963267948965,
+              7.703981633974482
+            ],
+            "flux_per_density": 6.733439881815509,
+            "multiplier": 1
+          },
+          {
+            "index": 6,
+            "impact": [
+              1.5,
+              2.4
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              2.0,
+              2.5
+            ],
+            "phase": [
+              1.4207963267948966,
+              1.7207963267948965
+            ],
+            "flux_per_density": 0.03568752287956078,
+            "multiplier": 1
+          },
+          {
+            "index": 7,
+            "impact": [
+              1.5,
+              2.4
+            ],
+            "parallel": [
+              0.35,
+              3.0
+            ],
+            "perpendicular": [
+              2.0,
+              2.5
+            ],
+            "phase": [
+              1.7207963267948965,
+              7.703981633974482
+            ],
+            "flux_per_density": 0.7117502084754116,
+            "multiplier": 1
+          }
+        ],
+        "bounded_flux_per_density": 9.622764018272528,
+        "fine_paths_per_replica": 30720
+      },
+      "source_sha256": {
+        "examples/42_stratified_encounter_flux.py": "5a704c4b97b86dc30380de8588cdfbdaa9c7482264dbf7b2ddcd61d6879989ad",
+        "src/sato_morrison/controls.py": "d31fab8bdc4f633ece903b01abf0d89f1b994dd54746fde44e686ea6dc804412",
+        "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+      }
+    },
+    "known_zero_control": {
+      "path": "results/encounter_born_control/summary.json",
+      "sha256": "f82789d1999064172704fef5c9e0f5f436eff72badc0a49fa085e2d95b91673f",
+      "producer_commit": "831d2ebec582c40667fc157e516a90c4077e7484",
+      "status": "unresolved",
+      "required_gates": {
+        "sample_4201": true,
+        "sample_4202": false,
+        "sample_4203": true,
+        "sample_4204": true,
+        "replica_4201_4202": false,
+        "replica_4201_4203": false,
+        "replica_4201_4204": true,
+        "replica_4202_4203": false,
+        "replica_4202_4204": false,
+        "replica_4203_4204": false,
+        "partition_4201": false,
+        "partition_4202": false,
+        "partition_4203": true,
+        "partition_4204": false,
+        "boundary_ensemble": true,
+        "boundary_L24_to40": true,
+        "active_step": true,
+        "boundary_controls": true,
+        "complete": true,
+        "exact_flux_mass": true,
+        "energy": true,
+        "active_step_sizes": true,
+        "control_order_stability": false,
+        "control_symmetry": true,
+        "finite_controls": true,
+        "prior_source_integrity": true,
+        "prior_prior_integrity": true,
+        "source_integrity": true,
+        "prior_integrity": true,
+        "historical_pilot_integrity": true
+      },
+      "wall_s": 4.693092499976046,
+      "parent_process_peak_rss_bytes": 543244288,
+      "max_worker_process_peak_rss_bytes": null,
+      "memory_scope": "single process lifetime peak",
+      "timing_scope": "postprocessing saved states only; all historical and fresh ODE solves excluded; plotting excluded",
+      "new_encounters": 0,
+      "reused_encounters": 215218,
+      "inputs": {
+        "mass": 1.0,
+        "charge": 1.0,
+        "field": 2.0,
+        "strength": 0.03,
+        "screening": 3.0,
+        "theta": 0.5,
+        "coefficient": 1.0,
+        "min_free_orbit_gap": 0.3,
+        "control_distance": 24.0,
+        "quadrature_orders": [
+          1024,
+          2048
+        ],
+        "batch_size": 256,
+        "quadrature_target": 0.05,
+        "plane_target": 0.005,
+        "step_target": 0.001,
+        "control_stability_target": 0.01,
+        "symmetry_absolute_target": 1e-12,
+        "runtime_cap_s": 600.0,
+        "units": "normalized; magnetic moment m*v^2/B; theta=kBT/m; U=kappa exp(-r/lambda)/r",
+        "formula": "c_B=kappa*b*p/(2*B*u) integral[-Lcontrol,Lcontrol] cos(phi-Omega*z/u)*exp(-r/lambda)*(1+r/lambda)/r^3 dz; r^2=b^2+(p/Omega)^2-2*b*(p/Omega)*sin(phi-Omega*z/u)+z^2",
+        "zero_expectation_proof": "For fixed b,u,p, transform phi to pi-phi modulo2pi and z to -z. Radius and phase sine are unchanged while cosine changes sign. Symmetric Gauss-Legendre nodes preserve this oddness exactly apart from floating-point error. Both central phase interval around pi/2 and its wrapped complement are invariant under the phase involution, so each stratum control expectation is exactly zero. The phase-independent gap mask preserves zero expectation.",
+        "estimator": "signed mean=sum physical incoming weights*(nonlinear mean-c_B); second, cross and spatial moments unchanged",
+        "mask_scope": "g=b-p/Omega>=.3 uses the fixed first-Born control; all other physical states keep original nonlinear mean and their original probability",
+        "design": "coefficient one, gap .3, control L24 and order1024 frozen from historical-only pilot; order2048 is fixed estimator sensitivity, not outcome-dependent tuning",
+        "stability_scope": "Both finite Gauss-Legendre controls have exactly zero phase expectation; their difference measures empirical estimator sensitivity, not physical quadrature bias.",
+        "boundary_scope": "Identical control with Lcontrol24 used for every trajectory endpoint plane; paired endpoint differences are unchanged.",
+        "variance_scope": "Within-cell variance ratios and four-replica spreads are descriptive empirical comparisons, not confidence intervals.",
+        "acceptance": "recompute all original fixed full-domain sample, replica, partition, boundary, trajectory and integrity gates with controlled signed mean; all case order1024-to2048 scaled mean changes <=1%; preserve raw original failures",
+        "stop_rule": "fixed saved states, controls and orders; no new ODE, adaptive coefficient, failure clipping or probability reweighting",
+        "scope": "one bounded incident domain; analytically equivalent integrated signed mean; no complete plasma coefficient, collision closure or lifetime",
+        "prior_artifact_sha256": {
+          "results/stratified_encounter_flux/summary.json": "5a8699d470dce7553ed14b7669b6228953c7bda30d817ca9d541c8f619e565e0",
+          "results/stratified_encounter_flux/states.npz": "aa340fe03e5c44bdae3e8de197a3e3a89a9992b86f6032c388f31fa00e52bd66",
+          "results/stratified_encounter_flux/populations.npz": "a59d2f67aa3786c72a1ce584bafb2045f3d5338ff5e811fe9c17e569bb06ab9d"
+        },
+        "historical_pilot_sha256": {
+          "results/encounter_born_control_pilot/summary.json": "4f7773fa19f9e029c3c0117f2c3ffd5d00e56279978023d0a83423ec148cbbcd",
+          "results/encounter_born_control_pilot/pilot_script.py": "1f5e9e49f0eb716362d6e89b73c2f8a6010b8c80e5630bf1abcf7b5fa82f47ba",
+          "results/encounter_born_control_pilot/declared_inputs.json": "7aeb1ffae2e9ecb9706aba7b0fc2608fbbeb0088d70935d8023bd336a911173e"
+        }
+      },
+      "source_sha256": {
+        "examples/43_encounter_born_control.py": "10f4b5210bd41030204a3e04ca23fc2f7c75f7ff4789af5dfcc942aa8694b3e4",
+        "src/sato_morrison/reference.py": "ae0cadd350b0392dd19f7775605104a5a0252457c2c34411a05878d5ba5a41bd"
+      }
+    }
+  },
+  "audits": {
+    "results/stratified_encounter_flux/independent_audit.json": {
+      "sha256": "a2a51e0c21b12398886406f94aa78eb0e19b5c77683439f8aa0f2b215b01a88b",
+      "status": "passed",
+      "checks": 697,
+      "wall_s": 0.26968879194464535,
+      "scope": "Independent saved-state and exact-measure reconstruction; no producer imports or new trajectory solves. Scramble comparisons are empirical, not rigorous error bounds."
+    },
+    "results/stratified_encounter_flux/cartesian_audit.json": {
+      "sha256": "a4506dda0892513189ab0ef569ab2d4f82bf68bfd0fcd3d7b1f1b37e76985cb6",
+      "status": "failed",
+      "checks": 0,
+      "wall_s": 7.221962125040591,
+      "scope": "Fresh twelve-coordinate solves with exact saved incoming bits; each original coarse comparison retained."
+    },
+    "results/encounter_born_control/independent_audit.json": {
+      "sha256": "a5ec3905de087944f4c4b7cd3665a5059834baabf5664e41f94e6c2b2d4aab85",
+      "status": "passed",
+      "checks": 253,
+      "wall_s": 5.306293708039448,
+      "scope": "Independent Cartesian force-work control calculation, all saved weighted integrals and fixed-gate reconstruction; no producer physics imports or new ODE solves."
+    }
+  },
+  "tests": {
+    "baseline": {
+      "command": ".venv/bin/python -m pytest -q",
+      "count": 272,
+      "log_sha256": "034c7d620eb7afc45ca6b6c7b1abd9e49d2c2d053e523f241f5f02aa0f582fff",
+      "completion": "272 passed in 82.09s (0:01:22)"
+    },
+    "final": {
+      "command": ".venv/bin/python -m pytest -q",
+      "count": 274,
+      "log_sha256": "9c265c7b735f40639d8e8180406481ec55c55abd677fb0cb1c33a47e02002612",
+      "completion": "274 passed in 113.07s (0:01:53)"
+    }
+  },
+  "hardware": {
+    "python": "3.12.13",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "Apple M4",
+    "logical_cpus": 10,
+    "devices": [
+      "cpu:0"
+    ],
+    "x64": true,
+    "versions": {
+      "sato-morrison": "0.1.0",
+      "jax": "0.11.2",
+      "jaxlib": "0.11.2",
+      "solvax": "0.28.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "matplotlib": "3.11.2"
+    },
+    "thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "XLA_FLAGS": "unset"
+    }
+  },
+  "executed_commands": [
+    "OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 .venv/bin/python examples/42_stratified_encounter_flux.py",
+    ".venv/bin/python results/encounter_born_control_pilot/pilot_script.py (fresh SM_BORN_PILOT_OUTPUT receipt)",
+    ".venv/bin/python examples/43_encounter_born_control.py",
+    ".venv/bin/python -m pytest -q",
+    "Independent saved-array and Cartesian audit scripts archived beside their input results; use a fresh output receipt.",
+    "latexmk -cd -pdf -interaction=nonstopmode -halt-on-error notes/implementation.tex"
+  ],
+  "interpretation": [
+    "The stratified estimator preserves the full specified bounded incoming measure and the original reflected and transmitted weights.",
+    "The first-Born control has exactly zero phase expectation by the phi-to-pi-minus-phi and z-to-minus-z symmetry; the numerical control is a finite symmetric quadrature function.",
+    "The controlled calculation reanalyses the same fresh trajectories. Its historical-only coefficient and mask were fixed before control evaluation; it is not a second independent physical campaign or a formal preregistered statistical test.",
+    "Sample, scramble, alternate-partition and control-order differences are empirical convergence comparisons, not confidence intervals or rigorous error bounds.",
+    "Negative signed drift in the cropped incoming band does not imply net cooling of a complete equilibrium plasma.",
+    "Outgoing inverse-cutoff violations are kinematic finite-plane diagnostics, not a validation of detailed balance.",
+    "The normalized magnetic-moment to guiding-center squared-kick ratio is density independent within this bounded model; it is not a measured kinetic mixing-time ratio."
+  ],
+  "remaining_work": [
+    "Resolve any failed declared comparison before treating the corresponding finite-band observable as converged.",
+    "Extend the incoming impact and velocity domains with independent moment-tail tests; retained flux alone does not bound omitted moments.",
+    "Test the broader incident population at stronger fields before extrapolating the narrow-band large-field result.",
+    "Establish reverse-complete incident populations, plasma screening, inter-encounter correlations and population evolution before claiming a physical collision coefficient or lifetime.",
+    "Complete nonuniform dipole/nonaxisymmetric trajectory refinements and longer-time Landau validation."
+  ],
+  "novelty_scope": "New numerical evidence within the declared screened-pair model. Established magnetized exchange and control-variate principles carry no priority claim.",
+  "upstream_pr": null,
+  "documentation_sha256": {
+    "README.md": "f1b64dcd664351b7797b5cd0c580ae891774ef8e1cde0aea7b7835ab4395a4bf",
+    "examples/README.md": "6be972a092a43d038cc1574e590e9d60e57fd02cca23371cb416069e2d24aeb3",
+    "notes/implementation.tex": "d4ed6431ece02971b2c7a628d73ae0603fff132d99cc3e764d95fbbda16306be",
+    "notes/implementation.pdf": "f2b49a69933251687951b9d317fa66ee2d06355f1b56cdb7f02a3064f148812a",
+    "results/validation.csv": "8eb2ab2f764095e3c3437054e466ab00e8edb550d9be4b2cc9755d17f3798a91"
+  }
+}

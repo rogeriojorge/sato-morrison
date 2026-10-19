@@ -1,0 +1,18 @@
+{
+  "scope": "Saved-summary scientific display only; no encounter or control recomputation.",
+  "input_sha256": {
+    "stratified_encounter_flux/summary.json": "5a8699d470dce7553ed14b7669b6228953c7bda30d817ca9d541c8f619e565e0",
+    "encounter_born_control/summary.json": "f82789d1999064172704fef5c9e0f5f436eff72badc0a49fa085e2d95b91673f"
+  },
+  "source_sha256": "889ec90dce72bfa36b2dc7bd97edad4ce5819aa2270792afed377ff121687230",
+  "outputs_sha256": {
+    "stratified_encounter_flux/sampling_readable.svg": "5584b137e8539dab53425b7a9015ae01a2c8987940eb9e23508e861f6e2c9ad0",
+    "stratified_encounter_flux/sampling_readable.png": "39ef1bef5420eae91a740f58c7c8caf55c1fd902ff266254787af37c08f2b3ab",
+    "stratified_encounter_flux/evidence_readable.svg": "de84120112c4f2a43d8e0879a21c533ee1be7739b6639a4b79282065ec53f98c",
+    "stratified_encounter_flux/evidence_readable.png": "168403f5850f2c973c11f8347493d8b9cd4d1a4bac629b0e5564e16616beb3ec",
+    "encounter_born_control/control_readable.svg": "6dd4009b920045b7dfc665bda59db240e25b591dc8d72ef03f556ecf90b458d7",
+    "encounter_born_control/control_readable.png": "caa6ea3a0fdf8f28f14b033dc36b37dce6f1904a0d69122d171f73e6f61df705",
+    "stratified_encounter_flux/weights.svg": "1def3562a0a57ab326c327a5bee37386aaa5f1bf9798e66dfced2f135a3d12d8",
+    "stratified_encounter_flux/weights.png": "8d484046e21cdc760f9a3b5271c1a044ab1958d6fbd360a23bb09d1db81c5662"
+  }
+}

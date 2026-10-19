@@ -1,0 +1,554 @@
+{
+  "status": "passed",
+  "scope": "Selected fixed smaller-step follow-up only. The original coarse Cartesian failures are retained verbatim and remain failed. No ensemble probabilities or original results are replaced.",
+  "levels": [
+    [
+      0.025,
+      1e-12
+    ],
+    [
+      0.0125,
+      2e-13
+    ]
+  ],
+  "targets": {
+    "position": 1e-08,
+    "velocity": 1e-08,
+    "time": 1e-08,
+    "energy": 1e-09,
+    "moments": 0.001
+  },
+  "replays": [
+    {
+      "index": 144428,
+      "node": [
+        1.205554330864985,
+        0.37658144110821357,
+        2.459190421075111,
+        2.9494283535073174
+      ],
+      "original_failed_comparison": {
+        "selection": "largest_weighted_second",
+        "selections": [
+          "largest_weighted_second"
+        ],
+        "index": 144428,
+        "node": [
+          1.205554330864985,
+          0.37658144110821357,
+          2.459190421075111,
+          2.9494283535073174
+        ],
+        "initial_state": [
+          1.217180804495765,
+          0.022005993502490974,
+          -12.0,
+          0.04401198700498195,
+          -1.2288072781265453,
+          0.18829072055410678,
+          -1.217180804495765,
+          -0.022005993502490974,
+          12.0,
+          -0.04401198700498195,
+          1.2288072781265453,
+          -0.18829072055410678
+        ],
+        "rtol": 2e-13,
+        "atol": 2e-15,
+        "max_step": 0.0125,
+        "solver_success": true,
+        "solver_status": 1,
+        "evaluations": 91709,
+        "wall_s": 2.1302770409965888,
+        "final_position": [
+          2.1949615072387765,
+          0.46779726639399755,
+          -24.0
+        ],
+        "final_velocity": [
+          -0.0032544595489720054,
+          -2.322025169137218,
+          -0.8930955268881381
+        ],
+        "time": 94.54509429898724,
+        "exit": "reflected",
+        "position_error": 5.394670266056778e-09,
+        "velocity_error": 1.0973346215199797e-08,
+        "time_error": 2.3969164431036916e-09,
+        "energy_error": 4.218847493575595e-14,
+        "passed": false,
+        "stored_step_comparisons": [
+          {
+            "index": 144428,
+            "step": 0.2,
+            "position_error": 5.394670266056778e-09,
+            "velocity_error": 1.0973346215199797e-08,
+            "time_error": 2.3969164431036916e-09
+          }
+        ]
+      },
+      "replays": [
+        {
+          "step": 0.025,
+          "rtol": 1e-12,
+          "atol": 1e-14,
+          "initial_state": [
+            2.43436160899153,
+            0.04401198700498195,
+            -24.0,
+            0.0880239740099639,
+            -2.4576145562530907,
+            0.37658144110821357
+          ],
+          "final_position": [
+            2.194961507230644,
+            0.46779726560529333,
+            -23.999999999999996
+          ],
+          "final_velocity": [
+            -0.003254461178280238,
+            -2.322025169139443,
+            -0.8930955268762252
+          ],
+          "time": 94.54509429935018,
+          "exit": "reflected",
+          "energy_error": 1.383337888682945e-13,
+          "cartesian_position_error": 7.887042130505506e-10,
+          "cartesian_velocity_error": 1.6293082326021557e-09,
+          "cartesian_time_error": 3.629452294262592e-10,
+          "passed": true,
+          "observables": [
+            -0.040987878092060226,
+            0.028987397328091528,
+            -0.025627385027112346,
+            0.06245194343807014
+          ],
+          "max_actual_step": 0.025000000000005684,
+          "evaluations": 46541
+        },
+        {
+          "step": 0.0125,
+          "rtol": 2e-13,
+          "atol": 2e-15,
+          "initial_state": [
+            2.43436160899153,
+            0.04401198700498195,
+            -24.0,
+            0.0880239740099639,
+            -2.4576145562530907,
+            0.37658144110821357
+          ],
+          "final_position": [
+            2.1949615072399,
+            0.4677972664862874,
+            -24.0
+          ],
+          "final_velocity": [
+            -0.003254459357422166,
+            -2.3220251691369316,
+            -0.8930955268895416
+          ],
+          "time": 94.54509429894436,
+          "exit": "reflected",
+          "energy_error": 4.518607710224387e-14,
+          "cartesian_position_error": 9.228984243492278e-11,
+          "cartesian_velocity_error": 1.9154983935815162e-10,
+          "cartesian_time_error": 4.2874148675764445e-11,
+          "passed": true,
+          "observables": [
+            -0.040987878093529884,
+            0.02898739732558131,
+            -0.025627385024361175,
+            0.06245194343025945
+          ],
+          "max_actual_step": 0.012500000000002842,
+          "evaluations": 91745
+        }
+      ],
+      "scaled_tight_level_change": [
+        1.2674971405164595e-11,
+        8.659686483509058e-11,
+        9.490920443932741e-11,
+        1.2506719833022465e-10
+      ],
+      "active_maximum_step_ratio": 0.5
+    },
+    {
+      "index": 116407,
+      "node": [
+        1.2250397347387927,
+        2.5428953612396263,
+        2.4415866146982768,
+        1.5699175564248602
+      ],
+      "original_failed_comparison": {
+        "selection": "closest_saved_separation",
+        "selections": [
+          "closest_saved_separation"
+        ],
+        "index": 116407,
+        "node": [
+          1.2250397347387927,
+          2.5428953612396263,
+          2.4415866146982768,
+          1.5699175564248602
+        ],
+        "initial_state": [
+          0.002324565074109497,
+          -0.015676985484315224,
+          -12.0,
+          -0.03135397096863045,
+          1.2203906045905737,
+          1.2714476806198132,
+          -0.002324565074109497,
+          0.015676985484315224,
+          12.0,
+          0.03135397096863045,
+          -1.2203906045905737,
+          -1.2714476806198132
+        ],
+        "rtol": 2e-13,
+        "atol": 2e-15,
+        "max_step": 0.0125,
+        "solver_success": true,
+        "solver_status": 1,
+        "evaluations": 29297,
+        "wall_s": 0.6780642080120742,
+        "final_position": [
+          2.3388597097825565,
+          -0.6069131573828854,
+          -24.0
+        ],
+        "final_velocity": [
+          1.5840865656169463,
+          -2.9029638763437373,
+          -1.2211193942996437
+        ],
+        "time": 29.121274518568846,
+        "exit": "reflected",
+        "position_error": 7.2328820710509945e-09,
+        "velocity_error": 1.3917310415223483e-08,
+        "time_error": 2.259930909076502e-09,
+        "energy_error": 1.3367085216486885e-13,
+        "passed": false,
+        "stored_step_comparisons": [
+          {
+            "index": 116407,
+            "step": 0.2,
+            "position_error": 7.2328820710509945e-09,
+            "velocity_error": 1.3917310415223483e-08,
+            "time_error": 2.259930909076502e-09
+          }
+        ]
+      },
+      "replays": [
+        {
+          "step": 0.025,
+          "rtol": 1e-12,
+          "atol": 1e-14,
+          "initial_state": [
+            0.004649130148218994,
+            -0.03135397096863045,
+            -24.0,
+            -0.0627079419372609,
+            2.4407812091811474,
+            2.5428953612396263
+          ],
+          "final_position": [
+            2.338859709877418,
+            -0.6069131575827426,
+            -24.0
+          ],
+          "final_velocity": [
+            1.5840865652313156,
+            -2.9029638765547343,
+            -1.2211193942957626
+          ],
+          "time": 29.121274518631466,
+          "exit": "reflected",
+          "energy_error": 8.884004643050503e-13,
+          "cartesian_position_error": 1.9985713084480494e-10,
+          "cartesian_velocity_error": 3.856306385330299e-10,
+          "cartesian_time_error": 6.262013130253763e-11,
+          "passed": true,
+          "observables": [
+            0.31094901985339035,
+            0.21888702836605095,
+            -0.025508442470482645,
+            0.5177736807308225
+          ],
+          "max_actual_step": 0.025000000000000355,
+          "evaluations": 15329
+        },
+        {
+          "step": 0.0125,
+          "rtol": 2e-13,
+          "atol": 2e-15,
+          "initial_state": [
+            0.004649130148218994,
+            -0.03135397096863045,
+            -24.0,
+            -0.0627079419372609,
+            2.4407812091811474,
+            2.5428953612396263
+          ],
+          "final_position": [
+            2.3388597097753556,
+            -0.6069131573800777,
+            -24.0
+          ],
+          "final_velocity": [
+            1.5840865656278027,
+            -2.902963876337724,
+            -1.221119394299848
+          ],
+          "time": 29.121274518565475,
+          "exit": "reflected",
+          "energy_error": 1.2823075934420558e-13,
+          "cartesian_position_error": 7.200906537718765e-12,
+          "cartesian_velocity_error": 1.0856426868599556e-11,
+          "cartesian_time_error": 3.3715252811816754e-12,
+          "passed": true,
+          "observables": [
+            0.31094901985315243,
+            0.2188870283648891,
+            -0.025508442469616727,
+            0.5177736807266421
+          ],
+          "max_actual_step": 0.012500000000001066,
+          "evaluations": 29321
+        }
+      ],
+      "scaled_tight_level_change": [
+        2.7173925740879475e-13,
+        5.307981948265118e-12,
+        3.956006230816416e-12,
+        8.073863026519145e-12
+      ],
+      "active_maximum_step_ratio": 0.5000000000000355
+    }
+  ],
+  "hypothetical_two_state_replacement_effects": {
+    "seed4201_N512": {
+      "integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scaled_integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "seed4201_N1024": {
+      "integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scaled_integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "seed4201_N2048": {
+      "integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scaled_integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "seed4202_N512": {
+      "integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scaled_integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "seed4202_N1024": {
+      "integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scaled_integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "seed4202_N2048": {
+      "integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scaled_integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "seed4203_N512": {
+      "integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scaled_integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "seed4203_N1024": {
+      "integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scaled_integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "seed4203_N2048": {
+      "integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scaled_integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "seed4204_N512": {
+      "integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scaled_integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "seed4204_N1024": {
+      "integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scaled_integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "seed4204_N2048": {
+      "integral_change": [
+        -1.648704663990131e-17,
+        -6.147192588893003e-17,
+        4.09654178348685e-17,
+        -2.1336034111410361e-16
+      ],
+      "scaled_integral_change": [
+        6.869789680981623e-14,
+        1.024559974543425e-12,
+        6.827755409825535e-13,
+        8.282602538041655e-14
+      ]
+    },
+    "alternate_partition": {
+      "integral_change": [
+        7.034659950872391e-16,
+        4.509570918503884e-16,
+        -5.662913280869758e-16,
+        1.828440172195783e-15
+      ],
+      "scaled_integral_change": [
+        2.7942241334924e-12,
+        7.164952950208421e-12,
+        8.997420808275792e-12,
+        7.06652340267297e-13
+      ]
+    },
+    "boundary_L40": {
+      "integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scaled_integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    "boundary_L48": {
+      "integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "scaled_integral_change": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "wall_s": 2.5651458750944585,
+  "input_sha256": {
+    "summary.json": "5a8699d470dce7553ed14b7669b6228953c7bda30d817ca9d541c8f619e565e0",
+    "states.npz": "aa340fe03e5c44bdae3e8de197a3e3a89a9992b86f6032c388f31fa00e52bd66",
+    "populations.npz": "a59d2f67aa3786c72a1ce584bafb2045f3d5338ff5e811fe9c17e569bb06ab9d",
+    "cartesian_audit.json": "a4506dda0892513189ab0ef569ab2d4f82bf68bfd0fcd3d7b1f1b37e76985cb6"
+  },
+  "source_path": "results/stratified_encounter_flux/audit_tight_refinement.py",
+  "source_sha256": "fc82ccb1ebeeff4c2b69976d192319ea0f08363b12763de99e4d897862dcc70b",
+  "audit_git_identity": "831d2ebec582c40667fc157e516a90c4077e7484",
+  "source_uncommitted": true
+}
