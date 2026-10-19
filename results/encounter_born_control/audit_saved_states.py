@@ -151,3 +151,4 @@ receipt=dict(status='passed' if all(r['passed'] for r in checks) else 'failed',c
     source_sha256=sha(Path(__file__)),input_sha256={str(f.relative_to(ROOT)):sha(f) for f in (D/'summary.json',D/'control_GL1024.npy',D/'control_GL2048.npy',P/'states.npz',P/'populations.npz')})
 OUTPUT.write_text(json.dumps(receipt,indent=2)+'\n')
 print(json.dumps(dict(status=receipt['status'],checks=len(checks),failed=[r for r in checks if not r['passed']]),indent=2))
+sys.exit(0 if receipt['status']=='passed' else 1)

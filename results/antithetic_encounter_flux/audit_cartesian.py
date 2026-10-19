@@ -90,7 +90,7 @@ for name,wanted in j['experiment_dependency_sha256'].items():
     producer_identities[name]=dict(commit=j['commit'],expected_sha256=wanted,actual_sha256=actual)
 identity_pass=all(row['expected_sha256']==row['actual_sha256'] for row in producer_identities.values())
 script=Path(__file__).resolve();script_relative=str(script.relative_to(ROOT))
-OUTPUT.write_text(json.dumps(dict(status='passed' if all(r['passed'] for r in receipts) and identity_pass else 'failed',
+receipt=dict(status='passed' if all(r['passed'] for r in receipts) and identity_pass else 'failed',
     finest_available_control_status='passed' if all(r.get('finest_available_control_comparison',{}).get('passed',False) for r in receipts) and identity_pass else 'failed',
     scope='Fresh twelve-coordinate solves with exact saved incoming bits; each original coarse comparison retained.',
     targets=dict(position=1e-8,velocity=1e-8,time=1e-8,energy=1e-9),
@@ -102,4 +102,6 @@ OUTPUT.write_text(json.dumps(dict(status='passed' if all(r['passed'] for r in re
     source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
     base_state_count=nbase,
     input_sha256={str(path.relative_to(ROOT)):hashlib.sha256(path.read_bytes()).hexdigest() for path in (D/'summary.json',D/'states.npz',D/'populations.npz',P/'states.npz')},
-    replays=receipts),indent=2)+'\n')
+    replays=receipts)
+OUTPUT.write_text(json.dumps(receipt,indent=2)+'\n')
+sys.exit(0 if receipt['status']=='passed' else 1)

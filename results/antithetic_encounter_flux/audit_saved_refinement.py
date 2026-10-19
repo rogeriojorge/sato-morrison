@@ -2,10 +2,13 @@
 from pathlib import Path
 import hashlib
 import json
+import os
+import sys
 import subprocess
 import numpy as np
-ROOT=Path(__file__).resolve().parents[2];D=Path(__file__).resolve().parent
-OUT=D/'saved_refinement_audit.json'
+ROOT=Path(os.environ.get('SM_AUDIT_ROOT',Path(__file__).resolve().parents[2]))
+D=ROOT/os.environ.get('SM_ANTITHETIC_AUDIT_INPUT','results/antithetic_encounter_flux')
+OUT=Path(os.environ.get('SM_ANTITHETIC_REFINEMENT_AUDIT_OUTPUT',D/'saved_refinement_audit.json'))
 if OUT.exists():raise FileExistsError(OUT)
 with np.load(D/'states.npz') as f:a={k:f[k] for k in f.files}
 with np.load(D/'populations.npz') as f:p={k:f[k] for k in f.files}
@@ -43,3 +46,4 @@ receipt=dict(status='passed' if rows and all(r['refined_cartesian_passed'] for r
     input_sha256={f.name:sha(f) for f in (D/'summary.json',D/'states.npz',D/'populations.npz',D/'cartesian_audit.json')},
     source_sha256=sha(Path(__file__)),source_uncommitted=bool(subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain','--',str(Path(__file__).relative_to(ROOT))],text=True).strip()))
 OUT.write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps(receipt,indent=2))
+sys.exit(0 if receipt['status']=='passed' else 1)

@@ -9,7 +9,8 @@ import subprocess
 import sys
 from time import perf_counter
 import numpy as np
-ROOT=Path(__file__).resolve().parents[2];D=Path(__file__).resolve().parent
+ROOT=Path(os.environ.get('SM_AUDIT_ROOT',Path(__file__).resolve().parents[2]))
+D=ROOT/os.environ.get('SM_ANTITHETIC_AUDIT_INPUT','results/antithetic_encounter_flux')
 OUT=Path(os.environ.get('SM_ANTITHETIC_MAP_AUDIT_OUTPUT',D/'contribution_map_audit.json'))
 if OUT.exists():raise FileExistsError(OUT)
 started=perf_counter()
@@ -51,3 +52,4 @@ receipt.update(audit_commit=subprocess.check_output(['git','-C',str(ROOT),'rev-p
     versions=dict(numpy=np.__version__,python=platform.python_version()),platform=platform.platform(),processor=s.get('processor'),
     wall_s=perf_counter()-started,peak_rss_bytes=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024))
 OUT.write_text(json.dumps(receipt,indent=2)+'\n');print(json.dumps(receipt,indent=2))
+sys.exit(0 if receipt['status']=='passed' else 1)

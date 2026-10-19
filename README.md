@@ -425,6 +425,26 @@ On this ray, exponentiation returns zero for trial tail populations and the posi
 
 ## Reproduce
 
+For a quick check of the published physical-pair evidence, install the project as below, then run the independent saved-array audits. These commands require no new trajectory solves and save fresh receipts outside the checkout:
+
+```sh
+audit_output=$(mktemp -d)
+SM_STRATIFIED_AUDIT_OUTPUT="$audit_output/raw_flux.json" python results/stratified_encounter_flux/audit_saved_states.py
+SM_BORN_AUDIT_OUTPUT="$audit_output/control.json" python results/encounter_born_control/audit_saved_states.py
+SM_ANTITHETIC_AUDIT_OUTPUT="$audit_output/physical_pairs.json" python results/antithetic_encounter_flux/audit_saved_states.py
+SM_ANTITHETIC_MAP_AUDIT_OUTPUT="$audit_output/maps.json" python results/antithetic_encounter_flux/audit_contribution_maps.py
+SM_PHASE_MOVIE_AUDIT_OUTPUT="$audit_output/movie.json" python results/antithetic_encounter_movie/audit_saved_paths.py
+SM_ANTITHETIC_REFINEMENT_AUDIT_OUTPUT="$audit_output/saved_refinement.json" python results/antithetic_encounter_flux/audit_saved_refinement.py
+```
+
+The first five expected saved-array check counts are **697, 253, 1,371, 15 and 48**, respectively; the last audit verifies the saved finer control. Each command saves its receipt before returning a nonzero exit if its audit fails. A passing audit reconstructs the published outcomes, including the raw and control estimators' failed convergence gates. The coarse Cartesian failures and their finer controls are separate records. Use a full Git clone: historical source checks read the recorded producer commits.
+
+To repeat the independent Cartesian controls with new trajectory solves, run the command below. It saves the original coarse failure alongside its passing finer control and exits nonzero:
+
+```sh
+SM_ANTITHETIC_CARTESIAN_OUTPUT="$audit_output/cartesian.json" python results/antithetic_encounter_flux/audit_cartesian.py
+```
+
 ```sh
 git clone https://github.com/rogeriojorge/sato-morrison.git
 cd sato-morrison

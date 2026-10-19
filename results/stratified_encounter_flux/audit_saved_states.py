@@ -207,3 +207,4 @@ receipt=dict(status='passed' if all(r['passed'] for r in checks) else 'failed',c
  reconstructed_gates={k:bool(v) for k,v in gates.items()},reconstructed_comparisons={k:v.tolist() for k,v in cmp.items()})
 OUTPUT.write_text(json.dumps(receipt,indent=2)+'\n')
 print(json.dumps(dict(status=receipt['status'],checks=len(checks),failed=[r for r in checks if not r['passed']]),indent=2))
+sys.exit(0 if receipt['status']=='passed' else 1)

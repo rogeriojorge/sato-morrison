@@ -215,3 +215,4 @@ receipt=dict(status='passed' if all(c['passed'] for c in checks) else 'failed',c
     versions=dict(numpy=version('numpy'),python=sys.version.split()[0]),platform=platform.platform())
 OUTPUT.write_text(json.dumps(receipt,indent=2)+'\n')
 print(json.dumps(dict(status=receipt['status'],checks=len(checks),failed=[c for c in checks if not c['passed']]),indent=2))
+sys.exit(0 if receipt['status']=='passed' else 1)
