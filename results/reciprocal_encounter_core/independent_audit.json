@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "checks": 8102,
+  "failed_checks": 0,
+  "failed_check_details": [],
+  "metrics": {
+    "accessible_saved_states": 430574,
+    "fresh_states": 843,
+    "selected_controls": 128,
+    "max_endpoint_log_Gibbs_error": 3.772626655518252e-11,
+    "max_Gibbs_correction": 8.386555180317501e-07,
+    "max_finest_roundtrip_endpoint": 2.0010034629258655e-08,
+    "max_finest_roundtrip_time": 4.047777224513993e-09,
+    "failed_core_gates": [
+      "sample_4204",
+      "replica_4201_4202",
+      "replica_4202_4203"
+    ],
+    "failed_trajectory_gates": [
+      "endpoints"
+    ],
+    "max_core_replica_comparison": 0.05387644313531292
+  },
+  "wall_s": 0.6112548749661073,
+  "peak_rss_bytes": 496238592,
+  "scope": "Independent saved-array and endpoint algebra audit; faithful reproduction of failed scientific gates is an audit success; zero ODE calls.",
+  "source_sha256": "890f8f178f88d9c6ec75a37b97d4713bd22fe8f33b22e4babeb72d5b4816fb85",
+  "summary_sha256": "6198ca0c0e19ff12e7a38b4c0009ffd69379a5cb6660f429c0aa14db8e574e9c",
+  "audit_commit": "77a591a407a9a4473cd25da6a732016d34f5199a",
+  "source_uncommitted": false
+}
